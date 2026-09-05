@@ -81,11 +81,13 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         <a href="world-map.php" <?=$curScript==='world-map.php'?'class="active"':''?>>Mappa</a>
         <a href="academy.php" <?=$curScript==='academy.php'?'class="active"':''?>>Academy</a>
         <a href="offers.php" <?=$curScript==='offers.php'?'class="active"':''?>>Offerte</a>
+        <a href="cart.php" <?=$curScript==='cart.php'?'class="active"':''?>>Carrello</a>
         <a href="events.php" <?=$curScript==='events.php'?'class="active"':''?>>Eventi</a>
         <a href="cortex.php" <?=$curScript==='cortex.php'?'class="active"':''?>>Cortex AI</a>
       <?php else:?>
         <a href="index.php" <?=$curScript==='index.php'?'class="active"':''?>>Home</a>
         <a href="offers.php" <?=$curScript==='offers.php'?'class="active"':''?>>Offerte</a>
+        <a href="cart.php" <?=$curScript==='cart.php'?'class="active"':''?>>Carrello</a>
         <a href="world-map.php" <?=$curScript==='world-map.php'?'class="active"':''?>>Mappa</a>
         <a href="world-club-explorer.php" <?=$curScript==='world-club-explorer.php'?'class="active"':''?>>Trova Club</a>
         <a href="academy-public.php" <?=$curScript==='academy-public.php'?'class="active"':''?>>Academy</a>
@@ -95,6 +97,9 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
     </nav>
 
     <div class="header-actions">
+      <a href="cart.php" class="cart-pill" aria-label="Carrello" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;border:1px solid rgba(212,175,55,0.3);background:rgba(212,175,55,0.08);color:var(--gold-primary);text-decoration:none;font-weight:700;font-size:12px;">
+        <?=dx_icon('shopping-cart','',15)?> <span class="d-none d-sm-inline">Carrello</span>
+      </a>
       <?php if(site_mode()==='DEPENDEX'):?>
         <select aria-label="Lingua" onchange="location.href='?lang='+this.value" class="lang-select">
           <?php foreach(supported_locales() as $l):?>
@@ -149,6 +154,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>"><?=dx_icon('compass','',18)?> Mappa Mondiale 2D/3D</a>
           <a href="academy.php" class="drawer-link <?=$curScript==='academy.php'?'active':''?>"><?=dx_icon('academic','',18)?> Academy Corsi</a>
           <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('sparkles','',18)?> Offerte & Percorsi</a>
+          <a href="cart.php" class="drawer-link <?=$curScript==='cart.php'?'active':''?>"><?=dx_icon('shopping-cart','',18)?> Carrello Universale</a>
           <a href="events.php" class="drawer-link <?=$curScript==='events.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Calendario Eventi</a>
           <a href="dao.php" class="drawer-link <?=$curScript==='dao.php'?'active':''?>"><?=dx_icon('scale','',18)?> DAO Community</a>
           <a href="cortex.php" class="drawer-link <?=$curScript==='cortex.php'?'active':''?>"><?=dx_icon('brain','',18)?> Cortex AI</a>
@@ -167,6 +173,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           <span class="drawer-section-title">NAVIGAZIONE</span>
           <a href="index.php" class="drawer-link <?=$curScript==='index.php'?'active':''?>"><?=dx_icon('home','',18)?> Pagina Principale</a>
           <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('sparkles','',18)?> Offerte & Percorsi</a>
+          <a href="cart.php" class="drawer-link <?=$curScript==='cart.php'?'active':''?>"><?=dx_icon('shopping-cart','',18)?> Carrello Universale</a>
           <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>"><?=dx_icon('compass','',18)?> Mappa Mondiale Club</a>
           <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> Cerca un Club</a>
           <a href="academy-public.php" class="drawer-link <?=$curScript==='academy-public.php'?'active':''?>"><?=dx_icon('academic','',18)?> Academy</a>

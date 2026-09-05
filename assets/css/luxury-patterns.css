@@ -4,17 +4,22 @@
    ============================================================ */
 
 :root {
-  /* Color Palette */
-  --color-gold: #c9a84c;
-  --color-gold-light: #e8d5a3;
-  --color-gold-dark: #a8893a;
-  --color-charcoal: #141619;
-  --color-charcoal-light: #1e2227;
-  --color-ink: #0d0f12;
-  --color-paper: #faf8f5;
-  --color-surface-card: #181b20;
-  --color-surface-border: rgba(201, 168, 76, 0.18);
-  --color-gold-glow: rgba(201, 168, 76, 0.12);
+  /* Strict 3-Color Brand System: Pure Gold, Jet Black, White */
+  --color-gold: #D4AF37;
+  --color-gold-light: #FFF2B2;
+  --color-gold-dark: #996515;
+  --color-charcoal: #070709;
+  --color-charcoal-light: #101116;
+  --color-ink: #070709;
+  --color-paper: #FFFFFF;
+  --color-surface-card: #101116;
+  --color-surface-border: rgba(212, 175, 55, 0.22);
+  --color-gold-glow: rgba(212, 175, 55, 0.18);
+  --gold-primary: #D4AF37;
+  --gold-light: #FFF2B2;
+  --gold-border: rgba(212, 175, 55, 0.25);
+  --bg-card: #101116;
+  --text-muted: #A1A1AA;
 
   /* Typography */
   --font-serif: 'Playfair Display', Georgia, serif;

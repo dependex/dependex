@@ -67,9 +67,14 @@ require '_header.php';
           Se entro 30 giorni non riscontri chiarezza immediata, ti rimborsiamo al 100% con un semplice messaggio. Senza fare domande.
         </div>
 
-        <button class="btn-magic-cta outline" style="border-color: rgba(212,175,55,0.5); color: #FFFFFF;" onclick="selectTier('Starter Kit & Diagnosi', 27)">
-          Accedi con € 27
-        </button>
+        <div style="display:flex;gap:10px;margin-top:16px;">
+          <button class="btn-magic-cta outline" style="border-color: rgba(212,175,55,0.5); color: #FFFFFF; flex:1;" onclick="window.dxCommerce.buyNow('off_starter_kit')">
+            Acquista Ora · € 27
+          </button>
+          <button class="btn" style="border-color: rgba(212,175,55,0.3); color: #FFF; padding:12px 14px;" onclick="window.dxCommerce.addToCart('off_starter_kit')" title="Aggiungi al carrello">
+            <?=dx_icon('shopping-cart', '', 18)?>
+          </button>
+        </div>
       </div>
 
       <!-- TIER 2: Offerta Principale (Core Offer) -->
@@ -122,9 +127,14 @@ require '_header.php';
           Se segui il protocollo per 60 giorni e non ottieni progressi concreti, ti restituiamo il 100% dell'importo e ti regaliamo 1 ora di consulenza specialistica.
         </div>
 
-        <button class="btn-magic-cta primary" style="background: linear-gradient(135deg, #FFF2B2, #D4AF37); color: #070709; font-weight: 800;" onclick="selectTier('Protocollo Completo & Trasformazione', 497)">
-          Inizia Ora il Percorso Completo
-        </button>
+        <div style="display:flex;gap:10px;margin-top:16px;">
+          <button class="btn-magic-cta primary" style="background: linear-gradient(135deg, #FFF2B2, #D4AF37); color: #070709; font-weight: 800; flex:1;" onclick="window.dxCommerce.buyNow('off_core_proto')">
+            Inizia Ora il Percorso Completo · € 497
+          </button>
+          <button class="btn" style="border-color: rgba(212,175,55,0.4); color: #FFF; padding:12px 14px;" onclick="window.dxCommerce.addToCart('off_core_proto')" title="Aggiungi al carrello">
+            <?=dx_icon('shopping-cart', '', 18)?>
+          </button>
+        </div>
       </div>
 
       <!-- TIER 3: Offerta Massimizzante (High-Ticket) -->
@@ -174,9 +184,14 @@ require '_header.php';
           Lavoriamo con te fino a quando il tuo Club o team non raggiunge la piena operatività e autosufficienza certificata.
         </div>
 
-        <button class="btn-magic-cta outline" style="border-color: rgba(212,175,55,0.5); color: #FFFFFF;" onclick="selectTier('Programma Elite & Affiancamento', 1997)">
-          Candidati al Programma Elite
-        </button>
+        <div style="display:flex;gap:10px;margin-top:16px;">
+          <button class="btn-magic-cta outline" style="border-color: rgba(212,175,55,0.5); color: #FFFFFF; flex:1;" onclick="window.dxCommerce.buyNow('off_elite_mentor')">
+            Candidati al Programma Elite · € 1.997
+          </button>
+          <button class="btn" style="border-color: rgba(212,175,55,0.3); color: #FFF; padding:12px 14px;" onclick="window.dxCommerce.addToCart('off_elite_mentor')" title="Aggiungi al carrello">
+            <?=dx_icon('shopping-cart', '', 18)?>
+          </button>
+        </div>
       </div>
 
       <!-- TIER 4: Offerta Ricorrente (Continuity) -->
@@ -221,9 +236,14 @@ require '_header.php';
           Nessun vincolo. Puoi mettere in pausa o disdire in qualsiasi momento con 1 solo click dalla tua dashboard personale.
         </div>
 
-        <button class="btn-magic-cta outline" style="border-color: rgba(212,175,55,0.5); color: #FFFFFF;" onclick="selectTier('Club Permanente & Supporto', 39)">
-          Attiva Membership Mensile
-        </button>
+        <div style="display:flex;gap:10px;margin-top:16px;">
+          <button class="btn-magic-cta outline" style="border-color: rgba(212,175,55,0.5); color: #FFFFFF; flex:1;" onclick="window.dxCommerce.buyNow('off_club_continuity')">
+            Attiva Membership Mensile · € 39/m
+          </button>
+          <button class="btn" style="border-color: rgba(212,175,55,0.3); color: #FFF; padding:12px 14px;" onclick="window.dxCommerce.addToCart('off_club_continuity')" title="Aggiungi al carrello">
+            <?=dx_icon('shopping-cart', '', 18)?>
+          </button>
+        </div>
       </div>
 
     </div>
@@ -370,4 +390,7 @@ async function submitOrder(e) {
 }
 </script>
 
+<script src="assets/js/universal-cart-sdk.js"></script>
+
 <?php require '_footer.php'; ?>
+

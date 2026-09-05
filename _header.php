@@ -149,6 +149,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           <a href="club.php" class="drawer-link <?=$curScript==='club.php'?'active':''?>">🤝 Il mio Club</a>
           <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>">🌍 Mappa Mondiale 2D/3D</a>
           <a href="academy.php" class="drawer-link <?=$curScript==='academy.php'?'active':''?>">🎓 Academy Corsi</a>
+          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>">💎 Offerte & Percorsi</a>
           <a href="events.php" class="drawer-link <?=$curScript==='events.php'?'active':''?>">📅 Calendario Eventi</a>
           <a href="dao.php" class="drawer-link <?=$curScript==='dao.php'?'active':''?>">🗳 DAO Community</a>
           <a href="cortex.php" class="drawer-link <?=$curScript==='cortex.php'?'active':''?>">✨ Cortex AI</a>
@@ -166,11 +167,13 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         <nav class="drawer-nav-group">
           <span class="drawer-section-title">NAVIGAZIONE</span>
           <a href="index.php" class="drawer-link <?=$curScript==='index.php'?'active':''?>">⌂ Pagina Principale</a>
+          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>">💎 Offerte & Percorsi</a>
           <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>">🌍 Mappa Mondiale Club</a>
           <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'?'active':''?>">🔍 Cerca un Club</a>
           <a href="academy-public.php" class="drawer-link <?=$curScript==='academy-public.php'?'active':''?>">🎓 Academy</a>
           <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>">📅 Eventi</a>
           <a href="metodo.php" class="drawer-link <?=$curScript==='metodo.php'?'active':''?>">✦ Metodo Hudolin</a>
+          <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>">🆘 Aiuto & Supporto</a>
           <a href="privacy.php" class="drawer-link <?=$curScript==='privacy.php'?'active':''?>">🔐 Privacy & Sicurezza</a>
         </nav>
         <div style="margin-top:14px;">

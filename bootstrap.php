@@ -2,6 +2,7 @@
 require_once __DIR__.'/config.php';
 require_once __DIR__.'/assets/icons.php';
 require_once __DIR__.'/modules/news/AcatNewsService.php';
+require_once __DIR__.'/modules/events/EventSyncService.php';
 $_SERVER['REQUEST_METHOD'] = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 $_SERVER['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
 $_SERVER['HTTP_HOST'] = $_SERVER['HTTP_HOST'] ?? 'dependex.social';

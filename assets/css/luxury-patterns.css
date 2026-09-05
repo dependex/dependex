@@ -332,9 +332,165 @@
   line-height: 1.6;
 }
 
+/* Transformation Before/After Grid */
+.transformation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 40px 0;
+}
+
+.transformation-card {
+  border-radius: var(--radius-md);
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.transformation-card.before {
+  background: rgba(239, 68, 68, 0.04);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.transformation-card.after {
+  background: rgba(201, 168, 76, 0.05);
+  border: 1px solid var(--color-surface-border);
+  box-shadow: 0 10px 30px -10px rgba(201, 168, 76, 0.15);
+}
+
+.transformation-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 16px;
+}
+
+.transformation-card.before .transformation-badge {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+
+.transformation-card.after .transformation-badge {
+  background: rgba(201, 168, 76, 0.2);
+  color: var(--color-gold-light);
+}
+
+.transformation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.transformation-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.transformation-card.before li {
+  color: #94a3b8;
+}
+
+.transformation-card.after li {
+  color: #f1f5f9;
+}
+
+/* Trust Strip */
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 30px 0;
+}
+
+.trust-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: 20px 16px;
+  text-align: center;
+  transition: var(--transition-smooth);
+}
+
+.trust-item:hover {
+  border-color: rgba(201, 168, 76, 0.25);
+  transform: translateY(-2px);
+}
+
+.trust-number {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-gold-light);
+  display: block;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.trust-label {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* 11 Levers Benefit Grid */
+.levers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.lever-card {
+  background: var(--color-surface-card);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  transition: var(--transition-smooth);
+}
+
+.lever-card:hover {
+  border-color: var(--color-gold);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px -10px rgba(0,0,0,0.5);
+}
+
+.lever-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.lever-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.lever-desc {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .offers-ladder-grid {
+    grid-template-columns: 1fr;
+  }
+  .transformation-grid {
     grid-template-columns: 1fr;
   }
   .offer-card.featured {

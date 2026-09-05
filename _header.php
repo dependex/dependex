@@ -37,6 +37,7 @@ $metaDesc = $metaDesc ?? 'DEPENDEX — AL CLUB. COL CLUB. Cammino di sobrietà, 
   <link rel="apple-touch-icon" href="assets/img/app-icon.svg">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="assets/css/app.css">
+  <link rel="stylesheet" href="assets/css/luxury-patterns.css">
   <title><?=h($pageTitle)?> · <?=h($brand['name'])?></title>
 
   <!-- Schema.org JSON-LD -->
@@ -80,10 +81,12 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         <a href="club.php" <?=$curScript==='club.php'?'class="active"':''?>>Il mio Club</a>
         <a href="world-map.php" <?=$curScript==='world-map.php'?'class="active"':''?>>Mappa</a>
         <a href="academy.php" <?=$curScript==='academy.php'?'class="active"':''?>>Academy</a>
+        <a href="offers.php" <?=$curScript==='offers.php'?'class="active"':''?>>Offerte</a>
         <a href="events.php" <?=$curScript==='events.php'?'class="active"':''?>>Eventi</a>
         <a href="cortex.php" <?=$curScript==='cortex.php'?'class="active"':''?>>Cortex AI</a>
       <?php else:?>
         <a href="index.php" <?=$curScript==='index.php'?'class="active"':''?>>Home</a>
+        <a href="offers.php" <?=$curScript==='offers.php'?'class="active"':''?>>Offerte</a>
         <a href="world-map.php" <?=$curScript==='world-map.php'?'class="active"':''?>>Mappa</a>
         <a href="world-club-explorer.php" <?=$curScript==='world-club-explorer.php'?'class="active"':''?>>Trova Club</a>
         <a href="academy-public.php" <?=$curScript==='academy-public.php'?'class="active"':''?>>Academy</a>

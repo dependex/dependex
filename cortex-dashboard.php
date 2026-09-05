@@ -1,7 +1,7 @@
 <?php
 require_once 'bootstrap.php';
 $u = require_login();
-require_once __DIR__ . '/modules/cortex/CortexService.php';
+require_once __DIR__ . '/modules/cortex/cortex_service.php';
 
 $cortex = new \App\Services\CortexService();
 

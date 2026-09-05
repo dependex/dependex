@@ -1,0 +1,346 @@
+/* ============================================================
+   LUXURY PATTERNS & ANTI-SLOP DESIGN SYSTEM · CORTEX EVERGREEN
+   Curated by AI Skills: 02-UI/UX Anti-Slop, Taste Skill & Impeccable
+   ============================================================ */
+
+:root {
+  /* Color Palette */
+  --color-gold: #c9a84c;
+  --color-gold-light: #e8d5a3;
+  --color-gold-dark: #a8893a;
+  --color-charcoal: #141619;
+  --color-charcoal-light: #1e2227;
+  --color-ink: #0d0f12;
+  --color-paper: #faf8f5;
+  --color-surface-card: #181b20;
+  --color-surface-border: rgba(201, 168, 76, 0.18);
+  --color-gold-glow: rgba(201, 168, 76, 0.12);
+
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Shadows & Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+  --shadow-luxury: 0 16px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px 0 var(--color-gold-glow);
+  --transition-smooth: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Luxury Backgrounds */
+.luxury-bg-pattern {
+  background-color: var(--color-charcoal);
+  background-image:
+    radial-gradient(ellipse at 80% 10%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 90%, rgba(201, 168, 76, 0.05) 0%, transparent 60%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 35px,
+      rgba(201, 168, 76, 0.015) 35px,
+      rgba(201, 168, 76, 0.015) 36px
+    );
+}
+
+.luxury-hero-card {
+  background: linear-gradient(135deg, rgba(25, 28, 33, 0.95), rgba(18, 20, 24, 0.98));
+  border: 1px solid var(--color-surface-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-luxury);
+  position: relative;
+  overflow: hidden;
+}
+
+.luxury-hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+/* Gold Gradient Text */
+.gold-gradient-text {
+  background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold) 50%, var(--color-gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* M.A.G.I.C. Offer Cards Grid */
+.offers-ladder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  margin: 40px 0;
+}
+
+.offer-card {
+  background: var(--color-surface-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.offer-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-gold);
+  box-shadow: 0 20px 40px -15px rgba(0,0,0,0.7), 0 0 25px rgba(201, 168, 76, 0.15);
+}
+
+.offer-card.featured {
+  background: linear-gradient(180deg, rgba(32, 36, 43, 0.98) 0%, rgba(20, 22, 27, 0.98) 100%);
+  border: 2px solid var(--color-gold);
+  box-shadow: var(--shadow-luxury);
+  transform: scale(1.02);
+  z-index: 2;
+}
+
+.offer-card.featured:hover {
+  transform: scale(1.03) translateY(-6px);
+}
+
+.offer-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-gold);
+  color: var(--color-ink);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 12px rgba(201, 168, 76, 0.35);
+  white-space: nowrap;
+}
+
+.offer-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.offer-tier-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.offer-tier-sub {
+  font-size: 0.88rem;
+  color: #9aa0a6;
+  line-height: 1.45;
+  min-height: 40px;
+}
+
+.offer-pricing-box {
+  margin: 18px 0;
+  text-align: center;
+}
+
+.offer-anchor-val {
+  font-size: 0.85rem;
+  color: #71767b;
+  text-decoration: line-through;
+  display: block;
+}
+
+.offer-price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-gold-light);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.offer-price small {
+  font-size: 0.95rem;
+  color: #a0a6ad;
+  font-weight: 400;
+}
+
+/* Value Stack List */
+.offer-stack {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.92rem;
+}
+
+.offer-stack-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #d1d5db;
+  line-height: 1.45;
+}
+
+.offer-stack-item .item-icon {
+  color: var(--color-gold);
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+.offer-stack-item .item-val {
+  margin-left: auto;
+  font-size: 0.78rem;
+  color: var(--color-gold);
+  background: rgba(201, 168, 76, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* Objections Killer Bonus Box */
+.offer-bonus-box {
+  background: rgba(201, 168, 76, 0.05);
+  border: 1px dashed rgba(201, 168, 76, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 20px;
+}
+
+.offer-bonus-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 4px;
+}
+
+.offer-bonus-desc {
+  font-size: 0.84rem;
+  color: #e2e8f0;
+  line-height: 1.4;
+}
+
+/* Guarantee Box */
+.offer-guarantee-box {
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 3px solid var(--color-gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 10px 12px;
+  margin-bottom: 24px;
+  font-size: 0.82rem;
+  color: #cbd5e1;
+}
+
+.offer-guarantee-box strong {
+  display: block;
+  color: var(--color-gold-light);
+  font-size: 0.85rem;
+  margin-bottom: 2px;
+}
+
+/* CTA Button */
+.btn-magic-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 14px 20px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  border: none;
+}
+
+.btn-magic-cta.primary {
+  background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold));
+  color: var(--color-ink);
+  box-shadow: 0 8px 20px rgba(201, 168, 76, 0.3);
+}
+
+.btn-magic-cta.primary:hover {
+  background: linear-gradient(135deg, #fff, var(--color-gold-light));
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(201, 168, 76, 0.45);
+}
+
+.btn-magic-cta.outline {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-magic-cta.outline:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold-light);
+  background: rgba(201, 168, 76, 0.05);
+}
+
+/* EPPPA Accordion */
+.epppa-section {
+  max-width: 860px;
+  margin: 60px auto 30px;
+}
+
+.epppa-item {
+  background: var(--color-surface-card);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.epppa-item:hover {
+  border-color: rgba(201, 168, 76, 0.25);
+}
+
+.epppa-header {
+  padding: 18px 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 1.05rem;
+}
+
+.epppa-body {
+  padding: 0 24px 18px;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .offers-ladder-grid {
+    grid-template-columns: 1fr;
+  }
+  .offer-card.featured {
+    transform: none;
+  }
+  .offer-card.featured:hover {
+    transform: translateY(-4px);
+  }
+}

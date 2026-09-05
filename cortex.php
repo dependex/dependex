@@ -71,7 +71,7 @@ form.addEventListener('submit', async e => {
   let wait = add('ai', 'Sto elaborando nel Company Brain…');
 
   try {
-    let r = await fetch('cortex-api.php', {
+    let r = await fetch('api-cortex.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ q, conversation_sic_id: dxConv })

@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__.'/config.php';
+$_SERVER['REQUEST_METHOD'] = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+$_SERVER['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
+$_SERVER['HTTP_HOST'] = $_SERVER['HTTP_HOST'] ?? 'dependex.social';
 
 function db(): PDO { static $pdo=null;if($pdo instanceof PDO)return $pdo;if(!extension_loaded('pdo_sqlite'))throw new RuntimeException('PDO_SQLite non disponibile.');$pdo=new PDO('sqlite:'.DB_PATH,null,null,[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC]);$pdo->exec('PRAGMA foreign_keys=ON; PRAGMA journal_mode=WAL; PRAGMA synchronous=NORMAL;');return $pdo; }
 function h(?string $v): string {return htmlspecialchars((string)$v,ENT_QUOTES,'UTF-8');}

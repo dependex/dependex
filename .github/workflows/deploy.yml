@@ -1,0 +1,66 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy-dependex:
+    name: Deploy to dependex.social
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: PHP Lint
+        run: |
+          for file in $(find . -name "*.php" -not -path "./.git/*"); do
+            php -l "$file" > /dev/null 2>&1 || exit 1
+          done
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER_DEPENDEX }}
+          password: ${{ secrets.FTP_PASS }}
+          server-dir: /
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/apikeysAI.env
+            **/.env
+            **/*.env
+            **/data/*.sqlite
+            **/data/*.sqlite-*
+            **/.github/**
+            **/knowledge/**
+            **/*.log
+
+  deploy-oltre:
+    name: Deploy to oltre.social
+    runs-on: ubuntu-latest
+    environment: production
+    needs: deploy-dependex
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER_OLTRE }}
+          password: ${{ secrets.FTP_PASS }}
+          server-dir: /
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/apikeysAI.env
+            **/.env
+            **/*.env
+            **/data/*.sqlite
+            **/data/*.sqlite-*
+            **/.github/**
+            **/knowledge/**
+            **/*.log

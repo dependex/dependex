@@ -1,99 +1,136 @@
-# OLTRE — DIPENDEX Site V2
+# DEPENDEX — AL CLUB. COL CLUB.
 
-Brand pubblico: **OLTRE**  
-Ecosistema/metodo: **DIPENDEX**  
-Payoff: **AL CLUB. COL CLUB.**  
-Acronimo comunicativo: **ALCOL = Ascolto e Legami Creano Orientamento e Libertà**  
-Token unico: **DRX = Dialogo · Relazioni · eXperienza**  
-Identità universale: **SIC-ID-XXXXXXXXXXXX**
+[![CI](https://github.com/dependex/dependex/actions/workflows/ci.yml/badge.svg)](https://github.com/dependex/dependex/actions/workflows/ci.yml)
+[![Deploy](https://github.com/dependex/dependex/actions/workflows/deploy.yml/badge.svg)](https://github.com/dependex/dependex/actions/workflows/deploy.yml)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![PHP 8.2+](https://img.shields.io/badge/PHP-8.2%2B-777BB4?logo=php&logoColor=white)](https://www.php.net)
+[![PWA Ready](https://img.shields.io/badge/PWA-Ready-5A0FC8?logo=pwa&logoColor=white)](https://web.dev/progressive-web-apps/)
 
-## Cosa contiene
-- Sito/APP PHP mobile-first
-- Index pubblica OLTRE
-- Metodo DIPENDEX
-- Privacy/Security page
-- Login semplice
-- Recupero password senza email: dispositivo fidato + recovery code + fallback admin
-- Dashboard utente
-- Club Hub
-- Network Tree/Grafo interattivo
-- Academy Hudolin/SAT/Lifestyle
-- Eventi, Event Factory e Graphic Studio
-- DAO Forum
-- Rank DRX
-- Leaderboard
-- Document Factory
-- Control Center
-- DRX Wallet
-- Cortex UI
-- SQLite pre-popolato con censimento pubblico V1
-- Loghi SVG OLTRE/DIPENDEX + styleboard PNG
+> **Piattaforma digitale per Club Alcologici Territoriali (CAT)**  
+> Metodo Hudolin · Ecosistema ACAT · Rete Globale
 
-## Installazione
-1. Carica il contenuto su hosting PHP 8.2+.
-2. Abilita `pdo_sqlite`.
-3. Rendi scrivibili `data/` e `storage/`.
-4. Apri `/install.php`.
-5. Crea il SUPERADMIN e salva il recovery code.
-6. Accedi da `/login.php`.
-7. Dopo installazione, proteggi o rinomina `install.php`.
+🌐 **IT** → [oltre.social](https://oltre.social)  
+🌐 **GLOBAL** → [dependex.social](https://dependex.social)  
+📧 [info@dependex.social](mailto:info@dependex.social)
 
-## Test
-- SQLite integrity: `ok`
-- Conteggi DB: `{"network_entities": 194, "clubs": 126, "ranks": 9, "academy_modules": 10}`
-- I file PHP sono verificati con `php -l`.
+---
 
-## Note operative
-Il censimento Club è V1 incrementale: non rappresenta ancora tutti i Club italiani. È pronto per essere esteso regione per regione senza cambiare struttura DB, mappa o Neuralog.
+## 🏗 Architettura
 
+```
+dependex.social/
+├── index.php              # Landing PWA responsive 9:16 / 16:9
+├── app.php                # Dashboard utente
+├── bootstrap.php          # Core engine, auth, DB, routing
+├── service-worker.js      # PWA offline-first
+├── manifest.webmanifest   # PWA manifest
+├── assets/
+│   ├── css/               # Design system (verde/arancione brand)
+│   ├── js/                # Client-side modules
+│   └── img/               # SVG logos, favicons, assets
+├── knowledge/             # Hudolin knowledge base
+├── data/                  # SQLite DB, census data
+├── locales/               # i18n (11 lingue)
+└── modules/               # Feature modules
+```
 
-## V3 CORE additions
-- Global Hudolin/CAT registry: 344 records, 248 individual club rows.
-- Addiction Pathway Engine schema
-- Human Profile / Assessments schema
-- Lifestyle dimensions + time-series schema
-- Mission Engine
-- Sobriety + Daily Access + milestone engine
-- Achievement / Certificate schema
-- Club metrics + multiplication schema
-- Social Impact / Fundraising / Volunteer schema
-- Finance / Treasury schema
-- Workflow / Form Factory schema
-- Notifications schema
-- International Network page/API
-- Registry, Finance, Workflow, Integrations pages
-- Adapter contracts awaiting user's modules: SIC-ID, Neuralog, Network Visual, Map, DRX, Email Machine, DB Model/Dashboard, Chat AI.
-- Blockchain intentionally deferred.
+## ✨ Funzionalità
 
-SQLite integrity: ok
+| Area | Moduli |
+|------|--------|
+| **Club Hub** | Gestione club, card, ranking, check-in giornaliero |
+| **Network** | Mappa mondiale, albero gerarchico ACAT, explorer |
+| **Academy** | Corsi Hudolin/SAT/Lifestyle, progressi, certificati |
+| **Eventi** | Calendar, Event Factory, Graphic Studio |
+| **Sobriety** | Daily access, milestone engine, diario |
+| **DAO** | Forum, proposte, votazioni |
+| **Finance** | Tesoreria, social impact, fundraising |
+| **Cortex** | AI assistant, research intelligence |
+| **Vault** | Document factory, stampa, archivio |
+| **DRX Wallet** | Token Dialogo·Relazioni·eXperienza |
 
+## 🚀 Quick Start
 
-## V4 domain & network deployment
-- Italia: https://oltre.social
-- Internazionale: https://dependex.social
-- Tutti i record censiti sono ora inseriti anche in `network_entities`.
-- Tutti i Club hanno `map_enabled=1` e `network_enabled=1`.
-- Scope:
-  - `OLTRE_ITALY`
-  - `DEPENDEX_GLOBAL`
-- Views SQLite:
-  - `v_oltre_italy_network`
-  - `v_dependex_global_network`
-  - `v_all_clubs`
-- API:
-  - `api.php?action=network&scope=ITALY`
-  - `api.php?action=network&scope=GLOBAL`
-- Statistiche V4: {"total_network_entities": 538, "total_clubs": 374, "italy_entities": 361, "italy_clubs": 224, "global_entities": 177, "global_clubs": 150}
-- SQLite integrity: ok
+### Requisiti
+- PHP 8.2+ con `pdo_sqlite`
+- Server web (Apache/Nginx)
+- HTTPS consigliato per PWA
 
-Nota: i record storici/non verificati restano visibili solo se il frontend decide di mostrarli, mantenendo `verification_status` per distinguere rete corrente e presenza storica.
+### Installazione
 
+```bash
+# Clone
+git clone https://github.com/dependex/dependex.git
+cd dependex
 
-## MASTER BUILD — Core operativo in sviluppo
-- SIC-ID legacy migrati al formato universale Crockford + checksum; vecchi ID mantenuti nei campi legacy dove previsto.
-- DRX ledger idempotente, daily access +1, sobrietà +1/giorno, DRX qualificanti/non qualificanti.
-- Academy a corsi/lezioni con progressi e reward.
-- Event registration, DAO proposal/vote, Finance OS base reale, Document Factory stampabile.
-- Geocode queue e provider adapter; coordinate casuali non vengono più considerate definitive.
-- Multilingua scaffold 11 lingue.
-- Blockchain resta disattivata.
+# Configurazione
+cp .env.example .env
+# Modifica .env con le tue credenziali
+
+# Permessi
+chmod -R 775 data/ storage/
+
+# Setup
+# Apri /install.php nel browser
+# Crea SUPERADMIN e salva il recovery code
+```
+
+### Deploy su hosting condiviso
+
+```bash
+# Upload via FTP a public_html/
+# Oppure usa GitHub Actions (deploy automatico su push)
+```
+
+## 🔧 Configurazione
+
+| Variabile | Descrizione |
+|-----------|-------------|
+| `DB_PATH` | Path al database SQLite |
+| `APP_ENV` | `production` / `development` |
+| `APP_URL` | URL base del sito |
+| `MAIL_FROM` | Email mittente (`info@dependex.social`) |
+
+## 📊 Dati
+
+- **538** entità di rete censite
+- **374** Club attivi
+- **361** entità Italia (224 Club)
+- **177** entità Globali (150 Club)
+- Censimento incrementale V1 — estendibile regione per regione
+
+### API
+
+```
+GET /api.php?action=network&scope=ITALY
+GET /api.php?action=network&scope=GLOBAL
+GET /api-world-map.php
+GET /api-world-hierarchy.php
+```
+
+## 🔒 Sicurezza
+
+- Autenticazione senza email: dispositivo fidato + recovery code + fallback admin
+- SIC-ID universale Crockford + checksum
+- Password hashing `bcrypt`
+- CSRF protection
+- Rate limiting
+- Input sanitization
+- `.env` e secrets esclusi dal repository
+
+## 🌐 i18n
+
+Scaffold multilingua: IT, EN, DE, FR, ES, PT, HR, SL, SR, PL, RU
+
+## 📝 Licenza
+
+[AGPL-3.0](LICENSE) — Il codice è libero, le derivazioni devono restare open source.
+
+## 🤝 Contributing
+
+Vedi [CONTRIBUTING.md](CONTRIBUTING.md) per le linee guida.
+
+---
+
+*DEPENDEX — AL CLUB. COL CLUB.*  
+*Metodo Hudolin per un mondo libero dalle dipendenze.*

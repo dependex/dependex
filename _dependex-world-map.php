@@ -1,4 +1,5 @@
 <?php
+if (!function_exists('dependex_world_map_card')) {
 function dependex_world_map_card(string $height='620px'): string { ob_start(); ?>
 <section class="dx-map-card" id="dxMapRoot">
   <div class="dx-map-head"><div><span class="eyebrow">DEPENDEX WORLD CLUB EXPLORER</span><h2>La rete mondiale, viva.</h2><p id="dxMapStats">Caricamento rete…</p></div><div class="segmented" id="dxView"><button class="active" data-view="2d">2D</button><button data-view="3d">3D</button></div></div>
@@ -14,3 +15,4 @@ function dependex_world_map_card(string $height='620px'): string { ob_start(); ?
 </section>
 <script src="assets/js/dependex-world-map.js"></script>
 <?php return ob_get_clean(); }
+}

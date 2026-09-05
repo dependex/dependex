@@ -1,0 +1,33 @@
+{
+  "release": "ADVANCED_MVP_PUBLIC_PRIVATE_REGISTER",
+  "public_without_login": [
+    "index.php",
+    "world-map.php",
+    "world-club-explorer.php",
+    "global-network.php",
+    "club-public.php",
+    "metodo.php",
+    "privacy.php",
+    "terms.php",
+    "academy-public.php",
+    "events-public.php",
+    "event-detail.php"
+  ],
+  "registration": "register.php",
+  "registration_flow": [
+    "SIC-ID",
+    "USER role",
+    "password_hash",
+    "recovery_code_hash",
+    "privacy consent",
+    "terms consent",
+    "audit",
+    "trusted device",
+    "auto-login"
+  ],
+  "php_checked": 233,
+  "php_errors": [],
+  "js_checked": 2,
+  "js_errors": [],
+  "sqlite_integrity": "ok"
+}

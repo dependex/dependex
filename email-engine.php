@@ -1,0 +1,4 @@
+<?php
+require_once __DIR__.'/bootstrap.php';
+function mail_render(string $template,array $vars): array {$st=db()->prepare('SELECT subject,html_body FROM email_templates WHERE code=? AND active=1');$st->execute([$template]);$t=$st->fetch();if(!$t)throw new RuntimeException('Template email non disponibile');foreach($vars as $k=>$v){$t['subject']=str_replace('{{'.$k.'}}',(string)$v,$t['subject']);$t['html_body']=str_replace('{{'.$k.'}}',h((string)$v),$t['html_body']);}return $t;}
+function mail_queue(string $to,string $template,array $vars=[],?string $userSic=null): string {$m=mail_render($template,$vars);$sid=sic_id();db()->prepare('INSERT INTO email_queue(sic_id,template_code,user_sic_id,to_email,subject,html_body) VALUES(?,?,?,?,?,?)')->execute([$sid,$template,$userSic,$to,$m['subject'],$m['html_body']]);return $sid;}

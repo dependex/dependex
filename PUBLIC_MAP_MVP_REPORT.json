@@ -1,0 +1,13 @@
+{
+  "release": "ADVANCED_MVP_PUBLIC_WORLD_MAP_INDEX",
+  "public_map_in_index": true,
+  "public_world_map_route": "world-map.php",
+  "public_map_api": "api-public-map.php",
+  "public_fields_only": true,
+  "php_checked": 228,
+  "php_errors": [],
+  "js_checked": 2,
+  "js_errors": [],
+  "sqlite_integrity": "ok",
+  "local_clubs": 352
+}

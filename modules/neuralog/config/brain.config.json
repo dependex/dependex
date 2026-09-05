@@ -1,0 +1,177 @@
+{
+  "_README": "CONFIGURAZIONE UNICA del Company Brain. Tutto cio' che e' specifico di un progetto sta QUI dentro (o nei file richiamati da qui): sinonimi, dizionario entita', percorsi da ingerire, tema, benchmark. Il motore non contiene nessun dato di dominio. Copia questo file in config/brain.local.json per sovrascrivere solo le chiavi che ti servono: brain.local.json non viene mai toccato dagli aggiornamenti del modulo.",
+
+  "brain": {
+    "name": "Company Brain",
+    "label": "Cervello Aziendale",
+    "language": "it",
+    "public_contact": "info@example.com"
+  },
+
+  "db": {
+    "use_host_pdo": true,
+    "driver": "auto",
+    "sqlite_path": "data/brain.sqlite",
+    "dsn": "",
+    "user": "",
+    "pass": "",
+    "table_prefix": "brain_"
+  },
+
+  "paths": {
+    "data_dir": "data",
+    "knowledge_dir": "data/knowledge",
+    "inbox_dir": "data/inbox",
+    "vendor_dir": "ui/vendor"
+  },
+
+  "text": {
+    "lang_packs": ["config/synonyms.it.json", "config/synonyms.en.json"],
+    "min_token_len": 3,
+    "max_token_len": 32,
+    "fold_accents": true,
+    "keyword_min_len": 5,
+    "keyword_max_len": 24
+  },
+
+  "ingest": {
+    "roots": ["data/inbox"],
+    "include": ["*.md", "*.txt", "*.csv", "*.json", "*.html", "*.htm", "*.xml", "*.yml", "*.yaml", "*.sql", "*.pdf", "*.docx", "*.xlsx", "*.rtf", "*.log", "*.php", "*.js", "*.css"],
+    "exclude": ["*/node_modules/*", "*/.git/*", "*/vendor/*", "*/cache/*", "*/tmp/*", "*/data/knowledge/*", "*/.cache/*"],
+    "secret_names": ["*.env", ".env*", "*secret*", "*credential*", "*password*", "*.pem", "*.key", "*.p12", "*.keystore", "*mnemonic*", "*seed*", "*.sqlite", "*.db"],
+    "max_file_bytes": 800000,
+    "max_doc_bytes": 6000000,
+    "chunk_chars": 1200,
+    "chunk_overlap": 150,
+    "max_chunks_per_file": 24,
+    "batch": 20,
+    "throttle_sec": 45,
+    "default_visibility": "admin",
+    "write_knowledge_md": true,
+    "url": {
+      "enabled": false,
+      "allow_hosts": [],
+      "max_bytes": 500000,
+      "timeout_sec": 8
+    }
+  },
+
+  "graph": {
+    "concept_nodes": true,
+    "max_keywords": 8,
+    "direct_links_per_keyword": 3,
+    "entity_min_shared": 2,
+    "entity_max_links": 5,
+    "hub_global": true,
+    "hub_per_source": true,
+    "max_links_per_node": 64
+  },
+
+  "rag": {
+    "top_k": 8,
+    "candidate_limit": 150,
+    "max_terms": 16,
+    "synonym_weight": 0.45,
+    "synonym_cap_ratio": 0.5,
+    "synonym_floor": 1.0,
+    "max_per_path": 2,
+    "weight_cap": 10,
+    "weight_factor": 0.25,
+    "path_bonus": 3.0,
+    "neighbors": true,
+    "neighbor_seeds": 3,
+    "neighbors_per_seed": 6,
+    "neighbor_decay": 0.5,
+    "exact_phrase_bonus": 3.0,
+    "centrality_factor": 0.4,
+    "feedback_factor": 0.3,
+    "feedback_clamp": 2.0,
+    "recency_factor": 0.4,
+    "recency_half_life_days": 90,
+    "exclude_id_prefixes": ["kw-", "hub-"],
+    "context_chars": 800
+  },
+
+  "learn": {
+    "enabled": true,
+    "min_question_len": 6,
+    "min_answer_len": 40,
+    "visibility": "admin",
+    "review_state": "pending"
+  },
+
+  "prompt": {
+    "persona": "Sei l'assistente di conoscenza dell'organizzazione. Rispondi solo con quello che risulta dai documenti interni.",
+    "cite_sources": true,
+    "admit_ignorance": true,
+    "extra_rules": []
+  },
+
+  "security": {
+    "admin_key_env": "BRAIN_ADMIN_KEY",
+    "public_api": true,
+    "require_post_for_write": true,
+    "rate_limit_window_sec": 60,
+    "rate_limit_max": 60,
+    "leak_patterns": [
+      "chiave\\s*privata",
+      "private\\s*key",
+      "seed\\s*phrase",
+      "mnemonic",
+      "password\\s*[:=]",
+      "\\.env\\b",
+      "api[_ -]?key",
+      "secret[_ -]?key",
+      "bearer\\s+[a-z0-9._-]{12,}",
+      "-----BEGIN [A-Z ]*PRIVATE KEY-----",
+      "\\b0x[0-9a-f]{64}\\b"
+    ]
+  },
+
+  "ui": {
+    "brand_label": "Company Brain",
+    "theme": {
+      "--brain-bg": "#0b0c0e",
+      "--brain-panel": "#15171b",
+      "--brain-fg": "#e9e6df",
+      "--brain-muted": "#8b8f98",
+      "--brain-accent": "#d8b45a",
+      "--brain-accent-2": "#9fc7d8",
+      "--brain-ok": "#7ec48a",
+      "--brain-warn": "#e0a458",
+      "--brain-err": "#d9736f",
+      "--brain-line": "#2a2d34",
+      "--brain-radius": "10px"
+    },
+    "node_colors": {
+      "hub": [1.0, 0.95, 0.82],
+      "concept": [0.85, 0.71, 0.35],
+      "document": [0.62, 0.78, 0.86],
+      "text": [0.78, 0.78, 0.72],
+      "learned": [0.66, 0.85, 0.7],
+      "default": [0.55, 0.56, 0.6]
+    },
+    "three_local": "ui/vendor/three.min.js",
+    "three_cdn": "https://unpkg.com/three@0.160.0/build/three.min.js",
+    "graph_limit": 1200
+  },
+
+  "bus": {
+    "root": "data/bus",
+    "actors": ["AGENT_A", "AGENT_B", "HUMAN", "SYSTEM"],
+    "targets": ["AGENT_A", "AGENT_B", "BOTH", "HUMAN", "SYSTEM"],
+    "lock_hours": 2,
+    "orphan_hours": 24,
+    "max_lines_per_log": 5000
+  },
+
+  "eval": {
+    "benchmark": "config/benchmark.sample.json",
+    "top_k": 5,
+    "keep_runs": 200
+  },
+
+  "entities": {
+    "dictionary": "config/dictionary.sample.json"
+  }
+}

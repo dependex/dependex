@@ -1,0 +1,18 @@
+{
+  "_README": "BANCO DI PROVA del recupero (RAG). Ogni riga: una domanda vera + una sottostringa che DEVE comparire nei risultati (percorso o contenuto), confronto minuscolo. Si misura HIT-RATE in TOP-K e MRR-lite. Le domande qui sotto corrispondono ai dati finti creati da 'php bin/brain demo-seed': appena ingerisci i TUOI documenti, riscrivi questo file con le TUE domande. Un banco di prova che non cambia mai e' l'unico modo onesto di dire 'il motore e' migliorato'.",
+  "top_k": 5,
+  "questions": [
+    { "q": "quanto costa il prodotto alfa", "expected": "249", "tag": "prezzi" },
+    { "q": "qual e l'orario di apertura degli uffici", "expected": "9:00 alle 18:00", "tag": "orari" },
+    { "q": "come funziona il reso di un articolo", "expected": "30 giorni", "tag": "policy" },
+    { "q": "quanto dura la garanzia sui prodotti", "expected": "24 mesi", "tag": "policy" },
+    { "q": "chi si occupa dell'assistenza clienti", "expected": "maria rossi", "tag": "persone" },
+    { "q": "dove si trova la sede aziendale", "expected": "via esempio 12", "tag": "sede" },
+    { "q": "quali prodotti ci sono a catalogo", "expected": "prodotto gamma", "tag": "prodotti" },
+    { "q": "come si richiede una fattura", "expected": "fatturazione", "tag": "amministrazione" },
+    { "q": "come trattate i dati personali dei clienti", "expected": "gdpr", "tag": "privacy" },
+    { "q": "come contattare il supporto tecnico", "expected": "supporto@example.com", "tag": "contatti" },
+    { "q": "tempi di consegna della spedizione", "expected": "3 giorni lavorativi", "tag": "logistica" },
+    { "q": "chi gestisce il magazzino", "expected": "luca bianchi", "tag": "persone" }
+  ]
+}

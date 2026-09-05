@@ -1,0 +1,5 @@
+<?php $u=require_once 'bootstrap.php';$u=require_login();$pageTitle='Il mio profilo';require '_header.php';?>
+<section class="section-head"><div><span class="eyebrow">Human Profile</span><h1>La mia mappa</h1><p>Questionari, check-in e dati dichiarati vengono tenuti separati dalle diagnosi cliniche.</p></div></section>
+<section class="card"><h2>Come stai oggi?</h2><div class="mood-row"><button>😀</button><button>🙂</button><button>😐</button><button>😟</button><button>🆘</button></div></section>
+<section class="wheel"><?php foreach(['Salute'=>7,'Sonno'=>6,'Famiglia'=>7,'Relazioni'=>6,'Lavoro'=>5,'Tempo libero'=>4,'Scopo'=>6,'Comunità'=>7] as $k=>$v):?><div class="wheel-row"><span><?=$k?></span><div class="bar"><i style="width:<?=$v*10?>%"></i></div><b><?=$v?></b></div><?php endforeach;?></section>
+<section class="card"><a class="btn primary" href="assessments.php">Apri questionari e autovalutazioni</a></section><?php require '_footer.php';?>

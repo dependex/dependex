@@ -1,0 +1,4 @@
+<?php $u=require_once 'bootstrap.php';$u=require_login();$roles=user_roles($u['sic_id']);$pageTitle='Profilo';require '_header.php';?>
+<section class="profile-card"><div class="profile-avatar"><?=h(mb_substr($u['display_name'],0,1))?></div><h1><?=h($u['display_name'])?></h1><p><?=h($u['sic_id'])?></p><div class="tag-row"><?php foreach($roles as $r):?><span class="pill"><?=h($r['role_code'])?></span><?php endforeach;?></div></section>
+<section class="menu-list"><a href="wallet.php">◆ DRX Wallet <b>›</b></a><a href="sobriety.php">🌱 Il mio cammino <b>›</b></a><a href="leaderboard.php">🏆 Leaderboard <b>›</b></a><a href="documents.php">🏆 Attestati e traguardi <b>›</b></a><a href="privacy-center.php">🔐 Privacy Center <b>›</b></a><a href="logout.php">⇥ Esci <b>›</b></a></section>
+<?php require '_footer.php';?>

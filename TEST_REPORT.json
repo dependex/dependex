@@ -1,0 +1,13 @@
+{
+  "package": "OLTRE_Dipendex_Site_V2",
+  "php_files_checked": 29,
+  "php_syntax_errors": [],
+  "sqlite_integrity": "ok",
+  "database_counts": {
+    "network_entities": 194,
+    "clubs": 126,
+    "ranks": 9,
+    "academy_modules": 10
+  },
+  "generated_at": "2026-08-18"
+}

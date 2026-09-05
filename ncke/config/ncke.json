@@ -1,0 +1,105 @@
+{
+  "engine": {
+    "name": "Neuralog-Cortex Knowledge Engine",
+    "code": "NCKE",
+    "version": "0.9.0-adaptive",
+    "mode": "adaptive",
+    "default_language": "it",
+    "supported_languages": [
+      "it",
+      "en",
+      "es",
+      "pt",
+      "fr",
+      "de",
+      "hr",
+      "sr",
+      "sl",
+      "ro",
+      "ru"
+    ],
+    "confidence_human_review_threshold": 70
+  },
+  "strategies": {
+    "full_text": {
+      "enabled": true,
+      "backend": "sqlite_fts5",
+      "weight": 0.35
+    },
+    "graph": {
+      "enabled": true,
+      "backend": "neuralog",
+      "weight": 0.3
+    },
+    "metadata": {
+      "enabled": true,
+      "backend": "sqlite",
+      "weight": 0.15
+    },
+    "hybrid": {
+      "enabled": true,
+      "algorithm": "rrf",
+      "weight": 0.2
+    },
+    "vector": {
+      "enabled": "auto",
+      "backend": "adapter"
+    },
+    "pageindex": {
+      "enabled": true,
+      "backend": "markdown_sections"
+    },
+    "time_series": {
+      "enabled": true,
+      "backend": "sqlite"
+    },
+    "statistical": {
+      "enabled": true,
+      "backend": "php_sql"
+    },
+    "jit_web": {
+      "enabled": false,
+      "backend": "external_adapter"
+    },
+    "esa": {
+      "enabled": false
+    }
+  },
+  "security": {
+    "env_values_never_exposed": true,
+    "knowledge_secret_redaction": true,
+    "rbac": true,
+    "scope_acl": true,
+    "nl2sql_read_only_default": true,
+    "prompt_injection_guard": true
+  },
+  "providers": {
+    "discovery": "multi_env_scan",
+    "allow_unknown_provider_aliases": true,
+    "preferred_order": [
+      "groq",
+      "gemini",
+      "openai",
+      "anthropic",
+      "mistral",
+      "openrouter",
+      "local"
+    ]
+  },
+  "knowledge": {
+    "roots": [
+      "knowledge/manual",
+      "knowledge/generated",
+      "knowledge/system"
+    ],
+    "auto_ingest": true,
+    "write_via_inbox": true,
+    "versioning": true
+  },
+  "degradation": {
+    "no_llm": "retrieval_only",
+    "no_vector": "fts_plus_graph",
+    "provider_rate_limit": "next_provider",
+    "budget_guard": "cost_aware_fallback"
+  }
+}

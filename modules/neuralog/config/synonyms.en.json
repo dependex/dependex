@@ -1,0 +1,28 @@
+{
+  "_README": "ENGLISH language pack: stopwords, accent folding, domain synonyms (multi-query expansion). Synonyms below are NEUTRAL placeholders for a generic company — replace them with your own vocabulary. The engine runs fine with an empty 'synonyms' map.",
+  "lang": "en",
+  "fold": { "á": "a", "à": "a", "ä": "a", "é": "e", "è": "e", "ë": "e", "í": "i", "ï": "i", "ó": "o", "ö": "o", "ú": "u", "ü": "u", "ñ": "n", "ç": "c" },
+  "elision_prefixes": [],
+  "stopwords": [
+    "with", "that", "this", "from", "have", "been", "were", "which", "their",
+    "there", "about", "would", "could", "should", "after", "before", "other",
+    "into", "your", "will", "they", "them", "then", "than", "over", "such",
+    "only", "also", "more", "most", "some", "when", "what", "where", "http",
+    "https", "www", "com", "html", "style", "class", "function", "return",
+    "const", "value", "true", "false", "null", "does", "each", "here", "these"
+  ],
+  "synonyms": {
+    "price": ["cost", "fee", "pricing", "rate", "much"],
+    "hours": ["opening", "schedule", "timetable", "open"],
+    "service": ["services", "offering", "package"],
+    "product": ["products", "item", "catalog", "catalogue"],
+    "contact": ["phone", "email", "reach"],
+    "office": ["address", "location", "branch", "where"],
+    "warranty": ["refund", "return", "guarantee"],
+    "policy": ["rule", "procedure", "guideline", "regulation"],
+    "people": ["team", "staff", "employee", "manager"],
+    "customer": ["client", "customers", "clients", "user"],
+    "invoice": ["billing", "payment", "payments"],
+    "privacy": ["gdpr", "data", "consent", "processing"]
+  }
+}

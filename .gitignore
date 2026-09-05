@@ -1,0 +1,28 @@
+# Secrets & Credentials
+*.env
+.env
+.env.*
+!*.env.example
+apikeysAI.env
+
+# SQLite WAL / SHM / Journal
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+
+# Temporary / Cache
+*.tmp
+*.log
+dati/cache/*
+!dati/cache/.gitkeep
+
+# OS generated
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace

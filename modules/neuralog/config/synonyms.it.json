@@ -1,0 +1,34 @@
+{
+  "_README": "Pacchetto lingua ITALIANO. Contiene: stopwords, prefissi di elisione da scartare, mappa di piegatura degli accenti e sinonimi di dominio (multi-query expansion). I SINONIMI qui sotto sono NEUTRI (azienda generica): sostituiscili con il vocabolario del tuo settore. Il motore funziona anche con 'synonyms' vuoto.",
+  "lang": "it",
+  "fold": {
+    "à": "a", "á": "a", "è": "e", "é": "e", "ì": "i", "í": "i",
+    "ò": "o", "ó": "o", "ù": "u", "ú": "u", "ç": "c"
+  },
+  "elision_prefixes": ["dell", "nell", "sull", "dall", "quest", "tutt", "quell", "allun", "dagl", "negl", "sugl", "coll"],
+  "stopwords": [
+    "della", "delle", "degli", "dello", "dell", "nella", "nelle", "negli", "nello",
+    "sono", "come", "questo", "questa", "questi", "queste", "anche", "perche",
+    "quando", "dove", "sempre", "tutto", "tutti", "tutte", "essere", "viene",
+    "vengono", "molto", "ogni", "oppure", "quindi", "allora", "stato", "fatto",
+    "cosa", "deve", "devono", "puo", "possono", "abbiamo", "hanno", "sarà",
+    "sara", "loro", "nostro", "nostra", "vostro", "altro", "altra", "altri",
+    "altre", "solo", "senza", "sopra", "sotto", "dopo", "prima", "durante",
+    "mentre", "ancora", "adesso", "invece", "infatti", "inoltre", "pertanto",
+    "quello", "quella", "quelli", "quelle", "qui", "qua", "cioe", "circa"
+  ],
+  "synonyms": {
+    "prezzo": ["costo", "costi", "tariffa", "listino", "quanto"],
+    "orario": ["orari", "apertura", "chiusura", "quando"],
+    "servizio": ["servizi", "prestazione", "prestazioni", "offerta"],
+    "prodotto": ["prodotti", "articolo", "articoli", "catalogo"],
+    "contatto": ["contatti", "telefono", "email", "recapito"],
+    "sede": ["indirizzo", "dove", "ufficio", "filiale"],
+    "garanzia": ["reso", "rimborso", "restituzione"],
+    "policy": ["politica", "regolamento", "procedura", "norma"],
+    "persona": ["personale", "team", "staff", "referente", "responsabile"],
+    "cliente": ["clienti", "utente", "utenti"],
+    "fattura": ["fatturazione", "pagamento", "pagamenti", "bonifico"],
+    "privacy": ["gdpr", "dati", "trattamento", "consenso"]
+  }
+}

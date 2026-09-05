@@ -1,0 +1,22 @@
+{
+  "release": "OLTRE_DEPENDEX_ADVANCED_MVP_HOST_2026-08-18",
+  "php_files_checked": 227,
+  "php_errors": [],
+  "js_files_checked": 2,
+  "js_errors": [],
+  "sqlite_integrity": "ok",
+  "db_stats": {
+    "network_entities": 546,
+    "local_clubs": 352,
+    "countries": 36,
+    "geo_city_or_better": 133,
+    "geo_country_only": 214,
+    "ncke_documents": 91,
+    "ncke_chunks": 791,
+    "research_sources": 543,
+    "acl_rules": 84
+  },
+  "world_map_entrypoint": "world-map.php -> world-club-explorer.php",
+  "bootstrap_fix_ok": true,
+  "favicon_ok": true
+}

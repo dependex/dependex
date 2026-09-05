@@ -1,0 +1,40 @@
+{
+  "_README": "DIZIONARIO ENTITA' (riconoscimento a dizionario curato, non NER statistico: precisione alta, copertura limitata al vocabolario che scrivi qui). Due neuroni che condividono almeno N entita' (graph.entity_min_shared) vengono collegati da soli. Le voci qui sotto sono di un'AZIENDA GENERICA DI ESEMPIO: cancellale e scrivi le tue. Tutto minuscolo, senza accenti; le multi-parola sono ammesse. Il motore funziona anche con 'entities' vuoto.",
+  "entities": [
+    "acme",
+    "prodotto alfa",
+    "prodotto beta",
+    "prodotto gamma",
+    "assistenza",
+    "supporto",
+    "installazione",
+    "formazione",
+    "manutenzione",
+    "garanzia",
+    "reso",
+    "rimborso",
+    "fattura",
+    "fatturazione",
+    "listino",
+    "catalogo",
+    "magazzino",
+    "spedizione",
+    "consegna",
+    "privacy",
+    "gdpr",
+    "contratto",
+    "preventivo",
+    "sede",
+    "filiale",
+    "cliente",
+    "fornitore",
+    "maria rossi",
+    "luca bianchi",
+    "giulia verdi"
+  ],
+  "aliases": {
+    "gdpr": ["regolamento generale sulla protezione dei dati"],
+    "assistenza": ["customer care", "servizio clienti"],
+    "reso": ["restituzione merce"]
+  }
+}

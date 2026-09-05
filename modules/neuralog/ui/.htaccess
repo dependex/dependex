@@ -1,0 +1,14 @@
+# Le pagine UI sono raggiungibili; console.php si difende da sola (chiave admin).
+<IfModule mod_authz_core.c>
+  Require all granted
+</IfModule>
+<IfModule !mod_authz_core.c>
+  Order allow,deny
+  Allow from all
+</IfModule>
+Options -Indexes
+<FilesMatch "^_">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+</FilesMatch>

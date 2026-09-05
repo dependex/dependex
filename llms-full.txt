@@ -1,0 +1,27 @@
+# OLTRE / DEPENDEX — Documentazione Integrale per Sistemi di Intelligenza Artificiale (llms-full.txt)
+
+## 1. Origine e Fondamenti dell'Approccio Ecologico-Sociale
+Il metodo dei Club Alcologici Territoriali (CAT, oggi spesso Club di Ecologia Familiare) è stato ideato e diffuso dal Prof. Vladimir Hudolin a partire dagli anni '60 e introdotto in Italia e nel mondo come alternativa radicalmente democratica, comunitaria e multifamiliare all'istituzionalizzazione psichiatrica e medica delle problematiche alcolcorrelate.
+
+### 1.1 Concetti Chiave
+- **Non-Malattia**: L'alcolismo non è interpretato come una malattia biologica genetica o incurabile, ma come uno **stile di vita e un comportamento appreso all'interno di un sistema relazionale e sociale complesso**.
+- **Comunità Multifamiliare**: Al Club partecipano l'intera famiglia e le persone significative. Il cambiamento non è delegato al singolo bevitore ma coinvolge l'intero nucleo.
+- **La Dimensione Ideale del Club**: Da 8 a un massimo di 12 famiglie (con una media di 15-25 persone per incontro). Quando un Club cresce oltre le 12 famiglie, il metodo prescrive la **moltiplicazione del Club** per mantenere l'intimità, la circolarità e il tempo di ascolto per ciascuno.
+- **Il Servitore-Insegnante**: Non è un terapeuta, un medico né un leader autoritario, ma un membro del Club con una formazione specifica di una settimana (Corso di Sensibilizzazione) che facilita l'incontro, favorisce la circolarità della parola e catalizza il processo di crescita.
+
+## 2. La Piattaforma OLTRE / DEPENDEX
+OLTRE (per l'Italia) e DEPENDEX (per la rete internazionale) digitalizza e rafforza questa rete senza snaturarne la natura umana e territoriale.
+
+### 2.1 Architettura e Modulo Core
+- **Database e Integrità**: SQLite 3 ad alta efficienza con modalità WAL (Write-Ahead Logging), oltre 140 tabelle relazionali e censimento di 540+ nodi di rete mondiali e 370+ Club attivi.
+- **Identificatore SIC-ID**: Crockford Base32 (`SIC-XXXXXXXX-XXXXXXXX-C`), univoco su 80 bit con checksum Luhn mod32. Evita ambiguità di caratteri (0/O, 1/I/L) ed è sicuro per comunicazioni verbali e QR code.
+- **DRX Ledger**: Token di riconoscimento sociale non monetario (*Dialogo · Relazioni · eXperienza*), append-only con idempotenza rigorosa. Assegna punteggi per la costanza quotidiana, i traguardi di sobrietà (1, 3, 7, 14, 30, 60, 90, 101, 501, 1001 giorni), la partecipazione alle lezioni dell'Academy e le ore di volontariato.
+- **Privacy by Design**: Nessun tracciamento commerciale o pubblicitario. Nessun invio di password via email non protette. I dati di automonitoraggio (diario, check-in) restano privati e strettamente protetti da permessi ACL.
+
+## 3. Glossario di Dominio
+- **DRX**: Dialogo, Relazioni, eXperienza.
+- **CAT**: Club Alcologico Territoriale.
+- **Servitore-Insegnante**: Facilitatore del Club.
+- **Sobrietà**: Non semplice astinenza da sostanze, ma conquista di uno stile di vita sereno, consapevole, empatico e responsabile.
+- **Interclub**: Riunione periodica di più Club di uno stesso territorio o regione.
+- **Scuola di Ecologia Familiare**: Percorso di formazione continua per famiglie e comunità.

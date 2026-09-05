@@ -1,0 +1,12 @@
+{
+  "sqlite_integrity": "ok",
+  "counts": {
+    "global_network": 344,
+    "global_clubs": 248,
+    "missions": 6,
+    "milestones": 17
+  },
+  "php_files": 44,
+  "php_syntax_errors": [],
+  "generated_at": "2026-08-18"
+}

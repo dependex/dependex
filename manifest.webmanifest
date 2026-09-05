@@ -1,0 +1,58 @@
+{
+  "name": "DEPENDEX — AL CLUB. COL CLUB.",
+  "short_name": "DEPENDEX",
+  "description": "DEPENDEX — AL CLUB. COL CLUB. La Community per andare oltre. Monitoraggio sobrietà, check-in quotidiano, Club, Academy e supporto continuo.",
+  "start_url": "app.php",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#071B33",
+  "theme_color": "#071B33",
+  "lang": "it",
+  "dir": "ltr",
+  "categories": ["health", "lifestyle", "social"],
+  "icons": [
+    {
+      "src": "assets/img/app-icon.svg",
+      "sizes": "192x192 512x512 any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/img/favicon.svg",
+      "sizes": "48x48 96x96 any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "La mia Community",
+      "short_name": "Home",
+      "description": "Accedi al tuo cruscotto personale",
+      "url": "app.php",
+      "icons": [{ "src": "assets/img/app-icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Daily Check-in",
+      "short_name": "Check-in",
+      "description": "Registra il tuo stato di oggi",
+      "url": "checkin.php",
+      "icons": [{ "src": "assets/img/app-icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Diario Personale",
+      "short_name": "Diario",
+      "description": "Scrivi una riflessione o gratitudine",
+      "url": "journal.php",
+      "icons": [{ "src": "assets/img/app-icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Trova Club",
+      "short_name": "Club",
+      "description": "Mappa e contatti dei Club",
+      "url": "world-club-explorer.php",
+      "icons": [{ "src": "assets/img/app-icon.svg", "sizes": "any" }]
+    }
+  ]
+}

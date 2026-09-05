@@ -1,0 +1,1 @@
+<?php require_once 'bootstrap.php';header('Content-Type: application/json; charset=utf-8');echo json_encode(db()->query("SELECT level,country,entity_name,region,city,address,status,meeting,source_url FROM global_network_entities ORDER BY country,level,entity_name")->fetchAll(),JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);

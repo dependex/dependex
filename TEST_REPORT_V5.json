@@ -1,0 +1,72 @@
+{
+  "sqlite_integrity": "ok",
+  "stats": {
+    "registry_nodes": 483,
+    "local_clubs": 295,
+    "countries": 36,
+    "edges": 482
+  },
+  "top_level_php_checked": 50,
+  "top_level_php_errors": [],
+  "module_analysis": [
+    {
+      "module": "NEURALOG",
+      "status": "INTEGRATED_CORE",
+      "files": 91,
+      "bytes": 1228082,
+      "path": "modules/neuralog"
+    },
+    {
+      "module": "SIC_ID",
+      "status": "INTEGRATED_COMPAT",
+      "files": 3,
+      "bytes": 21185,
+      "path": "modules/sic-id"
+    },
+    {
+      "module": "NETWORK_VISUAL",
+      "status": "INTEGRATED_ADAPTER",
+      "files": 16,
+      "bytes": 463209,
+      "path": "modules/network"
+    },
+    {
+      "module": "WORLD_MAP",
+      "status": "INTEGRATED",
+      "files": 6,
+      "bytes": 198538,
+      "path": "modules/world-map"
+    },
+    {
+      "module": "DASHBOARD",
+      "status": "INTEGRATED_REFERENCE",
+      "files": 10,
+      "bytes": 228416,
+      "path": "modules/dashboard"
+    },
+    {
+      "module": "EMAIL_MACHINE",
+      "status": "INTEGRATED_REFERENCE",
+      "files": 15,
+      "bytes": 152417,
+      "path": "modules/email-machine"
+    },
+    {
+      "module": "CHAT_AI",
+      "status": "INTEGRATED_REFERENCE",
+      "files": 14,
+      "bytes": 173900,
+      "path": "modules/chat-ai"
+    },
+    {
+      "module": "WEB3",
+      "status": "DEFERRED",
+      "files": 17,
+      "bytes": 186721,
+      "path": "modules/deferred-web3"
+    }
+  ],
+  "research_input_records": 439,
+  "normalized_nodes": 483,
+  "geo_policy": "approximate pins until external geocoder run"
+}

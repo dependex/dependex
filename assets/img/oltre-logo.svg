@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 300" role="img" aria-label="OLTRE logo">
+<defs>
+  <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#FFD166"/>
+    <stop offset="0.38" stop-color="#FF8A3D"/>
+    <stop offset="0.68" stop-color="#22C55E"/>
+    <stop offset="1" stop-color="#0EA5E9"/>
+  </linearGradient>
+  <linearGradient id="horizon" x1="0" y1="0" x2="1" y2="0">
+    <stop stop-color="#22C55E"/><stop offset="1" stop-color="#0EA5E9"/>
+  </linearGradient>
+  <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+<g transform="translate(145 145)">
+  <g stroke="url(#sun)" stroke-width="13" stroke-linecap="round" opacity=".92">
+    <path d="M0-124V-104"/><path d="M87-87l-14 14"/><path d="M124 0h-20"/><path d="M87 87L73 73"/>
+    <path d="M0 124v-20"/><path d="M-87 87l14-14"/><path d="M-124 0h20"/><path d="M-87-87l14 14"/>
+  </g>
+  <circle r="86" fill="url(#sun)" filter="url(#glow)"/>
+  <path d="M-60 18 C-28-24 18-36 64 2" fill="none" stroke="#fff" stroke-width="19" stroke-linecap="round"/>
+  <circle cx="3" cy="-33" r="15" fill="#fff"/>
+  <path d="M-64 49 C-22 72 25 72 67 43" fill="none" stroke="#E8FFF2" stroke-width="15" stroke-linecap="round"/>
+</g>
+<text x="285" y="132" font-family="Inter,Montserrat,Poppins,Arial,sans-serif" font-size="102" font-weight="900" letter-spacing="10" fill="#071B33">OLTRE</text>
+<text x="292" y="185" font-family="Inter,Montserrat,Arial,sans-serif" font-size="27" font-weight="700" fill="#183B56">LA COMMUNITY PER ANDARE OLTRE</text>
+<rect x="291" y="213" width="475" height="6" rx="3" fill="url(#horizon)"/>
+<text x="292" y="256" font-family="Inter,Montserrat,Arial,sans-serif" font-size="24" font-weight="900" fill="#0F8A5F" letter-spacing="4">AL CLUB. COL CLUB.</text>
+</svg>

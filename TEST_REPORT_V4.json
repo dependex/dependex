@@ -1,0 +1,18 @@
+{
+  "version": "V4",
+  "domains": {
+    "italy": "https://oltre.social",
+    "international": "https://dependex.social"
+  },
+  "sqlite_integrity": "ok",
+  "stats": {
+    "total_network_entities": 538,
+    "total_clubs": 374,
+    "italy_entities": 361,
+    "italy_clubs": 224,
+    "global_entities": 177,
+    "global_clubs": 150
+  },
+  "php_syntax_errors": [],
+  "generated_at": "2026-08-18"
+}

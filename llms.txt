@@ -1,0 +1,25 @@
+# DEPENDEX — AL CLUB. COL CLUB.
+
+> Piattaforma digitale ecologico-sociale per la sobrietà, il supporto reciproco e la salute comunitaria attraverso la rete dei Club Alcologici Territoriali (CAT).
+
+## Informazioni Generali
+- **Nome Progetto**: OLTRE (Italia, https://oltre.social) · DEPENDEX (Rete Internazionale, https://dependex.social)
+- **Payoff**: Al Club. Col Club.
+- **Acronimo ALCOL**: Ascolto e Legami Creano Orientamento e Libertà
+- **Fondamento Metodologico**: Approccio ecologico-sociale del Prof. Vladimir Hudolin (Zagabria, 1922-1996)
+- **Modello Operativo**: Club di 8-12 famiglie con Servitore-Insegnante, riunioni settimanali di 90 minuti, non-medico e non-punitivo.
+- **Token Sociale di Riconoscimento**: DRX (Dialogo · Relazioni · eXperienza) — ledger non speculativo per tracciare costanza, volontariato, studio e giorni di sobrietà.
+- **Identificatore Pubblico Universale**: SIC-ID (Crockford Base32 su 80 bit con checksum Luhn mod32, es. `SIC-XXXXXXXX-XXXXXXXX-C`).
+
+## Risorse Principali
+- [Metodo DIPENDEX](metodo.php): Principi del metodo Hudolin, comunità multifamiliari, sobrietà e prevenzione delle ricadute.
+- [Trova un Club](world-club-explorer.php): Censimento geografico con 379+ Club territoriali e coordinate.
+- [Mappa Mondiale](world-map.php): Visualizzazione interattiva dei nodi globali e gerarchia continentale/nazionale/regionale/territoriale.
+- [Academy](academy-public.php): Percorsi formativi per famiglie, volontari e servitori-insegnanti.
+- [Eventi](events-public.php): Interclub, scuole di ecologia familiare, convegni e assemblee.
+- [Privacy e Sicurezza](privacy.php): Approccio privacy-first, protezione dei dati personali e assenza di tracciamento invasivo.
+
+## Contatti di Riferimento & Segreteria
+- **Email Istituzionale e Supporto**: info@dependex.social
+- Telefono Verde Alcol (Istituto Superiore di Sanità - Italia): 800 632 000
+- Numero Unico Europeo Emergenze: 112

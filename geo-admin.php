@@ -1,0 +1,21 @@
+<?php
+require_once 'bootstrap.php';$u=require_admin();if(!acl_can($u['sic_id'],'map','MANAGE',null,$u['sic_id'])&&!has_role($u['sic_id'],'SUPERADMIN')){http_response_code(403);exit('Accesso non autorizzato.');}$msg='';
+if($_SERVER['REQUEST_METHOD']==='POST'){
+ csrf_check();$sic=(string)($_POST['sic']??'');$lat=filter_var($_POST['latitude']??null,FILTER_VALIDATE_FLOAT);$lon=filter_var($_POST['longitude']??null,FILTER_VALIDATE_FLOAT);$acc=(string)($_POST['geo_accuracy']??'CITY');
+ $allowed=['EXACT','STREET','POSTAL_CODE','CITY','MUNICIPALITY','PROVINCE','REGION','COUNTRY_ONLY'];
+ if(!$sic||$lat===false||$lon===false||$lat<-90||$lat>90||$lon<-180||$lon>180||!in_array($acc,$allowed,true))$msg='Coordinate o accuratezza non valide.';
+ else{
+  $q=db()->prepare('SELECT entity_name,address,city,country FROM dependex_world_registry WHERE sic_id=?');$q->execute([$sic]);$e=$q->fetch();if(!$e)$msg='Entità non trovata.';else{
+   db()->prepare('UPDATE dependex_world_registry SET latitude=?,longitude=?,geo_accuracy=?,geo_confidence=100,geocoded_from=?,geocoded_at=CURRENT_TIMESTAMP,is_synthetic=0,updated_at=CURRENT_TIMESTAMP WHERE sic_id=?')->execute([$lat,$lon,$acc,'MANUAL_VERIFIED_BY '.$u['sic_id'],$sic]);
+   db()->prepare("UPDATE geocode_queue SET status='DONE',provider='MANUAL',result_json=?,updated_at=CURRENT_TIMESTAMP WHERE entity_sic_id=?")->execute([json_encode(['latitude'=>$lat,'longitude'=>$lon,'accuracy'=>$acc,'verified_by'=>$u['sic_id']],JSON_UNESCAPED_UNICODE),$sic]);
+   audit($u['sic_id'],'GEO_MANUAL_VERIFY',$sic,['lat'=>$lat,'lon'=>$lon,'accuracy'=>$acc]);$msg='Coordinate verificate e salvate.';
+  }
+ }
+}
+$search=trim((string)($_GET['q']??''));$where="d.network_level='LOCAL_CLUB'";$par=[];if($search!==''){$where.=" AND (d.entity_name LIKE ? OR d.city LIKE ? OR d.address LIKE ? OR d.country LIKE ? OR d.sic_id LIKE ?)";$x='%'.$search.'%';$par=[$x,$x,$x,$x,$x];}
+$sql="SELECT d.*,g.query_text,g.status queue_status,g.attempts FROM dependex_world_registry d LEFT JOIN geocode_queue g ON g.entity_sic_id=d.sic_id WHERE $where ORDER BY CASE WHEN d.geo_accuracy IN ('EXACT','STREET','POSTAL_CODE','CITY','MUNICIPALITY') THEN 1 ELSE 0 END,d.country,d.city,d.entity_name LIMIT 150";$st=db()->prepare($sql);$st->execute($par);$rows=$st->fetchAll();$pageTitle='Geo Admin';require '_header.php';?>
+<section class="section-head"><div><span class="eyebrow">Geo Enrichment Engine</span><h1>Geolocalizzazione Club</h1><p>Validazione manuale per i record non risolti automaticamente. Le coordinate sintetiche non sono considerate definitive.</p></div></section>
+<?php if($msg):?><div class="success"><?=h($msg)?></div><?php endif;?>
+<section class="card"><form method="get" class="stack"><label>Cerca Club / città / SIC-ID<input name="q" value="<?=h($search)?>"></label><button class="btn primary">Cerca</button></form></section>
+<div class="course-list"><?php foreach($rows as $r):?><article class="course"><span class="course-cat"><?=h($r['country'])?> · <?=h($r['geo_accuracy']?:'PENDING')?></span><h3><?=h($r['entity_name'])?></h3><p><?=h(implode(' · ',array_filter([$r['address'],$r['city'],$r['region'],$r['country']])))?></p><small><?=h($r['sic_id'])?><br>Query: <?=h($r['query_text']?:'—')?> · Queue: <?=h($r['queue_status']?:'—')?></small><form method="post" class="stack" style="margin-top:12px"><input type="hidden" name="<?=CSRF_KEY?>" value="<?=h(csrf_token())?>"><input type="hidden" name="sic" value="<?=h($r['sic_id'])?>"><label>Latitudine<input type="number" step="any" name="latitude" value="<?=h($r['latitude']!==null?(string)$r['latitude']:'')?>" required></label><label>Longitudine<input type="number" step="any" name="longitude" value="<?=h($r['longitude']!==null?(string)$r['longitude']:'')?>" required></label><label>Accuratezza<select name="geo_accuracy"><?php foreach(['EXACT','STREET','POSTAL_CODE','CITY','MUNICIPALITY','PROVINCE','REGION','COUNTRY_ONLY'] as $a):?><option <?=$r['geo_accuracy']===$a?'selected':''?>><?=$a?></option><?php endforeach;?></select></label><button class="btn small">Verifica coordinate</button></form><?php if($r['source_url']):?><a class="text-link" target="_blank" rel="noopener" href="<?=h($r['source_url'])?>">Apri fonte pubblica</a><?php endif;?></article><?php endforeach;?></div>
+<?php require '_footer.php';?>

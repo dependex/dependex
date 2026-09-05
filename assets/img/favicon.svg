@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="DEPENDEX Favicon">
+  <defs>
+    <linearGradient id="favBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#071B33"/>
+      <stop offset="100%" stop-color="#0B2A4C"/>
+    </linearGradient>
+    <linearGradient id="favGreen" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#16A34A"/>
+      <stop offset="100%" stop-color="#22C55E"/>
+    </linearGradient>
+    <linearGradient id="favOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EA580C"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="16" fill="url(#favBg)"/>
+
+  <!-- Interlocking Green and Orange Nexus of Mutual Support -->
+  <path d="M 20,38 C 15,28 20,18 30,15 C 40,12 50,18 51,27 C 52,36 43,45 32,45 C 25,45 22,40 20,38 Z" 
+        fill="none" stroke="url(#favGreen)" stroke-width="6.5" stroke-linecap="round"/>
+
+  <path d="M 44,26 C 49,36 44,46 34,49 C 24,52 14,46 13,37 C 12,28 21,19 32,19 C 39,19 42,24 44,26 Z" 
+        fill="none" stroke="url(#favOrange)" stroke-width="5.5" stroke-linecap="round"/>
+
+  <!-- Core Spark -->
+  <circle cx="32" cy="32" r="4.5" fill="#FFFFFF"/>
+</svg>

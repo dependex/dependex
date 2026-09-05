@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 180" role="img" aria-label="DEPENDEX — AL CLUB. COL CLUB.">
+  <defs>
+    <linearGradient id="logoGreen" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#15803D"/>
+      <stop offset="50%" stop-color="#16A34A"/>
+      <stop offset="100%" stop-color="#22C55E"/>
+    </linearGradient>
+    <linearGradient id="logoOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EA580C"/>
+      <stop offset="60%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#FDBA74"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Symbol Left -->
+  <g transform="translate(10, 0)">
+    <circle cx="85" cy="90" r="62" fill="none" stroke="rgba(249,115,22,0.15)" stroke-width="3" stroke-dasharray="4 6"/>
+    <!-- Interlocking Vitality Arcs -->
+    <path d="M 50,110 C 38,78 50,50 78,38 C 106,26 138,42 142,70 C 146,98 118,126 92,126 C 70,126 58,110 50,110 Z" 
+          fill="none" stroke="url(#logoGreen)" stroke-width="14" stroke-linecap="round"/>
+    <path d="M 120,70 C 132,102 120,130 92,142 C 64,154 32,138 28,110 C 24,82 52,54 78,54 C 100,54 112,70 120,70 Z" 
+          fill="none" stroke="url(#logoOrange)" stroke-width="11" stroke-linecap="round" opacity="0.95"/>
+    <circle cx="85" cy="90" r="10" fill="#22C55E"/>
+    <circle cx="85" cy="90" r="5" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Typography Right -->
+  <!-- Brand Wordmark -->
+  <text x="195" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif" font-size="68" font-weight="900" letter-spacing="4" fill="#071B33" class="logo-text-main">DEPENDEX</text>
+  
+  <!-- Payoff Tagline -->
+  <text x="200" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif" font-size="22" font-weight="800" letter-spacing="6" fill="#F97316">AL CLUB. COL CLUB.</text>
+</svg>

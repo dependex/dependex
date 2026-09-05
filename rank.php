@@ -1,0 +1,4 @@
+<?php require_once 'bootstrap.php'; $ranks=db()->query('SELECT * FROM ranks ORDER BY rank_order')->fetchAll(); $pageTitle='Rank DRX'; require '_header.php'; ?>
+<section class="section-head"><div><span class="eyebrow">DRX Rank</span><h1>Il Rank si conquista.</h1><p>DRX è unico in tutto l'ecosistema, ma il Rank considera solo i movimenti qualificanti. Euro, quote e donazioni non comprano status.</p></div></section>
+<section class="rank-road"><?php foreach($ranks as $r):?><div class="rank-step"><b><?=h($r['name'])?></b><span><?=number_format((int)$r['threshold_drx'],0,',','.')?> DRX</span></div><?php endforeach;?></section>
+<?php require '_footer.php'; ?>

@@ -1,0 +1,1 @@
+<?php require_once 'bootstrap.php'; if($u=current_user())audit($u['sic_id'],'LOGOUT',$u['sic_id']); $_SESSION=[];session_destroy();header('Location: index.php');

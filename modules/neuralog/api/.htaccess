@@ -1,0 +1,16 @@
+# Le API sono pubbliche come raggiungibilita'; il permesso vero lo decide il
+# codice (chiave admin, visibilita' dei nodi, rate limit).
+<IfModule mod_authz_core.c>
+  Require all granted
+</IfModule>
+<IfModule !mod_authz_core.c>
+  Order allow,deny
+  Allow from all
+</IfModule>
+Options -Indexes
+# il bootstrap comune non si chiama mai da fuori
+<FilesMatch "^_">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+</FilesMatch>

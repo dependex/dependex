@@ -1,0 +1,3 @@
+<?php require_once 'bootstrap.php';$u=require_login();$ad=db()->query("SELECT * FROM integration_adapters ORDER BY code")->fetchAll();$pageTitle='Integrazioni';require '_header.php';?>
+<section class="section-head"><div><span class="eyebrow">Module Adapters</span><h1>Pronto per i tuoi motori.</h1><p>Questi moduli sono volutamente lasciati come adapter perché li fornirai tu.</p></div></section>
+<div class="course-list"><?php foreach($ad as $a):?><article class="course"><span class="course-cat"><?=h($a['status'])?></span><h3><?=h($a['label'])?></h3><p>Interface <?=h($a['interface_version'])?> · namespace <?=h($a['code'])?></p></article><?php endforeach;?></div><?php require '_footer.php';?>

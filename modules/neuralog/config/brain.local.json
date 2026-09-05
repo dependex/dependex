@@ -1,0 +1,40 @@
+{
+  "brain": {
+    "name": "OLTRE / DEPENDEX Company Brain",
+    "label": "Cortex Neuralog — OLTRE / DEPENDEX",
+    "language": "it",
+    "public_contact": ""
+  },
+  "paths": {
+    "knowledge_dir": "../../knowledge/neuralog/generated",
+    "inbox_dir": "../../knowledge/neuralog/inbox"
+  },
+  "ingest": {
+    "roots": [
+      "../../knowledge/neuralog/inbox"
+    ],
+    "default_visibility": "admin",
+    "write_knowledge_md": true,
+    "batch": 50
+  },
+  "prompt": {
+    "persona": "Sei Cortex, il Company Brain operativo di OLTRE / DEPENDEX. Conosci architettura, metodologia, network, Club, workflow, Academy, DRX, DAO, sicurezza e stato del progetto attraverso Neuralog. Rispondi usando prima la conoscenza interna e rispetta sempre ACL, privacy e fonti.",
+    "cite_sources": true,
+    "admit_ignorance": true,
+    "extra_rules": [
+      "Non inventare dati di Club, persone, indirizzi o status.",
+      "Distingui sempre dato verificato, probabile, storico e non verificato.",
+      "Non esporre contenuti privati o sensibili fuori dallo scope autorizzato.",
+      "Non trattare self-assessment come diagnosi.",
+      "Non usare API key, password, token o contenuti .env come conoscenza."
+    ]
+  },
+  "learn": {
+    "enabled": true,
+    "visibility": "admin",
+    "review_state": "pending"
+  },
+  "security": {
+    "public_api": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "release": "OLTRE_DEPENDEX_MVP_HOST_FIXED_2026-08-18",
+  "fixes": [
+    "index.php now loads bootstrap.php before calling site_mode()",
+    "Full recursive PHP syntax validation",
+    "SQLite integrity validation"
+  ],
+  "php_files_checked": 224,
+  "php_syntax_errors": [],
+  "sqlite_integrity": "ok"
+}

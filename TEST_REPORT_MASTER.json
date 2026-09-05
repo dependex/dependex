@@ -1,0 +1,15 @@
+{
+  "generated": "2026-08-18T16:44:00+02:00",
+  "db_integrity": "ok",
+  "world_nodes": 541,
+  "local_clubs": 347,
+  "real_geocoded_clubs": 133,
+  "research_sources": 84,
+  "research_terms": 25,
+  "research_tasks_open": 1265,
+  "club_rank_requirements": 9,
+  "club_rank_unlocks": 9,
+  "php_files": 77,
+  "php_errors": [],
+  "geo_queue_pending": 347
+}

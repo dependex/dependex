@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- ============================================================================
+  DESTINO RANDAGIO — TEMPLATE EMAIL PARAMETRICO (SUPER WOW, bulletproof)
+  Adattato da _cortex/CONOSCENZA/FLUSSI81_REFERENCE/template81.html al brand DR.
+
+  Questo file e' l'ARTEFATTO DI DESIGN / anteprima. La versione RUNTIME che
+  avvolge ogni email di ogni flusso e' la funzione PHP dr_email_layout() in
+  email-templates.php (identica per struttura e stile): modificare li per il
+  comportamento live. Qui i token sono espliciti per revisione e per un
+  eventuale renderer statico.
+
+  TOKEN PARAMETRICI (il flusso riempie solo quelli che gli servono):
+    {{SUBJECT}}     oggetto (title/preview)
+    {{PREHEADER}}   testo di anteprima nascosto
+    {{HERO_IMG}}    URL immagine hero opzionale (lancio_album/nuovo_prodotto/festivita)
+    {{HERO_TITLE}}  titolo display sull'hero
+    {{BODY_HTML}}   corpo (markdown-lite -> html)
+    {{CTA_LABEL}}   testo bottone   {{CTA_URL}} destinazione bottone
+    {{PRODUCT_*}}   product card opzionale (img/title/price/url)
+    {{UNSUB}}       link disiscrizione con token (OBBLIGATORIO)
+  PALETTE: nero #0D0D0D · card #12100a · oro #D4AF37 · arancio #FB6B00 (unico
+  accento caldo) · testo #EDE6D6 · secondario #b8a878. Titoli serif (Georgia).
+============================================================================ -->
+<html lang="it" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="color-scheme" content="dark light">
+<meta name="supported-color-schemes" content="dark light">
+<title>{{SUBJECT}}</title>
+<!--[if mso]>
+<style type="text/css">table,td{border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0}.serif{font-family:Georgia,'Times New Roman',serif !important}</style>
+<![endif]-->
+</head>
+<body style="margin:0;padding:0;background:#0D0D0D;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+
+  <!-- Preheader nascosto -->
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;mso-hide:all;font-size:1px;line-height:1px;color:#0D0D0D;">{{PREHEADER}}&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;</div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0D0D0D;">
+    <tr><td align="center" style="padding:26px 12px;">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;background:#12100a;border:1px solid rgba(212,175,55,.28);">
+
+        <!-- HEADER: logo corona + rule oro -->
+        <tr><td align="center" bgcolor="#0D0D0D" style="background:#0D0D0D;padding:26px 20px 14px;">
+          <img src="https://destinorandagio.it/assets/LOGO%20DR%20Corona%20ok.png" alt="Destino Randagio" width="120" style="display:block;width:120px;max-width:60%;height:auto;margin:0 auto 8px;">
+          <div style="color:#D4AF37;font-family:Georgia,serif;letter-spacing:4px;font-size:12px;">DESTINO&nbsp;RANDAGIO&nbsp;&#9819;</div>
+        </td></tr>
+        <tr><td bgcolor="#0D0D0D" style="background:#0D0D0D;padding:0 40px;">
+          <table role="presentation" width="100%"><tr><td style="border-top:2px solid #D4AF37;line-height:1px;font-size:1px;">&nbsp;</td></tr></table>
+        </td></tr>
+
+        <!-- HERO opzionale (rimuovere il blocco se {{HERO_IMG}} vuoto) -->
+        <tr><td style="padding:0;" bgcolor="#0D0D0D" background="{{HERO_IMG}}">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+            <td height="210" align="center" valign="middle" style="height:210px;background:rgba(8,6,2,.55);padding:0 24px;">
+              <h1 class="serif" style="margin:0;color:#D4AF37;font-family:Georgia,'Times New Roman',serif;font-weight:normal;font-size:30px;line-height:1.2;text-shadow:0 2px 8px #000;">{{HERO_TITLE}}</h1>
+            </td>
+          </tr></table>
+        </td></tr>
+
+        <!-- CORPO -->
+        <tr><td style="padding:30px 40px 24px;font-family:-apple-system,'Segoe UI',Arial,Helvetica,sans-serif;color:#EDE6D6;font-size:16px;line-height:1.7;">
+          {{BODY_HTML}}
+
+          <!-- CTA bulletproof (VML per Outlook) -->
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:26px auto;"><tr><td align="center">
+            <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA_URL}}" style="height:48px;v-text-anchor:middle;width:300px;" arcsize="50%" strokecolor="#D4AF37" fillcolor="#D4AF37"><w:anchorlock/><center style="color:#160f00;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;letter-spacing:.5px;">{{CTA_LABEL}}</center></v:roundrect><![endif]-->
+            <!--[if !mso]><!-- --><a href="{{CTA_URL}}" style="display:inline-block;background:#D4AF37;padding:15px 34px;font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:14px;color:#160f00;text-decoration:none;letter-spacing:.5px;border-radius:30px;">{{CTA_LABEL}}</a><!--<![endif]-->
+          </td></tr></table>
+
+          <!-- Divider ornamentale -->
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="padding:16px 0;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+              <td width="110" style="width:110px;border-top:1px solid rgba(212,175,55,.4);line-height:1px;font-size:1px;">&nbsp;</td>
+              <td style="padding:0 12px;color:#D4AF37;font-size:15px;">&#9819;</td>
+              <td width="110" style="width:110px;border-top:1px solid rgba(212,175,55,.4);line-height:1px;font-size:1px;">&nbsp;</td>
+            </tr></table>
+          </td></tr></table>
+
+          <!-- PRODUCT CARD opzionale -->
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:18px 0;background:#151006;border:1px solid rgba(212,175,55,.25);border-radius:12px;"><tr>
+            <td style="padding:16px;" align="center">
+              <img src="{{PRODUCT_IMG}}" alt="{{PRODUCT_TITLE}}" width="240" style="display:block;width:100%;max-width:240px;height:auto;border-radius:8px;margin:0 auto 12px;">
+              <div style="color:#EDE6D6;font-family:Georgia,serif;font-size:18px;">{{PRODUCT_TITLE}}</div>
+              <div style="color:#FB6B00;font-weight:bold;font-size:17px;margin:4px 0 8px;">{{PRODUCT_PRICE}}</div>
+              <a href="{{PRODUCT_URL}}" style="display:inline-block;background:#D4AF37;color:#160f00;font-family:Arial,sans-serif;font-weight:bold;font-size:13px;text-decoration:none;padding:9px 22px;border-radius:24px;">Scopri &rarr;</a>
+            </td></tr></table>
+
+        </td></tr>
+
+        <!-- FOOTER + UNSUB visibile -->
+        <tr><td bgcolor="#0D0D0D" style="background:#0D0D0D;border-top:1px solid rgba(212,175,55,.22);padding:22px 34px;font-family:Arial,Helvetica,sans-serif;color:#8a7f68;font-size:11px;line-height:1.7;text-align:center;">
+          <div style="color:#D4AF37;font-family:Georgia,serif;letter-spacing:2px;font-size:13px;">DESTINO RANDAGIO &middot; ITALY</div>
+          <div style="color:#b8a878;font-style:italic;margin:2px 0 10px;">dal fango alle stelle</div>
+          Destino Randagio &middot; Via Mantovana 78, 45014 Porto Viro (RO) &middot; P.IVA IT01504180298<br>
+          <a href="https://destinorandagio.it" style="color:#D4AF37;text-decoration:none;">destinorandagio.it</a> &nbsp;&middot;&nbsp;
+          <a href="https://destinorandagio.it/index.html#social" style="color:#8a7f68;text-decoration:none;">Social</a> &nbsp;&middot;&nbsp;
+          <a href="{{UNSUB}}" style="color:#b8a878;text-decoration:underline;">Disiscriviti</a><br>
+          <span style="color:#6d6350;">&copy; 2026 Destino Randagio &middot; Ricevi questa email perch&eacute; fai parte del Branco.</span>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,1 @@
+<?php require_once 'bootstrap.php';$public=isset($_GET['public']);if(!$public)$u=current_user();else$u=null;$pageTitle='World Club Explorer';require '_header.php';require '_dependex-world-map.php';echo dependex_world_map_card('68vh');require '_footer.php';?>

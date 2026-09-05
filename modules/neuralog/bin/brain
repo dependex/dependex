@@ -1,0 +1,228 @@
+#!/usr/bin/env php
+<?php
+/* ============================================================================
+   COMPANY BRAIN — bin/brain
+   La riga di comando del cervello. Tutto quello che si puo' fare da UI si puo'
+   fare da qui, e da qui si fa senza chiave (chi ha la shell ha gia' tutto).
+
+     php bin/brain install
+     php bin/brain doctor
+     php bin/brain demo-seed [--n=180] | demo-clear
+     php bin/brain ingest [--path=DIR] [--batch=20] [--dry] [--all]
+     php bin/brain reindex [--limit=1000]
+     php bin/brain health [--fix]
+     php bin/brain eval
+     php bin/brain stats
+     php bin/brain search "domanda" [--admin] [--n=8]
+     php bin/brain ask "domanda" [--admin]
+     php bin/brain export [--out=brain.jsonl]
+     php bin/brain import --in=brain.jsonl
+     php bin/brain reconcile [--fix]
+============================================================================ */
+if (PHP_SAPI !== 'cli') { http_response_code(403); exit("solo da riga di comando\n"); }
+
+require_once dirname(__DIR__) . '/brain.php';
+require_once dirname(__DIR__) . '/ingest/demo.php';
+
+$argvv = $argv;
+array_shift($argvv);
+$cmd = array_shift($argvv) ?: 'help';
+$opt = []; $args = [];
+foreach ($argvv as $a) {
+    if (str_starts_with($a, '--')) {
+        $p = explode('=', substr($a, 2), 2);
+        $opt[$p[0]] = $p[1] ?? true;
+    } else { $args[] = $a; }
+}
+
+function out($v): void {
+    if (is_string($v)) { echo $v . "\n"; return; }
+    echo json_encode($v, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . "\n";
+}
+function line(string $s = ''): void { echo $s . "\n"; }
+
+switch ($cmd) {
+
+case 'install':
+    $r = brain_install();
+    line('Company Brain ' . brain_version() . ' — installazione');
+    line('  driver         : ' . brain_driver());
+    line('  tabelle        : ' . count($r['tables']));
+    line('  indici         : ' . $r['indexes']);
+    line('  colonne aggiunte: ' . count($r['added_columns']));
+    if (!empty($r['errors'])) { line('  ERRORI:'); foreach ($r['errors'] as $e) { line('   - ' . $e); } }
+    line($r['ok'] ? '  OK — schema versione ' . $r['schema_version'] : '  ATTENZIONE: installazione incompleta');
+    exit($r['ok'] ? 0 : 1);
+
+case 'doctor':
+    $ok = true;
+    line('Company Brain ' . brain_version() . ' — diagnosi');
+    line('  PHP            : ' . PHP_VERSION . (version_compare(PHP_VERSION, '8.1.0', '>=') ? ' OK' : ' TROPPO VECCHIO'));
+    if (version_compare(PHP_VERSION, '8.1.0', '<')) { $ok = false; }
+    foreach (['pdo' => 'PDO', 'mbstring' => 'mbstring', 'json' => 'json'] as $ext => $label) {
+        $has = extension_loaded($ext);
+        line('  ext ' . str_pad($label, 11) . ': ' . ($has ? 'OK' : 'MANCANTE'));
+        if (!$has) { $ok = false; }
+    }
+    foreach (['zip' => 'ZipArchive (docx/xlsx)', 'curl' => 'curl (ingest URL)'] as $ext => $label) {
+        line('  opz ' . str_pad($ext, 11) . ': ' . (extension_loaded($ext) ? 'presente' : 'assente — ' . $label . ' non disponibile'));
+    }
+    $pdftotext = trim((string)@shell_exec('command -v pdftotext 2>/dev/null'));
+    line('  pdftotext      : ' . ($pdftotext !== '' ? $pdftotext : 'assente — i PDF verranno estratti solo parzialmente'));
+    $pdo = brain_pdo();
+    line('  database       : ' . ($pdo ? 'connesso (' . brain_driver() . ')' : 'NON CONNESSO'));
+    if (!$pdo) { $ok = false; }
+    line('  schema         : ' . (brain_schema_ready() ? 'installato (v' . brain_meta_get('schema_version', 0) . ')' : 'DA INSTALLARE (php bin/brain install)'));
+    $dd = brain_data_dir();
+    line('  cartella dati  : ' . $dd . (is_writable($dd) ? ' scrivibile' : ' NON SCRIVIBILE'));
+    if (!is_writable($dd)) { $ok = false; }
+    line('  chiave admin   : ' . (brain_admin_key() !== '' ? 'presente nell\'ambiente' : 'ASSENTE — le API admin restano chiuse (fail-closed)'));
+    line('  dizionario     : ' . count(brain_entity_dictionary()) . ' voci');
+    line('  sinonimi       : ' . count(brain_lang_pack()['synonyms']) . ' gruppi');
+    line('  benchmark      : ' . count(brain_eval_questions()) . ' domande');
+    line($ok ? '  RISULTATO: pronto' : '  RISULTATO: ci sono problemi da sistemare');
+    exit($ok ? 0 : 1);
+
+case 'demo-seed':
+    if (!brain_schema_ready()) { brain_install(); }
+    out(brain_demo_seed((int)($opt['n'] ?? 180)));
+    exit(0);
+
+case 'demo-clear':
+    out(brain_demo_clear());
+    exit(0);
+
+case 'ingest':
+    $o = ['dry' => !empty($opt['dry'])];
+    if (!empty($opt['path'])) { $o['roots'] = [(string)$opt['path']]; }
+    if (!empty($opt['batch'])) { $o['batch'] = (int)$opt['batch']; }
+    if (!empty($opt['visibility'])) { $o['visibility'] = (string)$opt['visibility']; }
+    if (!empty($opt['all'])) {
+        $tot = ['processed' => 0, 'nodes' => 0, 'links' => 0, 'rounds' => 0];
+        do {
+            $r = brain_ingest_run($o);
+            $tot['processed'] += $r['processed']; $tot['nodes'] += $r['nodes'];
+            $tot['links'] += $r['links']; $tot['rounds']++;
+            line('  lotto ' . $tot['rounds'] . ': ' . $r['processed'] . ' file, ' . $r['nodes'] . ' nodi, restano ' . $r['remaining']);
+        } while ($r['remaining'] > 0 && $r['processed'] > 0 && $tot['rounds'] < 500);
+        out($tot);
+    } else {
+        out(brain_ingest_run($o));
+    }
+    exit(0);
+
+case 'reindex':
+    $limit = (int)($opt['limit'] ?? 5000);
+    $paths = brain_rows('SELECT DISTINCT path FROM ' . brain_t('nodes') .
+        " WHERE section NOT IN ('hub','concept') AND path <> '' ORDER BY path LIMIT " . max(1, $limit));
+    $n = 0; $links = 0;
+    foreach ($paths as $p) {
+        $rows = brain_rows('SELECT id, content FROM ' . brain_t('nodes') . ' WHERE path=? ORDER BY weight DESC', [$p['path']]);
+        if (!$rows) { continue; }
+        $ids = array_column($rows, 'id');
+        $links += brain_autolink($ids, implode("\n", array_column($rows, 'content')), 'reindex', (string)$p['path']);
+        $n++;
+    }
+    brain_activity('reindex', $n . ' percorsi, ' . $links . ' sinapsi');
+    out(['ok' => true, 'paths' => $n, 'links_created' => $links]);
+    exit(0);
+
+case 'health':
+    $r = brain_health(!empty($opt['fix']));
+    out($r);
+    exit(empty($r['ok']) ? 1 : 0);
+
+case 'eval':
+    $r = brain_eval_run();
+    if (empty($r['ok'])) { out($r); exit(1); }
+    line('Banco di prova — ' . $r['questions'] . ' domande, top-' . $r['top_k'] . ' (' . $r['ms'] . ' ms)');
+    foreach ($r['detail'] as $d) {
+        line(($d['found'] ? '  [OK]  ' : '  [--]  ') . str_pad('#' . ($d['rank'] ?? '-'), 5) . ' ' . $d['q'] . '   -> atteso: "' . $d['expected'] . '"');
+    }
+    line('  HIT-RATE: ' . $r['hit_rate'] . '   MRR-lite: ' . $r['mrr']);
+    exit(0);
+
+case 'stats':
+    out(brain_stats());
+    exit(0);
+
+case 'search':
+    $q = $args[0] ?? '';
+    if ($q === '') { line('uso: php bin/brain search "domanda"'); exit(1); }
+    $rows = brain_retrieve($q, ['admin' => !empty($opt['admin']), 'n' => (int)($opt['n'] ?? 8)]);
+    foreach ($rows as $i => $r) {
+        line(sprintf('%2d. [%.2f] %s  (%s)', $i + 1, $r['score'], $r['path'] ?: $r['id'], $r['visibility']));
+        line('     ' . brain_cut(preg_replace('/\s+/', ' ', (string)$r['content']), 160));
+    }
+    line('  ' . count($rows) . ' risultati');
+    exit(0);
+
+case 'ask':
+    $q = $args[0] ?? '';
+    if ($q === '') { line('uso: php bin/brain ask "domanda"'); exit(1); }
+    $pack = brain_ask($q, ['admin' => !empty($opt['admin'])]);
+    line($pack['prompt']);
+    line('--- fonti ---');
+    foreach ($pack['sources'] as $s) { line('  ' . $s['node_id'] . '  ' . $s['label'] . '  score=' . $s['score']); }
+    exit(0);
+
+case 'export':
+    $file = (string)($opt['out'] ?? 'brain.jsonl');
+    $fh = fopen($file, 'w');
+    if (!$fh) { line('non riesco a scrivere ' . $file); exit(1); }
+    $n = 0;
+    fwrite($fh, json_encode(['_type' => 'meta', 'version' => brain_version(), 'schema' => (int)brain_meta_get('schema_version', 0), 'exported_at' => brain_now()], JSON_UNESCAPED_UNICODE) . "\n");
+    foreach (brain_rows('SELECT * FROM ' . brain_t('nodes')) as $r) {
+        $r['_type'] = 'node'; fwrite($fh, json_encode($r, JSON_UNESCAPED_UNICODE) . "\n"); $n++;
+    }
+    foreach (brain_rows('SELECT node_a, node_b, kind FROM ' . brain_t('links')) as $r) {
+        $r['_type'] = 'link'; fwrite($fh, json_encode($r, JSON_UNESCAPED_UNICODE) . "\n"); $n++;
+    }
+    foreach (brain_rows('SELECT node_id, entity FROM ' . brain_t('node_entities')) as $r) {
+        $r['_type'] = 'node_entity'; fwrite($fh, json_encode($r, JSON_UNESCAPED_UNICODE) . "\n"); $n++;
+    }
+    fclose($fh);
+    out(['ok' => true, 'file' => $file, 'lines' => $n]);
+    exit(0);
+
+case 'import':
+    $file = (string)($opt['in'] ?? '');
+    if ($file === '' || !is_file($file)) { line('uso: php bin/brain import --in=brain.jsonl'); exit(1); }
+    if (!brain_schema_ready()) { brain_install(); }
+    $fh = fopen($file, 'r');
+    $nodes = 0; $links = 0; $ents = 0;
+    while (($l = fgets($fh)) !== false) {
+        $j = json_decode(trim($l), true);
+        if (!is_array($j)) { continue; }
+        $t = $j['_type'] ?? '';
+        unset($j['_type']);
+        if ($t === 'node') { brain_node_put($j); $nodes++; }
+        elseif ($t === 'link') { $links += brain_link((string)$j['node_a'], (string)$j['node_b'], (string)($j['kind'] ?? 'import')); }
+        elseif ($t === 'node_entity') { $ents += brain_insert_ignore(brain_pdo(), brain_t('node_entities'), ['node_id' => $j['node_id'], 'entity' => $j['entity']]); }
+    }
+    fclose($fh);
+    brain_activity('import', $file . ' nodi:' . $nodes . ' sinapsi:' . $links);
+    out(['ok' => true, 'nodes' => $nodes, 'links' => $links, 'node_entities' => $ents]);
+    exit(0);
+
+case 'reconcile':
+    out(brain_reconcile(!empty($opt['fix'])));
+    exit(0);
+
+default:
+    line('Company Brain ' . brain_version() . ' — comandi:');
+    line('  install    installa/aggiorna lo schema');
+    line('  doctor     controlla ambiente, estensioni, permessi, config');
+    line('  demo-seed  semina ~200 neuroni finti (demo-clear per toglierli)');
+    line('  ingest     digerisce i file (--path=DIR --batch=N --dry --all)');
+    line('  reindex    ricalcola le sinapsi automatiche');
+    line('  health     diagnosi del grafo (--fix per riparare)');
+    line('  eval       banco di prova del recupero (hit-rate, MRR)');
+    line('  stats      contatori');
+    line('  search     ricerca nel cervello');
+    line('  ask        prepara il prompt RAG per una domanda');
+    line('  export     esporta in JSONL (--out=file)');
+    line('  import     importa da JSONL (--in=file)');
+    line('  reconcile  registri contro grafo (--fix)');
+    exit($cmd === 'help' ? 0 : 1);
+}

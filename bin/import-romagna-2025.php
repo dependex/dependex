@@ -33,7 +33,7 @@ foreach($clubs as [$name,$city,$address,$meeting,$contactName,$phone,$number]){
     $existing->execute([$city,$name,'%club n° '.$number.'%']);$sic=$existing->fetchColumn();
     if(!$sic){
         $sic=sic_id();
-        $pdo->prepare("INSERT INTO dependex_world_registry(sic_id,entity_name,original_type,network_level,network_rank,rank_color,continent,country,region,province,city,address,geo_accuracy,status,parent_sic_id,source_url,source_type,language,meeting,public_contact,public_data_score,is_synthetic) VALUES(?,?,?,'LOCAL_CLUB',1,'#22C55E','Europe','Italy','Emilia-Romagna','Forlì-Cesena',?,?,NULL,'ACTIVE_VERIFIED_2025',?,?,?,'it',?,?,95,0)")
+        $pdo->prepare("INSERT INTO dependex_world_registry(sic_id,entity_name,original_type,network_level,network_rank,rank_color,continent,country,region,province,city,address,geo_accuracy,status,parent_sic_id,source_url,source_type,language,meeting,public_contact,public_data_score,is_synthetic) VALUES(?,?,?,'LOCAL_CLUB',1,'#D4AF37','Europe','Italy','Emilia-Romagna','Forlì-Cesena',?,?,NULL,'ACTIVE_VERIFIED_2025',?,?,?,'it',?,?,95,0)")
             ->execute([$sic,$name.' (club n° '.$number.')','CAT',$city,$address,$parent,$source,'ACAT Romagna official 2025 directory image',$meeting,$contactName.' · '.$phone]);
         $pdo->prepare("INSERT OR IGNORE INTO dependex_world_edges(sic_id,parent_sic_id,child_sic_id,relation_type) VALUES(?,?,?,'PARENT_OF')")->execute([sic_id(),$parent,$sic]);
         $added++;

@@ -76,16 +76,16 @@ require '_header.php';
 </section>
 
 <!-- SOCCORSO MEDICO D'URGENZA VS PERCORSO ECOLOGICO-SOCIALE -->
-<section class="lux-metallic-card p-4 my-5" style="border-left:4px solid #ef4444;background:#101116;">
+<section class="lux-metallic-card p-4 my-5" style="border-left:4px solid #D4AF37;background:#101116;">
   <h3 style="margin-top:0;display:flex;align-items:center;gap:0.75rem;color:#FFFFFF;font-size:1.2rem;">
-    <span style="color:#ef4444;"><?=dx_icon('alert-triangle', '', 22)?></span>
+    <span style="color:#D4AF37;"><?=dx_icon('alert-triangle', '', 22)?></span>
     <span>In caso di emergenza medica acuta o pericolo per l'incolumità</span>
   </h3>
   <p style="font-size:0.95rem;line-height:1.6;color:#a1a1aa;margin-bottom:1rem;">
     I Club Alcologici Territoriali offrono una comunità relazionale continuativa e permanente nel tempo, ma <b>non possono e non devono sostituire il soccorso ospedaliero d'urgenza in caso di crisi di astinenza acuta o pericolo clinico imminente</b>.
   </p>
   <div style="display:flex;flex-wrap:wrap;gap:1.5rem;font-size:0.95rem;">
-    <div style="color:#FFFFFF;"><b>Numero Unico Europeo Emergenze:</b> <a href="tel:112" style="font-weight:800;color:#ef4444;text-decoration:underline;">112</a></div>
+    <div style="color:#FFFFFF;"><b>Numero Unico Europeo Emergenze:</b> <a href="tel:112" style="font-weight:800;color:#D4AF37;text-decoration:underline;">112</a></div>
     <div style="color:#FFFFFF;"><b>Telefono Verde Alcol ISS:</b> <a href="tel:800632000" style="font-weight:800;color:#D4AF37;text-decoration:underline;">800 632 000</a> (Lun-Ven 10-15)</div>
   </div>
 </section>

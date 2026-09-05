@@ -146,25 +146,25 @@ $newsCards = AcatNewsService::getLatestCards(10);
 
   <div class="transformation-grid">
     <!-- BEFORE -->
-    <div class="transformation-card before lux-metallic-card" style="border-color: rgba(239, 68, 68, 0.35);">
-      <span class="transformation-badge" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4);">
+    <div class="transformation-card before lux-metallic-card" style="border-color: rgba(255, 255, 255, 0.18);">
+      <span class="transformation-badge" style="background: rgba(255, 255, 255, 0.08); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25);">
         <?=dx_icon('alert-triangle', '', 14)?> LA VECCHIA FAVOLA: DA SOLI NEL LOOP
       </span>
       <ul class="transformation-list" style="margin-top: 20px;">
         <li style="display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px;">
-          <span style="color: #f87171; flex-shrink: 0;"><?=dx_icon('alert-triangle', '', 20)?></span>
+          <span style="color: #D4AF37; flex-shrink: 0;"><?=dx_icon('alert-triangle', '', 20)?></span>
           <div><strong style="color: #FFFFFF;">La scusa del "controllo io":</strong> Raccontarsi che bere o giocare sia una libera scelta, mentre in realtà è un pilota automatico che prosciuga energia e autostima.</div>
         </li>
         <li style="display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px;">
-          <span style="color: #f87171; flex-shrink: 0;"><?=dx_icon('clock', '', 20)?></span>
+          <span style="color: #D4AF37; flex-shrink: 0;"><?=dx_icon('clock', '', 20)?></span>
           <div><strong style="color: #FFFFFF;">L'ansia e la stanchezza cronica:</strong> Svegliarsi col batticuore, la nebbia nel cervello e il senso di colpa per quello che è sfuggito di mano la sera prima.</div>
         </li>
         <li style="display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px;">
-          <span style="color: #f87171; flex-shrink: 0;"><?=dx_icon('heart', '', 20)?></span>
+          <span style="color: #D4AF37; flex-shrink: 0;"><?=dx_icon('heart', '', 20)?></span>
           <div><strong style="color: #FFFFFF;">Tensioni e sguardi feriti a casa:</strong> I silenzi pesanti a tavola, la delusione negli occhi del partner o dei figli e la paura costante della prossima litigata.</div>
         </li>
         <li style="display: flex; gap: 14px; align-items: flex-start;">
-          <span style="color: #f87171; flex-shrink: 0;"><?=dx_icon('lock', '', 20)?></span>
+          <span style="color: #D4AF37; flex-shrink: 0;"><?=dx_icon('lock', '', 20)?></span>
           <div><strong style="color: #FFFFFF;">Migliaia di euro buttati:</strong> Soldi bruciati in bottiglie, giocate compulsive o tentativi terapeutici solitari senza una comunità di riferimento.</div>
         </li>
       </ul>

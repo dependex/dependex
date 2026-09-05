@@ -57,7 +57,7 @@ $pageTitle='Registrati'; require '_header.php';?>
 <?php if($success):?>
 <div class="success-panel">
   <span class="eyebrow">ACCOUNT CREATO</span>
-  <h1>Benvenuto in OLTRE 🌱</h1>
+  <h1>Benvenuto in DEPENDEX</h1>
   <p>Il tuo account è attivo. Conserva questo recovery code in un luogo sicuro: serve per recuperare l’accesso senza email.</p>
   <div class="recovery-box"><code><?=h($recovery)?></code></div>
   <p><b>Importante:</b> questo codice viene mostrato ora in chiaro e non viene salvato in chiaro nel database.</p>

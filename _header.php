@@ -11,8 +11,7 @@ $metaDesc = $metaDesc ?? 'DEPENDEX — AL CLUB. COL CLUB. Cammino di sobrietà, 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#071B33" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070709">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -201,5 +200,5 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
     <div class="toast flash" role="status" aria-live="polite"><?=h($_SESSION['flash'])?></div>
     <?php unset($_SESSION['flash']);?>
   <?php endif;?>
-  <div class="offline-pill" role="status" aria-live="polite">📡 Modalità offline attiva: dati salvati disponibili</div>
+  <div class="offline-pill" role="status" aria-live="polite"><?=dx_icon('wifi','',14)?> Modalità offline attiva: dati salvati disponibili</div>
   <main class="page" id="mainContent">

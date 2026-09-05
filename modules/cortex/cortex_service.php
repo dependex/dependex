@@ -97,38 +97,38 @@ class CortexService {
             case 'impronta':
                 return [
                     'agent' => 'impronta',
-                    'response' => "🧠 **Impronta Aziendale & Valori**\n\nDEPENDEX & OLTRE operano sulla metodologia Hudolin: solidarietà comunitaria, sobrietà come stile di vita e intelligenza collettiva diffusa attraverso i Club territoriali."
+                    'response' => "**[IMPRONTA AZIENDALE & VALORI]**\n\nDEPENDEX & OLTRE operano sulla metodologia Hudolin: solidarietà comunitaria, sobrietà come stile di vita e intelligenza collettiva diffusa attraverso i Club territoriali."
                 ];
             case 'mappa_tesoro':
                 return [
                     'agent' => 'mappa_tesoro',
-                    'response' => "🗺️ **Mappa del Tesoro**\n\nAutomazioni mappate ad alto valore: onboarding dei soci dei Club, reporting settimanale e riconciliazione automatica del censimento globale."
+                    'response' => "**[MAPPA DEL TESORO]**\n\nAutomazioni mappate ad alto valore: onboarding dei soci dei Club, reporting settimanale e riconciliazione automatica del censimento globale."
                 ];
             case 'primo_ingranaggio':
                 return [
                     'agent' => 'primo_ingranaggio',
-                    'response' => "⚙️ **Primo Ingranaggio Operativo**\n\nSkill attivata: orientamento rapido con geolocalizzazione automatica del Club più vicino e diario di sobrietà integrato."
+                    'response' => "**[PRIMO INGRANAGGIO OPERATIVO]**\n\nSkill attivata: orientamento rapido con geolocalizzazione automatica del Club più vicino e diario di sobrietà integrato."
                 ];
             case 'content':
                 return [
                     'agent' => 'content',
-                    'response' => "✍️ **Content Agent**\n\nBozza generata nel tono di voce autorevole, empatico e sobrio: focus sulla testimonianza reale e sulla forza del gruppo."
+                    'response' => "**[CONTENT AGENT]**\n\nBozza generata nel tono di voce autorevole, empatico e sobrio: focus sulla testimonianza reale e sulla forza del gruppo."
                 ];
             case 'sales':
                 return [
                     'agent' => 'sales',
-                    'response' => "💼 **Offerte Irrifiutabili (Protocollo M.A.G.I.C.)**\n\nAbbiamo 4 livelli di valore:\n• **Starter Kit & Diagnosi** (€ 27 - valore € 190)\n• **Protocollo Completo & Trasformazione** (€ 497 o 3 rate da € 185 - valore € 2.588 con Garanzia Integrale)\n• **Programma Elite & Affiancamento** (€ 1.997 - supporto 1-a-1)\n• **Club Permanente** (€ 39/mese - continuità e Cortex attivo 24/7)\n\nPuoi consultare tutte le pricing card dettagliate su `/offers.php`."
+                    'response' => "**[OFFERTE IRRIFIUTABILI (PROTOCOLLO M.A.G.I.C.)]**\n\nAbbiamo 4 livelli di valore:\n• **Starter Kit & Diagnosi** (€ 27 - valore € 190)\n• **Protocollo Completo & Trasformazione** (€ 497 o 3 rate da € 185 - valore € 2.588 con Garanzia Integrale)\n• **Programma Elite & Affiancamento** (€ 1.997 - supporto 1-a-1)\n• **Club Permanente** (€ 39/mese - continuità e Cortex attivo 24/7)\n\nPuoi consultare tutte le pricing card dettagliate su `/offers.php`."
                 ];
             case 'analytics':
                 $nodes = (int)$this->db->query("SELECT COUNT(*) FROM dependex_world_registry")->fetchColumn();
                 return [
                     'agent' => 'analytics',
-                    'response' => "📊 **Analytics & Metriche**\n\nRete attiva: {$nodes} nodi censiti nel registro globale. Tasso di completamento diario settimanale in crescita del 14%."
+                    'response' => "**[ANALYTICS & METRICHE]**\n\nRete attiva: {$nodes} nodi censiti nel registro globale. Tasso di completamento diario settimanale in crescita del 14%."
                 ];
             case 'web3':
                 return [
                     'agent' => 'web3',
-                    'response' => "⛓️ **Web3 Agent**\n\nSmart contract attivo per notarizzazione presenze e assegnazione token DRX di partecipazione democratica."
+                    'response' => "**[WEB3 AGENT]**\n\nSmart contract attivo per notarizzazione presenze e assegnazione token DRX di partecipazione democratica."
                 ];
             default:
                 return [

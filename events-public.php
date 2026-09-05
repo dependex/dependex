@@ -74,7 +74,7 @@ function formatEventDate(string $datetimeStr): array {
 <!-- LIVE STATUS STRIP -->
 <div class="lux-metallic-card p-3 mb-4" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border: 1px solid rgba(212,175,55,0.3); background: rgba(16,17,23,0.95);">
   <div style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: #FFFFFF;">
-    <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 10px #22c55e;"></span>
+    <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #D4AF37; box-shadow: 0 0 10px #D4AF37;"></span>
     <span><b>Sincronizzazione Web & RSS Attiva:</b> Eventi scaduti rimossi automaticamente (<?=count($events)?> appuntamenti attivi)</span>
   </div>
   <div style="font-size: 0.82rem; color: #D4AF37; display: flex; align-items: center; gap: 6px;">

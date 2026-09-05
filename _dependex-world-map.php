@@ -10,7 +10,7 @@ function dependex_world_map_card(string $height='620px'): string { ob_start(); ?
     <select id="dxStatus"><option value="">Tutti gli status</option><option value="ACTIVE">Attivi/verificati</option><option value="HISTORICAL">Storici</option><option value="DORMANT">Dormienti</option></select>
   </div>
   <div class="dx-map-stage" style="height:<?=htmlspecialchars($height)?>"><canvas id="dxMapCanvas"></canvas><div class="dx-map-controls"><button id="dxZoomIn">＋</button><button id="dxZoomOut">−</button><button id="dxReset">⟲</button></div><div class="dx-map-hint">drag · zoom · tap POI</div></div>
-  <div class="dx-legend"><span><i style="--c:#22C55E"></i>Locale</span><span><i style="--c:#14B8A6"></i>Territoriale</span><span><i style="--c:#3B82F6"></i>Provinciale</span><span><i style="--c:#8B5CF6"></i>Regionale</span><span><i style="--c:#F59E0B"></i>Nazionale</span><span><i style="--c:#F97316"></i>Continentale</span><span><i style="--c:#EF4444"></i>World</span></div>
+  <div class="dx-legend"><span><i style="--c:#FFF2B2"></i>Locale</span><span><i style="--c:#F5DF88"></i>Territoriale</span><span><i style="--c:#E5C358"></i>Provinciale</span><span><i style="--c:#D4AF37"></i>Regionale</span><span><i style="--c:#C59A27"></i>Nazionale</span><span><i style="--c:#AA771C"></i>Continentale</span><span><i style="--c:#FFFFFF"></i>World</span></div>
   <div id="dxClubCard" class="dx-club-card hidden"></div>
 </section>
 <script src="assets/js/dependex-world-map.js"></script>

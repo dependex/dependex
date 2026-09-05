@@ -170,7 +170,7 @@ require __DIR__ . '/_testa.php';
   var CFG={};
   ['v1-as-is','v2-sustainable','v3-blindata'].forEach(function(n){ CFG[n.split('-')[0]] = null; });
   var RAW = { v1: <?= is_file(__DIR__ . '/../config/bmm/v1-as-is.json') ? file_get_contents(__DIR__ . '/../config/bmm/v1-as-is.json') : 'null' ?>, v2: <?= is_file(__DIR__ . '/../config/bmm/v2-sustainable.json') ? file_get_contents(__DIR__ . '/../config/bmm/v2-sustainable.json') : 'null' ?>, v3: <?= is_file(__DIR__ . '/../config/bmm/v3-blindata.json') ? file_get_contents(__DIR__ . '/../config/bmm/v3-blindata.json') : 'null' ?>, v4: <?= is_file(__DIR__ . '/../config/bmm/v4-funded.json') ? file_get_contents(__DIR__ . '/../config/bmm/v4-funded.json') : 'null' ?> };
-  var COL={BLUE:'#3b82f6',GREEN:'#2e8b57',YELLOW:'#d9b45a',ORANGE:'#e07b2a',RED:'#c0392b',BLACK:'#111',UNVERIFIED:'#6b6355'};
+  var COL={BLUE:'#FFF2B2',GREEN:'#D4AF37',YELLOW:'#F5DF88',ORANGE:'#C59A27',RED:'#AA771C',BLACK:'#070709',UNVERIFIED:'#71717a'};
   var fmt=function(n){ return n==null?'—':Number(n).toLocaleString('en-US',{maximumFractionDigits:0}); };
   fetch('bmm-live.php',{credentials:'same-origin'}).then(function(r){return r.json();}).then(function(L){ if(L.ok&&L.users>0) document.getElementById('fPop').value=Math.max(L.users, 1); }).catch(function(){});
   document.getElementById('fRun').addEventListener('click', function(){

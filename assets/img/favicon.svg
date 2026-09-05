@@ -1,28 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="DEPENDEX Favicon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
   <defs>
     <linearGradient id="favBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#071B33"/>
-      <stop offset="100%" stop-color="#0B2A4C"/>
+      <stop offset="0%" stop-color="#050507"/>
+      <stop offset="100%" stop-color="#000000"/>
     </linearGradient>
-    <linearGradient id="favGreen" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#16A34A"/>
-      <stop offset="100%" stop-color="#22C55E"/>
-    </linearGradient>
-    <linearGradient id="favOrange" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EA580C"/>
-      <stop offset="100%" stop-color="#F97316"/>
+    <linearGradient id="favGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF2B2"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#8C6514"/>
     </linearGradient>
   </defs>
-
-  <rect width="64" height="64" rx="16" fill="url(#favBg)"/>
-
-  <!-- Interlocking Green and Orange Nexus of Mutual Support -->
-  <path d="M 20,38 C 15,28 20,18 30,15 C 40,12 50,18 51,27 C 52,36 43,45 32,45 C 25,45 22,40 20,38 Z" 
-        fill="none" stroke="url(#favGreen)" stroke-width="6.5" stroke-linecap="round"/>
-
-  <path d="M 44,26 C 49,36 44,46 34,49 C 24,52 14,46 13,37 C 12,28 21,19 32,19 C 39,19 42,24 44,26 Z" 
-        fill="none" stroke="url(#favOrange)" stroke-width="5.5" stroke-linecap="round"/>
-
-  <!-- Core Spark -->
-  <circle cx="32" cy="32" r="4.5" fill="#FFFFFF"/>
+  <rect width="128" height="128" rx="32" fill="url(#favBg)"/>
+  <rect x="2" y="2" width="124" height="124" rx="30" fill="none" stroke="url(#favGold)" stroke-width="1.5" opacity="0.6"/>
+  <path d="M 38,68 C 30,48 40,30 58,24 C 74,18 94,28 98,45 C 101,62 84,78 67,78 C 54,78 44,70 38,68 Z" 
+        fill="none" stroke="url(#favGold)" stroke-width="8" stroke-linecap="round"/>
+  <polygon points="64,56 73,64 64,72 55,64" fill="url(#favGold)"/>
+  <polygon points="64,59 69,64 64,69 59,64" fill="#FFFFFF"/>
 </svg>

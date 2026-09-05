@@ -1,49 +1,48 @@
 <?php
 require_once __DIR__.'/bootstrap.php';
 $global = site_mode() === 'DEPENDEX';
-$pageTitle = $global ? 'The Hudolin Method · Science & Community' : 'Il Metodo Hudolin · Oltre la Dipendenza';
-$metaDesc = 'Il Metodo Hudolin: non una cura burocratica o farmacologica, ma un approccio ecologico-sociale per rigenerare legami, salute e dignità familiare.';
+$pageTitle = $global ? 'The Hudolin Method · Science & Social Ecology' : 'Il Metodo Hudolin · Scienza, Comunità e Sovranità';
+$metaDesc = 'Il Metodo Hudolin: basta con l’illusione della forza di volontà solitaria. Approccio ecologico-sociale in 5 fasi per riconquistare lucidità, famiglia e dignità.';
 require '_header.php';
 ?>
 
 <main class="container py-5">
   <!-- Header -->
   <section class="text-center mb-5">
-    <div class="d-inline-block px-3 py-1 mb-3 border rounded-pill" style="border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.06);">
-      <span style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; color: var(--color-gold); text-transform: uppercase;">
-        ✦ L'APPROCCIO ECOLOGICO-SOCIALE
-      </span>
+    <div class="gold-glow-badge mb-3">
+      <?=dx_icon('feather', '', 14)?>
+      <span>APPROCCIO ECOLOGICO-SOCIALE VLADIMIR HUDOLIN</span>
     </div>
-    <h1 style="font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem;">
-      Non è questione di forza di volontà.<br>
-      È una questione di <span class="gold-gradient-text">legami e dignità</span>.
+    <h1 style="font-family: var(--font-serif); font-size: clamp(2rem, 4.2vw, 3.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; color: #FFFFFF;">
+      La "forza di volontà" da sola è un'illusione tossica.<br>
+      La libertà nasce da <span class="gold-foil-text">legami autentici e dignità</span>.
     </h1>
-    <p class="mx-auto text-muted" style="max-width: 680px; font-size: 1.15rem; line-height: 1.65;">
-      Il 95% di chi tenta di superare una dipendenza da solo ricade entro pochi mesi. Il Metodo Hudolin ha dimostrato da oltre 40 anni che quando la persona è accolta senza giudizio all'interno di una comunità di pari, la trasformazione diventa naturale e duratura.
+    <p class="mx-auto" style="max-width: 720px; font-size: 1.15rem; line-height: 1.7; color: #d1d5db;">
+      Quante volte hai provato a "stringere i denti" per poi cedere alla prima giornata storta? La chimica della dipendenza batte sempre la solitudine. Da oltre 40 anni e in oltre 540 Club, il Metodo Hudolin dimostra che quando smetti di fare l'eroe solitario e ti siedi in un cerchio di pari senza giudizio, la sobrietà smette di essere una rinuncia faticosa e diventa la tua condizione naturale di benessere.
     </p>
   </section>
 
   <!-- Key Insight Card -->
-  <div class="luxury-hero-card p-4 p-md-5 mb-5">
+  <div class="luxury-hero-card lux-metallic-card p-4 p-md-5 mb-5">
     <div class="row align-items-center g-4">
       <div class="col-md-7">
-        <h3 style="font-family: var(--font-serif); color: var(--color-gold-light); font-size: 1.8rem; margin-bottom: 1rem;">
+        <h3 style="font-family: var(--font-serif); color: #FFFFFF; font-size: 1.8rem; margin-bottom: 1rem; font-weight: 800;">
           La Persona non coincide con il Problema
         </h3>
-        <p class="text-muted" style="line-height: 1.6; font-size: 1.05rem;">
-          Nella società moderna chi vive un disturbo da uso di alcol o sostanze viene marchiato con lo stigma della debolezza morale. Nel Club territoriale questa etichetta viene strappata via al primo minuto.
+        <p style="line-height: 1.65; font-size: 1.05rem; color: #a1a1aa;">
+          La cultura dominante ti ha fatto credere due bugie opposte: o che sei un debole senza carattere, oppure che sei un "malato cronico incurabile" da internare. Entrambe le narrazioni servono solo a toglierti la responsabilità e il potere di agire.
         </p>
-        <p class="text-muted" style="line-height: 1.6; font-size: 1.05rem;">
-          Non sei un paziente da ricoverare né un colpevole da punire: sei una persona con la sua storia, i suoi talenti e una famiglia che merita di ritrovare la pace.
+        <p style="line-height: 1.65; font-size: 1.05rem; color: #a1a1aa;">
+          Nei Club Alcologici Territoriali non usiamo etichette umilianti. Sei una persona con una storia, dei talenti e una famiglia che ha il diritto di tornare a guardarti negli occhi con fierezza.
         </p>
       </div>
       <div class="col-md-5">
-        <div class="p-4 rounded-4" style="background: rgba(0,0,0,0.5); border: 1px solid rgba(201,168,76,0.25);">
-          <div style="font-size: 2.2rem; color: var(--color-gold); margin-bottom: 10px;">💬</div>
-          <blockquote class="text-white mb-2" style="font-style: italic; font-size: 1rem; line-height: 1.5;">
+        <div class="p-4 rounded-4" style="background: rgba(10,11,16,0.9); border: 1px solid rgba(212,175,55,0.3);">
+          <div style="color: #D4AF37; margin-bottom: 12px;"><?=dx_icon('message-circle', '', 32)?></div>
+          <blockquote style="font-style: italic; font-size: 1rem; line-height: 1.6; color: #FFFFFF; margin-bottom: 12px;">
             «L'alcolismo non è una malattia misteriosa dell'individuo, ma un comportamento legato allo stile di vita e alla cultura della comunità.»
           </blockquote>
-          <small class="text-muted">— Prof. Vladimir Hudolin, Fondatore del Movimento dei Club</small>
+          <small style="color: #D4AF37; font-weight: 700;">— Prof. Vladimir Hudolin, Psichiatra OMS e Fondatore dei Club</small>
         </div>
       </div>
     </div>
@@ -52,80 +51,102 @@ require '_header.php';
   <!-- The 5 Steps of the Schema Logico -->
   <section class="mb-5">
     <div class="text-center mb-4">
-      <h2 style="font-family: var(--font-serif); font-size: 2.2rem;">Lo Schema Logico della Rinascita</h2>
-      <p class="text-muted">Il percorso progressivo che ti accompagna dal caos alla piena autorevolezza.</p>
+      <div class="gold-glow-badge mb-2">
+        <?=dx_icon('sparkles', '', 14)?>
+        <span>SCHEMA LOGICO DEI 5 PASSI</span>
+      </div>
+      <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: #FFFFFF;">Il Percorso Scientifico di Rigenerazione</h2>
+      <p style="color: #9ca3af; max-width: 600px; margin: 0 auto;">Dalla nebbia mentale del primo giorno alla piena padronanza della propria esistenza.</p>
     </div>
 
     <div class="row g-4">
       <div class="col-md-4">
-        <div class="p-4 h-100 rounded-4" style="background: var(--color-surface-card); border: 1px solid rgba(255,255,255,0.08);">
+        <div class="lux-metallic-card p-4 h-100">
           <div class="d-flex align-items-center gap-2 mb-3">
-            <span class="badge rounded-pill bg-warning text-dark fw-bold px-3 py-1">FASE 1</span>
-            <span class="text-muted small">GIORNO 1 - 7</span>
+            <span class="dx-ticker-badge" style="margin-bottom:0;">FASE 1</span>
+            <span style="color: #71717a; font-size: 0.78rem; font-weight: 700;">GIORNO 1 - 7</span>
           </div>
-          <h4 style="font-family: var(--font-serif); color: #fff;">L'Accoglienza & Lo Stop al Panico</h4>
-          <p class="text-muted small mb-0">Primo incontro in un Club territoriale o stanza digitale: ascolto puro, zero domande inquisitorie, sollievo immediato e patto di presenza.</p>
+          <h4 style="font-family: var(--font-serif); color: #FFFFFF; font-weight: 800; font-size: 1.2rem;">L'Accoglienza & Lo Stop al Panico</h4>
+          <p style="color: #a1a1aa; font-size: 0.88rem; line-height: 1.55; margin-bottom: 0;">
+            Primo incontro nel Club territoriale o su stanza protetta: disarmo immediato del senso di colpa, nessun interrogatorio, patto di presenza reciproca e serenità immediata.
+          </p>
         </div>
       </div>
 
       <div class="col-md-4">
-        <div class="p-4 h-100 rounded-4" style="background: var(--color-surface-card); border: 1px solid rgba(255,255,255,0.08);">
+        <div class="lux-metallic-card p-4 h-100">
           <div class="d-flex align-items-center gap-2 mb-3">
-            <span class="badge rounded-pill bg-warning text-dark fw-bold px-3 py-1">FASE 2</span>
-            <span class="text-muted small">SETTIMANA 2 - 4</span>
+            <span class="dx-ticker-badge" style="margin-bottom:0;">FASE 2</span>
+            <span style="color: #71717a; font-size: 0.78rem; font-weight: 700;">SETTIMANA 2 - 4</span>
           </div>
-          <h4 style="font-family: var(--font-serif); color: #fff;">La Ristrutturazione delle Abitudini</h4>
-          <p class="text-muted small mb-0">Diario quotidiano di sobrietà, gestione delle ore critiche (le 18:00), riattivazione del ritmo del sonno e prime vittorie visibili in famiglia.</p>
+          <h4 style="font-family: var(--font-serif); color: #FFFFFF; font-weight: 800; font-size: 1.2rem;">Riprogrammazione delle Abitudini</h4>
+          <p style="color: #a1a1aa; font-size: 0.88rem; line-height: 1.55; margin-bottom: 0;">
+            Disinnescare l'ancora delle 18:00, monitoraggio del ritmo sonno-veglia con il diario quotidiano, e prime risposte tangibili sul piano della salute e del portafoglio.
+          </p>
         </div>
       </div>
 
       <div class="col-md-4">
-        <div class="p-4 h-100 rounded-4" style="background: var(--color-surface-card); border: 1px solid rgba(255,255,255,0.08);">
+        <div class="lux-metallic-card p-4 h-100">
           <div class="d-flex align-items-center gap-2 mb-3">
-            <span class="badge rounded-pill bg-warning text-dark fw-bold px-3 py-1">FASE 3</span>
-            <span class="text-muted small">MESE 2 - 3</span>
+            <span class="dx-ticker-badge" style="margin-bottom:0;">FASE 3</span>
+            <span style="color: #71717a; font-size: 0.78rem; font-weight: 700;">MESE 2 - 3</span>
           </div>
-          <h4 style="font-family: var(--font-serif); color: #fff;">La Riconciliazione dei Legami</h4>
-          <p class="text-muted small mb-0">Il coinvolgimento della famiglia: sanare le ferite emotive, riallacciare il dialogo con figli e partner e ristabilire la fiducia reciproca.</p>
+          <h4 style="font-family: var(--font-serif); color: #FFFFFF; font-weight: 800; font-size: 1.2rem;">Riconciliazione dei Legami Familiari</h4>
+          <p style="color: #a1a1aa; font-size: 0.88rem; line-height: 1.55; margin-bottom: 0;">
+            Coinvolgimento del partner e dei figli: guarire le ferite del passato, sostituire i risentimenti con un patto di lealtà e ricostruire la credibilità giorno dopo giorno.
+          </p>
         </div>
       </div>
 
       <div class="col-md-6">
-        <div class="p-4 h-100 rounded-4" style="background: var(--color-surface-card); border: 1px solid rgba(255,255,255,0.08);">
+        <div class="lux-metallic-card p-4 h-100">
           <div class="d-flex align-items-center gap-2 mb-3">
-            <span class="badge rounded-pill bg-warning text-dark fw-bold px-3 py-1">FASE 4</span>
-            <span class="text-muted small">MESE 4 - 6</span>
+            <span class="dx-ticker-badge" style="margin-bottom:0;">FASE 4</span>
+            <span style="color: #71717a; font-size: 0.78rem; font-weight: 700;">MESE 4 - 6</span>
           </div>
-          <h4 style="font-family: var(--font-serif); color: #fff;">Consolidamento & Nuova Identità</h4>
-          <p class="text-muted small mb-0">La sobrietà non è più una privazione o una battaglia: diventa la condizione naturale di benessere in cui esprimere il proprio potenziale professionale e personale.</p>
+          <h4 style="font-family: var(--font-serif); color: #FFFFFF; font-weight: 800; font-size: 1.2rem;">Consolidamento & Sovranità Personale</h4>
+          <p style="color: #a1a1aa; font-size: 0.88rem; line-height: 1.55; margin-bottom: 0;">
+            La sobrietà non è più un tabù o uno sforzo: è la tua armatura invisibile. Mente lucida, massima produttività sul lavoro e gestione impeccabile delle emozioni e degli stress test.
+          </p>
         </div>
       </div>
 
       <div class="col-md-6">
-        <div class="p-4 h-100 rounded-4" style="background: var(--color-surface-card); border: 1px solid var(--color-surface-border);">
+        <div class="lux-metallic-card p-4 h-100" style="border-color: rgba(212,175,55,0.6);">
           <div class="d-flex align-items-center gap-2 mb-3">
-            <span class="badge rounded-pill bg-warning text-dark fw-bold px-3 py-1">FASE 5</span>
-            <span class="text-warning small fw-bold">CONTINUA</span>
+            <span class="dx-ticker-badge" style="margin-bottom:0; background: rgba(212,175,55,0.25); color: #FFF2B2;">FASE 5</span>
+            <span style="color: #D4AF37; font-size: 0.78rem; font-weight: 800;">CONTINUITÀ & CRESCITA</span>
           </div>
-          <h4 style="font-family: var(--font-serif); color: var(--color-gold-light);">L'Evoluzione in Servitore-Insegnante</h4>
-          <p class="text-muted small mb-0">Academy e formazione per diventare facilitatore di Club: donare l'esperienza superata ad altre famiglie che stanno vivendo ciò che tu hai già vinto.</p>
+          <h4 style="font-family: var(--font-serif); color: #FFFFFF; font-weight: 800; font-size: 1.2rem;">Da Ex-Vittima a Servitore-Insegnante</h4>
+          <p style="color: #a1a1aa; font-size: 0.88rem; line-height: 1.55; margin-bottom: 0;">
+            Partecipazione ai moduli SAT e abilitazione come facilitatore: donare la propria testimonianza alle nuove famiglie, diventando un faro di speranza viva nel tuo territorio.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA Box -->
-  <section class="text-center my-5 p-4 rounded-4" style="background: rgba(201,168,76,0.06); border: 1px solid var(--color-surface-border);">
-    <h3 style="font-family: var(--font-serif); color: #fff; margin-bottom: 0.5rem;">Fai il primo passo oggi stesso</h3>
-    <p class="text-muted mx-auto mb-4" style="max-width: 580px;">
-      Non devi decidere per tutta la vita. Devi solo decidere di farti ascoltare stasera.
+  <section class="lux-metallic-card text-center my-5 p-4 p-md-5" style="border: 1px solid rgba(212,175,55,0.35);">
+    <div class="gold-glow-badge mb-2">
+      <?=dx_icon('compass', '', 14)?>
+      <span>IL TUO MOMENTO È ADESSO</span>
+    </div>
+    <h3 style="font-family: var(--font-serif); color: #FFFFFF; margin-bottom: 0.75rem; font-size: 1.8rem;">
+      Non devi promettere nulla per sempre. Devi solo sederti stasera.
+    </h3>
+    <p style="color: #a1a1aa; max-width: 600px; margin: 0 auto 1.5rem; font-size: 1rem; line-height: 1.6;">
+      Unisciti a una riunione di Club vicino a te o inizia con il nostro protocollo digitale guidato. Nessun modulo burocratico da compilare, solo accoglienza vera.
     </p>
     <div class="d-flex justify-content-center gap-3 flex-wrap">
-      <a href="world-club-explorer.php" class="btn btn-warning fw-bold px-4 py-2" style="border-radius: 50px; background: var(--color-gold); color: #111; text-decoration: none;">
-        Trova un Club nella tua zona ➔
+      <a href="world-club-explorer.php" class="btn primary" style="background: linear-gradient(135deg, #FFF2B2, #D4AF37); color: #070709; font-weight: 800; padding: 0 24px; text-decoration: none;">
+        <?=dx_icon('map-pin', '', 16)?>
+        <span style="margin-left:6px;">Trova un Club nella tua zona</span>
       </a>
-      <a href="offers.php" class="btn btn-outline-light px-4 py-2" style="border-radius: 50px; text-decoration: none;">
-        Vedi le Offerte M.A.G.I.C.
+      <a href="offers.php" class="btn" style="border-color: rgba(212,175,55,0.4); color: #FFFFFF; font-weight: 700; text-decoration: none; padding: 0 22px;">
+        <?=dx_icon('sparkles', '', 16)?>
+        <span style="margin-left:6px;">Vedi le Offerte M.A.G.I.C.</span>
       </a>
     </div>
   </section>

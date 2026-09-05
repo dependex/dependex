@@ -1,97 +1,123 @@
 <?php 
-$pageTitle = 'Aiuto e Supporto Immediato';
-$metaDesc = 'Non sei solo e non sei giudicato. Spazio protetto per persone e famiglie: orientamento immediato, Club vicini e supporto empatico.';
+$pageTitle = 'Aiuto e Supporto Immediato · Zero Giudizio';
+$metaDesc = 'Non sei solo e non sei giudicato. Spazio protetto in puro oro e nero per persone e famiglie: orientamento immediato, 542 Club e supporto empatico.';
 require '_header.php';
 ?>
 
-<section class="hero compact" style="text-align:center;padding:3rem 1.5rem 2rem;">
-  <div class="eyebrow" style="color:var(--lux-gold);letter-spacing:0.12em;">UNO SPAZIO PROTETTO · ZERO GIUDIZIO</div>
-  <h1 style="font-size:clamp(1.8rem, 3.5vw, 2.6rem);font-weight:800;letter-spacing:-0.03em;margin:0.6rem 0 1rem;">
-    Non sei un problema da aggiustare.<br>
-    <span style="background:linear-gradient(135deg,var(--lux-gold),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
-      Sei una persona che merita di ritrovare la pace.
+<section class="hero compact" style="text-align:center;padding:3.5rem 1.5rem 2.5rem;">
+  <div class="gold-glow-badge mb-3">
+    <?=dx_icon('shield', '', 14)?>
+    <span>UNO SPAZIO DI SOVRANITÀ PERSONALE · ZERO MORALE</span>
+  </div>
+  <h1 style="font-size:clamp(1.9rem, 3.8vw, 2.8rem);font-weight:800;letter-spacing:-0.03em;margin:0.6rem 0 1rem;color:#FFFFFF;">
+    Basta combattere una guerra solitaria.<br>
+    <span class="gold-foil-text">
+      Non sei un problema da riparare, sei una persona da rialzare.
     </span>
   </h1>
-  <p style="max-width:680px;margin:0 auto;color:var(--text-muted);font-size:1.05rem;line-height:1.6;">
-    Qualunque sia il peso che porti sul cuore oggi — da solo o per qualcuno che ami disperatamente — 
-    sappi che in questo momento non devi dimostrare nulla a nessuno. Qui trovi ascolto autentico, 
-    riservatezza assoluta e un percorso passo dopo passo per tornare a respirare.
+  <p style="max-width:700px;margin:0 auto;color:#d1d5db;font-size:1.1rem;line-height:1.7;">
+    Siamo onesti: quante volte hai detto <em>"questa è l'ultima volta"</em>? E quante volte ti sei svegliato con quella morsa al petto e la vergogna negli occhi? 
+    Smettila di fustigarti con sensi di colpa che non servono a nulla. Qui trovi chi conosce a memoria ogni scusa della mente, perché ci è già passato e l'ha disarmata.
   </p>
 </section>
 
-<!-- 3 SITUAZIONI DI PARTENZA -->
-<section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:2rem 0;">
-  <div class="lux-card" style="display:flex;flex-direction:column;justify-content:space-between;">
+<!-- 3 SITUAZIONI DI PARTENZA CON ICONE SVG E CARDS METALLICHE -->
+<section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;margin:2rem 0;">
+  <div class="lux-metallic-card p-4" style="display:flex;flex-direction:column;justify-content:space-between;">
     <div>
-      <div style="font-size:2rem;margin-bottom:0.75rem;">🕊️</div>
-      <span class="eyebrow" style="color:var(--lux-gold);">PER TE STESSO</span>
-      <h3 style="margin:0.4rem 0 0.8rem;font-size:1.25rem;">"Voglio smettere di svegliarmi con l'angoscia"</h3>
-      <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.55;">
-        Se sei stanco di nascondere bottiglie, inventare scuse o promettere che "da lunedì smetto", non sei debole: sei solo intrappolato in un circuito che da soli è impossibile rompere. Ti accogliamo esattamente come sei.
+      <div style="color:#D4AF37;margin-bottom:1rem;"><?=dx_icon('feather', '', 36)?></div>
+      <span class="dx-ticker-badge">PER TE STESSO</span>
+      <h3 style="margin:0.5rem 0 0.8rem;font-size:1.3rem;color:#FFFFFF;font-family:var(--font-serif);">"Voglio smettere di svegliarmi con l'angoscia"</h3>
+      <p style="color:#a1a1aa;font-size:0.92rem;line-height:1.6;">
+        Se sei stanco di nascondere le prove, inventare giustificazioni al lavoro o sentirti in trappola, non sei debole: sei solo schiavo di una molecola che fa il suo lavoro neurochimico. Nei Club non trovi inquisitori, ma pari pronti a tenderti la mano.
       </p>
     </div>
     <div style="margin-top:1.5rem;">
-      <a class="btn primary" href="world-club-explorer.php" style="width:100%;text-align:center;">Trova una sedia nel Club</a>
+      <a class="btn primary" href="world-club-explorer.php" style="width:100%;text-align:center;background:linear-gradient(135deg, #FFF2B2, #D4AF37);color:#070709;font-weight:800;">
+        <?=dx_icon('map-pin', '', 16)?>
+        <span style="margin-left:6px;">Trova una sedia nel Club</span>
+      </a>
     </div>
   </div>
 
-  <div class="lux-card" style="display:flex;flex-direction:column;justify-content:space-between;">
+  <div class="lux-metallic-card p-4" style="display:flex;flex-direction:column;justify-content:space-between;">
     <div>
-      <div style="font-size:2rem;margin-bottom:0.75rem;">👨‍👩‍👧‍👦</div>
-      <span class="eyebrow" style="color:var(--lux-gold);">PER LA FAMIGLIA</span>
-      <h3 style="margin:0.4rem 0 0.8rem;font-size:1.25rem;">"Amo qualcuno che si sta distruggendo"</h3>
-      <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.55;">
-        La rabbia, la paura per i figli, le notti insonni ad aspettare che rientri. Nel Metodo Hudolin la famiglia non è spettatrice impotente, ma parte attiva e protagonista della rinascita. Puoi iniziare anche se lui o lei rifiuta ancora di venire.
+      <div style="color:#D4AF37;margin-bottom:1rem;"><?=dx_icon('heart-handshake', '', 36)?></div>
+      <span class="dx-ticker-badge">PER LA FAMIGLIA</span>
+      <h3 style="margin:0.5rem 0 0.8rem;font-size:1.3rem;color:#FFFFFF;font-family:var(--font-serif);">"Amo qualcuno che si sta distruggendo"</h3>
+      <p style="color:#a1a1aa;font-size:0.92rem;line-height:1.6;">
+        Le notti insonni ad aspettare il rumore della chiave nella toppa, la paura per i figli, la rabbia che si mescola alla disperazione. Nel Metodo Hudolin la famiglia non è un pubblico impotente: è il fulcro del cambiamento. Puoi venire anche da solo.
       </p>
     </div>
     <div style="margin-top:1.5rem;">
-      <a class="btn" href="metodo.php" style="width:100%;text-align:center;">Scopri il Metodo per le Famiglie</a>
+      <a class="btn" href="metodo.php" style="width:100%;text-align:center;border-color:rgba(212,175,55,0.4);color:#FFFFFF;font-weight:700;">
+        <?=dx_icon('feather', '', 16)?>
+        <span style="margin-left:6px;">Il Metodo per i Familiari</span>
+      </a>
     </div>
   </div>
 
-  <div class="lux-card" style="display:flex;flex-direction:column;justify-content:space-between;">
+  <div class="lux-metallic-card p-4" style="display:flex;flex-direction:column;justify-content:space-between;">
     <div>
-      <div style="font-size:2rem;margin-bottom:0.75rem;">✨</div>
-      <span class="eyebrow" style="color:var(--lux-gold);">AIUTO IMMEDIATO 24/7</span>
-      <h3 style="margin:0.4rem 0 0.8rem;font-size:1.25rem;">"Ho bisogno di parlare con qualcuno adesso"</h3>
-      <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.55;">
-        Se hai bisogno di sfogarti in anonimato ora, puoi dialogare con <b>Cortex AI</b>: addestrato sull'approccio ecologico-sociale Hudolin, non ti giudicherà mai e ti aiuterà a fare chiarezza nel caos.
+      <div style="color:#D4AF37;margin-bottom:1rem;"><?=dx_icon('brain', '', 36)?></div>
+      <span class="dx-ticker-badge">ASCOLTO H24 ANONIMO</span>
+      <h3 style="margin:0.5rem 0 0.8rem;font-size:1.3rem;color:#FFFFFF;font-family:var(--font-serif);">"Ho bisogno di chiarirmi la mente subito"</h3>
+      <p style="color:#a1a1aa;font-size:0.92rem;line-height:1.6;">
+        Se la crisi è adesso e non vuoi esporti con nessuno, dialoga con <b>Cortex AI</b>. È addestrato sui principi ecologico-sociali di Vladimir Hudolin: non ti darà giudizi morali, ma ti aiuterà a smontare il panico un minuto alla volta.
       </p>
     </div>
     <div style="margin-top:1.5rem;">
-      <a class="btn" href="cortex.php" style="width:100%;text-align:center;border-color:var(--lux-gold);">Parla con Cortex AI</a>
+      <a class="btn" href="cortex.php" style="width:100%;text-align:center;border-color:rgba(212,175,55,0.4);color:#D4AF37;font-weight:700;">
+        <?=dx_icon('brain', '', 16)?>
+        <span style="margin-left:6px;">Parla con Cortex AI</span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- EMERGENZA MEDICA VS SUPPORTO RELAZIONALE -->
-<section class="card danger-soft" style="border-left:4px solid #ef4444;margin:2.5rem 0;">
-  <h3 style="margin-top:0;display:flex;align-items:center;gap:0.5rem;">
-    <span>🚨</span> Se c'è un'emergenza medica o pericolo imminente
+<!-- SOCCORSO MEDICO D'URGENZA VS PERCORSO ECOLOGICO-SOCIALE -->
+<section class="lux-metallic-card p-4 my-5" style="border-left:4px solid #ef4444;background:#101116;">
+  <h3 style="margin-top:0;display:flex;align-items:center;gap:0.75rem;color:#FFFFFF;font-size:1.2rem;">
+    <span style="color:#ef4444;"><?=dx_icon('alert-triangle', '', 22)?></span>
+    <span>In caso di emergenza medica acuta o pericolo per l'incolumità</span>
   </h3>
-  <p style="font-size:0.95rem;line-height:1.55;color:var(--text-main);">
-    Questa piattaforma e la rete dei Club offrono sostegno comunitario ed ecologico-sociale continuativo, ma <b>non sostituiscono il soccorso medico d'urgenza o un reparto ospedaliero in caso di crisi acuta o delirium</b>.
+  <p style="font-size:0.95rem;line-height:1.6;color:#a1a1aa;margin-bottom:1rem;">
+    I Club Alcologici Territoriali offrono una comunità relazionale continuativa e permanente nel tempo, ma <b>non possono e non devono sostituire il soccorso ospedaliero d'urgenza in caso di crisi di astinenza acuta o pericolo clinico imminente</b>.
   </p>
-  <div style="display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1rem;font-size:1rem;">
-    <div><b>Numero Unico Europeo Emergenze:</b> <a href="tel:112" style="font-weight:700;color:#ef4444;text-decoration:underline;">112</a></div>
-    <div><b>Telefono Verde Alcol ISS:</b> <a href="tel:800632000" style="font-weight:700;color:var(--brand-green);text-decoration:underline;">800 632 000</a> (Lun-Ven 10-15)</div>
+  <div style="display:flex;flex-wrap:wrap;gap:1.5rem;font-size:0.95rem;">
+    <div style="color:#FFFFFF;"><b>Numero Unico Europeo Emergenze:</b> <a href="tel:112" style="font-weight:800;color:#ef4444;text-decoration:underline;">112</a></div>
+    <div style="color:#FFFFFF;"><b>Telefono Verde Alcol ISS:</b> <a href="tel:800632000" style="font-weight:800;color:#D4AF37;text-decoration:underline;">800 632 000</a> (Lun-Ven 10-15)</div>
   </div>
 </section>
 
 <!-- CONTATTO DIRETTO & RISERVATEZZA -->
-<section class="lux-card" style="margin-bottom:3rem;background:linear-gradient(135deg,rgba(16,36,64,0.7),rgba(7,27,51,0.9));">
-  <div style="max-width:700px;">
-    <span class="eyebrow" style="color:var(--lux-gold);">CONTATTO DIRETTO & ORIENTAMENTO TERRITORIALE</span>
-    <h2 style="font-size:1.5rem;margin:0.5rem 0 0.8rem;">Vuoi che ti mettiamo in contatto noi con il Club giusto?</h2>
-    <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;">
-      Scrivici in totale riservatezza. Un Servitore-Insegnante o un facilitatore territoriale ti risponderà con tatto e senza alcuna insistenza commerciale o burocratica.
+<section class="lux-metallic-card p-4 p-md-5 mb-5" style="background:radial-gradient(ellipse at 80% 20%, rgba(212,175,55,0.08) 0%, #070709 70%);">
+  <div style="max-width:720px;">
+    <div class="gold-glow-badge mb-2">
+      <?=dx_icon('compass', '', 14)?>
+      <span>ACCOGLIENZA TERRITORIALE DIRETTA</span>
+    </div>
+    <h2 style="font-size:1.6rem;margin:0.5rem 0 0.8rem;color:#FFFFFF;font-family:var(--font-serif);">
+      Preferisci che sia un facilitatore a indicarti il Club giusto?
+    </h2>
+    <p style="color:#a1a1aa;font-size:0.96rem;line-height:1.65;">
+      Inviaci un messaggio in totale anonimato. Nessun bot di vendita, nessuna pressione commerciale. Ti risponderà un Servitore-Insegnante con l'esperienza necessaria per darti le coordinate esatte.
     </p>
     <p style="font-size:1.15rem;margin:1.2rem 0 0;">
-      ✉ <a href="mailto:info@dependex.social" style="font-weight:700;color:var(--lux-gold);text-decoration:none;border-bottom:1px solid var(--lux-gold);"><b>info@dependex.social</b></a>
+      <a href="mailto:info@dependex.social" style="font-weight:700;color:#D4AF37;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
+        <?=dx_icon('mail', '', 18)?>
+        <span>info@dependex.social</span>
+      </a>
     </p>
     <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap;">
-      <a class="btn primary" href="offers.php">Scopri il Protocollo Completo</a>
-      <a class="btn" href="world-map.php">Esplora la Mappa dei 542 Club</a>
+      <a class="btn primary" href="offers.php" style="background:linear-gradient(135deg, #FFF2B2, #D4AF37);color:#070709;font-weight:800;">
+        <?=dx_icon('sparkles', '', 16)?>
+        <span style="margin-left:6px;">Scopri il Protocollo M.A.G.I.C.</span>
+      </a>
+      <a class="btn" href="world-map.php" style="border-color:rgba(212,175,55,0.4);color:#FFFFFF;">
+        <?=dx_icon('compass', '', 16)?>
+        <span style="margin-left:6px;">Esplora i 542 Club</span>
+      </a>
     </div>
   </div>
 </section>

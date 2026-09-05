@@ -8,22 +8,31 @@ require '_header.php';
 require '_dependex-world-map.php';
 ?>
 
-<section class="hero compact" style="text-align:center;padding:2.5rem 1.5rem 1.5rem;">
-  <div class="eyebrow" style="color:var(--lux-gold);letter-spacing:0.12em;">RETE ECOLOGICO-SOCIALE HUDOLIN · 542 CLUB</div>
-  <h1 style="font-size:clamp(1.7rem, 3.2vw, 2.4rem);font-weight:800;letter-spacing:-0.02em;margin:0.5rem 0 0.8rem;">
+<section class="hero compact" style="text-align:center;padding:3rem 1.5rem 2rem;">
+  <div class="gold-glow-badge mb-3">
+    <?=dx_icon('compass', '', 14)?>
+    <span>RETE ECOLOGICO-SOCIALE HUDOLIN · 542 CLUB VIVI</span>
+  </div>
+  <h1 style="font-size:clamp(1.8rem, 3.5vw, 2.6rem);font-weight:800;letter-spacing:-0.02em;margin:0.5rem 0 0.8rem;color:#FFFFFF;">
     Trova il Club più vicino a casa tua.<br>
-    <span style="background:linear-gradient(135deg,var(--lux-gold),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+    <span class="gold-foil-text">
       C’è una sedia pronta per te, senza formalità né burocrazia.
     </span>
   </h1>
-  <p style="max-width:680px;margin:0 auto;color:var(--text-muted);font-size:1rem;line-height:1.6;">
-    Nei Club Alcologici Territoriali non ci sono cartelle cliniche esposte o diagnosi punitive. C’è un cerchio di persone e famiglie che hanno conosciuto la stessa sofferenza e che oggi si sostengono a vicenda, una settimana alla volta.
+  <p style="max-width:700px;margin:0 auto;color:#d1d5db;font-size:1.05rem;line-height:1.65;">
+    Nei Club Alcologici Territoriali non ci sono cartelle cliniche esposte né diagnosi punitive. C’è un cerchio di persone e famiglie che hanno conosciuto la stessa sofferenza e che oggi camminano insieme, una settimana alla volta.
   </p>
   
-  <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;font-size:0.88rem;color:var(--text-main);">
-    <span>✓ <b>Completamente Gratuito</b></span>
-    <span>✓ <b>Aperto a Famigliari e Amici</b></span>
-    <span>✓ <b>Riservatezza & Dignità Assoluta</b></span>
+  <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:1.5rem;font-size:0.9rem;color:#D4AF37;">
+    <span style="display:inline-flex;align-items:center;gap:6px;">
+      <?=dx_icon('check-circle', '', 16)?> <b style="color:#FFFFFF;">Completamente Gratuito</b>
+    </span>
+    <span style="display:inline-flex;align-items:center;gap:6px;">
+      <?=dx_icon('check-circle', '', 16)?> <b style="color:#FFFFFF;">Aperto a Famigliari e Amici</b>
+    </span>
+    <span style="display:inline-flex;align-items:center;gap:6px;">
+      <?=dx_icon('check-circle', '', 16)?> <b style="color:#FFFFFF;">Riservatezza & Dignità Assoluta</b>
+    </span>
   </div>
 </section>
 
@@ -31,14 +40,22 @@ require '_dependex-world-map.php';
   <?=dependex_world_map_card('70vh')?>
 </div>
 
-<section class="lux-card" style="margin:2.5rem 0 3rem;text-align:center;">
-  <h3 style="margin-top:0;font-size:1.2rem;">Non riesci a trovare un Club nella tua zona o preferisci un primo contatto online?</h3>
-  <p style="color:var(--text-muted);max-width:620px;margin:0.5rem auto 1.2rem;font-size:0.95rem;">
-    Oltre alla presenza fisica sul territorio, puoi iniziare subito con il nostro Starter Kit digitale o dialogare in modo riservato con un facilitatore della community.
+<section class="lux-metallic-card p-4 p-md-5 my-5 text-center" style="border: 1px solid rgba(212,175,55,0.3);">
+  <h3 style="margin-top:0;font-size:1.4rem;color:#FFFFFF;font-family:var(--font-serif);">
+    Non riesci a raggiungere un Club fisico o preferisci un primo contatto riservato?
+  </h3>
+  <p style="color:#a1a1aa;max-width:640px;margin:0.5rem auto 1.5rem;font-size:0.96rem;line-height:1.6;">
+    Oltre alla presenza fisica sul territorio, puoi iniziare subito con il nostro Starter Kit digitale o dialogare in totale anonimato con un Servitore-Insegnante della rete.
   </p>
   <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
-    <a class="btn primary" href="offers.php">Scopri il Percorso Guidato</a>
-    <a class="btn" href="help.php">Richiedi Orientamento Riservato</a>
+    <a class="btn primary" href="offers.php" style="background:linear-gradient(135deg, #FFF2B2, #D4AF37);color:#070709;font-weight:800;padding:0 24px;">
+      <?=dx_icon('sparkles', '', 16)?>
+      <span style="margin-left:6px;">Scopri il Protocollo M.A.G.I.C.</span>
+    </a>
+    <a class="btn" href="help.php" style="border-color:rgba(212,175,55,0.4);color:#FFFFFF;font-weight:700;padding:0 22px;">
+      <?=dx_icon('shield', '', 16)?>
+      <span style="margin-left:6px;">Richiedi Orientamento Riservato</span>
+    </a>
   </div>
 </section>
 

@@ -7,30 +7,52 @@ require '_header.php';
 <section class="cortex-head">
   <div class="d-flex justify-content-between align-items-center mb-2">
     <div></div>
-    <a href="cortex-dashboard.php" class="btn btn-sm btn-outline-warning" style="border-radius:20px;">📊 Dashboard Cervello</a>
+    <a href="cortex-dashboard.php" class="btn btn-sm btn-outline-warning" style="border-radius:20px;display:inline-flex;align-items:center;gap:6px;">
+      <?=dx_icon('activity', '', 14)?> <span>Dashboard Cervello</span>
+    </a>
   </div>
-  <div class="cortex-orb">🧠</div>
-  <h1>Ciao <?=h($u['display_name'])?>.</h1>
-  <p>Cortex Company Brain · Assistente cognitivo ed esecutivo dell'ecosistema.</p>
+  <div class="cortex-orb" style="background: radial-gradient(circle at 35% 30%, #FFF2B2, #D4AF37 40%, #070709 90%); box-shadow: 0 0 30px rgba(212,175,55,0.3); color: #070709;">
+    <?=dx_icon('brain', '', 42)?>
+  </div>
+  <h1 style="color:#FFFFFF;font-family:var(--font-serif);margin-top:12px;">Ciao <?=h($u['display_name'])?>.</h1>
+  <p style="color:#a1a1aa;">Cortex Company Brain · Assistente cognitivo ed esecutivo dell'ecosistema.</p>
 </section>
 
 <div class="prompt-grid">
-  <button data-fill="Vorrei parlare di come sto oggi">💬 Parla con me</button>
-  <button data-fill="Trova il Club più vicino a me">🤝 Trova Club</button>
-  <button data-fill="Mostrami l'impronta aziendale">🧠 Impronta</button>
-  <button data-fill="Mappa del tesoro e automazioni">🗺️ Mappa Tesoro</button>
-  <button data-fill="Attiva il primo ingranaggio">⚙️ 1° Ingranaggio</button>
-  <button data-fill="Spiegami il metodo Hudolin">🎓 Metodo</button>
+  <button data-fill="Vorrei parlare di come sto oggi" style="display:flex;align-items:center;gap:8px;">
+    <?=dx_icon('message-circle', '', 16)?> <span>Parla con me</span>
+  </button>
+  <button data-fill="Trova il Club più vicino a me" style="display:flex;align-items:center;gap:8px;">
+    <?=dx_icon('map-pin', '', 16)?> <span>Trova Club</span>
+  </button>
+  <button data-fill="Mostrami l'impronta aziendale" style="display:flex;align-items:center;gap:8px;">
+    <?=dx_icon('compass', '', 16)?> <span>Impronta</span>
+  </button>
+  <button data-fill="Mappa del tesoro e automazioni" style="display:flex;align-items:center;gap:8px;">
+    <?=dx_icon('sparkles', '', 16)?> <span>Mappa Tesoro</span>
+  </button>
+  <button data-fill="Attiva il primo ingranaggio" style="display:flex;align-items:center;gap:8px;">
+    <?=dx_icon('zap', '', 16)?> <span>1° Ingranaggio</span>
+  </button>
+  <button data-fill="Spiegami il metodo Hudolin" style="display:flex;align-items:center;gap:8px;">
+    <?=dx_icon('feather', '', 16)?> <span>Metodo</span>
+  </button>
 </div>
 
-<section class="chat-shell">
+<section class="chat-shell" style="border: 1px solid rgba(212,175,55,0.25); background: #101116;">
   <div id="chatMessages">
-    <div class="msg ai">Sono Cortex, il cervello digitale di DEPENDEX e OLTRE. Conosco la struttura, i Club, l'Academy, le procedure e le automazioni dell'ecosistema. Come posso aiutarti oggi?</div>
+    <div class="msg ai" style="background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.2); color: #FFFFFF;">
+      Sono Cortex, il Company Brain di DEPENDEX. Conosco la struttura, i Club, l'Academy, le procedure e la Scala Valore dell'ecosistema. Come posso orientarti oggi?
+    </div>
   </div>
-  <form id="chatForm">
-    <button type="button" id="voiceBtn" aria-label="Parla">🎙</button>
-    <input id="chatInput" maxlength="1000" placeholder="Chiedi a Cortex…" autocomplete="off">
-    <button aria-label="Invia">➤</button>
+  <form id="chatForm" style="border-top: 1px solid rgba(212,175,55,0.2);">
+    <button type="button" id="voiceBtn" aria-label="Parla" style="background:transparent;color:#D4AF37;border:0;">
+      <?=dx_icon('message-circle', '', 18)?>
+    </button>
+    <input id="chatInput" maxlength="1000" placeholder="Chiedi a Cortex…" autocomplete="off" style="background:transparent;color:#FFFFFF;">
+    <button aria-label="Invia" style="background:linear-gradient(135deg, #FFF2B2, #D4AF37);color:#070709;border:0;">
+      <?=dx_icon('arrow-right', '', 18)?>
+    </button>
   </form>
 </section>
 

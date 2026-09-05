@@ -103,7 +103,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           <?php endforeach;?>
         </select>
       <?php endif;?>
-      <button type="button" class="theme-toggle" aria-label="Cambia tema">🌓</button>
+      <button type="button" class="theme-toggle" aria-label="Cambia tema"><?=dx_icon('sun', '', 18)?></button>
       <?php if($u):?>
         <a class="avatar" href="profile.php" aria-label="Profilo"><?=h(mb_substr($u['display_name'],0,1))?></a>
       <?php else:?>
@@ -139,42 +139,42 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         </div>
         <nav class="drawer-nav-group">
           <span class="drawer-section-title">QUOTIDIANO</span>
-          <a href="app.php" class="drawer-link <?=$curScript==='app.php'?'active':''?>">⌂ Home Dashboard</a>
-          <a href="checkin.php" class="drawer-link <?=$curScript==='checkin.php'?'active':''?>">✍ Daily Check-in (+5 DRX)</a>
-          <a href="journal.php" class="drawer-link <?=$curScript==='journal.php'?'active':''?>">📖 Diario & Gratitudine</a>
-          <a href="sobriety.php" class="drawer-link <?=$curScript==='sobriety.php'?'active':''?>">🌱 Sobrietà & Traguardi</a>
+          <a href="app.php" class="drawer-link <?=$curScript==='app.php'?'active':''?>"><?=dx_icon('home','',18)?> Home Dashboard</a>
+          <a href="checkin.php" class="drawer-link <?=$curScript==='checkin.php'?'active':''?>"><?=dx_icon('edit','',18)?> Daily Check-in (+5 DRX)</a>
+          <a href="journal.php" class="drawer-link <?=$curScript==='journal.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Diario & Gratitudine</a>
+          <a href="sobriety.php" class="drawer-link <?=$curScript==='sobriety.php'?'active':''?>"><?=dx_icon('activity','',18)?> Sobrietà & Traguardi</a>
         </nav>
         <nav class="drawer-nav-group">
           <span class="drawer-section-title">COMUNITÀ & APPRENDIMENTO</span>
-          <a href="club.php" class="drawer-link <?=$curScript==='club.php'?'active':''?>">🤝 Il mio Club</a>
-          <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>">🌍 Mappa Mondiale 2D/3D</a>
-          <a href="academy.php" class="drawer-link <?=$curScript==='academy.php'?'active':''?>">🎓 Academy Corsi</a>
-          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>">💎 Offerte & Percorsi</a>
-          <a href="events.php" class="drawer-link <?=$curScript==='events.php'?'active':''?>">📅 Calendario Eventi</a>
-          <a href="dao.php" class="drawer-link <?=$curScript==='dao.php'?'active':''?>">🗳 DAO Community</a>
-          <a href="cortex.php" class="drawer-link <?=$curScript==='cortex.php'?'active':''?>">✨ Cortex AI</a>
+          <a href="club.php" class="drawer-link <?=$curScript==='club.php'?'active':''?>"><?=dx_icon('users','',18)?> Il mio Club</a>
+          <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>"><?=dx_icon('compass','',18)?> Mappa Mondiale 2D/3D</a>
+          <a href="academy.php" class="drawer-link <?=$curScript==='academy.php'?'active':''?>"><?=dx_icon('academic','',18)?> Academy Corsi</a>
+          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('sparkles','',18)?> Offerte & Percorsi</a>
+          <a href="events.php" class="drawer-link <?=$curScript==='events.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Calendario Eventi</a>
+          <a href="dao.php" class="drawer-link <?=$curScript==='dao.php'?'active':''?>"><?=dx_icon('scale','',18)?> DAO Community</a>
+          <a href="cortex.php" class="drawer-link <?=$curScript==='cortex.php'?'active':''?>"><?=dx_icon('brain','',18)?> Cortex AI</a>
         </nav>
         <nav class="drawer-nav-group">
           <span class="drawer-section-title">PROFILO & STRUMENTI</span>
-          <a href="profile.php" class="drawer-link <?=$curScript==='profile.php'?'active':''?>">👤 Il mio Profilo</a>
-          <a href="rank.php" class="drawer-link <?=$curScript==='rank.php'?'active':''?>">🏆 Rank DRX & Privilegi</a>
-          <a href="certificates.php" class="drawer-link <?=$curScript==='certificates.php'?'active':''?>">📜 Certificati</a>
-          <a href="lifestyle.php" class="drawer-link <?=$curScript==='lifestyle.php'?'active':''?>">🌿 Lifestyle Tracker</a>
-          <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>">🆘 Supporto & Aiuto</a>
-          <a href="logout.php" class="drawer-link drawer-logout">🚪 Esci dall'App</a>
+          <a href="profile.php" class="drawer-link <?=$curScript==='profile.php'?'active':''?>"><?=dx_icon('users','',18)?> Il mio Profilo</a>
+          <a href="rank.php" class="drawer-link <?=$curScript==='rank.php'?'active':''?>"><?=dx_icon('trophy','',18)?> Rank DRX & Privilegi</a>
+          <a href="certificates.php" class="drawer-link <?=$curScript==='certificates.php'?'active':''?>"><?=dx_icon('award','',18)?> Certificati</a>
+          <a href="lifestyle.php" class="drawer-link <?=$curScript==='lifestyle.php'?'active':''?>"><?=dx_icon('feather','',18)?> Lifestyle Tracker</a>
+          <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>"><?=dx_icon('shield','',18)?> Supporto & Aiuto</a>
+          <a href="logout.php" class="drawer-link drawer-logout"><?=dx_icon('log-out','',18)?> Esci dall'App</a>
         </nav>
       <?php else:?>
         <nav class="drawer-nav-group">
           <span class="drawer-section-title">NAVIGAZIONE</span>
-          <a href="index.php" class="drawer-link <?=$curScript==='index.php'?'active':''?>">⌂ Pagina Principale</a>
-          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>">💎 Offerte & Percorsi</a>
-          <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>">🌍 Mappa Mondiale Club</a>
-          <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'?'active':''?>">🔍 Cerca un Club</a>
-          <a href="academy-public.php" class="drawer-link <?=$curScript==='academy-public.php'?'active':''?>">🎓 Academy</a>
-          <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>">📅 Eventi</a>
-          <a href="metodo.php" class="drawer-link <?=$curScript==='metodo.php'?'active':''?>">✦ Metodo Hudolin</a>
-          <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>">🆘 Aiuto & Supporto</a>
-          <a href="privacy.php" class="drawer-link <?=$curScript==='privacy.php'?'active':''?>">🔐 Privacy & Sicurezza</a>
+          <a href="index.php" class="drawer-link <?=$curScript==='index.php'?'active':''?>"><?=dx_icon('home','',18)?> Pagina Principale</a>
+          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('sparkles','',18)?> Offerte & Percorsi</a>
+          <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>"><?=dx_icon('compass','',18)?> Mappa Mondiale Club</a>
+          <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> Cerca un Club</a>
+          <a href="academy-public.php" class="drawer-link <?=$curScript==='academy-public.php'?'active':''?>"><?=dx_icon('academic','',18)?> Academy</a>
+          <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Eventi</a>
+          <a href="metodo.php" class="drawer-link <?=$curScript==='metodo.php'?'active':''?>"><?=dx_icon('feather','',18)?> Metodo Hudolin</a>
+          <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>"><?=dx_icon('shield','',18)?> Aiuto & Supporto</a>
+          <a href="privacy.php" class="drawer-link <?=$curScript==='privacy.php'?'active':''?>"><?=dx_icon('lock','',18)?> Privacy & Sicurezza</a>
         </nav>
         <div style="margin-top:14px;">
           <a class="btn primary" href="login.php" style="width:100%;margin-bottom:8px;">Accedi</a>
@@ -183,7 +183,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
       <?php endif;?>
     </div>
     <div class="drawer-footer">
-      <button type="button" class="theme-toggle btn small" style="width:100%;margin-bottom:8px;border-radius:12px;">🌓 Cambia Tema</button>
+      <button type="button" class="theme-toggle btn small" style="width:100%;margin-bottom:8px;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:8px;"><?=dx_icon('sun','',16)?> Cambia Tema</button>
       <?php if(site_mode()==='DEPENDEX'):?>
         <select aria-label="Lingua" onchange="location.href='?lang='+this.value" class="lang-select" style="width:100%;">
           <?php foreach(supported_locales() as $l):?>
@@ -192,7 +192,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         </select>
       <?php endif;?>
       <div style="font-size:12px;text-align:center;margin-top:10px;">
-        <a href="mailto:info@dependex.social" style="color:var(--text-muted);text-decoration:none;font-weight:500;">✉ info@dependex.social</a>
+        <a href="mailto:info@dependex.social" style="color:var(--text-muted);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:6px;"><?=dx_icon('mail','',14)?> info@dependex.social</a>
       </div>
     </div>
   </aside>

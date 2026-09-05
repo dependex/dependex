@@ -1,26 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="DEPENDEX App Icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="DEPENDEX - Oro su Fondo Nero">
   <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#071B33"/>
-      <stop offset="100%" stop-color="#0C294D"/>
+    <!-- Jet Black Ultra Dark Surface -->
+    <linearGradient id="blackBase" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050507"/>
+      <stop offset="40%" stop-color="#0a0b0f"/>
+      <stop offset="100%" stop-color="#000000"/>
     </linearGradient>
-    <linearGradient id="greenGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#15803D"/>
-      <stop offset="50%" stop-color="#16A34A"/>
-      <stop offset="100%" stop-color="#22C55E"/>
+
+    <!-- 24K Luxury Metallic Gold Gradient -->
+    <linearGradient id="goldMetallic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF2B2"/>
+      <stop offset="25%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#AA7A1E"/>
+      <stop offset="75%" stop-color="#F3E5AB"/>
+      <stop offset="100%" stop-color="#8C6514"/>
     </linearGradient>
-    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EA580C"/>
-      <stop offset="60%" stop-color="#F97316"/>
-      <stop offset="100%" stop-color="#FDBA74"/>
+
+    <!-- Gold Specular Sheen Gradient -->
+    <linearGradient id="goldSheen" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#996515"/>
+      <stop offset="35%" stop-color="#E5C158"/>
+      <stop offset="65%" stop-color="#FFF8D6"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
     </linearGradient>
-    <linearGradient id="sunGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#22C55E"/>
-      <stop offset="50%" stop-color="#F97316"/>
-      <stop offset="100%" stop-color="#FBBF24"/>
-    </linearGradient>
-    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="12" result="blur"/>
+
+    <!-- Subtle Radial Gold Glow Filter -->
+    <radialGradient id="centerAura" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.25"/>
+      <stop offset="60%" stop-color="#D4AF37" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="metallicBloom" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -28,27 +40,32 @@
     </filter>
   </defs>
 
-  <!-- Squircle Base -->
-  <rect width="512" height="512" rx="128" fill="url(#bgGrad)"/>
+  <!-- Solid Deep Jet-Black Background -->
+  <rect width="512" height="512" rx="128" fill="url(#blackBase)"/>
   
-  <!-- Subtle Outer Ring of Listening -->
-  <circle cx="256" cy="235" r="170" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="4"/>
-  <circle cx="256" cy="235" r="140" fill="none" stroke="rgba(249,115,22,0.12)" stroke-width="2" stroke-dasharray="6 8"/>
+  <!-- Subtle Outer Metallic Gold Border -->
+  <rect x="6" y="6" width="500" height="500" rx="122" fill="none" stroke="url(#goldMetallic)" stroke-width="2.5" opacity="0.6"/>
 
-  <!-- Main Intersecting Vitality Arcs (Club & Listening Metaphor) -->
-  <!-- Green Arc (Life, Health, Growth, Sobriety) -->
-  <path d="M 150,290 C 120,210 150,140 220,110 C 290,80 370,120 380,190 C 390,260 320,330 256,330 C 200,330 170,290 150,290 Z" 
-        fill="none" stroke="url(#greenGrad)" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" filter="url(#softGlow)"/>
+  <!-- Radial Gold Atmosphere -->
+  <circle cx="256" cy="225" r="180" fill="url(#centerAura)"/>
 
-  <!-- Orange Arc (Warmth, Relationship, Dialogue, Sun) -->
-  <path d="M 362,180 C 392,260 362,330 292,360 C 222,390 142,350 132,280 C 122,210 192,140 256,140 C 312,140 342,180 362,180 Z" 
-        fill="none" stroke="url(#orangeGrad)" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+  <!-- Geometric Concentric Rings of Trust & Sovereignty -->
+  <circle cx="256" cy="225" r="145" fill="none" stroke="url(#goldMetallic)" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.4"/>
+  <circle cx="256" cy="225" r="165" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
 
-  <!-- Central Nexus Core (The Person & The Meeting) -->
-  <circle cx="256" cy="235" r="28" fill="url(#sunGlow)"/>
-  <circle cx="256" cy="235" r="14" fill="#FFFFFF"/>
+  <!-- Primary Metallic Gold Intersecting Arcs (Hudolin Ecological-Social Circle) -->
+  <path d="M 148,270 C 118,195 150,130 220,105 C 285,80 365,115 378,182 C 390,250 325,315 256,315 C 205,315 170,278 148,270 Z" 
+        fill="none" stroke="url(#goldMetallic)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" filter="url(#metallicBloom)"/>
 
-  <!-- Wordmark Bottom -->
-  <text x="256" y="445" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif" font-size="44" font-weight="900" letter-spacing="6" fill="#FFFFFF">DEPENDEX</text>
-  <text x="256" y="475" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif" font-size="16" font-weight="800" letter-spacing="4" fill="#F97316">AL CLUB. COL CLUB.</text>
+  <path d="M 364,178 C 394,250 362,315 295,342 C 228,368 148,332 135,268 C 122,200 188,135 256,135 C 308,135 342,172 364,178 Z" 
+        fill="none" stroke="url(#goldSheen)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+
+  <!-- Central Diamond / Core Nexus: Dignity & Lucid Mind -->
+  <polygon points="256,195 285,225 256,255 227,225" fill="url(#goldMetallic)"/>
+  <polygon points="256,207 274,225 256,243 238,225" fill="#FFFFFF"/>
+  <circle cx="256" cy="225" r="4" fill="#050507"/>
+
+  <!-- Sleek Luxury Typography (Pure Gold & White on Black) -->
+  <text x="256" y="435" text-anchor="middle" font-family="'Playfair Display', -apple-system, 'Inter', serif" font-size="44" font-weight="900" letter-spacing="8" fill="url(#goldMetallic)">DEPENDEX</text>
+  <text x="256" y="468" text-anchor="middle" font-family="'Inter', -apple-system, sans-serif" font-size="14" font-weight="700" letter-spacing="5" fill="#FFFFFF" opacity="0.85">AL CLUB. COL CLUB.</text>
 </svg>

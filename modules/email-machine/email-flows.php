@@ -467,14 +467,14 @@ function dr_email_profile_reward_ok_en($n, $rw){
    Chi non conferma resta fuori: reputazione del dominio protetta. */
 function dr_email_repermission(){
   /* COPY VERBATIM COWORK (spec 7.1). 5 email. from=info@ list=repermission tag=L1.
-     GDPR: e' l'UNICO flusso ammesso sui lead source=81plus-import / da_confermare.
+     GDPR: e' l'UNICO flusso ammesso sui lead source=network-import / da_confermare.
      Chi clicca una CTA in E1-E4 -> consenso=optin_confirmed (via optin.php) ed entra
      nei nurture; chi non clicca dopo la E5 -> status=silente, stop invii.
      Campi opzionali per email: 'pre' (preheader), 'cta' => ['txt','url']. */
   return [
    ['ogg'=>'{nome}, ci siamo conosciuti nel posto sbagliato',
     'pre'=>'Una cosa nuova, e la scelta e tua',
-    'corpo'=>"Ciao {nome},\nil tuo contatto e arrivato dal mondo 81+/della nostra rete. Nel frattempo e nato qualcosa di diverso: Destino Randagio — musica, storie e una community, Il Branco, per chi si sente un po' randagio.\nNon voglio scriverti se non ti va. Se ti incuriosisce, resta con un clic. Se no, nessun problema.\n{link}\nLa scelta resta tua. — Destino Randagio",
+    'corpo'=>"Ciao {nome},\nil tuo contatto e arrivato dalla nostra rete. Nel frattempo e nato qualcosa di diverso: Destino Randagio — musica, storie e una community, Il Branco, per chi si sente un po' randagio.\nNon voglio scriverti se non ti va. Se ti incuriosisce, resta con un clic. Se no, nessun problema.\n{link}\nLa scelta resta tua. — Destino Randagio",
     'cta'=>['txt'=>'Si, raccontami di piu']],
    ['ogg'=>'Da dove vengo (in 2 minuti)',
     'corpo'=>"Il Po, la nebbia, il fango. Sono nato dal Delta e dalla voglia di non restare indietro.\nSe una storia cosi ti parla, questo e il Branco. Ascolta il primo capitolo.\n{link}\nSe non fa per te, in fondo trovi un clic per non ricevere piu nulla.",

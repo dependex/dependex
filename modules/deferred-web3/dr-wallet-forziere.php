@@ -15,7 +15,7 @@ declare(strict_types=1);
    LA DIFFERENZA VERA: SCRIVERE SI', LEGGERE NO
    Qui si usa cifratura ASIMMETRICA. Il sito ha la chiave PUBBLICA e con
    quella puo' solo CHIUDERE. La chiave privata sta sul PC di Mirco, dentro
-   C:\81plus_secret\, e non tocca mai il server.
+   C:\dependex_secret\, e non tocca mai il server.
 
    Risultato, e questa e' la frase che conta:
    **chi ruba il server si porta a casa dei lucchetti chiusi.**

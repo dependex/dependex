@@ -26,3 +26,6 @@ desktop.ini
 .vscode/
 *.sublime-project
 *.sublime-workspace
+
+# Sub-repositories
+acat-hudolin-kdp-factory/

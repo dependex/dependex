@@ -1,0 +1,23 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    sqlite3 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy cortex source
+COPY . .
+
+# Ensure storage directories exist
+RUN mkdir -p memory/graph memory/vectors memory/context memory/learnings
+
+EXPOSE 8081
+
+CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8081"]

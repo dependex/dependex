@@ -1,0 +1,54 @@
+[
+  {
+    "id": "azienda",
+    "type": "entity",
+    "label": "Azienda / Ecosistema DEPENDEX & OLTRE"
+  },
+  {
+    "id": "know-how",
+    "type": "concept",
+    "label": "Know-how Aziendale e Metodologia Hudolin"
+  },
+  {
+    "id": "club",
+    "type": "category",
+    "label": "club"
+  },
+  {
+    "id": "community",
+    "type": "category",
+    "label": "community"
+  },
+  {
+    "id": "academy",
+    "type": "category",
+    "label": "academy"
+  },
+  {
+    "id": "lifestyle",
+    "type": "category",
+    "label": "lifestyle"
+  },
+  {
+    "id": "processi",
+    "type": "category",
+    "label": "processi"
+  },
+  {
+    "id": "documenti",
+    "type": "category",
+    "label": "documenti"
+  },
+  {
+    "id": "insight_20260905114519",
+    "type": "insight",
+    "content": "📊 Richieste frequenti nella rete: Voglio mappare le automazioni , Trova supporto per un Club, Mostrami l impronta aziendale",
+    "timestamp": "2026-09-05T11:45:19.590859"
+  },
+  {
+    "id": "insight_20260905114935",
+    "type": "insight",
+    "content": "📊 Richieste frequenti nella rete: Mostrami la mappa del tesoro, Voglio mappare le automazioni , Trova supporto per un Club, Mostrami l impronta aziendale",
+    "timestamp": "2026-09-05T11:49:35.600998"
+  }
+]

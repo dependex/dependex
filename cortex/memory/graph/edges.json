@@ -1,0 +1,47 @@
+[
+  {
+    "source": "azienda",
+    "target": "know-how",
+    "type": "possiede"
+  },
+  {
+    "source": "know-how",
+    "target": "club",
+    "type": "contiene"
+  },
+  {
+    "source": "know-how",
+    "target": "community",
+    "type": "contiene"
+  },
+  {
+    "source": "know-how",
+    "target": "academy",
+    "type": "contiene"
+  },
+  {
+    "source": "know-how",
+    "target": "lifestyle",
+    "type": "contiene"
+  },
+  {
+    "source": "know-how",
+    "target": "processi",
+    "type": "contiene"
+  },
+  {
+    "source": "know-how",
+    "target": "documenti",
+    "type": "contiene"
+  },
+  {
+    "source": "insight_20260905114519",
+    "target": "know-how",
+    "type": "arricchisce"
+  },
+  {
+    "source": "insight_20260905114935",
+    "target": "know-how",
+    "type": "arricchisce"
+  }
+]

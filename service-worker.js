@@ -1,19 +1,14 @@
-const CACHE_NAME = 'oltre-pwa-v2';
+const CACHE_NAME = 'oltre-pwa-kdp-v3';
 const STATIC_ASSETS = [
-  './',
   'offline.html',
-  'assets/css/app.css',
-  'assets/js/app.js',
-  'assets/img/app-icon.svg',
-  'assets/img/favicon.svg',
   'manifest.webmanifest'
 ];
 
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_ASSETS))
   );
-  self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
@@ -26,9 +21,8 @@ self.addEventListener('activate', (event) => {
           }
         })
       )
-    )
+    ).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {

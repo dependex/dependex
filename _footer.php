@@ -60,6 +60,6 @@
     <a href="mailto:info@dependex.social" title="Scrivici un'email" style="color: var(--neon-cyan); display: inline-flex; align-items: center; gap: 6px; font-weight: 700;"><?=dx_icon('mail', '', 14)?> info@dependex.social</a>
   </div>
 </footer>
-<script src="assets/js/app.js"></script>
+<script src="assets/js/app.js?v=<?=filemtime(__DIR__.'/assets/js/app.js')?>"></script>
 </body>
 </html>

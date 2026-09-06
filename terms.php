@@ -22,44 +22,29 @@ require '_header.php';
     La partecipazione alle riunioni settimanali dei Club Alcologici Territoriali presenti nella directory è <strong>completamente gratuita</strong>, volontaria e basata sulla solidarietà multifamiliare. Nessun corrispettivo economico è dovuto per sedersi in cerchio in un Club territoriale.
   </p>
 
-  <h2 style="color: #D4AF37; margin-top: 28px;">3. Termini di Vendita per Offerte Digitali ed Academy</h2>
+  <h2 style="color: #D4AF37; margin-top: 28px;">3. Distribuzione Editoriale su Amazon KDP</h2>
   <p>
-    Le offerte a pagamento presenti sulla piattaforma (Starter Kit a € 27, Protocollo Completo a € 497, Membership a € 39/mese, Programma Elite a € 1.997) hanno natura di percorsi formativi, strumenti software e servizi di affiancamento metodologico.
+    Tutte le pubblicazioni ufficiali, i diari operativi (tra cui <em>Il Diario del Club: 90 Giorni di Rinascita e Sobrietà</em>) e i trattati scientifici del Metodo Hudolin sono distribuiti a livello internazionale tramite <strong>Amazon KDP (Kindle Direct Publishing)</strong>.
   </p>
   <ul>
-    <li><strong>Prezzi e Pagamenti:</strong> I prezzi indicati sono espressi in Euro (€) ed includono le imposte applicabili. I pagamenti sono elaborati tramite protocolli crittografati su circuiti bancari internazionali certificati (Carta di Credito/Debito, PayPal, Bonifico Bancario Sepa).</li>
-    <li><strong>Erogazione Immediata:</strong> L'accesso ai prodotti digitali (credenziali, guide, check-up, diario) viene concesso istantaneamente a seguito della conferma del pagamento.</li>
+    <li><strong>Nessuna Transazione Diretta:</strong> La presente piattaforma non effettua vendita diretta né raccoglie dati di pagamento per le pubblicazioni. Gli acquisti avvengono esclusivamente sul sito ufficiale di Amazon con le condizioni, garanzie e modalità di spedizione (inclusa spedizione Prime) previste da Amazon.</li>
+    <li><strong>Assistenza e Resi:</strong> Politiche di reso, garanzie di consegna e fatturazione per i libri e manuali cartacei o digitali sono integralmente gestite da Amazon.</li>
   </ul>
 
-  <h2 style="color: #D4AF37; margin-top: 28px;">4. Diritto di Recesso e Garanzie Esclusive con Nome Proprio</h2>
+  <h2 style="color: #D4AF37; margin-top: 28px;">4. Servizi Digitali e Solidarietà della Community</h2>
   <p>
-    A norma del Codice del Consumo (D.Lgs. 206/2005) e delle nostre politiche di totale trasparenza e rispetto per l'utente, sono attive le seguenti garanzie:
+    L'accesso alla community online, agli strumenti di supporto quotidiano (check-in, diario) e alla mappa dei Club Alcologici Territoriali è aperto e solidale. La community non impone quote commerciali vincolanti né abbonamenti ricorrenti obbligatori.
   </p>
-  <ul>
-    <li>
-      <strong>Garanzia "Zero Rischio Totale" (30 Giorni per Starter Kit):</strong> 
-      Hai 30 giorni di tempo per valutare gli strumenti diagnostici e la guida. Se ritieni che non facciano al caso tuo, puoi richiedere il rimborso integrale con una semplice email a <a href="mailto:info@dependex.social" style="color: #D4AF37;">info@dependex.social</a>.
-    </li>
-    <li>
-      <strong>Garanzia "Trasformazione o Rimborso Integrale" (60 Giorni per Protocollo Completo):</strong> 
-      Se completi almeno 40 check-in nei primi 60 giorni e partecipi ad almeno una riunione di orientamento senza riscontrare progressi oggettivi nella tua lucidità o gestione della routine, ti rimborsiamo il 100% dell'importo e ti offriamo un'ora di colloquio individuale di orientamento gratuito.
-    </li>
-    <li>
-      <strong>Libertà Assoluta di Disdetta (Membership Ricorrente):</strong> 
-      La quota mensile di € 39 può essere interrotta o messa in pausa in qualsiasi momento con un solo click dal centro preferenze o via email, senza penali né costi di chiusura.
-    </li>
-  </ul>
 
   <h2 style="color: #D4AF37; margin-top: 28px;">5. Proprietà Intellettuale e Riservatezza dei Dati</h2>
   <p>
     I contenuti metodologici, le schede operative e i modelli registrati sono protetti da diritto d'autore. L'utente si impegna a custodire le proprie credenziali d'accesso nel rispetto della privacy propria e degli altri membri del Club.
   </p>
 
-  <h2 style="color: #D4AF37; margin-top: 28px;">6. Contatti e Assistenza</h2>
+  <h2 style="color: #D4AF37; margin-top: 28px;">6. Canale di Contatto</h2>
   <p>
-    Per qualsiasi comunicazione contrattuale, richiesta di rimborso o chiarimento sui termini di vendita, è attivo il canale ufficiale di assistenza: 
-    <a href="mailto:info@dependex.social" style="color: #D4AF37; font-weight: 700;">info@dependex.social</a>.
+    Per qualsiasi chiarimento istituzionale o contatto con l'amministrazione, è attivo il canale ufficiale: 
+    <a href="mailto:info@dependex.support" style="color: var(--neon-cyan); font-weight: 700;">info@dependex.support</a>.
   </p>
 </section>
-
-<?php require '_footer.php'; ?>
+<?php require '_footer.php';?>

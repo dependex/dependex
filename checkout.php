@@ -1,29 +1,17 @@
 <?php
 /**
  * UNIVERSAL COMMERCE — CHECKOUT PAGE
- * Guest-first checkout with PayPal Smart Buttons (Card & PayPal), server-side verification,
- * legal compliance, and multi-domain attribution.
+ * Redirects to Amazon KDP official catalog (offers.php).
  */
 
 declare(strict_types=1);
 
 require_once __DIR__ . '/bootstrap.php';
-require_once __DIR__ . '/modules/commerce/CommerceEnv.php';
-require_once __DIR__ . '/modules/commerce/UniversalCommerce.php';
 
-use Dependex\Commerce\UniversalCommerce;
-use Dependex\Commerce\CommerceEnv;
+// Il checkout diretto è disattivato: la distribuzione è interamente su Amazon KDP
+header('Location: offers.php', true, 302);
+exit;
 
-$commerce = UniversalCommerce::getInstance();
-$cartToken = $_COOKIE['dx_cart_id'] ?? null;
-$cart = $commerce->getOrCreateCart($cartToken);
-$cartData = $commerce->getCart($cart['id']);
-
-// If cart is empty, redirect to cart
-if (empty($cartData['items'])) {
-    header('Location: cart.php');
-    exit;
-}
 
 $u = current_user();
 $paypalClientId = CommerceEnv::get('PAYPAL_CLIENT_ID', '');

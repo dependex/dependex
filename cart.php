@@ -1,20 +1,17 @@
 <?php
 /**
  * UNIVERSAL COMMERCE — CART VIEW
- * Responsive, luxury black & gold aesthetic, multi-domain return link, coupon support.
+ * Redirects to Amazon KDP official catalog (offers.php).
  */
 
 declare(strict_types=1);
 
 require_once __DIR__ . '/bootstrap.php';
-require_once __DIR__ . '/modules/commerce/CommerceEnv.php';
-require_once __DIR__ . '/modules/commerce/UniversalCommerce.php';
 
-use Dependex\Commerce\UniversalCommerce;
+// Le vendite dirette e i carrelli sono disattivati in favore della distribuzione ufficiale Amazon KDP
+header('Location: offers.php', true, 302);
+exit;
 
-$commerce = UniversalCommerce::getInstance();
-$cartToken = $_COOKIE['dx_cart_id'] ?? null;
-$cart = $commerce->getOrCreateCart($cartToken);
 
 // Handle direct query actions if needed
 if (isset($_GET['action'])) {

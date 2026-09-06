@@ -1,7 +1,9 @@
-// Service Worker Registration
+// Service Worker Registration with Immediate Update
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js').catch(() => {});
+    navigator.serviceWorker.register('service-worker.js').then((reg) => {
+      reg.update();
+    }).catch(() => {});
   });
 }
 

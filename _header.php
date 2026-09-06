@@ -135,7 +135,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           <span class="drawer-section-title">PROFILO, SUPPORTO & STRUMENTI</span>
           <a href="profile.php" class="drawer-link <?=$curScript==='profile.php'?'active':''?>"><?=dx_icon('users','',18)?> Il mio Profilo</a>
           <a href="certificates.php" class="drawer-link <?=$curScript==='certificates.php'?'active':''?>"><?=dx_icon('award','',18)?> Attestati & Corsi</a>
-          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('sparkles','',18)?> Offerte di Valore</a>
+          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Libri & Manuali Amazon KDP</a>
           <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>"><?=dx_icon('shield','',18)?> Supporto & Aiuto</a>
           <a href="privacy.php" class="drawer-link <?=$curScript==='privacy.php'?'active':''?>"><?=dx_icon('lock','',18)?> Riservatezza & Anonimato</a>
           <a href="logout.php" class="drawer-link drawer-logout"><?=dx_icon('log-out','',18)?> Esci dall'App</a>
@@ -173,7 +173,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         </nav>
         <nav class="drawer-nav-group">
           <span class="drawer-section-title">RISORSE & TRASPARENZA</span>
-          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('sparkles','',18)?> Offerte di Valore & Starter Kit</a>
+          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Libri & Manuali Amazon KDP</a>
           <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>"><?=dx_icon('shield','',18)?> Aiuto Immediato & Numeri Utili</a>
           <a href="privacy.php" class="drawer-link <?=$curScript==='privacy.php'?'active':''?>"><?=dx_icon('lock','',18)?> Riservatezza & Anonimato</a>
           <a href="terms.php" class="drawer-link <?=$curScript==='terms.php'?'active':''?>"><?=dx_icon('file-text','',18)?> Termini e Condizioni</a>

@@ -45,12 +45,12 @@ require '_dependex-world-map.php';
     Non riesci a raggiungere un Club fisico o preferisci un primo contatto riservato?
   </h3>
   <p style="color:#cbd5e1;max-width:640px;margin:0.5rem auto 1.5rem;font-size:0.96rem;line-height:1.6;">
-    Oltre alla presenza fisica sul territorio, puoi iniziare subito con il nostro Starter Kit digitale o dialogare in totale anonimato con un Servitore-Insegnante della rete.
+    Oltre alla presenza fisica sul territorio, puoi approfondire con i manuali e i diari ufficiali Amazon KDP o dialogare in totale anonimato con un Servitore-Insegnante della rete.
   </p>
   <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
     <a class="btn primary" href="offers.php" style="padding:0 24px;">
-      <?=dx_icon('sparkles', '', 16)?>
-      <span style="margin-left:6px;">Scopri le Offerte di Valore</span>
+      <?=dx_icon('book-open', '', 16)?>
+      <span style="margin-left:6px;">Libri & Manuali Amazon KDP</span>
     </a>
     <a class="btn-rainbow-outline" href="help.php" style="padding:0 22px;">
       <?=dx_icon('shield', '', 16)?>

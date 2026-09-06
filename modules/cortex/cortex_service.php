@@ -116,8 +116,8 @@ class CortexService {
                 ];
             case 'sales':
                 return [
-                    'agent' => 'sales',
-                    'response' => "**[OFFERTE IRRIFIUTABILI (ARCHITETTURA DI VALORE)]**\n\nAbbiamo 4 livelli di valore:\n• **Starter Kit & Diagnosi** (€ 27 - valore € 190)\n• **Protocollo Completo & Trasformazione** (€ 497 o 3 rate da € 185 - valore € 2.588 con Garanzia Integrale)\n• **Programma Elite & Affiancamento** (€ 1.997 - supporto 1-a-1)\n• **Club Permanente** (€ 39/mese - continuità e Cortex attivo 24/7)\n\nPuoi consultare tutte le pricing card dettagliate su `/offers.php`."
+                    'agent' => 'editorial',
+                    'response' => "**[COLLANA EDITORIALE UFFICIALE · AMAZON KDP]**\n\nTutti i manuali, i diari operativi e i trattati metodologici del Prof. Vladimir Hudolin sono pubblicati su **Amazon KDP** (formato cartaceo flessibile, rigido ed eBook Kindle):\n• **GP001 · Il Diario del Club: 90 Giorni di Rinascita e Sobrietà**\n• **GP002 · Il Metodo Hudolin: Trattato Ecologico-Sociale**\n• **GP003 · La Famiglia al Centro: Riconquistare la Fiducia**\n• **GP004 · Il Quaderno del Servitore-Insegnante e Facilitatore**\n• **GP005 · Sovranità Personale: La Via della Lucidità Radicale**\n• **GP006 · Compendio dei Moduli SAT e Scuole Territoriali**\n\nPuoi consultare le schede complete su `/offers.php`."
                 ];
             case 'analytics':
                 $nodes = (int)$this->db->query("SELECT COUNT(*) FROM dependex_world_registry")->fetchColumn();

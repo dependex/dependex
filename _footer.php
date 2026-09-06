@@ -51,7 +51,7 @@
   <div style="max-width: 1100px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; align-items: center; font-size: 0.9rem;">
     <div style="display: flex; gap: 18px; flex-wrap: wrap;">
       <a href="metodo.php" class="text-neon-gold" style="font-weight: 700;">Metodo Hudolin</a>
-      <a href="offers.php" class="text-neon-green" style="font-weight: 700;">Offerte di Valore</a>
+      <a href="offers.php" class="text-neon-green" style="font-weight: 700;">Libri Amazon KDP</a>
       <a href="events-public.php" class="text-neon-cyan" style="font-weight: 700;">Eventi & Moduli</a>
       <a href="world-club-explorer.php" class="text-neon-orange" style="font-weight: 700;"><?=h(tr('club.find','Trova Club'))?></a>
       <a href="privacy.php" style="color: #94a3b8;">Privacy</a>

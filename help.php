@@ -112,8 +112,8 @@ require '_header.php';
     </p>
     <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap;">
       <a class="btn-rainbow-neon" href="offers.php">
-        <?=dx_icon('sparkles', '', 16)?>
-        <span style="margin-left:6px;">Scopri le Offerte di Valore</span>
+        <?=dx_icon('book-open', '', 16)?>
+        <span style="margin-left:6px;">Libri & Manuali Amazon KDP</span>
       </a>
       <a class="btn-rainbow-outline" href="world-map.php">
         <?=dx_icon('compass', '', 16)?>

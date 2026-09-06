@@ -37,8 +37,8 @@ $newsCards = AcatNewsService::getLatestCards(10);
           <span style="margin-left: 8px;">Lo Schema Logico dei 5 Passi</span>
         </a>
         <a href="offers.php" class="btn-rainbow-outline" style="border-color: var(--neon-cyan);">
-          <?=dx_icon('sparkles', '', 18)?>
-          <span style="margin-left: 8px;">Offerte di Valore</span>
+          <?=dx_icon('book-open', '', 18)?>
+          <span style="margin-left: 8px;">Libri Amazon KDP</span>
         </a>
       </div>
     </div>

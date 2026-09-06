@@ -1,3 +1,3 @@
 <?php require_once 'bootstrap.php';$u=require_login();$areas=db()->query("SELECT * FROM addiction_areas WHERE status='ACTIVE' ORDER BY label")->fetchAll();$pageTitle='Percorsi';require '_header.php';?>
 <section class="section-head"><div><span class="eyebrow">Pathway Engine</span><h1>Da dove vuoi partire?</h1><p>La persona può avere più aree contemporaneamente. Nessuna etichetta pubblica viene applicata al profilo.</p></div></section>
-<section class="bubble-grid"><?php foreach($areas as $a):?><a class="bubble green" href="profile-engine.php?area=<?=h($a['code'])?>"><b>✦</b><span><?=h($a['label'])?></span></a><?php endforeach;?></section><?php require '_footer.php';?>
+<section class="bubble-grid"><?php foreach($areas as $a):?><a class="bubble green" href="profile-engine.php?area=<?=h($a['code'])?>"><b><?=dx_icon('sparkles','',24)?></b><span><?=h($a['label'])?></span></a><?php endforeach;?></section><?php require '_footer.php';?>

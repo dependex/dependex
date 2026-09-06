@@ -733,3 +733,46 @@
   color: #FFF2B2;
 }
 
+/* ============================================================
+   GLOBAL BRAND ENFORCEMENT: GOLD SVG ICONS & LUXURY SURFACES
+   ============================================================ */
+svg.dx-svg-icon {
+  stroke: var(--color-gold, #D4AF37);
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.btn.primary svg.dx-svg-icon {
+  stroke: #070709;
+}
+
+/* Force All Cards and Sections into Black, Gold, and White */
+body, html {
+  background-color: #070709 !important;
+  color: #ffffff !important;
+}
+
+.card, .auth-card, .profile-card, .modal-content, .offcanvas {
+  background-color: #101116 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(212, 175, 55, 0.22) !important;
+}
+
+input, select, textarea {
+  background-color: #16171f !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(212, 175, 55, 0.22) !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #D4AF37 !important;
+  outline: none !important;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3) !important;
+}
+
+a {
+  color: inherit;
+}
+
+

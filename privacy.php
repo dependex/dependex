@@ -10,6 +10,6 @@
 <section class="card">
   <h2>Titolare del Trattamento & Richieste Privacy</h2>
   <p>Per qualsiasi domanda relativa alla privacy, esercizio dei diritti di accesso, rettifica, cancellazione o portabilità dei dati (GDPR):<br>
-  ✉ <a href="mailto:info@dependex.social"><b>info@dependex.social</b></a></p>
+  <?=dx_icon('mail','',16)?> <a href="mailto:info@dependex.social"><b>info@dependex.social</b></a></p>
 </section>
 <?php require '_footer.php'; ?>

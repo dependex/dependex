@@ -38,5 +38,5 @@ $pageTitle='Recupera password';require '_header.php';?>
 <label>Nuova password<input type="password" name="password" minlength="10" required></label>
 <label>Ripeti password<input type="password" name="password2" minlength="10" required></label>
 <?php if($msg):?><div class="error"><?=h($msg)?></div><?php endif;?><button class="btn primary">Salva password</button></form>
-<?php else:?><div class="success"><h1>✓ Password registrata</h1><p>La nuova password è attiva.</p><p>Salva anche il nuovo recovery code:</p><div class="recovery-code"><?=h($newRecovery)?></div><a class="btn primary" href="login.php">Torna al login</a></div><?php endif;?>
+<?php else:?><div class="success"><h1><?=dx_icon('check-circle','',24)?> Password registrata</h1><p>La nuova password è attiva.</p><p>Salva anche il nuovo recovery code:</p><div class="recovery-code"><?=h($newRecovery)?></div><a class="btn primary" href="login.php">Torna al login</a></div><?php endif;?>
 </section><?php require '_footer.php';?>

@@ -9,28 +9,39 @@ require '_header.php';
 
 <section class="section-head py-4">
   <div>
-    <div class="gold-glow-badge mb-2">
-      <?=dx_icon('academic', '', 14)?>
-      <span>ACADEMY & FORMAZIONE CONTINUA</span>
+    <div class="badge-neon-rainbow mb-2">
+      <span class="dot"></span>
+      <span class="text-rainbow">ACADEMY & FORMAZIONE CONTINUA</span>
     </div>
     <h1 style="font-family: var(--font-serif); color: #FFFFFF; font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-top: 6px;">
-      Dalla Consapevolezza all'Abilitazione
+      Dalla Consapevolezza all'<span class="text-rainbow">Abilitazione Sovrana</span>
     </h1>
-    <p style="color: #a1a1aa; max-width: 640px;">
+    <p style="color: #cbd5e1; max-width: 640px;">
       Scopri i percorsi di crescita e i moduli formativi accreditati. Raggiungi la sovranità personale e formati per diventare Servitore-Insegnante di Club.
     </p>
   </div>
   <?php if(!$u):?>
-    <a class="btn primary" href="register.php" style="background: linear-gradient(135deg, #FFF2B2, #D4AF37); color: #070709; font-weight: 800;">
+    <a class="btn-rainbow-neon" href="register.php">
       <?=dx_icon('sparkles', '', 16)?>
       <span style="margin-left: 6px;">Registrati per Iniziare</span>
     </a>
   <?php endif;?>
 </section>
 
+<!-- Banner Panoramico Arcobaleno -->
+<div class="rainbow-panorama-banner mb-4">
+  <img src="assets/img/rainbow-portals.jpg" alt="Academy dei 7 Portali Dependex" style="max-height: 320px; object-fit: cover;">
+</div>
+
 <div class="course-list my-4" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-  <?php foreach($courses as $c):?>
-    <article class="course lux-metallic-card p-4" style="display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(212,175,55,0.25);">
+  <?php 
+  $neonColors = ['card-neon-gold', 'card-neon-green', 'card-neon-cyan', 'card-neon-violet', 'card-neon-orange', 'card-neon-red'];
+  $idx = 0;
+  foreach($courses as $c):
+    $neonClass = $neonColors[$idx % count($neonColors)];
+    $idx++;
+  ?>
+    <article class="course <?=$neonClass?> p-4" style="display: flex; flex-direction: column; justify-content: space-between; background: rgba(12, 16, 26, 0.85); border-radius: 18px; border: 1px solid rgba(255,255,255,0.08);">
       <div>
         <span class="dx-ticker-badge" style="margin-bottom: 8px;"><?=h($c['category'])?></span>
         <h3 style="margin: 0.4rem 0 0.8rem; color: #FFFFFF; font-family: var(--font-serif); font-size: 1.25rem;"><?=h($c['title'])?></h3>

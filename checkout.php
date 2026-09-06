@@ -29,7 +29,7 @@ $u = current_user();
 $paypalClientId = CommerceEnv::get('PAYPAL_CLIENT_ID', '');
 $paypalMode = CommerceEnv::get('PAYPAL_MODE', 'live');
 
-$pageTitle = 'Checkout Sicuro · Mirco Universe';
+$pageTitle = 'Checkout Sicuro · DEPENDEX Club';
 include __DIR__ . '/_header.php';
 ?>
 
@@ -42,17 +42,18 @@ include __DIR__ . '/_header.php';
         <a href="cart.php" style="color:var(--text-muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-size:13px;margin-bottom:6px;">
           <?=dx_icon('arrow-left', '', 14)?> Modifica carrello
         </a>
-        <h1 style="font-size:28px;font-weight:800;color:var(--gold-primary);margin:0;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px;">
-          <?=dx_icon('lock', '', 26)?> Checkout Sicuro & Crittografato
+        <h1 style="font-size:28px;font-weight:900;color:#FFFFFF;margin:0;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px;">
+          <?=dx_icon('lock', '', 26)?> <span class="text-rainbow">Checkout Sicuro & Crittografato</span>
         </h1>
         <p style="color:var(--text-muted);font-size:14px;margin:4px 0 0 0;">
-          Completamento transazione protetta su circuito certificato
+          DEPENDEX · Attivazione sicura e immediata su protocollo crittografato SSL
         </p>
       </div>
 
       <div style="display:flex;align-items:center;gap:10px;">
-        <span style="font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.04);padding:6px 14px;border-radius:20px;border:1px solid rgba(255,255,255,0.1);">
-          <?=dx_icon('shield-check', '', 15)?> Crittografia SSL 256-bit
+        <span class="badge-neon-rainbow">
+          <span class="dot"></span>
+          <?=dx_icon('shield-check', '', 15)?> SSL 256-bit
         </span>
       </div>
     </div>
@@ -65,9 +66,9 @@ include __DIR__ . '/_header.php';
         <form id="checkoutForm" onsubmit="return false;">
           
           <!-- STEP 1: CONTACT INFO -->
-          <div class="card" style="background:var(--bg-card);border:1px solid rgba(212,175,55,0.2);border-radius:18px;padding:26px;margin-bottom:24px;box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+          <div class="card card-neon-orange" style="background:var(--bg-card);border-radius:18px;padding:26px;margin-bottom:24px;box-shadow:0 8px 30px rgba(0,0,0,0.5);">
             <h2 style="font-size:17px;font-weight:700;color:#FFF;margin:0 0 18px 0;display:flex;align-items:center;gap:10px;">
-              <span style="width:24px;height:24px;border-radius:50%;background:var(--gold-primary);color:#000;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;">1</span>
+              <span style="width:26px;height:26px;border-radius:50%;background:var(--neon-orange);color:#000;font-size:13px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;box-shadow:var(--glow-orange);">1</span>
               Dati del Cliente & Accesso
             </h2>
 
@@ -108,9 +109,9 @@ include __DIR__ . '/_header.php';
           </div>
 
           <!-- STEP 2: BILLING ADDRESS & FISCAL DATA -->
-          <div class="card" style="background:var(--bg-card);border:1px solid rgba(212,175,55,0.2);border-radius:18px;padding:26px;margin-bottom:24px;box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+          <div class="card card-neon-green" style="background:var(--bg-card);border-radius:18px;padding:26px;margin-bottom:24px;box-shadow:0 8px 30px rgba(0,0,0,0.5);">
             <h2 style="font-size:17px;font-weight:700;color:#FFF;margin:0 0 18px 0;display:flex;align-items:center;gap:10px;">
-              <span style="width:24px;height:24px;border-radius:50%;background:var(--gold-primary);color:#000;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;">2</span>
+              <span style="width:26px;height:26px;border-radius:50%;background:var(--neon-green);color:#000;font-size:13px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;box-shadow:var(--glow-green);">2</span>
               Indirizzo di Fatturazione
             </h2>
 
@@ -178,51 +179,81 @@ include __DIR__ . '/_header.php';
           </div>
 
           <!-- STEP 3: LEGAL & CONSENT -->
-          <div class="card" style="background:var(--bg-card);border:1px solid rgba(212,175,55,0.2);border-radius:18px;padding:26px;margin-bottom:24px;box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+          <div class="card card-neon-gold" style="background:var(--bg-card);border-radius:18px;padding:26px;margin-bottom:24px;box-shadow:0 8px 30px rgba(0,0,0,0.5);">
             <h2 style="font-size:17px;font-weight:700;color:#FFF;margin:0 0 16px 0;display:flex;align-items:center;gap:10px;">
-              <span style="width:24px;height:24px;border-radius:50%;background:var(--gold-primary);color:#000;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;">3</span>
+              <span style="width:26px;height:26px;border-radius:50%;background:var(--neon-gold);color:#000;font-size:13px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;box-shadow:var(--glow-gold);">3</span>
               Consensi & Termini Legali
             </h2>
 
             <div style="display:flex;flex-direction:column;gap:12px;">
               <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#FFF;cursor:pointer;">
-                <input type="checkbox" id="legal_terms" name="terms_accepted" value="1" required checked style="margin-top:3px;accent-color:var(--gold-primary);">
+                <input type="checkbox" id="legal_terms" name="terms_accepted" value="1" required checked style="margin-top:3px;accent-color:var(--neon-cyan);">
                 <span>
-                  Ho letto e accetto i <a href="terms.php" target="_blank" style="color:var(--gold-primary);text-decoration:underline;">Termini e Condizioni di Vendita</a> e l'<a href="privacy.php" target="_blank" style="color:var(--gold-primary);text-decoration:underline;">Informativa sulla Privacy</a>. *
+                  Ho letto e accetto i <a href="terms.php" target="_blank" style="color:var(--neon-cyan);text-decoration:underline;">Termini e Condizioni di Vendita</a> e l'<a href="privacy.php" target="_blank" style="color:var(--neon-cyan);text-decoration:underline;">Informativa sulla Privacy</a>. *
                 </span>
               </label>
 
               <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-muted);cursor:pointer;">
-                <input type="checkbox" id="legal_marketing" name="marketing_accepted" value="1" style="margin-top:3px;accent-color:var(--gold-primary);">
+                <input type="checkbox" id="legal_marketing" name="marketing_accepted" value="1" style="margin-top:3px;accent-color:var(--neon-cyan);">
                 <span>
-                  (Facoltativo) Desidero ricevere comunicazioni riservate, aggiornamenti sui percorsi e inviti esclusivi agli eventi del Mirco Universe.
+                  (Facoltativo) Desidero ricevere comunicazioni riservate, aggiornamenti sui percorsi e inviti esclusivi agli eventi del Club.
                 </span>
               </label>
             </div>
           </div>
 
-          <!-- STEP 4: PAYMENT SELECTION (PAYPAL & CREDIT CARD) -->
-          <div class="card" style="background:var(--bg-card);border:1px solid rgba(212,175,55,0.3);border-radius:18px;padding:26px;box-shadow:0 12px 40px rgba(0,0,0,0.7);">
+          <!-- STEP 4: PAYMENT SELECTION (PAYPAL, CARTA & BONIFICO) -->
+          <div class="card rainbow-border" style="background:var(--bg-card);border-radius:18px;padding:26px;box-shadow:0 12px 40px rgba(0,0,0,0.7);">
             <h2 style="font-size:17px;font-weight:700;color:#FFF;margin:0 0 8px 0;display:flex;align-items:center;gap:10px;">
-              <span style="width:24px;height:24px;border-radius:50%;background:var(--gold-primary);color:#000;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;">4</span>
-              Metodo di Pagamento Certificato
+              <span style="width:26px;height:26px;border-radius:50%;background:var(--neon-cyan);color:#000;font-size:13px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;box-shadow:var(--glow-cyan);">4</span>
+              Scegli il Metodo di Pagamento
             </h2>
-            <p style="color:var(--text-muted);font-size:13px;margin:0 0 20px 0;">
-              Paga in sicurezza con conto PayPal oppure con qualsiasi Carta di Credito/Debito (Visa, Mastercard, Amex).
+            <p style="color:var(--text-muted);font-size:13px;margin:0 0 16px 0;">
+              Seleziona come desideri finalizzare l'ordine: transazione istantanea protetta oppure bonifico bancario diretto.
             </p>
+
+            <!-- PAYMENT METHOD TABS -->
+            <div style="display:flex;gap:10px;margin-bottom:20px;">
+              <button type="button" id="tab-pay-card" onclick="switchPaymentMethod('paypal')" class="btn" style="flex:1;min-height:44px;font-size:13px;background:rgba(0,212,255,0.15);border:1px solid var(--neon-cyan);color:#FFF;">
+                <?=dx_icon('credit-card', '', 16)?> Carta o PayPal
+              </button>
+              <button type="button" id="tab-pay-bank" onclick="switchPaymentMethod('bonifico')" class="btn" style="flex:1;min-height:44px;font-size:13px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:#a1a1aa;">
+                <?=dx_icon('building-library', '', 16)?> Bonifico Bancario
+              </button>
+            </div>
 
             <!-- Error message container -->
             <div id="checkout-alert" style="display:none;padding:12px 16px;border-radius:10px;font-size:13px;margin-bottom:16px;"></div>
 
-            <!-- PAYPAL PAY IN 3 RATE / PAYLATER BANNER -->
-            <div data-pp-message data-pp-placement="payment" data-pp-amount="<?=number_format((float)$cartData['total'], 2, '.', '')?>" data-pp-style-layout="text" data-pp-style-text-color="white" style="margin-bottom:14px;padding:8px 12px;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:8px;font-size:12px;"></div>
+            <!-- TAB 1: PAYPAL & CARTA -->
+            <div id="payment-panel-paypal">
+              <!-- PAYPAL PAY IN 3 RATE / PAYLATER BANNER -->
+              <div data-pp-message data-pp-placement="payment" data-pp-amount="<?=number_format((float)$cartData['total'], 2, '.', '')?>" data-pp-style-layout="text" data-pp-style-text-color="white" style="margin-bottom:14px;padding:8px 12px;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:8px;font-size:12px;"></div>
 
-            <!-- PAYPAL BUTTON CONTAINER -->
-            <div id="paypal-button-container" style="min-height:50px;"></div>
+              <!-- PAYPAL BUTTON CONTAINER -->
+              <div id="paypal-button-container" style="min-height:50px;"></div>
 
-            <!-- FALLBACK IF SDK UNAVAILABLE -->
-            <div id="paypal-loading" style="text-align:center;padding:20px;color:var(--text-muted);font-size:13px;">
-              <?=dx_icon('lock', '', 18)?> Caricamento gateway di pagamento certificato...
+              <!-- FALLBACK IF SDK UNAVAILABLE -->
+              <div id="paypal-loading" style="text-align:center;padding:20px;color:var(--text-muted);font-size:13px;">
+                <?=dx_icon('lock', '', 18)?> Caricamento gateway di pagamento certificato...
+              </div>
+            </div>
+
+            <!-- TAB 2: BONIFICO BANCARIO -->
+            <div id="payment-panel-bonifico" style="display:none;">
+              <div style="background:rgba(20, 16, 12, 0.95);border:1px solid var(--neon-orange);border-radius:14px;padding:18px;margin-bottom:18px;">
+                <div style="font-size:13px;color:#FFF;line-height:1.6;margin-bottom:12px;">
+                  Effettua il pagamento tramite il tuo conto bancario online. I dati per il bonifico verranno generati all'invio dell'ordine:
+                </div>
+                <div style="font-size:12px;color:var(--text-muted);display:grid;gap:6px;">
+                  <div>Beneficiario: <strong style="color:#FFF;">DEPENDEX Ecosystem</strong></div>
+                  <div>IBAN: <code style="color:var(--gold-primary);">IT60X0542811101000000123456</code></div>
+                  <div>Importo: <strong style="color:#00ff77;">€ <?=number_format((float)$cartData['total'], 2, ',', '.')?></strong></div>
+                </div>
+              </div>
+              <button type="button" onclick="submitBankTransferOrder()" class="btn primary" style="width:100%;">
+                Conferma Ordine con Bonifico Bancario
+              </button>
             </div>
           </div>
 
@@ -231,7 +262,7 @@ include __DIR__ . '/_header.php';
 
       <!-- RIGHT: ORDER SUMMARY STICKY SIDEBAR -->
       <div>
-        <div class="card" style="background:var(--bg-card);border:1px solid rgba(212,175,55,0.22);border-radius:18px;padding:24px;box-shadow:0 10px 35px rgba(0,0,0,0.6);position:sticky;top:90px;">
+        <div class="card card-neon-gold" style="background:var(--bg-card);border-radius:18px;padding:24px;box-shadow:0 10px 35px rgba(0,0,0,0.6);position:sticky;top:90px;">
           <h2 style="font-size:17px;font-weight:700;color:#FFF;margin:0 0 16px 0;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:8px;">
             <?=dx_icon('shopping-cart', '', 18)?> Riepilogo Ordine
           </h2>
@@ -241,7 +272,7 @@ include __DIR__ . '/_header.php';
               <div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:13px;">
                 <div style="flex:1;">
                   <div style="color:#FFF;font-weight:600;"><?=h($it['title'])?></div>
-                  <div style="color:var(--gold-primary);font-size:11px;">Qtà: <?=$it['quantity']?> · <?=h($it['business_name'])?></div>
+                  <div style="color:var(--neon-gold);font-size:11px;">Qtà: <?=$it['quantity']?> · <?=h($it['business_name'])?></div>
                 </div>
                 <div style="color:#FFF;font-weight:700;white-space:nowrap;">
                   €<?=number_format((float)$it['line_total'], 2)?>
@@ -258,7 +289,7 @@ include __DIR__ . '/_header.php';
             </div>
 
             <?php if ((float)$cartData['discount_total'] > 0): ?>
-              <div style="display:flex;justify-content:space-between;color:#44FF88;">
+              <div style="display:flex;justify-content:space-between;color:#00ff77;">
                 <span>Sconto applicato</span>
                 <span style="font-weight:700;">-€<?=number_format((float)$cartData['discount_total'], 2)?></span>
               </div>
@@ -269,15 +300,15 @@ include __DIR__ . '/_header.php';
               <span style="color:#FFF;font-weight:600;">€<?=number_format((float)$cartData['tax_total'], 2)?></span>
             </div>
 
-            <div style="display:flex;justify-content:space-between;font-size:19px;font-weight:800;color:#FFF;padding-top:14px;border-top:1px solid rgba(255,255,255,0.12);margin-top:6px;">
+            <div style="display:flex;justify-content:space-between;font-size:20px;font-weight:900;color:#FFF;padding-top:14px;border-top:1px solid rgba(255,255,255,0.12);margin-top:6px;">
               <span>Totale da Pagare</span>
-              <span style="color:var(--gold-primary);">€<?=number_format((float)$cartData['total'], 2)?></span>
+              <span class="text-rainbow">€<?=number_format((float)$cartData['total'], 2)?></span>
             </div>
           </div>
 
-          <div style="margin-top:24px;padding:16px;background:rgba(212,175,55,0.05);border:1px solid var(--gold-border);border-radius:12px;">
-            <div style="display:flex;align-items:center;gap:8px;color:var(--gold-primary);font-weight:700;font-size:13px;margin-bottom:6px;">
-              <?=dx_icon('shield-check', '', 16)?> Garanzia Mirco Universe
+          <div style="margin-top:24px;padding:16px;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.25);border-radius:12px;">
+            <div style="display:flex;align-items:center;gap:8px;color:var(--neon-cyan);font-weight:800;font-size:13px;margin-bottom:6px;">
+              <?=dx_icon('shield-check', '', 16)?> Garanzia Sovrana DEPENDEX
             </div>
             <p style="font-size:11px;color:var(--text-muted);margin:0;line-height:1.4;">
               Accesso immediato ai contenuti digitali e ricevuta fiscale certificata inviata via email subito dopo la verifica del pagamento.
@@ -422,6 +453,67 @@ if (window.paypal) {
 
 } else {
   document.getElementById('paypal-loading').innerHTML = '<span style="color:#FF6666;">Errore caricamento SDK PayPal. Ricarica la pagina.</span>';
+}
+
+function switchPaymentMethod(method) {
+  const tabCard = document.getElementById('tab-pay-card');
+  const tabBank = document.getElementById('tab-pay-bank');
+  const panelPaypal = document.getElementById('payment-panel-paypal');
+  const panelBank = document.getElementById('payment-panel-bonifico');
+
+  if (method === 'bonifico') {
+    tabBank.style.background = 'rgba(255, 119, 0, 0.2)';
+    tabBank.style.borderColor = 'var(--neon-orange)';
+    tabBank.style.color = '#FFF';
+
+    tabCard.style.background = 'rgba(255, 255, 255, 0.05)';
+    tabCard.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+    tabCard.style.color = '#a1a1aa';
+
+    panelPaypal.style.display = 'none';
+    panelBank.style.display = 'block';
+  } else {
+    tabCard.style.background = 'rgba(0, 212, 255, 0.15)';
+    tabCard.style.borderColor = 'var(--neon-cyan)';
+    tabCard.style.color = '#FFF';
+
+    tabBank.style.background = 'rgba(255, 255, 255, 0.05)';
+    tabBank.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+    tabBank.style.color = '#a1a1aa';
+
+    panelPaypal.style.display = 'block';
+    panelBank.style.display = 'none';
+  }
+}
+
+async function submitBankTransferOrder() {
+  if (!validateForm()) {
+    showAlert('Compila tutti i campi obbligatori contrassegnati con l\'asterisco.');
+    return;
+  }
+
+  showAlert('Registrazione dell\'ordine con bonifico bancario in corso...', false);
+
+  try {
+    const payload = getFormData();
+    payload.action = 'create_bank_transfer_order';
+
+    const res = await fetch('api-checkout.php?action=create_bank_transfer_order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+    if (data.success && data.redirect_url) {
+      window.location.href = data.redirect_url;
+    } else {
+      showAlert(data.error || 'Errore durante la creazione dell\'ordine con bonifico.');
+    }
+  } catch (e) {
+    console.error('Bank transfer error:', e);
+    showAlert('Errore di connessione al server. Riprova tra qualche istante.');
+  }
 }
 </script>
 

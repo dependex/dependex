@@ -33,8 +33,8 @@ START €4.900 · **PRO €15.000** ⭐ · ENTERPRISE €39.000+
 
 ## Origine
 
-Distillato dal CORTEX 81+ reale (16.500+ file, 1.300+ pagine WIKI, 11 organi vitali collaudati).
+Distillato dal CORTEX DEPENDEX reale (16.500+ file, 1.300+ pagine WIKI, 11 organi vitali collaudati).
 Questo è il prodotto universale, pronto per qualsiasi azienda.
 
 ---
-*CORTEX Universale © 81+ / Mirco Pregnolato — distribuzione su licenza.*
+*CORTEX Universale © DEPENDEX / Mirco Pregnolato — distribuzione su licenza.*

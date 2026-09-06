@@ -1,0 +1,36 @@
+products:
+  - id: "prod_club_free"
+    name: "Accoglienza & Partecipazione Club Territoriale"
+    category: "COMMUNITY_SERVICE"
+    price: 0.00
+    currency: "EUR"
+    type: "FREE_SERVICE"
+    description: "Accesso solidale permanente a uno dei 542 Club Alcologici Territoriali nel mondo."
+    
+  - id: "prod_starter_kit"
+    name: "Starter Kit & Diagnosi Orientamento"
+    category: "DIAGNOSTIC_KIT"
+    price: 27.00
+    currency: "EUR"
+    type: "ONE_TIME"
+    description: "Check-up diagnostico iniziale, accesso 30gg assistente Cortex AI e mappa operativa dei Club."
+    
+  - id: "prod_protocollo_core"
+    name: "Protocollo Completo & Trasformazione"
+    category: "CORE_ACADEMY"
+    price: 497.00
+    currency: "EUR"
+    installments:
+      count: 3
+      amount: 185.00
+    type: "COURSE_BUNDLE"
+    description: "Percorso scientifico in 5 passi, cassetta degli attrezzi, diario e coaching di rete."
+
+  - id: "prod_membership_continua"
+    name: "Membership Clubber & Supporto H24"
+    category: "MEMBERSHIP"
+    price: 97.00
+    currency: "EUR"
+    billing_period: "MONTHLY"
+    type: "SUBSCRIPTION"
+    description: "Accesso continuativo alla piattaforma protetta, stanze peer-to-peer e supporto continuato."

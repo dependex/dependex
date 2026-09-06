@@ -77,7 +77,7 @@ class UniversalCommerce {
     }
 
     /**
-     * Pre-seeds Universe Brands, Products and M.A.G.I.C. Offers
+     * Pre-seeds Universe Brands, Products and Value Offers
      */
     public function seedCatalog(): void {
         // 1. Businesses
@@ -127,7 +127,7 @@ class UniversalCommerce {
             ['off_bw_audit', 'biz_betterway', 'prd_bw_audit', 'bw-audit', 'Growth & CRO Audit', 'Analisi conversioni e funnel optimization', 'Checkup completo del tuo funnel con identificazione delle perdite di fatturato.', 350.00, 'EUR', 0.00, 'ONE_SHOT', null, 1, 'AUDIT OPERATIVO', 'Roadmap prioritaria di implementazione in 14 giorni', 'Garanzia valore moltiplicato']
         ];
 
-        $oStmt = $this->db->prepare("INSERT OR IGNORE INTO commerce_offers(id, business_id, product_id, offer_code, title, subtitle, description, price, currency, vat_rate, offer_type, billing_interval, magic_tier, badge, bonus_text, guarantee_text) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $oStmt = $this->db->prepare("INSERT OR IGNORE INTO commerce_offers(id, business_id, product_id, offer_code, title, subtitle, description, price, currency, vat_rate, offer_type, billing_interval, offer_tier, badge, bonus_text, guarantee_text) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         foreach ($offers as $o) {
             $oStmt->execute($o);
         }
@@ -151,10 +151,10 @@ class UniversalCommerce {
      */
     public function listOffers(?string $businessId = null): array {
         if ($businessId) {
-            $st = $this->db->prepare("SELECT o.*, p.name product_name, p.image_url FROM commerce_offers o JOIN commerce_products p ON o.product_id = p.id WHERE o.business_id = ? AND o.active = 1 ORDER BY o.magic_tier ASC, o.price ASC");
+            $st = $this->db->prepare("SELECT o.*, p.name product_name, p.image_url FROM commerce_offers o JOIN commerce_products p ON o.product_id = p.id WHERE o.business_id = ? AND o.active = 1 ORDER BY o.offer_tier ASC, o.price ASC");
             $st->execute([$businessId]);
         } else {
-            $st = $this->db->query("SELECT o.*, b.name business_name, p.name product_name, p.image_url FROM commerce_offers o JOIN commerce_businesses b ON o.business_id = b.id JOIN commerce_products p ON o.product_id = p.id WHERE o.active = 1 ORDER BY o.business_id, o.magic_tier ASC, o.price ASC");
+            $st = $this->db->query("SELECT o.*, b.name business_name, p.name product_name, p.image_url FROM commerce_offers o JOIN commerce_businesses b ON o.business_id = b.id JOIN commerce_products p ON o.product_id = p.id WHERE o.active = 1 ORDER BY o.business_id, o.offer_tier ASC, o.price ASC");
         }
         return $st->fetchAll();
     }

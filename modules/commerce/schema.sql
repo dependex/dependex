@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS commerce_products (
     FOREIGN KEY (business_id) REFERENCES commerce_businesses(id)
 );
 
--- 3. OFFERS (M.A.G.I.C. Tiers & Buyable Catalog Items)
+-- 3. OFFERS (Value Tiers & Buyable Catalog Items)
 CREATE TABLE IF NOT EXISTS commerce_offers (
     id VARCHAR(64) PRIMARY KEY,
     business_id VARCHAR(64) NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS commerce_offers (
     vat_rate DECIMAL(5,2) DEFAULT 0.00,
     offer_type VARCHAR(32) DEFAULT 'ONE_SHOT',
     billing_interval VARCHAR(32),
-    magic_tier INTEGER DEFAULT 1,
+    offer_tier INTEGER DEFAULT 1,
     badge VARCHAR(64),
     bonus_text TEXT,
     guarantee_text TEXT,

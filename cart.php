@@ -28,7 +28,7 @@ if (isset($_GET['action'])) {
 }
 
 $cartData = $commerce->getCart($cart['id']);
-$pageTitle = 'Carrello Universale · Mirco Universe';
+$pageTitle = 'Carrello · DEPENDEX Club';
 include __DIR__ . '/_header.php';
 ?>
 
@@ -39,13 +39,13 @@ include __DIR__ . '/_header.php';
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:16px;">
       <div>
         <a href="<?=h($_SERVER['HTTP_REFERER'] ?? 'offers.php')?>" style="color:var(--text-muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-size:13px;margin-bottom:8px;">
-          <?=dx_icon('arrow-left', '', 14)?> Torna allo shopping
+          <?=dx_icon('arrow-left', '', 14)?> Torna alle offerte
         </a>
         <h1 style="font-size:28px;font-weight:800;color:var(--gold-primary);margin:0;letter-spacing:-0.5px;display:flex;align-items:center;gap:12px;">
-          <?=dx_icon('shopping-cart', '', 28)?> Carrello Universale
+          <?=dx_icon('shopping-cart', '', 28)?> Il Tuo Carrello
         </h1>
         <p style="color:var(--text-muted);font-size:14px;margin:4px 0 0 0;">
-          Ecosistema Mirco Pregnolato · Checkout unico, sicuro e certificato
+          DEPENDEX · Al Club. Col Club. Checkout sicuro, protetto e confidenziale
         </p>
       </div>
 

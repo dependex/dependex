@@ -1,0 +1,35 @@
+scoring:
+  weights:
+    purchase_completed: 100
+    checkout_started: 40
+    cart_updated: 25
+    high_intent_click: 15
+    lead_magnet_downloaded: 12
+    map_club_searched: 10
+    product_viewed: 8
+    content_viewed: 5
+    email_clicked: 4
+    email_opened: 1
+    email_unsubscribed: -50
+    email_complained: -150
+    email_bounced: -100
+
+  states:
+    NEW:
+      min_score: 0
+      max_score: 9
+    ENGAGED:
+      min_score: 10
+      max_score: 29
+    INTERESTED:
+      min_score: 30
+      max_score: 59
+    HIGH_INTENT:
+      min_score: 60
+      max_score: 99
+    BUYER:
+      min_score: 100
+      max_score: 299
+    VIP:
+      min_score: 300
+      max_score: 99999

@@ -1,0 +1,24 @@
+flow_id: permission_refresh
+version: "1.0.0"
+name: "Verifica e Rinnovo Consenso Privacy GDPR"
+description: "Processo di doppio opt-in e riconferma consenso per contatti senza provenance documentata o oltre soglia sunset"
+trigger:
+  type: event
+  event_name: "consent_audit_flagged"
+exit_conditions:
+  - event_name: "consent_reconfirmed"
+    action: "stop_flow"
+  - event_name: "unsubscribed"
+    action: "stop_flow"
+steps:
+  - step_id: "perm_step_01"
+    type: "send_email"
+    template_id: "perm_01_riconferma"
+    subject: "Confermi di voler continuare a ricevere aggiornamenti da Dependex?"
+  - step_id: "delay_01"
+    type: "delay"
+    delay_duration: "168h"
+  - step_id: "perm_step_02"
+    type: "send_email"
+    template_id: "perm_02_avviso_soppressione"
+    subject: "Ultimo avviso: stiamo per rimuovere il tuo indirizzo dalla lista attiva"

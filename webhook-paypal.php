@@ -75,6 +75,18 @@ try {
                 if ($order && $order['payment_status'] !== 'PAID') {
                     // Update order and trigger fulfillment
                     $commerce->recordPaymentSuccess($order['id'], $captureId, $amount, $currency, $resource);
+                    
+                    // Notifica Marketing Automation OS
+                    require_once __DIR__ . '/email-engine.php';
+                    $customerEmail = $order['customer_email'] ?? ($resource['payer']['email_address'] ?? '');
+                    if ($customerEmail) {
+                        email_os_track_event('order_completed', $customerEmail, [
+                            'order_id' => $order['id'],
+                            'value' => $amount,
+                            'currency' => $currency,
+                            'provider' => 'paypal'
+                        ]);
+                    }
                 }
             }
             break;

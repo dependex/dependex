@@ -1,0 +1,42 @@
+name: Universal Email OS CI & Schema Verification
+
+on:
+  push:
+    paths:
+      - 'src/**'
+      - 'config/**'
+      - 'schemas/**'
+      - 'flows/**'
+      - 'automation/emailflux/**'
+      - 'tests/**'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'config/**'
+      - 'schemas/**'
+      - 'flows/**'
+
+jobs:
+  validate-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml jsonschema pillow
+
+      - name: Run Schema & Compliance Unit Tests
+        run: |
+          python tests/test_email_os.py
+
+      - name: Verify Zero Forbidden Terms in Sources
+        run: |
+          ! grep -riE "\bmagico\b|\bmagic\b|\bm\.a\.g\.i\.c\.\b|giorgian putanu|\b81plus\b" src/ flows/ config/ schemas/

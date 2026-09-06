@@ -1,0 +1,30 @@
+offers:
+  - id: "off_starter_kit"
+    title: "Starter Kit di Valore Sovrano"
+    product_id: "prod_starter_kit"
+    anchor_value: 190.00
+    price: 27.00
+    currency: "EUR"
+    guarantee_days: 30
+    guarantee_text: "Garanzia totale Zero Rischio: rimborso 100% senza domande entro 30 giorni."
+    bonuses:
+      - title: "Checklist di Orientamento Primo Giorno"
+        value: 47.00
+      - title: "Accesso prioritario Cortex AI 30gg"
+        value: 50.00
+        
+  - id: "off_core_protocollo"
+    title: "Architettura di Valore Sovrano · Protocollo Completo"
+    product_id: "prod_protocollo_core"
+    anchor_value: 2588.00
+    price: 497.00
+    currency: "EUR"
+    guarantee_days: 60
+    guarantee_text: "Garanzia Trasformazione: accompagnamento continuo e supporto fino al raggiungimento della piena lucidità."
+    bonuses:
+      - title: "Piattaforma Operativa & Academy illimitata"
+        value: 997.00
+      - title: "Diario Digitale & Registro di Sobrietà"
+        value: 197.00
+      - title: "Modulo speciale Riconciliazione Famigliare"
+        value: 297.00

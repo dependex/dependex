@@ -1,0 +1,31 @@
+name: Universal Email OS Deliverability Watch & Circuit Breaker
+
+on:
+  schedule:
+    - cron: '0 */4 * * *' # Ogni 4 ore
+  workflow_dispatch:
+
+jobs:
+  check-health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deliverability & Circuit Breaker Verification
+        run: |
+          python -c "
+          import json, os, sys
+          report_path = 'reports/daily_latest.json'
+          if os.path.exists(report_path):
+              with open(report_path, 'r') as f:
+                  data = json.load(f)
+              cb = data.get('circuit_breaker', {})
+              if cb.get('is_tripped'):
+                  print('ALLARME CRITICO: Circuit breaker attivato!', cb.get('alerts'))
+                  sys.exit(1)
+              else:
+                  print('Stato deliverability regolare. Nessun blocco attivo.')
+          else:
+              print('Nessun report precedente, monitoraggio pronto.')
+          "

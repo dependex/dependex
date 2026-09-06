@@ -1,0 +1,34 @@
+name: EMAILFLUX · Test Invio Immediato (VIP)
+
+on:
+  workflow_dispatch:
+    inputs:
+      recipient:
+        description: 'Destinatario per email di test'
+        required: true
+        default: 'labomobile.lm@gmail.com'
+
+jobs:
+  test-send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: automation/emailflux
+    env:
+      SMTP_HOST: ${{ secrets.SMTP_HOST || 'smtp.hostinger.com' }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT || '465' }}
+      SMTP_USER: ${{ secrets.SMTP_USER || 'info@dependex.support' }}
+      SMTP_PASS: ${{ secrets.SMTP_PASS || 'h29031976T.' }}
+      BASE_URL: 'https://dependex.social'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Invia Email di Test
+        run: python test_smtp_delivery.py "${{ github.event.inputs.recipient }}"

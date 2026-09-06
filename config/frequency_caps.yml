@@ -1,0 +1,16 @@
+frequency_caps:
+  global:
+    max_emails_per_day: 1
+    max_emails_per_week: 4
+    quiet_hours:
+      start: "22:00"
+      end: "07:30"
+    timezone: "Europe/Rome"
+    cooldown_hours_between_marketing: 20
+  priority_hierarchy:
+    - "TRANSACTIONAL"
+    - "SECURITY_ALERT"
+    - "HIGH_INTENT_RECOVERY"
+    - "LIFECYCLE_ONBOARDING"
+    - "PROMOTIONAL_OFFER"
+    - "HOLIDAY_NEWSLETTER"

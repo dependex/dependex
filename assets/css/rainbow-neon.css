@@ -1,0 +1,771 @@
+/**
+ * rainbow-neon.css — Visual Look Avanzato Rainbow Neon & Sacred Geometry per DEPENDEX.SOCIAL
+ * 7 Colori Arcobaleno Bioluminescenti Applicati a Tutto il Sito e ad Ogni Pagina:
+ * 1. Rosso Neon (#ff3344) — Senti (Radici, Presenza, Protezione)
+ * 2. Arancio Neon (#ff7700) — Agisci (Energia, Volontà, Movimento)
+ * 3. Oro/Giallo Neon (#ffd700) — Comunica (Lucidità, Valore, Trasparenza)
+ * 4. Smeraldo/Verde Neon (#00ff77) — Vedi (Sobrietà, Salute, Rigenerazione)
+ * 5. Ciano/Blu Elettrico (#00d4ff) — Ama (Legami, Empatia, Connessione)
+ * 6. Indaco Neon (#3a55ff) — Costruisci (Architettura, Verità, Struttura)
+ * 7. Viola Cosmico (#b829ff) — Sii (Trascendenza, Servizio, Sovranità)
+ */
+
+:root {
+  /* I 7 Colori Neon Arcobaleno Spettro Puro */
+  --neon-red: #ff3344;
+  --neon-orange: #ff7700;
+  --neon-gold: #ffd700;
+  --neon-green: #00ff77;
+  --neon-cyan: #00d4ff;
+  --neon-indigo: #3a55ff;
+  --neon-violet: #b829ff;
+
+  /* Glow specifici ad altissima intensità */
+  --glow-red: 0 0 16px rgba(255, 51, 68, 0.65), 0 0 35px rgba(255, 51, 68, 0.35);
+  --glow-orange: 0 0 16px rgba(255, 119, 0, 0.65), 0 0 35px rgba(255, 119, 0, 0.35);
+  --glow-gold: 0 0 16px rgba(255, 215, 0, 0.7), 0 0 35px rgba(255, 215, 0, 0.4);
+  --glow-green: 0 0 16px rgba(0, 255, 119, 0.65), 0 0 35px rgba(0, 255, 119, 0.35);
+  --glow-cyan: 0 0 16px rgba(0, 212, 255, 0.65), 0 0 35px rgba(0, 212, 255, 0.35);
+  --glow-indigo: 0 0 16px rgba(58, 85, 255, 0.65), 0 0 35px rgba(58, 85, 255, 0.35);
+  --glow-violet: 0 0 16px rgba(184, 41, 255, 0.65), 0 0 35px rgba(184, 41, 255, 0.35);
+
+  /* Spettro e Gradienti Arcobaleno */
+  --rainbow-gradient: linear-gradient(135deg, #ff3344 0%, #ff7700 16.6%, #ffd700 33.3%, #00ff77 50%, #00d4ff 66.6%, #3a55ff 83.3%, #b829ff 100%);
+  --rainbow-gradient-h: linear-gradient(90deg, #ff3344 0%, #ff7700 16.6%, #ffd700 33.3%, #00ff77 50%, #00d4ff 66.6%, #3a55ff 83.3%, #b829ff 100%);
+  --rainbow-glow: 0 0 25px rgba(255, 119, 0, 0.35), 0 0 45px rgba(0, 212, 255, 0.35), 0 0 65px rgba(184, 41, 255, 0.25);
+
+  /* Superfici Vetro Cosmico Dark */
+  --bg-dark-cosmic: #06070a;
+  --glass-surface: rgba(12, 15, 24, 0.82);
+  --glass-surface-hover: rgba(18, 22, 36, 0.94);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================================================================
+   1. SELECTION & SCROLLBAR NEON
+   ========================================================================== */
+::selection {
+  background: var(--neon-cyan);
+  color: #06070a;
+  text-shadow: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #06070a;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--rainbow-gradient);
+  border-radius: 999px;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+/* ==========================================================================
+   2. BACKGROUND GLOBALE COSMICO (NEBULA CON I 7 COLORI NEON)
+   ========================================================================== */
+body {
+  background-color: var(--bg-dark-cosmic) !important;
+  background-image: 
+    radial-gradient(circle at 12% 18%, rgba(255, 51, 68, 0.06) 0%, transparent 42%),
+    radial-gradient(circle at 88% 22%, rgba(0, 212, 255, 0.07) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, rgba(184, 41, 255, 0.05) 0%, transparent 55%),
+    radial-gradient(circle at 85% 80%, rgba(255, 215, 0, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 18% 85%, rgba(0, 255, 119, 0.05) 0%, transparent 45%),
+    linear-gradient(180deg, rgba(6, 7, 10, 0.96) 0%, #06070a 100%) !important;
+  background-attachment: fixed !important;
+  color: #f8fafc;
+}
+
+/* ==========================================================================
+   3. TOPBAR & DRAWER NAVIGATION (LAMA LASER ARCOBALENO)
+   ========================================================================== */
+.topbar {
+  background: rgba(6, 7, 10, 0.88) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 2px solid transparent !important;
+  border-image: var(--rainbow-gradient-h) 1 !important;
+  box-shadow: 0 4px 30px rgba(0, 212, 255, 0.18) !important;
+}
+
+.brand-mark-rainbow {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  padding: 2px;
+  background: var(--rainbow-gradient);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.45);
+  animation: rainbow-pulse 4s ease-in-out infinite;
+}
+
+@keyframes rainbow-pulse {
+  0%, 100% { box-shadow: 0 0 16px rgba(0, 212, 255, 0.4), 0 0 30px rgba(184, 41, 255, 0.2); }
+  50% { box-shadow: 0 0 24px rgba(255, 119, 0, 0.5), 0 0 40px rgba(0, 255, 119, 0.3); }
+}
+
+.brand-mark-rainbow img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: block;
+  background: #06070a;
+}
+
+.burger-btn span {
+  background: var(--rainbow-gradient-h) !important;
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.7) !important;
+}
+
+.theme-toggle:hover {
+  color: var(--neon-gold) !important;
+  filter: drop-shadow(0 0 8px var(--neon-gold));
+}
+
+/* Off-Canvas Drawer Navigation Staggered Neon */
+.drawer {
+  background: rgba(10, 12, 18, 0.96) !important;
+  backdrop-filter: blur(24px) !important;
+  border-right: 2px solid transparent !important;
+  border-image: var(--rainbow-gradient) 1 !important;
+  box-shadow: 10px 0 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 212, 255, 0.2) !important;
+}
+
+.drawer-user-avatar {
+  background: var(--rainbow-gradient) !important;
+  box-shadow: 0 0 18px rgba(0, 212, 255, 0.5) !important;
+  color: #06070a !important;
+  font-weight: 900 !important;
+}
+
+.drawer-nav a:hover,
+.drawer-nav a.active {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.drawer-nav a:nth-child(7n+1):hover { color: var(--neon-red) !important; text-shadow: var(--glow-red); }
+.drawer-nav a:nth-child(7n+2):hover { color: var(--neon-orange) !important; text-shadow: var(--glow-orange); }
+.drawer-nav a:nth-child(7n+3):hover { color: var(--neon-gold) !important; text-shadow: var(--glow-gold); }
+.drawer-nav a:nth-child(7n+4):hover { color: var(--neon-green) !important; text-shadow: var(--glow-green); }
+.drawer-nav a:nth-child(7n+5):hover { color: var(--neon-cyan) !important; text-shadow: var(--glow-cyan); }
+.drawer-nav a:nth-child(7n+6):hover { color: var(--neon-indigo) !important; text-shadow: var(--glow-indigo); }
+.drawer-nav a:nth-child(7n+7):hover { color: var(--neon-violet) !important; text-shadow: var(--glow-violet); }
+
+/* ==========================================================================
+   4. TIPOGRAFIA & TITOLI REINBOW NEON
+   ========================================================================== */
+.text-rainbow, .rainbow-text {
+  background: var(--rainbow-gradient-h) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  display: inline-block;
+  font-weight: 900;
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
+}
+
+.text-neon-red { color: var(--neon-red) !important; text-shadow: var(--glow-red); }
+.text-neon-orange { color: var(--neon-orange) !important; text-shadow: var(--glow-orange); }
+.text-neon-gold { color: var(--neon-gold) !important; text-shadow: var(--glow-gold); }
+.text-neon-green { color: var(--neon-green) !important; text-shadow: var(--glow-green); }
+.text-neon-cyan { color: var(--neon-cyan) !important; text-shadow: var(--glow-cyan); }
+.text-neon-indigo { color: var(--neon-indigo) !important; text-shadow: var(--glow-indigo); }
+.text-neon-violet { color: var(--neon-violet) !important; text-shadow: var(--glow-violet); }
+
+/* Badge & Eyebrow Neon */
+.eyebrow, .gold-glow-badge, .public-badge, .dx-ticker-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 14px !important;
+  border-radius: 9999px !important;
+  background: rgba(14, 18, 28, 0.85) !important;
+  border: 1px solid rgba(0, 212, 255, 0.3) !important;
+  color: var(--neon-gold) !important;
+  font-size: 0.76rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.25) !important;
+}
+
+.badge-neon-rainbow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(20, 25, 40, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 0 18px rgba(0, 212, 255, 0.25);
+}
+
+.badge-neon-rainbow .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rainbow-gradient-h);
+  box-shadow: 0 0 10px #00ff77;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+}
+
+/* ==========================================================================
+   5. COMPONENTI UNIVERSALI A 7 COLORI CICLICI (CARD, GRIGLIE, LISTE)
+   Ogni contenitore del sito assume automaticamente la rotazione dei 7 colori neon
+   ========================================================================== */
+.card, .auth-card, .profile-card, .dx-club-card, .course, .event-card, 
+.topic, .payoff-card, .lux-metallic-card, .home-modules article, .method-grid div,
+.ncke-result .course, .detail-grid div {
+  background: rgba(13, 16, 26, 0.82) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
+}
+
+/* 7 Colori Ciclici Staggered su Griglie e Liste */
+:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+1) {
+  border-top: 3px solid var(--neon-red) !important;
+}
+:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+1):hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), var(--glow-red) !important;
+}
+
+:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+2) {
+  border-top: 3px solid var(--neon-orange) !important;
+}
+:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+2):hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), var(--glow-orange) !important;
+}
+
+:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+3) {
+  border-top: 3px solid var(--neon-gold) !important;
+}
+:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+3):hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), var(--glow-gold) !important;
+}
+
+:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+4) {
+  border-top: 3px solid var(--neon-green) !important;
+}
+:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+4):hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), var(--glow-green) !important;
+}
+
+:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+5) {
+  border-top: 3px solid var(--neon-cyan) !important;
+}
+:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+5):hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), var(--glow-cyan) !important;
+}
+
+:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+6) {
+  border-top: 3px solid var(--neon-indigo) !important;
+}
+:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+6):hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), var(--glow-indigo) !important;
+}
+
+:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+7) {
+  border-top: 3px solid var(--neon-violet) !important;
+}
+:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+7):hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), var(--glow-violet) !important;
+}
+
+/* Card Neon Manuali Esplicite */
+.card-neon-red { border-top: 3px solid var(--neon-red) !important; box-shadow: 0 10px 30px rgba(255, 51, 68, 0.15) !important; }
+.card-neon-orange { border-top: 3px solid var(--neon-orange) !important; box-shadow: 0 10px 30px rgba(255, 119, 0, 0.15) !important; }
+.card-neon-gold { border-top: 3px solid var(--neon-gold) !important; box-shadow: 0 10px 30px rgba(255, 215, 0, 0.18) !important; }
+.card-neon-green { border-top: 3px solid var(--neon-green) !important; box-shadow: 0 10px 30px rgba(0, 255, 119, 0.15) !important; }
+.card-neon-cyan { border-top: 3px solid var(--neon-cyan) !important; box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15) !important; }
+.card-neon-indigo { border-top: 3px solid var(--neon-indigo) !important; box-shadow: 0 10px 30px rgba(58, 85, 255, 0.15) !important; }
+.card-neon-violet { border-top: 3px solid var(--neon-violet) !important; box-shadow: 0 10px 30px rgba(184, 41, 255, 0.15) !important; }
+
+/* Bordo animato Arcobaleno (.rainbow-border) */
+.rainbow-border {
+  position: relative;
+  background: var(--glass-surface);
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.rainbow-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: var(--rainbow-gradient);
+  z-index: -1;
+  opacity: 0.85;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+  filter: blur(2px);
+}
+
+.rainbow-border:hover::before {
+  opacity: 1;
+  filter: blur(4px) drop-shadow(0 0 14px rgba(0, 212, 255, 0.7));
+}
+
+/* ==========================================================================
+   6. PULSANTI UNIVERSALI & CTA REINBOW NEON
+   ========================================================================== */
+.btn.primary, .btn-rainbow-neon, .pwa-install-btn {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 50px !important;
+  padding: 0 26px !important;
+  font-weight: 900 !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.04em !important;
+  color: #06070a !important;
+  background: var(--rainbow-gradient-h) !important;
+  background-size: 200% auto !important;
+  border: none !important;
+  border-radius: 16px !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  box-shadow: 0 6px 25px rgba(255, 119, 0, 0.4), 0 0 35px rgba(0, 212, 255, 0.35) !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  animation: rainbow-shift 6s linear infinite !important;
+}
+
+@keyframes rainbow-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.btn.primary:hover, .btn-rainbow-neon:hover, .pwa-install-btn:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 10px 40px rgba(255, 119, 0, 0.55), 0 0 55px rgba(0, 212, 255, 0.55), 0 0 75px rgba(184, 41, 255, 0.45) !important;
+}
+
+.btn:not(.primary), .btn-rainbow-outline {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 50px !important;
+  padding: 0 24px !important;
+  font-weight: 800 !important;
+  font-size: 0.95rem !important;
+  color: #ffffff !important;
+  background: rgba(14, 18, 28, 0.85) !important;
+  border: 1px solid rgba(0, 212, 255, 0.35) !important;
+  border-radius: 16px !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn:not(.primary):hover, .btn-rainbow-outline:hover {
+  background: rgba(22, 28, 44, 0.95) !important;
+  border-color: var(--neon-cyan) !important;
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.45) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ==========================================================================
+   7. METRICHE, BIG NUMBERS & DRX CHIP NEON
+   ========================================================================== */
+.metric-grid > .metric:nth-child(7n+1) b { color: var(--neon-red) !important; text-shadow: var(--glow-red); }
+.metric-grid > .metric:nth-child(7n+2) b { color: var(--neon-orange) !important; text-shadow: var(--glow-orange); }
+.metric-grid > .metric:nth-child(7n+3) b { color: var(--neon-gold) !important; text-shadow: var(--glow-gold); }
+.metric-grid > .metric:nth-child(7n+4) b { color: var(--neon-green) !important; text-shadow: var(--glow-green); }
+.metric-grid > .metric:nth-child(7n+5) b { color: var(--neon-cyan) !important; text-shadow: var(--glow-cyan); }
+.metric-grid > .metric:nth-child(7n+6) b { color: var(--neon-indigo) !important; text-shadow: var(--glow-indigo); }
+.metric-grid > .metric:nth-child(7n+7) b { color: var(--neon-violet) !important; text-shadow: var(--glow-violet); }
+
+.drx-chip {
+  background: rgba(15, 20, 32, 0.9) !important;
+  color: var(--neon-gold) !important;
+  border: 1px solid rgba(255, 215, 0, 0.4) !important;
+  box-shadow: 0 0 16px rgba(255, 215, 0, 0.25) !important;
+  font-weight: 900 !important;
+}
+
+.big-number {
+  background: var(--rainbow-gradient-h) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  display: inline-block !important;
+  font-weight: 900 !important;
+  text-shadow: 0 0 35px rgba(0, 212, 255, 0.3) !important;
+}
+
+/* ==========================================================================
+   8. SOBRIETÀ, PROGRESS BAR & MILESTONES
+   ========================================================================== */
+.sobriety-card, .sobriety-hero {
+  background: radial-gradient(circle at top right, rgba(0, 255, 119, 0.12), transparent 60%),
+              radial-gradient(circle at bottom left, rgba(0, 212, 255, 0.12), transparent 60%),
+              linear-gradient(145deg, #10141f, #07090e) !important;
+  border: 1px solid rgba(0, 255, 119, 0.35) !important;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 255, 119, 0.2) !important;
+  border-radius: 28px !important;
+}
+
+.sobriety-card strong, .sobriety-days-row strong {
+  color: var(--neon-green) !important;
+  text-shadow: 0 0 25px rgba(0, 255, 119, 0.7), 0 0 45px rgba(0, 212, 255, 0.4) !important;
+}
+
+.milestone-fill, .progress i, .bar i {
+  background: var(--rainbow-gradient-h) !important;
+  box-shadow: 0 0 14px rgba(0, 212, 255, 0.6) !important;
+  border-radius: 999px !important;
+}
+
+/* ==========================================================================
+   9. FORM, INPUTS & CONTROLLI NEON FOCUS
+   ========================================================================== */
+.stack input, .stack select, .stack textarea, .dx-map-toolbar input, .dx-map-toolbar select {
+  background: rgba(11, 14, 23, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  border-radius: 14px !important;
+  transition: all 0.25s ease !important;
+}
+
+.stack input:focus, .stack select:focus, .stack textarea:focus, 
+.dx-map-toolbar input:focus, .dx-map-toolbar select:focus {
+  outline: none !important;
+  border-color: var(--neon-cyan) !important;
+  box-shadow: 0 0 18px rgba(0, 212, 255, 0.5), 0 0 32px rgba(184, 41, 255, 0.3) !important;
+  background: rgba(16, 20, 32, 0.95) !important;
+}
+
+/* Range input slider Rainbow Neon */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 99px;
+  background: var(--rainbow-gradient-h);
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid var(--neon-cyan);
+  box-shadow: 0 0 14px var(--neon-cyan);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px var(--neon-gold);
+}
+
+/* ==========================================================================
+   10. BOTTOM NAVIGATION MOBILE (FASCIO LASER & ICONE NEON)
+   ========================================================================== */
+.bottom-nav {
+  background: rgba(8, 10, 15, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-top: 2px solid transparent !important;
+  border-image: var(--rainbow-gradient-h) 1 !important;
+  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.9), 0 -2px 15px rgba(0, 212, 255, 0.15) !important;
+}
+
+.bottom-nav a:hover, .bottom-nav a.active {
+  color: var(--neon-cyan) !important;
+  filter: drop-shadow(0 0 8px var(--neon-cyan)) !important;
+}
+
+.bottom-nav .nav-plus {
+  color: var(--neon-green) !important;
+  filter: drop-shadow(0 0 10px var(--neon-green)) !important;
+  animation: pulse-dot 2.5s infinite !important;
+}
+
+/* ==========================================================================
+   11. SITE FOOTER (LINEA DI CHIUSURA ARCOBALENO)
+   ========================================================================== */
+.site-footer {
+  border-top: 2px solid transparent !important;
+  border-image: var(--rainbow-gradient-h) 1 !important;
+  background: #06070a !important;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.9), 0 -2px 20px rgba(0, 212, 255, 0.12) !important;
+}
+
+.site-footer a:hover {
+  color: var(--neon-cyan) !important;
+  text-shadow: 0 0 10px var(--neon-cyan) !important;
+}
+
+/* ==========================================================================
+   12. ELEMENTI SPECIALI: HERO COSMICA & PANORAMA PORTALI
+   ========================================================================== */
+.hero-cosmic-section {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px 60px;
+  background: radial-gradient(circle at center, rgba(6, 7, 10, 0.4) 0%, rgba(6, 7, 10, 0.95) 85%),
+              url('../img/hero-cosmic-tree.jpg') center center / cover no-repeat;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.25);
+  overflow: hidden;
+}
+
+.hero-cosmic-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--bg-dark-cosmic));
+  pointer-events: none;
+}
+
+.rainbow-panorama-banner {
+  position: relative;
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), var(--rainbow-glow);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin: 40px 0;
+}
+
+.rainbow-panorama-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rainbow-panorama-banner:hover img {
+  transform: scale(1.02);
+}
+
+.rainbow-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin: 32px 0;
+}
+
+.rainbow-pillar-card {
+  background: rgba(12, 16, 26, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px 12px;
+  text-align: center;
+  transition: all 0.35s ease;
+  cursor: pointer;
+}
+
+.rainbow-pillar-card:hover {
+  transform: translateY(-4px);
+  background: rgba(18, 24, 40, 0.9);
+}
+
+.pillar-red:hover { border-color: var(--neon-red); box-shadow: var(--glow-red); }
+.pillar-orange:hover { border-color: var(--neon-orange); box-shadow: var(--glow-orange); }
+.pillar-gold:hover { border-color: var(--neon-gold); box-shadow: var(--glow-gold); }
+.pillar-green:hover { border-color: var(--neon-green); box-shadow: var(--glow-green); }
+.pillar-cyan:hover { border-color: var(--neon-cyan); box-shadow: var(--glow-cyan); }
+.pillar-indigo:hover { border-color: var(--neon-indigo); box-shadow: var(--glow-indigo); }
+.pillar-violet:hover { border-color: var(--neon-violet); box-shadow: var(--glow-violet); }
+
+.pillar-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.pillar-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.pillar-sub {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  line-height: 1.25;
+}
+
+/* ==========================================================================
+   13. SPECIFIC RAINBOW NEON PER QUICK SHORTCUTS & BUBBLE BUTTONS
+   ========================================================================== */
+.quick.red, .bubble.red { border-top: 3px solid var(--neon-red) !important; }
+.quick.red b, .bubble.red b { color: var(--neon-red) !important; text-shadow: var(--glow-red); }
+
+.quick.orange, .bubble.orange { border-top: 3px solid var(--neon-orange) !important; }
+.quick.orange b, .bubble.orange b { color: var(--neon-orange) !important; text-shadow: var(--glow-orange); }
+
+.quick.amber, .bubble.amber { border-top: 3px solid var(--neon-gold) !important; }
+.quick.amber b, .bubble.amber b { color: var(--neon-gold) !important; text-shadow: var(--glow-gold); }
+
+.quick.green, .bubble.green { border-top: 3px solid var(--neon-green) !important; }
+.quick.green b, .bubble.green b { color: var(--neon-green) !important; text-shadow: var(--glow-green); }
+
+.quick.blue, .quick.cyan, .bubble.blue { border-top: 3px solid var(--neon-cyan) !important; }
+.quick.blue b, .quick.cyan b, .bubble.blue b { color: var(--neon-cyan) !important; text-shadow: var(--glow-cyan); }
+
+.quick.indigo, .bubble.indigo { border-top: 3px solid var(--neon-indigo) !important; }
+.quick.indigo b, .bubble.indigo b { color: var(--neon-indigo) !important; text-shadow: var(--glow-indigo); }
+
+.quick.violet, .bubble.violet { border-top: 3px solid var(--neon-violet) !important; }
+.quick.violet b, .bubble.violet b { color: var(--neon-violet) !important; text-shadow: var(--glow-violet); }
+
+.quick.coral, .bubble.coral { border-top: 3px solid var(--neon-orange) !important; }
+.quick.coral b, .bubble.coral b { color: var(--neon-orange) !important; text-shadow: var(--glow-orange); }
+
+.quick.teal, .bubble.teal { border-top: 3px solid var(--neon-cyan) !important; }
+.quick.teal b, .bubble.teal b { color: var(--neon-green) !important; text-shadow: var(--glow-green); }
+
+.quick:hover, .bubble:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 212, 255, 0.4) !important;
+}
+
+.sos-card {
+  background: radial-gradient(circle at top right, rgba(255, 51, 68, 0.15), transparent 60%),
+              rgba(18, 12, 16, 0.9) !important;
+  border: 1px solid var(--neon-red) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), var(--glow-red) !important;
+  border-radius: 20px !important;
+}
+
+.sos-btn {
+  background: var(--neon-red) !important;
+  color: #06070a !important;
+  box-shadow: 0 0 20px rgba(255, 51, 68, 0.6) !important;
+  font-weight: 900 !important;
+  border-radius: 12px !important;
+}
+
+/* ==========================================================================
+   14. OVERRIDE TOTALE DESIGN SYSTEM LUXURY -> 7 COLORI ARCOBALENO NEON
+   Ogni elemento prima forzato in oro assume la bioluminescenza dei 7 colori
+   ========================================================================== */
+.gold-foil-text, .gold-gradient-text, .gold-text {
+  background: var(--rainbow-gradient-h) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  display: inline-block !important;
+  font-weight: 900 !important;
+  text-shadow: 0 0 25px rgba(0, 212, 255, 0.3) !important;
+}
+
+.gold-glow-badge, .luxury-badge {
+  background: rgba(14, 18, 28, 0.9) !important;
+  border: 1px solid rgba(0, 212, 255, 0.4) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.3) !important;
+}
+
+.luxury-hero-card::before {
+  background: var(--rainbow-gradient-h) !important;
+  height: 3px !important;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.8) !important;
+}
+
+/* Offerte Ladder Grid Ciclica nei 7 Colori Neon */
+.offers-ladder-grid > .offer-card:nth-child(4n+1) {
+  border-top: 3px solid var(--neon-orange) !important;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.8), 0 0 25px rgba(255, 119, 0, 0.25) !important;
+}
+.offers-ladder-grid > .offer-card:nth-child(4n+2) {
+  border-top: 3px solid var(--neon-green) !important;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.8), 0 0 35px rgba(0, 255, 119, 0.35) !important;
+}
+.offers-ladder-grid > .offer-card:nth-child(4n+3) {
+  border-top: 3px solid var(--neon-cyan) !important;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.8), 0 0 25px rgba(0, 212, 255, 0.25) !important;
+}
+.offers-ladder-grid > .offer-card:nth-child(4n+4) {
+  border-top: 3px solid var(--neon-violet) !important;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.8), 0 0 25px rgba(184, 41, 255, 0.25) !important;
+}
+
+/* Pulsanti stile Luxury trasformati in Rainbow Neon */
+.btn-gold, .btn-luxury {
+  background: var(--rainbow-gradient-h) !important;
+  color: #06070a !important;
+  font-weight: 900 !important;
+  border: none !important;
+  box-shadow: 0 6px 25px rgba(255, 119, 0, 0.4), 0 0 35px rgba(0, 212, 255, 0.35) !important;
+}
+
+/* 7 Rami del Metodo con Frequenze di Luce nel Drawer e nel Sito */
+.drawer-rainbow-branches {
+  margin: 14px 0;
+  padding: 12px;
+  background: rgba(12, 16, 26, 0.75);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.branch-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.branch-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateX(4px);
+}
+.branch-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.branch-item.red .branch-dot { background: var(--neon-red); box-shadow: var(--glow-red); }
+.branch-item.orange .branch-dot { background: var(--neon-orange); box-shadow: var(--glow-orange); }
+.branch-item.gold .branch-dot { background: var(--neon-gold); box-shadow: var(--glow-gold); }
+.branch-item.green .branch-dot { background: var(--neon-green); box-shadow: var(--glow-green); }
+.branch-item.cyan .branch-dot { background: var(--neon-cyan); box-shadow: var(--glow-cyan); }
+.branch-item.indigo .branch-dot { background: var(--neon-indigo); box-shadow: var(--glow-indigo); }
+.branch-item.violet .branch-dot { background: var(--neon-violet); box-shadow: var(--glow-violet); }
+
+

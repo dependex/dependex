@@ -32,7 +32,7 @@ Il modello dati risiede su SQLite con WAL mode (`data/acat_community.sqlite`), p
 |---|---|---|
 | **BUSINESS** | `commerce_businesses` | Brand / Progetto (`biz_dependex`, `biz_mircopregnolato`, `biz_mywallet`, `biz_betterway`, `biz_neuralog`) |
 | **PRODUCT** | `commerce_products` | Prodotto astratto (corso, servizio, digitale, abbonamento) con SKU e default fulfillment |
-| **OFFER** | `commerce_offers` | **Source of Truth** prezzi, tier M.A.G.I.C., bonus, garanzie e billing interval |
+| **OFFER** | `commerce_offers` | **Source of Truth** prezzi, tier di offerta, bonus, garanzie e billing interval |
 | **CART** | `commerce_carts` | Carrello sessione multi-brand con token persistente |
 | **CART_ITEM** | `commerce_cart_items` | Singolo articolo nel carrello con quantità e prezzo server-verified |
 | **CUSTOMER** | `commerce_customers` | Anagrafica cliente con dati fiscali e consensi legali |
@@ -111,7 +111,7 @@ window.dxCommerce.openDrawer();
 2. **Checkout Sicuro**: `https://dependex.social/checkout.php`
 3. **Conferma & Ricevuta Ordine**: `https://dependex.social/order-confirmation.php?order_id=...`
 4. **Console Amministrazione Ordini**: `https://dependex.social/admin-orders.php`
-5. **Catalogo Offerte M.A.G.I.C.**: `https://dependex.social/offers.php`
+5. **Catalogo Offerte di Valore**: `https://dependex.social/offers.php`
 
 ---
 

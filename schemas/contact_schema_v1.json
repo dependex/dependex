@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dependex.social/schemas/contact_schema_v1.json",
+  "title": "ContactProfileSchemaV1",
+  "type": "object",
+  "required": ["email", "consent_status", "lifecycle_state", "created_at"],
+  "properties": {
+    "contact_id": { "type": "string" },
+    "email": { "type": "string", "format": "email" },
+    "first_name": { "type": "string" },
+    "last_name": { "type": "string" },
+    "company": { "type": "string" },
+    "role": { "type": "string" },
+    "lifecycle_state": {
+      "type": "string",
+      "enum": ["VISITOR", "LEAD", "ENGAGED", "INTERESTED", "HIGH_INTENT", "BUYER", "REPEAT_BUYER", "VIP", "DORMANT", "REACTIVATED", "CHURNED"]
+    },
+    "consent_status": {
+      "type": "string",
+      "enum": ["EXPLICIT_OPT_IN", "DOUBLE_OPT_IN", "TRANSACTIONAL_ONLY", "OPTED_OUT", "PENDING_VERIFICATION"]
+    },
+    "consent_timestamp": { "type": "string", "format": "date-time" },
+    "consent_source": { "type": "string" },
+    "lead_score": { "type": "integer", "default": 0 },
+    "engagement_score": { "type": "integer", "default": 0 },
+    "churn_risk_score": { "type": "integer", "default": 0 },
+    "currency": { "type": "string", "default": "EUR" },
+    "total_revenue": { "type": "number", "default": 0.0 },
+    "orders_count": { "type": "integer", "default": 0 },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "suppressed": { "type": "boolean", "default": false },
+    "suppression_reason": { "type": ["string", "null"] },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": true
+}

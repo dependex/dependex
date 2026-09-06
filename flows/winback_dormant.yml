@@ -1,0 +1,28 @@
+flow_id: winback_dormant
+version: "2.0.0"
+name: "Winback & Riattivazione Utenti Dormienti"
+description: "Strategia progressiva di riattivazione o pulizia consensuale per contatti inattivi da oltre 60 giorni. Uscita su segnale forte (click, non open)."
+trigger:
+  type: schedule
+  cron: "0 10 * * 1"
+  filter:
+    lifecycle_state: "DORMANT"
+exit_conditions:
+  - event_name: "email_clicked"
+    action: "jump_step"
+  - event_name: "page_viewed"
+    action: "jump_step"
+  - event_name: "unsubscribed"
+    action: "stop_flow"
+steps:
+  - step_id: "step_winback_1"
+    type: "send_email"
+    template_id: "winback_checkin"
+    subject: "Sei ancora interessato a ricevere gli aggiornamenti del Club Dependex?"
+  - step_id: "delay_winback_1"
+    type: "delay"
+    delay_duration: "7d"
+  - step_id: "step_winback_2"
+    type: "send_email"
+    template_id: "winback_final_notice"
+    subject: "Avviso di disattivazione: Conferma il tuo interesse prima della rimozione"

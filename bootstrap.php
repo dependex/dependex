@@ -110,7 +110,7 @@ function dao_can_create_global(string $userSic): bool {return has_role($userSic,
 
 function site_mode(): string {$host=strtolower($_SERVER['HTTP_HOST']??'oltre.social');return str_contains($host,'dependex.social')?'DEPENDEX':'OLTRE';}
 function supported_locales(): array {return ['it','en','es','pt','fr','de','hr','sr','sl','ro','ru'];}
-function site_locale(): string {$req=strtolower((string)($_GET['lang']??''));if(in_array($req,supported_locales(),true)){setcookie('oltre_locale',$req,['expires'=>time()+31536000,'path'=>'/','samesite'=>'Lax']);return $req;}$cookie=strtolower((string)($_COOKIE['oltre_locale']??''));if(in_array($cookie,supported_locales(),true))return $cookie;return site_mode()==='OLTRE'?'it':'en';}
+function site_locale(): string {$req=strtolower((string)($_GET['lang']??''));if(in_array($req,supported_locales(),true)){setcookie('oltre_locale',$req,['expires'=>time()+31536000,'path'=>'/','samesite'=>'Lax']);return $req;}$cookie=strtolower((string)($_COOKIE['oltre_locale']??''));if(in_array($cookie,supported_locales(),true))return $cookie;return 'it';}
 function tr(string $key,?string $fallback=null): string {static $cache=[];$loc=site_locale();if(!isset($cache[$loc])){$f=__DIR__.'/locales/'.$loc.'.json';$cache[$loc]=is_file($f)?(json_decode((string)file_get_contents($f),true)?:[]):[];}return (string)($cache[$loc][$key]??$fallback??$key);}
 function site_brand(): array {return ['name'=>'DEPENDEX','subtitle'=>'AL CLUB. COL CLUB.','domain'=>(site_mode()==='DEPENDEX'?'dependex.social':'oltre.social'),'email'=>'info@dependex.social'];}
 

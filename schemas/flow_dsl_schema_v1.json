@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dependex.social/schemas/flow_dsl_schema_v1.json",
+  "title": "FlowDSLSchemaV1",
+  "type": "object",
+  "required": ["flow_id", "version", "name", "trigger", "steps"],
+  "properties": {
+    "flow_id": { "type": "string" },
+    "version": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "trigger": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string", "enum": ["event", "schedule", "segment_entry", "manual"] },
+        "event_name": { "type": "string" },
+        "cron": { "type": "string" },
+        "filter": { "type": "object" }
+      }
+    },
+    "exit_conditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "event_name": { "type": "string" },
+          "action": { "type": "string", "enum": ["stop_flow", "jump_step"] }
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["step_id", "type"],
+        "properties": {
+          "step_id": { "type": "string" },
+          "type": { "type": "string", "enum": ["send_email", "delay", "condition", "split_test", "update_attribute"] },
+          "template_id": { "type": "string" },
+          "subject": { "type": "string" },
+          "delay_duration": { "type": "string" },
+          "branches": { "type": "object" }
+        }
+      }
+    }
+  }
+}

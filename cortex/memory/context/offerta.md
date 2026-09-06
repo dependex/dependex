@@ -1,6 +1,6 @@
-# Offerta & Servizi · Architettura M.A.G.I.C. Offer
+# Offerta & Servizi · Architettura delle Offerte di Valore
 
-L'offerta dell'ecosistema è strutturata secondo il **Protocollo M.A.G.I.C. Offer** (Metodo Giorgian Putanu / Mirco Pregnolato - Versione 7.0) su una **Scala Valore a 4 livelli**, ideata per eliminare la concorrenza sul prezzo, massimizzare il valore percepito ed erogare trasformazioni concrete.
+L'offerta dell'ecosistema è strutturata secondo il **Protocollo di Valore Sovrano** (Metodo Mirco Pregnolato - Versione 7.0) su una **Scala Valore a 4 livelli**, ideata per eliminare la concorrenza sul prezzo, massimizzare il valore percepito ed erogare trasformazioni concrete.
 
 ---
 

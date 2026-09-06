@@ -1,0 +1,12 @@
+jurisdictions:
+  default: "GDPR"
+  regulations:
+    GDPR:
+      name: "Regolamento Generale sulla Protezione dei Dati (UE 2016/679)"
+      consent_required: true
+      double_opt_in: true
+      one_click_unsubscribe: true
+      retention_days_inactive: 730
+      right_to_be_forgotten: true
+      data_export: true
+      cookie_consent_active: true

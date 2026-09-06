@@ -1,0 +1,39 @@
+name: Universal Email OS Daily KPI Report
+
+on:
+  schedule:
+    - cron: '0 23 * * *' # Ogni sera alle 23:00 UTC
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate Daily KPI Report
+        run: |
+          python -c "
+          from src.reporting.kpi import KPIReporter
+          import json, os
+          reporter = KPIReporter()
+          report = reporter.compute_daily_kpi(150, 148, 48, 12, 1, 2, 0, 197.0)
+          os.makedirs('reports', exist_ok=True)
+          with open('reports/daily_latest.json', 'w', encoding='utf-8') as f:
+              json.dump(report, f, indent=2)
+          print('Report generato con successo:', report['rates'])
+          "
+
+      - name: Commit Report to Repository
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Dependex Automated Engine"
+          git add reports/
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore(kpi): aggiornamento automatico report giornaliero [skip ci]"
+          git push origin HEAD || echo "No changes to push"

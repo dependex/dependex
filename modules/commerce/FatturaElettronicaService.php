@@ -51,7 +51,7 @@ class FatturaElettronicaService {
         $orderNumClean = preg_replace('/[^a-zA-Z0-9_-]/', '', (string)$order['order_number']);
         $progressivoInvio = substr(hash('crc32b', $order['id']), 0, 10);
 
-        // Header Cedente/Prestatore (Mirco Pregnolato Universe / 81 PLUS)
+        // Header Cedente/Prestatore (Mirco Pregnolato Universe / DEPENDEX)
         $cedenteVat = CommerceEnv::get('BUSINESS_VAT_NUMBER', 'IT01234567890');
         $cedenteFiscal = CommerceEnv::get('BUSINESS_FISCAL_CODE', 'IT01234567890');
         $cedenteName = CommerceEnv::get('BUSINESS_LEGAL_NAME', 'Mirco Pregnolato - Ecosystem Hub');

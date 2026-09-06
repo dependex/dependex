@@ -1,0 +1,20 @@
+providers:
+  primary: "hostinger_smtp"
+  fallback: "amazon_ses"
+  
+  hostinger_smtp:
+    host: "smtp.hostinger.com"
+    port: 465
+    ssl: true
+    user: "info@dependex.support"
+    sender_email: "info@dependex.social"
+    auth_fallback: "info@dependex.social"
+    timeout_sec: 25
+    rate_limit_per_second: 5
+    daily_warmup_cap: 150
+    
+  amazon_ses:
+    region: "eu-central-1"
+    sender: "info@dependex.support"
+    configuration_set: "dependex-reputation"
+    rate_limit_per_second: 14

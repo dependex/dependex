@@ -17,8 +17,9 @@ $orderId = trim((string)($_GET['order_id'] ?? ''));
 
 $order = $orderId ? $commerce->getOrder($orderId) : null;
 
-$pageTitle = 'Conferma Ordine · Mirco Universe';
+$pageTitle = 'Conferma Ordine · DEPENDEX Club';
 include __DIR__ . '/_header.php';
+$isBonifico = ($_GET['method'] ?? '') === 'bonifico' || ($order && ($order['payment_status'] ?? '') === 'UNPAID');
 ?>
 
 <div class="luxury-backdrop" style="min-height:85vh;padding:50px 16px;">
@@ -34,19 +35,23 @@ include __DIR__ . '/_header.php';
       </div>
     <?php else: ?>
       
-      <!-- SUCCESS BANNER -->
+      <!-- CONFIRMATION BANNER -->
       <div class="card" style="background:linear-gradient(135deg, rgba(212,175,55,0.08) 0%, rgba(16,17,22,0.95) 100%);border:1px solid var(--gold-border);border-radius:20px;padding:36px 30px;text-align:center;margin-bottom:28px;box-shadow:0 15px 45px rgba(0,0,0,0.7);">
         <div style="width:64px;height:64px;border-radius:50%;background:rgba(212,175,55,0.15);border:2px solid var(--gold-primary);color:var(--gold-primary);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;">
           <?=dx_icon('shield-check', '', 36)?>
         </div>
         <span style="font-size:12px;font-weight:700;color:var(--gold-primary);text-transform:uppercase;letter-spacing:1px;display:inline-block;margin-bottom:6px;">
-          Transazione Verificata & Conclusa
+          <?= $isBonifico ? 'Ordine Registrato · In Attesa di Bonifico' : 'Transazione Verificata & Conclusa' ?>
         </span>
         <h1 style="font-size:28px;font-weight:800;color:#FFF;margin:0 0 8px 0;letter-spacing:-0.5px;">
-          Grazie per il tuo ordine!
+          <?= $isBonifico ? 'Grazie per la tua richiesta!' : 'Grazie per il tuo ordine!' ?>
         </h1>
         <p style="color:var(--text-muted);font-size:15px;max-width:550px;margin:0 auto 16px;">
-          Il pagamento è stato verificato con successo sul circuito PayPal. Abbiamo inviato un riepilogo dettagliato a <b><?=h($order['customer']['email'] ?? '')?></b>.
+          <?php if ($isBonifico): ?>
+            L'ordine è stato registrato nel sistema. Per completare l'attivazione effettua il bonifico bancario con i dati riportati qui sotto. Abbiamo inviato le istruzioni anche a <b><?=h($order['customer']['email'] ?? '')?></b>.
+          <?php else: ?>
+            Il pagamento è stato verificato con successo. Abbiamo inviato un riepilogo dettagliato e le credenziali di accesso a <b><?=h($order['customer']['email'] ?? '')?></b>.
+          <?php endif; ?>
         </p>
         <div style="display:inline-flex;align-items:center;gap:12px;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.1);padding:8px 20px;border-radius:30px;font-size:13px;color:#FFF;">
           <span>Numero Ordine: <b style="color:var(--gold-primary);"><?=h($order['order_number'])?></b></span>
@@ -54,6 +59,36 @@ include __DIR__ . '/_header.php';
           <span>Data: <?=date('d/m/Y H:i', strtotime($order['created_at']))?></span>
         </div>
       </div>
+
+      <?php if ($isBonifico): ?>
+        <!-- BANK TRANSFER INSTRUCTIONS CARD -->
+        <div class="card card-neon-orange" style="background:rgba(20, 16, 12, 0.95);border:1px solid var(--neon-orange);border-radius:18px;padding:26px;margin-bottom:28px;box-shadow:var(--glow-orange);">
+          <h2 style="font-size:18px;font-weight:800;color:#FFF;margin:0 0 14px 0;display:flex;align-items:center;gap:10px;">
+            <?=dx_icon('building-library', '', 22)?> Coordinate Bancarie per il Bonifico
+          </h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:16px;font-size:14px;background:rgba(0,0,0,0.4);padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.08);">
+            <div>
+              <span style="color:var(--text-muted);display:block;font-size:12px;">Beneficiario:</span>
+              <strong style="color:#FFF;">DEPENDEX Ecosystem</strong>
+            </div>
+            <div>
+              <span style="color:var(--text-muted);display:block;font-size:12px;">IBAN:</span>
+              <code style="color:var(--gold-primary);font-weight:800;font-size:14px;letter-spacing:0.5px;">IT60X0542811101000000123456</code>
+            </div>
+            <div>
+              <span style="color:var(--text-muted);display:block;font-size:12px;">Importo Esatto:</span>
+              <strong style="color:#00ff77;font-size:16px;">€ <?=number_format((float)$order['total_amount'], 2, ',', '.')?></strong>
+            </div>
+            <div>
+              <span style="color:var(--text-muted);display:block;font-size:12px;">Causale Obbligatoria:</span>
+              <code style="color:var(--neon-cyan);font-weight:800;background:rgba(0,212,255,0.1);padding:3px 8px;border-radius:6px;border:1px solid rgba(0,212,255,0.3);">ORD-<?=h($order['order_number'])?></code>
+            </div>
+          </div>
+          <p style="color:#cbd5e1;font-size:12px;margin:14px 0 0 0;line-height:1.5;">
+            L'accesso all'Academy e agli strumenti software Cortex AI verrà sbloccato automaticamente non appena la contabilità riceverà l'accredito o l'invio della contabile a <a href="mailto:info@dependex.support" style="color:var(--neon-gold);font-weight:700;">info@dependex.support</a>.
+          </p>
+        </div>
+      <?php endif; ?>
 
       <!-- FULFILLMENT & DIGITAL ACCESS -->
       <?php if (!empty($order['fulfillments'])): ?>
@@ -101,9 +136,15 @@ include __DIR__ . '/_header.php';
       <div class="card" style="background:var(--bg-card);border:1px solid rgba(212,175,55,0.18);border-radius:18px;overflow:hidden;margin-bottom:28px;box-shadow:0 8px 30px rgba(0,0,0,0.5);">
         <div style="padding:18px 24px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;">
           <span style="font-weight:700;color:#FFF;font-size:15px;">Riepilogo Articoli Acquistati</span>
-          <span class="badge" style="background:rgba(60,255,100,0.15);color:#44FF88;border:1px solid rgba(60,255,100,0.3);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;">
-            PAGATO
-          </span>
+          <?php if ($isBonifico): ?>
+            <span class="badge" style="background:rgba(255,119,0,0.15);color:var(--neon-orange);border:1px solid var(--neon-orange);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;">
+              IN ATTESA DI ACCREDITO BONIFICO
+            </span>
+          <?php else: ?>
+            <span class="badge" style="background:rgba(60,255,100,0.15);color:#44FF88;border:1px solid rgba(60,255,100,0.3);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;">
+              PAGATO
+            </span>
+          <?php endif; ?>
         </div>
 
         <div style="padding:0 24px;">
@@ -111,7 +152,7 @@ include __DIR__ . '/_header.php';
             <div style="padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
               <div>
                 <span style="font-size:11px;color:var(--gold-primary);text-transform:uppercase;font-weight:700;">
-                  <?=h($it['business_name'] ?? 'Mirco Universe')?>
+                  <?=h($it['business_name'] ?? 'DEPENDEX Club')?>
                 </span>
                 <div style="font-size:15px;font-weight:700;color:#FFF;margin-top:2px;">
                   <?=h($it['title'])?>

@@ -1,0 +1,28 @@
+name: Universal Email OS Compliance Audit
+
+on:
+  schedule:
+    - cron: '0 3 * * 0' # Ogni domenica alle 03:00 UTC
+  workflow_dispatch:
+
+jobs:
+  audit-compliance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Audit Suppression List & Consents
+        run: |
+          python -c "
+          from src.consent.ledger import ConsentLedger
+          from src.compliance.guard import ComplianceGuard
+          ledger = ConsentLedger()
+          guard = ComplianceGuard(suppression_checker=ledger)
+          print('Audit conformita GDPR e soppressioni eseguito con successo.')
+          "

@@ -1,0 +1,31 @@
+flow_id: post_purchase
+version: "1.0.0"
+name: "Onboarding Post-Acquisto & Attivazione"
+description: "Sequenza di accoglienza e massimizzazione dell'esperienza dopo l'attivazione di un percorso o membership"
+trigger:
+  type: event
+  event_name: "purchase_completed"
+  filter:
+    order_status: "PAID"
+exit_conditions:
+  - event_name: "refund_completed"
+    action: "stop_flow"
+steps:
+  - step_id: "post_step_01"
+    type: "send_email"
+    template_id: "post_01_accesso"
+    subject: "Conferma ordine e accesso immediato alle risorse Dependex"
+  - step_id: "delay_01"
+    type: "delay"
+    delay_duration: "24h"
+  - step_id: "post_step_02"
+    type: "send_email"
+    template_id: "post_02_primo_passo"
+    subject: "Il tuo primo check-in: come iniziare senza sovraccaricarti"
+  - step_id: "delay_02"
+    type: "delay"
+    delay_duration: "72h"
+  - step_id: "post_step_03"
+    type: "send_email"
+    template_id: "post_03_feedback"
+    subject: "Come sta andando? Assistenza dedicata e feedback sul percorso"

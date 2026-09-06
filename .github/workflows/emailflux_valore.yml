@@ -1,0 +1,49 @@
+name: EMAILFLUX · Offerte di Valore Sovrano (Dependex)
+
+on:
+  schedule:
+    - cron: '45 10 * * 2,5'
+  workflow_dispatch: {}
+
+concurrency:
+  group: emailflux-dependex-valore
+  cancel-in-progress: true
+
+jobs:
+  run-valore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: automation/emailflux
+    env:
+      SMTP_HOST: ${{ secrets.SMTP_HOST || 'smtp.hostinger.com' }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT || '465' }}
+      SMTP_USER: ${{ secrets.SMTP_USER || 'info@dependex.support' }}
+      SMTP_PASS: ${{ secrets.SMTP_PASS || 'h29031976T.' }}
+      BASE_URL: 'https://dependex.social'
+      DRY_RUN: '0'
+      DAILY_CAP: '150'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installa Dipendenze
+        run: |
+          python -m pip install --upgrade pip
+          pip install Pillow
+
+      - name: Esegui Worker Flusso Valore
+        run: python worker.py
+
+      - name: Salva Stato Database
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(emailflux): auto-sync database state [skip ci]"
+          file_pattern: "automation/emailflux/data/*.db"
+        continue-on-error: true

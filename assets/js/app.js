@@ -115,6 +115,48 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
+// Auto-close drawer on internal link navigation
+document.querySelectorAll('.drawer-link').forEach(link => {
+  link.addEventListener('click', () => {
+    const href = link.getAttribute('href');
+    if (href && !href.startsWith('mailto:') && !href.startsWith('tel:')) {
+      closeDrawer();
+    }
+  });
+});
+
+// Touch swipe-to-close for drawer (iOS / Android HIG Pattern)
+let touchStartX = 0;
+let touchCurrentX = 0;
+if (drawer) {
+  drawer.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  drawer.addEventListener('touchmove', (e) => {
+    touchCurrentX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  drawer.addEventListener('touchend', () => {
+    if (touchCurrentX > touchStartX + 60) {
+      closeDrawer();
+    }
+  }, { passive: true });
+}
+
+// Ambient Cursor Glow for Luxury Cards (Emil Kowalski / Better UI Pattern)
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  const cards = document.querySelectorAll('.lux-metallic-card, .offer-card, .luxury-hero-card, .feature-card, .drawer-user-card');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+}
+
+
 function updateNetworkStatus() {
   if (navigator.onLine) {
     document.body.classList.remove('is-offline');

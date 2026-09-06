@@ -1,0 +1,33 @@
+flow_id: nurture_club_value
+version: "2.0.0"
+name: "Nurture & Valore dei Club Territoriali"
+description: "Sequenza educativa di valore: approfondimenti sul Metodo Hudolin, storie di trasformazione e aggiornamenti sui Club"
+trigger:
+  type: event
+  event_name: "welcome_completed_no_purchase"
+  filter:
+    score_gte: 4
+exit_conditions:
+  - event_name: "purchase_completed"
+    action: "stop_flow"
+  - event_name: "unsubscribed"
+    action: "stop_flow"
+steps:
+  - step_id: "nurture_step_01"
+    type: "send_email"
+    template_id: "nurture_01_storia_club"
+    subject: "Come funziona una riunione del Club: cosa aspettarsi la prima volta"
+  - step_id: "delay_01"
+    type: "delay"
+    delay_duration: "336h"
+  - step_id: "nurture_step_02"
+    type: "send_email"
+    template_id: "nurture_02_famiglia_alleata"
+    subject: "La famiglia nel cerchio: trasformare la tensione in alleanza duratura"
+  - step_id: "delay_02"
+    type: "delay"
+    delay_duration: "336h"
+  - step_id: "nurture_step_03"
+    type: "send_email"
+    template_id: "nurture_03_percorsi_sat"
+    subject: "Dal Club all'abilitazione di Servitore-Insegnante: il percorso formativo SAT"

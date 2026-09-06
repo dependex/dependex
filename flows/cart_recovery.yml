@@ -1,0 +1,33 @@
+flow_id: cart_recovery
+version: "2.0.0"
+name: "Recupero Attivazioni e Ordini Sospesi"
+description: "Sequenza di assistenza per completare l'attivazione in caso di checkout interrotto, rimozione attriti e supporto umano"
+trigger:
+  type: event
+  event_name: "checkout_abandoned"
+  filter:
+    order_status: "PENDING"
+exit_conditions:
+  - event_name: "purchase_completed"
+    action: "stop_flow"
+  - event_name: "order_cancelled"
+    action: "stop_flow"
+steps:
+  - step_id: "rec_step_01"
+    type: "send_email"
+    template_id: "cart_01_reminder"
+    subject: "Hai riscontrato difficoltà nel completare l'attivazione su Dependex?"
+  - step_id: "delay_01"
+    type: "delay"
+    delay_duration: "24h"
+  - step_id: "rec_step_02"
+    type: "send_email"
+    template_id: "cart_02_friction_removal"
+    subject: "Istruzioni per bonifico, rate e supporto personalizzato"
+  - step_id: "delay_02"
+    type: "delay"
+    delay_duration: "48h"
+  - step_id: "rec_step_03"
+    type: "send_email"
+    template_id: "cart_03_assistenza_umana"
+    subject: "Serve aiuto per iniziare? Parla con il nostro referente di Club"

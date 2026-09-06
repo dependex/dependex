@@ -1,0 +1,44 @@
+name: Universal Email OS Scheduled Dispatch
+
+on:
+  schedule:
+    - cron: '0 9,12,15,18 * * *' # Invii coordinati negli orari ottimali CET (fuori dalle quiet hours)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Esegui in modalità simulata Dry-Run (true/false)'
+        required: true
+        default: 'false'
+      batch_limit:
+        description: 'Limite massimo contatti per questo batch'
+        required: false
+        default: '100'
+
+concurrency:
+  group: email-dispatch-lock
+  cancel-in-progress: false
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          pip install pyyaml pillow
+
+      - name: Run Dispatch Governor Batch
+        env:
+          EMAIL_SMTP_USER: ${{ secrets.EMAIL_SMTP_USER }}
+          EMAIL_SMTP_PASSWORD: ${{ secrets.EMAIL_SMTP_PASSWORD }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          BATCH_LIMIT: ${{ github.event.inputs.batch_limit || '100' }}
+        run: |
+          python automation/emailflux/worker.py

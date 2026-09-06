@@ -204,31 +204,35 @@ require '_header.php';
       <a class="btn small" href="rank.php" style="width: 100%; text-align: center;">Tutti i Rank & Privilegi</a>
     </section>
 
-    <!-- QUICK SHORTCUTS TILES -->
-    <section class="quick-grid" style="margin: 0;">
-      <a class="quick green" href="club.php">
-        <b>🤝</b>
-        <span>Club</span>
+    <!-- QUICK SHORTCUTS TILES — I 7 RAMI NEON DELL'ARCOBALENO -->
+    <section class="quick-grid" style="margin: 0; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));">
+      <a class="quick red" href="sobriety.php" title="1. Senti · Presenza">
+        <b>🪷</b>
+        <span>Cammino</span>
       </a>
-      <a class="quick blue" href="cortex.php">
-        <b>✨</b>
-        <span>Cortex AI</span>
-      </a>
-      <a class="quick violet" href="journal.php">
+      <a class="quick orange" href="journal.php" title="2. Agisci · Movimento">
         <b>✍</b>
         <span>Diario</span>
       </a>
-      <a class="quick amber" href="events.php">
+      <a class="quick amber" href="events.php" title="3. Comunica · Voce">
         <b>📅</b>
         <span>Eventi</span>
       </a>
-      <a class="quick coral" href="academy.php">
+      <a class="quick green" href="club.php" title="4. Vedi · Visione">
+        <b>🤝</b>
+        <span>Club</span>
+      </a>
+      <a class="quick blue" href="cortex.php" title="5. Ama · Relazione">
+        <b>✨</b>
+        <span>Cortex AI</span>
+      </a>
+      <a class="quick indigo" href="academy.php" title="6. Costruisci · Struttura">
         <b>🎓</b>
         <span>Academy</span>
       </a>
-      <a class="quick teal" href="lifestyle.php">
-        <b>🌱</b>
-        <span>Lifestyle</span>
+      <a class="quick violet" href="offers.php" title="7. Sii · Sovranità">
+        <b>👑</b>
+        <span>Offerte</span>
       </a>
     </section>
 

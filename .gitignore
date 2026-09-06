@@ -34,6 +34,7 @@ acat-hudolin-kdp-factory/
 
 # Upload / drive temp artifacts
 .tmp.driveupload/
+.tmp.drivedownload/
 
 # Python cache
 __pycache__/

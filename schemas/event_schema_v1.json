@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UniversalEventSchemaV1",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_name",
+    "event_version",
+    "occurred_at",
+    "received_at",
+    "email_hash",
+    "source"
+  ],
+  "properties": {
+    "event_id": { "type": "string" },
+    "event_name": {
+      "type": "string",
+      "enum": [
+        "lead_created", "consent_granted", "consent_updated", "consent_revoked",
+        "email_queued", "email_sent", "email_delivered", "email_opened", "email_clicked",
+        "email_bounced", "email_complained", "email_unsubscribed",
+        "page_viewed", "content_viewed", "product_viewed", "lead_magnet_downloaded",
+        "form_submitted", "booking_started", "booking_completed",
+        "cart_created", "cart_updated", "checkout_started", "checkout_abandoned",
+        "purchase_completed", "refund_completed", "subscription_started",
+        "subscription_renewed", "subscription_cancelled", "review_submitted",
+        "referral_created", "birthday_due", "anniversary_due",
+        "flow_entered", "flow_exited", "flow_paused", "flow_reentered"
+      ]
+    },
+    "event_version": { "type": "string", "default": "1.0.0" },
+    "occurred_at": { "type": "string", "format": "date-time" },
+    "received_at": { "type": "string", "format": "date-time" },
+    "user_id": { "type": ["string", "null"] },
+    "anonymous_id": { "type": ["string", "null"] },
+    "email_hash": { "type": "string" },
+    "source": { "type": "string" },
+    "properties": { "type": "object" },
+    "consent_context": {
+      "type": "object",
+      "properties": {
+        "purpose": { "type": "string" },
+        "policy_version": { "type": "string" },
+        "opt_in_type": { "type": "string" }
+      }
+    },
+    "campaign_context": {
+      "type": "object",
+      "properties": {
+        "campaign_id": { "type": "string" },
+        "flow_id": { "type": "string" },
+        "message_id": { "type": "string" },
+        "variant_id": { "type": "string" }
+      }
+    }
+  }
+}

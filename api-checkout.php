@@ -131,8 +131,19 @@ try {
                 'source_domain' => $input['source_domain'] ?? $cartData['source_domain'] ?? $_SERVER['HTTP_HOST'] ?? 'dependex.social',
                 'utm_source' => $input['utm_source'] ?? null,
                 'utm_campaign' => $input['utm_campaign'] ?? null,
-                'utm_medium' => $input['utm_medium'] ?? null,
             ]);
+
+            // Notifica Marketing Automation OS
+            require_once __DIR__ . '/email-engine.php';
+            email_os_track_event('checkout_initiated', $email, [
+                'order_id' => $order['id'],
+                'cart_id' => $cart['id'],
+                'total' => $order['total_amount'] ?? ($cartData['total'] ?? 0.0),
+                'items_count' => count($cartData['items'] ?? [])
+            ]);
+            if ($marketing) {
+                email_os_enroll_contact($email, $firstName, $lastName, 'checkout_marketing_optin');
+            }
 
             // 5. Create PayPal Order server-side
             $originUrl = (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . ($_SERVER['HTTP_HOST'] ?? 'dependex.social');
@@ -157,6 +168,97 @@ try {
                 'order_number' => $order['order_number'],
                 'total_amount' => $order['total_amount'],
                 'currency' => $order['currency']
+            ]);
+            break;
+
+        case 'create_bank_transfer_order':
+            // 1. Validate cart contents
+            $cartData = $commerce->getCart($cart['id']);
+            if (empty($cartData['items'])) {
+                http_response_code(400);
+                echo json_encode(['success' => false, 'error' => 'Il carrello è vuoto. Impossibile procedere al checkout.']);
+                exit;
+            }
+
+            // 2. Validate Customer & Billing input
+            $email = trim((string)($input['email'] ?? ''));
+            $firstName = trim((string)($input['first_name'] ?? ''));
+            $lastName = trim((string)($input['last_name'] ?? ''));
+            $phone = trim((string)($input['phone'] ?? ''));
+            
+            if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                http_response_code(422);
+                echo json_encode(['success' => false, 'error' => 'Indirizzo email valido obbligatorio per l\'ordine.']);
+                exit;
+            }
+
+            $privacy = !empty($input['privacy_accepted']);
+            $terms = !empty($input['terms_accepted']);
+            $marketing = !empty($input['marketing_accepted']);
+
+            if (!$privacy || !$terms) {
+                http_response_code(422);
+                echo json_encode(['success' => false, 'error' => 'È necessario accettare i Termini di Servizio e l\'Informativa Privacy per procedere.']);
+                exit;
+            }
+
+            $billingAddress = [
+                'street' => trim((string)($input['billing_street'] ?? '')),
+                'city' => trim((string)($input['billing_city'] ?? '')),
+                'state' => trim((string)($input['billing_state'] ?? '')),
+                'postal_code' => trim((string)($input['billing_postal_code'] ?? '')),
+                'country' => strtoupper(trim((string)($input['billing_country'] ?? 'IT')))
+            ];
+
+            $fiscalData = [
+                'company_name' => trim((string)($input['company_name'] ?? '')),
+                'vat_number' => trim((string)($input['vat_number'] ?? '')),
+                'fiscal_code' => trim((string)($input['fiscal_code'] ?? '')),
+                'sdi_pec' => trim((string)($input['sdi_pec'] ?? '')),
+            ];
+
+            // 3. Resolve customer
+            $customer = $commerce->resolveCustomer($email, [
+                'first_name' => $firstName,
+                'last_name' => $lastName,
+                'phone' => $phone,
+                'billing_address' => $billingAddress,
+                'fiscal_data' => $fiscalData,
+                'marketing_opt_in' => $marketing
+            ]);
+
+            // 4. Create internal order
+            $order = $commerce->createOrderFromCart($cart['id'], $customer['id'], [
+                'billing_address' => $billingAddress,
+                'fiscal_data' => $fiscalData,
+                'privacy_accepted' => $privacy,
+                'terms_accepted' => $terms,
+                'marketing_accepted' => $marketing,
+                'source_domain' => $input['source_domain'] ?? $cartData['source_domain'] ?? $_SERVER['HTTP_HOST'] ?? 'dependex.social',
+                'utm_source' => $input['utm_source'] ?? null,
+                'utm_campaign' => $input['utm_campaign'] ?? null,
+            ]);
+
+            // Traccia evento Email Marketing OS
+            require_once __DIR__ . '/email-engine.php';
+            email_os_track_event('checkout_initiated', $email, [
+                'order_id' => $order['id'],
+                'cart_id' => $cart['id'],
+                'total' => $order['total_amount'] ?? ($cartData['total'] ?? 0.0),
+                'items_count' => count($cartData['items'] ?? []),
+                'payment_method' => 'bonifico'
+            ]);
+            if ($marketing) {
+                email_os_enroll_contact($email, $firstName, $lastName, 'checkout_marketing_optin');
+            }
+
+            echo json_encode([
+                'success' => true,
+                'order_id' => $order['id'],
+                'order_number' => $order['order_number'],
+                'total_amount' => $order['total_amount'],
+                'currency' => $order['currency'],
+                'redirect_url' => 'order-confirmation.php?order_id=' . urlencode($order['id']) . '&method=bonifico'
             ]);
             break;
 

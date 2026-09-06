@@ -1,0 +1,26 @@
+brand:
+  id: "dependex"
+  name: "DEPENDEX"
+  co_brand: "OLTRE"
+  payoff: "AL CLUB. COL CLUB."
+  domains:
+    primary: "https://dependex.social"
+    secondary: "https://oltre.social"
+  email:
+    sender_name: "DEPENDEX · AL CLUB. COL CLUB."
+    sender_address: "info@dependex.social"
+    reply_to: "info@dependex.social"
+    support_address: "info@dependex.social"
+    headers:
+      x_mailer: "Universal-Email-Revenue-OS/1.0"
+      organization: "DEPENDEX Ecological Social Network"
+  colors:
+    dark_oled: "#070709"
+    surface_card: "#101116"
+    gold_primary: "#D4AF37"
+    gold_light: "#FFF2B2"
+    gold_dark: "#996515"
+    text_white: "#FFFFFF"
+    text_muted: "#A1A1AA"
+  locale: "it"
+  timezone: "Europe/Rome"

@@ -48,10 +48,10 @@ $TOOLSCH=[
  ['Preda buyback pool','0x9C6F56860E2d2b420068fd847740e970880c25B8','vivo','Unico pool on-chain esistente (buyback Preda).'],
 ];
 $NUOVI=[
- ['DRWithdrawGuard.sol','deploy','Porta d\'uscita del DUX blindata: 48h, min 150, limiti 1000/g·5000/sett·25000/mese, fee 0,5%. Audit DR-MAGICO chiuso (45/45 test).'],
+ ['DRWithdrawGuard.sol','deploy','Porta d\'uscita del DUX blindata: 48h, min 150, limiti 1000/g·5000/sett·25000/mese, fee 0,5%. Audit DR-SECURITY chiuso (45/45 test).'],
  ['DRTreasury.sol','deploy','Cassaforte riserva POL + fee: timelock, pavimento pubblico, handover 2 passi (Gnosis Safe).'],
- ['DRMembership.sol','corso','Tool #1: acquisto Membership in DUX (300/500/1.000). In sviluppo (DR-MAGICO).'],
- ['DRNFTUtilityLock.sol','corso','Tool #2-3-4: lock NFT Preda/Genesys/Thrinwulf → reward DUX a scadenza. In sviluppo (DR-MAGICO).'],
+ ['DRMembership.sol','corso','Tool #1: acquisto Membership in DUX (300/500/1.000). In sviluppo (DR-PROTOCOL).'],
+ ['DRNFTUtilityLock.sol','corso','Tool #2-3-4: lock NFT Preda/Genesys/Thrinwulf → reward DUX a scadenza. In sviluppo (DR-PROTOCOL).'],
 ];
 /* i 4 NUOVI tool Genesys (perché/cosa/come + numeri fissati) */
 $G4=[

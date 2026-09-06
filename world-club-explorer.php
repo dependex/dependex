@@ -50,7 +50,7 @@ require '_dependex-world-map.php';
   <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
     <a class="btn primary" href="offers.php" style="background:linear-gradient(135deg, #FFF2B2, #D4AF37);color:#070709;font-weight:800;padding:0 24px;">
       <?=dx_icon('sparkles', '', 16)?>
-      <span style="margin-left:6px;">Scopri il Protocollo M.A.G.I.C.</span>
+      <span style="margin-left:6px;">Scopri le Offerte di Valore</span>
     </a>
     <a class="btn" href="help.php" style="border-color:rgba(212,175,55,0.4);color:#FFFFFF;font-weight:700;padding:0 22px;">
       <?=dx_icon('shield', '', 16)?>

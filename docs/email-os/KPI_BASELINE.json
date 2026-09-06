@@ -1,0 +1,20 @@
+{
+  "updated_at": "2026-09-06T11:10:00Z",
+  "kpi_targets": {
+    "deliverability_rate": 0.985,
+    "unique_open_rate_diagnostic": 0.260,
+    "unique_click_rate": 0.035,
+    "lead_to_starter_kit_conversion": 0.022,
+    "starter_kit_to_core_conversion": 0.140,
+    "repeat_buyer_retention_90d": 0.450,
+    "unsubscribe_rate_max": 0.0025,
+    "spam_complaint_rate_max": 0.0004,
+    "hard_bounce_rate_max": 0.0080
+  },
+  "guardrails": {
+    "circuit_breaker_bounce_threshold": 0.030,
+    "circuit_breaker_complaint_threshold": 0.0008,
+    "daily_warmup_cap": 150,
+    "throttle_seconds_between_sends": 4.0
+  }
+}

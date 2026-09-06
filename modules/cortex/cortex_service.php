@@ -117,7 +117,7 @@ class CortexService {
             case 'sales':
                 return [
                     'agent' => 'sales',
-                    'response' => "**[OFFERTE IRRIFIUTABILI (PROTOCOLLO M.A.G.I.C.)]**\n\nAbbiamo 4 livelli di valore:\n• **Starter Kit & Diagnosi** (€ 27 - valore € 190)\n• **Protocollo Completo & Trasformazione** (€ 497 o 3 rate da € 185 - valore € 2.588 con Garanzia Integrale)\n• **Programma Elite & Affiancamento** (€ 1.997 - supporto 1-a-1)\n• **Club Permanente** (€ 39/mese - continuità e Cortex attivo 24/7)\n\nPuoi consultare tutte le pricing card dettagliate su `/offers.php`."
+                    'response' => "**[OFFERTE IRRIFIUTABILI (ARCHITETTURA DI VALORE)]**\n\nAbbiamo 4 livelli di valore:\n• **Starter Kit & Diagnosi** (€ 27 - valore € 190)\n• **Protocollo Completo & Trasformazione** (€ 497 o 3 rate da € 185 - valore € 2.588 con Garanzia Integrale)\n• **Programma Elite & Affiancamento** (€ 1.997 - supporto 1-a-1)\n• **Club Permanente** (€ 39/mese - continuità e Cortex attivo 24/7)\n\nPuoi consultare tutte le pricing card dettagliate su `/offers.php`."
                 ];
             case 'analytics':
                 $nodes = (int)$this->db->query("SELECT COUNT(*) FROM dependex_world_registry")->fetchColumn();

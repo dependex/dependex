@@ -76,7 +76,7 @@
   background-clip: text;
 }
 
-/* M.A.G.I.C. Offer Cards Grid */
+/* Luxury Offer Cards Grid */
 .offers-ladder-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -261,7 +261,7 @@
 }
 
 /* CTA Button */
-.btn-magic-cta {
+.btn-lux-cta {
   display: block;
   width: 100%;
   text-align: center;
@@ -276,25 +276,25 @@
   border: none;
 }
 
-.btn-magic-cta.primary {
+.btn-lux-cta.primary {
   background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold));
   color: var(--color-ink);
   box-shadow: 0 8px 20px rgba(201, 168, 76, 0.3);
 }
 
-.btn-magic-cta.primary:hover {
+.btn-lux-cta.primary:hover {
   background: linear-gradient(135deg, #fff, var(--color-gold-light));
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(201, 168, 76, 0.45);
 }
 
-.btn-magic-cta.outline {
+.btn-lux-cta.outline {
   background: transparent;
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.btn-magic-cta.outline:hover {
+.btn-lux-cta.outline:hover {
   border-color: var(--color-gold);
   color: var(--color-gold-light);
   background: rgba(201, 168, 76, 0.05);
@@ -583,6 +583,26 @@
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.25);
 }
 
+/* Dynamic Cursor Spotlight Radial Glow (Emil Kowalski / Better UI Pattern) */
+.lux-metallic-card::after,
+.offer-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(400px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px), rgba(212, 175, 55, 0.12), transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.lux-metallic-card:hover::after,
+.offer-card:hover::after {
+  opacity: 1;
+}
+
+
 /* Metallic Gold Border Glow Pill */
 .gold-glow-badge {
   display: inline-flex;
@@ -775,4 +795,155 @@ a {
   color: inherit;
 }
 
+/* Header: Strictly Burger Menu, No Horizontal Menu Items */
+.desktop-nav {
+  display: none !important;
+}
+.cart-pill {
+  display: none !important;
+}
+.burger-btn {
+  display: flex !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 12px !important;
+  background: #101116 !important;
+  border: 1px solid rgba(212, 175, 55, 0.45) !important;
+  cursor: pointer !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
+  padding: 0 !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+}
+.burger-btn:hover {
+  border-color: #FFF2B2 !important;
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.45) !important;
+  transform: translateY(-1px) !important;
+}
+.burger-btn span {
+  display: block !important;
+  width: 22px !important;
+  height: 2px !important;
+  background: #D4AF37 !important;
+  border-radius: 2px !important;
+  transition: transform 0.25s ease, opacity 0.2s ease !important;
+}
+.burger-btn.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg) !important;
+}
+.burger-btn.is-active span:nth-child(2) {
+  opacity: 0 !important;
+}
+.burger-btn.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg) !important;
+}
 
+/* Off-canvas Drawer Styling - Pure Black & Gold */
+.drawer {
+  background: #070709 !important;
+  border-left: 1px solid rgba(212, 175, 55, 0.3) !important;
+  color: #ffffff !important;
+}
+.drawer-header {
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+.drawer-close {
+  color: #D4AF37 !important;
+}
+.drawer-section-title {
+  color: #D4AF37 !important;
+  letter-spacing: 0.1em !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  margin-top: 14px !important;
+}
+.drawer-link {
+  color: #e5e7eb !important;
+  border: 1px solid transparent !important;
+  border-radius: 12px !important;
+  padding: 11px 14px !important;
+  font-size: 0.92rem !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.drawer-link svg {
+  color: #D4AF37 !important;
+  transition: transform 0.22s ease !important;
+}
+.drawer-link:hover {
+  color: #FFFFFF !important;
+  background: rgba(212, 175, 55, 0.12) !important;
+  border-color: rgba(212, 175, 55, 0.35) !important;
+  transform: translateX(3px) !important;
+}
+.drawer-link:hover svg {
+  transform: scale(1.15) !important;
+}
+.drawer-link.active {
+  color: #FFFFFF !important;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.08)) !important;
+  border: 1px solid rgba(212, 175, 55, 0.5) !important;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15) !important;
+}
+.drawer-backdrop {
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  background: rgba(5, 6, 8, 0.75) !important;
+}
+.drawer {
+  width: min(400px, 88vw) !important;
+  box-shadow: -15px 0 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.1) !important;
+  overscroll-behavior: contain !important;
+  padding-top: env(safe-area-inset-top, 0) !important;
+  padding-bottom: env(safe-area-inset-bottom, 0) !important;
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Staggered Cascading Reveal for Drawer Links (Emil Kowalski Animation Pattern) */
+.drawer .drawer-nav-group,
+.drawer .drawer-user-card,
+.drawer .drawer-auth-card {
+  opacity: 0;
+  transform: translateX(16px);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer.is-open .drawer-user-card,
+.drawer.is-open .drawer-auth-card {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.08s;
+}
+
+.drawer.is-open .drawer-nav-group:nth-of-type(1) {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.14s;
+}
+
+.drawer.is-open .drawer-nav-group:nth-of-type(2) {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.20s;
+}
+
+.drawer.is-open .drawer-nav-group:nth-of-type(3) {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.26s;
+}
+
+.drawer.is-open .drawer-footer {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease 0.3s, transform 0.3s ease 0.3s;
+}
+
+.drawer-footer {
+  padding-bottom: calc(14px + env(safe-area-inset-bottom, 0)) !important;
+}

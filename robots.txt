@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /cortex.php
+Disallow: /admin.php
+Disallow: /email-admin.php
+Disallow: /app.php
+Disallow: /checkin.php
+Disallow: /journal.php
+Disallow: /profile.php
+
+Sitemap: https://dependex.social/sitemap.xml

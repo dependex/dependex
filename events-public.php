@@ -153,9 +153,15 @@ function formatEventDate(string $datetimeStr): array {
               <span style="display: inline-flex; align-items: center; gap: 6px;">
                 <?=dx_icon('map-pin', '', 14)?> <b style="color: #FFFFFF;"><?=h($e['venue'])?></b>
               </span>
-              <span style="display: inline-flex; align-items: center; gap: 6px;">
-                <?=dx_icon('users', '', 14)?> <?=h((string)$e['registrations'])?> iscritti
-              </span>
+              <?php if((int)$e['registrations'] >= 5): ?>
+                <span style="display: inline-flex; align-items: center; gap: 6px;">
+                  <?=dx_icon('users', '', 14)?> <?=h((string)$e['registrations'])?> iscritti
+                </span>
+              <?php else: ?>
+                <span style="display: inline-flex; align-items: center; gap: 6px; color: #10b981;">
+                  <?=dx_icon('check-circle', '', 14)?> Posti disponibili
+                </span>
+              <?php endif; ?>
               <span style="display: inline-flex; align-items: center; gap: 6px; color: #D4AF37;">
                 <?=dx_icon('award', '', 14)?> +<?=h((string)$e['drx_reward'])?> DRX
               </span>

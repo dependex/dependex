@@ -117,9 +117,9 @@ require '_header.php';
         <div class="offer-header">
           <span class="dx-ticker-badge" style="margin-bottom: 10px;">LIV. 1 · TRIPWIRE DIAGNOSTICO</span>
           <h3 class="offer-tier-title" style="color: #FFFFFF; font-family: var(--font-serif);">Starter Kit & Diagnosi</h3>
-          <p class="offer-tier-sub" style="color: #a1a1aa;">Il primo passo per entrare in contatto con il metodo, testare la rete e sbloccare gli strumenti essenziali.</p>
+          <p class="offer-tier-sub" style="color: #cbd5e1;">Il primo passo per entrare in contatto con il metodo, testare la rete e sbloccare gli strumenti essenziali.</p>
           <div class="offer-pricing-box" style="border-color: rgba(212,175,55,0.25);">
-            <span class="offer-anchor-val" style="color: #71717a;">Valore reale: € 190</span>
+            <span class="offer-anchor-val" style="color: #94a3b8; text-decoration: line-through;">Valore reale: € 190</span>
             <div class="offer-price" style="color: #FFFFFF;">€ 27 <small style="color: #D4AF37;">/ una tantum</small></div>
           </div>
         </div>
@@ -128,17 +128,17 @@ require '_header.php';
           <li class="offer-stack-item">
             <span style="color: #D4AF37;"><?=dx_icon('check-circle', '', 16)?></span>
             <span>Check-up diagnostico iniziale & guida pratica al metodo</span>
-            <span class="item-val" style="color: #71717a;">€ 70</span>
+            <span class="item-val" style="color: var(--neon-gold); font-weight: 800;">€ 70</span>
           </li>
           <li class="offer-stack-item">
             <span style="color: #D4AF37;"><?=dx_icon('check-circle', '', 16)?></span>
             <span>Accesso completo 30gg all'assistente AI Cortex</span>
-            <span class="item-val" style="color: #71717a;">€ 50</span>
+            <span class="item-val" style="color: var(--neon-gold); font-weight: 800;">€ 50</span>
           </li>
           <li class="offer-stack-item">
             <span style="color: #D4AF37;"><?=dx_icon('check-circle', '', 16)?></span>
             <span>Mappa operativa dei 542 Club e canali territoriali</span>
-            <span class="item-val" style="color: #71717a;">€ 70</span>
+            <span class="item-val" style="color: var(--neon-gold); font-weight: 800;">€ 70</span>
           </li>
         </ul>
 
@@ -147,7 +147,7 @@ require '_header.php';
           <div class="offer-bonus-desc" style="color: #e5e7eb;"><strong>Cassetta Attrezzi Primo Giorno:</strong> Checklist di orientamento rapido per non sentirti mai disorientato. (Valore: € 47)</div>
         </div>
 
-        <div class="offer-guarantee-box" style="background: rgba(16,17,23,0.9); border: 1px solid rgba(212,175,55,0.3); color: #d1d5db;">
+        <div class="offer-guarantee-box" style="background: rgba(16,17,23,0.9); border: 1px solid rgba(212,175,55,0.3); color: #cbd5e1;">
           <strong style="color: #FFFFFF; display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
             <?=dx_icon('shield-check', '', 16)?> Garanzia "Zero Rischio Totale"
           </strong>
@@ -158,7 +158,7 @@ require '_header.php';
           <button class="btn-rainbow-neon" style="flex:1;" onclick="selectTier('Starter Kit & Diagnosi', 27, 'off_starter_kit')">
             Acquista Ora · € 27
           </button>
-          <button class="btn" style="border: 1px solid rgba(255,119,0,0.4); color: #FFF; padding:12px 14px; border-radius: 12px;" onclick="window.dxCommerce.addToCart('off_starter_kit')" title="Aggiungi al carrello">
+          <button class="btn-rainbow-outline" style="padding:12px 14px;" onclick="window.dxCommerce.addToCart('off_starter_kit')" title="Aggiungi al carrello">
             <?=dx_icon('shopping-cart', '', 18)?>
           </button>
         </div>
@@ -341,10 +341,10 @@ require '_header.php';
     <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: #FFFFFF; margin-bottom: 0.75rem;">
       Non sai quale livello della Scala Valore scegliere?
     </h3>
-    <p style="color: #a1a1aa; max-width: 620px; margin: 0 auto 1.5rem; font-size: 1rem; line-height: 1.6;">
+    <p style="color: #cbd5e1; max-width: 620px; margin: 0 auto 1.5rem; font-size: 1rem; line-height: 1.6;">
       Parla con <strong>Cortex</strong>, il Company Brain dell'ecosistema: analizzerà il tuo punto di partenza e ti consiglierà l'opzione più adatta al tuo obiettivo con assoluta sincerità.
     </p>
-    <a href="cortex.php?q=<?=urlencode("Aiutami a scegliere l'offerta più adatta alla mia situazione")?>" class="btn primary" style="background: linear-gradient(135deg, #FFF2B2, #D4AF37); color: #070709; font-weight: 800; padding: 0 28px; text-decoration: none;">
+    <a href="cortex.php?q=<?=urlencode("Aiutami a scegliere l'offerta più adatta alla mia situazione")?>" class="btn primary" style="padding: 0 28px; text-decoration: none;">
       <?=dx_icon('brain', '', 18)?>
       <span style="margin-left: 8px;">Consulta Cortex in Tempo Reale</span>
     </a>
@@ -354,35 +354,35 @@ require '_header.php';
 <!-- Checkout Modal -->
 <div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true" style="display:none; background: rgba(0,0,0,0.85);">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content" style="background: #101116; border: 1px solid #D4AF37; border-radius: 20px; color: #fff; box-shadow: 0 20px 60px rgba(0,0,0,0.9);">
+    <div class="modal-content" style="background: rgba(12, 16, 26, 0.96); border: 1px solid rgba(0, 212, 255, 0.35); border-radius: 20px; color: #fff; box-shadow: 0 20px 60px rgba(0,0,0,0.95), 0 0 30px rgba(0, 212, 255, 0.2);">
       <div class="modal-header border-0 pb-0" style="padding: 24px 24px 10px;">
-        <h5 class="modal-title" id="checkoutTitle" style="font-family: var(--font-serif); color: #FFF2B2; font-weight: 800;">Conferma Selezione Offerta</h5>
+        <h5 class="modal-title" id="checkoutTitle" style="font-family: var(--font-serif); color: #FFFFFF; font-weight: 800;">Conferma Selezione Offerta</h5>
         <button type="button" class="btn-close btn-close-white" onclick="closeModal()" aria-label="Chiudi"></button>
       </div>
       <div class="modal-body" style="padding: 10px 24px 24px;">
-        <p style="color: #a1a1aa; margin-bottom: 12px; font-size: 0.9rem;">Hai selezionato:</p>
-        <div class="p-3 mb-3 rounded-3" style="background: rgba(212,175,55,0.08); border-left: 3px solid #D4AF37;">
+        <p style="color: #cbd5e1; margin-bottom: 12px; font-size: 0.9rem;">Hai selezionato:</p>
+        <div class="p-3 mb-3 rounded-3" style="background: rgba(212,175,55,0.1); border-left: 3px solid var(--neon-gold);">
           <strong id="modalTierName" class="d-block text-white fs-5"></strong>
-          <span id="modalTierPrice" style="color: #D4AF37; font-weight: 800; font-size: 1.5rem;"></span>
+          <span id="modalTierPrice" style="color: var(--neon-gold); font-weight: 800; font-size: 1.5rem; text-shadow: 0 0 10px rgba(255,215,0,0.4);"></span>
         </div>
         <form id="orderForm" onsubmit="submitOrder(event)">
           <div class="mb-3">
-            <label class="form-label small" style="color: #a1a1aa;">Nome e Cognome</label>
-            <input type="text" class="form-control" id="orderName" required style="background: #070709; border-color: rgba(212,175,55,0.3); color: #fff; border-radius: 12px; padding: 12px;">
+            <label class="form-label small" style="color: #e2e8f0;">Nome e Cognome</label>
+            <input type="text" class="form-control" id="orderName" required style="background: rgba(14, 18, 28, 0.9); border-color: rgba(0, 212, 255, 0.3); color: #fff; border-radius: 12px; padding: 12px;">
           </div>
           <div class="mb-3">
-            <label class="form-label small" style="color: #a1a1aa;">Email di Contatto</label>
-            <input type="email" class="form-control" id="orderEmail" required style="background: #070709; border-color: rgba(212,175,55,0.3); color: #fff; border-radius: 12px; padding: 12px;">
+            <label class="form-label small" style="color: #e2e8f0;">Email di Contatto</label>
+            <input type="email" class="form-control" id="orderEmail" required style="background: rgba(14, 18, 28, 0.9); border-color: rgba(0, 212, 255, 0.3); color: #fff; border-radius: 12px; padding: 12px;">
           </div>
           <div class="mb-3">
-            <label class="form-label small" style="color: #a1a1aa;">Metodo di Pagamento</label>
-            <select class="form-select" id="orderMethod" style="background: #070709; border-color: rgba(212,175,55,0.3); color: #fff; border-radius: 12px; padding: 12px;">
+            <label class="form-label small" style="color: #e2e8f0;">Metodo di Pagamento</label>
+            <select class="form-select" id="orderMethod" style="background: rgba(14, 18, 28, 0.9); border-color: rgba(0, 212, 255, 0.3); color: #fff; border-radius: 12px; padding: 12px;">
               <option value="carta">Carta di Credito / Debito</option>
               <option value="bonifico">Bonifico Bancario</option>
               <option value="crypto">Criptovaluta / Web3</option>
             </select>
           </div>
-          <button type="submit" class="btn-lux-cta primary mt-3" style="width: 100%; background: linear-gradient(135deg, #FFF2B2, #D4AF37); color: #070709; font-weight: 800; border-radius: 14px; padding: 14px;">
+          <button type="submit" class="btn primary mt-3" style="width: 100%; border-radius: 14px; padding: 14px;">
             Procedi all'Attivazione
           </button>
         </form>

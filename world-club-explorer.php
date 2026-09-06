@@ -44,15 +44,15 @@ require '_dependex-world-map.php';
   <h3 style="margin-top:0;font-size:1.4rem;color:#FFFFFF;font-family:var(--font-serif);">
     Non riesci a raggiungere un Club fisico o preferisci un primo contatto riservato?
   </h3>
-  <p style="color:#a1a1aa;max-width:640px;margin:0.5rem auto 1.5rem;font-size:0.96rem;line-height:1.6;">
+  <p style="color:#cbd5e1;max-width:640px;margin:0.5rem auto 1.5rem;font-size:0.96rem;line-height:1.6;">
     Oltre alla presenza fisica sul territorio, puoi iniziare subito con il nostro Starter Kit digitale o dialogare in totale anonimato con un Servitore-Insegnante della rete.
   </p>
   <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
-    <a class="btn primary" href="offers.php" style="background:linear-gradient(135deg, #FFF2B2, #D4AF37);color:#070709;font-weight:800;padding:0 24px;">
+    <a class="btn primary" href="offers.php" style="padding:0 24px;">
       <?=dx_icon('sparkles', '', 16)?>
       <span style="margin-left:6px;">Scopri le Offerte di Valore</span>
     </a>
-    <a class="btn" href="help.php" style="border-color:rgba(212,175,55,0.4);color:#FFFFFF;font-weight:700;padding:0 22px;">
+    <a class="btn-rainbow-outline" href="help.php" style="padding:0 22px;">
       <?=dx_icon('shield', '', 16)?>
       <span style="margin-left:6px;">Richiedi Orientamento Riservato</span>
     </a>

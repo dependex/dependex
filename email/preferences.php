@@ -105,7 +105,7 @@ require __DIR__ . '/../_header.php';
         </select>
       </div>
 
-      <button type="submit" style="background: linear-gradient(135deg, #FFF2B2, #D4AF37); color: #070709; font-weight: 800; border: none; padding: 14px 28px; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1rem;">
+      <button type="submit" class="btn primary" style="width: 100%; border-radius: 12px; min-height: 48px; font-size: 1rem;">
         Salva Preferenze
       </button>
 

@@ -62,10 +62,10 @@ require __DIR__ . '/../_header.php';
     </div>
 
     <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
-      <a href="/index.php" class="btn primary" style="background: linear-gradient(135deg, #FFF2B2, #D4AF37); color: #070709; font-weight: 800; padding: 12px 28px; text-decoration: none; border-radius: 8px;">
+      <a href="/index.php" class="btn primary" style="padding: 12px 28px; text-decoration: none; border-radius: 12px;">
         Torna alla Home
       </a>
-      <a href="/email/preferences.php?email=<?=urlencode($email)?>" class="btn" style="border: 1px solid rgba(212,175,55,0.4); color: #FFFFFF; font-weight: 700; padding: 12px 24px; text-decoration: none; border-radius: 8px;">
+      <a href="/email/preferences.php?email=<?=urlencode($email)?>" class="btn-rainbow-outline" style="padding: 12px 24px; text-decoration: none; border-radius: 12px;">
         Gestisci Preferenze
       </a>
     </div>

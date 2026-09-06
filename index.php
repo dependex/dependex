@@ -121,19 +121,19 @@ $newsCards = AcatNewsService::getLatestCards(10);
       <h3 style="color: #FFFFFF; font-size: 1.35rem; margin: 4px 0 8px 0; font-family: var(--font-serif);">
         Ricevi i 3 Club territoriali più vicini e la Guida del 1° Giorno
       </h3>
-      <p style="color: #94a3b8; font-size: 0.9rem; margin: 0; line-height: 1.5;">
+      <p style="color: #cbd5e1; font-size: 0.92rem; margin: 0; line-height: 1.6;">
         Inserisci la tua città e la tua email: ti invieremo l'indirizzo esatto, il giorno di riunione e la checklist delle 7 azioni per non restare solo.
       </p>
     </div>
     <div class="col-lg-6">
       <form action="lead.php?magnet=club" method="POST" style="display: flex; gap: 10px; flex-wrap: wrap;">
-        <input type="text" name="citta" required placeholder="La tua città o provincia..." style="flex: 1; min-width: 170px; padding: 12px 14px; background: #020617; border: 1px solid rgba(212,175,55,0.3); border-radius: 8px; color: #fff; font-size: 0.95rem;">
-        <input type="email" name="email" required placeholder="La tua email riservata..." style="flex: 1.2; min-width: 200px; padding: 12px 14px; background: #020617; border: 1px solid rgba(212,175,55,0.3); border-radius: 8px; color: #fff; font-size: 0.95rem;">
-        <button type="submit" style="background: linear-gradient(135deg, #FFF2B2, #D4AF37); color: #070709; font-weight: 800; border: none; padding: 12px 22px; border-radius: 8px; cursor: pointer; white-space: nowrap; font-size: 0.95rem;">
+        <input type="text" name="citta" required placeholder="La tua città o provincia..." style="flex: 1; min-width: 170px; padding: 12px 14px; background: rgba(14, 18, 28, 0.9); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 10px; color: #fff; font-size: 0.95rem;">
+        <input type="email" name="email" required placeholder="La tua email riservata..." style="flex: 1.2; min-width: 200px; padding: 12px 14px; background: rgba(14, 18, 28, 0.9); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 10px; color: #fff; font-size: 0.95rem;">
+        <button type="submit" class="btn primary" style="white-space: nowrap; font-size: 0.95rem; min-height: 48px; border-radius: 12px; padding: 0 20px;">
           Invia i 3 Club
         </button>
       </form>
-      <small style="display: block; font-size: 0.75rem; color: #64748b; margin-top: 6px;">
+      <small style="display: block; font-size: 0.78rem; color: #cbd5e1; margin-top: 6px;">
         Nessun archivio pubblico. Riservatezza assoluta. Disiscrizione garantita in 1 click.
       </small>
     </div>
@@ -283,7 +283,7 @@ $newsCards = AcatNewsService::getLatestCards(10);
     <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: #FFFFFF;">
       Perché Questo Percorso Funziona Senza Sforzi Inutili
     </h2>
-    <p style="color: #a1a1aa; max-width: 620px; margin: 0 auto; font-size: 1rem;">
+    <p style="color: #cbd5e1; max-width: 620px; margin: 0 auto; font-size: 1rem;">
       Non serve una forza di volontà disumana. Serve una struttura intelligente che assorbe la fatica e toglie potere alla dipendenza.
     </p>
   </div>
@@ -292,32 +292,32 @@ $newsCards = AcatNewsService::getLatestCards(10);
     <div class="lever-card card-neon-red p-4" style="background: rgba(14, 16, 26, 0.85); border-radius: 16px;">
       <div style="color: var(--neon-red); margin-bottom: 12px;"><?=dx_icon('clock', '', 32)?></div>
       <h3 class="lever-title" style="color: #FFFFFF;">Risparmi Anni di Tentativi a Vuoto</h3>
-      <p class="lever-desc" style="color: #94a3b8;">Con il censimento globale trovi subito l'orario e il contatto del Club più vicino. Basta brancolare nel buio.</p>
+      <p class="lever-desc" style="color: #cbd5e1;">Con il censimento globale trovi subito l'orario e il contatto del Club più vicino. Basta brancolare nel buio.</p>
     </div>
     <div class="lever-card card-neon-orange p-4" style="background: rgba(14, 16, 26, 0.85); border-radius: 16px;">
       <div style="color: var(--neon-orange); margin-bottom: 12px;"><?=dx_icon('shield-check', '', 32)?></div>
       <h3 class="lever-title" style="color: #FFFFFF;">Risparmi Migliaia di Euro</h3>
-      <p class="lever-desc" style="color: #94a3b8;">La rete dei Club territoriali è solidale e accessibile, distruggendo le speculazioni delle cliniche private a pagamento.</p>
+      <p class="lever-desc" style="color: #cbd5e1;">La rete dei Club territoriali è solidale e accessibile, distruggendo le speculazioni delle cliniche private a pagamento.</p>
     </div>
     <div class="lever-card card-neon-gold p-4" style="background: rgba(14, 16, 26, 0.85); border-radius: 16px;">
       <div style="color: var(--neon-gold); margin-bottom: 12px;"><?=dx_icon('brain', '', 32)?></div>
       <h3 class="lever-title" style="color: #FFFFFF;">Disinneschi l'Ansia da Prestazione</h3>
-      <p class="lever-desc" style="color: #94a3b8;">Un protocollo in 5 fasi collaudato da 40 anni che ti dice esattamente cosa fare, un giorno alla volta.</p>
+      <p class="lever-desc" style="color: #cbd5e1;">Un protocollo in 5 fasi collaudato da 40 anni che ti dice esattamente cosa fare, un giorno alla volta.</p>
     </div>
     <div class="lever-card card-neon-green p-4" style="background: rgba(14, 16, 26, 0.85); border-radius: 16px;">
       <div style="color: var(--neon-green); margin-bottom: 12px;"><?=dx_icon('crown', '', 32)?></div>
       <h3 class="lever-title" style="color: #FFFFFF;">Da Persona Fragile a Guida Rispettata</h3>
-      <p class="lever-desc" style="color: #94a3b8;">Con i moduli SAT e l'Academy puoi abilitarti come Servitore-Insegnante e trasformare la tua esperienza in risorsa per gli altri.</p>
+      <p class="lever-desc" style="color: #cbd5e1;">Con i moduli SAT e l'Academy puoi abilitarti come Servitore-Insegnante e trasformare la tua esperienza in risorsa per gli altri.</p>
     </div>
     <div class="lever-card card-neon-cyan p-4" style="background: rgba(14, 16, 26, 0.85); border-radius: 16px;">
       <div style="color: var(--neon-cyan); margin-bottom: 12px;"><?=dx_icon('heart-handshake', '', 32)?></div>
       <h3 class="lever-title" style="color: #FFFFFF;">Pace e Unione nel Nucleo Familiare</h3>
-      <p class="lever-desc" style="color: #94a3b8;">Il Metodo Hudolin coinvolge tutta la famiglia. La sofferenza condivisa diventa complicità e nuova serenità domestica.</p>
+      <p class="lever-desc" style="color: #cbd5e1;">Il Metodo Hudolin coinvolge tutta la famiglia. La sofferenza condivisa diventa complicità e nuova serenità domestica.</p>
     </div>
     <div class="lever-card card-neon-violet p-4" style="background: rgba(14, 16, 26, 0.85); border-radius: 16px;">
       <div style="color: var(--neon-violet); margin-bottom: 12px;"><?=dx_icon('lock', '', 32)?></div>
       <h3 class="lever-title" style="color: #FFFFFF;">Riservatezza & Anonimato Totale</h3>
-      <p class="lever-desc" style="color: #94a3b8;">Nessun dato venduto a terzi, zero profilazione commerciale. Sovranità assoluta della tua privacy.</p>
+      <p class="lever-desc" style="color: #cbd5e1;">Nessun dato venduto a terzi, zero profilazione commerciale. Sovranità assoluta della tua privacy.</p>
     </div>
   </div>
 </section>
@@ -333,15 +333,15 @@ $newsCards = AcatNewsService::getLatestCards(10);
         <span>WORLD CLUB EXPLORER · RETE APERTA</span>
       </div>
       <h2 style="font-family: var(--font-serif); color: #FFFFFF; margin-top: 4px;">Trova il tuo punto di ancoraggio nel mondo</h2>
-      <p style="color: #9ca3af; margin-bottom: 0;">542 nodi territoriali attivi, indirizzi verificati, giorni di riunione e contatti diretti.</p>
+      <p style="color: #cbd5e1; margin-bottom: 0;">542 nodi territoriali attivi, indirizzi verificati, giorni di riunione e contatti diretti.</p>
     </div>
   </div>
   <div class="map-home-actions px-4 pb-3" style="display: flex; gap: 12px; flex-wrap: wrap;">
-    <a class="btn primary" href="world-map.php" style="background: linear-gradient(135deg, #FFF2B2, #D4AF37); color: #070709; font-weight: 800;">
+    <a class="btn primary" href="world-map.php">
       <?=dx_icon('compass', '', 18)?>
       <span style="margin-left: 8px;">Apri Mappa Mondiale 2D/3D</span>
     </a>
-    <a class="btn" href="world-club-explorer.php" style="border-color: rgba(212,175,55,0.4); color: #FFFFFF;">
+    <a class="btn-rainbow-outline" href="world-club-explorer.php">
       <?=dx_icon('map-pin', '', 18)?>
       <span style="margin-left: 8px;">Cerca per Città o Regione</span>
     </a>
@@ -363,15 +363,15 @@ $newsCards = AcatNewsService::getLatestCards(10);
     Nei Club non si compra la guarigione.<br>
     <span class="gold-foil-text">Si cammina insieme, senza spendere un solo centesimo.</span>
   </h2>
-  <p style="color: #d1d5db; max-width: 720px; margin: 0 auto 1.75rem; font-size: 1.05rem; line-height: 1.65;">
+  <p style="color: #cbd5e1; max-width: 720px; margin: 0 auto 1.75rem; font-size: 1.05rem; line-height: 1.65;">
     I 542 Club Alcologici Territoriali accolgono chiunque voglia liberarsi dalle dipendenze e tutte le famiglie coinvolte. Non vendiamo soluzioni illusorie, non abbiamo abbonamenti né pacchetti a pagamento: offriamo una comunità viva, il metodo scientifico del Prof. Hudolin e una sedia sempre pronta per te.
   </p>
   <div class="d-flex justify-content-center gap-3 flex-wrap">
-    <a href="world-club-explorer.php" class="btn primary" style="background: linear-gradient(135deg, #FFF2B2, #D4AF37); color: #070709; font-weight: 800; padding: 0 28px; text-decoration: none;">
+    <a href="world-club-explorer.php" class="btn primary" style="padding: 0 28px; text-decoration: none;">
       <?=dx_icon('map-pin', '', 18)?>
       <span style="margin-left: 8px;">Trova il Club più vicino alla tua città</span>
     </a>
-    <a href="metodo.php" class="btn" style="border: 1px solid rgba(212,175,55,0.4); color: #FFFFFF; font-weight: 700; text-decoration: none; padding: 0 24px;">
+    <a href="metodo.php" class="btn-rainbow-outline" style="text-decoration: none; padding: 0 24px;">
       <?=dx_icon('feather', '', 18)?>
       <span style="margin-left: 8px;">Come Funziona il Metodo</span>
     </a>

@@ -11,11 +11,11 @@ require '_header.php';
       <?=dx_icon('activity', '', 14)?> <span>Dashboard Cervello</span>
     </a>
   </div>
-  <div class="cortex-orb" style="background: radial-gradient(circle at 35% 30%, #FFF2B2, #D4AF37 40%, #070709 90%); box-shadow: 0 0 30px rgba(212,175,55,0.3); color: #070709;">
+  <div class="cortex-orb" style="background: var(--rainbow-gradient); box-shadow: 0 0 35px rgba(0, 212, 255, 0.5), 0 0 50px rgba(184, 41, 255, 0.3); color: #ffffff;">
     <?=dx_icon('brain', '', 42)?>
   </div>
   <h1 style="color:#FFFFFF;font-family:var(--font-serif);margin-top:12px;">Ciao <?=h($u['display_name'])?>.</h1>
-  <p style="color:#a1a1aa;">Cortex Company Brain · Assistente cognitivo ed esecutivo dell'ecosistema.</p>
+  <p style="color:#cbd5e1;">Cortex Company Brain · Assistente cognitivo ed esecutivo dell'ecosistema.</p>
 </section>
 
 <div class="prompt-grid">

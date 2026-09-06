@@ -45,21 +45,21 @@ require '_header.php';
       <div>
         <span class="dx-ticker-badge" style="margin-bottom: 8px;"><?=h($c['category'])?></span>
         <h3 style="margin: 0.4rem 0 0.8rem; color: #FFFFFF; font-family: var(--font-serif); font-size: 1.25rem;"><?=h($c['title'])?></h3>
-        <p style="color: #a1a1aa; font-size: 0.9rem; line-height: 1.55; margin-bottom: 1.2rem;"><?=h($c['description'])?></p>
+        <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.2rem;"><?=h($c['description'])?></p>
       </div>
       <div>
-        <div class="course-foot py-2 mb-3" style="display: flex; justify-content: space-between; font-size: 0.82rem; color: #71717a; border-top: 1px solid rgba(255,255,255,0.06);">
-          <span style="color: #D4AF37; display: inline-flex; align-items: center; gap: 4px;">
+        <div class="course-foot py-2 mb-3" style="display: flex; justify-content: space-between; font-size: 0.84rem; color: #cbd5e1; border-top: 1px solid rgba(255,255,255,0.08);">
+          <span style="color: var(--neon-gold); font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
             <?=dx_icon('award', '', 14)?> <?=h((string)$c['drx_reward'])?> DRX al completamento
           </span>
-          <span>Rank <?=h($c['rank_required'])?></span>
+          <span style="color: #cbd5e1; font-weight: 600;">Rank <?=h($c['rank_required'])?></span>
         </div>
         <?php if($u):?>
-          <a class="btn small" href="academy.php" style="width: 100%; text-align: center; border-color: rgba(212,175,55,0.4); color: #FFFFFF; font-weight: 700;">
+          <a class="btn-rainbow-outline small" href="academy.php" style="width: 100%; text-align: center; font-weight: 800;">
             <?=dx_icon('book-open', '', 14)?> <span style="margin-left: 4px;">Apri Academy</span>
           </a>
         <?php else:?>
-          <a class="btn small" href="register.php" style="width: 100%; text-align: center; border-color: rgba(212,175,55,0.4); color: #FFFFFF; font-weight: 700;">
+          <a class="btn-rainbow-outline small" href="register.php" style="width: 100%; text-align: center; font-weight: 800;">
             <?=dx_icon('sparkles', '', 14)?> <span style="margin-left: 4px;">Inizia il Percorso</span>
           </a>
         <?php endif;?>

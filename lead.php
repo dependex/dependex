@@ -98,10 +98,10 @@ require '_header.php';
         <?php endif; ?>
 
         <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
-          <a href="metodo.php" class="btn primary" style="background: linear-gradient(135deg, #FFF2B2, #D4AF37); color: #070709; font-weight: 800; padding: 12px 28px; text-decoration: none; border-radius: 8px;">
+          <a href="metodo.php" class="btn primary" style="padding: 12px 28px; text-decoration: none; border-radius: 12px;">
             Scopri il Metodo in 5 Fasi
           </a>
-          <a href="world-club-explorer.php" class="btn" style="border: 1px solid rgba(212,175,55,0.4); color: #FFFFFF; font-weight: 700; padding: 12px 24px; text-decoration: none; border-radius: 8px;">
+          <a href="world-club-explorer.php" class="btn-rainbow-outline" style="padding: 12px 24px; text-decoration: none; border-radius: 12px;">
             Esplora Tutti i 361 Club
           </a>
         </div>
@@ -162,13 +162,13 @@ require '_header.php';
           </div>
 
           <div style="margin-bottom: 28px;">
-            <label style="display: flex; align-items: flex-start; gap: 10px; color: #94a3b8; font-size: 0.85rem; line-height: 1.5; cursor: pointer;">
-              <input type="checkbox" name="privacy_accepted" value="1" required checked style="accent-color: #d99a26; width: 18px; height: 18px; margin-top: 2px;">
+            <label style="display: flex; align-items: flex-start; gap: 10px; color: #cbd5e1; font-size: 0.88rem; line-height: 1.5; cursor: pointer;">
+              <input type="checkbox" name="privacy_accepted" value="1" required checked style="accent-color: var(--neon-cyan); width: 18px; height: 18px; margin-top: 2px;">
               <span>Accetto l'Informativa Privacy. I miei dati saranno utilizzati esclusivamente per inviarmi la risorsa richiesta e le comunicazioni del Club. Posso disiscrivermi in 1-click in qualsiasi momento.</span>
             </label>
           </div>
 
-          <button type="submit" style="background: linear-gradient(135deg, #FFF2B2, #D4AF37); color: #070709; font-weight: 800; border: none; padding: 16px 28px; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1.05rem; letter-spacing: 0.5px;">
+          <button type="submit" class="btn primary" style="width: 100%; font-size: 1.05rem; letter-spacing: 0.5px; border-radius: 14px; min-height: 52px;">
             <?php if ($magnet === 'famiglia'): ?>
               Scarica Subito la Guida Famiglia
             <?php elseif ($magnet === 'club'): ?>

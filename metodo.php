@@ -28,10 +28,10 @@ require '_header.php';
         <h3 style="font-family: var(--font-serif); color: #FFFFFF; font-size: 1.8rem; margin-bottom: 1rem; font-weight: 800;">
           La Persona non coincide con il Problema
         </h3>
-        <p style="line-height: 1.65; font-size: 1.05rem; color: #a1a1aa;">
+        <p style="line-height: 1.65; font-size: 1.05rem; color: #cbd5e1;">
           La cultura dominante ti ha fatto credere due bugie opposte: o che sei un debole senza carattere, oppure che sei un "malato cronico incurabile" da internare. Entrambe le narrazioni servono solo a toglierti la responsabilità e il potere di agire.
         </p>
-        <p style="line-height: 1.65; font-size: 1.05rem; color: #a1a1aa;">
+        <p style="line-height: 1.65; font-size: 1.05rem; color: #cbd5e1;">
           Nei Club Alcologici Territoriali non usiamo etichette umilianti. Sei una persona con una storia, dei talenti e una famiglia che ha il diritto di tornare a guardarti negli occhi con fierezza.
         </p>
       </div>

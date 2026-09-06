@@ -20,6 +20,15 @@
   --neon-indigo: #3a55ff;
   --neon-violet: #b829ff;
 
+  /* I 7 Colori Arcobaleno ad Alta Luminosità per Testi (Massimo Contrasto su Sfondo Scuro) */
+  --rainbow-text-red: #ff6677;
+  --rainbow-text-orange: #ffa333;
+  --rainbow-text-gold: #ffea44;
+  --rainbow-text-green: #44ff99;
+  --rainbow-text-cyan: #33eeff;
+  --rainbow-text-indigo: #7799ff;
+  --rainbow-text-violet: #d466ff;
+
   /* Glow specifici ad altissima intensità */
   --glow-red: 0 0 16px rgba(255, 51, 68, 0.65), 0 0 35px rgba(255, 51, 68, 0.35);
   --glow-orange: 0 0 16px rgba(255, 119, 0, 0.65), 0 0 35px rgba(255, 119, 0, 0.35);
@@ -32,13 +41,16 @@
   /* Spettro e Gradienti Arcobaleno */
   --rainbow-gradient: linear-gradient(135deg, #ff3344 0%, #ff7700 16.6%, #ffd700 33.3%, #00ff77 50%, #00d4ff 66.6%, #3a55ff 83.3%, #b829ff 100%);
   --rainbow-gradient-h: linear-gradient(90deg, #ff3344 0%, #ff7700 16.6%, #ffd700 33.3%, #00ff77 50%, #00d4ff 66.6%, #3a55ff 83.3%, #b829ff 100%);
+  --rainbow-gradient-text: linear-gradient(90deg, #ff6677 0%, #ffa333 16.6%, #ffea44 33.3%, #44ff99 50%, #33eeff 66.6%, #7799ff 83.3%, #d466ff 100%);
   --rainbow-glow: 0 0 25px rgba(255, 119, 0, 0.35), 0 0 45px rgba(0, 212, 255, 0.35), 0 0 65px rgba(184, 41, 255, 0.25);
 
   /* Superfici Vetro Cosmico Dark */
   --bg-dark-cosmic: #06070a;
-  --glass-surface: rgba(12, 15, 24, 0.82);
+  --glass-surface: rgba(12, 15, 24, 0.88);
   --glass-surface-hover: rgba(18, 22, 36, 0.94);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --muted: #e2e8f0;
+  --text-muted: #cbd5e1;
 }
 
 /* ==========================================================================
@@ -138,7 +150,8 @@ body {
 .drawer-user-avatar {
   background: var(--rainbow-gradient) !important;
   box-shadow: 0 0 18px rgba(0, 212, 255, 0.5) !important;
-  color: #06070a !important;
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
   font-weight: 900 !important;
 }
 
@@ -159,12 +172,12 @@ body {
    4. TIPOGRAFIA & TITOLI REINBOW NEON
    ========================================================================== */
 .text-rainbow, .rainbow-text {
-  background: var(--rainbow-gradient-h) !important;
+  background: var(--rainbow-gradient-text) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   display: inline-block;
   font-weight: 900;
-  text-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px rgba(0, 212, 255, 0.35)) !important;
 }
 
 .text-neon-red { color: var(--neon-red) !important; text-shadow: var(--glow-red); }
@@ -341,7 +354,8 @@ body {
   font-weight: 900 !important;
   font-size: 1rem !important;
   letter-spacing: 0.04em !important;
-  color: #06070a !important;
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px #000000, 0 2px 6px rgba(0, 0, 0, 0.95), 0 0 2px #000000 !important;
   background: var(--rainbow-gradient-h) !important;
   background-size: 200% auto !important;
   border: none !important;
@@ -670,7 +684,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .sos-btn {
   background: var(--neon-red) !important;
-  color: #06070a !important;
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
   box-shadow: 0 0 20px rgba(255, 51, 68, 0.6) !important;
   font-weight: 900 !important;
   border-radius: 12px !important;
@@ -723,7 +738,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 /* Pulsanti stile Luxury trasformati in Rainbow Neon */
 .btn-gold, .btn-luxury {
   background: var(--rainbow-gradient-h) !important;
-  color: #06070a !important;
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px #000000, 0 2px 6px rgba(0, 0, 0, 0.95), 0 0 2px #000000 !important;
   font-weight: 900 !important;
   border: none !important;
   box-shadow: 0 6px 25px rgba(255, 119, 0, 0.4), 0 0 35px rgba(0, 212, 255, 0.35) !important;
@@ -768,4 +784,46 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .branch-item.indigo .branch-dot { background: var(--neon-indigo); box-shadow: var(--glow-indigo); }
 .branch-item.violet .branch-dot { background: var(--neon-violet); box-shadow: var(--glow-violet); }
 
+/* ==========================================================================
+   15. MASSIMO CONTRASTO WCAG AAA & LEGGIBILITÀ UNIVERSALE DEI TESTI
+   Garantisce contrasto perfetto (> 7:1) su qualsiasi card, sfondo e contenitore scuro
+   ========================================================================== */
+p, .lead, .muted, small, cite, .pillar-sub, .offer-tier-sub, .lever-desc, .lead-sub, .text-muted, .sub, .meta {
+  color: #cbd5e1 !important;
+}
 
+p strong, p b, .lead strong, span strong, li strong, .meta strong {
+  color: #f8fafc !important;
+}
+
+/* Prezzi e valori inclusi nelle offerte */
+.offer-anchor-val {
+  color: #94a3b8 !important;
+  text-decoration: line-through !important;
+  display: block;
+  font-size: 0.88rem;
+}
+
+.item-val {
+  color: var(--neon-gold) !important;
+  font-weight: 800 !important;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.45) !important;
+}
+
+/* Card vetro con leggibilità incrementata */
+.card, .auth-card, .profile-card, .dx-club-card, .course, .event-card, 
+.topic, .payoff-card, .lux-metallic-card, .home-modules article, .method-grid div,
+.ncke-result .course, .detail-grid div, .offer-card {
+  background: rgba(12, 15, 24, 0.92) !important;
+}
+
+/* Labels e form controls ad alto contrasto */
+label, .form-label {
+  color: #e2e8f0 !important;
+  font-weight: 600 !important;
+}
+
+/* Titoli h1-h6 bianchi e cristallini */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+}

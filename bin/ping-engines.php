@@ -19,6 +19,8 @@ $urlsToNotify = [
     'https://%s/help.php'
 ];
 
+$indexNowKey = '8f37b600989f46b8a786e24dbca098d2';
+
 echo "=== INIZIO SEGNALAZIONE MOTORI DI RICERCA & INDEXNOW ===\n";
 
 foreach ($domains as $domain) {
@@ -31,18 +33,19 @@ foreach ($domains as $domain) {
     $res = @file_get_contents($googlePing, false, stream_context_create([
         'http' => ['timeout' => 5, 'ignore_errors' => true]
     ]));
-    echo "Segnalato ($googlePing)\n";
+    echo "Segnalato\n";
 
     // 2. IndexNow (Bing / Yandex)
     $urlList = array_map(fn($tpl) => sprintf($tpl, $domain), $urlsToNotify);
+    $count = count($urlList);
     $indexNowPayload = json_encode([
         'host' => $domain,
-        'key' => 'dependex_indexnow_key_2026',
-        'keyLocation' => "https://{$domain}/dependex_indexnow_key_2026.txt",
+        'key' => $indexNowKey,
+        'keyLocation' => "https://{$domain}/{$indexNowKey}.txt",
         'urlList' => $urlList
     ], JSON_UNESCAPED_SLASHES);
 
-    echo "2. Invio IndexNow ({count($urlList)} URLs)... ";
+    echo "2. Invio IndexNow ({$count} URLs)... ";
     $ch = curl_init('https://api.indexnow.org/indexnow');
     if ($ch) {
         curl_setopt($ch, CURLOPT_POST, true);

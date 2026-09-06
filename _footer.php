@@ -50,9 +50,10 @@
   </div>
   <div style="max-width: 1100px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; align-items: center; font-size: 0.9rem;">
     <div style="display: flex; gap: 18px; flex-wrap: wrap;">
-      <a href="metodo.php" class="text-neon-gold" style="font-weight: 700;">Metodo Hudolin</a>
+      <a href="guida-gratuita.php" class="text-neon-gold" style="font-weight: 800;">Guida Gratuita 7 Giorni</a>
+      <a href="metodo.php" class="text-neon-cyan" style="font-weight: 700;">Metodo Hudolin</a>
       <a href="offers.php" class="text-neon-green" style="font-weight: 700;">Libri Amazon KDP</a>
-      <a href="events-public.php" class="text-neon-cyan" style="font-weight: 700;">Eventi & Moduli</a>
+      <a href="events-public.php" style="color: #cbd5e1; font-weight: 600;">Eventi & Moduli</a>
       <a href="world-club-explorer.php" class="text-neon-orange" style="font-weight: 700;"><?=h(tr('club.find','Trova Club'))?></a>
       <a href="privacy.php" style="color: #94a3b8;">Privacy</a>
       <a href="terms.php" style="color: #94a3b8;">Condizioni</a>
@@ -60,6 +61,16 @@
     <a href="mailto:info@dependex.social" title="Scrivici un'email" style="color: var(--neon-cyan); display: inline-flex; align-items: center; gap: 6px; font-weight: 700;"><?=dx_icon('mail', '', 14)?> info@dependex.social</a>
   </div>
 </footer>
+
+<!-- PULSANTE FLOTTANTE DI CONTATTO RISERVATO WHATSAPP / AIUTO -->
+<div class="floating-quick-support" style="position: fixed; bottom: <?=($u??null)?'74px':'24px'?>; right: 20px; z-index: 999;">
+  <a href="https://wa.me/?text=<?=urlencode('Buongiorno, vorrei un orientamento riservato su un Club o sul Metodo Hudolin.')?>" target="_blank" rel="noopener" class="btn-floating-support" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #000000; font-weight: 800; font-size: 0.86rem; padding: 10px 18px; border-radius: 999px; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.2s ease;">
+    <?=dx_icon('whatsapp', '', 18)?>
+    <span class="d-none d-sm-inline">Orientamento Riservato WhatsApp</span>
+    <span class="d-inline d-sm-none">Aiuto</span>
+  </a>
+</div>
+
 <script src="assets/js/app.js?v=<?=filemtime(__DIR__.'/assets/js/app.js')?>"></script>
 </body>
 </html>

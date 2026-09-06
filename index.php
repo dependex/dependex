@@ -24,7 +24,7 @@ $newsCards = AcatNewsService::getLatestCards(10);
       </h1>
 
       <p style="font-size: 1.18rem; line-height: 1.7; max-width: 720px; color: #e2e8f0; margin-bottom: 2rem; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
-        La dipendenza ti ha venduto l’illusione di rilassarti, ma ti ha addebitato il conto: notti insonni, liti a tavola, promesse infrante e quel velo di vergogna nello stomaco. Non sei rotto e non sei una causa persa: sei solo dentro un loop cognitivo. Nei 361 Club territoriali trovi persone e famiglie che hanno già smontato quel trucco.
+        La dipendenza ti ha venduto l’illusione di rilassarti, ma ti ha addebitato il conto: notti insonni, liti a tavola, promesse infrante e quel velo di vergogna nello stomaco. Non sei rotto e non sei una causa persa: sei solo dentro un loop cognitivo. Nei 546 Club territoriali trovi persone e famiglie che hanno già smontato quel trucco.
       </p>
 
       <div class="d-flex gap-3 flex-wrap align-items-center">
@@ -32,9 +32,13 @@ $newsCards = AcatNewsService::getLatestCards(10);
           <?=dx_icon('map-pin', '', 18)?>
           <span style="margin-left: 8px;">Trova una sedia nel Club più vicino</span>
         </a>
+        <a href="guida-gratuita.php" class="btn-rainbow-outline" style="border-color: var(--neon-gold); color: #FFFFFF;">
+          <?=dx_icon('sparkles', '', 18)?>
+          <span style="margin-left: 8px;">Guida Gratuita Famiglia</span>
+        </a>
         <a href="metodo.php" class="btn-rainbow-outline">
           <?=dx_icon('feather', '', 18)?>
-          <span style="margin-left: 8px;">Lo Schema Logico dei 5 Passi</span>
+          <span style="margin-left: 8px;">Lo Schema dei 5 Passi</span>
         </a>
         <a href="offers.php" class="btn-rainbow-outline" style="border-color: var(--neon-cyan);">
           <?=dx_icon('book-open', '', 18)?>
@@ -256,7 +260,7 @@ $newsCards = AcatNewsService::getLatestCards(10);
         </li>
         <li style="display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px;">
           <span style="color: var(--neon-green); flex-shrink: 0;"><?=dx_icon('users', '', 20)?></span>
-          <div><strong style="color: #FFFFFF;">La protezione dei pari (361 Club):</strong> Sedersi in cerchio una volta a settimana dove nessuno ti giudica perché tutti conoscono la strada.</div>
+          <div><strong style="color: #FFFFFF;">La protezione dei pari (546 Club):</strong> Sedersi in cerchio una volta a settimana dove nessuno ti giudica perché tutti conoscono la strada.</div>
         </li>
         <li style="display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px;">
           <span style="color: var(--neon-green); flex-shrink: 0;"><?=dx_icon('crown', '', 20)?></span>
@@ -267,6 +271,30 @@ $newsCards = AcatNewsService::getLatestCards(10);
           <div><strong style="color: #FFFFFF;">Company Brain Cortex 24/7:</strong> Intelligenza artificiale addestrata sull'approccio ecologico-sociale che ti orienta e supporta giorno e notte.</div>
         </li>
       </ul>
+    </div>
+  </div>
+
+  <!-- BANNER LEAD MAGNET GUIDA GRATUITA FAMIGLIA -->
+  <div class="lux-metallic-card p-4 p-md-5 mt-4 text-center" style="background: rgba(12, 16, 28, 0.95); border: 2px solid var(--neon-gold); border-radius: 20px; box-shadow: 0 0 30px rgba(212,175,55,0.15);">
+    <div class="badge-neon-rainbow mb-2" style="font-size: 0.72rem;">
+      <span class="dot"></span>
+      <span class="text-rainbow">RISORSA GRATUITA PER LA FAMIGLIA · DOWNLOAD IMMEDIATO</span>
+    </div>
+    <h3 style="font-family: var(--font-serif); font-size: clamp(1.4rem, 3vw, 1.9rem); color: #FFFFFF; margin: 8px 0 12px;">
+      Non sai come parlare a chi ami o hai paura della prossima crisi?
+    </h3>
+    <p style="color: #cbd5e1; max-width: 680px; margin: 0 auto 20px; font-size: 1rem; line-height: 1.6;">
+      Scarica subito la guida pratica <strong>"I Primi 7 Giorni"</strong>: cosa non dire mai stasera, come superare la negazione e come la famiglia può farsi aiutare nei Club anche da sola.
+    </p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="guida-gratuita.php" class="btn primary" style="padding: 12px 28px; text-decoration: none; border-radius: 12px;">
+        <?=dx_icon('sparkles', '', 18)?>
+        <span style="margin-left: 8px;">Scarica Gratis la Guida (PDF)</span>
+      </a>
+      <a href="guida-gratuita.php?view=document" target="_blank" class="btn-rainbow-outline" style="padding: 12px 24px; text-decoration: none; border-radius: 12px;">
+        <?=dx_icon('book-open', '', 18)?>
+        <span style="margin-left: 8px;">Leggi Anteprima Senza Iscrizione</span>
+      </a>
     </div>
   </div>
 </section>

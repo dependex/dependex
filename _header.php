@@ -35,8 +35,8 @@ $metaDesc = $metaDesc ?? 'DEPENDEX — AL CLUB. COL CLUB. Cammino di sobrietà, 
   <link rel="shortcut icon" href="assets/img/favicon.svg">
   <link rel="apple-touch-icon" href="assets/img/app-icon.svg">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="assets/css/app.css">
-  <link rel="stylesheet" href="assets/css/luxury-patterns.css">
+  <link rel="stylesheet" href="assets/css/app.css?v=<?=filemtime(__DIR__.'/assets/css/app.css')?>">
+  <link rel="stylesheet" href="assets/css/luxury-patterns.css?v=<?=filemtime(__DIR__.'/assets/css/luxury-patterns.css')?>">
   <title><?=h($pageTitle)?> · <?=h($brand['name'])?></title>
 
   <!-- Schema.org JSON-LD -->

@@ -83,7 +83,7 @@ $venue = 'Oratorio San Francesco d\'Assisi';
 $address = 'Vicolo San Francesco 1, Taglio di Po (RO)';
 $organizer = 'ACAT Basso Polesine O.D.V. & Coordinamento A.C.A.T. Polesane';
 $trainer = 'Adelmo Di Salvatore (Psichiatra, Psicoterapeuta, Formatore Metodo Hudolin)';
-$imageUrl = 'assets/img/events/locandina-ufficiale-oratorio.jpeg';
+$imageUrl = 'assets/img/events/evento-ottobre-taglio-di-po.jpeg';
 
 if (!$exists) {
     $stmt = $pdo->prepare('INSERT INTO events (sic_id, type, title, description, starts_at, ends_at, venue, comune, address, visibility, rank_required, drx_reward, status, capacity, price_eur, source_url, image_url, organizer, trainer, registration_deadline) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');

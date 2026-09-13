@@ -38,7 +38,7 @@ $defaultTaglioDiPo = [
     'capacity' => 30,
     'price_eur' => 10.00,
     'source_url' => 'event-detail.php?event=SIC-EVT-ACAT-BP-2026-COMM',
-    'image_url' => 'assets/img/events/locandina-ufficiale-oratorio.jpeg',
+    'image_url' => 'assets/img/events/evento-ottobre-taglio-di-po.jpeg',
     'organizer' => 'ACAT Basso Polesine O.D.V. & Coordinamento A.C.A.T. Polesane',
     'trainer' => 'Adelmo Di Salvatore (Psichiatra, Psicoterapeuta, Formatore Metodo Hudolin)',
     'registration_deadline' => '2026-10-01 23:59:59'
@@ -131,16 +131,16 @@ require '_header.php';
 
     <!-- TAB SWITCHER LOCANDINE (HD VIEWER) -->
     <div class="m-tab-bar" id="mediaTabs">
-      <button type="button" class="m-tab-btn active" onclick="switchMediaTab('locandina', this)">Locandina Oratorio</button>
-      <button type="button" class="m-tab-btn" onclick="switchMediaTab('depliant_fronte', this)">Depliant Fronte</button>
-      <button type="button" class="m-tab-btn" onclick="switchMediaTab('depliant_retro', this)">Depliant Retro</button>
+      <button type="button" class="m-tab-btn active" onclick="switchMediaTab('locandina_fronte', this)">Locandina Ufficiale (Fronte)</button>
+      <button type="button" class="m-tab-btn" onclick="switchMediaTab('programma_retro', this)">Programma Completo (Retro)</button>
+      <button type="button" class="m-tab-btn" onclick="switchMediaTab('locandina_oratorio', this)">Locandina Oratorio</button>
     </div>
 
     <!-- IMMAGINI LOCANDINE 9:16 -->
     <div class="m-poster-box" id="mediaDisplay">
-      <img id="activeMediaImg" src="assets/img/events/locandina-ufficiale-oratorio.jpeg" alt="Locandina Ufficiale Oratorio Taglio di Po">
+      <img id="activeMediaImg" src="assets/img/events/evento-ottobre-taglio-di-po.jpeg" alt="Locandina Ufficiale Corso — Taglio di Po">
       <div style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.78); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 8px; font-size: 0.72rem; color: #fff; border: 1px solid rgba(255,255,255,0.2);">
-        <?=dx_icon('image', '', 12)?> <span id="mediaCaption">Locandina Ufficiale</span>
+        <?=dx_icon('image', '', 12)?> <span id="mediaCaption">Locandina Ufficiale (Fronte)</span>
       </div>
     </div>
 
@@ -624,18 +624,18 @@ function switchMediaTab(tab, btn) {
   const img = document.getElementById('activeMediaImg');
   const cap = document.getElementById('mediaCaption');
   
-  if (tab === 'locandina') {
-    img.src = 'assets/img/events/locandina-ufficiale-oratorio.jpeg';
-    img.alt = 'Locandina Ufficiale Oratorio Taglio di Po';
-    cap.innerText = 'Locandina Oratorio';
-  } else if (tab === 'depliant_fronte') {
+  if (tab === 'locandina_fronte' || tab === 'locandina' || tab === 'depliant_fronte') {
     img.src = 'assets/img/events/evento-ottobre-taglio-di-po.jpeg';
-    img.alt = 'Depliant Fronte Pieghevole';
-    cap.innerText = 'Depliant Pieghevole Fronte';
-  } else if (tab === 'depliant_retro') {
+    img.alt = 'Locandina Ufficiale Corso — Taglio di Po';
+    cap.innerText = 'Locandina Ufficiale (Fronte)';
+  } else if (tab === 'programma_retro' || tab === 'depliant_retro') {
     img.src = 'assets/img/events/depliant-programma-completo.jpeg';
-    img.alt = 'Depliant Retro con Programma Orario';
-    cap.innerText = 'Depliant Programma Completo';
+    img.alt = 'Programma Completo Oratorio & Sessioni';
+    cap.innerText = 'Programma Dettagliato (Retro)';
+  } else if (tab === 'locandina_oratorio') {
+    img.src = 'assets/img/events/locandina-ufficiale-oratorio.jpeg';
+    img.alt = 'Locandina Oratorio San Francesco';
+    cap.innerText = 'Locandina Oratorio S. Francesco';
   }
 }
 

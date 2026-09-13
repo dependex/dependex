@@ -83,7 +83,7 @@ require '_header.php';
     <!-- LOCANDINA VERTICALE (ASPECT RATIO SMARTPHONE) -->
     <div class="m-poster-box">
       <a href="event-detail.php?event=<?=urlencode($sic)?>" title="Apri locandina e pagina dedicata">
-        <img src="assets/img/events/locandina-ufficiale-oratorio.jpeg" alt="Locandina Ufficiale Taglio di Po" style="width: 100%; height: auto; display: block;">
+        <img src="assets/img/events/evento-ottobre-taglio-di-po.jpeg" alt="Locandina Ufficiale Taglio di Po" style="width: 100%; height: auto; display: block;">
       </a>
       <div style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 8px; font-size: 0.72rem; color: #fff; border: 1px solid rgba(255,255,255,0.2);">
         <?=dx_icon('zoom-in', '', 12)?> Tocca per dettagli

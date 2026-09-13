@@ -125,7 +125,7 @@ class EventSyncService {
                 'capacity' => 30,
                 'price_eur' => 10.00,
                 'source_url' => 'evento-ottobre-taglio-di-po.php',
-                'image_url' => 'assets/img/events/locandina-ufficiale-oratorio.jpeg',
+                'image_url' => 'assets/img/events/evento-ottobre-taglio-di-po.jpeg',
                 'organizer' => 'ACAT Basso Polesine O.D.V. & Coordinamento A.C.A.T. Polesane',
                 'trainer' => 'Adelmo Di Salvatore (Psichiatra, Psicoterapeuta, Formatore Metodo Hudolin)',
                 'registration_deadline' => '2026-10-01 23:59:59'

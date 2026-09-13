@@ -62,7 +62,7 @@ require '_header.php';
 
     <div class="m-poster-box">
       <a href="event-detail.php?event=<?=urlencode($sic)?>">
-        <img src="assets/img/events/locandina-ufficiale-oratorio.jpeg" alt="Locandina Taglio di Po">
+        <img src="assets/img/events/evento-ottobre-taglio-di-po.jpeg" alt="Locandina Taglio di Po">
       </a>
     </div>
 

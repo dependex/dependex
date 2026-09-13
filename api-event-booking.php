@@ -4,7 +4,7 @@
  * Gestisce:
  * 1. Registrazione anagrafica iscritti (Nome, Cognome, Email, Telefono, Ruolo, Dieta)
  * 2. Checkout 10€ via PayPal Live (Smart Buttons / Carte di Credito/Debito)
- * 3. Checkout 10€ via USDT (Polygon Network: 0xbde2aaa9e8d0afb90d42679c6e391e5c72be5f39)
+ * 3. Checkout 10€ via USDT (Polygon Network: 0x3C320B3a0917fF44BF6551CDdee44402AFcF250C)
  * 4. Pagamento all'accoglienza (On-Site)
  * 5. Gestione Overbooking e Lista d'Attesa (limite 30 posti)
  * 6. Invio email transazionali via SMTP SSL e notifica WhatsApp
@@ -23,6 +23,14 @@ if (!function_exists('event_api_exit')) {
     function event_api_exit(): void {
         if (!defined('TEST_RUN_MODE')) {
             exit;
+        }
+    }
+}
+
+if (!function_exists('event_set_status')) {
+    function event_set_status(int $code): void {
+        if (!headers_sent()) {
+            http_response_code($code);
         }
     }
 }
@@ -49,7 +57,7 @@ if ($origin && in_array($origin, $allowedOrigins, true) && !headers_sent()) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     if (!headers_sent()) {
-        http_response_code(204);
+        event_set_status(204);
     }
     event_api_exit(); return;
 }
@@ -112,28 +120,28 @@ try {
             }
             $notes = trim((string)($input['notes'] ?? ''));
             $numSeats = 1; // 1 partecipante per iscrizione con pranzo
-            $privacy = !empty($input['privacy_accepted']) || !empty($input['consent']);
+            $privacy = !empty($input['privacy_accepted']) || !empty($input['consent']) || !empty($input['privacy']);
 
             if (empty($nome) || empty($cognome) || mb_strlen($fullName) < 3) {
-                http_response_code(422);
+                event_set_status(422);
                 echo json_encode(['success' => false, 'error' => 'Inserisci Nome e Cognome validi.']);
                 event_api_exit(); return;
             }
 
             if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                http_response_code(422);
+                event_set_status(422);
                 echo json_encode(['success' => false, 'error' => 'Inserisci un indirizzo email valido.']);
                 event_api_exit(); return;
             }
 
             if (empty($phone) || mb_strlen(preg_replace('/\D/', '', $phone)) < 6) {
-                http_response_code(422);
+                event_set_status(422);
                 echo json_encode(['success' => false, 'error' => 'Inserisci un numero di telefono WhatsApp valido.']);
                 event_api_exit(); return;
             }
 
             if (!$privacy) {
-                http_response_code(422);
+                event_set_status(422);
                 echo json_encode(['success' => false, 'error' => 'È necessario accettare l\'informativa sul trattamento dei dati.']);
                 event_api_exit(); return;
             }
@@ -143,7 +151,7 @@ try {
             $evtStmt->execute([$eventSic]);
             $event = $evtStmt->fetch(PDO::FETCH_ASSOC);
             if (!$event) {
-                http_response_code(404);
+                event_set_status(404);
                 echo json_encode(['success' => false, 'error' => 'Evento non trovato nel database.']);
                 event_api_exit(); return;
             }
@@ -253,7 +261,7 @@ try {
             $booking = $bStmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$booking) {
-                http_response_code(404);
+                event_set_status(404);
                 echo json_encode(['success' => false, 'error' => 'Prenotazione non trovata.']);
                 event_api_exit(); return;
             }
@@ -302,7 +310,7 @@ try {
             $bookingSic = trim((string)($input['booking_sic'] ?? ''));
 
             if (!$paypalOrderId || !$bookingSic) {
-                http_response_code(422);
+                event_set_status(422);
                 echo json_encode(['success' => false, 'error' => 'Parametri mancanti per la cattura dell\'ordine.']);
                 event_api_exit(); return;
             }
@@ -361,7 +369,7 @@ try {
                     'whatsapp_link' => "https://wa.me/393478844271?text=" . urlencode($waText)
                 ]);
             } else {
-                http_response_code(400);
+                event_set_status(400);
                 echo json_encode([
                     'success' => false,
                     'error' => 'Stato pagamento PayPal non completato: ' . $status,
@@ -378,7 +386,7 @@ try {
             $txHash = trim((string)($input['tx_hash'] ?? ''));
 
             if (!$bookingSic || !$txHash) {
-                http_response_code(422);
+                event_set_status(422);
                 echo json_encode(['success' => false, 'error' => 'Codice prenotazione e Transaction Hash (TX Hash) obbligatori.']);
                 event_api_exit(); return;
             }
@@ -393,7 +401,7 @@ try {
             $bk = $bStmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$bk) {
-                http_response_code(404);
+                event_set_status(404);
                 echo json_encode(['success' => false, 'error' => 'Prenotazione non trovata.']);
                 event_api_exit(); return;
             }
@@ -414,7 +422,7 @@ try {
                   . "• Codice Prenotazione: {$bk['sic_id']}\n"
                   . "• Polygon Tx Hash: {$txHash}\n"
                   . "• Importo: 10 USDT (Polygon)\n"
-                  . "• Destinazione: 0xbde2aaa9e8d0afb90d42679c6e391e5c72be5f39\n\n"
+                  . "• Destinazione: 0x3C320B3a0917fF44BF6551CDdee44402AFcF250C\n\n"
                   . "Il nostro team verificherà le conferme del blocco e il tuo posto è già tenuto da parte!\n\n"
                   . "ACAT Basso Polesine & DEPENDEX";
             send_event_email_async($bk['email'], $subject, $body);
@@ -431,13 +439,13 @@ try {
             event_api_exit(); return;
 
         default:
-            http_response_code(400);
+            event_set_status(400);
             echo json_encode(['success' => false, 'error' => 'Azione non riconosciuta: ' . $action]);
             event_api_exit(); return;
     }
 
 } catch (Throwable $e) {
-    http_response_code(500);
+    event_set_status(500);
     echo json_encode([
         'success' => false,
         'error' => 'Errore server durante l\'operazione: ' . $e->getMessage()

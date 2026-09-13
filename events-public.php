@@ -234,6 +234,82 @@ require '_header.php';
     </div>
   </section>
 
+  <!-- ============================================================== -->
+  <!-- HUB NAZIONALE DIPENDENZE: TUTTI GLI EVENTI D'ITALIA            -->
+  <!-- ============================================================== -->
+  <?php 
+  $nationalEventsList = array_slice($events, 1);
+  if (!empty($nationalEventsList)): 
+  ?>
+  <section class="m-card" style="border-color: rgba(56, 189, 248, 0.35); background: rgba(11, 15, 25, 0.95); margin-top: 14px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
+      <div>
+        <span class="m-badge m-badge-cyan" style="font-size: 0.7rem; letter-spacing: 0.06em;">
+          <?=dx_icon('globe', '', 12)?> HUB NAZIONALE DIPENDENZE
+        </span>
+        <h2 style="font-size: 1.15rem; font-weight: 850; color: #ffffff; margin: 4px 0 2px;">
+          Eventi, Congressi & Incontri in Tutta Italia
+        </h2>
+      </div>
+      <span style="font-size: 0.72rem; color: #38bdf8; font-weight: 800; background: rgba(56,189,248,0.1); padding: 3px 8px; border-radius: 6px;">
+        <?=count($nationalEventsList)?> Iniziative Attive
+      </span>
+    </div>
+
+    <p style="font-size: 0.8rem; color: #94a3b8; line-height: 1.45; margin: 0 0 14px;">
+      DEPENDEX aggrega le iniziative di prevenzione, cura e auto-mutuo aiuto di ACAT/AICAT, Ser.D, Comunità storiche (San Patrignano, CeIS, Gruppo Abele, Comunità Incontro) e gruppi 12 Passi (A.A., N.A., Giocatori Anonimi):
+    </p>
+
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <?php foreach ($nationalEventsList as $nev): 
+        $typeColor = match($nev['type']) {
+          'CONGRESSO' => '#3b82f6',
+          'SEMINARIO' => '#8b5cf6',
+          'INTERCLUB' => '#10b981',
+          'ASSEMBLEA' => '#f59e0b',
+          default => '#06b6d4'
+        };
+        $formattedDate = date('d M Y', strtotime($nev['starts_at']));
+      ?>
+        <article style="background: rgba(20, 25, 38, 0.85); border: 1px solid rgba(255,255,255,0.08); border-left: 3px solid <?=$typeColor?>; border-radius: 12px; padding: 12px; transition: all 0.2s ease;">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px; margin-bottom: 4px;">
+            <span style="font-size: 0.68rem; font-weight: 800; color: <?=$typeColor?>; background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px;">
+              <?=htmlspecialchars($nev['type'], ENT_QUOTES, 'UTF-8')?>
+            </span>
+            <span style="font-size: 0.74rem; font-weight: 750; color: #cbd5e1; display: inline-flex; align-items: center; gap: 4px;">
+              <?=dx_icon('calendar', '', 12)?> <?=$formattedDate?>
+            </span>
+          </div>
+
+          <h3 style="font-size: 0.92rem; font-weight: 850; color: #ffffff; line-height: 1.3; margin: 0 0 4px;">
+            <?=htmlspecialchars($nev['title'], ENT_QUOTES, 'UTF-8')?>
+          </h3>
+
+          <div style="font-size: 0.74rem; color: #d4af37; font-weight: 750; margin-bottom: 6px; display: flex; align-items: center; gap: 4px;">
+            <?=dx_icon('map-pin', '', 12)?>
+            <span><?=htmlspecialchars($nev['comune'] ?? '', ENT_QUOTES, 'UTF-8')?> (<?=htmlspecialchars($nev['venue'] ?? '', ENT_QUOTES, 'UTF-8')?>)</span>
+          </div>
+
+          <p style="font-size: 0.76rem; color: #94a3b8; line-height: 1.4; margin: 0 0 8px;">
+            <?=htmlspecialchars($nev['description'] ?? '', ENT_QUOTES, 'UTF-8')?>
+          </p>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); pt: 6px; padding-top: 6px; font-size: 0.72rem;">
+            <span style="color: #64748b; font-weight: 600;">
+              <?=htmlspecialchars($nev['organizer'] ?? 'Organizzazione Nazionale', ENT_QUOTES, 'UTF-8')?>
+            </span>
+            <?php if (!empty($nev['source_url'])): ?>
+              <a href="<?=htmlspecialchars($nev['source_url'], ENT_QUOTES, 'UTF-8')?>" target="_blank" rel="noopener" style="color: #38bdf8; font-weight: 750; text-decoration: none; display: inline-flex; align-items: center; gap: 3px;">
+                <span>Info & Dettagli</span> <?=dx_icon('external-link', '', 11)?>
+              </a>
+            <?php endif; ?>
+          </div>
+        </article>
+      <?php endforeach; ?>
+    </div>
+  </section>
+  <?php endif; ?>
+
   <!-- GRIGLIA UFFICIALE DEI 28 SPONSOR & ASSET DELL'ECOSISTEMA -->
   <?php require_once __DIR__ . '/templates/_sponsor_grid.php'; ?>
 

@@ -304,12 +304,12 @@ require '_header.php';
       
       <!-- QR CODE GENERATO AL VOLO -->
       <div style="background: #ffffff; padding: 10px; display: inline-block; border-radius: 12px; margin-bottom: 12px;">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=0xbde2aaa9e8d0afb90d42679c6e391e5c72be5f39" alt="QR Code Polygon USDT" style="width: 160px; height: 160px; display: block;">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=0x3C320B3a0917fF44BF6551CDdee44402AFcF250C" alt="QR Code Polygon USDT" style="width: 160px; height: 160px; display: block;">
       </div>
 
       <!-- BOX INDIRIZZO CON COPIA RAPIDA -->
       <div style="background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 8px 10px; font-family: monospace; font-size: 0.76rem; color: #e2e8f0; word-break: break-all; margin-bottom: 10px;">
-        0xbde2aaa9e8d0afb90d42679c6e391e5c72be5f39
+        0x3C320B3a0917fF44BF6551CDdee44402AFcF250C
       </div>
 
       <button type="button" onclick="copyPolygonAddress()" class="m-btn m-btn-outline" style="min-height: 36px; font-size: 0.78rem; margin-bottom: 14px;">
@@ -604,7 +604,7 @@ function switchMediaTab(tab, btn) {
 }
 
 function copyPolygonAddress() {
-  const addr = '0xbde2aaa9e8d0afb90d42679c6e391e5c72be5f39';
+  const addr = '0x3C320B3a0917fF44BF6551CDdee44402AFcF250C';
   navigator.clipboard.writeText(addr).then(() => {
     const lbl = document.getElementById('copyAddrLabel');
     lbl.innerText = 'Indirizzo Copiato!';

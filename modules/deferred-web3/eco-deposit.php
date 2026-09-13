@@ -249,7 +249,7 @@ function eco_deposit_accredita(int $eventId, bool $forzaAdmin = false): array
 /** Mette in coda uno sweep verso la tesoreria. Nessuna firma qui: solo la coda. */
 function eco_sweep_accoda(int $addressId, string $asset, string $importoBase): int
 {
-    $tes = eco_env('ECO_TREASURY_FLOW', '0xbde2aaa9e8d0afb90d42679c6e391e5c72be5f39');
+    $tes = eco_env('ECO_TREASURY_FLOW', '0x3C320B3a0917fF44BF6551CDdee44402AFcF250C');
     $t = eco_now();
     eco_esegui('INSERT INTO eco_sweep_orders (address_id,asset_id,amount_base,to_treasury,state,created_at,updated_at) VALUES (?,?,?,?,?,?,?)',
         [$addressId, eco_asset_id($asset), bigi_pulisci($importoBase), strtolower($tes), 'QUEUED', $t, $t]);

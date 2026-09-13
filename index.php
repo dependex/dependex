@@ -143,35 +143,42 @@ $newsCards = AcatNewsService::getLatestCards(10);
     </div>
   </div>
 </section>
-<!-- CSS NEWS TICKER (ACAT, CAT, ARCAT, AICAT ITALIA, MODULI SAT)   -->
+<!-- ============================================================== -->
+<!-- EVENTO UFFICIALE FLAGSHIP & FAST CHECKOUT (TAGLIO DI PO)        -->
+<!-- ============================================================== -->
+<?php require_once __DIR__ . '/templates/_event_fast_checkout.php'; ?>
+
+<!-- ============================================================== -->
+<!-- CSS NEWS TICKER: HUB NAZIONALE DIPENDENZE (ACAT, SER.D, COMUNITÀ, GAP) -->
 <!-- ============================================================== -->
 <section class="dx-news-ticker-section">
   <div class="dx-ticker-header">
     <h3>
       <?=dx_icon('newspaper', '', 22)?>
-      <span>NOTIZIE DAL NETWORK ACAT · 360° DAL TERRITORIO</span>
+      <span>HUB NAZIONALE DIPENDENZE · EVENTI & NOTIZIE D'ITALIA</span>
     </h3>
     <a href="events-public.php" class="dx-ticker-link" style="font-size: 0.85rem;">
-      Tutti gli eventi e moduli <?=dx_icon('arrow-right', '', 14)?>
+      Tutti gli eventi e congressi nazionali <?=dx_icon('arrow-right', '', 14)?>
     </a>
   </div>
 
-  <div class="dx-ticker-wrapper" aria-label="News ticker ACAT e ARCAT">
+  <div class="dx-ticker-wrapper" aria-label="News ticker Hub Nazionale Dipendenze">
     <div class="dx-ticker-track">
       <?php 
       // Double the array for seamless infinite looping
       $loopNews = array_merge($newsCards, $newsCards);
       foreach($loopNews as $item): 
+        $isPinned = !empty($item['is_pinned']);
       ?>
-        <article class="dx-ticker-card">
+        <article class="dx-ticker-card" style="<?=$isPinned ? 'border: 2px solid #d4af37; background: rgba(212,175,55,0.1); box-shadow: 0 0 20px rgba(212,175,55,0.25);' : ''?>">
           <div>
-            <span class="dx-ticker-badge"><?=h($item['tag_label'])?></span>
-            <h4 class="dx-ticker-title"><?=h($item['title'])?></h4>
+            <span class="dx-ticker-badge" style="<?=$isPinned ? 'background: #d4af37; color: #030712; font-weight: 900;' : ''?>"><?=h($item['tag_label'])?></span>
+            <h4 class="dx-ticker-title" style="<?=$isPinned ? 'color: #fef08a;' : ''?>"><?=h($item['title'])?></h4>
             <p class="dx-ticker-desc"><?=h($item['summary'])?></p>
           </div>
           <div class="dx-ticker-meta">
             <span><?=dx_icon('calendar', '', 12)?> <?=h($item['published_date'])?></span>
-            <a href="<?=h($item['source_url'])?>" target="_blank" rel="noopener" class="dx-ticker-link">
+            <a href="<?=h($item['source_url'])?>" target="<?=$isPinned ? '_self' : '_blank'?>" rel="noopener" class="dx-ticker-link" style="<?=$isPinned ? 'color: #fef08a; font-weight: 850;' : ''?>">
               <?=h($item['source_name'])?> <?=dx_icon('external-link', '', 12)?>
             </a>
           </div>

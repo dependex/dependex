@@ -116,16 +116,6 @@ $sponsors = [
 $rainbowPalette = ['#ff3344', '#ff7700', '#ffd700', '#00ff77', '#00d4ff', '#3a55ff', '#b829ff'];
 ?>
 <section class="m-card" style="border-color: rgba(212,175,55,0.45); background: rgba(13, 16, 26, 0.96); margin-top: 16px; border-radius: 20px; box-shadow: 0 16px 45px rgba(0,0,0,0.7);">
-  
-  <div style="text-align: center; margin-bottom: 20px;">
-    <div class="badge-neon-rainbow mb-2" style="font-size: 0.72rem; padding: 4px 14px;">
-      <span class="dot"></span>
-      <span class="text-rainbow">28 ASSET SOVRANI A SOSTEGNO DELL'EVENTO</span>
-    </div>
-    <h2 style="font-family: var(--font-serif); font-size: clamp(1.35rem, 4.5vw, 1.85rem); color: #ffffff; margin: 0; font-weight: 900; letter-spacing: 0.04em;">
-      <?=dx_icon('award', 'text-gold', 20)?> SPONSOR DELL'EVENTO
-    </h2>
-  </div>
 
   <!-- GRIGLIA SPONSOR (RESPONSIVE ADATTIVA 9:16 E 16:9) -->
   <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); gap: 18px;">

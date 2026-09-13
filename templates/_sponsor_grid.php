@@ -10,14 +10,14 @@ require_once __DIR__ . '/../bootstrap.php';
 
 $sponsors = [
     [
-        'name' => 'sicurissimo.online',
+        'name' => 'sicurissimo.onlinE',
         'slug' => 'sicurissimo-online',
-        'category' => 'Sicurezza & Compliance',
-        'desc' => 'Proteggi ciò che hai costruito. Azzeri i rischi operativi e trasformi la conformità D.Lgs 81/08 in serenità tangibile per la tua impresa.',
+        'category' => 'Compliance Aziendale',
+        'desc' => 'Proteggi ciò che hai costruito. Azzeri i rischi operativi e trasformi la conformità in serenità tangibile per la tua impresa.',
         'icon' => 'shield-check',
         'color' => '#10b981',
         'img' => 'assets/img/sponsors/sicurissimo-online.svg',
-        'url' => 'https://sicurissimo.online'
+        'url' => 'https://sicurissimo.online/'
     ],
     [
         'name' => 'betterway.agency',
@@ -27,27 +27,17 @@ $sponsors = [
         'icon' => 'activity',
         'color' => '#3b82f6',
         'img' => 'assets/img/sponsors/betterway-agency.svg',
-        'url' => 'https://betterway.agency'
+        'url' => 'https://betterway.agency/'
     ],
     [
         'name' => 'neuralog.pro',
         'slug' => 'neuralog-pro',
-        'category' => 'AI & Telemetry',
-        'desc' => 'Vedi in tempo reale ciò che sfugge agli altri. Telemetria e sinapsi intelligenti che orchestrano decisioni veloci, lucide e sicure.',
+        'category' => 'Company Brain',
+        'desc' => 'Vedi in tempo reale ciò che sfugge agli altri. Telemetria e sinapsi intelligenti che orchestrano decisioni veloci, lucide e sicure per il tuo lavoro sereno.',
         'icon' => 'cpu',
         'color' => '#8b5cf6',
         'img' => 'assets/img/sponsors/neuralog-pro.svg',
-        'url' => 'https://neuralog.pro'
-    ],
-    [
-        'name' => 'mywallet.business',
-        'slug' => 'mywallet-business',
-        'category' => 'Fintech & Multi-Currency',
-        'desc' => 'Prendi il comando assoluto della tua liquidità. Flussi multi-valuta e tesoreria blindata per una sovranità economica senza intermediari.',
-        'icon' => 'credit-card',
-        'color' => '#f59e0b',
-        'img' => 'assets/img/sponsors/mywallet-business.svg',
-        'url' => 'https://mywallet.business'
+        'url' => 'https://neuralog.pro/'
     ],
     [
         'name' => 'destinorandagio.it',
@@ -57,7 +47,7 @@ $sponsors = [
         'icon' => 'compass',
         'color' => '#ec4899',
         'img' => 'assets/img/sponsors/destinorandagio-it.svg',
-        'url' => 'https://destinorandagio.it'
+        'url' => 'https://destinorandagio.it/'
     ],
     [
         'name' => 'beway.life',
@@ -67,7 +57,7 @@ $sponsors = [
         'icon' => 'heart',
         'color' => '#06b6d4',
         'img' => 'assets/img/sponsors/beway-life.svg',
-        'url' => 'https://beway.life'
+        'url' => 'https://beway.life/'
     ],
     [
         'name' => 'estao.app',
@@ -77,27 +67,17 @@ $sponsors = [
         'icon' => 'home',
         'color' => '#14b8a6',
         'img' => 'assets/img/sponsors/estao-app.svg',
-        'url' => 'https://estao.app'
+        'url' => 'https://estao.app/'
     ],
     [
         'name' => 'ixla.solutions',
         'slug' => 'ixla-solutions',
-        'category' => 'Engineering & CAD',
-        'desc' => 'Dal concetto alla materia con precisione millimetrica. Ingegneria d\'avanguardia e modellazione tridimensionale per le tue idee più ambiziose.',
+        'category' => 'Supreme Engineering',
+        'desc' => 'Dal concetto alla materia con precisione millimetrica. Moduli abitativi per ambienti estremi.',
         'icon' => 'layers',
         'color' => '#6366f1',
         'img' => 'assets/img/sponsors/ixla-solutions.svg',
-        'url' => 'https://ixla.solutions'
-    ],
-    [
-        'name' => 'cryptoaid.support',
-        'slug' => 'cryptoaid-support',
-        'category' => 'Charity & Impact',
-        'desc' => 'Trasforma l\'innovazione in speranza concreta. Filantropia trasparente e aiuto diretto che arriva esattamente dove serve, senza filtri.',
-        'icon' => 'gift',
-        'color' => '#10b981',
-        'img' => 'assets/img/sponsors/cryptoaid-support.svg',
-        'url' => 'https://cryptoaid.support'
+        'url' => 'https://ixla.solutions/'
     ],
     [
         'name' => 'metroeridania.it',
@@ -107,47 +87,17 @@ $sponsors = [
         'icon' => 'map-pin',
         'color' => '#d4af37',
         'img' => 'assets/img/sponsors/metroeridania-it.svg',
-        'url' => 'https://metroeridania.it'
+        'url' => 'https://metroeridania.it/'
     ],
     [
         'name' => 'mircopregnolato.it',
         'slug' => 'mircopregnolato-it',
-        'category' => 'Founder & Venture Hub',
+        'category' => 'Holistic & Venture',
         'desc' => 'Sblocca il tuo potenziale strategico inespresso. Visione sistemica e venture governance per guidare persone e progetti verso l\'eccellenza sovrana.',
         'icon' => 'award',
         'color' => '#f59e0b',
         'img' => 'assets/img/sponsors/mircopregnolato-it.svg',
-        'url' => 'https://mircopregnolato.it'
-    ],
-    [
-        'name' => 'universalbusiness.xyz',
-        'slug' => 'universalbusiness-xyz',
-        'category' => 'Enterprise Directory',
-        'desc' => 'Fai brillare il tuo valore sulla mappa globale. Il registro internazionale che certifica e posiziona gli asset digitali e le imprese virtuose.',
-        'icon' => 'globe',
-        'color' => '#3b82f6',
-        'img' => 'assets/img/sponsors/universalbusiness-xyz.svg',
-        'url' => 'https://universalbusiness.xyz'
-    ],
-    [
-        'name' => 'Amazon KDP Factory',
-        'slug' => 'amazon-kdp-factory',
-        'category' => 'Editoria Sovrana',
-        'desc' => 'Incidi il tuo messaggio nel mondo. Catena di produzione editoriale che trasforma la tua competenza in volumi cartacei distribuiti ovunque.',
-        'icon' => 'book-open',
-        'color' => '#eab308',
-        'img' => 'assets/img/sponsors/amazon-kdp-factory.svg',
-        'url' => 'offers.php'
-    ],
-    [
-        'name' => 'YouTube Automation',
-        'slug' => 'youtube-automation',
-        'category' => 'Media & Content Engine',
-        'desc' => 'Cattura l\'attenzione e domina l\'interesse del pubblico. Format video ad altissima ritenzione che costruiscono autorevolezza e seguito fedele.',
-        'icon' => 'video',
-        'color' => '#ef4444',
-        'img' => 'assets/img/sponsors/youtube-automation.svg',
-        'url' => 'https://youtube.com'
+        'url' => 'https://mircopregnolato.it/'
     ],
     [
         'name' => 'campus.camp',
@@ -157,137 +107,7 @@ $sponsors = [
         'icon' => 'check-circle',
         'color' => '#22c55e',
         'img' => 'assets/img/sponsors/campus-camp.svg',
-        'url' => 'https://campus.camp'
-    ],
-    [
-        'name' => 'regreen.social',
-        'slug' => 'regreen-social',
-        'category' => 'ESG & Sostenibilità',
-        'desc' => 'Lascia un\'impronta positiva indelebile. Custodia attiva della natura e crediti ambientali verificati per un futuro solido e rigenerato.',
-        'icon' => 'sun',
-        'color' => '#10b981',
-        'img' => 'assets/img/sponsors/regreen-social.svg',
-        'url' => 'https://regreen.social'
-    ],
-    [
-        'name' => 'blockchainplus.pro',
-        'slug' => 'blockchainplus-pro',
-        'category' => 'Smart Contracts & Web3',
-        'desc' => 'Certifica la verità con certezza crittografica assoluta. Contratti intelligenti e registri immutabili per accordi blindati a prova di futuro.',
-        'icon' => 'link',
-        'color' => '#8b5cf6',
-        'img' => 'assets/img/sponsors/blockchainplus-pro.svg',
-        'url' => 'https://blockchainplus.pro'
-    ],
-    [
-        'name' => 'Antigravity Mobile IDE',
-        'slug' => 'antigravity-mobile-ide',
-        'category' => 'Developer Tooling',
-        'desc' => 'Crea e rilascia soluzioni ovunque ti trovi. L\'ambiente di sviluppo agile che elimina ogni attrito tra intuizione e applicazione reale.',
-        'icon' => 'terminal',
-        'color' => '#06b6d4',
-        'img' => 'assets/img/sponsors/antigravity-mobile-ide.svg',
-        'url' => 'https://github.com'
-    ],
-    [
-        'name' => 'Email Marketing Machine',
-        'slug' => 'email-marketing-machine',
-        'category' => 'B2B Automation',
-        'desc' => 'Entra in contatto con le persone con messaggi che toccano le corde giuste. Flussi di relazione che costruiscono fiducia e risposte immediate.',
-        'icon' => 'mail',
-        'color' => '#f97316',
-        'img' => 'assets/img/sponsors/email-marketing-machine.svg',
-        'url' => 'contact.php'
-    ],
-    [
-        'name' => 'Master Data CRM Pipeline',
-        'slug' => 'master-data-crm-pipeline',
-        'category' => 'Intelligence & Data',
-        'desc' => 'Trasforma i contatti in relazioni solide e durature. Struttura dati intelligente che ti consente di agire sempre al momento opportuno.',
-        'icon' => 'database',
-        'color' => '#a855f7',
-        'img' => 'assets/img/sponsors/master-data-crm-pipeline.svg',
-        'url' => 'world-club-explorer.php'
-    ],
-    [
-        'name' => 'Commerce Core Engine',
-        'slug' => 'commerce-core-engine',
-        'category' => 'E-Commerce Headless',
-        'desc' => 'Offri un\'esperienza di partecipazione senza barriere. Flussi di adesione istantanei e protetti che massimizzano la serenità di chi sostiene.',
-        'icon' => 'shopping-cart',
-        'color' => '#10b981',
-        'img' => 'assets/img/sponsors/commerce-core-engine.svg',
-        'url' => 'offers.php'
-    ],
-    [
-        'name' => 'dependex.social',
-        'slug' => 'dependex-social',
-        'category' => 'Social Care & Welfare',
-        'desc' => 'Sciogli l\'illusione della dipendenza e ritrova il tuo centro. Percorsi ecologico-sociali per recuperare lucidità, rispetto e calore familiare.',
-        'icon' => 'users',
-        'color' => '#d4af37',
-        'img' => 'assets/img/sponsors/dependex-social.svg',
-        'url' => 'https://dependex.social'
-    ],
-    [
-        'name' => 'oltre.social',
-        'slug' => 'oltre-social',
-        'category' => 'Social Hub Solidale',
-        'desc' => 'Respira in uno spazio di connessione autentica. Condivisione libera senza algoritmi tossici, dove la persona viene sempre prima dei numeri.',
-        'icon' => 'share-2',
-        'color' => '#3b82f6',
-        'img' => 'assets/img/sponsors/oltre-social.svg',
-        'url' => 'https://oltre.social'
-    ],
-    [
-        'name' => 'Sovereign Academy',
-        'slug' => 'sovereign-academy',
-        'category' => 'Scuola & Formazione',
-        'desc' => 'Allena la tua comunicazione a creare armonia e coesione. Percorsi guidati con il Metodo Hudolin per dialogare con ascolto profondo e autorevolezza.',
-        'icon' => 'book',
-        'color' => '#10b981',
-        'img' => 'assets/img/sponsors/sovereign-academy.svg',
-        'url' => 'academy-public.php'
-    ],
-    [
-        'name' => 'Sovereign Club',
-        'slug' => 'sovereign-club',
-        'category' => 'Membership Territoriale',
-        'desc' => 'Siediti in un cerchio dove il giudizio non esiste. Incontri settimanali di accoglienza e reciproco coraggio per progredire insieme ogni giorno.',
-        'icon' => 'star',
-        'color' => '#d4af37',
-        'img' => 'assets/img/sponsors/sovereign-club.svg',
-        'url' => 'world-club-explorer.php'
-    ],
-    [
-        'name' => 'Sovereign Merch & Wear',
-        'slug' => 'sovereign-merch-wear',
-        'category' => 'Kit Ufficiali & Shop',
-        'desc' => 'Indossa con orgoglio la tua scelta di lucidità e sobrietà. Materiali etici e simboli che testimoniano la tua sovranità quotidiana.',
-        'icon' => 'package',
-        'color' => '#ec4899',
-        'img' => 'assets/img/sponsors/sovereign-merch-wear.svg',
-        'url' => 'offers.php'
-    ],
-    [
-        'name' => 'Sovereign Network',
-        'slug' => 'sovereign-network',
-        'category' => 'Rete Relazionale',
-        'desc' => 'Moltiplica la tua forza attraverso una rete solidale viva. Connessioni continue tra Club, famiglie, formatori e volontari pronti a sostenerti.',
-        'icon' => 'git-branch',
-        'color' => '#8b5cf6',
-        'img' => 'assets/img/sponsors/sovereign-network.svg',
-        'url' => 'world-network-tree.php'
-    ],
-    [
-        'name' => 'Sovereign Presidi Territoriali',
-        'slug' => 'sovereign-presidi-territoriali',
-        'category' => 'Punti di Presidio',
-        'desc' => 'Trova un porto sicuro e una guida accogliente vicino a te. Sportelli fisici di primo ascolto per orientare chi cerca aiuto verso la rinascita.',
-        'icon' => 'navigation',
-        'color' => '#14b8a6',
-        'img' => 'assets/img/sponsors/sovereign-presidi-territoriali.svg',
-        'url' => 'world-club-explorer.php'
+        'url' => 'https://campus.camp/'
     ]
 ];
 ?>
@@ -330,6 +150,7 @@ $rainbowPalette = ['#ff3344', '#ff7700', '#ffd700', '#00ff77', '#00d4ff', '#3a55
           <div>
             <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 6px;">
               <h3 style="font-weight: 850; font-size: 0.95rem; color: #ffffff; margin: 0; line-height: 1.3;">
+                <span style="color: <?=$spColor?>; font-size: 0.8rem; margin-right: 4px;">#<?=str_pad((string)($idx + 1), 2, '0', STR_PAD_LEFT)?></span>
                 <?=htmlspecialchars($sp['name'], ENT_QUOTES, 'UTF-8')?>
               </h3>
               <span style="font-size: 0.68rem; font-weight: 800; color: <?=$spColor?>; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;">

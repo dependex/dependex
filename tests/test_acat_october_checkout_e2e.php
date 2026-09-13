@@ -151,15 +151,17 @@ require __DIR__ . '/../templates/_sponsor_grid.php';
 $gridHtml = ob_get_clean();
 
 $sponsorCount = count($sponsors);
-assertCheck("Griglia sponsor contiene esattamente 28 business (trovati: {$sponsorCount})", $sponsorCount === 28);
-assertCheck("Contiene sicurissimo.online", str_contains($gridHtml, 'sicurissimo.online'));
+assertCheck("Griglia sponsor contiene esattamente 10 business attivi (trovati: {$sponsorCount})", $sponsorCount === 10);
+assertCheck("Contiene sicurissimo.onlinE", str_contains($gridHtml, 'sicurissimo.onlinE'));
 assertCheck("Contiene betterway.agency", str_contains($gridHtml, 'betterway.agency'));
 assertCheck("Contiene neuralog.pro", str_contains($gridHtml, 'neuralog.pro'));
-assertCheck("Contiene mywallet.business", str_contains($gridHtml, 'mywallet.business'));
 assertCheck("Contiene destinorandagio.it", str_contains($gridHtml, 'destinorandagio.it'));
+assertCheck("Contiene beway.life", str_contains($gridHtml, 'beway.life'));
+assertCheck("Contiene estao.app", str_contains($gridHtml, 'estao.app'));
+assertCheck("Contiene ixla.solutions", str_contains($gridHtml, 'ixla.solutions'));
+assertCheck("Contiene metroeridania.it", str_contains($gridHtml, 'metroeridania.it'));
 assertCheck("Contiene mircopregnolato.it", str_contains($gridHtml, 'mircopregnolato.it'));
-assertCheck("Contiene Amazon KDP Factory", str_contains($gridHtml, 'Amazon KDP Factory'));
-assertCheck("Contiene YouTube Automation", str_contains($gridHtml, 'YouTube Automation'));
+assertCheck("Contiene campus.camp", str_contains($gridHtml, 'campus.camp'));
 
 $existingSvgs = 0;
 foreach ($sponsors as $sp) {
@@ -168,7 +170,7 @@ foreach ($sponsors as $sp) {
         $existingSvgs++;
     }
 }
-assertCheck("Tutte le 28 immagini Ultra-HD 8K dei business esistono su disco (trovate: {$existingSvgs}/28)", $existingSvgs === 28);
+assertCheck("Tutte le 10 immagini Ultra-HD 8K dei business esistono su disco (trovate: {$existingSvgs}/10)", $existingSvgs === 10);
 
 // 7. Test Bonifica Terminologica Rigorosa
 echo "\n7. Verifica Conformita' Governance (Bonifica Terminologica):\n";

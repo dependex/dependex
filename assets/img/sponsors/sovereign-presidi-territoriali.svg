@@ -103,7 +103,7 @@
 
   <!-- Tagline / Value Proposition -->
   <text x="90" y="375" font-size="28" font-weight="800" fill="#f8fafc" letter-spacing="0.2">
-    Sportelli Locali di Ascolto, Orientamento & Assistenza
+    Sportelli Locali di Ascolto, Orientamento &amp; Assistenza
   </text>
 
   <!-- Extended Sub-description -->

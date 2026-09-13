@@ -103,7 +103,7 @@
 
   <!-- Tagline / Value Proposition -->
   <text x="90" y="375" font-size="28" font-weight="800" fill="#f8fafc" letter-spacing="0.2">
-    Gateway Multi-Tenant Unificato con Checkout Fiat & Crypto
+    Gateway Multi-Tenant Unificato con Checkout Fiat &amp; Crypto
   </text>
 
   <!-- Extended Sub-description -->

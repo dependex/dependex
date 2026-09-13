@@ -319,8 +319,10 @@ $rainbowPalette = ['#ff3344', '#ff7700', '#ffd700', '#00ff77', '#00d4ff', '#3a55
           <a href="<?=htmlspecialchars($sp['url'], ENT_QUOTES, 'UTF-8')?>" target="_blank" rel="noopener" style="display: block; width: 100%; height: 100%;">
             <img src="<?=htmlspecialchars($sp['img'], ENT_QUOTES, 'UTF-8')?>" 
                  alt="<?=htmlspecialchars($sp['name'], ENT_QUOTES, 'UTF-8')?>" 
+                 width="1200" 
+                 height="675"
                  loading="lazy"
-                 style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease;">
+                 style="width: 100%; height: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; transition: transform 0.3s ease;">
           </a>
           <div style="position: absolute; top: 6px; left: 6px; font-size: 0.62rem; font-weight: 900; color: #fff; background: rgba(3,7,18,0.85); border: 1px solid <?=$spColor?>; padding: 2px 6px; border-radius: 4px;">
             #<?=str_pad((string)($idx + 1), 2, '0', STR_PAD_LEFT)?>

@@ -103,7 +103,7 @@
 
   <!-- Tagline / Value Proposition -->
   <text x="90" y="375" font-size="28" font-weight="800" fill="#f8fafc" letter-spacing="0.2">
-    Orchestrazione Codice Nativa & Esecuzione Mobile
+    Orchestrazione Codice Nativa &amp; Esecuzione Mobile
   </text>
 
   <!-- Extended Sub-description -->

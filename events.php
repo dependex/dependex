@@ -104,6 +104,9 @@ require '_header.php';
 
   </article>
 
+  <!-- GRIGLIA UFFICIALE DEI 28 SPONSOR & ASSET DELL'ECOSISTEMA -->
+  <?php require_once __DIR__ . '/templates/_sponsor_grid.php'; ?>
+
 </div>
 
 <?php require '_footer.php';?>

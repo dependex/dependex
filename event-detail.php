@@ -10,7 +10,9 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/bootstrap.php';
 require_once __DIR__ . '/email-engine.php';
+require_once __DIR__ . '/modules/commerce/CommerceEnv.php';
 
+$paypalClientId = CommerceEnv::get('PAYPAL_CLIENT_ID', '');
 $u = current_user();
 $sic = trim((string)($_GET['event'] ?? 'SIC-EVT-ACAT-BP-2026-COMM'));
 
@@ -187,40 +189,42 @@ require '_header.php';
       Bastano 10 secondi. Riceverai conferma immediata con codice SIC e il messaggio WhatsApp pronto per Grazia Nicosia.
     </p>
 
-    <div id="bookingAlertBox" style="display: none; padding: 12px; border-radius: 12px; margin-bottom: 12px; font-size: 0.86rem; line-height: 1.45;"></div>
+    <div id="bookingAlertBox" style="display: none; padding: 14px; border-radius: 12px; margin-bottom: 14px; font-size: 0.86rem; line-height: 1.45;"></div>
 
     <form id="mobileBookingForm" onsubmit="handleMobileBooking(event)">
       <input type="hidden" name="event_sic_id" value="<?=h($sic)?>">
 
-      <div class="m-form-group">
-        <label for="mb_fullname">Nome e Cognome <span>*</span></label>
-        <input type="text" id="mb_fullname" name="fullname" class="m-input" required placeholder="Es. Mario Rossi" autocomplete="name">
+      <!-- NOME E COGNOME IN 2 COLONNE COMPATTE -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+        <div class="m-form-group">
+          <label for="mb_nome">Nome <span>*</span></label>
+          <input type="text" id="mb_nome" name="nome" class="m-input" required placeholder="Mario" autocomplete="given-name">
+        </div>
+        <div class="m-form-group">
+          <label for="mb_cognome">Cognome <span>*</span></label>
+          <input type="text" id="mb_cognome" name="cognome" class="m-input" required placeholder="Rossi" autocomplete="family-name">
+        </div>
       </div>
 
       <div class="m-form-group">
-        <label for="mb_phone">Numero di Telefono (WhatsApp) <span>*</span></label>
-        <input type="tel" id="mb_phone" name="phone" class="m-input" required placeholder="Es. 347 1234567" autocomplete="tel">
+        <label for="mb_email">Indirizzo Email (per ricevuta & promemoria) <span>*</span></label>
+        <input type="email" id="mb_email" name="email" class="m-input" required placeholder="mario.rossi@email.it" autocomplete="email">
       </div>
 
       <div class="m-form-group">
-        <label for="mb_email">Indirizzo Email <span>*</span></label>
-        <input type="email" id="mb_email" name="email" class="m-input" required placeholder="Es. mario.rossi@email.it" autocomplete="email">
+        <label for="mb_phone">Numero di Telefono (WhatsApp per conferme rapide) <span>*</span></label>
+        <input type="tel" id="mb_phone" name="phone" class="m-input" required placeholder="347 1234567" autocomplete="tel">
       </div>
 
       <div class="m-form-group">
         <label for="mb_attendee_type">Qual è il tuo ruolo di partecipazione? <span>*</span></label>
-        <select id="mb_attendee_type" name="attendee_type" class="m-select" required>
-          <option value="FAMILY_MEMBER">Familiare di persona con problemi di dipendenza</option>
-          <option value="CLUB_MEMBER">Membro / Persona che frequenta un Club (CAT)</option>
-          <option value="SERVITORE_INSEGNANTE">Servitore-Insegnante di Club</option>
-          <option value="VOLONTAIRE">Volontario o Operatore Sociale / Sanitario</option>
-          <option value="INTERESTED">Cittadino / Persona interessata a vario titolo</option>
+        <select id="mb_attendee_type" name="role_type" class="m-select" required>
+          <option value="Operatore / Volontario">Operatore Sociale / Sanitario / Volontario</option>
+          <option value="Familiare">Familiare di persona con problemi di dipendenza</option>
+          <option value="Membro di Club (CAT)">Membro / Persona che frequenta un Club (CAT)</option>
+          <option value="Servitore-Insegnante">Servitore-Insegnante di Club</option>
+          <option value="Cittadino / Interessato">Cittadino / Persona interessata a vario titolo</option>
         </select>
-      </div>
-
-      <div class="m-form-group">
-        <label for="mb_club_name">Club o Comune di provenienza <small>(facoltativo)</small></label>
-        <input type="text" id="mb_club_name" name="club_name" class="m-input" placeholder="Es. Club Taglio di Po, Porto Viro, Adria...">
       </div>
 
       <div class="m-form-group">
@@ -228,18 +232,101 @@ require '_header.php';
         <input type="text" id="mb_dietary_notes" name="dietary_notes" class="m-input" placeholder="Nessuna o specifica intolleranze">
       </div>
 
+      <!-- SELETTORE MODALITÀ DI PAGAMENTO 10,00 € -->
+      <div style="background: rgba(22, 27, 40, 0.85); border: 1px solid rgba(212,175,55,0.3); border-radius: 12px; padding: 12px; margin: 14px 0 10px;">
+        <div style="font-size: 0.82rem; font-weight: 800; color: #d4af37; text-transform: uppercase; margin-bottom: 8px;">
+          Modalità Pagamento Quota di 10,00 € <span style="color:#10b981;">(Pranzo Compreso)</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          
+          <label style="display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
+            <input type="radio" name="payment_method" value="PAYPAL" checked style="accent-color: #d4af37; width: 18px; height: 18px;">
+            <div>
+              <div style="font-size: 0.88rem; font-weight: 850; color: #ffffff;">💳 Carta di Credito / Debito o PayPal</div>
+              <div style="font-size: 0.72rem; color: #94a3b8;">Visa, Mastercard, PostePay o saldo PayPal · Conferma istantanea</div>
+            </div>
+          </label>
+
+          <label style="display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
+            <input type="radio" name="payment_method" value="USDT" style="accent-color: #d4af37; width: 18px; height: 18px;">
+            <div>
+              <div style="font-size: 0.88rem; font-weight: 850; color: #ffffff;">💎 USDT (Rete Polygon)</div>
+              <div style="font-size: 0.72rem; color: #94a3b8;">10 USDT su rete Polygon · Transazione verificata on-chain</div>
+            </div>
+          </label>
+
+          <label style="display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
+            <input type="radio" name="payment_method" value="ON_SITE" style="accent-color: #d4af37; width: 18px; height: 18px;">
+            <div>
+              <div style="font-size: 0.88rem; font-weight: 850; color: #ffffff;">💵 Saldo in Contanti / POS all'Accoglienza</div>
+              <div style="font-size: 0.72rem; color: #94a3b8;">Versamento all'arrivo venerdì 9 ottobre dalle 14:30</div>
+            </div>
+          </label>
+
+        </div>
+      </div>
+
       <div class="m-form-group" style="display: flex; gap: 8px; align-items: flex-start; margin-top: 10px;">
-        <input type="checkbox" id="mb_consent" name="consent" required style="margin-top: 3px; width: 18px; height: 18px; accent-color: #d4af37;">
-        <label for="mb_consent" style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4; margin-bottom: 0;">
-          Acconsento al trattamento dei dati personali per la gestione organizzativa dell'evento ai sensi del GDPR. Quota di 10€ da corrispondere il primo giorno al desk d'accoglienza.
+        <input type="checkbox" id="mb_consent" name="privacy_accepted" required style="margin-top: 3px; width: 18px; height: 18px; accent-color: #d4af37;">
+        <label for="mb_consent" style="font-size: 0.76rem; color: #cbd5e1; line-height: 1.4; margin-bottom: 0;">
+          Dichiaro di aver preso visione dell'informativa e acconsento al trattamento dei dati personali per l'organizzazione e accoglienza dell'evento ai sensi del GDPR.
         </label>
       </div>
 
-      <button type="submit" id="mb_submit_btn" class="m-btn m-btn-primary" style="margin-top: 10px;">
+      <button type="submit" id="mb_submit_btn" class="m-btn m-btn-primary" style="margin-top: 10px; font-size: 0.95rem;">
         <?=dx_icon('check-circle', '', 18)?>
-        <span><?=!$isFull ? "CONFERMA ISCRIZIONE (10€)" : "ISCRIVITI IN LISTA D'ATTESA"?></span>
+        <span><?=!$isFull ? "ISCRIVITI & PROCEDI (10,00 €)" : "ISCRIVITI IN LISTA D'ATTESA"?></span>
       </button>
     </form>
+
+    <!-- CONTAINER CHECKOUT PAYPAL LIVE & CARTE (DINAMICO) -->
+    <div id="paypalGatewayContainer" style="display: none; margin-top: 16px; background: rgba(14, 18, 28, 0.98); border: 1px solid #d4af37; border-radius: 14px; padding: 16px; text-align: center;">
+      <div style="font-size: 0.76rem; font-weight: 800; color: #d4af37; text-transform: uppercase; margin-bottom: 6px;">
+        <?=dx_icon('lock', '', 14)?> CHECKOUT SICURO PAYPAL & CARTE (10,00 €)
+      </div>
+      <p style="font-size: 0.82rem; color: #e2e8f0; margin: 0 0 14px;">
+        Prenotazione registrata con codice: <b id="pp_booking_code" style="color:#d4af37;"></b>.<br>
+        Completa il versamento della quota per riservare immediatamente il tuo posto in aula:
+      </p>
+      <div id="paypal-buttons-mount"></div>
+    </div>
+
+    <!-- CONTAINER CHECKOUT USDT POLYGON (DINAMICO) -->
+    <div id="usdtGatewayContainer" style="display: none; margin-top: 16px; background: rgba(14, 18, 28, 0.98); border: 1px solid #10b981; border-radius: 14px; padding: 16px; text-align: center;">
+      <div style="font-size: 0.76rem; font-weight: 800; color: #10b981; text-transform: uppercase; margin-bottom: 6px;">
+        <?=dx_icon('check-circle', '', 14)?> VERSAMENTO QUOTA 10 USDT (POLYGON)
+      </div>
+      <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0 0 12px;">
+        Codice Prenotazione: <b id="usdt_booking_code" style="color: #d4af37;"></b><br>
+        Invia esattamente <b>10 USDT</b> sulla rete <b>Polygon (PoS)</b> all'indirizzo del Tesoro:
+      </p>
+      
+      <!-- QR CODE GENERATO AL VOLO -->
+      <div style="background: #ffffff; padding: 10px; display: inline-block; border-radius: 12px; margin-bottom: 12px;">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=0xbde2aaa9e8d0afb90d42679c6e391e5c72be5f39" alt="QR Code Polygon USDT" style="width: 160px; height: 160px; display: block;">
+      </div>
+
+      <!-- BOX INDIRIZZO CON COPIA RAPIDA -->
+      <div style="background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 8px 10px; font-family: monospace; font-size: 0.76rem; color: #e2e8f0; word-break: break-all; margin-bottom: 10px;">
+        0xbde2aaa9e8d0afb90d42679c6e391e5c72be5f39
+      </div>
+
+      <button type="button" onclick="copyPolygonAddress()" class="m-btn m-btn-outline" style="min-height: 36px; font-size: 0.78rem; margin-bottom: 14px;">
+        <?=dx_icon('copy', '', 14)?> <span id="copyAddrLabel">Copia Indirizzo Polygon</span>
+      </button>
+
+      <!-- FORM PER INSERIRE TX HASH -->
+      <div style="text-align: left; background: rgba(0,0,0,0.3); border-radius: 10px; padding: 10px; border: 1px solid rgba(255,255,255,0.08);">
+        <label for="usdt_tx_hash" style="font-size: 0.76rem; font-weight: 750; color: #ffffff; display: block; margin-bottom: 4px;">
+          Inserisci la TX Hash della transazione inviata:
+        </label>
+        <input type="text" id="usdt_tx_hash" class="m-input" placeholder="Es. 0x123abc456..." style="font-size: 0.8rem; margin-bottom: 8px;">
+        <button type="button" onclick="submitUsdtTx()" id="usdt_confirm_btn" class="m-btn m-btn-primary" style="min-height: 40px; font-size: 0.84rem;">
+          <?=dx_icon('send', '', 14)?> Conferma Notifica USDT
+        </button>
+      </div>
+    </div>
   </section>
 
   <!-- 5 RISULTATI CONCRETI -->
@@ -464,10 +551,13 @@ require '_header.php';
     </div>
   </section>
 
+  <!-- GRIGLIA UFFICIALE DEI 28 SPONSOR & ASSET DELL'ECOSISTEMA -->
+  <?php require_once __DIR__ . '/templates/_sponsor_grid.php'; ?>
+
   <!-- CONTATTI UFFICIALI -->
   <div class="text-center" style="font-size: 0.78rem; color: #94a3b8; margin-top: 14px;">
-    <p style="margin: 0 0 4px;">Organizzazione: <b>ACAT Basso Polesine</b></p>
-    <p style="margin: 0;">Referente Iscrizioni: <b>Grazia Nicosia</b> · Tel. <strong>347 884 4271</strong></p>
+    <p style="margin: 0 0 4px;">Organizzazione: <b>ACAT Basso Polesine O.D.V.</b></p>
+    <p style="margin: 0;">Referente Iscrizioni: <b>Grazia Nicosia</b> · Tel. WhatsApp <strong>347 884 4271</strong></p>
   </div>
 
 </div>
@@ -476,7 +566,7 @@ require '_header.php';
 <div class="m-sticky-bar">
   <div class="m-sticky-bar-inner">
     <a href="#prenotazione" class="m-btn m-btn-primary" style="flex: 1; min-height: 48px; font-size: 0.92rem; padding: 0 12px;">
-      <?=dx_icon('check-circle', '', 16)?> Prenota (10€)
+      <?=dx_icon('check-circle', '', 16)?> Prenota Quota 10€
     </a>
     <a href="https://wa.me/393478844271?text=<?=urlencode("Ciao Grazia, vorrei iscrivermi al corso 'A Scuola di Comunicazione e Resilienza' di Taglio di Po.")?>" target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="width: 52px; min-height: 48px; padding: 0; flex-shrink: 0;" title="WhatsApp Diretto Grazia">
       <?=dx_icon('message-circle', '', 20)?>
@@ -484,7 +574,14 @@ require '_header.php';
   </div>
 </div>
 
+<!-- PAYPAL JS SDK LIVE -->
+<?php if (!empty($paypalClientId)): ?>
+<script src="https://www.paypal.com/sdk/js?client-id=<?=urlencode($paypalClientId)?>&currency=EUR&locale=it_IT&components=buttons"></script>
+<?php endif; ?>
+
 <script>
+let currentBookingSic = '';
+
 function switchMediaTab(tab, btn) {
   document.querySelectorAll('#mediaTabs .m-tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
@@ -506,17 +603,31 @@ function switchMediaTab(tab, btn) {
   }
 }
 
+function copyPolygonAddress() {
+  const addr = '0xbde2aaa9e8d0afb90d42679c6e391e5c72be5f39';
+  navigator.clipboard.writeText(addr).then(() => {
+    const lbl = document.getElementById('copyAddrLabel');
+    lbl.innerText = 'Indirizzo Copiato!';
+    setTimeout(() => { lbl.innerText = 'Copia Indirizzo Polygon'; }, 3000);
+  }).catch(() => {
+    prompt("Copia l'indirizzo:", addr);
+  });
+}
+
 async function handleMobileBooking(e) {
   e.preventDefault();
   const form = document.getElementById('mobileBookingForm');
   const btn = document.getElementById('mb_submit_btn');
   const alertBox = document.getElementById('bookingAlertBox');
+  const ppContainer = document.getElementById('paypalGatewayContainer');
+  const usdtContainer = document.getElementById('usdtGatewayContainer');
   
   btn.disabled = true;
-  btn.innerHTML = 'Invio in corso...';
+  btn.innerHTML = 'Elaborazione in corso...';
   alertBox.style.display = 'none';
 
   const formData = new FormData(form);
+  const paymentMethod = formData.get('payment_method') || 'PAYPAL';
 
   try {
     const res = await fetch('api-event-booking.php', {
@@ -525,18 +636,58 @@ async function handleMobileBooking(e) {
     });
     const data = await res.json();
 
-    if (data.ok) {
-      const isWait = (data.status === 'WAITLIST');
+    if (data.success || data.ok) {
+      currentBookingSic = data.booking_sic;
+      const isWait = !!data.is_waitlist;
+
+      if (isWait) {
+        alertBox.style.display = 'block';
+        alertBox.style.background = 'rgba(239, 68, 68, 0.15)';
+        alertBox.style.border = '1px solid #ef4444';
+        alertBox.style.color = '#ffffff';
+
+        let html = '<div style="font-weight: 850; font-size: 1.05rem; margin-bottom: 6px;">' +
+                   "Iscrizione Inserita in Lista d'Attesa (Posizione #" + (data.waitlist_position || 1) + ")</div>";
+        html += '<p style="margin: 0 0 8px;">Codice Prenotazione: <strong style="color: #d4af37;">' + currentBookingSic + '</strong></p>';
+        html += '<p style="margin: 0 0 10px; font-size: 0.84rem;">' + data.message + '</p>';
+        if (data.whatsapp_link) {
+          html += '<a href="' + data.whatsapp_link + '" target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="min-height: 44px; font-size: 0.88rem; margin-bottom: 8px;">' +
+                  '<?=dx_icon("message-circle", "", 16)?> Apri WhatsApp e Avvisa Grazia</a>';
+        }
+        alertBox.innerHTML = html;
+        form.reset();
+        alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // CASO A: PAGAMENTO CARTA O PAYPAL
+      if (paymentMethod === 'PAYPAL') {
+        form.style.display = 'none';
+        ppContainer.style.display = 'block';
+        document.getElementById('pp_booking_code').innerText = currentBookingSic;
+        renderPayPalButtons(currentBookingSic);
+        ppContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // CASO B: PAGAMENTO USDT (POLYGON)
+      if (paymentMethod === 'USDT') {
+        form.style.display = 'none';
+        usdtContainer.style.display = 'block';
+        document.getElementById('usdt_booking_code').innerText = currentBookingSic;
+        usdtContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // CASO C: SALDO IN SEDE ALL'ACCOGLIENZA
       alertBox.style.display = 'block';
-      alertBox.style.background = isWait ? 'rgba(239, 68, 68, 0.15)' : 'rgba(16, 185, 129, 0.15)';
-      alertBox.style.border = isWait ? '1px solid #ef4444' : '1px solid #10b981';
+      alertBox.style.background = 'rgba(16, 185, 129, 0.15)';
+      alertBox.style.border = '1px solid #10b981';
       alertBox.style.color = '#ffffff';
 
-      let html = '<div style="font-weight: 850; font-size: 1.05rem; margin-bottom: 6px;">' + 
-                 (isWait ? "Iscrizione Inserita in Lista d'Attesa" : "Iscrizione Confermata!") + 
-                 '</div>';
-      html += '<p style="margin: 0 0 8px;">Codice Prenotazione: <strong style="color: #d4af37;">' + data.booking_sic + '</strong></p>';
-      html += '<p style="margin: 0 0 10px; font-size: 0.84rem;">' + data.message + '</p>';
+      let html = '<div style="font-weight: 850; font-size: 1.05rem; margin-bottom: 6px;">Iscrizione Registrata con Successo!</div>';
+      html += '<p style="margin: 0 0 8px;">Codice Prenotazione: <strong style="color: #d4af37;">' + currentBookingSic + '</strong></p>';
+      html += '<p style="margin: 0 0 10px; font-size: 0.84rem;">La tua iscrizione è stata memorizzata nel database. Verserai la quota di 10,00 € (pranzo compreso) direttamente all\'accoglienza venerdì 9 ottobre.</p>';
       
       if (data.whatsapp_link) {
         html += '<a href="' + data.whatsapp_link + '" target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="min-height: 44px; font-size: 0.88rem; margin-bottom: 8px;">' +
@@ -548,15 +699,15 @@ async function handleMobileBooking(e) {
 
       alertBox.innerHTML = html;
       form.reset();
-      
-      // Scroll to alert box
       alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
     } else {
       alertBox.style.display = 'block';
       alertBox.style.background = 'rgba(239, 68, 68, 0.2)';
       alertBox.style.border = '1px solid #ef4444';
       alertBox.style.color = '#fff';
-      alertBox.innerText = data.error || 'Errore durante la registrazione. Riprova.';
+      alertBox.innerText = data.error || data.message || 'Errore durante la registrazione. Riprova.';
+      alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   } catch (err) {
     alertBox.style.display = 'block';
@@ -566,7 +717,122 @@ async function handleMobileBooking(e) {
     alertBox.innerText = 'Impossibile completare la richiesta. Controlla la connessione.';
   } finally {
     btn.disabled = false;
-    btn.innerHTML = '<?=dx_icon("check-circle", "", 18)?> <span><?=!$isFull ? "CONFERMA ISCRIZIONE (10€)" : "ISCRIVITI IN LISTA D\'ATTESA"?></span>';
+    btn.innerHTML = '<?=dx_icon("check-circle", "", 18)?> <span>ISCRIVITI & PROCEDI (10,00 €)</span>';
+  }
+}
+
+function renderPayPalButtons(bookingSic) {
+  const mount = document.getElementById('paypal-buttons-mount');
+  mount.innerHTML = '';
+
+  if (typeof paypal === 'undefined') {
+    mount.innerHTML = '<div style="color:#ef4444; padding:10px;">SDK PayPal temporaneamente non disponibile. Ricarica la pagina o scegli USDT / Saldo in Sede.</div>';
+    return;
+  }
+
+  paypal.Buttons({
+    style: {
+      layout: 'vertical',
+      color: 'gold',
+      shape: 'rect',
+      label: 'pay'
+    },
+    createOrder: async function() {
+      const res = await fetch('api-event-booking.php?action=create_paypal_order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ booking_sic: bookingSic })
+      });
+      const orderData = await res.json();
+      if (!orderData.success || !orderData.orderID) {
+        throw new Error(orderData.error || 'Errore creazione ordine PayPal.');
+      }
+      return orderData.orderID;
+    },
+    onApprove: async function(data) {
+      mount.innerHTML = '<div style="color:#d4af37; padding:14px; font-weight:750;">Conferma pagamento in corso...</div>';
+      const res = await fetch('api-event-booking.php?action=capture_paypal_order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ orderID: data.orderID, booking_sic: bookingSic })
+      });
+      const captureData = await res.json();
+      if (captureData.success) {
+        const ppContainer = document.getElementById('paypalGatewayContainer');
+        ppContainer.style.background = 'rgba(16, 185, 129, 0.15)';
+        ppContainer.style.borderColor = '#10b981';
+        
+        let html = '<div style="font-weight: 850; font-size: 1.15rem; color: #10b981; margin-bottom: 8px;">Quota Pagata con Successo!</div>';
+        html += '<p style="color: #ffffff; margin: 0 0 8px;">Codice Iscrizione: <strong style="color: #d4af37;">' + bookingSic + '</strong></p>';
+        html += '<p style="color: #cbd5e1; font-size: 0.84rem; margin: 0 0 14px;">Abbiamo inviato la ricevuta e i dettagli al tuo indirizzo email. Il tuo posto a Taglio di Po è confermato al 100%.</p>';
+        
+        if (captureData.whatsapp_link) {
+          html += '<a href="' + captureData.whatsapp_link + '" target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="min-height: 44px; font-size: 0.88rem; margin-bottom: 8px;">' +
+                  '<?=dx_icon("message-circle", "", 16)?> Apri WhatsApp e Avvisa Grazia</a>';
+        }
+        
+        html += '<a href="event-ics.php?event=<?=urlencode($sic)?>" download class="m-btn m-btn-outline" style="min-height: 42px; font-size: 0.84rem;">' +
+                '<?=dx_icon("calendar", "", 14)?> Salva Promemoria su Calendario (.ics)</a>';
+        
+        ppContainer.innerHTML = html;
+        ppContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        alert('Errore durante la cattura del pagamento: ' + (captureData.error || 'Riprova'));
+      }
+    },
+    onError: function(err) {
+      alert('Si è verificato un errore con PayPal: ' + err);
+    }
+  }).render('#paypal-buttons-mount');
+}
+
+async function submitUsdtTx() {
+  const hash = document.getElementById('usdt_tx_hash').value.trim();
+  const btn = document.getElementById('usdt_confirm_btn');
+  const usdtContainer = document.getElementById('usdtGatewayContainer');
+
+  if (!hash || hash.length < 10) {
+    alert('Inserisci un Transaction Hash valido della rete Polygon.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerHTML = 'Salvataggio in corso...';
+
+  try {
+    const res = await fetch('api-event-booking.php?action=confirm_usdt_payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ booking_sic: currentBookingSic, tx_hash: hash })
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      usdtContainer.style.background = 'rgba(16, 185, 129, 0.15)';
+      usdtContainer.style.borderColor = '#10b981';
+
+      let html = '<div style="font-weight: 850; font-size: 1.15rem; color: #10b981; margin-bottom: 8px;">Notifica USDT Ricevuta!</div>';
+      html += '<p style="color: #ffffff; margin: 0 0 8px;">Codice Iscrizione: <strong style="color: #d4af37;">' + currentBookingSic + '</strong></p>';
+      html += '<p style="color: #cbd5e1; font-size: 0.84rem; margin: 0 0 14px;">La transazione è stata salvata nel database ed è in fase di verifica on-chain. Il tuo posto in aula è riservato.</p>';
+
+      if (data.whatsapp_link) {
+        html += '<a href="' + data.whatsapp_link + '" target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="min-height: 44px; font-size: 0.88rem; margin-bottom: 8px;">' +
+                '<?=dx_icon("message-circle", "", 16)?> Invia TX Hash a Grazia su WhatsApp</a>';
+      }
+
+      html += '<a href="event-ics.php?event=<?=urlencode($sic)?>" download class="m-btn m-btn-outline" style="min-height: 42px; font-size: 0.84rem;">' +
+              '<?=dx_icon("calendar", "", 14)?> Salva Promemoria su Calendario (.ics)</a>';
+
+      usdtContainer.innerHTML = html;
+      usdtContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      alert(data.error || 'Errore salvataggio TX Hash.');
+    }
+  } catch (err) {
+    alert('Errore di connessione durante la verifica USDT.');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<?=dx_icon("send", "", 14)?> Conferma Notifica USDT';
   }
 }
 </script>

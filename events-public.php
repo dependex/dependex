@@ -234,9 +234,12 @@ require '_header.php';
     </div>
   </section>
 
+  <!-- GRIGLIA UFFICIALE DEI 28 SPONSOR & ASSET DELL'ECOSISTEMA -->
+  <?php require_once __DIR__ . '/templates/_sponsor_grid.php'; ?>
+
   <!-- FOOTER DELLA SCHEDA MOBILE -->
   <div class="text-center" style="margin-top: 16px; font-size: 0.78rem; color: #94a3b8;">
-    <p style="margin: 0 0 6px;">Per informazioni e iscrizioni telefoniche: Grazia Nicosia (Servitrice-Insegnante) · <strong>Tel. 347 884 4271</strong></p>
+    <p style="margin: 0 0 4px;">Per informazioni e iscrizioni telefoniche: Grazia Nicosia (Servitrice-Insegnante) · <strong>Tel. 347 884 4271</strong></p>
     <p style="margin: 0; color: #d4af37;">100% Digitale · Zero carta · Zero sprechi · Posti certificati</p>
   </div>
 

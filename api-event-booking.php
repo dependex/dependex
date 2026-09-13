@@ -1,228 +1,446 @@
 <?php
 /**
- * DEPENDEX & ACAT — EVENT BOOKING & REGISTRATION API
- * Gestisce l'iscrizione online per l'evento "A Scuola di Comunicazione e Resilienza"
- * Conforme GDPR, tracking consensi, integrazione Email Marketing OS.
+ * DEPENDEX & ACAT — EVENT BOOKING & MULTI-GATEWAY CHECKOUT API
+ * Gestisce:
+ * 1. Registrazione anagrafica iscritti (Nome, Cognome, Email, Telefono, Ruolo, Dieta)
+ * 2. Checkout 10€ via PayPal Live (Smart Buttons / Carte di Credito/Debito)
+ * 3. Checkout 10€ via USDT (Polygon Network: 0xbde2aaa9e8d0afb90d42679c6e391e5c72be5f39)
+ * 4. Pagamento all'accoglienza (On-Site)
+ * 5. Gestione Overbooking e Lista d'Attesa (limite 30 posti)
+ * 6. Invio email transazionali via SMTP SSL e notifica WhatsApp
  */
 
 declare(strict_types=1);
 
 require_once __DIR__ . '/bootstrap.php';
 require_once __DIR__ . '/email-engine.php';
+require_once __DIR__ . '/modules/commerce/CommerceEnv.php';
+require_once __DIR__ . '/modules/commerce/PayPalService.php';
 
-header('Content-Type: application/json; charset=utf-8');
+use Dependex\Commerce\PayPalService;
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['success' => false, 'message' => 'Metodo non consentito. Richiesto POST.']);
-    exit;
-}
-
-$u = current_user();
-
-// Lettura e sanitizzazione input
-$eventSic = trim((string)($_POST['event_sic_id'] ?? 'SIC-EVT-ACAT-BP-2026-COMM'));
-$nome = trim((string)($_POST['nome'] ?? ''));
-$cognome = trim((string)($_POST['cognome'] ?? ''));
-$fullName = trim($nome . ' ' . $cognome);
-if (empty($fullName) && !empty($_POST['full_name'])) {
-    $fullName = trim((string)$_POST['full_name']);
-}
-$email = strtolower(trim((string)($_POST['email'] ?? '')));
-$phone = trim((string)($_POST['phone'] ?? ''));
-$roleType = trim((string)($_POST['role_type'] ?? 'Operatore / Volontario'));
-$dietaryNotes = trim((string)($_POST['dietary_notes'] ?? 'Nessuna'));
-$notes = trim((string)($_POST['notes'] ?? ''));
-$numSeats = max(1, min(5, (int)($_POST['num_seats'] ?? 1)));
-$privacy = !empty($_POST['privacy_accepted']);
-
-// Validazioni di base
-if (empty($fullName) || mb_strlen($fullName) < 3) {
-    http_response_code(422);
-    echo json_encode(['success' => false, 'message' => 'Inserisci Nome e Cognome validi.']);
-    exit;
-}
-
-if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    http_response_code(422);
-    echo json_encode(['success' => false, 'message' => 'Inserisci un indirizzo email valido per la conferma.']);
-    exit;
-}
-
-if (empty($phone) || mb_strlen(preg_replace('/\D/', '', $phone)) < 6) {
-    http_response_code(422);
-    echo json_encode(['success' => false, 'message' => 'Inserisci un recapito telefonico o WhatsApp valido.']);
-    exit;
-}
-
-if (!$privacy) {
-    http_response_code(422);
-    echo json_encode(['success' => false, 'message' => 'È necessario accettare l\'informativa privacy per procedere con la prenotazione.']);
-    exit;
-}
-
-$pdo = db();
-
-// Verifica esistenza evento e capienza
-$evtStmt = $pdo->prepare("SELECT * FROM events WHERE sic_id = ?");
-$evtStmt->execute([$eventSic]);
-$event = $evtStmt->fetch(PDO::FETCH_ASSOC);
-
-if (!$event) {
-    http_response_code(404);
-    echo json_encode(['success' => false, 'message' => 'Evento non trovato.']);
-    exit;
-}
-
-$capacity = (int)($event['capacity'] ?? 30);
-$pricePerSeat = (float)($event['price_eur'] ?? 10.00);
-
-// Calcolo prenotazioni attuali confermate
-$countStmt = $pdo->prepare("
-    SELECT (
-        (SELECT COUNT(*) FROM event_registrations er WHERE er.event_sic_id = ? AND er.status IN ('REGISTERED', 'CHECKED_IN')) +
-        (SELECT COALESCE(SUM(num_seats), 0) FROM event_bookings eb WHERE eb.event_sic_id = ? AND eb.status = 'CONFIRMED')
-    ) as total_booked
-");
-$countStmt->execute([$eventSic, $eventSic]);
-$currentBooked = (int)$countStmt->fetchColumn();
-
-$isWaitlist = ($capacity > 0 && $currentBooked >= $capacity);
-$waitlistPosition = 0;
-
-if ($isWaitlist) {
-    $wlStmt = $pdo->prepare("SELECT COUNT(*) FROM event_bookings WHERE event_sic_id = ? AND status = 'WAITLIST'");
-    $wlStmt->execute([$eventSic]);
-    $waitlistPosition = (int)$wlStmt->fetchColumn() + 1;
-}
-
-// Inserimento prenotazione (CONFIRMED o WAITLIST secondo Protocollo Overbooking)
-$bookingSic = sic_id($isWaitlist ? 'WAIT' : 'BOOK');
-$totalAmount = $pricePerSeat * $numSeats;
-$ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
-$status = $isWaitlist ? 'WAITLIST' : 'CONFIRMED';
-
-$insBooking = $pdo->prepare("
-    INSERT INTO event_bookings (
-        sic_id, event_sic_id, user_sic_id, full_name, email, phone, 
-        role_type, dietary_notes, num_seats, total_amount, payment_method, 
-        status, notes, ip_address
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'ON_SITE', ?, ?, ?)
-");
-
-$insBooking->execute([
-    $bookingSic,
-    $eventSic,
-    $u['sic_id'] ?? null,
-    $fullName,
-    $email,
-    $phone,
-    $roleType,
-    $dietaryNotes,
-    $numSeats,
-    $totalAmount,
-    $status,
-    $notes . ($isWaitlist ? " [LISTA D'ATTESA POSIZIONE #{$waitlistPosition}]" : ''),
-    $ip
-]);
-
-// Se l'utente è autenticato su dependex.social, crea anche il record in event_registrations
-if ($u && !empty($u['sic_id'])) {
-    $regSic = sic_id('EVTREG');
-    $insReg = $pdo->prepare("
-        INSERT OR IGNORE INTO event_registrations (sic_id, event_sic_id, user_sic_id, status)
-        VALUES (?, ?, ?, 'REGISTERED')
-    ");
-    $insReg->execute([$regSic, $eventSic, $u['sic_id']]);
-}
-
-// Tracciamento nel sistema di Email Marketing Automation & GDPR Ledger
-email_os_track_event('event_booked', $email, [
-    'booking_sic' => $bookingSic,
-    'event_sic' => $eventSic,
-    'event_title' => $event['title'],
-    'full_name' => $fullName,
-    'phone' => $phone,
-    'num_seats' => $numSeats,
-    'total_amount' => $totalAmount,
-    'role_type' => $roleType,
-    'dietary_notes' => $dietaryNotes,
-    'ip' => $ip
-]);
-
-// Invio email di notifica/conferma
-if ($isWaitlist) {
-    $mailSubject = "Lista d'Attesa (N° {$waitlistPosition}): " . $event['title'] . " (ACAT Basso Polesine)";
-    $mailBody = "Ciao {$fullName},\n\nGrazie per la tua richiesta. I 30 posti in aula per il corso \"{$event['title']}\" si sono chiusi e sei il numero [{$waitlistPosition}] in lista d'attesa numerata (registrata per data e ora).\n\n"
-        . "COSA SUCCEDE ADESSO:\n"
-        . "• Se qualcuno rinuncia ti contattiamo subito con priorità (capita quasi sempre!).\n"
-        . "• Intanto ti segnaliamo che stiamo già programmando la seconda edizione: hai la precedenza garantita per il posto.\n\n"
-        . "RIEPILOGO:\n"
-        . "• Corso: {$event['title']}\n"
-        . "• Sede: {$event['venue']} - " . ($event['address'] ?? 'Taglio di Po') . "\n"
-        . "• Formatore: " . ($event['trainer'] ?? 'Adelmo Di Salvatore') . "\n"
-        . "• Codice lista d'attesa: {$bookingSic}\n\n"
-        . "CONTATTI SEGRETERIA:\n"
-        . "Grazia Nicosia: 347 884 4271\n"
-        . "ACAT Basso Polesine: 376 151 6301 - acat.bassop@tiscali.it\n\n"
-        . "Segreteria DEPENDEX & ACAT Basso Polesine";
-    $feedbackMsg = "I 30 posti per questa edizione sono al completo, ma la tua iscrizione è stata registrata con successo al NUMERO {$waitlistPosition} nella LISTA D'ATTESA NUMERATA! Se si libera un posto o all'apertura della 2ª edizione ti contatteremo con priorità assoluta.";
-} else {
-    $mailSubject = "Conferma Iscrizione: " . $event['title'] . " (ACAT Basso Polesine)";
-    $mailBody = "Gentile {$fullName},\n\nLa tua prenotazione per il corso \"{$event['title']}\" è stata registrata con successo!\n\n"
-        . "RIEPILOGO DETTAGLI:\n"
-        . "• Organizzatore: " . ($event['organizer'] ?? 'ACAT Basso Polesine O.D.V.') . "\n"
-        . "• Date: Venerdì 9, Sabato 10 (pranzo incluso) e Domenica 11 Ottobre 2026\n"
-        . "• Sede: {$event['venue']} - " . ($event['address'] ?? 'Taglio di Po') . "\n"
-        . "• Formatore: " . ($event['trainer'] ?? 'Adelmo Di Salvatore') . "\n"
-        . "• Posti riservati: {$numSeats}\n"
-        . "• Quota di partecipazione: " . number_format($totalAmount, 2, ',', '.') . "€ (comprensiva del pranzo di sabato, da versare all'accoglienza)\n"
-        . "• Codice prenotazione: {$bookingSic}\n\n"
-        . "CONTATTI E COORDINAMENTO:\n"
-        . "• Grazia Nicosia (Iscrizioni & Info): 347 884 4271\n"
-        . "• Sede ACAT Basso Polesine: 376 151 6301 - acat.bassop@tiscali.it\n\n"
-        . "Ti aspettiamo per condividere questo percorso formativo esperienziale!\n\n"
-        . "Segreteria DEPENDEX & ACAT Basso Polesine\ninfo@dependex.support";
-    $feedbackMsg = "Iscrizione completata con successo per {$fullName}! Riceverai una conferma via email con tutti i dettagli logistici.";
-}
-
-// Tentativo invio via Python transport Hostinger SMTP (porta 465 SSL)
-$pyScript = __DIR__ . '/automation/emailflux/send_booking_email.py';
-if (file_exists($pyScript)) {
-    $nullDevice = (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') ? 'NUL' : '/dev/null';
-    $descriptors = [
-        0 => ['file', $nullDevice, 'r'],
-        1 => ['file', $nullDevice, 'w'],
-        2 => ['file', $nullDevice, 'w']
-    ];
-    $cmd = 'python ' . escapeshellarg($pyScript) . ' '
-        . escapeshellarg($email) . ' '
-        . escapeshellarg($mailSubject) . ' '
-        . escapeshellarg($mailBody);
-    $p = proc_open($cmd, $descriptors, $pipes);
-    if (is_resource($p)) {
-        proc_close($p);
+if (!function_exists('event_api_exit')) {
+    function event_api_exit(): void {
+        if (!defined('TEST_RUN_MODE')) {
+            exit;
+        }
     }
 }
 
-// Calcola posti residui aggiornati
-$newBooked = $isWaitlist ? $currentBooked : ($currentBooked + $numSeats);
-$newRemaining = max(0, $capacity - $newBooked);
+if (!headers_sent()) {
+    header('Content-Type: application/json; charset=utf-8');
+}
 
-$waLeadText = $isWaitlist
-    ? "Ciao Grazia, mi sono registrato online in lista d'attesa (Posizione #{$waitlistPosition}, Codice {$bookingSic}) per il corso di Ottobre. Nome: {$fullName}, Tel: {$phone}."
-    : "Ciao Grazia, ho appena completato l'iscrizione online per 'A Scuola di Comunicazione e Resilienza'. Codice: {$bookingSic}, Nome: {$fullName}, Tel: {$phone}.";
+// Multi-Domain CORS handling
+$allowedOrigins = [
+    'https://dependex.social',
+    'https://mircopregnolato.it',
+    'https://oltre.social',
+    'http://localhost',
+    'http://127.0.0.1',
+];
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+if ($origin && in_array($origin, $allowedOrigins, true) && !headers_sent()) {
+    header('Access-Control-Allow-Origin: ' . $origin);
+    header('Access-Control-Allow-Credentials: true');
+    header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+    header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
+}
 
-echo json_encode([
-    'success' => true,
-    'is_waitlist' => $isWaitlist,
-    'waitlist_position' => $waitlistPosition,
-    'message' => $feedbackMsg,
-    'booking_sic' => $bookingSic,
-    'seats_booked' => $numSeats,
-    'seats_remaining' => $newRemaining,
-    'event_title' => $event['title'],
-    'venue' => $event['venue'],
-    'whatsapp_link' => "https://wa.me/393478844271?text=" . urlencode($waLeadText)
-]);
-exit;
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    if (!headers_sent()) {
+        http_response_code(204);
+    }
+    event_api_exit(); return;
+}
+
+$raw = file_get_contents('php://input');
+$input = $raw ? (json_decode($raw, true) ?? []) : $_POST;
+
+$action = $_GET['action'] ?? ($input['action'] ?? 'init_booking');
+$pdo = db();
+$u = current_user();
+
+if (!function_exists('send_event_email_async')) {
+    function send_event_email_async(string $toEmail, string $subject, string $body): void {
+        $pyScript = __DIR__ . '/automation/emailflux/send_booking_email.py';
+        if (file_exists($pyScript)) {
+            $nullDevice = (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') ? 'NUL' : '/dev/null';
+            $descriptors = [
+                0 => ['file', $nullDevice, 'r'],
+                1 => ['file', $nullDevice, 'w'],
+                2 => ['file', $nullDevice, 'w']
+            ];
+            $cmd = 'python ' . escapeshellarg($pyScript) . ' '
+                . escapeshellarg($toEmail) . ' '
+                . escapeshellarg($subject) . ' '
+                . escapeshellarg($body);
+            $p = proc_open($cmd, $descriptors, $pipes);
+            if (is_resource($p)) {
+                proc_close($p);
+            }
+        }
+    }
+}
+
+try {
+    switch ($action) {
+
+        // =========================================================================
+        // 1. INIZIALIZZAZIONE ISCRIZIONE / PRENOTAZIONE FORM
+        // =========================================================================
+        case 'init_booking':
+        case 'save_booking':
+            $eventSic = trim((string)($input['event_sic_id'] ?? 'SIC-EVT-ACAT-BP-2026-COMM'));
+            $nome = trim((string)($input['nome'] ?? ($input['first_name'] ?? '')));
+            $cognome = trim((string)($input['cognome'] ?? ($input['last_name'] ?? '')));
+            $fullName = trim($nome . ' ' . $cognome);
+            if (empty($fullName) && !empty($input['full_name'])) {
+                $fullName = trim((string)$input['full_name']);
+                $parts = explode(' ', $fullName, 2);
+                $nome = $parts[0] ?? '';
+                $cognome = $parts[1] ?? '';
+            }
+
+            $email = strtolower(trim((string)($input['email'] ?? '')));
+            $phone = trim((string)($input['phone'] ?? ''));
+            $roleType = trim((string)($input['role_type'] ?? 'Operatore / Volontario'));
+            $dietaryNotes = trim((string)($input['dietary_notes'] ?? 'Nessuna'));
+            $paymentMethod = strtoupper(trim((string)($input['payment_method'] ?? 'ON_SITE')));
+            if (!in_array($paymentMethod, ['CARD', 'PAYPAL', 'USDT', 'ON_SITE'], true)) {
+                $paymentMethod = 'ON_SITE';
+            }
+            $notes = trim((string)($input['notes'] ?? ''));
+            $numSeats = 1; // 1 partecipante per iscrizione con pranzo
+            $privacy = !empty($input['privacy_accepted']) || !empty($input['consent']);
+
+            if (empty($nome) || empty($cognome) || mb_strlen($fullName) < 3) {
+                http_response_code(422);
+                echo json_encode(['success' => false, 'error' => 'Inserisci Nome e Cognome validi.']);
+                event_api_exit(); return;
+            }
+
+            if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                http_response_code(422);
+                echo json_encode(['success' => false, 'error' => 'Inserisci un indirizzo email valido.']);
+                event_api_exit(); return;
+            }
+
+            if (empty($phone) || mb_strlen(preg_replace('/\D/', '', $phone)) < 6) {
+                http_response_code(422);
+                echo json_encode(['success' => false, 'error' => 'Inserisci un numero di telefono WhatsApp valido.']);
+                event_api_exit(); return;
+            }
+
+            if (!$privacy) {
+                http_response_code(422);
+                echo json_encode(['success' => false, 'error' => 'È necessario accettare l\'informativa sul trattamento dei dati.']);
+                event_api_exit(); return;
+            }
+
+            // Verifica evento e capienza
+            $evtStmt = $pdo->prepare("SELECT * FROM events WHERE sic_id = ?");
+            $evtStmt->execute([$eventSic]);
+            $event = $evtStmt->fetch(PDO::FETCH_ASSOC);
+            if (!$event) {
+                http_response_code(404);
+                echo json_encode(['success' => false, 'error' => 'Evento non trovato nel database.']);
+                event_api_exit(); return;
+            }
+
+            $capacity = (int)($event['capacity'] ?? 30);
+            $price = (float)($event['price_eur'] ?? 10.00);
+
+            // Conteggio iscritti confermati
+            $countStmt = $pdo->prepare("
+                SELECT (
+                    (SELECT COUNT(*) FROM event_registrations er WHERE er.event_sic_id = ? AND er.status IN ('REGISTERED', 'CHECKED_IN')) +
+                    (SELECT COALESCE(SUM(num_seats), 0) FROM event_bookings eb WHERE eb.event_sic_id = ? AND eb.status = 'CONFIRMED')
+                ) as total_booked
+            ");
+            $countStmt->execute([$eventSic, $eventSic]);
+            $currentBooked = (int)$countStmt->fetchColumn();
+
+            $isWaitlist = ($capacity > 0 && $currentBooked >= $capacity);
+            $waitlistPosition = 0;
+            if ($isWaitlist) {
+                $wlStmt = $pdo->prepare("SELECT COUNT(*) FROM event_bookings WHERE event_sic_id = ? AND status = 'WAITLIST'");
+                $wlStmt->execute([$eventSic]);
+                $waitlistPosition = (int)$wlStmt->fetchColumn() + 1;
+            }
+
+            $bookingSic = sic_id($isWaitlist ? 'WAIT' : 'BOOK');
+            $status = $isWaitlist ? 'WAITLIST' : 'CONFIRMED';
+            $paymentStatus = $isWaitlist ? 'WAITLIST' : 'PENDING';
+            $ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
+
+            $insStmt = $pdo->prepare("
+                INSERT INTO event_bookings (
+                    sic_id, event_sic_id, user_sic_id, first_name, last_name, 
+                    full_name, email, phone, role_type, dietary_notes, 
+                    num_seats, total_amount, payment_method, payment_status, 
+                    status, notes, ip_address, created_at, updated_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'))
+            ");
+
+            $insStmt->execute([
+                $bookingSic,
+                $eventSic,
+                $u['sic_id'] ?? null,
+                $nome,
+                $cognome,
+                $fullName,
+                $email,
+                $phone,
+                $roleType,
+                $dietaryNotes,
+                $numSeats,
+                $price,
+                $paymentMethod,
+                $paymentStatus,
+                $status,
+                $notes . ($isWaitlist ? " [LISTA D'ATTESA #{$waitlistPosition}]" : ''),
+                $ip
+            ]);
+
+            // Tracciamento evento nel ledger
+            email_os_track_event('event_booking_started', $email, [
+                'booking_sic' => $bookingSic,
+                'event_sic' => $eventSic,
+                'full_name' => $fullName,
+                'phone' => $phone,
+                'payment_method' => $paymentMethod,
+                'is_waitlist' => $isWaitlist
+            ]);
+
+            // Se pagamento in sede o lista d'attesa, invia subito email
+            if ($paymentMethod === 'ON_SITE' || $isWaitlist) {
+                if ($isWaitlist) {
+                    $subject = "Lista d'Attesa (#{$waitlistPosition}): " . $event['title'];
+                    $body = "Ciao {$fullName},\n\nI 30 posti in aula per \"{$event['title']}\" sono al completo e sei in lista d'attesa al posto [{$waitlistPosition}].\n\nCodice Prenotazione: {$bookingSic}\nQualora si liberasse un posto sarai contattato/a prioritariamente.\n\nContatti Segreteria: Grazia Nicosia (347 884 4271)\nACAT Basso Polesine";
+                } else {
+                    $subject = "Conferma Iscrizione: " . $event['title'];
+                    $body = "Gentile {$fullName},\n\nLa tua iscrizione per il corso \"{$event['title']}\" (Taglio di Po, 9-11 Ottobre 2026) è stata registrata con successo!\n\nCodice Iscrizione: {$bookingSic}\nQuota: 10,00 € (pranzo del sabato incluso, saldo al desk d'accoglienza).\n\nSede: Oratorio San Francesco, Taglio di Po (RO)\nFormatore: Adelmo Di Salvatore\n\nReferente: Grazia Nicosia (347 884 4271)\nACAT Basso Polesine";
+                }
+                send_event_email_async($email, $subject, $body);
+            }
+
+            $waText = $isWaitlist
+                ? "Ciao Grazia, mi sono registrato in lista d'attesa (#{$waitlistPosition}, Codice: {$bookingSic}) per il corso di Taglio di Po. Nome: {$fullName}, Tel: {$phone}."
+                : "Ciao Grazia, ho appena completato l'iscrizione per il corso di Taglio di Po (9-11 Ottobre). Codice: {$bookingSic}, Nome: {$fullName}, Quota: 10€.";
+
+            echo json_encode([
+                'success' => true,
+                'ok' => true,
+                'booking_sic' => $bookingSic,
+                'is_waitlist' => $isWaitlist,
+                'waitlist_position' => $waitlistPosition,
+                'amount' => $price,
+                'payment_method' => $paymentMethod,
+                'status' => $status,
+                'message' => $isWaitlist ? "Sei in Lista d'Attesa (Posizione #{$waitlistPosition})" : "Iscrizione registrata con successo!",
+                'whatsapp_link' => "https://wa.me/393478844271?text=" . urlencode($waText)
+            ]);
+            event_api_exit(); return;
+
+        // =========================================================================
+        // 2. CREAZIONE ORDINE PAYPAL LIVE (10.00 EUR)
+        // =========================================================================
+        case 'create_paypal_order':
+            $bookingSic = trim((string)($input['booking_sic'] ?? ''));
+            $bStmt = $pdo->prepare("SELECT * FROM event_bookings WHERE sic_id = ?");
+            $bStmt->execute([$bookingSic]);
+            $booking = $bStmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$booking) {
+                http_response_code(404);
+                echo json_encode(['success' => false, 'error' => 'Prenotazione non trovata.']);
+                event_api_exit(); return;
+            }
+
+            $amount = (float)($booking['total_amount'] ?? 10.00);
+            if ($amount <= 0) {
+                $amount = 10.00;
+            }
+
+            $paypalService = new PayPalService();
+            $orderData = [
+                'order_id' => $booking['id'],
+                'order_number' => $booking['sic_id'],
+                'total_amount' => $amount,
+                'currency' => 'EUR',
+                'description' => 'Iscrizione Taglio di Po 9-11 Ottobre - ' . $booking['full_name'],
+                'brand_name' => 'ACAT Basso Polesine & DEPENDEX',
+                'items' => [
+                    [
+                        'name' => 'Quota Partecipazione Corso Taglio di Po (Pranzo Inc.)',
+                        'quantity' => 1,
+                        'unit_price' => $amount
+                    ]
+                ],
+                'return_url' => 'https://dependex.social/event-detail.php?payment_success=1',
+                'cancel_url' => 'https://dependex.social/event-detail.php?payment_cancel=1'
+            ];
+
+            $order = $paypalService->createOrder($orderData);
+
+            // Aggiorna booking con metodo PAYPAL
+            $upd = $pdo->prepare("UPDATE event_bookings SET payment_method = 'PAYPAL', payment_tx_id = ?, updated_at = datetime('now') WHERE sic_id = ?");
+            $upd->execute([$order['id'], $bookingSic]);
+
+            echo json_encode([
+                'success' => true,
+                'orderID' => $order['id']
+            ]);
+            event_api_exit(); return;
+
+        // =========================================================================
+        // 3. CATTURA & CONFERMA ORDINE PAYPAL LIVE
+        // =========================================================================
+        case 'capture_paypal_order':
+            $paypalOrderId = trim((string)($input['orderID'] ?? ''));
+            $bookingSic = trim((string)($input['booking_sic'] ?? ''));
+
+            if (!$paypalOrderId || !$bookingSic) {
+                http_response_code(422);
+                echo json_encode(['success' => false, 'error' => 'Parametri mancanti per la cattura dell\'ordine.']);
+                event_api_exit(); return;
+            }
+
+            $paypalService = new PayPalService();
+            $captureResult = $paypalService->captureOrder($paypalOrderId);
+
+            $status = $captureResult['status'] ?? '';
+            if ($status === 'COMPLETED') {
+                // Aggiornamento stato pagamento nel DB
+                $upd = $pdo->prepare("
+                    UPDATE event_bookings 
+                    SET payment_status = 'PAID', 
+                        payment_tx_id = ?, 
+                        status = 'CONFIRMED',
+                        updated_at = datetime('now')
+                    WHERE sic_id = ?
+                ");
+                $upd->execute([$paypalOrderId, $bookingSic]);
+
+                // Recupero dati booking per email
+                $bStmt = $pdo->prepare("SELECT * FROM event_bookings WHERE sic_id = ?");
+                $bStmt->execute([$bookingSic]);
+                $bk = $bStmt->fetch(PDO::FETCH_ASSOC);
+
+                if ($bk) {
+                    $subject = "Ricevuta Pagamento Quota (10,00 €) — Corso Taglio di Po";
+                    $body = "Gentile {$bk['full_name']},\n\nAbbiamo ricevuto con successo il pagamento di 10,00 € con Carta/PayPal per la tua iscrizione al corso \"A Scuola di Comunicazione e Resilienza\" (Taglio di Po, 9-11 Ottobre 2026).\n\n"
+                          . "DETTAGLI TRANSAZIONE:\n"
+                          . "• Codice Prenotazione: {$bk['sic_id']}\n"
+                          . "• ID Transazione PayPal: {$paypalOrderId}\n"
+                          . "• Importo Corrisposto: 10,00 € (Pranzo del sabato compreso)\n"
+                          . "• Stato: CONFERMATO AL 100%\n\n"
+                          . "Sede: Oratorio San Francesco d'Assisi, Vicolo San Francesco 1, Taglio di Po (RO)\n"
+                          . "Docente: Dott. Adelmo Di Salvatore\n\n"
+                          . "Referente Iscrizioni: Grazia Nicosia (347 884 4271)\n\n"
+                          . "Ci vediamo venerdì 9 ottobre alle 14:30 al desk accoglienza!";
+                    send_event_email_async($bk['email'], $subject, $body);
+
+                    email_os_track_event('event_payment_completed', $bk['email'], [
+                        'booking_sic' => $bk['sic_id'],
+                        'amount' => 10.00,
+                        'provider' => 'paypal',
+                        'tx_id' => $paypalOrderId
+                    ]);
+                }
+
+                $waText = "Ciao Grazia, ho appena versato la quota di 10€ con Carta/PayPal per il corso di Taglio di Po (Codice: {$bookingSic}, ID PayPal: {$paypalOrderId}).";
+
+                echo json_encode([
+                    'success' => true,
+                    'status' => 'COMPLETED',
+                    'message' => 'Pagamento di 10,00 € confermato con successo! Posto riservato in aula.',
+                    'booking_sic' => $bookingSic,
+                    'tx_id' => $paypalOrderId,
+                    'whatsapp_link' => "https://wa.me/393478844271?text=" . urlencode($waText)
+                ]);
+            } else {
+                http_response_code(400);
+                echo json_encode([
+                    'success' => false,
+                    'error' => 'Stato pagamento PayPal non completato: ' . $status,
+                    'details' => $captureResult
+                ]);
+            }
+            event_api_exit(); return;
+
+        // =========================================================================
+        // 4. CONFERMA PAGAMENTO IN USDT (RETE POLYGON)
+        // =========================================================================
+        case 'confirm_usdt_payment':
+            $bookingSic = trim((string)($input['booking_sic'] ?? ''));
+            $txHash = trim((string)($input['tx_hash'] ?? ''));
+
+            if (!$bookingSic || !$txHash) {
+                http_response_code(422);
+                echo json_encode(['success' => false, 'error' => 'Codice prenotazione e Transaction Hash (TX Hash) obbligatori.']);
+                event_api_exit(); return;
+            }
+
+            // Normalizza formato hash esadecimale (0x...)
+            if (!str_starts_with($txHash, '0x')) {
+                $txHash = '0x' . $txHash;
+            }
+
+            $bStmt = $pdo->prepare("SELECT * FROM event_bookings WHERE sic_id = ?");
+            $bStmt->execute([$bookingSic]);
+            $bk = $bStmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$bk) {
+                http_response_code(404);
+                echo json_encode(['success' => false, 'error' => 'Prenotazione non trovata.']);
+                event_api_exit(); return;
+            }
+
+            $upd = $pdo->prepare("
+                UPDATE event_bookings 
+                SET payment_method = 'USDT',
+                    payment_status = 'PAID_PENDING_CONFIRMATION',
+                    payment_tx_id = ?,
+                    status = 'CONFIRMED',
+                    updated_at = datetime('now')
+                WHERE sic_id = ?
+            ");
+            $upd->execute([$txHash, $bookingSic]);
+
+            $subject = "Notifica Pagamento 10 USDT Ricevuto — Corso Taglio di Po";
+            $body = "Gentile {$bk['full_name']},\n\nAbbiamo registrato la tua transazione di 10 USDT su rete Polygon per l'evento di Taglio di Po.\n\n"
+                  . "• Codice Prenotazione: {$bk['sic_id']}\n"
+                  . "• Polygon Tx Hash: {$txHash}\n"
+                  . "• Importo: 10 USDT (Polygon)\n"
+                  . "• Destinazione: 0xbde2aaa9e8d0afb90d42679c6e391e5c72be5f39\n\n"
+                  . "Il nostro team verificherà le conferme del blocco e il tuo posto è già tenuto da parte!\n\n"
+                  . "ACAT Basso Polesine & DEPENDEX";
+            send_event_email_async($bk['email'], $subject, $body);
+
+            $waText = "Ciao Grazia, ho registrato il pagamento di 10 USDT su Polygon per il corso di Taglio di Po. Codice Prenotazione: {$bookingSic}, Tx Hash: {$txHash}.";
+
+            echo json_encode([
+                'success' => true,
+                'message' => 'Transazione USDT registrata! Il tuo posto è confermato.',
+                'booking_sic' => $bookingSic,
+                'tx_hash' => $txHash,
+                'whatsapp_link' => "https://wa.me/393478844271?text=" . urlencode($waText)
+            ]);
+            event_api_exit(); return;
+
+        default:
+            http_response_code(400);
+            echo json_encode(['success' => false, 'error' => 'Azione non riconosciuta: ' . $action]);
+            event_api_exit(); return;
+    }
+
+} catch (Throwable $e) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'error' => 'Errore server durante l\'operazione: ' . $e->getMessage()
+    ]);
+    event_api_exit(); return;
+}

@@ -345,7 +345,7 @@ $sponsors = [
   </div>
 
   <div style="margin-top: 16px; padding: 12px; background: rgba(212,175,55,0.08); border-radius: 10px; border: 1px dashed rgba(212,175,55,0.35); text-align: center; font-size: 0.78rem; color: #e2e8f0; line-height: 1.45;">
-    <?=dx_icon('shield-check', '', 14)?> <b>Sostegno Istituzionale:</b> la quota simbolica di 10€ copre interamente il pranzo comunitario e il materiale didattico grazie alla rete dei 28 business partner a supporto dell'evento.
+    <?=dx_icon('shield-check', '', 14)?> <b>Garanzia di Sostegno Ufficiale:</b> la quota simbolica di 10€ copre interamente il pranzo comunitario e il materiale didattico grazie al supporto della rete.
   </div>
 
 </section>

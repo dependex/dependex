@@ -98,8 +98,11 @@ $paypalClientId = (string)CommerceEnv::get('PAYPAL_CLIENT_ID', '');
         <a href="evento-ottobre-taglio-di-po.php" class="btn-rainbow-outline" style="font-size: 0.82rem; padding: 6px 14px; border-color: rgba(212,175,55,0.5);">
           <?=dx_icon('info', '', 14)?> Dettagli Programma Completo
         </a>
-        <a href="https://wa.me/393478844271?text=<?=urlencode("Ciao Grazia, vorrei informazioni sul corso di Taglio di Po (9-11 Ottobre).")?>" target="_blank" rel="noopener" class="btn-rainbow-outline" style="border-color: #25d366; color: #25d366; font-size: 0.82rem; padding: 6px 14px;">
-          <?=dx_icon('message-circle', '', 14)?> Contatta Grazia (Tel. 347 8844271)
+        <a href="https://wa.me/393478844271?text=Ciao%20Grazia,%20sono%20[nome],%20mi%20interessa%20partecipare%20all'evento%20A%20Scuola%20di%20Comunicazione%20Resilienza%20a%20Taglio%20di%20Po." target="_blank" rel="noopener" class="btn-rainbow-outline" style="border-color: #25d366; color: #25d366; font-size: 0.82rem; padding: 6px 14px;">
+          <?=dx_icon('message-circle', '', 14)?> Contatta Grazia (WhatsApp)
+        </a>
+        <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="btn-rainbow-outline" style="border-color: #25d366; color: #25d366; font-size: 0.82rem; padding: 6px 14px;">
+          <?=dx_icon('users', '', 14)?> Gruppo WhatsApp Evento
         </a>
       </div>
     </div>

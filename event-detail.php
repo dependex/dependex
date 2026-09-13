@@ -193,9 +193,14 @@ require '_header.php';
         <span><?=!$isFull ? "COMPILA ISCRIZIONE ONLINE (10€)" : "ISCRIVITI IN LISTA D'ATTESA"?></span>
       </a>
 
-      <a href="https://wa.me/393478844271?text=<?=urlencode("Ciao Grazia, vorrei iscrivermi al corso 'A Scuola di Comunicazione e Resilienza' (Taglio di Po, 9-11 Ottobre).")?>" target="_blank" rel="noopener" class="m-btn m-btn-whatsapp">
+      <a href="https://wa.me/393478844271?text=Ciao%20Grazia,%20sono%20[nome],%20mi%20interessa%20partecipare%20all'evento%20A%20Scuola%20di%20Comunicazione%20Resilienza%20a%20Taglio%20di%20Po." target="_blank" rel="noopener" class="m-btn m-btn-whatsapp">
         <?=dx_icon('message-circle', '', 18)?>
-        <span>Iscriviti via WhatsApp a Grazia</span>
+        <span>Scrivi a Grazia su WhatsApp (+39 347 884 4271)</span>
+      </a>
+
+      <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="background: rgba(37, 211, 102, 0.15); border: 1px solid #25D366; color: #25D366; font-weight: 800; min-height: 48px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">
+        <?=dx_icon('users', '', 18)?>
+        <span>Entra nel Gruppo WhatsApp Ufficiale</span>
       </a>
 
       <a href="event-ics.php?event=<?=urlencode($sic)?>" download class="m-btn m-btn-outline" style="min-height: 44px; font-size: 0.88rem;">
@@ -587,6 +592,32 @@ require '_header.php';
     </div>
   </section>
 
+  <!-- CANALI UFFICIALI WHATSAPP -->
+  <section class="m-card" style="background: linear-gradient(145deg, rgba(22, 27, 40, 0.95), rgba(14, 28, 20, 0.9)); border: 1px solid rgba(37, 211, 102, 0.4); margin-bottom: 16px;">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+      <span style="color: #25D366;"><?=dx_icon('message-circle', '', 20)?></span>
+      <h3 style="font-size: 1.05rem; font-weight: 850; color: #ffffff; margin: 0;">
+        Canali Ufficiali WhatsApp dell'Evento
+      </h3>
+    </div>
+
+    <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0 0 12px; line-height: 1.45;">
+      Per domande dirette sull'iscrizione o per accedere al gruppo ufficiale con gli aggiornamenti in tempo reale e il materiale del corso:
+    </p>
+
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <a href="https://wa.me/393478844271?text=Ciao%20Grazia,%20sono%20[nome],%20mi%20interessa%20partecipare%20all'evento%20A%20Scuola%20di%20Comunicazione%20Resilienza%20a%20Taglio%20di%20Po." target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="font-size: 0.88rem;">
+        <?=dx_icon('message-circle', '', 18)?>
+        <span>Scrivi a Grazia Nicosia (+39 347 884 4271)</span>
+      </a>
+
+      <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="background: rgba(37, 211, 102, 0.18); border: 1px solid #25D366; color: #25D366; font-weight: 800; min-height: 48px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; font-size: 0.88rem;">
+        <?=dx_icon('users', '', 18)?>
+        <span>Entra nel Gruppo WhatsApp Ufficiale</span>
+      </a>
+    </div>
+  </section>
+
   <!-- GRIGLIA UFFICIALE DEI 28 SPONSOR & ASSET DELL'ECOSISTEMA -->
   <?php require_once __DIR__ . '/templates/_sponsor_grid.php'; ?>
 
@@ -604,8 +635,11 @@ require '_header.php';
     <a href="#prenotazione" class="m-btn m-btn-primary" style="flex: 1; min-height: 48px; font-size: 0.92rem; padding: 0 12px;">
       <?=dx_icon('check-circle', '', 16)?> Prenota Quota 10€
     </a>
-    <a href="https://wa.me/393478844271?text=<?=urlencode("Ciao Grazia, vorrei iscrivermi al corso 'A Scuola di Comunicazione e Resilienza' di Taglio di Po.")?>" target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="width: 52px; min-height: 48px; padding: 0; flex-shrink: 0;" title="WhatsApp Diretto Grazia">
+    <a href="https://wa.me/393478844271?text=Ciao%20Grazia,%20sono%20[nome],%20mi%20interessa%20partecipare%20all'evento%20A%20Scuola%20di%20Comunicazione%20Resilienza%20a%20Taglio%20di%20Po." target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="width: 48px; min-height: 48px; padding: 0; flex-shrink: 0;" title="Scrivi a Grazia su WhatsApp">
       <?=dx_icon('message-circle', '', 20)?>
+    </a>
+    <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="width: 48px; min-height: 48px; padding: 0; flex-shrink: 0; background: rgba(37,211,102,0.18); border: 1px solid #25D366; color: #25D366;" title="Gruppo WhatsApp Evento">
+      <?=dx_icon('users', '', 18)?>
     </a>
   </div>
 </div>
@@ -690,6 +724,8 @@ async function handleMobileBooking(e) {
           html += '<a href="' + data.whatsapp_link + '" target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="min-height: 44px; font-size: 0.88rem; margin-bottom: 8px;">' +
                   '<?=dx_icon("message-circle", "", 16)?> Apri WhatsApp e Avvisa Grazia</a>';
         }
+        html += '<a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="min-height: 44px; font-size: 0.88rem; margin-bottom: 8px; background: rgba(37,211,102,0.18); border: 1px solid #25d366; color: #25d366; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">' +
+                '<?=dx_icon("users", "", 16)?> Entra nel Gruppo WhatsApp Ufficiale</a>';
         alertBox.innerHTML = html;
         form.reset();
         alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -729,6 +765,9 @@ async function handleMobileBooking(e) {
         html += '<a href="' + data.whatsapp_link + '" target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="min-height: 44px; font-size: 0.88rem; margin-bottom: 8px;">' +
                 '<?=dx_icon("message-circle", "", 16)?> Apri WhatsApp e Avvisa Grazia</a>';
       }
+
+      html += '<a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="min-height: 44px; font-size: 0.88rem; margin-bottom: 8px; background: rgba(37,211,102,0.18); border: 1px solid #25d366; color: #25d366; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">' +
+              '<?=dx_icon("users", "", 16)?> Entra nel Gruppo WhatsApp Ufficiale</a>';
 
       html += '<a href="event-ics.php?event=<?=urlencode($sic)?>" download class="m-btn m-btn-outline" style="min-height: 42px; font-size: 0.84rem;">' +
               '<?=dx_icon("calendar", "", 14)?> Salva Promemoria su Calendario (.ics)</a>';

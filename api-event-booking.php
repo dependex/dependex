@@ -258,8 +258,8 @@ try {
             }
 
             $waText = $isWaitlist
-                ? "Ciao Grazia, mi sono registrato in lista d'attesa (#{$waitlistPosition}, Codice: {$bookingSic}) per il corso di Taglio di Po. Nome: {$fullName}, Tel: {$phone}."
-                : "Ciao Grazia, ho appena completato l'iscrizione per il corso di Taglio di Po (9-11 Ottobre). Codice: {$bookingSic}, Nome: {$fullName}, Quota: 10€.";
+                ? "Ciao Grazia, sono {$fullName}, mi interessa partecipare all'evento A Scuola di Comunicazione Resilienza a Taglio di Po (Registrato in lista d'attesa #{$waitlistPosition}, Codice: {$bookingSic})."
+                : "Ciao Grazia, sono {$fullName}, mi interessa partecipare all'evento A Scuola di Comunicazione Resilienza a Taglio di Po (Iscrizione: {$bookingSic}).";
 
             echo json_encode([
                 'success' => true,
@@ -271,7 +271,8 @@ try {
                 'payment_method' => $paymentMethod,
                 'status' => $status,
                 'message' => $isWaitlist ? "Sei in Lista d'Attesa (Posizione #{$waitlistPosition})" : "Iscrizione registrata con successo!",
-                'whatsapp_link' => "https://wa.me/393478844271?text=" . urlencode($waText)
+                'whatsapp_link' => "https://wa.me/393478844271?text=" . urlencode($waText),
+                'whatsapp_group_link' => 'https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel'
             ]);
             event_api_exit(); return;
 

@@ -86,6 +86,255 @@ $pageTitle = 'A Scuola di Comunicazione e Resilienza · Taglio di Po · ACAT';
 $metaDesc = 'Impara a comunicare senza litigare e a non farti caricare dai problemi degli altri. 9-11 Ottobre 2026, Taglio di Po. Iscrizione online in 10 secondi.';
 require '_header.php';
 ?>
+<script>document.body.classList.add('light-event-page');</script>
+
+<style id="event-light-wow-styles">
+  /* SFONDO CHIARO SUPER WOW CON EFFETTI VISUALI */
+  body.light-event-page,
+  .event-light-wow-wrapper {
+    background-color: #f8fafc !important;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(245, 158, 11, 0.16) 0px, transparent 50%),
+      radial-gradient(at 100% 12%, rgba(14, 165, 233, 0.14) 0px, transparent 50%),
+      radial-gradient(at 50% 45%, rgba(16, 185, 129, 0.12) 0px, transparent 45%),
+      radial-gradient(at 10% 85%, rgba(217, 119, 6, 0.14) 0px, transparent 50%),
+      radial-gradient(at 90% 90%, rgba(99, 102, 241, 0.11) 0px, transparent 45%),
+      radial-gradient(rgba(15, 23, 42, 0.065) 1.2px, transparent 1.2px) !important;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 24px 24px !important;
+    background-attachment: fixed !important;
+    min-height: 100vh;
+    color: #1e293b !important;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* SFERE LUMINOSE FLUTTUANTI (AMBIENT AURORA LIGHT BLOBS) */
+  .event-light-wow-wrapper .light-aurora-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(85px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.85;
+    animation: orbFloat 18s ease-in-out infinite alternate;
+  }
+  .event-light-wow-wrapper .light-orb-gold {
+    width: 440px;
+    height: 440px;
+    top: 40px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.45) 0%, rgba(245, 158, 11, 0.18) 55%, transparent 70%);
+    animation-duration: 20s;
+  }
+  .event-light-wow-wrapper .light-orb-cyan {
+    width: 480px;
+    height: 480px;
+    top: 28%;
+    right: -120px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.4) 0%, rgba(14, 165, 233, 0.15) 55%, transparent 70%);
+    animation-duration: 24s;
+    animation-delay: -5s;
+  }
+  .event-light-wow-wrapper .light-orb-emerald {
+    width: 420px;
+    height: 420px;
+    top: 60%;
+    left: -80px;
+    background: radial-gradient(circle, rgba(52, 211, 153, 0.38) 0%, rgba(16, 185, 129, 0.14) 55%, transparent 70%);
+    animation-duration: 22s;
+    animation-delay: -10s;
+  }
+  .event-light-wow-wrapper .light-orb-amber {
+    width: 400px;
+    height: 400px;
+    bottom: 50px;
+    right: -60px;
+    background: radial-gradient(circle, rgba(251, 146, 60, 0.36) 0%, rgba(217, 119, 6, 0.12) 55%, transparent 70%);
+    animation-duration: 18s;
+    animation-delay: -3s;
+  }
+
+  @keyframes orbFloat {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(35px, -30px, 0) scale(1.1); }
+    100% { transform: translate3d(-25px, 20px, 0) scale(0.95); }
+  }
+
+  /* SHELL CONTAINER 9:16 IN VERSIONE LIGHT */
+  .event-light-wow-wrapper .mobile-916-shell {
+    position: relative;
+    z-index: 2;
+  }
+  @media (min-width: 768px) {
+    .event-light-wow-wrapper .mobile-916-shell {
+      background: rgba(255, 255, 255, 0.84) !important;
+      border: 1px solid rgba(226, 232, 240, 0.95) !important;
+      box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.1), 0 0 35px rgba(217, 119, 6, 0.08) !important;
+    }
+  }
+
+  /* CARD GLASSMORPHIC IN MODALITA CHIARA CON SHADOW MULTILAYER */
+  .event-light-wow-wrapper .m-card {
+    background: rgba(255, 255, 255, 0.92) !important;
+    border: 1px solid rgba(226, 232, 240, 0.95) !important;
+    box-shadow: 0 10px 30px -8px rgba(15, 23, 42, 0.06), 0 2px 8px -2px rgba(15, 23, 42, 0.03) !important;
+    color: #1e293b !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  .event-light-wow-wrapper .m-card-gold-glow {
+    border-color: rgba(217, 119, 6, 0.45) !important;
+    box-shadow: 0 12px 36px -6px rgba(217, 119, 6, 0.15), 0 4px 12px -2px rgba(217, 119, 6, 0.08) !important;
+  }
+
+  /* TITOLI E GERARCHIA TIPOGRAFICA AD ALTO CONTRASTO */
+  .event-light-wow-wrapper h1,
+  .event-light-wow-wrapper h2,
+  .event-light-wow-wrapper h3,
+  .event-light-wow-wrapper b,
+  .event-light-wow-wrapper strong {
+    color: #0f172a !important;
+  }
+
+  .event-light-wow-wrapper .m-card [style*="color: #ffffff"],
+  .event-light-wow-wrapper .m-card [style*="color: #FFFFFF"],
+  .event-light-wow-wrapper [style*="color: #ffffff"],
+  .event-light-wow-wrapper [style*="color: #FFFFFF"] {
+    color: #0f172a !important;
+  }
+
+  .event-light-wow-wrapper .m-card [style*="color: #cbd5e1"],
+  .event-light-wow-wrapper .m-card [style*="color: #e2e8f0"],
+  .event-light-wow-wrapper [style*="color: #cbd5e1"],
+  .event-light-wow-wrapper [style*="color: #e2e8f0"] {
+    color: #334155 !important;
+  }
+
+  .event-light-wow-wrapper .m-card [style*="color: #94a3b8"],
+  .event-light-wow-wrapper .m-card [style*="color: #a1a1aa"],
+  .event-light-wow-wrapper [style*="color: #94a3b8"] {
+    color: #64748b !important;
+  }
+
+  /* COLORI ACCENTO PER LO SFONDO CHIARO */
+  .event-light-wow-wrapper [style*="color: #d4af37"],
+  .event-light-wow-wrapper [style*="color: #D4AF37"] {
+    color: #b45309 !important;
+  }
+
+  .event-light-wow-wrapper [style*="color: #10b981"] {
+    color: #047857 !important;
+  }
+
+  /* SFONDI SCURI TRASFORMATI IN CHIARI ELEGANTI */
+  .event-light-wow-wrapper [style*="background: rgba(14, 17, 24"],
+  .event-light-wow-wrapper [style*="background: rgba(22, 25, 36"],
+  .event-light-wow-wrapper [style*="background: rgba(20, 24, 35"],
+  .event-light-wow-wrapper [style*="background: rgba(18, 23, 36"],
+  .event-light-wow-wrapper [style*="background: rgba(10, 12, 18"],
+  .event-light-wow-wrapper [style*="background: rgba(14, 20, 32"] {
+    background: rgba(248, 250, 252, 0.95) !important;
+    border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  }
+
+  /* TAB VIEWER LOCANDINE */
+  .event-light-wow-wrapper .m-tab-bar {
+    background: #e2e8f0 !important;
+    border: 1px solid #cbd5e1 !important;
+  }
+  .event-light-wow-wrapper .m-tab-btn {
+    color: #475569 !important;
+  }
+  .event-light-wow-wrapper .m-tab-btn.active {
+    background: #ffffff !important;
+    color: #b45309 !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  /* INPUT FORM E CONTROLLI */
+  .event-light-wow-wrapper .m-input {
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    color: #0f172a !important;
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.02) !important;
+  }
+  .event-light-wow-wrapper .m-input:focus {
+    border-color: #d97706 !important;
+    box-shadow: 0 0 0 3.5px rgba(217, 119, 6, 0.15) !important;
+    outline: none !important;
+  }
+  .event-light-wow-wrapper .m-label {
+    color: #334155 !important;
+    font-weight: 750;
+  }
+
+  /* PULSANTI CON PROFONDITA VISIVA */
+  .event-light-wow-wrapper .m-btn-primary {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 24px rgba(217, 119, 6, 0.28) !important;
+    border: none !important;
+  }
+  .event-light-wow-wrapper .m-btn-outline {
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    color: #334155 !important;
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.03) !important;
+  }
+  .event-light-wow-wrapper .m-btn-whatsapp {
+    background: #25D366 !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.28) !important;
+  }
+
+  /* BADGES */
+  .event-light-wow-wrapper .m-badge-green {
+    background: rgba(16, 185, 129, 0.14) !important;
+    color: #047857 !important;
+    border: 1px solid rgba(16, 185, 129, 0.35) !important;
+  }
+  .event-light-wow-wrapper .m-badge-red {
+    background: rgba(239, 68, 68, 0.14) !important;
+    color: #b91c1c !important;
+    border: 1px solid rgba(239, 68, 68, 0.35) !important;
+  }
+
+  /* BARRA INFERIORE STICKY PER SMARTPHONE */
+  .event-light-wow-wrapper .m-sticky-bar {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border-top: 1px solid #e2e8f0 !important;
+    box-shadow: 0 -8px 28px rgba(15, 23, 42, 0.07) !important;
+    backdrop-filter: blur(18px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
+  }
+
+  /* ACCORDION DEL PROGRAMMA */
+  .event-light-wow-wrapper .m-accordion-head {
+    color: #0f172a !important;
+  }
+  .event-light-wow-wrapper .m-accordion-body {
+    border-top: 1px solid #e2e8f0 !important;
+  }
+
+  /* SEZIONE SPONSOR SU SFONDO CHIARO */
+  .event-light-wow-wrapper [id^="spCard-"] {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04) !important;
+  }
+  .event-light-wow-wrapper [id^="spCard-"]:hover {
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08) !important;
+    border-color: rgba(217, 119, 6, 0.4) !important;
+  }
+</style>
+
+<div class="event-light-wow-wrapper">
+  <!-- AMBIENT FLOATING AURORA LIGHT BLOBS -->
+  <div class="light-aurora-orb light-orb-gold" aria-hidden="true"></div>
+  <div class="light-aurora-orb light-orb-cyan" aria-hidden="true"></div>
+  <div class="light-aurora-orb light-orb-emerald" aria-hidden="true"></div>
+  <div class="light-aurora-orb light-orb-amber" aria-hidden="true"></div>
 
 <!-- MOBILE-FIRST 9:16 CONTAINER (Zero sbordature, responsive smartphone shell) -->
 <div class="mobile-916-shell">
@@ -550,47 +799,7 @@ require '_header.php';
     </a>
   </section>
 
-  <!-- SEZIONE OPERATIVA CLUB: ISTRUZIONI PER IL PIENISSIMO -->
-  <section class="m-card" style="border-color: rgba(212,175,55,0.4); background: rgba(14, 18, 28, 0.95);">
-    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-      <span style="color: #d4af37;"><?=dx_icon('shield-check', '', 18)?></span>
-      <h2 style="font-size: 1.05rem; font-weight: 850; color: #ffffff; margin: 0;">Kit Club: Istruzioni per il Pienissimo</h2>
-    </div>
 
-    <div style="background: rgba(212,175,55,0.1); border-left: 3px solid #d4af37; padding: 10px 12px; border-radius: 10px; margin-bottom: 12px; font-size: 0.82rem; color: #e2e8f0; line-height: 1.45;">
-      <b>Manifesto 100% Digitale:</b> No carta, no spese, no giri a vuoto = tempo libero, cassa solida, club pieni e gratitudine. Le persone e i gruppi WhatsApp ci sono già.
-    </div>
-
-    <div style="font-size: 0.84rem; color: #cbd5e1; display: flex; flex-direction: column; gap: 10px;">
-      <div>
-        <b style="color: #ffffff;">1. La Regola dei 3 Nomi:</b>
-        <p style="margin: 2px 0 0; font-size: 0.8rem; color: #94a3b8;">
-          Ogni servitore-insegnante scrive 3 nomi di persone che hanno bisogno di questo corso e le invita una per una. Chi accetta si iscrive subito davanti a te con lo smartphone.
-        </p>
-      </div>
-
-      <div>
-        <b style="color: #ffffff;">2. Pitch di 40 secondi in riunione di Club:</b>
-        <p style="margin: 2px 0 0; font-size: 0.8rem; color: #fff2b2; font-style: italic; background: rgba(0,0,0,0.4); padding: 8px 10px; border-radius: 8px;">
-          "Il 9, 10 e 11 ottobre facciamo un corso qui a Taglio di Po su come si parla quando la conversazione si fa difficile — in famiglia, in club, quando sale il conflitto e non sai più cosa dire. Tre giorni con Adelmo Di Salvatore. Dieci euro col pranzo. I posti sono 30. Adesso chiedo a ognuno di voi se viene, così so a chi tenere il posto."
-        </p>
-      </div>
-
-      <div>
-        <b style="color: #ffffff;">3. Monitoraggio entro Mercoledì 24 Settembre:</b>
-        <p style="margin: 2px 0 0; font-size: 0.8rem; color: #94a3b8;">
-          Invio foglio dei 3 nomi a Cristiana. Il 26 richiamo a tutti i "ci penso". Il 30 decisione e conferma.
-        </p>
-      </div>
-
-      <div>
-        <b style="color: #ffffff;">4. Protocollo Overbooking (Oltre i 30):</b>
-        <p style="margin: 2px 0 0; font-size: 0.8rem; color: #94a3b8;">
-          Il tetto di 30 è rigoroso per la qualità dei role-play. Dal 31° scatta la lista d'attesa numerata per timestamp. Da 8 in lista si apre subito la 2ª edizione con data prefissata.
-        </p>
-      </div>
-    </div>
-  </section>
 
   <!-- CANALI UFFICIALI WHATSAPP -->
   <section class="m-card" style="background: linear-gradient(145deg, rgba(22, 27, 40, 0.95), rgba(14, 28, 20, 0.9)); border: 1px solid rgba(37, 211, 102, 0.4); margin-bottom: 16px;">
@@ -911,5 +1120,6 @@ async function submitUsdtTx() {
   }
 }
 </script>
+</div> <!-- /.event-light-wow-wrapper -->
 
 <?php require '_footer.php';?>

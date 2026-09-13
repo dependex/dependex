@@ -57,7 +57,7 @@ $metaDesc = $metaDesc ?? 'DEPENDEX — AL CLUB. COL CLUB. Cammino di sobrietà, 
 
   <script>
     (function(){
-      const t = localStorage.getItem('oltre_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const t = localStorage.getItem('oltre_theme') || 'dark';
       document.documentElement.setAttribute('data-theme', t);
     })();
   </script>
@@ -66,6 +66,21 @@ $metaDesc = $metaDesc ?? 'DEPENDEX — AL CLUB. COL CLUB. Cammino di sobrietà, 
 $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
 ?>
 <body class="site-<?=strtolower($brand['name'])?>">
+  <!-- GLOBAL SVG RAINBOW GRADIENT DEFINITIONS -->
+  <svg width="0" height="0" style="position:absolute;visibility:hidden;" aria-hidden="true">
+    <defs>
+      <linearGradient id="dxGlobalRainbowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ff3344" />
+        <stop offset="16%" stop-color="#ff7700" />
+        <stop offset="33%" stop-color="#ffd700" />
+        <stop offset="50%" stop-color="#00ff77" />
+        <stop offset="66%" stop-color="#00d4ff" />
+        <stop offset="83%" stop-color="#3a55ff" />
+        <stop offset="100%" stop-color="#b829ff" />
+      </linearGradient>
+    </defs>
+  </svg>
+
   <a href="#mainContent" class="skip-link">Salta al contenuto principale</a>
   <header class="topbar">
     <a class="brand" href="<?=$u ? 'app.php' : 'index.php'?>">
@@ -73,9 +88,40 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
       <span><b><?=h($brand['name'])?></b><small><?=h(APP_PAYOFF)?></small></span>
     </a>
 
+    <!-- TOPBAR DESKTOP NAVIGATION BAR (VISIBILE E FUNZIONANTE SU PC E TABLET) -->
+    <nav class="topbar-desktop-nav" aria-label="Navigazione Principale">
+      <a href="index.php" class="topbar-nav-link <?=$curScript==='index.php'?'active':''?>">
+        <?=dx_icon('home', 'text-neon-cyan', 16)?> <span>Home</span>
+      </a>
+      <a href="evento-ottobre-taglio-di-po.php" class="topbar-nav-link highlight-gold <?=$curScript==='evento-ottobre-taglio-di-po.php'||$curScript==='event-detail.php'?'active':''?>">
+        <?=dx_icon('award', 'text-neon-gold', 16)?> <span>Evento Taglio di Po (10€)</span>
+      </a>
+      <a href="events-public.php" class="topbar-nav-link <?=$curScript==='events-public.php'?'active':''?>">
+        <?=dx_icon('calendar', 'text-neon-green', 16)?> <span>Hub Eventi Italia</span>
+      </a>
+      <a href="offers.php" class="topbar-nav-link <?=$curScript==='offers.php'?'active':''?>">
+        <?=dx_icon('book-open', 'text-neon-orange', 16)?> <span>Libri KDP</span>
+      </a>
+      <a href="viaggi-esperienziali.php" class="topbar-nav-link <?=$curScript==='viaggi-esperienziali.php'||$curScript==='crociera-benessere-masterclass.php'?'active':''?>">
+        <?=dx_icon('ship', 'text-neon-violet', 16)?> <span>Crociera & Viaggi</span>
+      </a>
+      <a href="metodo.php" class="topbar-nav-link <?=$curScript==='metodo.php'?'active':''?>">
+        <?=dx_icon('feather', 'text-neon-cyan', 16)?> <span>Metodo</span>
+      </a>
+      <a href="world-club-explorer.php" class="topbar-nav-link <?=$curScript==='world-club-explorer.php'?'active':''?>">
+        <?=dx_icon('map-pin', 'text-neon-red', 16)?> <span>Trova Club</span>
+      </a>
+    </nav>
+
     <div class="header-actions">
+      <a href="cart.php" class="topbar-cart-btn" title="Carrello Acquisti" aria-label="Carrello">
+        <?=dx_icon('shopping-cart', 'text-neon-gold', 18)?>
+      </a>
+      <?php if(!$u): ?>
+        <a href="login.php" class="btn small d-none d-md-inline-flex" style="border-radius:10px; padding:6px 14px; font-size:0.82rem; font-weight:700; text-decoration:none;">Accedi</a>
+      <?php endif; ?>
       <button type="button" class="theme-toggle" aria-label="Cambia tema" title="Cambia tema"><?=dx_icon('sun', '', 18)?></button>
-      <!-- BURGER MENU BUTTON (UNICA ED ESCLUSIVA NAVIGAZIONE PRINCIPALE) -->
+      <!-- BURGER MENU BUTTON PER MENU COMPLETO MOBILE E DRAWER -->
       <button type="button" class="burger-btn" id="burgerBtn" aria-label="Menu di Navigazione" aria-expanded="false" aria-controls="drawerNav" title="Apri menu">
         <span></span><span></span><span></span>
       </button>

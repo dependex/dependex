@@ -243,7 +243,9 @@ require '_header.php';
           <label style="display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
             <input type="radio" name="payment_method" value="PAYPAL" checked style="accent-color: #d4af37; width: 18px; height: 18px;">
             <div>
-              <div style="font-size: 0.88rem; font-weight: 850; color: #ffffff;">💳 Carta di Credito / Debito o PayPal</div>
+              <div style="font-size: 0.88rem; font-weight: 850; color: #ffffff; display: flex; align-items: center; gap: 6px;">
+                <?=dx_icon('credit-card', 'text-neon-cyan', 16)?> Carta di Credito / Debito o PayPal
+              </div>
               <div style="font-size: 0.72rem; color: #94a3b8;">Visa, Mastercard, PostePay o saldo PayPal · Conferma istantanea</div>
             </div>
           </label>
@@ -251,7 +253,9 @@ require '_header.php';
           <label style="display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
             <input type="radio" name="payment_method" value="USDT" style="accent-color: #d4af37; width: 18px; height: 18px;">
             <div>
-              <div style="font-size: 0.88rem; font-weight: 850; color: #ffffff;">💎 USDT (Rete Polygon)</div>
+              <div style="font-size: 0.88rem; font-weight: 850; color: #ffffff; display: flex; align-items: center; gap: 6px;">
+                <?=dx_icon('gem', 'text-neon-gold', 16)?> USDT (Rete Polygon)
+              </div>
               <div style="font-size: 0.72rem; color: #94a3b8;">10 USDT su rete Polygon · Transazione verificata on-chain</div>
             </div>
           </label>
@@ -259,7 +263,9 @@ require '_header.php';
           <label style="display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
             <input type="radio" name="payment_method" value="ON_SITE" style="accent-color: #d4af37; width: 18px; height: 18px;">
             <div>
-              <div style="font-size: 0.88rem; font-weight: 850; color: #ffffff;">💵 Saldo in Contanti / POS all'Accoglienza</div>
+              <div style="font-size: 0.88rem; font-weight: 850; color: #ffffff; display: flex; align-items: center; gap: 6px;">
+                <?=dx_icon('banknote', 'text-neon-green', 16)?> Saldo in Contanti / POS all'Accoglienza
+              </div>
               <div style="font-size: 0.72rem; color: #94a3b8;">Versamento all'arrivo venerdì 9 ottobre dalle 14:30</div>
             </div>
           </label>

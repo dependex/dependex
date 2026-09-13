@@ -308,10 +308,11 @@ require '_header.php';
       <?php endforeach; ?>
     </div>
   </section>
+  <?php endif; ?>
   <!-- BANNER VIAGGI ESPERIENZIALI & CROCIERA BEWAY.LIFE x DEPENDEX -->
   <section class="m-card" style="background: radial-gradient(circle at top right, rgba(0,212,255,0.15), rgba(12,16,28,0.95)); border: 1px solid rgba(0,212,255,0.4); border-radius: 18px; padding: 20px; margin-top: 24px;">
     <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-      <span style="font-size: 20px;">🌊</span>
+      <?=dx_icon('ship', 'text-neon-cyan', 20)?>
       <span class="m-cat-badge" style="background: rgba(0,212,255,0.2); color: #38bdf8; border-color: #38bdf8;">BEWAY.LIFE x DEPENDEX</span>
     </div>
     <h3 style="font-size: 1.15rem; font-weight: 850; color: #ffffff; margin: 0 0 8px;">

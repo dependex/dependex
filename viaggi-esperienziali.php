@@ -180,7 +180,9 @@ $trips = [
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px;">
       <div class="card card-neon-cyan p-4" style="background: rgba(12,16,26,0.92); border-radius: 18px; border: 1px solid rgba(255,255,255,0.1);">
-        <div style="font-size: 28px; margin-bottom: 12px;">🛡️</div>
+        <div style="margin-bottom: 12px; display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: rgba(0, 212, 255, 0.12); border: 1px solid rgba(0, 212, 255, 0.35);">
+          <?=dx_icon('shield-check', 'text-neon-cyan', 26)?>
+        </div>
         <h3 style="color: #FFFFFF; font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">Ambiente Libero da Stimoli Tossici</h3>
         <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; margin: 0;">
           Nessuna pressione sociale al consumo. Nei nostri viaggi l'alcol e le abitudini nocive sono totalmente assenti, sostituiti da una cultura di eleganza sobria, mocktail botanici ed energia pura.
@@ -188,7 +190,9 @@ $trips = [
       </div>
 
       <div class="card card-neon-gold p-4" style="background: rgba(12,16,26,0.92); border-radius: 18px; border: 1px solid rgba(255,255,255,0.1);">
-        <div style="font-size: 28px; margin-bottom: 12px;">🧠</div>
+        <div style="margin-bottom: 12px; display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: rgba(255, 215, 0, 0.12); border: 1px solid rgba(255, 215, 0, 0.35);">
+          <?=dx_icon('brain', 'text-neon-gold', 26)?>
+        </div>
         <h3 style="color: #FFFFFF; font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">Masterclass con Mirco Pregnolato</h3>
         <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; margin: 0;">
           Non semplici vacanze ma percorsi di evoluzione accelerata. Ogni giorno sessioni formative di gruppo e momenti di riflessione profonda per riprogrammare le abitudini e gli obiettivi di vita.
@@ -196,7 +200,9 @@ $trips = [
       </div>
 
       <div class="card card-neon-green p-4" style="background: rgba(12,16,26,0.92); border-radius: 18px; border: 1px solid rgba(255,255,255,0.1);">
-        <div style="font-size: 28px; margin-bottom: 12px;">🤝</div>
+        <div style="margin-bottom: 12px; display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: rgba(0, 255, 119, 0.12); border: 1px solid rgba(0, 255, 119, 0.35);">
+          <?=dx_icon('heart-handshake', 'text-neon-green', 26)?>
+        </div>
         <h3 style="color: #FFFFFF; font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">Il Cerchio dei Pari & Famiglia</h3>
         <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; margin: 0;">
           Viaggerai accanto a persone che condividono i tuoi stessi valori di dignità, sobrietà e desiderio di crescita. Un contesto caldo, accogliente e privo di giudizio.
@@ -204,7 +210,9 @@ $trips = [
       </div>
 
       <div class="card card-neon-violet p-4" style="background: rgba(12,16,26,0.92); border-radius: 18px; border: 1px solid rgba(255,255,255,0.1);">
-        <div style="font-size: 28px; margin-bottom: 12px;">🌿</div>
+        <div style="margin-bottom: 12px; display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: rgba(184, 41, 255, 0.12); border: 1px solid rgba(184, 41, 255, 0.35);">
+          <?=dx_icon('sparkles', 'text-neon-violet', 26)?>
+        </div>
         <h3 style="color: #FFFFFF; font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">Biohacking & Riconnessione Biologica</h3>
         <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; margin: 0;">
           Ripristino dei ritmi circadiani, coerenza cardiaca, respirazione guidata e alimentazione antinfiammatoria: il corpo torna ad essere il tempio della tua lucidità.
@@ -253,11 +261,11 @@ $trips = [
 
             <!-- Box Dettagli -->
             <div style="background: rgba(8, 12, 22, 0.85); border-radius: 14px; padding: 12px 14px; margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.06); font-size: 0.84rem; display: flex; flex-direction: column; gap: 6px;">
-              <div style="color: #f8fafc;"><strong>📅 Date:</strong> <?=h($t['dates'])?></div>
-              <div style="color: #f8fafc;"><strong>📍 Luogo:</strong> <?=h($t['location'])?></div>
-              <div style="color: var(--neon-gold);"><strong>👥 Capienza:</strong> <?=h($t['capacity'])?></div>
-              <div style="color: var(--neon-cyan); font-weight: 800; font-size: 0.95rem; margin-top: 4px;">
-                🏷️ <?=h($t['price_from'])?>
+              <div style="color: #f8fafc; display: flex; align-items: center; gap: 6px;"><?=dx_icon('calendar', 'text-neon-gold', 14)?> <strong>Date:</strong> <?=h($t['dates'])?></div>
+              <div style="color: #f8fafc; display: flex; align-items: center; gap: 6px;"><?=dx_icon('map-pin', 'text-neon-red', 14)?> <strong>Luogo:</strong> <?=h($t['location'])?></div>
+              <div style="color: var(--neon-gold); display: flex; align-items: center; gap: 6px;"><?=dx_icon('users', 'text-neon-cyan', 14)?> <strong>Capienza:</strong> <?=h($t['capacity'])?></div>
+              <div style="color: var(--neon-cyan); font-weight: 800; font-size: 0.95rem; margin-top: 4px; display: flex; align-items: center; gap: 6px;">
+                <?=dx_icon('tag', 'text-neon-green', 14)?> <?=h($t['price_from'])?>
               </div>
             </div>
 

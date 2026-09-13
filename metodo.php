@@ -154,7 +154,7 @@ require '_header.php';
           <div class="p-3 rounded-3" id="senti" style="background: rgba(18, 12, 16, 0.85); border-left: 4px solid var(--neon-red); box-shadow: 0 4px 15px rgba(255, 51, 68, 0.15);">
             <div class="d-flex justify-content-between align-items-center">
               <strong class="text-neon-red" style="font-size: 1.1rem;">1. SENTI · Rosso Neon (#ff3344)</strong>
-              <span style="font-size: 1.2rem;">🪷</span>
+              <span><?=dx_icon('lotus', 'text-neon-red', 22)?></span>
             </div>
             <small style="color: #cbd5e1; display: block; margin-top: 4px; line-height: 1.5;"><strong>Radici & Presenza:</strong> Fermare la fuga. Accorgersi del corpo, del respiro e della realtà qui e ora, senza più anestetizzarsi.</small>
           </div>
@@ -162,7 +162,7 @@ require '_header.php';
           <div class="p-3 rounded-3" id="agisci" style="background: rgba(20, 14, 10, 0.85); border-left: 4px solid var(--neon-orange); box-shadow: 0 4px 15px rgba(255, 119, 0, 0.15);">
             <div class="d-flex justify-content-between align-items-center">
               <strong class="text-neon-orange" style="font-size: 1.1rem;">2. AGISCI · Arancio Neon (#ff7700)</strong>
-              <span style="font-size: 1.2rem;">🌊</span>
+              <span><?=dx_icon('waves', 'text-neon-orange', 22)?></span>
             </div>
             <small style="color: #cbd5e1; display: block; margin-top: 4px; line-height: 1.5;"><strong>Movimento & Flusso:</strong> Spezzare l'inerzia. Fare la prima telefonata, presentarsi al Club, cambiare il tragitto verso casa.</small>
           </div>
@@ -170,7 +170,7 @@ require '_header.php';
           <div class="p-3 rounded-3" id="comunica" style="background: rgba(20, 18, 10, 0.85); border-left: 4px solid var(--neon-gold); box-shadow: 0 4px 15px rgba(255, 215, 0, 0.15);">
             <div class="d-flex justify-content-between align-items-center">
               <strong class="text-neon-gold" style="font-size: 1.1rem;">3. COMUNICA · Oro Neon (#ffd700)</strong>
-              <span style="font-size: 1.2rem;">🦁</span>
+              <span><?=dx_icon('mic', 'text-neon-gold', 22)?></span>
             </div>
             <small style="color: #cbd5e1; display: block; margin-top: 4px; line-height: 1.5;"><strong>Verità & Voce:</strong> Parlare in prima persona nel cerchio. Dare un nome alle paure senza vergogna e senza finzioni.</small>
           </div>
@@ -178,7 +178,7 @@ require '_header.php';
           <div class="p-3 rounded-3" id="vedi" style="background: rgba(10, 20, 14, 0.85); border-left: 4px solid var(--neon-green); box-shadow: 0 4px 15px rgba(0, 255, 119, 0.15);">
             <div class="d-flex justify-content-between align-items-center">
               <strong class="text-neon-green" style="font-size: 1.1rem;">4. VEDI · Smeraldo Neon (#00ff77)</strong>
-              <span style="font-size: 1.2rem;">🏔️</span>
+              <span><?=dx_icon('mountain', 'text-neon-green', 22)?></span>
             </div>
             <small style="color: #cbd5e1; display: block; margin-top: 4px; line-height: 1.5;"><strong>Sobrietà & Lucidità:</strong> Riacquistare occhi puliti. Riconoscere i tranelli mentali prima che scatti l'automatismo della ricaduta.</small>
           </div>
@@ -186,7 +186,7 @@ require '_header.php';
           <div class="p-3 rounded-3" id="ama" style="background: rgba(10, 18, 26, 0.85); border-left: 4px solid var(--neon-cyan); box-shadow: 0 4px 15px rgba(0, 212, 255, 0.15);">
             <div class="d-flex justify-content-between align-items-center">
               <strong class="text-neon-cyan" style="font-size: 1.1rem;">5. AMA · Ciano Elettrico (#00d4ff)</strong>
-              <span style="font-size: 1.2rem;">💙</span>
+              <span><?=dx_icon('heart-handshake', 'text-neon-cyan', 22)?></span>
             </div>
             <small style="color: #cbd5e1; display: block; margin-top: 4px; line-height: 1.5;"><strong>Relazione & Empatia:</strong> Ricucire i legami con partner, figli e genitori. L'amore vero accoglie la vulnerabilità.</small>
           </div>
@@ -194,7 +194,7 @@ require '_header.php';
           <div class="p-3 rounded-3" id="costruisci" style="background: rgba(12, 14, 26, 0.85); border-left: 4px solid var(--neon-indigo); box-shadow: 0 4px 15px rgba(58, 85, 255, 0.15);">
             <div class="d-flex justify-content-between align-items-center">
               <strong class="text-neon-indigo" style="font-size: 1.1rem;">6. COSTRUISCI · Indaco Neon (#3a55ff)</strong>
-              <span style="font-size: 1.2rem;">🏛️</span>
+              <span><?=dx_icon('feather', 'text-neon-indigo', 22)?></span>
             </div>
             <small style="color: #cbd5e1; display: block; margin-top: 4px; line-height: 1.5;"><strong>Dignità & Struttura:</strong> Ricostruire la credibilità nel lavoro e nella società. Essere una roccia per sé e per gli altri.</small>
           </div>
@@ -202,7 +202,7 @@ require '_header.php';
           <div class="p-3 rounded-3" id="sii" style="background: rgba(18, 12, 28, 0.85); border-left: 4px solid var(--neon-violet); box-shadow: 0 4px 15px rgba(184, 41, 255, 0.15);">
             <div class="d-flex justify-content-between align-items-center">
               <strong class="text-neon-violet" style="font-size: 1.1rem;">7. SII · Viola Cosmico (#b829ff)</strong>
-              <span style="font-size: 1.2rem;">✨</span>
+              <span><?=dx_icon('crown', 'text-neon-violet', 22)?></span>
             </div>
             <small style="color: #cbd5e1; display: block; margin-top: 4px; line-height: 1.5;"><strong>Sovranità & Trascendenza:</strong> Diventare Servitore-Insegnante. Integrare l'esperienza vissuta e illuminare il cammino di chi soffre.</small>
           </div>

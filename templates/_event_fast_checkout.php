@@ -31,7 +31,7 @@ $fastCap = (int)($fastEvt['capacity'] ?? 30);
 $fastRemaining = max(0, $fastCap - $fastBooked);
 $fastIsFull = ($fastRemaining <= 0);
 $fastPercent = $fastCap > 0 ? min(100, round(($fastBooked / $fastCap) * 100)) : 0;
-$paypalClientId = PayPalService::getClientId();
+$paypalClientId = (string)CommerceEnv::get('PAYPAL_CLIENT_ID', '');
 ?>
 
 <div class="fast-checkout-card" id="iscrizione-taglio-po" style="background: rgba(13, 17, 27, 0.95); border: 2px solid #d4af37; border-radius: 20px; padding: 22px; margin: 30px 0; box-shadow: 0 10px 40px rgba(0,0,0,0.6); position: relative; overflow: hidden;">

@@ -825,5 +825,111 @@ label, .form-label {
 
 /* Titoli h1-h6 bianchi e cristallini */
 h1, h2, h3, h4, h5, h6 {
-  color: #ffffff;
+  color: #ffffff !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
+}
+
+p, li, span, label {
+  color: #f1f5f9;
+}
+
+.text-muted, small, .text-secondary {
+  color: #cbd5e1 !important;
+}
+
+/* ==========================================================================
+   TOPBAR DESKTOP NAVIGATION BAR (LUXURY RAINBOW)
+   ========================================================================== */
+.topbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 10px 20px !important;
+  gap: 16px !important;
+}
+
+.topbar-desktop-nav {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 992px) {
+  .topbar-desktop-nav {
+    display: flex;
+  }
+}
+
+.topbar-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.84rem;
+  font-weight: 650;
+  color: #e2e8f0 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.topbar-nav-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff !important;
+  border-color: rgba(0, 212, 255, 0.4);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.25);
+}
+
+.topbar-nav-link.active {
+  background: rgba(0, 212, 255, 0.15);
+  border-color: var(--neon-cyan);
+  color: #ffffff !important;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.35);
+}
+
+.topbar-nav-link.highlight-gold {
+  border-color: rgba(212, 175, 55, 0.45);
+  background: rgba(212, 175, 55, 0.12);
+  color: #fef08a !important;
+}
+
+.topbar-nav-link.highlight-gold:hover {
+  border-color: var(--neon-gold);
+  background: rgba(212, 175, 55, 0.22);
+  box-shadow: 0 0 16px rgba(255, 215, 0, 0.4);
+}
+
+.topbar-cart-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: var(--neon-gold) !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.topbar-cart-btn:hover {
+  background: rgba(255, 215, 0, 0.18);
+  border-color: var(--neon-gold);
+  box-shadow: 0 0 14px rgba(255, 215, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+.header-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.rainbow-stroke-icon {
+  stroke: url(#dxGlobalRainbowGrad) !important;
+  filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.4));
 }

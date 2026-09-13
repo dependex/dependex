@@ -69,37 +69,37 @@ $newsCards = AcatNewsService::getLatestCards(10);
 <section class="my-4">
   <div class="rainbow-pillars-grid">
     <div class="rainbow-pillar-card pillar-red">
-      <span class="pillar-icon text-neon-red">🪷</span>
+      <span class="pillar-icon"><?=dx_icon('lotus', 'text-neon-red', 32)?></span>
       <div class="pillar-title text-neon-red">Senti</div>
       <div class="pillar-sub">Radicarsi · Ascoltare · Sentire</div>
     </div>
     <div class="rainbow-pillar-card pillar-orange">
-      <span class="pillar-icon text-neon-orange">🌊</span>
+      <span class="pillar-icon"><?=dx_icon('waves', 'text-neon-orange', 32)?></span>
       <div class="pillar-title text-neon-orange">Agisci</div>
       <div class="pillar-sub">Fluire · Muovere · Creare</div>
     </div>
     <div class="rainbow-pillar-card pillar-gold">
-      <span class="pillar-icon text-neon-gold">🦁</span>
+      <span class="pillar-icon"><?=dx_icon('mic', 'text-neon-gold', 32)?></span>
       <div class="pillar-title text-neon-gold">Comunica</div>
       <div class="pillar-sub">Esprimere · Dire · Manifestare</div>
     </div>
     <div class="rainbow-pillar-card pillar-green">
-      <span class="pillar-icon text-neon-green">🏔️</span>
+      <span class="pillar-icon"><?=dx_icon('mountain', 'text-neon-green', 32)?></span>
       <div class="pillar-title text-neon-green">Vedi</div>
       <div class="pillar-sub">Osservare · Scegliere · Orientarsi</div>
     </div>
     <div class="rainbow-pillar-card pillar-cyan">
-      <span class="pillar-icon text-neon-cyan">💙</span>
+      <span class="pillar-icon"><?=dx_icon('heart-handshake', 'text-neon-cyan', 32)?></span>
       <div class="pillar-title text-neon-cyan">Ama</div>
       <div class="pillar-sub">Amare · Relazionare · Accogliere</div>
     </div>
     <div class="rainbow-pillar-card pillar-indigo">
-      <span class="pillar-icon text-neon-indigo">🏛️</span>
+      <span class="pillar-icon"><?=dx_icon('feather', 'text-neon-indigo', 32)?></span>
       <div class="pillar-title text-neon-indigo">Costruisci</div>
       <div class="pillar-sub">Strutturare · Creare · Costruire</div>
     </div>
     <div class="rainbow-pillar-card pillar-violet">
-      <span class="pillar-icon text-neon-violet">✨</span>
+      <span class="pillar-icon"><?=dx_icon('crown', 'text-neon-violet', 32)?></span>
       <div class="pillar-title text-neon-violet">Sii</div>
       <div class="pillar-sub">Integrare · Trascendere · Diventare</div>
     </div>
@@ -144,17 +144,12 @@ $newsCards = AcatNewsService::getLatestCards(10);
   </div>
 </section>
 <!-- ============================================================== -->
-<!-- EVENTO UFFICIALE FLAGSHIP & FAST CHECKOUT (TAGLIO DI PO)        -->
-<!-- ============================================================== -->
-<?php require_once __DIR__ . '/templates/_event_fast_checkout.php'; ?>
-
-<!-- ============================================================== -->
 <!-- CSS NEWS TICKER: HUB NAZIONALE DIPENDENZE (ACAT, SER.D, COMUNITÀ, GAP) -->
 <!-- ============================================================== -->
-<section class="dx-news-ticker-section">
+<section class="dx-news-ticker-section my-4">
   <div class="dx-ticker-header">
     <h3>
-      <?=dx_icon('newspaper', '', 22)?>
+      <?=dx_icon('newspaper', 'text-neon-cyan', 22)?>
       <span>HUB NAZIONALE DIPENDENZE · EVENTI & NOTIZIE D'ITALIA</span>
     </h3>
     <a href="events-public.php" class="dx-ticker-link" style="font-size: 0.85rem;">
@@ -170,7 +165,7 @@ $newsCards = AcatNewsService::getLatestCards(10);
       foreach($loopNews as $item): 
         $isPinned = !empty($item['is_pinned']);
       ?>
-        <article class="dx-ticker-card" style="<?=$isPinned ? 'border: 2px solid #d4af37; background: rgba(212,175,55,0.1); box-shadow: 0 0 20px rgba(212,175,55,0.25);' : ''?>">
+        <article class="dx-ticker-card" style="<?=$isPinned ? 'border: 2px solid #d4af37; background: rgba(212,175,55,0.12); box-shadow: 0 0 20px rgba(212,175,55,0.25);' : ''?>">
           <div>
             <span class="dx-ticker-badge" style="<?=$isPinned ? 'background: #d4af37; color: #030712; font-weight: 900;' : ''?>"><?=h($item['tag_label'])?></span>
             <h4 class="dx-ticker-title" style="<?=$isPinned ? 'color: #fef08a;' : ''?>"><?=h($item['title'])?></h4>
@@ -187,6 +182,11 @@ $newsCards = AcatNewsService::getLatestCards(10);
     </div>
   </div>
 </section>
+
+<!-- ============================================================== -->
+<!-- EVENTO UFFICIALE FLAGSHIP & FAST CHECKOUT (TAGLIO DI PO)        -->
+<!-- ============================================================== -->
+<?php require_once __DIR__ . '/templates/_event_fast_checkout.php'; ?>
 
 <!-- ============================================================== -->
 <!-- TRUST STRIP · PURE GOLD, BLACK & WHITE                        -->
@@ -454,7 +454,9 @@ $newsCards = AcatNewsService::getLatestCards(10);
 
     <div class="col-lg-4 text-center">
       <div style="background: rgba(8,12,22,0.9); border: 1px solid rgba(0,212,255,0.3); border-radius: 18px; padding: 22px; box-shadow: 0 10px 30px rgba(0,212,255,0.2);">
-        <span style="font-size: 40px; display: block; margin-bottom: 8px;">🌊</span>
+        <div style="margin-bottom: 12px; display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; border-radius: 50%; background: rgba(0, 212, 255, 0.12); border: 1px solid rgba(0, 212, 255, 0.35); box-shadow: 0 0 16px rgba(0, 212, 255, 0.3);">
+          <?=dx_icon('ship', 'text-neon-cyan', 32)?>
+        </div>
         <h4 style="color: #FFF; font-size: 1.15rem; font-weight: 800; margin-bottom: 6px;">Partnership Ufficiale</h4>
         <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">
           L'unione perfetta tra il supporto comunitario di <strong>DEPENDEX</strong> e lo stile di vita consapevole di <strong>BEWAY.LIFE</strong>.

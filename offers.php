@@ -287,7 +287,9 @@ $booksCatalog = [
     <!-- BANNER PARTNERSHIP BEWAY.LIFE -->
     <div class="lux-metallic-card p-3 my-4" style="border: 1px solid rgba(0, 212, 255, 0.35); background: rgba(12, 16, 28, 0.92); border-radius: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
       <div style="display: flex; align-items: center; gap: 14px;">
-        <span style="font-size: 24px;">🌊</span>
+        <div style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.35);">
+          <?=dx_icon('ship', 'text-neon-cyan', 24)?>
+        </div>
         <div>
           <b style="color: #FFFFFF; font-size: 1.05rem;">Dal Libro al Viaggio Trasformativo con <span class="text-rainbow">BEWAY.LIFE</span></b>
           <p style="margin: 0; color: #94a3b8; font-size: 0.88rem;">Vivi i principi dei libri in mare aperto: scopri la Grande Crociera della Rinascita & Sobrietà con Workshop e Masterclass esclusive.</p>

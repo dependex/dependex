@@ -27,6 +27,11 @@ class PayPalService {
         return $this->clientId;
     }
 
+    public static function getClientIdStatic(): string {
+        CommerceEnv::load();
+        return (string)CommerceEnv::get('PAYPAL_CLIENT_ID', '');
+    }
+
     public function isConfigured(): bool {
         return !empty($this->clientId) && !empty($this->clientSecret);
     }

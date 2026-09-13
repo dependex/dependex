@@ -50,7 +50,7 @@ $metaDesc = $metaDesc ?? 'DEPENDEX — AL CLUB. COL CLUB. Cammino di sobrietà, 
     "alternateName": "DIPENDEX Social",
     "description": "<?=h($metaDesc)?>",
     "url": "https://<?=h($brand['domain'])?>",
-    "email": "info@dependex.social",
+    "email": "info@dependex.support",
     "logo": "https://<?=h($brand['domain'])?>/assets/img/app-icon.svg"
   }
   </script>
@@ -230,7 +230,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
     <div class="drawer-footer">
       <button type="button" class="theme-toggle btn small" style="width:100%;margin-bottom:8px;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:8px;"><?=dx_icon('sun','',16)?> Cambia Tema</button>
       <div style="font-size:12px;text-align:center;margin-top:10px;">
-        <a href="mailto:info@dependex.social" style="color:var(--text-muted);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:6px;"><?=dx_icon('mail','',14)?> info@dependex.social</a>
+        <a href="mailto:info@dependex.support" style="color:var(--text-muted);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:6px;"><?=dx_icon('mail','',14)?> info@dependex.support</a>
       </div>
     </div>
   </aside>

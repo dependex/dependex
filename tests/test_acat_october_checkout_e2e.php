@@ -131,6 +131,16 @@ assertCheck("Contiene mircopregnolato.it", str_contains($gridHtml, 'mircopregnol
 assertCheck("Contiene Amazon KDP Factory", str_contains($gridHtml, 'Amazon KDP Factory'));
 assertCheck("Contiene YouTube Automation", str_contains($gridHtml, 'YouTube Automation'));
 
+$svgDir = __DIR__ . '/../assets/img/sponsors';
+$existingSvgs = 0;
+foreach ($sponsors as $sp) {
+    $expectedPath = __DIR__ . '/../' . ($sp['img'] ?? '');
+    if (file_exists($expectedPath) && filesize($expectedPath) > 500) {
+        $existingSvgs++;
+    }
+}
+assertCheck("Tutte le 28 immagini Ultra-HD 8K dei business esistono su disco (trovate: {$existingSvgs}/28)", $existingSvgs === 28);
+
 // 6. Test Bonifica Terminologica Rigorosa
 echo "\n6. Verifica Conformita' Governance (Bonifica Terminologica):\n";
 $filesToCheck = [

@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" style="background:#030712; font-family:'Segoe UI', system-ui, -apple-system, sans-serif;">
+  <defs>
+    <!-- Background Gradients -->
+    <radialGradient id="bg-radial-0" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.22" />
+      <stop offset="50%" stop-color="#0b0f19" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#030712" stop-opacity="1" />
+    </radialGradient>
+    
+    <linearGradient id="card-border-0" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.9" />
+      <stop offset="35%" stop-color="#d4af37" stop-opacity="0.5" />
+      <stop offset="70%" stop-color="#10b981" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1" />
+    </linearGradient>
+
+    <linearGradient id="gold-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d4af37" />
+      <stop offset="50%" stop-color="#fef08a" />
+      <stop offset="100%" stop-color="#d4af37" />
+    </linearGradient>
+
+    <linearGradient id="badge-grad-0" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0.1" />
+    </linearGradient>
+
+    <filter id="glow-0" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="36" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <pattern id="matrix-dots-0" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#10b981" fill-opacity="0.08" />
+    </pattern>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="675" fill="#030712" />
+  <rect width="1200" height="675" fill="url(#bg-radial-0)" />
+  <rect width="1200" height="675" fill="url(#matrix-dots-0)" />
+
+  <!-- Ambient Luxury Glow Orb -->
+  <circle cx="1020" cy="180" r="180" fill="#10b981" opacity="0.15" filter="url(#glow-0)" />
+  <circle cx="180" cy="520" r="140" fill="#d4af37" opacity="0.08" filter="url(#glow-0)" />
+
+  <!-- Card Frame Outer Luxury Border -->
+  <rect x="40" y="40" width="1120" height="595" rx="36" fill="#090d16" fill-opacity="0.75" stroke="url(#card-border-0)" stroke-width="2.5" />
+
+  <!-- Corner Tech Flairs -->
+  <path d="M 40 100 L 40 40 L 100 40" fill="none" stroke="#34d399" stroke-width="4" />
+  <path d="M 1160 100 L 1160 40 L 1100 40" fill="none" stroke="#34d399" stroke-width="4" />
+  <path d="M 40 575 L 40 635 L 100 635" fill="none" stroke="#34d399" stroke-width="4" />
+  <path d="M 1160 575 L 1160 635 L 1100 635" fill="none" stroke="#34d399" stroke-width="4" />
+
+  <!-- Index Sovereign Badge -->
+  <g transform="translate(90, 85)">
+    <rect width="76" height="34" rx="8" fill="#111827" stroke="#10b981" stroke-opacity="0.5" stroke-width="1.5" />
+    <text x="38" y="23" font-size="16" font-weight="900" fill="#34d399" text-anchor="middle" letter-spacing="1">#01</text>
+  </g>
+
+  <!-- Category Badge Pill -->
+  <g transform="translate(180, 85)">
+    <rect width="320" height="34" rx="17" fill="url(#badge-grad-0)" stroke="#10b981" stroke-opacity="0.4" stroke-width="1.5" />
+    <circle cx="20" cy="17" r="4" fill="#34d399" />
+    <text x="34" y="22" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="0.5">SICUREZZA & COMPLIANCE</text>
+  </g>
+
+  <!-- Verified Sovereign Trust Seal -->
+  <g transform="translate(970, 82)">
+    <rect width="140" height="38" rx="19" fill="#0b1329" stroke="#d4af37" stroke-width="1.5" />
+    <circle cx="24" cy="19" r="6" fill="#d4af37" />
+    <text x="75" y="24" font-size="12" font-weight="800" fill="#fef08a" text-anchor="middle" letter-spacing="1">OFFICIAL SPONSOR</text>
+  </g>
+
+  <!-- Giant Brand Icon (Right Flank) -->
+  <g transform="translate(860, 220) scale(7.5)" color="#10b981" opacity="0.35" filter="url(#glow-0)">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(860, 220) scale(7.5)" color="#34d399" opacity="0.85">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Brand Emblem Box (Left Flank) -->
+  <g transform="translate(90, 160)">
+    <rect width="110" height="110" rx="28" fill="#0b1120" stroke="url(#card-border-0)" stroke-width="2" />
+    <g transform="translate(25, 25) scale(2.5)" color="#34d399">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- Brand Name / Title -->
+  <text x="230" y="215" font-size="44" font-weight="900" fill="#ffffff" letter-spacing="-0.5">
+    sicurissimo.online
+  </text>
+  <text x="232" y="255" font-size="18" font-weight="700" fill="#34d399" letter-spacing="1.5">
+    ECOSISTEMA SOVRANO · VENTURE PARTNER
+  </text>
+
+  <!-- Decorative Divider Line -->
+  <line x1="90" y1="310" x2="820" y2="310" stroke="#10b981" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="6 4" />
+  <circle cx="90" cy="310" r="3" fill="#34d399" />
+
+  <!-- Tagline / Value Proposition -->
+  <text x="90" y="375" font-size="28" font-weight="800" fill="#f8fafc" letter-spacing="0.2">
+    D.Lgs 81/08, HACCP & Compliance Immediata
+  </text>
+
+  <!-- Extended Sub-description -->
+  <text x="90" y="425" font-size="19" font-weight="400" fill="#94a3b8" letter-spacing="0.2">
+    Asset strategico dell'ecosistema d'impresa di Mirco Pregnolato per la crescita, la sovranità e l'impatto.
+  </text>
+  <text x="90" y="458" font-size="18" font-weight="400" fill="#64748b" letter-spacing="0.2">
+    Sponsor Ufficiale del Corso "A Scuola di Comunicazione e Resilienza" · Taglio di Po (Ottobre 2026).
+  </text>
+
+  <!-- Bottom Interactive Strip -->
+  <g transform="translate(90, 520)">
+    <!-- Primary CTA Button Graphic -->
+    <rect width="260" height="52" rx="14" fill="#10b981" />
+    <text x="130" y="32" font-size="16" font-weight="850" fill="#030712" text-anchor="middle" letter-spacing="0.5">SCOPRI IL BUSINESS →</text>
+
+    <!-- Secondary Badge Indicator -->
+    <g transform="translate(285, 0)">
+      <rect width="260" height="52" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+      <text x="130" y="32" font-size="15" font-weight="700" fill="#cbd5e1" text-anchor="middle">CERTIFICATO SIC-ID</text>
+    </g>
+
+    <!-- Brand Color Dot Matrix Indicator -->
+    <circle cx="580" cy="26" r="6" fill="#10b981" />
+    <text x="600" y="31" font-size="15" font-weight="600" fill="#94a3b8">Asset Brand Color: <tspan fill="#34d399" font-weight="800">#10b981</tspan></text>
+  </g>
+
+  <!-- Golden Footer Signature -->
+  <text x="1110" y="605" font-size="13" font-weight="800" fill="#d4af37" text-anchor="end" letter-spacing="1">
+    DEPENDEX.SOCIAL · 28 BUSINESS SOVRANI · ULTRA-HD 8K
+  </text>
+</svg>

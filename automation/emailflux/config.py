@@ -28,6 +28,7 @@ SMTP_PASS = os.getenv("SMTP_PASS", "h29031976T.")
 
 # Brand & Identità Mittente
 BRAND_NAME = os.getenv("BRAND_NAME", "DEPENDEX")
+BRAND_PAYOFF = os.getenv("BRAND_PAYOFF", "AL CLUB. COL CLUB.")
 FROM_EMAIL = os.getenv("FROM_EMAIL", "info@dependex.support")
 SENDER_EMAIL = os.getenv("SENDER_EMAIL", "info@dependex.support")
 MAIL_FROM = os.getenv("MAIL_FROM", f"{BRAND_NAME} · {BRAND_PAYOFF} <{SENDER_EMAIL}>")

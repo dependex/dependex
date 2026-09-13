@@ -1,148 +1,109 @@
 <?php 
+declare(strict_types=1);
 require_once 'bootstrap.php';
 $u = require_login();
 
-$currentType = strtoupper(trim($_GET['type'] ?? 'ALL'));
-$allowedTypes = ['ALL', 'INTERCLUB', 'SAT', 'WEBINAR', 'FORMAZIONE', 'CONGRESSO', 'LIFESTYLE'];
-if (!in_array($currentType, $allowedTypes, true)) {
-    $currentType = 'ALL';
+// Sincronizza ed estrae l'evento unico e ufficiale di Taglio di Po
+$events = EventSyncService::syncAndGetActiveEvents();
+$event = !empty($events) ? $events[0] : null;
+
+if (!$event) {
+    $st = db()->prepare('SELECT * FROM events WHERE sic_id = "SIC-EVT-ACAT-BP-2026-COMM" LIMIT 1');
+    $st->execute();
+    $event = $st->fetch(PDO::FETCH_ASSOC);
 }
 
-// Automatically purge expired events and sync active web events
-$events = EventSyncService::syncAndGetActiveEvents($currentType);
+$sic = $event['sic_id'] ?? 'SIC-EVT-ACAT-BP-2026-COMM';
+$countStmt = db()->prepare("
+    SELECT (
+        (SELECT COUNT(*) FROM event_registrations er WHERE er.event_sic_id = ? AND er.status IN ('REGISTERED', 'CHECKED_IN')) +
+        (SELECT COALESCE(SUM(num_seats), 0) FROM event_bookings eb WHERE eb.event_sic_id = ? AND eb.status = 'CONFIRMED')
+    ) as total_booked
+");
+$countStmt->execute([$sic, $sic]);
+$totalBooked = (int)$countStmt->fetchColumn();
+
+$capacity = (int)($event['capacity'] ?? 30);
+$seatsRemaining = max(0, $capacity - $totalBooked);
+$isFull = ($seatsRemaining <= 0);
+$percentBooked = $capacity > 0 ? min(100, round(($totalBooked / $capacity) * 100)) : 0;
 
 $pageTitle = 'Eventi & Calendario Rete · DEPENDEX';
-$metaDesc = 'Calendario vivo con gli eventi aggiornati in tempo reale dal web. Partecipa agli incontri e guadagna DRX.';
+$metaDesc = 'Calendario vivo con l\'evento ufficiale di ACAT Basso Polesine a Taglio di Po.';
 require '_header.php';
-
-function formatEventDateLogged(string $datetimeStr): array {
-    $dt = new DateTime($datetimeStr, new DateTimeZone('Europe/Rome'));
-    $now = new DateTime('now', new DateTimeZone('Europe/Rome'));
-    $diff = $now->diff($dt);
-    
-    $days = $diff->days;
-    $isToday = $dt->format('Y-m-d') === $now->format('Y-m-d');
-    
-    if ($isToday) {
-        $countdown = 'Oggi alle ' . $dt->format('H:i');
-    } elseif ($days === 1) {
-        $countdown = 'Domani alle ' . $dt->format('H:i');
-    } else {
-        $countdown = 'Tra ' . $days . ' giorni';
-    }
-
-    $months = [
-        1 => 'Gen', 2 => 'Feb', 3 => 'Mar', 4 => 'Apr', 5 => 'Mag', 6 => 'Giu',
-        7 => 'Lug', 8 => 'Ago', 9 => 'Set', 10 => 'Ott', 11 => 'Nov', 12 => 'Dic'
-    ];
-    $day = $dt->format('d');
-    $month = $months[(int)$dt->format('n')];
-    $time = $dt->format('H:i');
-
-    return [
-        'day' => $day,
-        'month' => $month,
-        'time' => $time,
-        'countdown' => $countdown
-    ];
-}
 ?>
 
-<section class="section-head py-4">
-  <div>
-    <div class="gold-glow-badge mb-2">
-      <?=dx_icon('activity', '', 14)?>
-      <span>CALENDARIO COMUNITÀ VIVO · ZERO EVENTI SCADUTI</span>
-    </div>
-    <h1 style="font-family: var(--font-serif); color: #FFFFFF; font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-top: 6px;">
-      Vivi la Community · I Miei Eventi
-    </h1>
-    <p style="color: #cbd5e1; max-width: 620px;">
-      Interclub, Scuole Alcolologiche Territoriali (SAT), corsi di sensibilizzazione ed eventi di lifestyle. Gli appuntamenti passati vengono eliminati automaticamente dal sistema.
-    </p>
+<div class="mobile-916-shell">
+
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+    <span class="m-badge m-badge-gold">
+      <?=dx_icon('activity', '', 12)?> AREA MEMBRI · EVENTI
+    </span>
+    <span class="m-badge <?=!$isFull ? 'm-badge-green' : 'm-badge-red'?>">
+      <?=!$isFull ? "$seatsRemaining Posti Rimasti" : "Waitlist Attiva"?>
+    </span>
   </div>
-  <?php if(is_admin($u['sic_id'])):?>
-    <a class="btn primary small" href="event-builder.php">
-      <?=dx_icon('sparkles', '', 14)?> <span style="margin-left: 4px;">Crea Evento</span>
-    </a>
-  <?php endif;?>
-</section>
 
-<!-- CATEGORY FILTERS -->
-<nav class="event-filter-bar mb-4" style="display: flex; gap: 8px; flex-wrap: wrap;">
-  <a href="?type=ALL" class="btn small <?=$currentType==='ALL'?'primary':'btn-rainbow-outline'?>">
-    Tutti (<?=count($events)?>)
-  </a>
-  <a href="?type=INTERCLUB" class="btn small <?=$currentType==='INTERCLUB'?'primary':'btn-rainbow-outline'?>">
-    Interclub
-  </a>
-  <a href="?type=SAT" class="btn small <?=$currentType==='SAT'?'primary':'btn-rainbow-outline'?>">
-    Moduli SAT
-  </a>
-  <a href="?type=FORMAZIONE" class="btn small <?=$currentType==='FORMAZIONE'?'primary':'btn-rainbow-outline'?>">
-    Formazione
-  </a>
-  <a href="?type=WEBINAR" class="btn small <?=$currentType==='WEBINAR'?'primary':'btn-rainbow-outline'?>">
-    Webinar
-  </a>
-</nav>
-
-<div class="event-list my-4" style="display: grid; gap: 18px;">
-  <?php if(empty($events)): ?>
-    <div class="lux-metallic-card p-5 text-center" style="border: 1px dashed rgba(212,175,55,0.3);">
-      <p style="color: #cbd5e1; margin: 0;">Nessun evento futuro in questa categoria. Torna a visitare il calendario tra poche ore.</p>
+  <article class="m-card m-card-gold-glow text-center">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #d4af37; text-transform: uppercase; margin-bottom: 4px;">
+      ACAT Basso Polesine · Taglio di Po
     </div>
-  <?php else: ?>
-    <?php foreach($events as $e):
-      $dateInfo = formatEventDateLogged($e['starts_at']);
-    ?>
-      <article class="lux-metallic-card p-4" style="display: flex; gap: 20px; align-items: stretch; border: 1px solid rgba(212,175,55,0.25);">
-        <!-- Date Block Left -->
-        <div style="width: 90px; min-width: 90px; background: rgba(212,175,55,0.06); border: 1px solid rgba(212,175,55,0.25); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px;">
-          <span style="font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; color: var(--neon-gold); text-transform: uppercase;"><?=h($dateInfo['month'])?></span>
-          <span style="font-size: 2rem; font-weight: 900; color: #FFFFFF; line-height: 1; margin: 2px 0;"><?=h($dateInfo['day'])?></span>
-          <span style="font-size: 0.75rem; color: #cbd5e1; font-weight: 600;"><?=h($dateInfo['time'])?></span>
-        </div>
+    
+    <h1 style="font-family: var(--font-serif); font-size: clamp(1.45rem, 5vw, 1.85rem); color: #ffffff; line-height: 1.25; margin: 4px 0 10px; font-weight: 900;">
+      A Scuola di Comunicazione e Resilienza
+    </h1>
 
-        <!-- Content -->
-        <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 4px;">
-              <span class="dx-ticker-badge"><?=h($e['type'])?></span>
-              <span style="font-size: 0.75rem; font-weight: 700; color: var(--neon-gold); background: rgba(212,175,55,0.1); padding: 2px 8px; border-radius: 999px;">
-                <?=dx_icon('clock', '', 12)?> <?=h($dateInfo['countdown'])?>
-              </span>
-            </div>
-            <h3 style="margin: 0.2rem 0 0.4rem; color: #FFFFFF; font-family: var(--font-serif); font-size: 1.25rem;"><?=h($e['title'])?></h3>
-            <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.55; margin-bottom: 8px;"><?=h($e['description'])?></p>
-          </div>
+    <div class="m-poster-box">
+      <a href="event-detail.php?event=<?=urlencode($sic)?>">
+        <img src="assets/img/events/locandina-ufficiale-oratorio.jpeg" alt="Locandina Taglio di Po">
+      </a>
+    </div>
 
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; font-size: 0.82rem;">
-            <div style="display: flex; gap: 14px; color: #cbd5e1; align-items: center;">
-              <span><?=dx_icon('map-pin', '', 14)?> <b style="color: #FFFFFF;"><?=h($e['venue'])?></b></span>
-              <span><?=dx_icon('users', '', 14)?> <?=h((string)$e['registrations'])?> iscritti</span>
-              <span style="color: var(--neon-gold); font-weight: 700;"><?=dx_icon('award', '', 14)?> +<?=h((string)$e['drx_reward'])?> DRX</span>
-            </div>
+    <!-- DATI RAPIDI -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0; text-align: left;">
+      <div style="background: rgba(22, 25, 36, 0.85); border-radius: 12px; padding: 10px; border: 1px solid rgba(255,255,255,0.08);">
+        <div style="color: #d4af37; font-size: 0.72rem; font-weight: 800;">QUANDO</div>
+        <div style="color: #ffffff; font-weight: 850; font-size: 0.88rem;">9-10-11 Ott. 2026</div>
+      </div>
+      <div style="background: rgba(22, 25, 36, 0.85); border-radius: 12px; padding: 10px; border: 1px solid rgba(255,255,255,0.08);">
+        <div style="color: #d4af37; font-size: 0.72rem; font-weight: 800;">DOVE</div>
+        <div style="color: #ffffff; font-weight: 850; font-size: 0.88rem;">Taglio di Po (RO)</div>
+      </div>
+      <div style="background: rgba(22, 25, 36, 0.85); border-radius: 12px; padding: 10px; border: 1px solid rgba(255,255,255,0.08);">
+        <div style="color: #d4af37; font-size: 0.72rem; font-weight: 800;">QUOTA</div>
+        <div style="color: #10b981; font-weight: 900; font-size: 1.05rem;">10,00 € <small style="color: #cbd5e1; font-size: 0.7rem;">(pranzo inc.)</small></div>
+      </div>
+      <div style="background: rgba(22, 25, 36, 0.85); border-radius: 12px; padding: 10px; border: 1px solid rgba(255,255,255,0.08);">
+        <div style="color: #d4af37; font-size: 0.72rem; font-weight: 800;">REWARD</div>
+        <div style="color: #d4af37; font-weight: 900; font-size: 1.05rem;">+100 DRX</div>
+      </div>
+    </div>
 
-            <div style="display: flex; gap: 8px;">
-              <form method="post" action="action.php" style="display: inline;">
-                <input type="hidden" name="<?=CSRF_KEY?>" value="<?=h(csrf_token())?>">
-                <input type="hidden" name="action" value="event_register">
-                <input type="hidden" name="event_sic_id" value="<?=h($e['sic_id'])?>">
-                <input type="hidden" name="return" value="events.php">
-                <button class="btn primary small">
-                  <?=dx_icon('check-circle', '', 14)?> Partecipa
-                </button>
-              </form>
-              <a class="btn-rainbow-outline small" href="event-detail.php?event=<?=urlencode($e['sic_id'])?>">
-                Dettagli
-              </a>
-            </div>
-          </div>
-        </div>
-      </article>
-    <?php endforeach;?>
-  <?php endif; ?>
+    <!-- POSTI OCCUPATI -->
+    <div style="background: rgba(14, 17, 24, 0.95); border: 1px solid rgba(212,175,55,0.3); border-radius: 14px; padding: 10px 12px; margin-bottom: 12px; text-align: left;">
+      <div style="display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 750;">
+        <span style="color: #cbd5e1;">Posti Aula:</span>
+        <b style="color: <?=!$isFull ? '#10b981' : '#ef4444'?>;"><?=$totalBooked?> / <?=$capacity?></b>
+      </div>
+      <div class="m-progress-bar">
+        <div class="m-progress-fill" style="width: <?=$percentBooked?>%;"></div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <a href="event-detail.php?event=<?=urlencode($sic)?>" class="m-btn m-btn-primary">
+        <?=dx_icon('check-circle', '', 18)?>
+        <span>DETTAGLI COMPLETI & PRENOTAZIONE</span>
+      </a>
+
+      <a href="https://wa.me/393478844271?text=<?=urlencode("Ciao Grazia, sono un membro di Club e vorrei iscrivermi al corso di Taglio di Po (9-11 Ottobre).")?>" target="_blank" rel="noopener" class="m-btn m-btn-whatsapp">
+        <?=dx_icon('message-circle', '', 18)?>
+        <span>Contatta Grazia su WhatsApp</span>
+      </a>
+    </div>
+
+  </article>
+
 </div>
 
 <?php require '_footer.php';?>

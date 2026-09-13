@@ -81,115 +81,51 @@ class EventSyncService {
             // column already exists
         }
 
-        // Calculate dynamic upcoming future dates based on current time
-        $now = new DateTime('now', new DateTimeZone('Europe/Rome'));
+        // 1. Inserimento/Aggiornamento Evento Ufficiale ACAT Basso Polesine (Unico Evento Reale)
+        $acatSic = 'SIC-EVT-ACAT-BP-2026-COMM';
+        $acatTitle = 'A Scuola di Comunicazione e Resilienza — 1° Livello';
+        $acatDesc = 'Impara a comunicare senza litigare e a non farti caricare dai problemi degli altri. Corso di formazione esperienziale rivolto a chi vive in famiglia una situazione di dipendenza, operatori, volontari e membri dei Club Alcologici Territoriali. Tre giornate con Adelmo Di Salvatore per acquisire strumenti pratici da usare già dal lunedì.';
         
-        $upcomingEvents = [
-            [
-                'type' => 'SAT',
-                'title' => 'Scuola Alcolologica Territoriale (SAT) - Modulo I Intensivo',
-                'description' => 'Tre giornate formative dedicate a nuove famiglie, cittadini e volontari. Approccio ecologico-sociale, dinamiche del bere e superamento della solitudine.',
-                'days_ahead' => 3,
-                'time' => '09:30:00',
-                'venue' => 'Sede Territoriale ACAT & Stanza Digitale Zoom',
-                'drx_reward' => 75,
-                'source_url' => 'https://www.aicat.net/scuola-alcolologica-territoriale'
-            ],
-            [
-                'type' => 'INTERCLUB',
-                'title' => 'Interclub Regionale: "La Forza del Cerchio e la Famiglia"',
-                'description' => 'Incontro plenario domenicale tra i Club Alcologici del territorio: testimonianze di sobrietà, condivisione delle famiglie e pranzo sociale analcolico.',
-                'days_ahead' => 7,
-                'time' => '10:00:00',
-                'venue' => 'Centro Polivalente Comunitario (ARCAT)',
-                'drx_reward' => 50,
-                'source_url' => 'https://www.arcatveneto.it'
-            ],
-            [
-                'type' => 'WEBINAR',
-                'title' => 'Tavola Rotonda Web: Decostruire il Marketing dell\'Alcol sui Giovani',
-                'description' => 'Incontro online aperto a docenti, educatori e famiglie. Analisi delle pressioni sociali e strategie per promuovere stili di vita sani e consapevoli.',
-                'days_ahead' => 12,
-                'time' => '20:45:00',
-                'venue' => 'Webinar Live Streaming DEPENDEX / AICAT',
-                'drx_reward' => 40,
-                'source_url' => 'https://www.aicat.net/webinar'
-            ],
-            [
-                'type' => 'FORMAZIONE',
-                'title' => 'Corso di Sensibilizzazione all\'Approccio Ecologico-Sociale (50 Ore)',
-                'description' => 'Corso residenziale e online per la formazione e l\'abilitazione di nuovi Servitori-Insegnanti di Club secondo il Metodo Vladimir Hudolin.',
-                'days_ahead' => 18,
-                'time' => '09:00:00',
-                'venue' => 'Polo Formativo ARCAT & Piattaforma Academy',
-                'drx_reward' => 150,
-                'source_url' => 'https://www.aicat.net/formazione'
-            ],
-            [
-                'type' => 'SAT',
-                'title' => 'SAT Modulo II: Approfondimento e Gestione delle Ricadute',
-                'description' => 'Seminario metodologico per famiglie con oltre 1 anno di Club: rileggere la ricaduta come occasione di apprendimento senza sensi di colpa.',
-                'days_ahead' => 24,
-                'time' => '15:00:00',
-                'venue' => 'Sala Convegni Territoriale ACAT',
-                'drx_reward' => 60,
-                'source_url' => 'https://www.aicat.net/sat-modulo-2'
-            ],
-            [
-                'type' => 'CONGRESSO',
-                'title' => 'Congresso Nazionale dei Club Alcologici Territoriali',
-                'description' => 'Assemblea generale con oltre 800 partecipanti: relazioni scientifiche, tavole rotonde sui disturbi da gioco d\'azzardo e benessere comunitario.',
-                'days_ahead' => 35,
-                'time' => '09:00:00',
-                'venue' => 'Palazzo dei Congressi Nazionale (AICAT Italia)',
-                'drx_reward' => 200,
-                'source_url' => 'https://www.aicat.net/congresso'
-            ],
-            [
-                'type' => 'LIFESTYLE',
-                'title' => 'Camminata della Salute e della Sobrietà nei Parchi Urbani',
-                'description' => 'Attività all\'aperto organizzata dai Club territoriali per promuovere movimento, natura e socialità libera da sostanze.',
-                'days_ahead' => 42,
-                'time' => '09:30:00',
-                'venue' => 'Ritrovo Parco Cittadino Territoriale',
-                'drx_reward' => 30,
-                'source_url' => 'https://www.arcattoscana.org'
-            ]
-        ];
+        // Pulizia tassativa: nel sistema deve rimanere ESCLUSIVAMENTE il vero evento reale di Taglio di Po
+        $delOther = $pdo->prepare("DELETE FROM events WHERE sic_id != ?");
+        $delOther->execute([$acatSic]);
 
-        $checkStmt = $pdo->prepare("SELECT sic_id FROM events WHERE title = ?");
-        $insertStmt = $pdo->prepare("
-            INSERT INTO events (sic_id, type, title, description, starts_at, venue, visibility, rank_required, drx_reward, status, source_url)
-            VALUES (?, ?, ?, ?, ?, ?, 'PUBLIC', 'SEME', ?, 'PUBLISHED', ?)
-        ");
-        $updateDateStmt = $pdo->prepare("
-            UPDATE events SET starts_at = ?, venue = ?, description = ? WHERE sic_id = ?
-        ");
+        $venue = "Oratorio San Francesco d'Assisi";
+        $address = "Vicolo San Francesco 1, Taglio di Po (RO)";
+        $organizer = "ACAT Basso Polesine O.D.V. & Coordinamento A.C.A.T. Polesane";
+        $trainer = "Adelmo Di Salvatore (Psichiatra, Psicoterapeuta, Formatore Metodo Hudolin)";
 
-        foreach ($upcomingEvents as $evt) {
-            $dt = clone $now;
-            $dt->modify("+{$evt['days_ahead']} days");
-            $dateStr = $dt->format('Y-m-d') . ' ' . $evt['time'];
-            
-            $checkStmt->execute([$evt['title']]);
-            $existingSic = $checkStmt->fetchColumn();
-
-            if ($existingSic) {
-                // Ensure date is kept in the future
-                $updateDateStmt->execute([$dateStr, $evt['venue'], $evt['description'], $existingSic]);
-            } else {
-                $newSic = sic_id('EVENT');
-                $insertStmt->execute([
-                    $newSic,
-                    $evt['type'],
-                    $evt['title'],
-                    $evt['description'],
-                    $dateStr,
-                    $evt['venue'],
-                    $evt['drx_reward'],
-                    $evt['source_url']
-                ]);
-            }
+        $chkAcat = $pdo->prepare("SELECT sic_id FROM events WHERE sic_id = ?");
+        $chkAcat->execute([$acatSic]);
+        if (!$chkAcat->fetchColumn()) {
+            $insAcat = $pdo->prepare("
+                INSERT INTO events (sic_id, type, title, description, starts_at, ends_at, venue, comune, address, visibility, rank_required, drx_reward, status, capacity, price_eur, source_url, image_url, organizer, trainer, registration_deadline)
+                VALUES (?, 'FORMAZIONE', ?, ?, '2026-10-09 14:30:00', '2026-10-11 13:00:00', ?, 'Taglio di Po', ?, 'PUBLIC', 'SEME', 100, 'PUBLISHED', 30, 10.00, ?, 'assets/img/events/locandina-ufficiale-oratorio.jpeg', ?, ?, '2026-10-01 23:59:59')
+            ");
+            $insAcat->execute([$acatSic, $acatTitle, $acatDesc, $venue, $address, 'event-detail.php?event=' . $acatSic, $organizer, $trainer]);
+        } else {
+            // Assicura campi aggiornati
+            $updAcat = $pdo->prepare("
+                UPDATE events SET 
+                    type = 'FORMAZIONE',
+                    title = ?,
+                    description = ?,
+                    starts_at = '2026-10-09 14:30:00',
+                    ends_at = '2026-10-11 13:00:00',
+                    venue = ?,
+                    comune = 'Taglio di Po',
+                    address = ?,
+                    capacity = 30,
+                    price_eur = 10.00,
+                    source_url = ?,
+                    image_url = 'assets/img/events/locandina-ufficiale-oratorio.jpeg',
+                    organizer = ?,
+                    trainer = ?,
+                    registration_deadline = '2026-10-01 23:59:59',
+                    status = 'PUBLISHED'
+                WHERE sic_id = ?
+            ");
+            $updAcat->execute([$acatTitle, $acatDesc, $venue, $address, 'event-detail.php?event=' . $acatSic, $organizer, $trainer, $acatSic]);
         }
     }
 
@@ -206,10 +142,14 @@ class EventSyncService {
         
         // Step 3: Query active future events sorted chronologically
         $pdo = db();
+        $regSubquery = "(
+            (SELECT COUNT(*) FROM event_registrations er WHERE er.event_sic_id = e.sic_id AND er.status IN ('REGISTERED', 'CHECKED_IN')) +
+            (SELECT COALESCE(SUM(num_seats), 0) FROM event_bookings eb WHERE eb.event_sic_id = e.sic_id AND eb.status = 'CONFIRMED')
+        )";
+
         if ($typeFilter && $typeFilter !== 'ALL') {
             $stmt = $pdo->prepare("
-                SELECT e.*, 
-                       (SELECT COUNT(*) FROM event_registrations er WHERE er.event_sic_id = e.sic_id AND er.status = 'REGISTERED') as registrations
+                SELECT e.*, {$regSubquery} as registrations
                 FROM events e
                 WHERE e.status = 'PUBLISHED' 
                   AND e.starts_at >= datetime('now', 'localtime')
@@ -219,8 +159,7 @@ class EventSyncService {
             $stmt->execute([$typeFilter]);
         } else {
             $stmt = $pdo->prepare("
-                SELECT e.*, 
-                       (SELECT COUNT(*) FROM event_registrations er WHERE er.event_sic_id = e.sic_id AND er.status = 'REGISTERED') as registrations
+                SELECT e.*, {$regSubquery} as registrations
                 FROM events e
                 WHERE e.status = 'PUBLISHED' 
                   AND e.starts_at >= datetime('now', 'localtime')

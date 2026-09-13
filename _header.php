@@ -38,6 +38,7 @@ $metaDesc = $metaDesc ?? 'DEPENDEX — AL CLUB. COL CLUB. Cammino di sobrietà, 
   <link rel="stylesheet" href="assets/css/app.css?v=<?=filemtime(__DIR__.'/assets/css/app.css')?>">
   <link rel="stylesheet" href="assets/css/luxury-patterns.css?v=<?=filemtime(__DIR__.'/assets/css/luxury-patterns.css')?>">
   <link rel="stylesheet" href="assets/css/rainbow-neon.css?v=<?=filemtime(__DIR__.'/assets/css/rainbow-neon.css')?>">
+  <link rel="stylesheet" href="assets/css/mobile-916.css?v=<?=filemtime(__DIR__.'/assets/css/mobile-916.css')?>">
   <title><?=h($pageTitle)?> · <?=h($brand['name'])?></title>
 
   <!-- Schema.org JSON-LD -->

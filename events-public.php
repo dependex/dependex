@@ -1,200 +1,257 @@
 <?php 
+declare(strict_types=1);
 require_once 'bootstrap.php';
 $u = current_user();
 
-$currentType = strtoupper(trim($_GET['type'] ?? 'ALL'));
-$allowedTypes = ['ALL', 'INTERCLUB', 'SAT', 'WEBINAR', 'FORMAZIONE', 'CONGRESSO', 'LIFESTYLE'];
-if (!in_array($currentType, $allowedTypes, true)) {
-    $currentType = 'ALL';
+// Sincronizza ed estrae l'evento unico e ufficiale di Taglio di Po
+$events = EventSyncService::syncAndGetActiveEvents();
+$event = !empty($events) ? $events[0] : null;
+
+if (!$event) {
+    // Fallback sicuro al record ACAT se il database fosse temporaneamente vuoto
+    $st = db()->prepare('SELECT * FROM events WHERE sic_id = "SIC-EVT-ACAT-BP-2026-COMM" LIMIT 1');
+    $st->execute();
+    $event = $st->fetch(PDO::FETCH_ASSOC);
 }
 
-// Automatically purge expired events and sync active web events
-$events = EventSyncService::syncAndGetActiveEvents($currentType);
+// Calcolo presenze confermate e posti rimasti
+$sic = $event['sic_id'] ?? 'SIC-EVT-ACAT-BP-2026-COMM';
+$countStmt = db()->prepare("
+    SELECT (
+        (SELECT COUNT(*) FROM event_registrations er WHERE er.event_sic_id = ? AND er.status IN ('REGISTERED', 'CHECKED_IN')) +
+        (SELECT COALESCE(SUM(num_seats), 0) FROM event_bookings eb WHERE eb.event_sic_id = ? AND eb.status = 'CONFIRMED')
+    ) as total_booked
+");
+$countStmt->execute([$sic, $sic]);
+$totalBooked = (int)$countStmt->fetchColumn();
 
-$pageTitle = 'Eventi Vivi dal Web · AICAT, ARCAT & Moduli SAT · DEPENDEX';
-$metaDesc = 'Pagina eventi viva e aggiornata in tempo reale dal web: Interclub territoriali, Scuole Alcolologiche (SAT), Congressi e formazioni. Gli eventi scaduti vengono rimossi automaticamente.';
+$capacity = (int)($event['capacity'] ?? 30);
+$seatsRemaining = max(0, $capacity - $totalBooked);
+$isFull = ($seatsRemaining <= 0);
+$percentBooked = $capacity > 0 ? min(100, round(($totalBooked / $capacity) * 100)) : 0;
+
+$pageTitle = 'Evento Taglio di Po: A Scuola di Comunicazione e Resilienza · ACAT Basso Polesine';
+$metaDesc = '9-10-11 Ottobre 2026, Oratorio San Francesco d\'Assisi, Taglio di Po. Corso esperienziale con Adelmo Di Salvatore. Max 30 posti, quota 10€ con pranzo compreso.';
 require '_header.php';
-
-function formatEventDate(string $datetimeStr): array {
-    $dt = new DateTime($datetimeStr, new DateTimeZone('Europe/Rome'));
-    $now = new DateTime('now', new DateTimeZone('Europe/Rome'));
-    $diff = $now->diff($dt);
-    
-    $days = $diff->days;
-    $isToday = $dt->format('Y-m-d') === $now->format('Y-m-d');
-    
-    if ($isToday) {
-        $countdown = 'Oggi alle ' . $dt->format('H:i');
-    } elseif ($days === 1) {
-        $countdown = 'Domani alle ' . $dt->format('H:i');
-    } else {
-        $countdown = 'Tra ' . $days . ' giorni';
-    }
-
-    $months = [
-        1 => 'Gen', 2 => 'Feb', 3 => 'Mar', 4 => 'Apr', 5 => 'Mag', 6 => 'Giu',
-        7 => 'Lug', 8 => 'Ago', 9 => 'Set', 10 => 'Ott', 11 => 'Nov', 12 => 'Dic'
-    ];
-    $day = $dt->format('d');
-    $month = $months[(int)$dt->format('n')];
-    $time = $dt->format('H:i');
-
-    return [
-        'full' => "$day $month " . $dt->format('Y') . " · ore $time",
-        'day' => $day,
-        'month' => $month,
-        'time' => $time,
-        'countdown' => $countdown
-    ];
-}
 ?>
 
-<section class="section-head py-4">
-  <div>
-    <div class="gold-glow-badge mb-2">
-      <?=dx_icon('activity', '', 14)?>
-      <span>RETE NAZIONALE VIVA · SINCRONIZZAZIONE WEB H24</span>
-    </div>
-    <h1 style="font-family: var(--font-serif); color: #FFFFFF; font-size: clamp(1.9rem, 3.8vw, 2.8rem); margin-top: 6px;">
-      Eventi, Moduli SAT & Interclub dal Vivo
-    </h1>
-    <p style="color: #cbd5e1; max-width: 720px; font-size: 1.05rem; line-height: 1.65;">
-      Tutti gli appuntamenti della rete AICAT, ARCAT territoriali e dei Club aggregati dal web. 
-      Questa è una <strong>pagina eventi viva</strong>: ogni evento concluso viene <em>rimosso in automatico</em>, garantendo date reali e zero link fantasma.
-    </p>
-  </div>
-  <?php if(!$u):?>
-    <a class="btn primary" href="register.php" style="padding: 0 24px;">
-      <?=dx_icon('sparkles', '', 16)?>
-      <span style="margin-left: 6px;">Crea Account per Iscriverti</span>
-    </a>
-  <?php endif;?>
-</section>
+<!-- MOBILE-FIRST 9:16 CONTAINER (Zero sbordature, responsive smartphone shell) -->
+<div class="mobile-916-shell">
 
-<!-- LIVE STATUS STRIP -->
-<div class="lux-metallic-card p-3 mb-4" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border: 1px solid rgba(212,175,55,0.3); background: rgba(16,17,23,0.95);">
-  <div style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: #FFFFFF;">
-    <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #D4AF37; box-shadow: 0 0 10px #D4AF37;"></span>
-    <span><b>Sincronizzazione Web & RSS Attiva:</b> Eventi scaduti rimossi automaticamente (<?=count($events)?> appuntamenti attivi)</span>
+  <!-- TOP BRAND & PATRONAGE BADGE -->
+  <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 12px;">
+    <span class="m-badge m-badge-gold">
+      <?=dx_icon('activity', '', 12)?> ACAT BASSO POLESINE
+    </span>
+    <span class="m-badge <?=!$isFull ? 'm-badge-green' : 'm-badge-red'?>">
+      <?=dx_icon('users', '', 12)?> <?=!$isFull ? "$seatsRemaining Posti Rimasti" : "30/30 Esauriti (Waitlist)"?>
+    </span>
   </div>
-  <div style="font-size: 0.82rem; color: var(--neon-gold); display: flex; align-items: center; gap: 6px;">
-    <?=dx_icon('shield-check', '', 14)?>
-    <span>Zero eventi obsoleti · Pulizia oraria automatica</span>
+
+  <!-- HERO CARD VERTICALE 9:16 -->
+  <article class="m-card m-card-gold-glow text-center">
+    
+    <!-- Intestazione Istituzionale Compatta -->
+    <div style="font-size: 0.74rem; font-weight: 800; color: #d4af37; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">
+      A.C.A.T. Basso Polesine · Metodo Hudolin O.D.V.
+    </div>
+    
+    <h1 style="font-family: var(--font-serif); font-size: clamp(1.45rem, 5vw, 1.85rem); color: #ffffff; line-height: 1.25; margin: 4px 0 10px; font-weight: 900;">
+      A Scuola di Comunicazione e Resilienza
+    </h1>
+
+    <div style="display: inline-block; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.35); border-radius: 999px; padding: 3px 12px; font-size: 0.78rem; font-weight: 800; color: #fff2b2; margin-bottom: 12px;">
+      1° Livello · Corso Esperienziale
+    </div>
+
+    <!-- SOTTOTITOLO BASATO SUL RISULTATO -->
+    <div style="background: rgba(20, 24, 35, 0.95); border-left: 4px solid #d4af37; border-radius: 12px; padding: 12px 14px; text-align: left; margin-bottom: 14px;">
+      <p style="font-size: 0.98rem; font-weight: 800; color: #ffffff; margin: 0 0 4px; line-height: 1.4;">
+        "Impara a comunicare senza litigare e a non farti caricare dai problemi degli altri."
+      </p>
+      <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0; line-height: 1.45;">
+        Rivolto a chi vive in famiglia una situazione di dipendenza, operatori, volontari e membri dei Club. Strumenti pratici da usare già dal lunedì.
+      </p>
+    </div>
+
+    <!-- LOCANDINA VERTICALE (ASPECT RATIO SMARTPHONE) -->
+    <div class="m-poster-box">
+      <a href="event-detail.php?event=<?=urlencode($sic)?>" title="Apri locandina e pagina dedicata">
+        <img src="assets/img/events/locandina-ufficiale-oratorio.jpeg" alt="Locandina Ufficiale Taglio di Po" style="width: 100%; height: auto; display: block;">
+      </a>
+      <div style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 8px; font-size: 0.72rem; color: #fff; border: 1px solid rgba(255,255,255,0.2);">
+        <?=dx_icon('zoom-in', '', 12)?> Tocca per dettagli
+      </div>
+    </div>
+
+    <!-- DATI CHIAVE A COLPO D'OCCHIO (9:16 GRID) -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0; text-align: left;">
+      <div style="background: rgba(22, 25, 36, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px;">
+        <div style="color: #d4af37; font-size: 0.72rem; font-weight: 800; text-transform: uppercase;">Quando</div>
+        <div style="color: #ffffff; font-weight: 850; font-size: 0.88rem; margin-top: 2px;">9-10-11 Ott. 2026</div>
+        <div style="color: #94a3b8; font-size: 0.74rem;">Ven 14:30 – Dom 13:00</div>
+      </div>
+
+      <div style="background: rgba(22, 25, 36, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px;">
+        <div style="color: #d4af37; font-size: 0.72rem; font-weight: 800; text-transform: uppercase;">Dove</div>
+        <div style="color: #ffffff; font-weight: 850; font-size: 0.88rem; margin-top: 2px;">Taglio di Po (RO)</div>
+        <div style="color: #94a3b8; font-size: 0.74rem;">Oratorio S. Francesco</div>
+      </div>
+
+      <div style="background: rgba(22, 25, 36, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px;">
+        <div style="color: #d4af37; font-size: 0.72rem; font-weight: 800; text-transform: uppercase;">Quota Unica</div>
+        <div style="color: #10b981; font-weight: 900; font-size: 1.05rem; margin-top: 2px;">10,00 €</div>
+        <div style="color: #94a3b8; font-size: 0.74rem;">Pranzo sabato compreso</div>
+      </div>
+
+      <div style="background: rgba(22, 25, 36, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px;">
+        <div style="color: #d4af37; font-size: 0.72rem; font-weight: 800; text-transform: uppercase;">Formatore</div>
+        <div style="color: #ffffff; font-weight: 850; font-size: 0.88rem; margin-top: 2px;">A. Di Salvatore</div>
+        <div style="color: #94a3b8; font-size: 0.74rem;">Psichiatra & Terapeuta</div>
+      </div>
+    </div>
+
+    <!-- INDICATORE CAPIENZA 30 POSTI -->
+    <div style="background: rgba(14, 17, 24, 0.9); border: 1px solid rgba(212,175,55,0.25); border-radius: 14px; padding: 10px 12px; margin-bottom: 14px; text-align: left;">
+      <div style="display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 750;">
+        <span style="color: #cbd5e1;">Capienza Aula (Numero Chiuso):</span>
+        <b style="color: <?=!$isFull ? '#10b981' : '#ef4444'?>;"><?=$totalBooked?> / <?=$capacity?> Iscritti</b>
+      </div>
+      <div class="m-progress-bar">
+        <div class="m-progress-fill" style="width: <?=$percentBooked?>%;"></div>
+      </div>
+      <div style="font-size: 0.72rem; color: #94a3b8; display: flex; justify-content: space-between;">
+        <span>Chiusura: 1° Ottobre 2026</span>
+        <span><?=!$isFull ? "Ancora $seatsRemaining posti" : "Lista d'attesa attiva"?></span>
+      </div>
+    </div>
+
+    <!-- BOTTONI DI AZIONE TOUCH (FULL-WIDTH 9:16) -->
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <a href="event-detail.php?event=<?=urlencode($sic)?>" class="m-btn m-btn-primary">
+        <?=dx_icon('check-circle', '', 18)?>
+        <span>PAGINA EVENTO DEDICATA & PRENOTA</span>
+      </a>
+
+      <a href="https://wa.me/393478844271?text=<?=urlencode("Ciao Grazia, vorrei iscrivermi al corso 'A Scuola di Comunicazione e Resilienza' del 9-11 Ottobre a Taglio di Po.")?>" target="_blank" rel="noopener" class="m-btn m-btn-whatsapp">
+        <?=dx_icon('message-circle', '', 18)?>
+        <span>Iscriviti Subito via WhatsApp (Grazia)</span>
+      </a>
+
+      <a href="event-ics.php?event=<?=urlencode($sic)?>" download class="m-btn m-btn-outline" style="min-height: 44px; font-size: 0.88rem;">
+        <?=dx_icon('calendar', '', 16)?>
+        <span>Salva sul Calendario dello Smartphone (.ics)</span>
+      </a>
+    </div>
+
+  </article>
+
+  <!-- SEZIONE: COSA IMPARI (5 PUNTI CONCRETI) -->
+  <section class="m-card">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+      <span style="color: #d4af37;"><?=dx_icon('award', '', 18)?></span>
+      <h2 style="font-size: 1.05rem; font-weight: 850; color: #ffffff; margin: 0;">Cosa Saprai Fare dal Lunedì</h2>
+    </div>
+    
+    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.86rem; color: #cbd5e1;">
+      <li style="display: flex; gap: 10px; align-items: flex-start;">
+        <span style="color: #10b981; font-weight: 900; margin-top: 2px;">✓</span>
+        <div><b>Disinnescare le provocazioni:</b> comunicare senza alzare la voce o farsi trascinare nel conflitto.</div>
+      </li>
+      <li style="display: flex; gap: 10px; align-items: flex-start;">
+        <span style="color: #10b981; font-weight: 900; margin-top: 2px;">✓</span>
+        <div><b>Porre confini sani:</b> non farti carico delle scelte e delle ricadute altrui conservando la tua serenità.</div>
+      </li>
+      <li style="display: flex; gap: 10px; align-items: flex-start;">
+        <span style="color: #10b981; font-weight: 900; margin-top: 2px;">✓</span>
+        <div><b>Ascolto attivo profondo:</b> capire davvero i bisogni inespressi senza dare giudizi prematuri.</div>
+      </li>
+      <li style="display: flex; gap: 10px; align-items: flex-start;">
+        <span style="color: #10b981; font-weight: 900; margin-top: 2px;">✓</span>
+        <div><b>Metodo decisionale democratico:</b> trovare soluzioni condivise per i conflitti in famiglia e in club.</div>
+      </li>
+      <li style="display: flex; gap: 10px; align-items: flex-start;">
+        <span style="color: #10b981; font-weight: 900; margin-top: 2px;">✓</span>
+        <div><b>Attestato ufficiale rilasciato:</b> riconosciuto nella rete dei Club Alcologici Territoriali.</div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- PROGRAMMA SINTETICO 3 GIORNI -->
+  <section class="m-card">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+      <span style="color: #d4af37;"><?=dx_icon('clock', '', 18)?></span>
+      <h2 style="font-size: 1.05rem; font-weight: 850; color: #ffffff; margin: 0;">Programma in Sintesi</h2>
+    </div>
+
+    <div class="m-schedule-day">
+      <div class="m-schedule-header">
+        <b style="color: #ffffff; font-size: 0.86rem;">Venerdì 9 Ottobre</b>
+        <span style="color: #d4af37; font-size: 0.78rem; font-weight: 750;">14:30 – 19:00</span>
+      </div>
+      <div style="font-size: 0.82rem; color: #cbd5e1; padding-left: 6px;">
+        Accoglienza, presentazione del metodo "Le Persone Efficaci", motivazioni e prime esperienze pratiche.
+      </div>
+    </div>
+
+    <div class="m-schedule-day">
+      <div class="m-schedule-header">
+        <b style="color: #ffffff; font-size: 0.86rem;">Sabato 10 Ottobre</b>
+        <span style="color: #d4af37; font-size: 0.78rem; font-weight: 750;">09:00 – 19:00</span>
+      </div>
+      <div style="font-size: 0.82rem; color: #cbd5e1; padding-left: 6px;">
+        Ascolto attivo in coppia, role-play, <b>pranzo comunitario compreso nella quota (13:00)</b>, risoluzione democratica dei problemi.
+      </div>
+    </div>
+
+    <div class="m-schedule-day" style="margin-bottom: 0;">
+      <div class="m-schedule-header">
+        <b style="color: #ffffff; font-size: 0.86rem;">Domenica 11 Ottobre</b>
+        <span style="color: #d4af37; font-size: 0.78rem; font-weight: 750;">09:00 – 13:00</span>
+      </div>
+      <div style="font-size: 0.82rem; color: #cbd5e1; padding-left: 6px;">
+        Collisione di valori, plenaria "Cosa voglio migliorare", autovalutazione ante-post e consegna attestati.
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATORE & SEDE -->
+  <section class="m-card">
+    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 10px;">
+      <div style="width: 46px; height: 46px; border-radius: 12px; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.35); display: grid; place-items: center; color: #d4af37;">
+        <?=dx_icon('user', '', 22)?>
+      </div>
+      <div>
+        <div style="font-size: 0.72rem; color: #d4af37; font-weight: 800; text-transform: uppercase;">Docente e Formatore</div>
+        <h3 style="font-size: 0.98rem; color: #ffffff; margin: 2px 0 0; font-weight: 850;">Dott. Adelmo Di Salvatore</h3>
+      </div>
+    </div>
+    <p style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.45; margin: 0 0 10px;">
+      Psichiatra, Psicoterapeuta, formatore autorizzato Approccio Centrato sulla Persona, PNL e Servitore-Insegnante con esperienza ultratrentennale nei Club Alcologici Territoriali.
+    </p>
+    <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; font-size: 0.82rem; color: #94a3b8;">
+      <?=dx_icon('map-pin', '', 14)?> <b style="color: #ffffff;">Sede:</b> Oratorio San Francesco d'Assisi, Vicolo San Francesco 1, Taglio di Po (RO).
+    </div>
+  </section>
+
+  <!-- FOOTER DELLA SCHEDA MOBILE -->
+  <div class="text-center" style="margin-top: 16px; font-size: 0.78rem; color: #94a3b8;">
+    <p style="margin: 0 0 6px;">Per informazioni e iscrizioni telefoniche: Grazia Nicosia (Servitrice-Insegnante) · <strong>Tel. 347 884 4271</strong></p>
+    <p style="margin: 0; color: #d4af37;">100% Digitale · Zero carta · Zero sprechi · Posti certificati</p>
   </div>
+
 </div>
 
-<!-- CATEGORY FILTERS -->
-<nav class="event-filter-bar mb-4" style="display: flex; gap: 8px; flex-wrap: wrap;" aria-label="Filtro tipo evento">
-  <a href="?type=ALL" class="btn small <?=$currentType==='ALL'?'primary':'btn-rainbow-outline'?>">
-    Tutti (<?=count($events)?>)
-  </a>
-  <a href="?type=INTERCLUB" class="btn small <?=$currentType==='INTERCLUB'?'primary':'btn-rainbow-outline'?>">
-    Interclub Territoriali
-  </a>
-  <a href="?type=SAT" class="btn small <?=$currentType==='SAT'?'primary':'btn-rainbow-outline'?>">
-    Moduli SAT
-  </a>
-  <a href="?type=FORMAZIONE" class="btn small <?=$currentType==='FORMAZIONE'?'primary':'btn-rainbow-outline'?>">
-    Corsi Sensibilizzazione
-  </a>
-  <a href="?type=WEBINAR" class="btn small <?=$currentType==='WEBINAR'?'primary':'btn-rainbow-outline'?>">
-    Webinar Online
-  </a>
-  <a href="?type=CONGRESSO" class="btn small <?=$currentType==='CONGRESSO'?'primary':'btn-rainbow-outline'?>">
-    Congressi Nazionali
-  </a>
-  <a href="?type=LIFESTYLE" class="btn small <?=$currentType==='LIFESTYLE'?'primary':'btn-rainbow-outline'?>">
-    Lifestyle & Territorio
-  </a>
-</nav>
-
-<!-- LIVE EVENTS LIST -->
-<div class="event-list my-4" style="display: grid; gap: 18px;">
-  <?php if(empty($events)): ?>
-    <div class="lux-metallic-card p-5 text-center" style="border: 1px dashed rgba(212,175,55,0.3);">
-      <div style="color: var(--neon-gold); margin-bottom: 12px;"><?=dx_icon('calendar', '', 40)?></div>
-      <h3 style="color: #FFFFFF; font-family: var(--font-serif);">Nessun evento in questa categoria per i prossimi giorni</h3>
-      <p style="color: #cbd5e1; max-width: 500px; margin: 0 auto 16px;">Tutti gli eventi passati sono stati cancellati automaticamente. Torna a consultare la pagina o visualizza tutti gli appuntamenti.</p>
-      <a href="?type=ALL" class="btn primary">Mostra Tutti gli Eventi</a>
-    </div>
-  <?php else: ?>
-    <?php foreach($events as $e):
-      $dateInfo = formatEventDate($e['starts_at']);
-    ?>
-      <article class="lux-metallic-card p-4" style="display: flex; gap: 24px; align-items: stretch; border: 1px solid rgba(212,175,55,0.25);">
-        <!-- Date Block Left -->
-        <div style="width: 100px; min-width: 100px; background: rgba(212,175,55,0.06); border: 1px solid rgba(212,175,55,0.25); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 12px;">
-          <span style="font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; color: var(--neon-gold); text-transform: uppercase;"><?=h($dateInfo['month'])?></span>
-          <span style="font-size: 2.2rem; font-weight: 900; color: #FFFFFF; line-height: 1; margin: 4px 0;"><?=h($dateInfo['day'])?></span>
-          <span style="font-size: 0.78rem; color: #cbd5e1; font-weight: 600;"><?=h($dateInfo['time'])?></span>
-        </div>
-
-        <!-- Event Details Center -->
-        <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 6px;">
-              <span class="dx-ticker-badge"><?=h($e['type'])?></span>
-              <span style="font-size: 0.78rem; font-weight: 700; color: var(--neon-gold); background: rgba(212,175,55,0.1); padding: 3px 10px; border-radius: 999px;">
-                <?=dx_icon('clock', '', 12)?> <?=h($dateInfo['countdown'])?>
-              </span>
-            </div>
-            
-            <h3 style="margin: 0.2rem 0 0.5rem; color: #FFFFFF; font-family: var(--font-serif); font-size: 1.35rem; font-weight: 800;">
-              <?=h($e['title'])?>
-            </h3>
-            
-            <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.6; margin-bottom: 12px;">
-              <?=h($e['description'])?>
-            </p>
-          </div>
-
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px; font-size: 0.84rem;">
-            <div style="display: flex; gap: 16px; color: #cbd5e1; align-items: center;">
-              <span style="display: inline-flex; align-items: center; gap: 6px;">
-                <?=dx_icon('map-pin', '', 14)?> <b style="color: #FFFFFF;"><?=h($e['venue'])?></b>
-              </span>
-              <?php if((int)$e['registrations'] >= 5): ?>
-                <span style="display: inline-flex; align-items: center; gap: 6px;">
-                  <?=dx_icon('users', '', 14)?> <?=h((string)$e['registrations'])?> iscritti
-                </span>
-              <?php else: ?>
-                <span style="display: inline-flex; align-items: center; gap: 6px; color: #10b981;">
-                  <?=dx_icon('check-circle', '', 14)?> Posti disponibili
-                </span>
-              <?php endif; ?>
-              <span style="display: inline-flex; align-items: center; gap: 6px; color: var(--neon-gold); font-weight: 700;">
-                <?=dx_icon('award', '', 14)?> +<?=h((string)$e['drx_reward'])?> DRX
-              </span>
-            </div>
-
-            <div style="display: flex; gap: 8px;">
-              <?php if(!empty($e['source_url'])): ?>
-                <a href="<?=h($e['source_url'])?>" target="_blank" rel="noopener" class="btn-rainbow-outline small">
-                  Fonte Ufficiale <?=dx_icon('external-link', '', 12)?>
-                </a>
-              <?php endif; ?>
-              
-              <?php if($u): ?>
-                <form method="post" action="action.php" style="display: inline;">
-                  <input type="hidden" name="<?=CSRF_KEY?>" value="<?=h(csrf_token())?>">
-                  <input type="hidden" name="action" value="event_register">
-                  <input type="hidden" name="event_sic_id" value="<?=h($e['sic_id'])?>">
-                  <input type="hidden" name="return" value="events-public.php">
-                  <button class="btn primary small">
-                    <?=dx_icon('check-circle', '', 14)?> Partecipa
-                  </button>
-                </form>
-              <?php else: ?>
-                <a class="btn primary small" href="register.php">
-                  <?=dx_icon('sparkles', '', 14)?> Iscriviti
-                </a>
-              <?php endif; ?>
-            </div>
-          </div>
-        </div>
-      </article>
-    <?php endforeach;?>
-  <?php endif; ?>
+<!-- STICKY BOTTOM ACTION BAR PER SMARTPHONE (9:16 SAFE-AREA) -->
+<div class="m-sticky-bar">
+  <div class="m-sticky-bar-inner">
+    <a href="event-detail.php?event=<?=urlencode($sic)?>" class="m-btn m-btn-primary" style="flex: 1; min-height: 48px; font-size: 0.92rem; padding: 0 12px;">
+      <?=dx_icon('check-circle', '', 16)?> Iscriviti (10€)
+    </a>
+    <a href="https://wa.me/393478844271?text=<?=urlencode("Ciao Grazia, vorrei iscrivermi al corso di Taglio di Po (9-11 Ottobre).")?>" target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="width: 52px; min-height: 48px; padding: 0; flex-shrink: 0;" title="Contatta Grazia su WhatsApp">
+      <?=dx_icon('message-circle', '', 20)?>
+    </a>
+  </div>
 </div>
 
 <?php require '_footer.php';?>

@@ -53,12 +53,16 @@
       <a href="guida-gratuita.php" class="text-neon-gold" style="font-weight: 800;">Guida Gratuita 7 Giorni</a>
       <a href="metodo.php" class="text-neon-cyan" style="font-weight: 700;">Metodo Hudolin</a>
       <a href="offers.php" class="text-neon-green" style="font-weight: 700;">Libri Amazon KDP</a>
+      <a href="viaggi-esperienziali.php" class="text-neon-gold" style="font-weight: 800;">Viaggi & Crociere BEWAY.LIFE</a>
       <a href="events-public.php" style="color: #cbd5e1; font-weight: 600;">Eventi & Moduli</a>
       <a href="world-club-explorer.php" class="text-neon-orange" style="font-weight: 700;"><?=h(tr('club.find','Trova Club'))?></a>
       <a href="privacy.php" style="color: #94a3b8;">Privacy</a>
       <a href="terms.php" style="color: #94a3b8;">Condizioni</a>
     </div>
-    <a href="mailto:info@dependex.social" title="Scrivici un'email" style="color: var(--neon-cyan); display: inline-flex; align-items: center; gap: 6px; font-weight: 700;"><?=dx_icon('mail', '', 14)?> info@dependex.social</a>
+    <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+      <a href="https://beway.life" target="_blank" rel="noopener" style="color: var(--neon-cyan); display: inline-flex; align-items: center; gap: 6px; font-weight: 700;"><?=dx_icon('compass', '', 14)?> beway.life</a>
+      <a href="mailto:info@dependex.social" title="Scrivici un'email" style="color: var(--neon-cyan); display: inline-flex; align-items: center; gap: 6px; font-weight: 700;"><?=dx_icon('mail', '', 14)?> info@dependex.social</a>
+    </div>
   </div>
 </footer>
 

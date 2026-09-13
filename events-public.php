@@ -308,7 +308,27 @@ require '_header.php';
       <?php endforeach; ?>
     </div>
   </section>
-  <?php endif; ?>
+  <!-- BANNER VIAGGI ESPERIENZIALI & CROCIERA BEWAY.LIFE x DEPENDEX -->
+  <section class="m-card" style="background: radial-gradient(circle at top right, rgba(0,212,255,0.15), rgba(12,16,28,0.95)); border: 1px solid rgba(0,212,255,0.4); border-radius: 18px; padding: 20px; margin-top: 24px;">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+      <span style="font-size: 20px;">🌊</span>
+      <span class="m-cat-badge" style="background: rgba(0,212,255,0.2); color: #38bdf8; border-color: #38bdf8;">BEWAY.LIFE x DEPENDEX</span>
+    </div>
+    <h3 style="font-size: 1.15rem; font-weight: 850; color: #ffffff; margin: 0 0 8px;">
+      Oltre i Convegni: La Grande Crociera della Rinascita in Mare Aperto
+    </h3>
+    <p style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.55; margin: 0 0 14px;">
+      8 giorni e 7 notti nel Mediterraneo (Grecia e Montenegro) con formula 100% analcolica, cucina vitale e Masterclass intensive con Mirco Pregnolato e i facilitatori del Metodo Hudolin.
+    </p>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <a href="crociera-benessere-masterclass.php" class="m-btn m-btn-primary" style="flex: 1; min-height: 42px; font-size: 0.84rem; text-decoration: none; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+        <?=dx_icon('compass', '', 14)?> Scopri la Crociera
+      </a>
+      <a href="viaggi-esperienziali.php" class="m-btn" style="flex: 1; min-height: 42px; font-size: 0.84rem; border: 1px solid rgba(255,255,255,0.2); color: #fff; text-decoration: none; text-align: center; display: inline-flex; align-items: center; justify-content: center;">
+        Tutti i Viaggi BEWAY.LIFE
+      </a>
+    </div>
+  </section>
 
   <!-- GRIGLIA UFFICIALE DEI 28 SPONSOR & ASSET DELL'ECOSISTEMA -->
   <?php require_once __DIR__ . '/templates/_sponsor_grid.php'; ?>

@@ -7,11 +7,24 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/bootstrap.php';
+require_once __DIR__ . '/modules/commerce/CommerceEnv.php';
+require_once __DIR__ . '/modules/commerce/UniversalCommerce.php';
 
-// Le vendite dirette e i carrelli sono disattivati in favore della distribuzione ufficiale Amazon KDP
-header('Location: offers.php', true, 302);
-exit;
+use Dependex\Commerce\UniversalCommerce;
 
+$commerce = UniversalCommerce::getInstance();
+$cartToken = $_COOKIE['dx_cart_id'] ?? ($_GET['cart_id'] ?? null);
+$cart = $commerce->getOrCreateCart($cartToken);
+
+if (!isset($_COOKIE['dx_cart_id']) || $_COOKIE['dx_cart_id'] !== $cart['id']) {
+    setcookie('dx_cart_id', $cart['id'], [
+        'expires' => time() + (86400 * 30),
+        'path' => '/',
+        'secure' => isset($_SERVER['HTTPS']),
+        'httponly' => false,
+        'samesite' => 'Lax'
+    ]);
+}
 
 // Handle direct query actions if needed
 if (isset($_GET['action'])) {

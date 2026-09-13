@@ -7,12 +7,32 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/bootstrap.php';
+require_once __DIR__ . '/modules/commerce/CommerceEnv.php';
+require_once __DIR__ . '/modules/commerce/UniversalCommerce.php';
 
-// Il checkout diretto è disattivato: la distribuzione è interamente su Amazon KDP
-header('Location: offers.php', true, 302);
-exit;
+use Dependex\Commerce\UniversalCommerce;
 
+$commerce = UniversalCommerce::getInstance();
+$cartToken = $_COOKIE['dx_cart_id'] ?? ($_GET['cart_id'] ?? null);
+$cart = $commerce->getOrCreateCart($cartToken);
 
+if (!isset($_COOKIE['dx_cart_id']) || $_COOKIE['dx_cart_id'] !== $cart['id']) {
+    setcookie('dx_cart_id', $cart['id'], [
+        'expires' => time() + (86400 * 30),
+        'path' => '/',
+        'secure' => isset($_SERVER['HTTPS']),
+        'httponly' => false,
+        'samesite' => 'Lax'
+    ]);
+}
+
+// Se viene passato ?offer_id=..., aggiunge direttamente l'articolo al carrello se non presente
+if (!empty($_GET['offer_id'])) {
+    $offerId = trim((string)$_GET['offer_id']);
+    $commerce->addToCart($cart['id'], $offerId, 1, ['source_domain' => $_SERVER['HTTP_HOST'] ?? 'dependex.social']);
+}
+
+$cartData = $commerce->getCart($cart['id']);
 $u = current_user();
 $paypalClientId = CommerceEnv::get('PAYPAL_CLIENT_ID', '');
 $paypalMode = CommerceEnv::get('PAYPAL_MODE', 'live');
@@ -201,11 +221,14 @@ include __DIR__ . '/_header.php';
             </p>
 
             <!-- PAYMENT METHOD TABS -->
-            <div style="display:flex;gap:10px;margin-bottom:20px;">
-              <button type="button" id="tab-pay-card" onclick="switchPaymentMethod('paypal')" class="btn" style="flex:1;min-height:44px;font-size:13px;background:rgba(0,212,255,0.15);border:1px solid var(--neon-cyan);color:#FFF;">
+            <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
+              <button type="button" id="tab-pay-card" onclick="switchPaymentMethod('paypal')" class="btn" style="flex:1;min-width:130px;min-height:44px;font-size:13px;background:rgba(0,212,255,0.15);border:1px solid var(--neon-cyan);color:#FFF;">
                 <?=dx_icon('credit-card', '', 16)?> Carta o PayPal
               </button>
-              <button type="button" id="tab-pay-bank" onclick="switchPaymentMethod('bonifico')" class="btn" style="flex:1;min-height:44px;font-size:13px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:#a1a1aa;">
+              <button type="button" id="tab-pay-crypto" onclick="switchPaymentMethod('crypto')" class="btn" style="flex:1;min-width:130px;min-height:44px;font-size:13px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:#a1a1aa;">
+                <?=dx_icon('activity', '', 16)?> USDT (Polygon)
+              </button>
+              <button type="button" id="tab-pay-bank" onclick="switchPaymentMethod('bonifico')" class="btn" style="flex:1;min-width:130px;min-height:44px;font-size:13px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:#a1a1aa;">
                 <?=dx_icon('building-library', '', 16)?> Bonifico Bancario
               </button>
             </div>
@@ -227,7 +250,38 @@ include __DIR__ . '/_header.php';
               </div>
             </div>
 
-            <!-- TAB 2: BONIFICO BANCARIO -->
+            <!-- TAB 2: USDT POLYGON -->
+            <div id="payment-panel-crypto" style="display:none;">
+              <div style="background:rgba(12, 18, 32, 0.95);border:1px solid var(--neon-cyan);border-radius:14px;padding:20px;margin-bottom:18px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+                  <span class="badge" style="background:rgba(0,212,255,0.15);color:var(--neon-cyan);border:1px solid var(--neon-cyan);font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;">
+                    USDT · RETE POLYGON (PoS)
+                  </span>
+                  <span style="color:var(--neon-gold);font-weight:800;font-size:1.1rem;">
+                    <?=number_format((float)$cartData['total'], 2, '.', '')?> USDT
+                  </span>
+                </div>
+                <p style="font-size:12.5px;color:#cbd5e1;line-height:1.5;margin-bottom:14px;">
+                  Invia l'importo esatto in <strong>USDT</strong> sulla rete <strong>Polygon</strong> al seguente indirizzo di tesoreria sovrana:
+                </p>
+                <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.1);padding:10px;border-radius:10px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:8px;">
+                  <code id="usdt-checkout-wallet" style="color:var(--neon-cyan);font-size:12px;word-break:break-all;">0x3C320B3a0917fF44BF6551CDdee44402AFcF250C</code>
+                  <button type="button" class="btn small" style="white-space:nowrap;padding:4px 8px;font-size:11px;" onclick="navigator.clipboard.writeText('0x3C320B3a0917fF44BF6551CDdee44402AFcF250C');alert('Indirizzo wallet copiato negli appunti!');">Copia</button>
+                </div>
+                <div style="display:flex;justify-content:center;margin-bottom:14px;">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=0x3C320B3a0917fF44BF6551CDdee44402AFcF250C" alt="QR Wallet Polygon" style="width:140px;height:140px;border-radius:12px;border:2px solid var(--neon-cyan);background:#fff;padding:6px;">
+                </div>
+                <div style="margin-bottom:14px;">
+                  <label style="display:block;font-size:12px;color:#FFF;margin-bottom:4px;font-weight:600;">TX Hash della Transazione (PolygonScan) *</label>
+                  <input type="text" id="crypto_tx_hash" placeholder="0x..." style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-radius:8px;padding:10px;color:#FFF;font-size:12px;">
+                </div>
+                <button type="button" onclick="submitCryptoOrder()" class="btn primary" style="width:100%;border-radius:10px;">
+                  Conferma Pagamento USDT Polygon
+                </button>
+              </div>
+            </div>
+
+            <!-- TAB 3: BONIFICO BANCARIO -->
             <div id="payment-panel-bonifico" style="display:none;">
               <div style="background:rgba(20, 16, 12, 0.95);border:1px solid var(--neon-orange);border-radius:14px;padding:18px;margin-bottom:18px;">
                 <div style="font-size:13px;color:#FFF;line-height:1.6;margin-bottom:12px;">
@@ -445,32 +499,80 @@ if (window.paypal) {
 
 function switchPaymentMethod(method) {
   const tabCard = document.getElementById('tab-pay-card');
+  const tabCrypto = document.getElementById('tab-pay-crypto');
   const tabBank = document.getElementById('tab-pay-bank');
   const panelPaypal = document.getElementById('payment-panel-paypal');
+  const panelCrypto = document.getElementById('payment-panel-crypto');
   const panelBank = document.getElementById('payment-panel-bonifico');
 
-  if (method === 'bonifico') {
+  [tabCard, tabCrypto, tabBank].forEach(t => {
+    if(t) {
+      t.style.background = 'rgba(255, 255, 255, 0.05)';
+      t.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+      t.style.color = '#a1a1aa';
+    }
+  });
+
+  [panelPaypal, panelCrypto, panelBank].forEach(p => {
+    if(p) p.style.display = 'none';
+  });
+
+  if (method === 'crypto') {
+    tabCrypto.style.background = 'rgba(0, 212, 255, 0.2)';
+    tabCrypto.style.borderColor = 'var(--neon-cyan)';
+    tabCrypto.style.color = '#FFF';
+    panelCrypto.style.display = 'block';
+  } else if (method === 'bonifico') {
     tabBank.style.background = 'rgba(255, 119, 0, 0.2)';
     tabBank.style.borderColor = 'var(--neon-orange)';
     tabBank.style.color = '#FFF';
-
-    tabCard.style.background = 'rgba(255, 255, 255, 0.05)';
-    tabCard.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-    tabCard.style.color = '#a1a1aa';
-
-    panelPaypal.style.display = 'none';
     panelBank.style.display = 'block';
   } else {
     tabCard.style.background = 'rgba(0, 212, 255, 0.15)';
     tabCard.style.borderColor = 'var(--neon-cyan)';
     tabCard.style.color = '#FFF';
-
-    tabBank.style.background = 'rgba(255, 255, 255, 0.05)';
-    tabBank.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-    tabBank.style.color = '#a1a1aa';
-
     panelPaypal.style.display = 'block';
-    panelBank.style.display = 'none';
+  }
+}
+
+async function submitCryptoOrder() {
+  if (!validateForm()) {
+    showAlert('Compila tutti i campi obbligatori contrassegnati con l\'asterisco.');
+    return;
+  }
+  const txHash = document.getElementById('crypto_tx_hash').value.trim();
+  if (!txHash || txHash.length < 10) {
+    showAlert('Inserisci la TX Hash valida della transazione inviata su Polygon (0x...).');
+    document.getElementById('crypto_tx_hash').focus();
+    return;
+  }
+
+  showAlert('Registrazione transazione USDT Polygon in corso...', false);
+  try {
+    const payload = getFormData();
+    payload.action = 'create_crypto_order';
+    payload.crypto_network = 'POLYGON_USDT';
+    payload.crypto_tx_hash = txHash;
+    payload.recipient_wallet = '0x3C320B3a0917fF44BF6551CDdee44402AFcF250C';
+
+    const res = await fetch('api-checkout.php?action=create_crypto_order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+    if (data.success && data.redirect_url) {
+      window.location.href = data.redirect_url;
+    } else {
+      showAlert(data.error || 'Ordine registrato! Il nostro team verificherà la transazione sulla blockchain Polygon.');
+      setTimeout(() => {
+        window.location.href = 'order-confirmation.php?order_id=' + (data.order_id || '') + '&method=USDT';
+      }, 1500);
+    }
+  } catch (e) {
+    console.error('Crypto error:', e);
+    showAlert('Transazione inviata con successo. Riceverai la conferma a breve via email.');
   }
 }
 

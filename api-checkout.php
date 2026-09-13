@@ -12,6 +12,7 @@ header('Content-Type: application/json; charset=utf-8');
 // Multi-Domain CORS handling
 $allowedOrigins = [
     'https://dependex.social',
+    'https://beway.life',
     'https://mircopregnolato.it',
     'https://oltre.social',
     'https://mywallet.business',
@@ -259,6 +260,70 @@ try {
                 'total_amount' => $order['total_amount'],
                 'currency' => $order['currency'],
                 'redirect_url' => 'order-confirmation.php?order_id=' . urlencode($order['id']) . '&method=bonifico'
+            ]);
+            break;
+
+        case 'create_crypto_order':
+            $cartData = $commerce->getCart($cart['id']);
+            if (empty($cartData['items'])) {
+                http_response_code(400);
+                echo json_encode(['success' => false, 'error' => 'Il carrello è vuoto. Impossibile procedere al checkout.']);
+                exit;
+            }
+
+            $email = trim((string)($input['email'] ?? ''));
+            $firstName = trim((string)($input['first_name'] ?? ''));
+            $lastName = trim((string)($input['last_name'] ?? ''));
+            $phone = trim((string)($input['phone'] ?? ''));
+            $cryptoTxHash = trim((string)($input['crypto_tx_hash'] ?? ''));
+
+            if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                http_response_code(400);
+                echo json_encode(['success' => false, 'error' => 'Indirizzo email non valido o mancante.']);
+                exit;
+            }
+            if (!$firstName) {
+                http_response_code(400);
+                echo json_encode(['success' => false, 'error' => 'Il nome è obbligatorio.']);
+                exit;
+            }
+
+            $customer = $commerce->getOrCreateCustomer([
+                'email' => $email,
+                'first_name' => $firstName,
+                'last_name' => $lastName,
+                'phone' => $phone,
+                'billing_street' => trim((string)($input['billing_street'] ?? '')),
+                'billing_city' => trim((string)($input['billing_city'] ?? '')),
+                'billing_postal_code' => trim((string)($input['billing_postal_code'] ?? '')),
+                'billing_country' => trim((string)($input['billing_country'] ?? 'IT')),
+                'company_name' => trim((string)($input['company_name'] ?? '')),
+                'vat_number' => trim((string)($input['vat_number'] ?? '')),
+                'fiscal_code' => trim((string)($input['fiscal_code'] ?? '')),
+                'sdi_pec' => trim((string)($input['sdi_pec'] ?? '')),
+                'terms_accepted' => !empty($input['terms_accepted']) ? 1 : 0,
+                'privacy_accepted' => !empty($input['privacy_accepted']) ? 1 : 0,
+                'marketing_accepted' => !empty($input['marketing_accepted']) ? 1 : 0,
+            ]);
+
+            $order = $commerce->createOrderFromCart($cart['id'], $customer['id'], [
+                'payment_method' => 'crypto_polygon',
+                'crypto_tx_hash' => $cryptoTxHash,
+                'recipient_wallet' => '0x3C320B3a0917fF44BF6551CDdee44402AFcF250C',
+                'ip_address' => $_SERVER['REMOTE_ADDR'] ?? '',
+                'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? '',
+                'source_domain' => trim((string)($input['source_domain'] ?? 'dependex.social'))
+            ]);
+
+            $commerce->clearCart($cart['id']);
+
+            echo json_encode([
+                'success' => true,
+                'order_id' => $order['id'],
+                'order_number' => $order['order_number'],
+                'total_amount' => $order['total_amount'],
+                'currency' => $order['currency'],
+                'redirect_url' => 'order-confirmation.php?order_id=' . urlencode($order['id']) . '&method=USDT'
             ]);
             break;
 

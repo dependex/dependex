@@ -12,6 +12,7 @@ header('Content-Type: application/json; charset=utf-8');
 // Multi-Domain CORS handling
 $allowedOrigins = [
     'https://dependex.social',
+    'https://beway.life',
     'https://mircopregnolato.it',
     'https://oltre.social',
     'https://mywallet.business',

@@ -414,6 +414,116 @@ $newsCards = AcatNewsService::getLatestCards(10);
 </section>
 
 <!-- ============================================================== -->
+<!-- BEWAY.LIFE x DEPENDEX: VIAGGI ESPERIENZIALI & CROCIERE A TEMA  -->
+<!-- ============================================================== -->
+<section class="my-5 p-4 p-md-5 lux-metallic-card rainbow-border" style="background: radial-gradient(circle at top right, rgba(0,212,255,0.14), rgba(12,16,28,0.96)); border-radius: 24px; box-shadow: 0 16px 50px rgba(0,0,0,0.8);">
+  <div class="row align-items-center g-4">
+    <div class="col-lg-8">
+      <div class="badge-neon-rainbow mb-2">
+        <span class="dot"></span>
+        <span class="text-rainbow">BEWAY.LIFE x DEPENDEX · IL VIAGGIO TRASFORMATIVO</span>
+      </div>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: #FFFFFF; font-weight: 900; margin-bottom: 0.8rem; line-height: 1.2;">
+        Dalla Sobrietà Quotidiana alla <span class="text-rainbow">Grande Crociera della Rinascita</span>
+      </h2>
+      <p style="color: #cbd5e1; font-size: 1.05rem; line-height: 1.65; margin-bottom: 1.2rem;">
+        La trasformazione si consolida quando vivi la bellezza del mondo in un ambiente protetto e privo di stimoli tossici. Scopri i <strong>Viaggi Esperienziali di BEWAY.LIFE</strong>: 8 giorni e 7 notti nel Mediterraneo con formula 100% analcolica, cucina gourmet vitale, risveglio all'alba sul ponte e <strong>Masterclass intensive con Mirco Pregnolato</strong>.
+      </p>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 1.4rem;">
+        <span class="dx-ticker-badge" style="color: var(--neon-gold); border-color: var(--neon-gold); font-size: 0.8rem;">
+          Crociera Mediterraneo: Santorini · Mykonos · Atene · Kotor
+        </span>
+        <span class="dx-ticker-badge" style="color: var(--neon-cyan); border-color: var(--neon-cyan); font-size: 0.8rem;">
+          Cabine da 890 € (o Caparra 190 €)
+        </span>
+        <span class="dx-ticker-badge" style="color: var(--neon-green); border-color: var(--neon-green); font-size: 0.8rem;">
+          Ritiro Biohacking Dolomiti (450 €)
+        </span>
+      </div>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="crociera-benessere-masterclass.php" class="btn primary" style="text-decoration: none; border-radius: 12px; font-weight: 800; padding: 12px 26px;">
+          <?=dx_icon('compass', '', 16)?> Scopri la Grande Crociera
+        </a>
+        <a href="viaggi-esperienziali.php" class="btn" style="text-decoration: none; border-radius: 12px; font-weight: 700; border: 1px solid rgba(255,255,255,0.25); color: #fff; padding: 12px 22px;">
+          Tutti i Viaggi & Ritiri BEWAY.LIFE
+        </a>
+      </div>
+    </div>
+
+    <div class="col-lg-4 text-center">
+      <div style="background: rgba(8,12,22,0.9); border: 1px solid rgba(0,212,255,0.3); border-radius: 18px; padding: 22px; box-shadow: 0 10px 30px rgba(0,212,255,0.2);">
+        <span style="font-size: 40px; display: block; margin-bottom: 8px;">🌊</span>
+        <h4 style="color: #FFF; font-size: 1.15rem; font-weight: 800; margin-bottom: 6px;">Partnership Ufficiale</h4>
+        <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">
+          L'unione perfetta tra il supporto comunitario di <strong>DEPENDEX</strong> e lo stile di vita consapevole di <strong>BEWAY.LIFE</strong>.
+        </p>
+        <a href="https://beway.life" target="_blank" rel="noopener" style="color: var(--neon-cyan); font-weight: 800; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 6px; text-decoration: none;">
+          Visita beway.life <?=dx_icon('external-link', '', 14)?>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== -->
+<!-- VETRINA EDITORIALE: LIBRI AMAZON KDP A 3 TIER (M. PREGNOLATO)  -->
+<!-- ============================================================== -->
+<section class="my-5">
+  <div class="text-center mb-4">
+    <div class="badge-neon-rainbow mb-2" style="font-size: 0.74rem;">
+      <span class="dot"></span>
+      <span class="text-rainbow">COLLANA EDITORIALE UFFICIALE DIRETTA</span>
+    </div>
+    <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: #FFFFFF; font-weight: 900;">
+      I Libri & Diari di Mirco Pregnolato <span class="text-rainbow">a 3 Tier</span>
+    </h2>
+    <p style="color: #cbd5e1; max-width: 720px; margin: 0 auto; font-size: 1rem; line-height: 1.6;">
+      Quaderno della Famiglia, Diario del Club 90 Giorni, Diario Servitore Insegnante, Crescita Esponenziale, Trilogia SAT e 52 Settimane di Cambiamento. Scegli tra <strong>PDF Digitale</strong>, <strong>Cartaceo Amazon Prime</strong> e <strong>Bundle con Masterclass</strong>.
+    </p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 2rem;">
+    <div class="card card-neon-gold p-4" style="background: rgba(12,16,26,0.92); border-radius: 18px; border: 1px solid rgba(255,255,255,0.1);">
+      <small style="color: var(--neon-gold); font-weight: 800; font-size: 0.75rem;">BEST SELLER</small>
+      <h4 style="color: #FFF; font-size: 1.15rem; font-weight: 800; margin: 4px 0 8px;">Il Diario del Club: 90 Giorni</h4>
+      <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">Il diario operativo per consolidare la sobrietà nei primi tre mesi del percorso.</p>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="color: var(--neon-gold); font-weight: 800; font-size: 0.95rem;">Da 14,90 €</span>
+        <a href="offers.php" class="btn primary small" style="text-decoration: none; font-size: 0.8rem; border-radius: 8px;">Vedi i 3 Tier</a>
+      </div>
+    </div>
+
+    <div class="card card-neon-cyan p-4" style="background: rgba(12,16,26,0.92); border-radius: 18px; border: 1px solid rgba(255,255,255,0.1);">
+      <small style="color: var(--neon-cyan); font-weight: 800; font-size: 0.75rem;">FAMIGLIA & DIALOGO</small>
+      <h4 style="color: #FFF; font-size: 1.15rem; font-weight: 800; margin: 4px 0 8px;">Quaderno della Famiglia</h4>
+      <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">Lo strumento per ricostruire il patto di fiducia e dialogo a casa.</p>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="color: var(--neon-cyan); font-weight: 800; font-size: 0.95rem;">Da 14,90 €</span>
+        <a href="offers.php" class="btn primary small" style="text-decoration: none; font-size: 0.8rem; border-radius: 8px;">Vedi i 3 Tier</a>
+      </div>
+    </div>
+
+    <div class="card card-neon-orange p-4" style="background: rgba(12,16,26,0.92); border-radius: 18px; border: 1px solid rgba(255,255,255,0.1);">
+      <small style="color: var(--neon-orange); font-weight: 800; font-size: 0.75rem;">CRESCITA ESPONENZIALE</small>
+      <h4 style="color: #FFF; font-size: 1.15rem; font-weight: 800; margin: 4px 0 8px;">Diario di Crescita Esponenziale</h4>
+      <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">386 pagine per 365 giorni di potenziamento personale e sovranità mentale.</p>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="color: var(--neon-orange); font-weight: 800; font-size: 0.95rem;">Da 19,90 €</span>
+        <a href="offers.php" class="btn primary small" style="text-decoration: none; font-size: 0.8rem; border-radius: 8px;">Vedi i 3 Tier</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <a href="offers.php" class="btn primary" style="padding: 12px 32px; border-radius: 14px; font-weight: 800; text-decoration: none;">
+      <?=dx_icon('book-open', '', 16)?> Esplora Tutti i 6 Libri & Scegli il tuo Formato
+    </a>
+  </div>
+</section>
+
+<!-- ============================================================== -->
 <!-- QUICK NAVIGATION TILES (PURE GOLD/BLACK/WHITE SVG)             -->
 <!-- ============================================================== -->
 <section class="bubble-grid my-4">
@@ -421,9 +531,13 @@ $newsCards = AcatNewsService::getLatestCards(10);
     <span style="color: #D4AF37;"><?=dx_icon('compass', '', 32)?></span>
     <span style="font-weight: 800; margin-top: 10px; font-size: 0.95rem;"><?=h(tr('club.find','Trova Club'))?></span>
   </a>
-  <a class="bubble lux-metallic-card" href="help.php" style="color: #FFFFFF; border: 1px solid rgba(212,175,55,0.3);">
-    <span style="color: #D4AF37;"><?=dx_icon('shield', '', 32)?></span>
-    <span style="font-weight: 800; margin-top: 10px; font-size: 0.95rem;">Aiuto Immediato</span>
+  <a class="bubble lux-metallic-card" href="viaggi-esperienziali.php" style="color: #FFFFFF; border: 1px solid rgba(0,212,255,0.4);">
+    <span style="color: var(--neon-cyan);"><?=dx_icon('compass', '', 32)?></span>
+    <span style="font-weight: 800; margin-top: 10px; font-size: 0.95rem;">Viaggi BEWAY</span>
+  </a>
+  <a class="bubble lux-metallic-card" href="offers.php" style="color: #FFFFFF; border: 1px solid rgba(212,175,55,0.3);">
+    <span style="color: #D4AF37;"><?=dx_icon('book-open', '', 32)?></span>
+    <span style="font-weight: 800; margin-top: 10px; font-size: 0.95rem;">Libri KDP (3 Tier)</span>
   </a>
   <a class="bubble lux-metallic-card" href="metodo.php" style="color: #FFFFFF; border: 1px solid rgba(212,175,55,0.3);">
     <span style="color: #D4AF37;"><?=dx_icon('feather', '', 32)?></span>
@@ -433,13 +547,9 @@ $newsCards = AcatNewsService::getLatestCards(10);
     <span style="color: #D4AF37;"><?=dx_icon('calendar', '', 32)?></span>
     <span style="font-weight: 800; margin-top: 10px; font-size: 0.95rem;">Eventi & Moduli SAT</span>
   </a>
-  <a class="bubble lux-metallic-card" href="academy-public.php" style="color: #FFFFFF; border: 1px solid rgba(212,175,55,0.3);">
-    <span style="color: #D4AF37;"><?=dx_icon('academic', '', 32)?></span>
-    <span style="font-weight: 800; margin-top: 10px; font-size: 0.95rem;">Academy</span>
-  </a>
-  <a class="bubble lux-metallic-card" href="privacy.php" style="color: #FFFFFF; border: 1px solid rgba(212,175,55,0.3);">
-    <span style="color: #D4AF37;"><?=dx_icon('lock', '', 32)?></span>
-    <span style="font-weight: 800; margin-top: 10px; font-size: 0.95rem;">Privacy & Sovranità</span>
+  <a class="bubble lux-metallic-card" href="cart.php" style="color: #FFFFFF; border: 1px solid rgba(0,255,100,0.3);">
+    <span style="color: var(--neon-green);"><?=dx_icon('shopping-cart', '', 32)?></span>
+    <span style="font-weight: 800; margin-top: 10px; font-size: 0.95rem;">Carrello Acquisti</span>
   </a>
 </section>
 

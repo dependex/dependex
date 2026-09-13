@@ -13,15 +13,22 @@ if (!$event) {
     $event = $st->fetch(PDO::FETCH_ASSOC);
 }
 
+// Conteggi con auto-riparazione schema
 $sic = $event['sic_id'] ?? 'SIC-EVT-ACAT-BP-2026-COMM';
-$countStmt = db()->prepare("
-    SELECT (
-        (SELECT COUNT(*) FROM event_registrations er WHERE er.event_sic_id = ? AND er.status IN ('REGISTERED', 'CHECKED_IN')) +
-        (SELECT COALESCE(SUM(num_seats), 0) FROM event_bookings eb WHERE eb.event_sic_id = ? AND eb.status = 'CONFIRMED')
-    ) as total_booked
-");
-$countStmt->execute([$sic, $sic]);
-$totalBooked = (int)$countStmt->fetchColumn();
+$totalBooked = 0;
+try {
+    ensure_core_schema(db());
+    $countStmt = db()->prepare("
+        SELECT (
+            (SELECT COUNT(*) FROM event_registrations er WHERE er.event_sic_id = ? AND er.status IN ('REGISTERED', 'CHECKED_IN')) +
+            (SELECT COALESCE(SUM(num_seats), 0) FROM event_bookings eb WHERE eb.event_sic_id = ? AND eb.status = 'CONFIRMED')
+        ) as total_booked
+    ");
+    $countStmt->execute([$sic, $sic]);
+    $totalBooked = (int)$countStmt->fetchColumn();
+} catch (Throwable $e) {
+    $totalBooked = 0;
+}
 
 $capacity = (int)($event['capacity'] ?? 30);
 $seatsRemaining = max(0, $capacity - $totalBooked);

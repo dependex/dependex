@@ -159,22 +159,32 @@ try {
             $capacity = (int)($event['capacity'] ?? 30);
             $price = (float)($event['price_eur'] ?? 10.00);
 
-            // Conteggio iscritti confermati
-            $countStmt = $pdo->prepare("
-                SELECT (
-                    (SELECT COUNT(*) FROM event_registrations er WHERE er.event_sic_id = ? AND er.status IN ('REGISTERED', 'CHECKED_IN')) +
-                    (SELECT COALESCE(SUM(num_seats), 0) FROM event_bookings eb WHERE eb.event_sic_id = ? AND eb.status = 'CONFIRMED')
-                ) as total_booked
-            ");
-            $countStmt->execute([$eventSic, $eventSic]);
-            $currentBooked = (int)$countStmt->fetchColumn();
+            // Conteggio iscritti confermati con auto-riparazione schema
+            $currentBooked = 0;
+            $waitlistPosition = 0;
+            ensure_core_schema($pdo);
+            try {
+                $countStmt = $pdo->prepare("
+                    SELECT (
+                        (SELECT COUNT(*) FROM event_registrations er WHERE er.event_sic_id = ? AND er.status IN ('REGISTERED', 'CHECKED_IN')) +
+                        (SELECT COALESCE(SUM(num_seats), 0) FROM event_bookings eb WHERE eb.event_sic_id = ? AND eb.status = 'CONFIRMED')
+                    ) as total_booked
+                ");
+                $countStmt->execute([$eventSic, $eventSic]);
+                $currentBooked = (int)$countStmt->fetchColumn();
+            } catch (Throwable $e) {
+                $currentBooked = 0;
+            }
 
             $isWaitlist = ($capacity > 0 && $currentBooked >= $capacity);
-            $waitlistPosition = 0;
             if ($isWaitlist) {
-                $wlStmt = $pdo->prepare("SELECT COUNT(*) FROM event_bookings WHERE event_sic_id = ? AND status = 'WAITLIST'");
-                $wlStmt->execute([$eventSic]);
-                $waitlistPosition = (int)$wlStmt->fetchColumn() + 1;
+                try {
+                    $wlStmt = $pdo->prepare("SELECT COUNT(*) FROM event_bookings WHERE event_sic_id = ? AND status = 'WAITLIST'");
+                    $wlStmt->execute([$eventSic]);
+                    $waitlistPosition = (int)$wlStmt->fetchColumn() + 1;
+                } catch (Throwable $e) {
+                    $waitlistPosition = 1;
+                }
             }
 
             $bookingSic = sic_id($isWaitlist ? 'WAIT' : 'BOOK');

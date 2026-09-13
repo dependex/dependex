@@ -32,20 +32,28 @@ if (!$e) {
     $sic = $e['sic_id'];
 }
 
-// Conteggio iscritti confermati
-$countStmt = $pdo->prepare("
-    SELECT (
-        (SELECT COUNT(*) FROM event_registrations er WHERE er.event_sic_id = ? AND er.status IN ('REGISTERED', 'CHECKED_IN')) +
-        (SELECT COALESCE(SUM(num_seats), 0) FROM event_bookings eb WHERE eb.event_sic_id = ? AND eb.status = 'CONFIRMED')
-    ) as total_booked
-");
-$countStmt->execute([$sic, $sic]);
-$totalBooked = (int)$countStmt->fetchColumn();
+// Conteggio iscritti confermati con auto-riparazione schema
+$totalBooked = 0;
+$waitlistCount = 0;
+try {
+    ensure_core_schema($pdo);
+    $countStmt = $pdo->prepare("
+        SELECT (
+            (SELECT COUNT(*) FROM event_registrations er WHERE er.event_sic_id = ? AND er.status IN ('REGISTERED', 'CHECKED_IN')) +
+            (SELECT COALESCE(SUM(num_seats), 0) FROM event_bookings eb WHERE eb.event_sic_id = ? AND eb.status = 'CONFIRMED')
+        ) as total_booked
+    ");
+    $countStmt->execute([$sic, $sic]);
+    $totalBooked = (int)$countStmt->fetchColumn();
 
-// Conteggio lista d'attesa
-$wlCountStmt = $pdo->prepare("SELECT COUNT(*) FROM event_bookings WHERE event_sic_id = ? AND status = 'WAITLIST'");
-$wlCountStmt->execute([$sic]);
-$waitlistCount = (int)$wlCountStmt->fetchColumn();
+    // Conteggio lista d'attesa
+    $wlCountStmt = $pdo->prepare("SELECT COUNT(*) FROM event_bookings WHERE event_sic_id = ? AND status = 'WAITLIST'");
+    $wlCountStmt->execute([$sic]);
+    $waitlistCount = (int)$wlCountStmt->fetchColumn();
+} catch (Throwable $e) {
+    $totalBooked = 0;
+    $waitlistCount = 0;
+}
 
 $capacity = (int)($e['capacity'] ?? 30);
 $seatsRemaining = max(0, $capacity - $totalBooked);

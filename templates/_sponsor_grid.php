@@ -127,10 +127,10 @@ $rainbowPalette = ['#ff3344', '#ff7700', '#ffd700', '#00ff77', '#00d4ff', '#3a55
         <!-- IMMAGINE BRAND -->
         <div style="width: 100%; aspect-ratio: 16/9; background: #030712; border-bottom: 1px solid rgba(255,255,255,0.08); overflow: hidden; position: relative;">
           <a href="<?=htmlspecialchars($sp['url'], ENT_QUOTES, 'UTF-8')?>" target="_blank" rel="noopener" style="display: block; width: 100%; height: 100%;">
-            <img src="<?=htmlspecialchars($sp['img'], ENT_QUOTES, 'UTF-8')?>?v=20260913v5" 
+            <img src="<?=htmlspecialchars($sp['img'], ENT_QUOTES, 'UTF-8')?>?v=20260913v9" 
                  alt="<?=htmlspecialchars($sp['name'], ENT_QUOTES, 'UTF-8')?>" 
-                 width="1200" 
-                 height="675"
+                 width="1376" 
+                 height="768"
                  style="width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; display: block; transition: transform 0.3s ease;">
           </a>
         </div>

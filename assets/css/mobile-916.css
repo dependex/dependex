@@ -140,6 +140,31 @@ img, svg, video, canvas {
   box-shadow: 0 8px 30px rgba(212, 175, 55, 0.18), 0 0 15px rgba(212, 175, 55, 0.1) !important;
 }
 
+/* FORMATTAZIONE TESTO GIUSTIFICATO DENTRO CARDS E TABELLE */
+.m-card p,
+.m-card li,
+.m-card .m-card-desc,
+.m-card .m-schedule-desc,
+.m-card article p,
+.card p,
+.card li,
+.card-luxury p,
+.card-luxury li,
+article p,
+table td,
+table th,
+.table td,
+.table th,
+.data-table td,
+.data-table th,
+.m-schedule-desc {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
 /* Poster locandina ottimizzato */
 .m-poster-box {
   width: 100%;

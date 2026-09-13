@@ -217,6 +217,21 @@ require '_header.php';
     box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7), 0 0 28px rgba(255, 215, 0, 0.14) !important;
   }
 
+  /* TESTO GIUSTIFICATO DENTRO A CARDS E TABELLE */
+  .event-cosmic-landing .m-card p,
+  .event-cosmic-landing .m-card li,
+  .event-cosmic-landing .m-card .m-schedule-desc,
+  .event-cosmic-landing .m-card article p,
+  .event-cosmic-landing .m-schedule-desc,
+  .event-cosmic-landing table td,
+  .event-cosmic-landing table th {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
+
   /* GERARCHIA TIPOGRAFICA AD ALTISSIMO CONTRASTO (ZERO BIANCO SU BIANCO) */
   .event-cosmic-landing h1,
   .event-cosmic-landing h2,

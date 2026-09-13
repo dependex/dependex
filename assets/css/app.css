@@ -356,3 +356,36 @@ body.is-offline .offline-pill{display:flex}
 @media(max-width:1023px){
   .desktop-nav{display:none!important}
 }
+
+/* ============================================================== */
+/* TESTO GIUSTIFICATO GLOBALE: CARDS & TABELLE                    */
+/* ============================================================== */
+.card p,
+.card li,
+.card-body,
+.card-body p,
+.card-desc,
+.m-card p,
+.m-card li,
+.m-card article p,
+.m-schedule-desc,
+.branch-card p,
+.feature-card p,
+.product-card p,
+.tier-card p,
+.news-card p,
+.sponsor-card p,
+article p,
+table,
+table td,
+table th,
+.table td,
+.table th,
+.data-table td,
+.data-table th {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}

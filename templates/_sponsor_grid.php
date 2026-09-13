@@ -148,7 +148,7 @@ $rainbowPalette = ['#ff3344', '#ff7700', '#ffd700', '#00ff77', '#00d4ff', '#3a55
               </span>
             </div>
 
-            <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0; line-height: 1.45;">
+            <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0; line-height: 1.45; text-align: justify; text-justify: inter-word; hyphens: auto;">
               <?=htmlspecialchars($sp['desc'], ENT_QUOTES, 'UTF-8')?>
             </p>
           </div>
@@ -165,7 +165,7 @@ $rainbowPalette = ['#ff3344', '#ff7700', '#ffd700', '#00ff77', '#00d4ff', '#3a55
     <?php endforeach; ?>
   </div>
 
-  <div style="margin-top: 18px; padding: 12px 16px; background: rgba(212,175,55,0.08); border-radius: 10px; border: 1px dashed rgba(212,175,55,0.35); text-align: center; font-size: 0.78rem; color: #e2e8f0; line-height: 1.45;">
+  <div style="margin-top: 18px; padding: 12px 16px; background: rgba(212,175,55,0.08); border-radius: 10px; border: 1px dashed rgba(212,175,55,0.35); text-align: justify; text-justify: inter-word; hyphens: auto; font-size: 0.78rem; color: #e2e8f0; line-height: 1.45;">
     <?=dx_icon('shield-check', '', 14)?> <b>Garanzia di Sostegno Ufficiale:</b> la quota simbolica di 10€ copre interamente il pranzo comunitario e il materiale didattico grazie al supporto della rete.
   </div>
 

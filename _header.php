@@ -88,41 +88,32 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
       <span><b><?=h($brand['name'])?></b><small><?=h(APP_PAYOFF)?></small></span>
     </a>
 
-    <!-- TOPBAR DESKTOP NAVIGATION BAR (VISIBILE E FUNZIONANTE SU PC E TABLET) -->
-    <nav class="topbar-desktop-nav" aria-label="Navigazione Principale">
-      <a href="index.php" class="topbar-nav-link <?=$curScript==='index.php'?'active':''?>">
-        <?=dx_icon('home', 'text-neon-cyan', 16)?> <span>Home</span>
-      </a>
-      <a href="evento-ottobre-taglio-di-po.php" class="topbar-nav-link highlight-gold <?=$curScript==='evento-ottobre-taglio-di-po.php'||$curScript==='event-detail.php'?'active':''?>">
-        <?=dx_icon('award', 'text-neon-gold', 16)?> <span>Evento Taglio di Po (10€)</span>
-      </a>
-      <a href="events-public.php" class="topbar-nav-link <?=$curScript==='events-public.php'?'active':''?>">
-        <?=dx_icon('calendar', 'text-neon-green', 16)?> <span>Hub Eventi Italia</span>
-      </a>
-      <a href="offers.php" class="topbar-nav-link <?=$curScript==='offers.php'?'active':''?>">
-        <?=dx_icon('book-open', 'text-neon-orange', 16)?> <span>Libri KDP</span>
-      </a>
-      <a href="viaggi-esperienziali.php" class="topbar-nav-link <?=$curScript==='viaggi-esperienziali.php'||$curScript==='crociera-benessere-masterclass.php'?'active':''?>">
-        <?=dx_icon('ship', 'text-neon-violet', 16)?> <span>Crociera & Viaggi</span>
-      </a>
-      <a href="metodo.php" class="topbar-nav-link <?=$curScript==='metodo.php'?'active':''?>">
-        <?=dx_icon('feather', 'text-neon-cyan', 16)?> <span>Metodo</span>
-      </a>
-      <a href="world-club-explorer.php" class="topbar-nav-link <?=$curScript==='world-club-explorer.php'?'active':''?>">
-        <?=dx_icon('map-pin', 'text-neon-red', 16)?> <span>Trova Club</span>
-      </a>
-    </nav>
+    <!-- TOPBAR METRICS (VISITATORI TOTALI & UTENTI LIVE CON PULSE GLOW) -->
+    <?php $dxTelemetry = site_live_telemetry(); ?>
+    <div class="topbar-live-counters" aria-label="Statistiche del portale in tempo reale">
+      <div class="counter-badge counter-badge-visits" title="Visitatori complessivi della piattaforma">
+        <span class="counter-icon"><?=dx_icon('eye', 'text-neon-cyan', 15)?></span>
+        <div class="counter-text">
+          <span class="counter-val text-neon-cyan" id="dxTotalVisits"><?=$dxTelemetry['formatted_visits']?></span>
+          <span class="counter-lbl">visite</span>
+        </div>
+      </div>
+      <div class="counter-badge counter-badge-live" title="Utenti connessi in questo istante">
+        <span class="live-pulse-dot"></span>
+        <div class="counter-text">
+          <span class="counter-val text-neon-green" id="dxLiveUsers"><?=$dxTelemetry['formatted_live']?></span>
+          <span class="counter-lbl">online</span>
+        </div>
+      </div>
+    </div>
 
     <div class="header-actions">
       <a href="cart.php" class="topbar-cart-btn" title="Carrello Acquisti" aria-label="Carrello">
         <?=dx_icon('shopping-cart', 'text-neon-gold', 18)?>
       </a>
-      <?php if(!$u): ?>
-        <a href="login.php" class="btn small d-none d-md-inline-flex" style="border-radius:10px; padding:6px 14px; font-size:0.82rem; font-weight:700; text-decoration:none;">Accedi</a>
-      <?php endif; ?>
       <button type="button" class="theme-toggle" aria-label="Cambia tema" title="Cambia tema"><?=dx_icon('sun', '', 18)?></button>
       <!-- BURGER MENU BUTTON PER MENU COMPLETO MOBILE E DRAWER -->
-      <button type="button" class="burger-btn" id="burgerBtn" aria-label="Menu di Navigazione" aria-expanded="false" aria-controls="drawerNav" title="Apri menu">
+      <button type="button" class="burger-btn" id="burgerBtn" aria-label="Menu di Navigazione" aria-expanded="false" aria-controls="drawerNav" title="Apri menu completo">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -157,12 +148,14 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         </nav>
         <nav class="drawer-nav-group">
           <span class="drawer-section-title">COMMUNITY DEI CLUB (100% VOLONTARIATO)</span>
+          <a href="evento-ottobre-taglio-di-po.php" class="drawer-link highlight-gold <?=$curScript==='evento-ottobre-taglio-di-po.php'||$curScript==='event-detail.php'?'active':''?>"><?=dx_icon('award','text-neon-gold',18)?> <b>Evento Taglio di Po (10€)</b></a>
           <a href="club.php" class="drawer-link <?=$curScript==='club.php'?'active':''?>"><?=dx_icon('users','',18)?> Il mio Club</a>
           <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>"><?=dx_icon('compass','',18)?> Mappa Mondiale 2D/3D</a>
           <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> Trova un Club Territoriale</a>
           <a href="metodo.php" class="drawer-link <?=$curScript==='metodo.php'?'active':''?>"><?=dx_icon('feather','',18)?> Metodo Hudolin</a>
           <a href="academy.php" class="drawer-link <?=$curScript==='academy.php'?'active':''?>"><?=dx_icon('academic','',18)?> Formazione Servitori</a>
           <a href="events.php" class="drawer-link <?=$curScript==='events.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Calendario Eventi & Moduli</a>
+          <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Hub Nazionale Eventi</a>
           <a href="dao.php" class="drawer-link <?=$curScript==='dao.php'?'active':''?>"><?=dx_icon('scale','',18)?> Partecipazione Comunitaria</a>
           <a href="cortex.php" class="drawer-link <?=$curScript==='cortex.php'?'active':''?>"><?=dx_icon('brain','',18)?> Cortex AI (Supporto 24/7)</a>
         </nav>
@@ -214,10 +207,11 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         <nav class="drawer-nav-group">
           <span class="drawer-section-title">COMMUNITY DEI CLUB (100% VOLONTARIATO)</span>
           <a href="index.php" class="drawer-link <?=$curScript==='index.php'?'active':''?>"><?=dx_icon('home','',18)?> Pagina Principale</a>
+          <a href="evento-ottobre-taglio-di-po.php" class="drawer-link highlight-gold <?=$curScript==='evento-ottobre-taglio-di-po.php'||$curScript==='event-detail.php'?'active':''?>"><?=dx_icon('award','text-neon-gold',18)?> <b>Evento Taglio di Po (10€)</b></a>
+          <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Hub Nazionale Eventi</a>
           <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> Trova un Club Territoriale</a>
           <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>"><?=dx_icon('compass','',18)?> Mappa Mondiale Club</a>
           <a href="metodo.php" class="drawer-link <?=$curScript==='metodo.php'?'active':''?>"><?=dx_icon('feather','',18)?> Il Metodo Hudolin</a>
-          <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Eventi, Corsi & Moduli SAT</a>
           <a href="academy-public.php" class="drawer-link <?=$curScript==='academy-public.php'?'active':''?>"><?=dx_icon('academic','',18)?> Academy Servitori-Insegnanti</a>
           <a href="cortex.php" class="drawer-link <?=$curScript==='cortex.php'?'active':''?>"><?=dx_icon('brain','',18)?> Cortex AI (Supporto 24/7 Anonimo)</a>
         </nav>

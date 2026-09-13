@@ -35,18 +35,20 @@ assertCheck("index.php include il componente iscrizione Taglio di Po", strpos($h
 assertCheck("index.php include il footer", strpos($homeHtml, 'site-footer') !== false);
 assertCheck("index.php include lo script assets/js/app.js", strpos($homeHtml, 'assets/js/app.js') !== false);
 
-// 2. Verifica Topbar Desktop Navigation in _header.php
-echo "\n2. Verifica Menu di Navigazione Desktop & Mobile:\n";
-assertCheck("Menu contiene classe topbar-desktop-nav", strpos($homeHtml, 'topbar-desktop-nav') !== false);
-assertCheck("Menu desktop contiene link a index.php", strpos($homeHtml, 'href="index.php"') !== false);
-assertCheck("Menu desktop contiene link a evento-ottobre-taglio-di-po.php", strpos($homeHtml, 'href="evento-ottobre-taglio-di-po.php"') !== false);
-assertCheck("Menu desktop contiene link a events-public.php", strpos($homeHtml, 'href="events-public.php"') !== false);
-assertCheck("Menu desktop contiene link a offers.php", strpos($homeHtml, 'href="offers.php"') !== false);
-assertCheck("Menu desktop contiene link a viaggi-esperienziali.php", strpos($homeHtml, 'href="viaggi-esperienziali.php"') !== false);
-assertCheck("Menu desktop contiene link a metodo.php", strpos($homeHtml, 'href="metodo.php"') !== false);
-assertCheck("Menu desktop contiene link a world-club-explorer.php", strpos($homeHtml, 'href="world-club-explorer.php"') !== false);
-assertCheck("Menu contiene pulsante Carrello topbar", strpos($homeHtml, 'topbar-cart-btn') !== false);
-assertCheck("Menu conserva burger button per drawer mobile (#burgerBtn)", strpos($homeHtml, 'id="burgerBtn"') !== false);
+// 2. Verifica Topbar Clean (Solo Contatori Visitatori & Live Users) e Menu Burger
+echo "\n2. Verifica Topbar Clean (Solo Contatori) & Menu Burger:\n";
+assertCheck("Topbar contiene contatore visitatori totali e utenti live", strpos($homeHtml, 'topbar-live-counters') !== false);
+assertCheck("Topbar contiene badge visite", strpos($homeHtml, 'counter-badge-visits') !== false);
+assertCheck("Topbar contiene badge online con pulse", strpos($homeHtml, 'counter-badge-live') !== false);
+assertCheck("Topbar NON contiene voci di menu orizzontali desktop", strpos($homeHtml, 'topbar-desktop-nav') === false);
+assertCheck("Menu conserva pulsante Carrello topbar", strpos($homeHtml, 'topbar-cart-btn') !== false);
+assertCheck("Menu conserva burger button per drawer (#burgerBtn)", strpos($homeHtml, 'id="burgerBtn"') !== false);
+assertCheck("Drawer menu contiene link a evento Taglio di Po", strpos($homeHtml, 'evento-ottobre-taglio-di-po.php') !== false);
+assertCheck("Drawer menu contiene link a Hub Nazionale Eventi", strpos($homeHtml, 'events-public.php') !== false);
+assertCheck("Drawer menu contiene link a Libri KDP offers.php", strpos($homeHtml, 'offers.php') !== false);
+assertCheck("Drawer menu contiene link a viaggi-esperienziali.php", strpos($homeHtml, 'viaggi-esperienziali.php') !== false);
+assertCheck("Drawer menu contiene link a metodo.php", strpos($homeHtml, 'metodo.php') !== false);
+assertCheck("Drawer menu contiene link a world-club-explorer.php", strpos($homeHtml, 'world-club-explorer.php') !== false);
 
 // 3. Verifica Zero Emoji nelle pagine pubbliche
 echo "\n3. Verifica Rigorosa Zero Emoji (Solo Icone Vettoriali SVG):\n";

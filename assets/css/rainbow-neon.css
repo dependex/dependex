@@ -848,58 +848,91 @@ p, li, span, label {
   gap: 16px !important;
 }
 
-.topbar-desktop-nav {
-  display: none;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-@media (min-width: 992px) {
-  .topbar-desktop-nav {
-    display: flex;
-  }
-}
-
-.topbar-nav-link {
+/* ==========================================================================
+   TOPBAR LIVE TELEMETRY COUNTERS (VISITE TOTALI & UTENTI ONLINE)
+   ========================================================================== */
+.topbar-live-counters {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
-  border-radius: 10px;
-  font-size: 0.84rem;
+  gap: 12px;
+  background: rgba(14, 18, 28, 0.75);
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.counter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.counter-badge-visits {
+  padding-right: 10px;
+  border-right: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.counter-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter-text {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.counter-val {
+  font-size: 0.92rem;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+}
+
+.counter-lbl {
+  font-size: 0.70rem;
   font-weight: 650;
-  color: #e2e8f0 !important;
-  text-decoration: none !important;
-  transition: all 0.2s ease;
-  border: 1px solid transparent;
-  white-space: nowrap;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: Inter, system-ui, sans-serif;
 }
 
-.topbar-nav-link:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff !important;
-  border-color: rgba(0, 212, 255, 0.4);
-  box-shadow: 0 0 12px rgba(0, 212, 255, 0.25);
+.live-pulse-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #00ff77;
+  box-shadow: 0 0 10px #00ff77, 0 0 18px #00ff77;
+  display: inline-block;
+  animation: live-pulse 1.8s infinite ease-in-out;
 }
 
-.topbar-nav-link.active {
-  background: rgba(0, 212, 255, 0.15);
-  border-color: var(--neon-cyan);
-  color: #ffffff !important;
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.35);
+@keyframes live-pulse {
+  0% { transform: scale(0.92); opacity: 0.85; box-shadow: 0 0 6px #00ff77; }
+  50% { transform: scale(1.25); opacity: 1; box-shadow: 0 0 16px #00ff77, 0 0 24px rgba(0,255,119,0.5); }
+  100% { transform: scale(0.92); opacity: 0.85; box-shadow: 0 0 6px #00ff77; }
 }
 
-.topbar-nav-link.highlight-gold {
-  border-color: rgba(212, 175, 55, 0.45);
-  background: rgba(212, 175, 55, 0.12);
-  color: #fef08a !important;
-}
-
-.topbar-nav-link.highlight-gold:hover {
-  border-color: var(--neon-gold);
-  background: rgba(212, 175, 55, 0.22);
-  box-shadow: 0 0 16px rgba(255, 215, 0, 0.4);
+@media (max-width: 540px) {
+  .topbar-live-counters {
+    gap: 8px;
+    padding: 4px 10px;
+  }
+  .counter-badge-visits {
+    display: none; /* Su schermi piccolissimi mostra solo gli utenti LIVE per zero sbordature */
+  }
+  .counter-val {
+    font-size: 0.82rem;
+  }
+  .counter-lbl {
+    font-size: 0.65rem;
+  }
 }
 
 .topbar-cart-btn {

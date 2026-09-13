@@ -369,37 +369,25 @@ require '_header.php';
         </div>
       </section>
 
-      <!-- DOCENTE & FORMATORE -->
-      <section class="m-card order-m-5">
-        <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px;">
-          <div style="width: 52px; height: 52px; border-radius: 14px; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4); display: grid; place-items: center; color: #d4af37;">
-            <?=dx_icon('award', '', 26)?>
+      <!-- GARANZIE & PUNTI CHIAVE RAPIDI (SOTTO LA LOCANDINA) -->
+      <section class="m-card order-m-3" style="background: rgba(14, 18, 28, 0.94); border-left: 3px solid #d4af37;">
+        <div style="font-size: 0.76rem; color: #d4af37; font-weight: 800; text-transform: uppercase; margin-bottom: 8px;">
+          <?=dx_icon('shield-check', '', 14)?> Informazioni Chiave in Breve
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.82rem; color: #cbd5e1;">
+          <div style="display: flex; gap: 8px; align-items: flex-start;">
+            <span style="color: #10b981; font-weight: 900;">•</span>
+            <div><b>Numero Chiuso (30 Posti Max):</b> per garantire l'efficacia del lavoro esperienziale e delle simulazioni in piccoli gruppi.</div>
           </div>
-          <div>
-            <div style="font-size: 0.72rem; color: #d4af37; font-weight: 800; text-transform: uppercase;">Docente e Formatore</div>
-            <h3 style="font-size: 1.05rem; color: #ffffff; margin: 2px 0 0; font-weight: 850;">Dott. Adelmo Di Salvatore</h3>
+          <div style="display: flex; gap: 8px; align-items: flex-start;">
+            <span style="color: #10b981; font-weight: 900;">•</span>
+            <div><b>Quota Simbolica 10€:</b> include l'intero materiale didattico e il pranzo comunitario del sabato preparato dai volontari.</div>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: flex-start;">
+            <span style="color: #10b981; font-weight: 900;">•</span>
+            <div><b>Attestato Ufficiale:</b> valido nel circuito dei Club Alcologici Territoriali e per la formazione personale e professionale.</div>
           </div>
         </div>
-        <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.5; margin: 0 0 10px;">
-          Psichiatra e Psicoterapeuta, formatore autorizzato nell'Approccio Centrato sulla Persona (Carl Rogers), Approccio Motivazionale (Miller e Rollnick), Programmazione NeuroLinguistica (Bandler e Grinder), Approccio Ecologico-Sociale (Vladimir Hudolin), con esperienza ultratrentennale come Servitore-Insegnante nei Club Alcologici Territoriali e di Ecologia Familiare e Sociale.
-        </p>
-      </section>
-
-      <!-- SEDE & LOGISTICA -->
-      <section class="m-card order-m-7">
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-          <span style="color: #d4af37;"><?=dx_icon('map-pin', '', 18)?></span>
-          <h2 style="font-size: 1.05rem; font-weight: 850; color: #ffffff; margin: 0;">Sede & Logistica</h2>
-        </div>
-        <div style="font-size: 0.86rem; color: #ffffff; font-weight: 750; margin-bottom: 4px;">
-          Oratorio San Francesco d'Assisi
-        </div>
-        <div style="font-size: 0.82rem; color: #cbd5e1; margin-bottom: 12px;">
-          Vicolo San Francesco 1, Taglio di Po (RO)
-        </div>
-        <a href="https://maps.google.com/?q=Oratorio+San+Francesco+d'Assisi+Taglio+di+Po" target="_blank" rel="noopener" class="m-btn m-btn-outline" style="min-height: 42px; font-size: 0.84rem;">
-          <?=dx_icon('map-pin', '', 14)?> Apri Navigatore Google Maps
-        </a>
       </section>
 
     </div> <!-- /.split-col-left -->
@@ -666,156 +654,256 @@ require '_header.php';
     </div>
   </section>
 
-  <!-- 5 RISULTATI CONCRETI -->
-  <section class="m-card">
-    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-      <span style="color: #d4af37;"><?=dx_icon('award', '', 18)?></span>
-      <h2 style="font-size: 1.05rem; font-weight: 850; color: #ffffff; margin: 0;">Cosa Saprai Fare dal Lunedì</h2>
-    </div>
-
-    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.86rem; color: #cbd5e1;">
-      <div style="display: flex; gap: 10px; align-items: flex-start;">
-        <span style="color: #10b981; font-weight: 900;">1.</span>
-        <div><b>Comunicare senza litigare:</b> disinnescare la rabbia, esprimere i propri sentimenti in modo chiaro e congruente senza aggredire né farsi calpestare.</div>
-      </div>
-      <div style="display: flex; gap: 10px; align-items: flex-start;">
-        <span style="color: #10b981; font-weight: 900;">2.</span>
-        <div><b>Non farti caricare dai problemi altrui:</b> riconoscere le trappole del potere, proteggere i propri confini emotivi e superare il senso di colpa paralizzante.</div>
-      </div>
-      <div style="display: flex; gap: 10px; align-items: flex-start;">
-        <span style="color: #10b981; font-weight: 900;">3.</span>
-        <div><b>Ascolto attivo in situazioni conflittuali:</b> riconoscere le fragilità altrui ed eliminare etichette, valutazioni affrettate e giudizi fuorvianti.</div>
-      </div>
-      <div style="display: flex; gap: 10px; align-items: flex-start;">
-        <span style="color: #10b981; font-weight: 900;">4.</span>
-        <div><b>Risoluzione democratica dei problemi:</b> applicare la scala dei bisogni e trovare soluzioni condivise "Io vinco, Tu vinci" sia in famiglia che nel Club.</div>
-      </div>
-      <div style="display: flex; gap: 10px; align-items: flex-start;">
-        <span style="color: #10b981; font-weight: 900;">5.</span>
-        <div><b>Attestato Ufficiale di Partecipazione:</b> rilasciato a chi partecipa per intero al corso, riconosciuto nell'Approccio Ecologico-Sociale di V. Hudolin.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROGRAMMA DETTAGLIATO ORA PER ORA -->
-  <section class="m-card">
-    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-      <span style="color: #d4af37;"><?=dx_icon('clock', '', 18)?></span>
-      <h2 style="font-size: 1.05rem; font-weight: 850; color: #ffffff; margin: 0;">Programma Orario Completo</h2>
-    </div>
-
-    <!-- VENERDÌ -->
-    <div class="m-schedule-day">
-      <div class="m-schedule-header">
-        <b style="color: #ffffff; font-size: 0.86rem;">Venerdì 9 Ottobre 2026</b>
-        <span style="color: #d4af37; font-size: 0.78rem; font-weight: 750;">14:30 – 19:00</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">14:30 - 15:00</span>
-        <span class="m-schedule-desc">Iscrizione e saluto delle Autorità</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">15:00 - 15:30</span>
-        <span class="m-schedule-desc">Presentazione del corso e vantaggi di "Le Persone efficaci"</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">15:30 - 16:30</span>
-        <span class="m-schedule-desc">Esperienza: cominciamo a conoscerci</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">16:30 - 16:45</span>
-        <span class="m-schedule-desc">Per CHI io sono qui? Chi è la persona più importante della mia vita?</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">16:45 - 17:00</span>
-        <span class="m-schedule-desc">Motivazioni e attese dei partecipanti</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">17:15 - 18:00</span>
-        <span class="m-schedule-desc">Esperienza: le mie qualità più importanti · Integrazione</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">18:00 - 19:00</span>
-        <span class="m-schedule-desc">Esperienza multisensoriale: come stare subito bene · Compiti a casa</span>
-      </div>
-    </div>
-
-    <!-- SABATO -->
-    <div class="m-schedule-day">
-      <div class="m-schedule-header">
-        <b style="color: #ffffff; font-size: 0.86rem;">Sabato 10 Ottobre 2026</b>
-        <span style="color: #d4af37; font-size: 0.78rem; font-weight: 750;">09:00 – 19:00</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">09:00 - 10:00</span>
-        <span class="m-schedule-desc">I rettangoli del comportamento: teoria e pratica</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">10:00 - 11:00</span>
-        <span class="m-schedule-desc">Riconoscere le fragilità: abilità di ascolto e barriere alla comunicazione</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">11:15 - 12:00</span>
-        <span class="m-schedule-desc">Esperienza di ascolto attivo in coppia e condivisione</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">12:00 - 13:00</span>
-        <span class="m-schedule-desc">Come facilitare la soluzione di un problema</span>
-      </div>
-      <div class="m-schedule-item" style="background: rgba(16,185,129,0.1); border-radius: 8px; padding: 8px;">
-        <span class="m-schedule-time" style="color: #10b981;">13:00 - 14:00</span>
-        <span class="m-schedule-desc"><b style="color: #10b981;">Pausa Pranzo Comunitario</b> (incluso nella quota di 10€)</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">14:00 - 15:00</span>
-        <span class="m-schedule-desc">Esprimere bisogni e sentimenti in modo chiaro · Autorivelazione</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">15:00 - 16:00</span>
-        <span class="m-schedule-desc">Quando non mi piacciono i comportamenti degli altri: come confrontarsi</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">16:15 - 17:15</span>
-        <span class="m-schedule-desc">La resistenza e il cambio di marcia: bisogni e trappole del potere</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">17:15 - 18:00</span>
-        <span class="m-schedule-desc">Esperienza: Io vinco, Tu vinci · Integrazione e compiti a casa</span>
-      </div>
-    </div>
-
-    <!-- DOMENICA -->
-    <div class="m-schedule-day" style="margin-bottom: 0;">
-      <div class="m-schedule-header">
-        <b style="color: #ffffff; font-size: 0.86rem;">Domenica 11 Ottobre 2026</b>
-        <span style="color: #d4af37; font-size: 0.78rem; font-weight: 750;">09:00 – 13:00</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">09:00 - 10:00</span>
-        <span class="m-schedule-desc">Fasi della soluzione democratica dei problemi ed esperienza</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">10:00 - 11:00</span>
-        <span class="m-schedule-desc">La collisione di valori e come affrontarla</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">11:15 - 12:00</span>
-        <span class="m-schedule-desc">Le persone significative: i miei Maestri</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">12:00 - 12:45</span>
-        <span class="m-schedule-desc">Esperienza in plenaria: cosa voglio migliorare? Cosa ho imparato?</span>
-      </div>
-      <div class="m-schedule-item">
-        <span class="m-schedule-time">12:45 - 13:00</span>
-        <span class="m-schedule-desc">Questionario di verifica ante-post, consegna attestati e conclusioni</span>
-      </div>
-    </div>
-  </section>
-
     </div> <!-- /.split-col-right -->
 
-  </div> <!-- /.adaptive-169-split -->
+  </div> <!-- /.adaptive-169-split (FINE DIVISIONE A 2 COLONNE) -->
+
+  <!-- ============================================================== -->
+  <!-- SEZIONI A TUTTA PAGINA (FULL WIDTH WIDESCREEN & MOBILE STACK)  -->
+  <!-- ============================================================== -->
+
+  <!-- 1. I 5 RISULTATI CONCRETI (A TUTTA PAGINA - GRIGLIA A 5 CARDS) -->
+  <section class="m-card" style="margin-top: 24px; border-radius: 20px; padding: 22px 24px; border: 1px solid rgba(16, 185, 129, 0.35); background: rgba(13, 17, 28, 0.96);">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 14px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="color: #10b981;"><?=dx_icon('award', '', 22)?></span>
+        <h2 style="font-size: clamp(1.15rem, 3.5vw, 1.45rem); font-weight: 850; color: #ffffff; margin: 0;">
+          Cosa Saprai Fare dal Lunedì <span style="color: #10b981;">(I 5 Risultati Concreti)</span>
+        </h2>
+      </div>
+      <span style="font-size: 0.74rem; font-weight: 800; color: #d4af37; background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3); padding: 4px 12px; border-radius: 8px;">
+        Competenze Pratiche Immediatamente Spendibili
+      </span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+      <div style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid #10b981; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <span style="font-size: 1.15rem; font-weight: 900; color: #10b981;">#01</span>
+          <h3 style="font-size: 0.95rem; font-weight: 850; color: #ffffff; margin: 6px 0 8px;">Comunicare senza litigare</h3>
+          <p style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.45; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto;">
+            Disinnescare la rabbia, esprimere i propri sentimenti in modo chiaro e congruente senza aggredire né farsi calpestare in famiglia e sul lavoro.
+          </p>
+        </div>
+      </div>
+
+      <div style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid #3b82f6; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <span style="font-size: 1.15rem; font-weight: 900; color: #3b82f6;">#02</span>
+          <h3 style="font-size: 0.95rem; font-weight: 850; color: #ffffff; margin: 6px 0 8px;">Non farsi caricare dai problemi altrui</h3>
+          <p style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.45; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto;">
+            Riconoscere le trappole del potere, proteggere i propri confini emotivi e superare il senso di colpa paralizzante che blocca le relazioni sane.
+          </p>
+        </div>
+      </div>
+
+      <div style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid #8b5cf6; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <span style="font-size: 1.15rem; font-weight: 900; color: #8b5cf6;">#03</span>
+          <h3 style="font-size: 0.95rem; font-weight: 850; color: #ffffff; margin: 6px 0 8px;">Ascolto attivo nei conflitti</h3>
+          <p style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.45; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto;">
+            Riconoscere le fragilità altrui ed eliminare etichette, valutazioni affrettate e giudizi fuorvianti per riaprire canali di dialogo costruttivi.
+          </p>
+        </div>
+      </div>
+
+      <div style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid #f59e0b; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <span style="font-size: 1.15rem; font-weight: 900; color: #f59e0b;">#04</span>
+          <h3 style="font-size: 0.95rem; font-weight: 850; color: #ffffff; margin: 6px 0 8px;">Risoluzione democratica "Io vinco, Tu vinci"</h3>
+          <p style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.45; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto;">
+            Applicare la scala dei bisogni e trovare soluzioni condivise senza vincitori né vinti, sia nei nuclei familiari che nei Club e gruppi di lavoro.
+          </p>
+        </div>
+      </div>
+
+      <div style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid #ec4899; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <span style="font-size: 1.15rem; font-weight: 900; color: #ec4899;">#05</span>
+          <h3 style="font-size: 0.95rem; font-weight: 850; color: #ffffff; margin: 6px 0 8px;">Attestato Ufficiale di Partecipazione</h3>
+          <p style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.45; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto;">
+            Rilasciato a chi partecipa per intero al corso, riconosciuto nell'Approccio Ecologico-Sociale di V. Hudolin e valido per la formazione continua.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PROGRAMMA DETTAGLIATO ORA PER ORA (A TUTTA PAGINA - 3 COLONNE AFFIANCATE SU PC) -->
+  <section class="m-card" style="margin-top: 24px; border-radius: 20px; padding: 22px 24px; border: 1px solid rgba(255, 215, 0, 0.35); background: rgba(13, 17, 28, 0.96);">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 14px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="color: #d4af37;"><?=dx_icon('clock', '', 22)?></span>
+        <h2 style="font-size: clamp(1.15rem, 3.5vw, 1.45rem); font-weight: 850; color: #ffffff; margin: 0;">
+          Programma Orario Completo <span style="color: #d4af37;">(3 Giornate Esperienziali)</span>
+        </h2>
+      </div>
+      <span style="font-size: 0.74rem; font-weight: 800; color: #10b981; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); padding: 4px 12px; border-radius: 8px;">
+        Venerdì 9 – Sabato 10 – Domenica 11 Ottobre 2026
+      </span>
+    </div>
+
+    <!-- GRIGLIA A 3 COLONNE AFFIANCATE SU PC / STACK SU SMARTPHONE -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px;">
+
+      <!-- VENERDÌ 9 OTTOBRE -->
+      <div class="m-schedule-day" style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 14px; margin-bottom: 0;">
+        <div class="m-schedule-header" style="background: rgba(255,255,255,0.06); padding: 10px 12px; border-radius: 8px; margin-bottom: 12px;">
+          <b style="color: #ffffff; font-size: 0.92rem;">Venerdì 9 Ottobre 2026</b>
+          <span style="color: #d4af37; font-size: 0.8rem; font-weight: 750;">14:30 – 19:00</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">14:30 - 15:00</span>
+          <span class="m-schedule-desc">Iscrizione e saluto delle Autorità</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">15:00 - 15:30</span>
+          <span class="m-schedule-desc">Presentazione del corso e vantaggi di "Le Persone efficaci"</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">15:30 - 16:30</span>
+          <span class="m-schedule-desc">Esperienza: cominciamo a conoscerci</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">16:30 - 16:45</span>
+          <span class="m-schedule-desc">Per CHI io sono qui? Chi è la persona più importante della mia vita?</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">16:45 - 17:00</span>
+          <span class="m-schedule-desc">Motivazioni e attese dei partecipanti</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">17:15 - 18:00</span>
+          <span class="m-schedule-desc">Esperienza: le mie qualità più importanti · Integrazione</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">18:00 - 19:00</span>
+          <span class="m-schedule-desc">Esperienza multisensoriale: come stare subito bene · Compiti a casa</span>
+        </div>
+      </div>
+
+      <!-- SABATO 10 OTTOBRE -->
+      <div class="m-schedule-day" style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 14px; margin-bottom: 0;">
+        <div class="m-schedule-header" style="background: rgba(255,255,255,0.06); padding: 10px 12px; border-radius: 8px; margin-bottom: 12px;">
+          <b style="color: #ffffff; font-size: 0.92rem;">Sabato 10 Ottobre 2026</b>
+          <span style="color: #d4af37; font-size: 0.8rem; font-weight: 750;">09:00 – 19:00</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">09:00 - 10:00</span>
+          <span class="m-schedule-desc">I rettangoli del comportamento: teoria e pratica</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">10:00 - 11:00</span>
+          <span class="m-schedule-desc">Riconoscere le fragilità: abilità di ascolto e barriere</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">11:15 - 12:00</span>
+          <span class="m-schedule-desc">Esperienza di ascolto attivo in coppia e condivisione</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">12:00 - 13:00</span>
+          <span class="m-schedule-desc">Come facilitare la soluzione di un problema</span>
+        </div>
+        <div class="m-schedule-item" style="background: rgba(16,185,129,0.14); border: 1px solid rgba(16,185,129,0.3); border-radius: 8px; padding: 8px;">
+          <span class="m-schedule-time" style="color: #10b981;">13:00 - 14:00</span>
+          <span class="m-schedule-desc"><b style="color: #10b981;">Pausa Pranzo Comunitario</b> (compreso nella quota di 10€)</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">14:00 - 15:00</span>
+          <span class="m-schedule-desc">Esprimere bisogni e sentimenti in modo chiaro · Autorivelazione</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">15:00 - 16:00</span>
+          <span class="m-schedule-desc">Quando non mi piacciono i comportamenti degli altri: confronto</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">16:15 - 17:15</span>
+          <span class="m-schedule-desc">La resistenza e il cambio di marcia: trappole del potere</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">17:15 - 18:00</span>
+          <span class="m-schedule-desc">Esperienza: Io vinco, Tu vinci · Integrazione e compiti</span>
+        </div>
+      </div>
+
+      <!-- DOMENICA 11 OTTOBRE -->
+      <div class="m-schedule-day" style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 14px; margin-bottom: 0;">
+        <div class="m-schedule-header" style="background: rgba(255,255,255,0.06); padding: 10px 12px; border-radius: 8px; margin-bottom: 12px;">
+          <b style="color: #ffffff; font-size: 0.92rem;">Domenica 11 Ottobre 2026</b>
+          <span style="color: #d4af37; font-size: 0.8rem; font-weight: 750;">09:00 – 13:00</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">09:00 - 10:00</span>
+          <span class="m-schedule-desc">Fasi della soluzione democratica dei problemi ed esperienza</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">10:00 - 11:00</span>
+          <span class="m-schedule-desc">La collisione di valori e come affrontarla</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">11:15 - 12:00</span>
+          <span class="m-schedule-desc">Le persone significative: i miei Maestri</span>
+        </div>
+        <div class="m-schedule-item">
+          <span class="m-schedule-time">12:00 - 12:45</span>
+          <span class="m-schedule-desc">Esperienza in plenaria: cosa voglio migliorare? Cosa ho imparato?</span>
+        </div>
+        <div class="m-schedule-item" style="background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3); border-radius: 8px; padding: 8px;">
+          <span class="m-schedule-time" style="color: #d4af37;">12:45 - 13:00</span>
+          <span class="m-schedule-desc"><b style="color: #d4af37;">Questionario ante-post & Consegna Attestati</b></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. DOCENTE E FORMATORE + SEDE & LOGISTICA (A TUTTA PAGINA - 2 COLONNE AFFIANCATE SU PC) -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 18px; margin-top: 24px;">
+
+    <!-- DOCENTE & FORMATORE -->
+    <section class="m-card" style="border-radius: 20px; padding: 20px 22px; background: rgba(13, 17, 28, 0.96); border: 1px solid rgba(255, 255, 255, 0.12); display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="display: flex; gap: 14px; align-items: center; margin-bottom: 14px;">
+          <div style="width: 56px; height: 56px; border-radius: 14px; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4); display: grid; place-items: center; color: #d4af37; flex-shrink: 0;">
+            <?=dx_icon('award', '', 28)?>
+          </div>
+          <div>
+            <div style="font-size: 0.74rem; color: #d4af37; font-weight: 800; text-transform: uppercase;">Docente e Formatore Ufficiale</div>
+            <h3 style="font-size: 1.12rem; color: #ffffff; margin: 2px 0 0; font-weight: 850;">Dott. Adelmo Di Salvatore</h3>
+          </div>
+        </div>
+        <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.5; margin: 0 0 12px; text-align: justify; text-justify: inter-word; hyphens: auto;">
+          Psichiatra e Psicoterapeuta, formatore autorizzato nell'Approccio Centrato sulla Persona (Carl Rogers), Approccio Motivazionale (Miller e Rollnick), Programmazione NeuroLinguistica (Bandler e Grinder), Approccio Ecologico-Sociale (Vladimir Hudolin), con esperienza ultratrentennale come Servitore-Insegnante nei Club Alcologici Territoriali e di Ecologia Familiare e Sociale.
+        </p>
+      </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; font-size: 0.74rem; color: #94a3b8;">
+        Formatore nazionale di reti di auto-mutuo aiuto e relazioni comunitarie.
+      </div>
+    </section>
+
+    <!-- SEDE & LOGISTICA -->
+    <section class="m-card" style="border-radius: 20px; padding: 20px 22px; background: rgba(13, 17, 28, 0.96); border: 1px solid rgba(255, 255, 255, 0.12); display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <span style="color: #d4af37;"><?=dx_icon('map-pin', '', 22)?></span>
+          <h2 style="font-size: 1.12rem; font-weight: 850; color: #ffffff; margin: 0;">Sede & Logistica</h2>
+        </div>
+        <div style="font-size: 0.95rem; color: #ffffff; font-weight: 800; margin-bottom: 4px;">
+          Oratorio San Francesco d'Assisi
+        </div>
+        <div style="font-size: 0.84rem; color: #cbd5e1; margin-bottom: 14px;">
+          Vicolo San Francesco 1, Taglio di Po (RO) · Ampio parcheggio gratuito adiacente.
+        </div>
+        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.45; margin: 0 0 14px; text-align: justify; text-justify: inter-word; hyphens: auto;">
+          La sede è facilmente raggiungibile dalla SS 309 Romea. I locali climatizzati dell'Oratorio garantiscono spazi confortevoli sia per le sessioni plenarie sia per i laboratori esperienziali in piccoli gruppi.
+        </p>
+      </div>
+      <a href="https://maps.google.com/?q=Oratorio+San+Francesco+d'Assisi+Taglio+di+Po" target="_blank" rel="noopener" class="m-btn m-btn-outline" style="min-height: 44px; font-size: 0.86rem; border-color: rgba(212,175,55,0.4);">
+        <?=dx_icon('map-pin', '', 16)?> Apri Navigatore Google Maps
+      </a>
+    </section>
+
+  </div>
 
   <!-- ============================================================== -->
   <!-- GRIGLIA SPONSOR DELL'EVENTO A TUTTO SCHERMO (16:9 E 9:16)      -->

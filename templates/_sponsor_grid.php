@@ -16,7 +16,7 @@ $sponsors = [
         'desc' => 'Proteggi ciò che hai costruito. Azzeri i rischi operativi e trasformi la conformità in serenità tangibile per la tua impresa.',
         'icon' => 'shield-check',
         'color' => '#10b981',
-        'img' => 'assets/img/sponsors/sicurissimo-online.svg',
+        'img' => 'assets/img/sponsors/sicurissimo-online.webp',
         'url' => 'https://sicurissimo.online/'
     ],
     [
@@ -26,7 +26,7 @@ $sponsors = [
         'desc' => 'Fai compiere alla tua visione il salto decisivo. Sistemi di espansione ad alto impatto che convertono l\'attenzione in fatturato costante.',
         'icon' => 'activity',
         'color' => '#3b82f6',
-        'img' => 'assets/img/sponsors/betterway-agency.svg',
+        'img' => 'assets/img/sponsors/betterway-agency.webp',
         'url' => 'https://betterway.agency/'
     ],
     [
@@ -36,7 +36,7 @@ $sponsors = [
         'desc' => 'Vedi in tempo reale ciò che sfugge agli altri. Telemetria e sinapsi intelligenti che orchestrano decisioni veloci, lucide e sicure per il tuo lavoro sereno.',
         'icon' => 'cpu',
         'color' => '#8b5cf6',
-        'img' => 'assets/img/sponsors/neuralog-pro.svg',
+        'img' => 'assets/img/sponsors/neuralog-pro.webp',
         'url' => 'https://neuralog.pro/'
     ],
     [
@@ -46,7 +46,7 @@ $sponsors = [
         'desc' => 'Sperimenta la vera libertà geografica. Unisciti a nomadi digitali e professionisti liberi che hanno scelto di vivere alle proprie condizioni.',
         'icon' => 'compass',
         'color' => '#ec4899',
-        'img' => 'assets/img/sponsors/destinorandagio-it.svg',
+        'img' => 'assets/img/sponsors/destinorandagio-it.webp',
         'url' => 'https://destinorandagio.it/'
     ],
     [
@@ -56,7 +56,7 @@ $sponsors = [
         'desc' => 'Riaccendi la tua vitalità più autentica. Protocolli di longevità, biohacking ed energia vitale per una mente lucida e un corpo rigenerato.',
         'icon' => 'heart',
         'color' => '#06b6d4',
-        'img' => 'assets/img/sponsors/beway-life.svg',
+        'img' => 'assets/img/sponsors/beway-life.webp',
         'url' => 'https://beway.life/'
     ],
     [
@@ -66,7 +66,7 @@ $sponsors = [
         'desc' => 'Massimizza il rendimento del tuo patrimonio immobiliare. Valutazioni analitiche, gestione trasparente e strategie di messa a reddito continua.',
         'icon' => 'home',
         'color' => '#84cc16',
-        'img' => 'assets/img/sponsors/estao-app.svg',
+        'img' => 'assets/img/sponsors/estao-app.webp',
         'url' => 'https://estao.app/'
     ],
     [
@@ -76,7 +76,7 @@ $sponsors = [
         'desc' => 'Precisione industriale senza compromessi. Hardware d\'avanguardia e marcatura ad alta sicurezza per standard d\'eccellenza globale.',
         'icon' => 'zap',
         'color' => '#f97316',
-        'img' => 'assets/img/sponsors/ixla-solutions.svg',
+        'img' => 'assets/img/sponsors/ixla-solutions.webp',
         'url' => 'https://ixla.solutions/'
     ],
     [
@@ -86,7 +86,7 @@ $sponsors = [
         'desc' => 'Connetti territori, comunità e futuro sostenibile. Infrastrutture snelle e mobilità integrata lungo l\'asta del grande fiume Po.',
         'icon' => 'navigation',
         'color' => '#14b8a6',
-        'img' => 'assets/img/sponsors/metroeridania-it.svg',
+        'img' => 'assets/img/sponsors/metroeridania-it.webp',
         'url' => 'https://metroeridania.it/'
     ],
     [
@@ -96,7 +96,7 @@ $sponsors = [
         'desc' => 'Sblocca il tuo potenziale strategico inespresso. Visione sistemica e venture governance per guidare persone e progetti verso l\'eccellenza sovrana.',
         'icon' => 'award',
         'color' => '#f59e0b',
-        'img' => 'assets/img/sponsors/mircopregnolato-it.svg',
+        'img' => 'assets/img/sponsors/mircopregnolato-it.webp',
         'url' => 'https://mircopregnolato.it/'
     ],
     [
@@ -106,7 +106,7 @@ $sponsors = [
         'desc' => 'Vivi l\'esperienza che riscrive i tuoi schemi mentali. Laboratori immersivi e confronto tra pari per una padronanza pratica immediata.',
         'icon' => 'check-circle',
         'color' => '#22c55e',
-        'img' => 'assets/img/sponsors/campus-camp.svg',
+        'img' => 'assets/img/sponsors/campus-camp.webp',
         'url' => 'https://campus.camp/'
     ]
 ];
@@ -127,7 +127,7 @@ $rainbowPalette = ['#ff3344', '#ff7700', '#ffd700', '#00ff77', '#00d4ff', '#3a55
         <!-- IMMAGINE BRAND -->
         <div style="width: 100%; aspect-ratio: 16/9; background: #030712; border-bottom: 1px solid rgba(255,255,255,0.08); overflow: hidden; position: relative;">
           <a href="<?=htmlspecialchars($sp['url'], ENT_QUOTES, 'UTF-8')?>" target="_blank" rel="noopener" style="display: block; width: 100%; height: 100%;">
-            <img src="<?=htmlspecialchars($sp['img'], ENT_QUOTES, 'UTF-8')?>?v=20260913v4" 
+            <img src="<?=htmlspecialchars($sp['img'], ENT_QUOTES, 'UTF-8')?>?v=20260913v5" 
                  alt="<?=htmlspecialchars($sp['name'], ENT_QUOTES, 'UTF-8')?>" 
                  width="1200" 
                  height="675"

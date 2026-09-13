@@ -9,7 +9,6 @@ jobs:
   deploy-dependex:
     name: Deploy to dependex.social
     runs-on: ubuntu-latest
-    environment: production
     steps:
       - uses: actions/checkout@v4
 
@@ -41,7 +40,6 @@ jobs:
   deploy-oltre:
     name: Deploy to oltre.social
     runs-on: ubuntu-latest
-    environment: production
     needs: deploy-dependex
     steps:
       - uses: actions/checkout@v4

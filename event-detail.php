@@ -157,23 +157,22 @@ require '_header.php';
 
     .event-cosmic-landing .adaptive-169-split {
       display: grid !important;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.22fr) !important;
-      gap: 32px !important;
-      align-items: start !important;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) !important;
+      gap: 24px !important;
+      align-items: stretch !important;
     }
 
     .event-cosmic-landing .split-col-left {
       display: flex !important;
       flex-direction: column !important;
-      gap: 18px !important;
-      position: sticky;
-      top: 90px;
+      gap: 16px !important;
+      justify-content: space-between !important;
     }
 
     .event-cosmic-landing .split-col-right {
       display: flex !important;
       flex-direction: column !important;
-      gap: 18px !important;
+      gap: 16px !important;
     }
 
     .event-cosmic-landing .m-sticky-bar {
@@ -199,6 +198,48 @@ require '_header.php';
     .order-m-6 { order: 6 !important; }
     .order-m-7 { order: 7 !important; }
     .order-m-8 { order: 8 !important; }
+  }
+
+  /* FAST CHECKOUT FULL-WIDTH A 2 COLONNE INTELLIGENTI SU PC */
+  .checkout-split-layout {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 991px) {
+    .checkout-split-layout {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+  }
+
+  /* GRIGLIA 5 RISULTATI A RIGA SINGOLA BILANCIATA (5x1 SU PC) */
+  .results-smart-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 1200px) {
+    .results-smart-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 768px) {
+    .results-smart-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 480px) {
+    .results-smart-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* PERFORMANCE ACCELERATION: RENDERING GRAFICO ASINCRONO */
+  .event-cosmic-landing section {
+    content-visibility: auto;
+    contain-intrinsic-size: 400px;
   }
 
   /* CARD GLASSMORPHIC DARK COSMIC AD ALTO CONTRASTO */
@@ -495,114 +536,133 @@ require '_header.php';
 
       </article>
 
-  <!-- FORM PRENOTAZIONE DIRETTA (ONE-THUMB MOBILE FLOW) -->
-  <section class="m-card m-card-gold-glow" id="prenotazione">
-    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-      <span style="color: #d4af37;"><?=dx_icon('edit', '', 18)?></span>
-      <h2 style="font-size: 1.15rem; font-weight: 850; color: #ffffff; margin: 0;">
-        <?=!$isFull ? "Iscrizione Online Immediata" : "Iscrizione in Lista d'Attesa"?>
-      </h2>
-    </div>
+    </div> <!-- /.split-col-right -->
 
-    <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0 0 14px; line-height: 1.45;">
-      Bastano 10 secondi. Riceverai conferma immediata con codice SIC e il messaggio WhatsApp pronto per Grazia Nicosia.
-    </p>
+  </div> <!-- /.adaptive-169-split (FINE DIVISIONE A 2 COLONNE: HERO E LOCANDINA ORA ALLINEATI SENZA SPAZIO VUOTO) -->
+
+  <!-- FORM PRENOTAZIONE DIRETTA (A TUTTA PAGINA - FAST CHECKOUT A 2 COLONNE SU PC) -->
+  <section class="m-card m-card-gold-glow" id="prenotazione" style="margin-top: 20px; border-radius: 20px; padding: 22px 24px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="color: #d4af37;"><?=dx_icon('edit', '', 20)?></span>
+        <h2 style="font-size: 1.22rem; font-weight: 850; color: #ffffff; margin: 0;">
+          <?=!$isFull ? "Iscrizione Online Immediata (Quota 10,00 €)" : "Iscrizione in Lista d'Attesa"?>
+        </h2>
+      </div>
+      <span style="font-size: 0.74rem; font-weight: 800; color: #10b981; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); padding: 4px 10px; border-radius: 8px;">
+        Pranzo Comunitario del Sabato Compreso
+      </span>
+    </div>
 
     <div id="bookingAlertBox" style="display: none; padding: 14px; border-radius: 12px; margin-bottom: 14px; font-size: 0.86rem; line-height: 1.45;"></div>
 
     <form id="mobileBookingForm" onsubmit="handleMobileBooking(event)">
       <input type="hidden" name="event_sic_id" value="<?=h($sic)?>">
 
-      <!-- NOME E COGNOME IN 2 COLONNE COMPATTE -->
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-        <div class="m-form-group">
-          <label for="mb_nome">Nome <span>*</span></label>
-          <input type="text" id="mb_nome" name="nome" class="m-input" required placeholder="Mario" autocomplete="given-name">
-        </div>
-        <div class="m-form-group">
-          <label for="mb_cognome">Cognome <span>*</span></label>
-          <input type="text" id="mb_cognome" name="cognome" class="m-input" required placeholder="Rossi" autocomplete="family-name">
-        </div>
-      </div>
+      <div class="checkout-split-layout">
 
-      <div class="m-form-group">
-        <label for="mb_email">Indirizzo Email (per ricevuta & promemoria) <span>*</span></label>
-        <input type="email" id="mb_email" name="email" class="m-input" required placeholder="mario.rossi@email.it" autocomplete="email">
-      </div>
+        <!-- COLONNA 1: DATI PARTECIPANTE -->
+        <div>
+          <div style="font-size: 0.78rem; font-weight: 800; color: #d4af37; text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+            <?=dx_icon('users', '', 14)?> 1. Dati del Partecipante
+          </div>
 
-      <div class="m-form-group">
-        <label for="mb_phone">Numero di Telefono (WhatsApp per conferme rapide) <span>*</span></label>
-        <input type="tel" id="mb_phone" name="phone" class="m-input" required placeholder="347 1234567" autocomplete="tel">
-      </div>
-
-      <div class="m-form-group">
-        <label for="mb_attendee_type">Qual è il tuo ruolo di partecipazione? <span>*</span></label>
-        <select id="mb_attendee_type" name="role_type" class="m-select" required>
-          <option value="Operatore / Volontario">Operatore Sociale / Sanitario / Volontario</option>
-          <option value="Familiare">Familiare di persona con problemi di dipendenza</option>
-          <option value="Membro di Club (CAT)">Membro / Persona che frequenta un Club (CAT)</option>
-          <option value="Servitore-Insegnante">Servitore-Insegnante di Club</option>
-          <option value="Cittadino / Interessato">Cittadino / Persona interessata a vario titolo</option>
-        </select>
-      </div>
-
-      <div class="m-form-group">
-        <label for="mb_dietary_notes">Esigenze per il pranzo del sabato <small>(vegetariano, celiaco, allergie)</small></label>
-        <input type="text" id="mb_dietary_notes" name="dietary_notes" class="m-input" placeholder="Nessuna o specifica intolleranze">
-      </div>
-
-      <!-- SELETTORE MODALITÀ DI PAGAMENTO 10,00 € -->
-      <div style="background: rgba(22, 27, 40, 0.85); border: 1px solid rgba(212,175,55,0.3); border-radius: 12px; padding: 12px; margin: 14px 0 10px;">
-        <div style="font-size: 0.82rem; font-weight: 800; color: #d4af37; text-transform: uppercase; margin-bottom: 8px;">
-          Modalità Pagamento Quota di 10,00 € <span style="color:#10b981;">(Pranzo Compreso)</span>
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          
-          <label style="display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
-            <input type="radio" name="payment_method" value="PAYPAL" checked style="accent-color: #d4af37; width: 18px; height: 18px;">
-            <div>
-              <div style="font-size: 0.88rem; font-weight: 850; color: #ffffff; display: flex; align-items: center; gap: 6px;">
-                <?=dx_icon('credit-card', 'text-neon-cyan', 16)?> Carta di Credito / Debito o PayPal
-              </div>
-              <div style="font-size: 0.72rem; color: #94a3b8;">Visa, Mastercard, PostePay o saldo PayPal · Conferma istantanea</div>
+          <!-- NOME E COGNOME IN 2 COLONNE -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="m-form-group">
+              <label for="mb_nome">Nome <span>*</span></label>
+              <input type="text" id="mb_nome" name="nome" class="m-input" required placeholder="Mario" autocomplete="given-name">
             </div>
-          </label>
-
-          <label style="display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
-            <input type="radio" name="payment_method" value="USDT" style="accent-color: #d4af37; width: 18px; height: 18px;">
-            <div>
-              <div style="font-size: 0.88rem; font-weight: 850; color: #ffffff; display: flex; align-items: center; gap: 6px;">
-                <?=dx_icon('gem', 'text-neon-gold', 16)?> USDT (Rete Polygon)
-              </div>
-              <div style="font-size: 0.72rem; color: #94a3b8;">10 USDT su rete Polygon · Transazione verificata on-chain</div>
+            <div class="m-form-group">
+              <label for="mb_cognome">Cognome <span>*</span></label>
+              <input type="text" id="mb_cognome" name="cognome" class="m-input" required placeholder="Rossi" autocomplete="family-name">
             </div>
-          </label>
+          </div>
 
-          <label style="display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
-            <input type="radio" name="payment_method" value="ON_SITE" style="accent-color: #d4af37; width: 18px; height: 18px;">
-            <div>
-              <div style="font-size: 0.88rem; font-weight: 850; color: #ffffff; display: flex; align-items: center; gap: 6px;">
-                <?=dx_icon('banknote', 'text-neon-green', 16)?> Saldo in Contanti / POS all'Accoglienza
-              </div>
-              <div style="font-size: 0.72rem; color: #94a3b8;">Versamento all'arrivo venerdì 9 ottobre dalle 14:30</div>
-            </div>
-          </label>
+          <div class="m-form-group" style="margin-top: 8px;">
+            <label for="mb_email">Indirizzo Email (per ricevuta & promemoria) <span>*</span></label>
+            <input type="email" id="mb_email" name="email" class="m-input" required placeholder="mario.rossi@email.it" autocomplete="email">
+          </div>
 
+          <div class="m-form-group" style="margin-top: 8px;">
+            <label for="mb_phone">Numero di Telefono (WhatsApp per conferme rapide) <span>*</span></label>
+            <input type="tel" id="mb_phone" name="phone" class="m-input" required placeholder="347 1234567" autocomplete="tel">
+          </div>
+
+          <div class="m-form-group" style="margin-top: 8px;">
+            <label for="mb_attendee_type">Qual è il tuo ruolo di partecipazione? <span>*</span></label>
+            <select id="mb_attendee_type" name="role_type" class="m-select" required>
+              <option value="Operatore / Volontario">Operatore Sociale / Sanitario / Volontario</option>
+              <option value="Familiare">Familiare di persona con problemi di dipendenza</option>
+              <option value="Membro di Club (CAT)">Membro / Persona che frequenta un Club (CAT)</option>
+              <option value="Servitore-Insegnante">Servitore-Insegnante di Club</option>
+              <option value="Cittadino / Interessato">Cittadino / Persona interessata a vario titolo</option>
+            </select>
+          </div>
+
+          <div class="m-form-group" style="margin-top: 8px;">
+            <label for="mb_dietary_notes">Esigenze per il pranzo del sabato <small>(vegetariano, celiaco, allergie)</small></label>
+            <input type="text" id="mb_dietary_notes" name="dietary_notes" class="m-input" placeholder="Nessuna o specifica intolleranze">
+          </div>
         </div>
-      </div>
 
-      <div class="m-form-group" style="display: flex; gap: 8px; align-items: flex-start; margin-top: 10px;">
-        <input type="checkbox" id="mb_consent" name="privacy_accepted" required style="margin-top: 3px; width: 18px; height: 18px; accent-color: #d4af37;">
-        <label for="mb_consent" style="font-size: 0.76rem; color: #cbd5e1; line-height: 1.4; margin-bottom: 0;">
-          Dichiaro di aver preso visione dell'informativa e acconsento al trattamento dei dati personali per l'organizzazione e accoglienza dell'evento ai sensi del GDPR.
-        </label>
-      </div>
+        <!-- COLONNA 2: MODALITÀ PAGAMENTO & CONFERMA -->
+        <div>
+          <div style="font-size: 0.78rem; font-weight: 800; color: #d4af37; text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+            <?=dx_icon('credit-card', '', 14)?> 2. Modalità Quota & Invio
+          </div>
 
-      <button type="submit" id="mb_submit_btn" class="m-btn m-btn-primary" style="margin-top: 10px; font-size: 0.95rem;">
-        <?=dx_icon('check-circle', '', 18)?>
-        <span><?=!$isFull ? "ISCRIVITI & PROCEDI (10,00 €)" : "ISCRIVITI IN LISTA D'ATTESA"?></span>
-      </button>
+          <!-- SELETTORE MODALITÀ DI PAGAMENTO 10,00 € -->
+          <div style="background: rgba(22, 27, 40, 0.85); border: 1px solid rgba(212,175,55,0.3); border-radius: 12px; padding: 12px; margin-bottom: 12px;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              
+              <label style="display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
+                <input type="radio" name="payment_method" value="PAYPAL" checked style="accent-color: #d4af37; width: 18px; height: 18px;">
+                <div>
+                  <div style="font-size: 0.88rem; font-weight: 850; color: #ffffff; display: flex; align-items: center; gap: 6px;">
+                    <?=dx_icon('credit-card', 'text-neon-cyan', 16)?> Carta di Credito / Debito o PayPal
+                  </div>
+                  <div style="font-size: 0.72rem; color: #94a3b8;">Visa, Mastercard, PostePay o saldo PayPal · Conferma istantanea</div>
+                </div>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
+                <input type="radio" name="payment_method" value="USDT" style="accent-color: #d4af37; width: 18px; height: 18px;">
+                <div>
+                  <div style="font-size: 0.88rem; font-weight: 850; color: #ffffff; display: flex; align-items: center; gap: 6px;">
+                    <?=dx_icon('gem', 'text-neon-gold', 16)?> USDT (Rete Polygon)
+                  </div>
+                  <div style="font-size: 0.72rem; color: #94a3b8;">10 USDT su rete Polygon · Transazione verificata on-chain</div>
+                </div>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
+                <input type="radio" name="payment_method" value="ON_SITE" style="accent-color: #d4af37; width: 18px; height: 18px;">
+                <div>
+                  <div style="font-size: 0.88rem; font-weight: 850; color: #ffffff; display: flex; align-items: center; gap: 6px;">
+                    <?=dx_icon('banknote', 'text-neon-green', 16)?> Saldo in Contanti / POS all'Accoglienza
+                  </div>
+                  <div style="font-size: 0.72rem; color: #94a3b8;">Versamento all'arrivo venerdì 9 ottobre dalle 14:30</div>
+                </div>
+              </label>
+
+            </div>
+          </div>
+
+          <div class="m-form-group" style="display: flex; gap: 8px; align-items: flex-start; margin-bottom: 12px;">
+            <input type="checkbox" id="mb_consent" name="privacy_accepted" required style="margin-top: 3px; width: 18px; height: 18px; accent-color: #d4af37;">
+            <label for="mb_consent" style="font-size: 0.74rem; color: #cbd5e1; line-height: 1.4; margin-bottom: 0;">
+              Dichiaro di aver preso visione dell'informativa e acconsento al trattamento dei dati personali per l'organizzazione e accoglienza dell'evento ai sensi del GDPR.
+            </label>
+          </div>
+
+          <button type="submit" id="mb_submit_btn" class="m-btn m-btn-primary" style="width: 100%; font-size: 0.95rem; min-height: 48px;">
+            <?=dx_icon('check-circle', '', 18)?>
+            <span><?=!$isFull ? "ISCRIVITI & PROCEDI (10,00 €)" : "ISCRIVITI IN LISTA D'ATTESA"?></span>
+          </button>
+        </div>
+
+      </div>
     </form>
 
     <!-- CONTAINER CHECKOUT PAYPAL LIVE & CARTE (DINAMICO) -->
@@ -642,29 +702,25 @@ require '_header.php';
       </button>
 
       <!-- FORM PER INSERIRE TX HASH -->
-      <div style="text-align: left; background: rgba(0,0,0,0.3); border-radius: 10px; padding: 10px; border: 1px solid rgba(255,255,255,0.08);">
+      <div style="text-align: left; background: rgba(0,0,0,0.3); border-radius: 10px; padding: 10px; border: 1px solid rgba(255,255,255,0.08); max-width: 500px; margin: 0 auto;">
         <label for="usdt_tx_hash" style="font-size: 0.76rem; font-weight: 750; color: #ffffff; display: block; margin-bottom: 4px;">
           Inserisci la TX Hash della transazione inviata:
         </label>
         <input type="text" id="usdt_tx_hash" class="m-input" placeholder="Es. 0x123abc456..." style="font-size: 0.8rem; margin-bottom: 8px;">
-        <button type="button" onclick="submitUsdtTx()" id="usdt_confirm_btn" class="m-btn m-btn-primary" style="min-height: 40px; font-size: 0.84rem;">
+        <button type="button" onclick="submitUsdtTx()" id="usdt_confirm_btn" class="m-btn m-btn-primary" style="min-height: 40px; font-size: 0.84rem; width: 100%;">
           <?=dx_icon('send', '', 14)?> Conferma Notifica USDT
         </button>
       </div>
     </div>
   </section>
 
-    </div> <!-- /.split-col-right -->
-
-  </div> <!-- /.adaptive-169-split (FINE DIVISIONE A 2 COLONNE) -->
-
   <!-- ============================================================== -->
   <!-- SEZIONI A TUTTA PAGINA (FULL WIDTH WIDESCREEN & MOBILE STACK)  -->
   <!-- ============================================================== -->
 
-  <!-- 1. I 5 RISULTATI CONCRETI (A TUTTA PAGINA - GRIGLIA A 5 CARDS) -->
-  <section class="m-card" style="margin-top: 24px; border-radius: 20px; padding: 22px 24px; border: 1px solid rgba(16, 185, 129, 0.35); background: rgba(13, 17, 28, 0.96);">
-    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 14px;">
+  <!-- 1. I 5 RISULTATI CONCRETI (A TUTTA PAGINA - GRIGLIA A 5 CARDS BILANCIATA) -->
+  <section class="m-card" style="margin-top: 20px; border-radius: 20px; padding: 20px 22px; border: 1px solid rgba(16, 185, 129, 0.35); background: rgba(13, 17, 28, 0.96);">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px;">
       <div style="display: flex; align-items: center; gap: 10px;">
         <span style="color: #10b981;"><?=dx_icon('award', '', 22)?></span>
         <h2 style="font-size: clamp(1.15rem, 3.5vw, 1.45rem); font-weight: 850; color: #ffffff; margin: 0;">
@@ -676,52 +732,52 @@ require '_header.php';
       </span>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
-      <div style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid #10b981; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div class="results-smart-grid">
+      <div style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid #10b981; border-radius: 14px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <span style="font-size: 1.15rem; font-weight: 900; color: #10b981;">#01</span>
-          <h3 style="font-size: 0.95rem; font-weight: 850; color: #ffffff; margin: 6px 0 8px;">Comunicare senza litigare</h3>
-          <p style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.45; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto;">
+          <span style="font-size: 1.1rem; font-weight: 900; color: #10b981;">#01</span>
+          <h3 style="font-size: 0.92rem; font-weight: 850; color: #ffffff; margin: 4px 0 6px;">Comunicare senza litigare</h3>
+          <p style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto;">
             Disinnescare la rabbia, esprimere i propri sentimenti in modo chiaro e congruente senza aggredire né farsi calpestare in famiglia e sul lavoro.
           </p>
         </div>
       </div>
 
-      <div style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid #3b82f6; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+      <div style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid #3b82f6; border-radius: 14px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <span style="font-size: 1.15rem; font-weight: 900; color: #3b82f6;">#02</span>
-          <h3 style="font-size: 0.95rem; font-weight: 850; color: #ffffff; margin: 6px 0 8px;">Non farsi caricare dai problemi altrui</h3>
-          <p style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.45; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto;">
+          <span style="font-size: 1.1rem; font-weight: 900; color: #3b82f6;">#02</span>
+          <h3 style="font-size: 0.92rem; font-weight: 850; color: #ffffff; margin: 4px 0 6px;">Non farsi caricare dai problemi altrui</h3>
+          <p style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto;">
             Riconoscere le trappole del potere, proteggere i propri confini emotivi e superare il senso di colpa paralizzante che blocca le relazioni sane.
           </p>
         </div>
       </div>
 
-      <div style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid #8b5cf6; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+      <div style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid #8b5cf6; border-radius: 14px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <span style="font-size: 1.15rem; font-weight: 900; color: #8b5cf6;">#03</span>
-          <h3 style="font-size: 0.95rem; font-weight: 850; color: #ffffff; margin: 6px 0 8px;">Ascolto attivo nei conflitti</h3>
-          <p style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.45; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto;">
+          <span style="font-size: 1.1rem; font-weight: 900; color: #8b5cf6;">#03</span>
+          <h3 style="font-size: 0.92rem; font-weight: 850; color: #ffffff; margin: 4px 0 6px;">Ascolto attivo nei conflitti</h3>
+          <p style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto;">
             Riconoscere le fragilità altrui ed eliminare etichette, valutazioni affrettate e giudizi fuorvianti per riaprire canali di dialogo costruttivi.
           </p>
         </div>
       </div>
 
-      <div style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid #f59e0b; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+      <div style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid #f59e0b; border-radius: 14px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <span style="font-size: 1.15rem; font-weight: 900; color: #f59e0b;">#04</span>
-          <h3 style="font-size: 0.95rem; font-weight: 850; color: #ffffff; margin: 6px 0 8px;">Risoluzione democratica "Io vinco, Tu vinci"</h3>
-          <p style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.45; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto;">
+          <span style="font-size: 1.1rem; font-weight: 900; color: #f59e0b;">#04</span>
+          <h3 style="font-size: 0.92rem; font-weight: 850; color: #ffffff; margin: 4px 0 6px;">Risoluzione democratica "Io vinco, Tu vinci"</h3>
+          <p style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto;">
             Applicare la scala dei bisogni e trovare soluzioni condivise senza vincitori né vinti, sia nei nuclei familiari che nei Club e gruppi di lavoro.
           </p>
         </div>
       </div>
 
-      <div style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid #ec4899; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+      <div style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid #ec4899; border-radius: 14px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <span style="font-size: 1.15rem; font-weight: 900; color: #ec4899;">#05</span>
-          <h3 style="font-size: 0.95rem; font-weight: 850; color: #ffffff; margin: 6px 0 8px;">Attestato Ufficiale di Partecipazione</h3>
-          <p style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.45; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto;">
+          <span style="font-size: 1.1rem; font-weight: 900; color: #ec4899;">#05</span>
+          <h3 style="font-size: 0.92rem; font-weight: 850; color: #ffffff; margin: 4px 0 6px;">Attestato Ufficiale di Partecipazione</h3>
+          <p style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto;">
             Rilasciato a chi partecipa per intero al corso, riconosciuto nell'Approccio Ecologico-Sociale di V. Hudolin e valido per la formazione continua.
           </p>
         </div>
@@ -730,8 +786,8 @@ require '_header.php';
   </section>
 
   <!-- 2. PROGRAMMA DETTAGLIATO ORA PER ORA (A TUTTA PAGINA - 3 COLONNE AFFIANCATE SU PC) -->
-  <section class="m-card" style="margin-top: 24px; border-radius: 20px; padding: 22px 24px; border: 1px solid rgba(255, 215, 0, 0.35); background: rgba(13, 17, 28, 0.96);">
-    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 14px;">
+  <section class="m-card" style="margin-top: 20px; border-radius: 20px; padding: 20px 22px; border: 1px solid rgba(255, 215, 0, 0.35); background: rgba(13, 17, 28, 0.96);">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px;">
       <div style="display: flex; align-items: center; gap: 10px;">
         <span style="color: #d4af37;"><?=dx_icon('clock', '', 22)?></span>
         <h2 style="font-size: clamp(1.15rem, 3.5vw, 1.45rem); font-weight: 850; color: #ffffff; margin: 0;">
@@ -744,7 +800,7 @@ require '_header.php';
     </div>
 
     <!-- GRIGLIA A 3 COLONNE AFFIANCATE SU PC / STACK SU SMARTPHONE -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 16px; align-items: start;">
 
       <!-- VENERDÌ 9 OTTOBRE -->
       <div class="m-schedule-day" style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 14px; margin-bottom: 0;">
@@ -754,31 +810,23 @@ require '_header.php';
         </div>
         <div class="m-schedule-item">
           <span class="m-schedule-time">14:30 - 15:00</span>
-          <span class="m-schedule-desc">Iscrizione e saluto delle Autorità</span>
+          <span class="m-schedule-desc">Accoglienza partecipanti, registrazione e consegna cartellina didattica</span>
         </div>
         <div class="m-schedule-item">
           <span class="m-schedule-time">15:00 - 15:30</span>
-          <span class="m-schedule-desc">Presentazione del corso e vantaggi di "Le Persone efficaci"</span>
+          <span class="m-schedule-desc">Saluti istituzionali e presentazione della scuola</span>
         </div>
         <div class="m-schedule-item">
           <span class="m-schedule-time">15:30 - 16:30</span>
-          <span class="m-schedule-desc">Esperienza: cominciamo a conoscerci</span>
+          <span class="m-schedule-desc">La comunicazione e l'approccio ecologico-sociale: concetti cardine</span>
         </div>
         <div class="m-schedule-item">
-          <span class="m-schedule-time">16:30 - 16:45</span>
-          <span class="m-schedule-desc">Per CHI io sono qui? Chi è la persona più importante della mia vita?</span>
+          <span class="m-schedule-time">16:45 - 17:45</span>
+          <span class="m-schedule-desc">La relazione d'aiuto: accoglienza, empatia e non giudizio</span>
         </div>
         <div class="m-schedule-item">
-          <span class="m-schedule-time">16:45 - 17:00</span>
-          <span class="m-schedule-desc">Motivazioni e attese dei partecipanti</span>
-        </div>
-        <div class="m-schedule-item">
-          <span class="m-schedule-time">17:15 - 18:00</span>
-          <span class="m-schedule-desc">Esperienza: le mie qualità più importanti · Integrazione</span>
-        </div>
-        <div class="m-schedule-item">
-          <span class="m-schedule-time">18:00 - 19:00</span>
-          <span class="m-schedule-desc">Esperienza multisensoriale: come stare subito bene · Compiti a casa</span>
+          <span class="m-schedule-time">17:45 - 19:00</span>
+          <span class="m-schedule-desc">Simulazioni e confronto in plenaria: dubbi e aspettative</span>
         </div>
       </div>
 
@@ -827,30 +875,37 @@ require '_header.php';
       </div>
 
       <!-- DOMENICA 11 OTTOBRE -->
-      <div class="m-schedule-day" style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 14px; margin-bottom: 0;">
-        <div class="m-schedule-header" style="background: rgba(255,255,255,0.06); padding: 10px 12px; border-radius: 8px; margin-bottom: 12px;">
-          <b style="color: #ffffff; font-size: 0.92rem;">Domenica 11 Ottobre 2026</b>
-          <span style="color: #d4af37; font-size: 0.8rem; font-weight: 750;">09:00 – 13:00</span>
+      <div class="m-schedule-day" style="background: rgba(18, 22, 34, 0.92); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 14px; margin-bottom: 0; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div class="m-schedule-header" style="background: rgba(255,255,255,0.06); padding: 10px 12px; border-radius: 8px; margin-bottom: 12px;">
+            <b style="color: #ffffff; font-size: 0.92rem;">Domenica 11 Ottobre 2026</b>
+            <span style="color: #d4af37; font-size: 0.8rem; font-weight: 750;">09:00 – 13:00</span>
+          </div>
+          <div class="m-schedule-item">
+            <span class="m-schedule-time">09:00 - 10:00</span>
+            <span class="m-schedule-desc">Fasi della soluzione democratica dei problemi ed esperienza</span>
+          </div>
+          <div class="m-schedule-item">
+            <span class="m-schedule-time">10:00 - 11:00</span>
+            <span class="m-schedule-desc">La collisione di valori e come affrontarla</span>
+          </div>
+          <div class="m-schedule-item">
+            <span class="m-schedule-time">11:15 - 12:00</span>
+            <span class="m-schedule-desc">Le persone significative: i miei Maestri</span>
+          </div>
+          <div class="m-schedule-item">
+            <span class="m-schedule-time">12:00 - 12:45</span>
+            <span class="m-schedule-desc">Esperienza in plenaria: cosa voglio migliorare? Cosa ho imparato?</span>
+          </div>
+          <div class="m-schedule-item" style="background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3); border-radius: 8px; padding: 8px;">
+            <span class="m-schedule-time" style="color: #d4af37;">12:45 - 13:00</span>
+            <span class="m-schedule-desc"><b style="color: #d4af37;">Questionario ante-post & Consegna Attestati</b></span>
+          </div>
         </div>
-        <div class="m-schedule-item">
-          <span class="m-schedule-time">09:00 - 10:00</span>
-          <span class="m-schedule-desc">Fasi della soluzione democratica dei problemi ed esperienza</span>
-        </div>
-        <div class="m-schedule-item">
-          <span class="m-schedule-time">10:00 - 11:00</span>
-          <span class="m-schedule-desc">La collisione di valori e come affrontarla</span>
-        </div>
-        <div class="m-schedule-item">
-          <span class="m-schedule-time">11:15 - 12:00</span>
-          <span class="m-schedule-desc">Le persone significative: i miei Maestri</span>
-        </div>
-        <div class="m-schedule-item">
-          <span class="m-schedule-time">12:00 - 12:45</span>
-          <span class="m-schedule-desc">Esperienza in plenaria: cosa voglio migliorare? Cosa ho imparato?</span>
-        </div>
-        <div class="m-schedule-item" style="background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3); border-radius: 8px; padding: 8px;">
-          <span class="m-schedule-time" style="color: #d4af37;">12:45 - 13:00</span>
-          <span class="m-schedule-desc"><b style="color: #d4af37;">Questionario ante-post & Consegna Attestati</b></span>
+
+        <div style="margin-top: 14px; padding: 10px 12px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 10px;">
+          <div style="font-weight: 800; color: #10b981; font-size: 0.78rem; margin-bottom: 2px;">Attestato Ufficiale di Partecipazione</div>
+          <div style="font-size: 0.72rem; color: #cbd5e1; line-height: 1.4;">Valido per la formazione continua e nel circuito dei Club Alcologici Territoriali (CAT).</div>
         </div>
       </div>
 
@@ -858,7 +913,7 @@ require '_header.php';
   </section>
 
   <!-- 3. DOCENTE E FORMATORE + SEDE & LOGISTICA (A TUTTA PAGINA - 2 COLONNE AFFIANCATE SU PC) -->
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 18px; margin-top: 24px;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px; margin-top: 20px; align-items: stretch;">
 
     <!-- DOCENTE & FORMATORE -->
     <section class="m-card" style="border-radius: 20px; padding: 20px 22px; background: rgba(13, 17, 28, 0.96); border: 1px solid rgba(255, 255, 255, 0.12); display: flex; flex-direction: column; justify-content: space-between;">
@@ -891,16 +946,18 @@ require '_header.php';
         <div style="font-size: 0.95rem; color: #ffffff; font-weight: 800; margin-bottom: 4px;">
           Oratorio San Francesco d'Assisi
         </div>
-        <div style="font-size: 0.84rem; color: #cbd5e1; margin-bottom: 14px;">
+        <div style="font-size: 0.84rem; color: #cbd5e1; margin-bottom: 10px;">
           Vicolo San Francesco 1, Taglio di Po (RO) · Ampio parcheggio gratuito adiacente.
         </div>
-        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.45; margin: 0 0 14px; text-align: justify; text-justify: inter-word; hyphens: auto;">
-          La sede è facilmente raggiungibile dalla SS 309 Romea. I locali climatizzati dell'Oratorio garantiscono spazi confortevoli sia per le sessioni plenarie sia per i laboratori esperienziali in piccoli gruppi.
+        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.45; margin: 0 0 12px; text-align: justify; text-justify: inter-word; hyphens: auto;">
+          La sede è facilmente raggiungibile dalla SS 309 Romea. I locali climatizzati dell'Oratorio garantiscono spazi confortevoli sia per le sessioni plenarie sia per i laboratori esperienziali in piccoli gruppi. Piano terra accessibile senza barriere architettoniche.
         </p>
       </div>
-      <a href="https://maps.google.com/?q=Oratorio+San+Francesco+d'Assisi+Taglio+di+Po" target="_blank" rel="noopener" class="m-btn m-btn-outline" style="min-height: 44px; font-size: 0.86rem; border-color: rgba(212,175,55,0.4);">
-        <?=dx_icon('map-pin', '', 16)?> Apri Navigatore Google Maps
-      </a>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <a href="https://maps.google.com/?q=Oratorio+San+Francesco+d'Assisi+Taglio+di+Po" target="_blank" rel="noopener" class="m-btn m-btn-outline" style="flex: 1; min-height: 42px; font-size: 0.84rem; border-color: rgba(212,175,55,0.4);">
+          <?=dx_icon('map-pin', '', 15)?> Navigatore Google Maps
+        </a>
+      </div>
     </section>
 
   </div>

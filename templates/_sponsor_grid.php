@@ -117,46 +117,71 @@ $rainbowPalette = ['#ff3344', '#ff7700', '#ffd700', '#00ff77', '#00d4ff', '#3a55
 ?>
 <section class="m-card" style="border-color: rgba(212,175,55,0.45); background: rgba(13, 16, 26, 0.96); margin-top: 16px; border-radius: 20px; box-shadow: 0 16px 45px rgba(0,0,0,0.7);">
 
-  <!-- GRIGLIA SPONSOR (RESPONSIVE ADATTIVA 9:16 E 16:9) -->
-  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); gap: 18px;">
+  <style>
+    .sponsor-smart-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 1200px) {
+      .sponsor-smart-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 768px) {
+      .sponsor-smart-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
+      .sponsor-smart-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <!-- GRIGLIA SPONSOR A 5 COLONNE BILANCIATE (5x2 ESATTE SU PC) -->
+  <div class="sponsor-smart-grid">
     <?php foreach ($sponsors as $idx => $sp): 
       $spColor = $rainbowPalette[$idx % 7];
     ?>
-      <article style="background: rgba(18, 22, 34, 0.94); border: 1px solid rgba(255, 255, 255, 0.12); border-top: 3px solid <?=$spColor?>; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 6px 20px rgba(0,0,0,0.45); transition: transform 0.25s ease, box-shadow 0.25s ease;">
+      <article style="background: rgba(18, 22, 34, 0.94); border: 1px solid rgba(255, 255, 255, 0.12); border-top: 3px solid <?=$spColor?>; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 16px rgba(0,0,0,0.45); transition: transform 0.2s ease, box-shadow 0.2s ease;">
         
-        <!-- IMMAGINE BRAND -->
+        <!-- IMMAGINE BRAND 16:9 WEBP ULTRA-LIGHT -->
         <div style="width: 100%; aspect-ratio: 16/9; background: #030712; border-bottom: 1px solid rgba(255,255,255,0.08); overflow: hidden; position: relative;">
           <a href="<?=htmlspecialchars($sp['url'], ENT_QUOTES, 'UTF-8')?>" target="_blank" rel="noopener" style="display: block; width: 100%; height: 100%;">
-            <img src="<?=htmlspecialchars($sp['img'], ENT_QUOTES, 'UTF-8')?>?v=20260913v9" 
+            <img src="<?=htmlspecialchars($sp['img'], ENT_QUOTES, 'UTF-8')?>?v=20260913v10" 
                  alt="<?=htmlspecialchars($sp['name'], ENT_QUOTES, 'UTF-8')?>" 
-                 width="1376" 
-                 height="768"
-                 style="width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; display: block; transition: transform 0.3s ease;">
+                 loading="lazy" 
+                 decoding="async" 
+                 width="960" 
+                 height="540"
+                 style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease;">
           </a>
         </div>
 
         <!-- CONTENUTO PNL & LINK -->
-        <div style="padding: 14px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; gap: 10px;">
+        <div style="padding: 10px 12px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; gap: 8px;">
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 6px;">
-              <h3 style="font-weight: 850; font-size: 0.95rem; color: #ffffff; margin: 0; line-height: 1.3;">
-                <span style="color: <?=$spColor?>; font-size: 0.8rem; margin-right: 4px;">#<?=str_pad((string)($idx + 1), 2, '0', STR_PAD_LEFT)?></span>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 6px; margin-bottom: 4px;">
+              <h3 style="font-weight: 850; font-size: 0.88rem; color: #ffffff; margin: 0; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                <span style="color: <?=$spColor?>; font-size: 0.74rem; margin-right: 3px;">#<?=str_pad((string)($idx + 1), 2, '0', STR_PAD_LEFT)?></span>
                 <?=htmlspecialchars($sp['name'], ENT_QUOTES, 'UTF-8')?>
               </h3>
-              <span style="font-size: 0.68rem; font-weight: 800; color: <?=$spColor?>; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;">
+              <span style="font-size: 0.62rem; font-weight: 800; color: <?=$spColor?>; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap;">
                 <?=htmlspecialchars($sp['category'], ENT_QUOTES, 'UTF-8')?>
               </span>
             </div>
 
-            <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0; line-height: 1.45; text-align: justify; text-justify: inter-word; hyphens: auto;">
+            <p style="font-size: 0.78rem; color: #cbd5e1; margin: 0; line-height: 1.4; text-align: justify; text-justify: inter-word; hyphens: auto;">
               <?=htmlspecialchars($sp['desc'], ENT_QUOTES, 'UTF-8')?>
             </p>
           </div>
 
-          <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px;">
-            <a href="<?=htmlspecialchars($sp['url'], ENT_QUOTES, 'UTF-8')?>" target="_blank" rel="noopener" class="btn" style="width: 100%; background: rgba(212,175,55,0.12); border: 1px solid <?=$spColor?>; color: #fff; font-size: 0.8rem; font-weight: 750; padding: 8px 12px; border-radius: 8px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s ease;">
+          <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 8px; margin-top: 2px;">
+            <a href="<?=htmlspecialchars($sp['url'], ENT_QUOTES, 'UTF-8')?>" target="_blank" rel="noopener" class="btn" style="width: 100%; background: rgba(212,175,55,0.12); border: 1px solid <?=$spColor?>; color: #fff; font-size: 0.76rem; font-weight: 750; padding: 6px 10px; border-radius: 8px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.2s ease;">
               <span>Visita il Sito</span>
-              <?=dx_icon('external-link', '', 12)?>
+              <?=dx_icon('external-link', '', 11)?>
             </a>
           </div>
         </div>

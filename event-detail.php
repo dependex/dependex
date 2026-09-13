@@ -21,13 +21,35 @@ $st = $pdo->prepare('SELECT * FROM events WHERE sic_id = ?');
 $st->execute([$sic]);
 $e = $st->fetch(PDO::FETCH_ASSOC);
 
+$defaultTaglioDiPo = [
+    'sic_id' => 'SIC-EVT-ACAT-BP-2026-COMM',
+    'type' => 'FORMAZIONE',
+    'title' => 'A Scuola di Comunicazione e Resilienza — 1° Livello',
+    'description' => 'Impara a comunicare senza litigare e a non farti caricare dai problemi degli altri. Corso di formazione esperienziale rivolto a chi vive in famiglia una situazione di dipendenza, operatori, volontari e membri dei Club Alcologici Territoriali. Tre giornate con Adelmo Di Salvatore per acquisire strumenti pratici da usare già dal lunedì.',
+    'starts_at' => '2026-10-09 14:30:00',
+    'ends_at' => '2026-10-11 13:00:00',
+    'venue' => "Oratorio San Francesco d'Assisi",
+    'comune' => 'Taglio di Po',
+    'address' => 'Vicolo San Francesco 1, Taglio di Po (RO)',
+    'visibility' => 'PUBLIC',
+    'rank_required' => 'SEME',
+    'drx_reward' => 100,
+    'status' => 'PUBLISHED',
+    'capacity' => 30,
+    'price_eur' => 10.00,
+    'source_url' => 'event-detail.php?event=SIC-EVT-ACAT-BP-2026-COMM',
+    'image_url' => 'assets/img/events/locandina-ufficiale-oratorio.jpeg',
+    'organizer' => 'ACAT Basso Polesine O.D.V. & Coordinamento A.C.A.T. Polesane',
+    'trainer' => 'Adelmo Di Salvatore (Psichiatra, Psicoterapeuta, Formatore Metodo Hudolin)',
+    'registration_deadline' => '2026-10-01 23:59:59'
+];
+
 if (!$e) {
     $stFallback = $pdo->prepare('SELECT * FROM events WHERE sic_id = "SIC-EVT-ACAT-BP-2026-COMM" LIMIT 1');
     $stFallback->execute();
     $e = $stFallback->fetch(PDO::FETCH_ASSOC);
     if (!$e) {
-        http_response_code(404);
-        exit('Evento non trovato.');
+        $e = $defaultTaglioDiPo;
     }
     $sic = $e['sic_id'];
 }

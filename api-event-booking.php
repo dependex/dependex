@@ -151,9 +151,23 @@ try {
             $evtStmt->execute([$eventSic]);
             $event = $evtStmt->fetch(PDO::FETCH_ASSOC);
             if (!$event) {
-                event_set_status(404);
-                echo json_encode(['success' => false, 'error' => 'Evento non trovato nel database.']);
-                event_api_exit(); return;
+                if ($eventSic === 'SIC-EVT-ACAT-BP-2026-COMM' || empty($eventSic)) {
+                    ensure_core_schema($pdo);
+                    $evtStmt->execute(['SIC-EVT-ACAT-BP-2026-COMM']);
+                    $event = $evtStmt->fetch(PDO::FETCH_ASSOC);
+                    if (!$event) {
+                        $event = [
+                            'sic_id' => 'SIC-EVT-ACAT-BP-2026-COMM',
+                            'title' => 'A Scuola di Comunicazione e Resilienza — 1° Livello',
+                            'capacity' => 30,
+                            'price_eur' => 10.00
+                        ];
+                    }
+                } else {
+                    event_set_status(404);
+                    echo json_encode(['success' => false, 'error' => 'Evento non trovato nel database.']);
+                    event_api_exit(); return;
+                }
             }
 
             $capacity = (int)($event['capacity'] ?? 30);

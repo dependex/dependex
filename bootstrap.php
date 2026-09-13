@@ -12,7 +12,36 @@ function ensure_core_schema(PDO $pdo): void {
     if ($done) return;
     $done = true;
 
-    // 1. Core event_bookings table
+    // 1. Core events table
+    try {
+        $pdo->exec("
+            CREATE TABLE IF NOT EXISTS events (
+                sic_id TEXT PRIMARY KEY,
+                type TEXT NOT NULL,
+                title TEXT NOT NULL,
+                description TEXT,
+                starts_at DATETIME NOT NULL,
+                ends_at DATETIME,
+                venue TEXT,
+                comune TEXT,
+                address TEXT,
+                visibility TEXT DEFAULT 'PUBLIC',
+                rank_required TEXT DEFAULT 'SEME',
+                drx_reward INTEGER DEFAULT 50,
+                status TEXT DEFAULT 'PUBLISHED',
+                capacity INTEGER DEFAULT 30,
+                price_eur REAL DEFAULT 0.0,
+                source_url TEXT,
+                image_url TEXT,
+                organizer TEXT,
+                trainer TEXT,
+                registration_deadline DATETIME,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            )
+        ");
+    } catch (Throwable $e) {}
+
+    // 2. Core event_bookings table
     try {
         $pdo->exec("
             CREATE TABLE IF NOT EXISTS event_bookings (
@@ -41,7 +70,7 @@ function ensure_core_schema(PDO $pdo): void {
         ");
     } catch (Throwable $e) {}
 
-    // 2. Extra columns on event_bookings
+    // 3. Extra columns on event_bookings
     $bookingCols = [
         'first_name TEXT',
         'last_name TEXT',
@@ -53,7 +82,7 @@ function ensure_core_schema(PDO $pdo): void {
         try { $pdo->exec("ALTER TABLE event_bookings ADD COLUMN " . $bcol); } catch (Throwable $e) {}
     }
 
-    // 3. Extra columns on events table
+    // 4. Extra columns on events table
     $evtCols = [
         'image_url TEXT',
         'organizer TEXT',
@@ -95,6 +124,47 @@ function ensure_core_schema(PDO $pdo): void {
                 created_at INTEGER NOT NULL
             )
         ");
+    } catch (Throwable $e) {}
+
+    // 6. Ensure Taglio di Po Flagship Event exists in events table
+    try {
+        $evtSic = 'SIC-EVT-ACAT-BP-2026-COMM';
+        $ch = $pdo->prepare('SELECT COUNT(*) FROM events WHERE sic_id = ?');
+        $ch->execute([$evtSic]);
+        $exists = (int)$ch->fetchColumn() > 0;
+
+        $desc = 'Impara a comunicare senza litigare e a non farti caricare dai problemi degli altri. Corso di formazione esperienziale rivolto a chi vive in famiglia una situazione di dipendenza, operatori, volontari e membri dei Club Alcologici Territoriali. Tre giornate con Adelmo Di Salvatore per acquisire strumenti pratici da usare già dal lunedì.';
+        $venue = "Oratorio San Francesco d'Assisi";
+        $address = 'Vicolo San Francesco 1, Taglio di Po (RO)';
+        $organizer = 'ACAT Basso Polesine O.D.V. & Coordinamento A.C.A.T. Polesane';
+        $trainer = 'Adelmo Di Salvatore (Psichiatra, Psicoterapeuta, Formatore Metodo Hudolin)';
+        $imageUrl = 'assets/img/events/locandina-ufficiale-oratorio.jpeg';
+
+        if (!$exists) {
+            $ins = $pdo->prepare('INSERT INTO events (sic_id, type, title, description, starts_at, ends_at, venue, comune, address, visibility, rank_required, drx_reward, status, capacity, price_eur, source_url, image_url, organizer, trainer, registration_deadline) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+            $ins->execute([
+                $evtSic,
+                'FORMAZIONE',
+                'A Scuola di Comunicazione e Resilienza — 1° Livello',
+                $desc,
+                '2026-10-09 14:30:00',
+                '2026-10-11 13:00:00',
+                $venue,
+                'Taglio di Po',
+                $address,
+                'PUBLIC',
+                'SEME',
+                100,
+                'PUBLISHED',
+                30,
+                10.00,
+                'event-detail.php?event=' . $evtSic,
+                $imageUrl,
+                $organizer,
+                $trainer,
+                '2026-10-01 23:59:59'
+            ]);
+        }
     } catch (Throwable $e) {}
 }
 

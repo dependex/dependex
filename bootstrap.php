@@ -7,7 +7,96 @@ $_SERVER['REQUEST_METHOD'] = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 $_SERVER['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
 $_SERVER['HTTP_HOST'] = $_SERVER['HTTP_HOST'] ?? 'dependex.social';
 
-function db(): PDO { static $pdo=null;if($pdo instanceof PDO)return $pdo;if(!extension_loaded('pdo_sqlite'))throw new RuntimeException('PDO_SQLite non disponibile.');$pdo=new PDO('sqlite:'.DB_PATH,null,null,[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC]);$pdo->exec('PRAGMA foreign_keys=ON; PRAGMA journal_mode=WAL; PRAGMA synchronous=NORMAL;');return $pdo; }
+function ensure_core_schema(PDO $pdo): void {
+    static $done = false;
+    if ($done) return;
+    $done = true;
+
+    // 1. Core event_bookings table
+    try {
+        $pdo->exec("
+            CREATE TABLE IF NOT EXISTS event_bookings (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                sic_id TEXT UNIQUE NOT NULL,
+                event_sic_id TEXT NOT NULL,
+                user_sic_id TEXT,
+                first_name TEXT,
+                last_name TEXT,
+                full_name TEXT NOT NULL,
+                email TEXT NOT NULL,
+                phone TEXT NOT NULL,
+                role_type TEXT,
+                dietary_notes TEXT,
+                num_seats INTEGER DEFAULT 1,
+                total_amount REAL DEFAULT 10.0,
+                payment_method TEXT DEFAULT 'ON_SITE',
+                payment_status TEXT DEFAULT 'PENDING',
+                payment_tx_id TEXT,
+                status TEXT DEFAULT 'CONFIRMED',
+                notes TEXT,
+                ip_address TEXT,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            )
+        ");
+    } catch (Throwable $e) {}
+
+    // 2. Extra columns on event_bookings
+    $bookingCols = [
+        'first_name TEXT',
+        'last_name TEXT',
+        'payment_status TEXT DEFAULT "PENDING"',
+        'payment_tx_id TEXT',
+        'updated_at DATETIME DEFAULT CURRENT_TIMESTAMP'
+    ];
+    foreach ($bookingCols as $bcol) {
+        try { $pdo->exec("ALTER TABLE event_bookings ADD COLUMN " . $bcol); } catch (Throwable $e) {}
+    }
+
+    // 3. Extra columns on events table
+    $evtCols = [
+        'image_url TEXT',
+        'organizer TEXT',
+        'trainer TEXT',
+        'registration_deadline TEXT',
+        'ends_at DATETIME',
+        'capacity INTEGER DEFAULT 30',
+        'price_eur REAL DEFAULT 10.0',
+        'address TEXT',
+        'comune TEXT'
+    ];
+    foreach ($evtCols as $ecol) {
+        try { $pdo->exec("ALTER TABLE events ADD COLUMN " . $ecol); } catch (Throwable $e) {}
+    }
+
+    // 4. Ensure event_registrations table exists
+    try {
+        $pdo->exec("
+            CREATE TABLE IF NOT EXISTS event_registrations (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                sic_id TEXT UNIQUE NOT NULL,
+                event_sic_id TEXT NOT NULL,
+                user_sic_id TEXT,
+                status TEXT DEFAULT 'REGISTERED',
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                checked_in_at DATETIME
+            )
+        ");
+    } catch (Throwable $e) {}
+}
+
+function db(): PDO {
+    static $pdo = null;
+    if ($pdo instanceof PDO) return $pdo;
+    if (!extension_loaded('pdo_sqlite')) throw new RuntimeException('PDO_SQLite non disponibile.');
+    $pdo = new PDO('sqlite:' . DB_PATH, null, null, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+    ]);
+    $pdo->exec('PRAGMA foreign_keys=ON; PRAGMA journal_mode=WAL; PRAGMA synchronous=NORMAL;');
+    ensure_core_schema($pdo);
+    return $pdo;
+}
 function h(?string $v): string {return htmlspecialchars((string)$v,ENT_QUOTES,'UTF-8');}
 const SIC_ALFA='0123456789ABCDEFGHJKMNPQRSTVWXYZ';
 function sic_val(string $c): int {$c=strtoupper($c);if($c==='I'||$c==='L')$c='1';if($c==='O')$c='0';$p=strpos(SIC_ALFA,$c);return $p===false?-1:$p;}

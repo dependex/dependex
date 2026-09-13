@@ -1,20 +1,44 @@
 {
   "name": "DEPENDEX — AL CLUB. COL CLUB.",
   "short_name": "DEPENDEX",
-  "description": "DEPENDEX — AL CLUB. COL CLUB. La Community per andare oltre. Monitoraggio sobrietà, check-in quotidiano, Club, Academy e supporto continuo.",
-  "start_url": "app.php",
+  "description": "DEPENDEX — AL CLUB. COL CLUB. La Rete Nazionale per andare oltre le dipendenze: Metodo Hudolin, 542 Club, Eventi, Libri e Formazione Continua.",
+  "start_url": "index.php",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#071B33",
-  "theme_color": "#071B33",
+  "background_color": "#06070a",
+  "theme_color": "#06070a",
   "lang": "it",
   "dir": "ltr",
-  "categories": ["health", "lifestyle", "social"],
+  "categories": ["health", "lifestyle", "social", "education"],
   "icons": [
     {
+      "src": "assets/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
       "src": "assets/img/app-icon.svg",
-      "sizes": "192x192 512x512 any",
+      "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     },
@@ -27,32 +51,39 @@
   ],
   "shortcuts": [
     {
-      "name": "La mia Community",
+      "name": "Home & Rassegna Eventi",
       "short_name": "Home",
-      "description": "Accedi al tuo cruscotto personale",
-      "url": "app.php",
-      "icons": [{ "src": "assets/img/app-icon.svg", "sizes": "any" }]
+      "description": "Portale Nazionale DEPENDEX ed Eventi",
+      "url": "index.php",
+      "icons": [{ "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
-      "name": "Daily Check-in",
-      "short_name": "Check-in",
-      "description": "Registra il tuo stato di oggi",
-      "url": "checkin.php",
-      "icons": [{ "src": "assets/img/app-icon.svg", "sizes": "any" }]
-    },
-    {
-      "name": "Diario Personale",
-      "short_name": "Diario",
-      "description": "Scrivi una riflessione o gratitudine",
-      "url": "journal.php",
-      "icons": [{ "src": "assets/img/app-icon.svg", "sizes": "any" }]
+      "name": "Evento Taglio di Po",
+      "short_name": "Taglio di Po",
+      "description": "Corso 1° Livello Comunicazione e Resilienza",
+      "url": "event-detail.php?event=SIC-EVT-ACAT-BP-2026-COMM",
+      "icons": [{ "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Trova Club",
       "short_name": "Club",
-      "description": "Mappa e contatti dei Club",
+      "description": "Mappa e contatti dei 542 Club territoriali",
       "url": "world-club-explorer.php",
-      "icons": [{ "src": "assets/img/app-icon.svg", "sizes": "any" }]
+      "icons": [{ "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Libri e Guide Amazon",
+      "short_name": "Libreria",
+      "description": "Guide pratiche, quaderni di lavoro e manuali",
+      "url": "offers.php",
+      "icons": [{ "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Viaggi Esperienziali BEWAY",
+      "short_name": "Viaggi",
+      "description": "Crociere e ritiri formativi beway.life",
+      "url": "viaggi-esperienziali.php",
+      "icons": [{ "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ]
 }

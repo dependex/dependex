@@ -18,15 +18,21 @@ $evtStmt = $pdo->prepare("SELECT * FROM events WHERE sic_id = ?");
 $evtStmt->execute([$eventSic]);
 $fastEvt = $evtStmt->fetch(PDO::FETCH_ASSOC);
 
-// Conteggi
-$cntStmt = $pdo->prepare("
-    SELECT (
-        (SELECT COUNT(*) FROM event_registrations er WHERE er.event_sic_id = ? AND er.status IN ('REGISTERED', 'CHECKED_IN')) +
-        (SELECT COALESCE(SUM(num_seats), 0) FROM event_bookings eb WHERE eb.event_sic_id = ? AND eb.status = 'CONFIRMED')
-    ) as total_booked
-");
-$cntStmt->execute([$eventSic, $eventSic]);
-$fastBooked = (int)$cntStmt->fetchColumn();
+// Conteggi con fallback difensivo
+$fastBooked = 0;
+try {
+    ensure_core_schema($pdo);
+    $cntStmt = $pdo->prepare("
+        SELECT (
+            (SELECT COUNT(*) FROM event_registrations er WHERE er.event_sic_id = ? AND er.status IN ('REGISTERED', 'CHECKED_IN')) +
+            (SELECT COALESCE(SUM(num_seats), 0) FROM event_bookings eb WHERE eb.event_sic_id = ? AND eb.status = 'CONFIRMED')
+        ) as total_booked
+    ");
+    $cntStmt->execute([$eventSic, $eventSic]);
+    $fastBooked = (int)$cntStmt->fetchColumn();
+} catch (Throwable $e) {
+    $fastBooked = 0;
+}
 $fastCap = (int)($fastEvt['capacity'] ?? 30);
 $fastRemaining = max(0, $fastCap - $fastBooked);
 $fastIsFull = ($fastRemaining <= 0);

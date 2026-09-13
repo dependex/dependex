@@ -1,6 +1,6 @@
 <?php
 /**
- * DEPENDEX & ECOSYSTEM — 28 SPONSOR DELL'EVENTO
+ * DEPENDEX & ECOSYSTEM — SPONSOR DELL'EVENTO
  * Design Mobile-First 9:16 e Widescreen 16:9 con Immagini Dirette, Copywriting Magnetico PNL e Link al Sito.
  * Conforme al protocollo di governance: zero riferimenti a termini proibiti e zero emoji.
  */
@@ -62,30 +62,30 @@ $sponsors = [
     [
         'name' => 'estao.app',
         'slug' => 'estao-app',
-        'category' => 'PropTech Immobiliare',
-        'desc' => 'Semplifica, velocizza, concludi. La piattaforma immobiliare avanzata che anticipa le mosse del mercato e trasforma contatti in accordi chiusi.',
+        'category' => 'Real Estate Intelligence',
+        'desc' => 'Massimizza il rendimento del tuo patrimonio immobiliare. Valutazioni analitiche, gestione trasparente e strategie di messa a reddito continua.',
         'icon' => 'home',
-        'color' => '#14b8a6',
+        'color' => '#84cc16',
         'img' => 'assets/img/sponsors/estao-app.svg',
         'url' => 'https://estao.app/'
     ],
     [
         'name' => 'ixla.solutions',
         'slug' => 'ixla-solutions',
-        'category' => 'Supreme Engineering',
-        'desc' => 'Dal concetto alla materia con precisione millimetrica. Moduli abitativi per ambienti estremi.',
-        'icon' => 'layers',
-        'color' => '#6366f1',
+        'category' => 'Laser & Engineering',
+        'desc' => 'Precisione industriale senza compromessi. Hardware d\'avanguardia e marcatura ad alta sicurezza per standard d\'eccellenza globale.',
+        'icon' => 'zap',
+        'color' => '#f97316',
         'img' => 'assets/img/sponsors/ixla-solutions.svg',
         'url' => 'https://ixla.solutions/'
     ],
     [
         'name' => 'metroeridania.it',
         'slug' => 'metroeridania-it',
-        'category' => 'Territorio & Cartografia',
-        'desc' => 'Riconnettiti alle radici della bellezza fluviale. Itinerari esclusivi, cartografia viva ed ecologia comunitaria nel cuore autentico del Delta del Po.',
-        'icon' => 'map-pin',
-        'color' => '#d4af37',
+        'category' => 'Mobilità & Ecosistemi',
+        'desc' => 'Connetti territori, comunità e futuro sostenibile. Infrastrutture snelle e mobilità integrata lungo l\'asta del grande fiume Po.',
+        'icon' => 'navigation',
+        'color' => '#14b8a6',
         'img' => 'assets/img/sponsors/metroeridania-it.svg',
         'url' => 'https://metroeridania.it/'
     ],
@@ -127,7 +127,7 @@ $rainbowPalette = ['#ff3344', '#ff7700', '#ffd700', '#00ff77', '#00d4ff', '#3a55
         <!-- IMMAGINE BRAND -->
         <div style="width: 100%; aspect-ratio: 16/9; background: #030712; border-bottom: 1px solid rgba(255,255,255,0.08); overflow: hidden; position: relative;">
           <a href="<?=htmlspecialchars($sp['url'], ENT_QUOTES, 'UTF-8')?>" target="_blank" rel="noopener" style="display: block; width: 100%; height: 100%;">
-            <img src="<?=htmlspecialchars($sp['img'], ENT_QUOTES, 'UTF-8')?>?v=20260913v3" 
+            <img src="<?=htmlspecialchars($sp['img'], ENT_QUOTES, 'UTF-8')?>?v=20260913v4" 
                  alt="<?=htmlspecialchars($sp['name'], ENT_QUOTES, 'UTF-8')?>" 
                  width="1200" 
                  height="675"

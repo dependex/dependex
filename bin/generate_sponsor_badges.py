@@ -441,7 +441,7 @@ def generate_svg(item, idx):
 
   <!-- Golden Footer Signature -->
   <text x="1110" y="605" font-size="13" font-weight="800" fill="#d4af37" text-anchor="end" letter-spacing="1">
-    DEPENDEX.SOCIAL · 28 BUSINESS SOVRANI · ULTRA-HD 8K
+    DEPENDEX.SOCIAL · ASSET SOVRANI · ULTRA-HD 8K
   </text>
 </svg>'''
     

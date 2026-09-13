@@ -103,7 +103,7 @@
 
   <!-- Tagline / Value Proposition -->
   <text x="90" y="375" font-size="28" font-weight="800" fill="#f8fafc" letter-spacing="0.2">
-    Condivisione Autentica, Rete Umana &amp; Rispetto
+    Condivisione Autentica, Rete Umana & Rispetto
   </text>
 
   <!-- Extended Sub-description -->
@@ -133,6 +133,6 @@
 
   <!-- Golden Footer Signature -->
   <text x="1110" y="605" font-size="13" font-weight="800" fill="#d4af37" text-anchor="end" letter-spacing="1">
-    DEPENDEX.SOCIAL · 28 BUSINESS SOVRANI · ULTRA-HD 8K
+    DEPENDEX.SOCIAL · ASSET SOVRANI · ULTRA-HD 8K
   </text>
 </svg>

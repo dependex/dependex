@@ -63,7 +63,7 @@
   <g transform="translate(180, 85)">
     <rect width="320" height="34" rx="17" fill="url(#badge-grad-13)" stroke="#ef4444" stroke-opacity="0.4" stroke-width="1.5" />
     <circle cx="20" cy="17" r="4" fill="#f87171" />
-    <text x="34" y="22" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="0.5">MEDIA &amp; CONTENT ENGINE</text>
+    <text x="34" y="22" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="0.5">MEDIA & CONTENT ENGINE</text>
   </g>
 
   <!-- Verified Sovereign Trust Seal -->
@@ -103,7 +103,7 @@
 
   <!-- Tagline / Value Proposition -->
   <text x="90" y="375" font-size="28" font-weight="800" fill="#f8fafc" letter-spacing="0.2">
-    Flotta di 100 Canali Tematici &amp; Media Intelligence
+    Flotta di 100 Canali Tematici & Media Intelligence
   </text>
 
   <!-- Extended Sub-description -->
@@ -133,6 +133,6 @@
 
   <!-- Golden Footer Signature -->
   <text x="1110" y="605" font-size="13" font-weight="800" fill="#d4af37" text-anchor="end" letter-spacing="1">
-    DEPENDEX.SOCIAL · 28 BUSINESS SOVRANI · ULTRA-HD 8K
+    DEPENDEX.SOCIAL · ASSET SOVRANI · ULTRA-HD 8K
   </text>
 </svg>

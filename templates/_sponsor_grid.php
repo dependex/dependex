@@ -292,27 +292,39 @@ $sponsors = [
 ];
 ?>
 
-<section class="m-card" style="border-color: rgba(212,175,55,0.45); background: rgba(13, 16, 26, 0.96); margin-top: 16px;">
+<?php
+$rainbowPalette = ['#ff3344', '#ff7700', '#ffd700', '#00ff77', '#00d4ff', '#3a55ff', '#b829ff'];
+?>
+<section class="m-card" style="border-color: rgba(212,175,55,0.45); background: rgba(13, 16, 26, 0.96); margin-top: 16px; border-radius: 20px; box-shadow: 0 16px 45px rgba(0,0,0,0.7);">
   
-  <div style="text-align: center; margin-bottom: 18px;">
-    <h2 style="font-family: var(--font-serif); font-size: clamp(1.3rem, 4.5vw, 1.7rem); color: #ffffff; margin: 0; font-weight: 900; letter-spacing: 0.04em;">
-      <?=dx_icon('award', 'text-gold', 18)?> SPONSOR DELL'EVENTO
+  <div style="text-align: center; margin-bottom: 20px;">
+    <div class="badge-neon-rainbow mb-2" style="font-size: 0.72rem; padding: 4px 14px;">
+      <span class="dot"></span>
+      <span class="text-rainbow">28 ASSET SOVRANI A SOSTEGNO DELL'EVENTO</span>
+    </div>
+    <h2 style="font-family: var(--font-serif); font-size: clamp(1.35rem, 4.5vw, 1.85rem); color: #ffffff; margin: 0; font-weight: 900; letter-spacing: 0.04em;">
+      <?=dx_icon('award', 'text-gold', 20)?> SPONSOR DELL'EVENTO
     </h2>
   </div>
 
   <!-- GRIGLIA SPONSOR (RESPONSIVE ADATTIVA 9:16 E 16:9) -->
-  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 16px;">
-    <?php foreach ($sponsors as $idx => $sp): ?>
-      <article style="background: rgba(20, 25, 38, 0.92); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 6px 18px rgba(0,0,0,0.4); transition: transform 0.2s ease, border-color 0.2s ease;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); gap: 18px;">
+    <?php foreach ($sponsors as $idx => $sp): 
+      $spColor = $rainbowPalette[$idx % 7];
+    ?>
+      <article style="background: rgba(18, 22, 34, 0.94); border: 1px solid rgba(255, 255, 255, 0.12); border-top: 3px solid <?=$spColor?>; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 6px 20px rgba(0,0,0,0.45); transition: transform 0.25s ease, box-shadow 0.25s ease;">
         
         <!-- IMMAGINE BRAND -->
-        <div style="width: 100%; aspect-ratio: 16/9; background: #030712; border-bottom: 1px solid rgba(255,255,255,0.08); overflow: hidden;">
+        <div style="width: 100%; aspect-ratio: 16/9; background: #030712; border-bottom: 1px solid rgba(255,255,255,0.08); overflow: hidden; position: relative;">
           <a href="<?=htmlspecialchars($sp['url'], ENT_QUOTES, 'UTF-8')?>" target="_blank" rel="noopener" style="display: block; width: 100%; height: 100%;">
             <img src="<?=htmlspecialchars($sp['img'], ENT_QUOTES, 'UTF-8')?>" 
                  alt="<?=htmlspecialchars($sp['name'], ENT_QUOTES, 'UTF-8')?>" 
                  loading="lazy"
-                 style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                 style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease;">
           </a>
+          <div style="position: absolute; top: 6px; left: 6px; font-size: 0.62rem; font-weight: 900; color: #fff; background: rgba(3,7,18,0.85); border: 1px solid <?=$spColor?>; padding: 2px 6px; border-radius: 4px;">
+            #<?=str_pad((string)($idx + 1), 2, '0', STR_PAD_LEFT)?>
+          </div>
         </div>
 
         <!-- CONTENUTO PNL & LINK -->
@@ -322,7 +334,7 @@ $sponsors = [
               <h3 style="font-weight: 850; font-size: 0.95rem; color: #ffffff; margin: 0; line-height: 1.3;">
                 <?=htmlspecialchars($sp['name'], ENT_QUOTES, 'UTF-8')?>
               </h3>
-              <span style="font-size: 0.68rem; font-weight: 800; color: <?=$sp['color']?>; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;">
+              <span style="font-size: 0.68rem; font-weight: 800; color: <?=$spColor?>; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;">
                 <?=htmlspecialchars($sp['category'], ENT_QUOTES, 'UTF-8')?>
               </span>
             </div>
@@ -333,7 +345,7 @@ $sponsors = [
           </div>
 
           <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px;">
-            <a href="<?=htmlspecialchars($sp['url'], ENT_QUOTES, 'UTF-8')?>" target="_blank" rel="noopener" class="btn" style="width: 100%; background: rgba(212,175,55,0.14); border: 1px solid rgba(212,175,55,0.35); color: #fff; font-size: 0.8rem; font-weight: 750; padding: 8px 12px; border-radius: 8px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.2s ease;">
+            <a href="<?=htmlspecialchars($sp['url'], ENT_QUOTES, 'UTF-8')?>" target="_blank" rel="noopener" class="btn" style="width: 100%; background: rgba(212,175,55,0.12); border: 1px solid <?=$spColor?>; color: #fff; font-size: 0.8rem; font-weight: 750; padding: 8px 12px; border-radius: 8px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s ease;">
               <span>Visita il Sito</span>
               <?=dx_icon('external-link', '', 12)?>
             </a>
@@ -344,7 +356,7 @@ $sponsors = [
     <?php endforeach; ?>
   </div>
 
-  <div style="margin-top: 16px; padding: 12px; background: rgba(212,175,55,0.08); border-radius: 10px; border: 1px dashed rgba(212,175,55,0.35); text-align: center; font-size: 0.78rem; color: #e2e8f0; line-height: 1.45;">
+  <div style="margin-top: 18px; padding: 12px 16px; background: rgba(212,175,55,0.08); border-radius: 10px; border: 1px dashed rgba(212,175,55,0.35); text-align: center; font-size: 0.78rem; color: #e2e8f0; line-height: 1.45;">
     <?=dx_icon('shield-check', '', 14)?> <b>Garanzia di Sostegno Ufficiale:</b> la quota simbolica di 10€ copre interamente il pranzo comunitario e il materiale didattico grazie al supporto della rete.
   </div>
 

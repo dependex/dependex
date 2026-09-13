@@ -83,136 +83,112 @@ $isFull = ($seatsRemaining <= 0);
 $percentBooked = $capacity > 0 ? min(100, round(($totalBooked / $capacity) * 100)) : 0;
 
 $pageTitle = 'A Scuola di Comunicazione e Resilienza · Taglio di Po · ACAT';
-$metaDesc = 'Impara a comunicare senza litigare e a non farti caricare dai problemi degli altri. 9-11 Ottobre 2026, Taglio di Po. Iscrizione online in 10 secondi.';
 require '_header.php';
 ?>
-<script>document.body.classList.add('light-event-page');</script>
 
-<style id="event-light-wow-styles">
-  /* SFONDO CHIARO SUPER WOW CON EFFETTI VISUALI */
-  body.light-event-page,
-  .event-light-wow-wrapper {
-    background-color: #f8fafc !important;
+<style id="event-cosmic-rainbow-styles">
+  /* ============================================================== */
+  /* COSMIC RAINBOW NEON LANDING EXPERIENCE                         */
+  /* Sfondo Scuro Ossidiana con i 7 Colori dello Spettro Sovrano     */
+  /* ============================================================== */
+  .event-cosmic-landing {
+    background-color: #060810 !important;
     background-image: 
-      radial-gradient(at 0% 0%, rgba(245, 158, 11, 0.16) 0px, transparent 50%),
-      radial-gradient(at 100% 12%, rgba(14, 165, 233, 0.14) 0px, transparent 50%),
-      radial-gradient(at 50% 45%, rgba(16, 185, 129, 0.12) 0px, transparent 45%),
-      radial-gradient(at 10% 85%, rgba(217, 119, 6, 0.14) 0px, transparent 50%),
-      radial-gradient(at 90% 90%, rgba(99, 102, 241, 0.11) 0px, transparent 45%),
-      radial-gradient(rgba(15, 23, 42, 0.065) 1.2px, transparent 1.2px) !important;
-    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 24px 24px !important;
+      radial-gradient(circle at 10% 8%, rgba(255, 51, 68, 0.2) 0%, transparent 40%),
+      radial-gradient(circle at 90% 15%, rgba(255, 119, 0, 0.18) 0%, transparent 42%),
+      radial-gradient(circle at 50% 32%, rgba(255, 215, 0, 0.16) 0%, transparent 45%),
+      radial-gradient(circle at 15% 55%, rgba(0, 255, 119, 0.17) 0%, transparent 42%),
+      radial-gradient(circle at 85% 68%, rgba(0, 212, 255, 0.2) 0%, transparent 45%),
+      radial-gradient(circle at 25% 88%, rgba(58, 85, 255, 0.18) 0%, transparent 42%),
+      radial-gradient(circle at 80% 95%, rgba(184, 41, 255, 0.2) 0%, transparent 44%),
+      radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px) !important;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 28px 28px !important;
     background-attachment: fixed !important;
     min-height: 100vh;
-    color: #1e293b !important;
+    color: #f1f5f9 !important;
     position: relative;
     overflow-x: hidden;
   }
 
-  /* SFERE LUMINOSE FLUTTUANTI (AMBIENT AURORA LIGHT BLOBS) */
-  .event-light-wow-wrapper .light-aurora-orb {
+  /* 7 SFERE LUMINOSE AURORA (I 7 COLORI ARCOBALENO SOVRANI) */
+  .event-cosmic-landing .aurora-orb {
     position: fixed;
     border-radius: 50%;
     filter: blur(85px);
     pointer-events: none;
     z-index: 0;
-    opacity: 0.85;
-    animation: orbFloat 18s ease-in-out infinite alternate;
+    opacity: 0.75;
+    animation: orbFloat 22s ease-in-out infinite alternate;
   }
-  .event-light-wow-wrapper .light-orb-gold {
-    width: 440px;
-    height: 440px;
-    top: 40px;
-    left: -100px;
-    background: radial-gradient(circle, rgba(251, 191, 36, 0.45) 0%, rgba(245, 158, 11, 0.18) 55%, transparent 70%);
-    animation-duration: 20s;
-  }
-  .event-light-wow-wrapper .light-orb-cyan {
-    width: 480px;
-    height: 480px;
-    top: 28%;
-    right: -120px;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.4) 0%, rgba(14, 165, 233, 0.15) 55%, transparent 70%);
-    animation-duration: 24s;
-    animation-delay: -5s;
-  }
-  .event-light-wow-wrapper .light-orb-emerald {
-    width: 420px;
-    height: 420px;
-    top: 60%;
-    left: -80px;
-    background: radial-gradient(circle, rgba(52, 211, 153, 0.38) 0%, rgba(16, 185, 129, 0.14) 55%, transparent 70%);
-    animation-duration: 22s;
-    animation-delay: -10s;
-  }
-  .event-light-wow-wrapper .light-orb-amber {
-    width: 400px;
-    height: 400px;
-    bottom: 50px;
-    right: -60px;
-    background: radial-gradient(circle, rgba(251, 146, 60, 0.36) 0%, rgba(217, 119, 6, 0.12) 55%, transparent 70%);
-    animation-duration: 18s;
-    animation-delay: -3s;
-  }
+  .event-cosmic-landing .orb-1-red { width: 420px; height: 420px; top: 20px; left: -120px; background: radial-gradient(circle, rgba(255,51,68,0.4) 0%, rgba(255,51,68,0.1) 60%, transparent 75%); animation-duration: 26s; }
+  .event-cosmic-landing .orb-2-orange { width: 400px; height: 400px; top: 18%; right: -100px; background: radial-gradient(circle, rgba(255,119,0,0.36) 0%, rgba(255,119,0,0.1) 60%, transparent 75%); animation-duration: 22s; animation-delay: -4s; }
+  .event-cosmic-landing .orb-3-gold { width: 440px; height: 440px; top: 38%; left: 30%; background: radial-gradient(circle, rgba(255,215,0,0.32) 0%, rgba(255,215,0,0.08) 60%, transparent 75%); animation-duration: 28s; animation-delay: -8s; }
+  .event-cosmic-landing .orb-4-green { width: 420px; height: 420px; top: 52%; left: -90px; background: radial-gradient(circle, rgba(0,255,119,0.35) 0%, rgba(0,255,119,0.09) 60%, transparent 75%); animation-duration: 24s; animation-delay: -12s; }
+  .event-cosmic-landing .orb-5-cyan { width: 460px; height: 460px; top: 68%; right: -110px; background: radial-gradient(circle, rgba(0,212,255,0.38) 0%, rgba(0,212,255,0.1) 60%, transparent 75%); animation-duration: 25s; animation-delay: -7s; }
+  .event-cosmic-landing .orb-6-indigo { width: 400px; height: 400px; bottom: 120px; left: 10%; background: radial-gradient(circle, rgba(58,85,255,0.35) 0%, rgba(58,85,255,0.08) 60%, transparent 75%); animation-duration: 23s; animation-delay: -15s; }
+  .event-cosmic-landing .orb-7-violet { width: 450px; height: 450px; bottom: 30px; right: -80px; background: radial-gradient(circle, rgba(184,41,255,0.4) 0%, rgba(184,41,255,0.1) 60%, transparent 75%); animation-duration: 27s; animation-delay: -10s; }
 
   @keyframes orbFloat {
     0% { transform: translate3d(0, 0, 0) scale(1); }
-    50% { transform: translate3d(35px, -30px, 0) scale(1.1); }
-    100% { transform: translate3d(-25px, 20px, 0) scale(0.95); }
+    50% { transform: translate3d(40px, -35px, 0) scale(1.08); }
+    100% { transform: translate3d(-30px, 25px, 0) scale(0.96); }
   }
 
   /* SHELL CONTAINER DUAL-RATIO: 9:16 SMARTPHONE / 16:9 PC-TABLET */
-  .event-light-wow-wrapper .mobile-916-shell {
+  .event-cosmic-landing .mobile-916-shell {
     position: relative;
     z-index: 2;
     width: 100%;
     max-width: 520px;
     margin: 0 auto;
-    padding: 10px 12px 110px;
+    padding: 12px 14px 110px;
     transition: max-width 0.3s ease, padding 0.3s ease;
   }
   @media (min-width: 992px) {
-    .event-light-wow-wrapper .mobile-916-shell {
+    .event-cosmic-landing .mobile-916-shell {
       max-width: 1440px !important;
-      margin: 20px auto !important;
-      padding: 24px 36px 60px !important;
-      background: rgba(255, 255, 255, 0.88) !important;
-      border: 1px solid rgba(226, 232, 240, 0.95) !important;
-      box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.1), 0 0 35px rgba(217, 119, 6, 0.08) !important;
+      margin: 24px auto !important;
+      padding: 28px 40px 70px !important;
+      background: rgba(10, 14, 25, 0.72) !important;
+      border: 1px solid rgba(255, 215, 0, 0.25) !important;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 215, 0, 0.1) !important;
       border-radius: 28px !important;
     }
 
-    .event-light-wow-wrapper .adaptive-169-split {
+    .event-cosmic-landing .adaptive-169-split {
       display: grid !important;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.25fr) !important;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.22fr) !important;
       gap: 32px !important;
       align-items: start !important;
     }
 
-    .event-light-wow-wrapper .split-col-left {
+    .event-cosmic-landing .split-col-left {
       display: flex !important;
       flex-direction: column !important;
-      gap: 16px !important;
+      gap: 18px !important;
+      position: sticky;
+      top: 90px;
     }
 
-    .event-light-wow-wrapper .split-col-right {
+    .event-cosmic-landing .split-col-right {
       display: flex !important;
       flex-direction: column !important;
-      gap: 16px !important;
+      gap: 18px !important;
     }
 
-    .event-light-wow-wrapper .m-sticky-bar {
+    .event-cosmic-landing .m-sticky-bar {
       display: none !important;
     }
   }
 
   @media (max-width: 991px) {
-    .event-light-wow-wrapper .adaptive-169-split {
+    .event-cosmic-landing .adaptive-169-split {
       display: flex !important;
       flex-direction: column !important;
       gap: 14px !important;
     }
-    .event-light-wow-wrapper .split-col-left,
-    .event-light-wow-wrapper .split-col-right {
+    .event-cosmic-landing .split-col-left,
+    .event-cosmic-landing .split-col-right {
       display: contents !important;
     }
     .order-m-1 { order: 1 !important; }
@@ -225,168 +201,110 @@ require '_header.php';
     .order-m-8 { order: 8 !important; }
   }
 
-  /* CARD GLASSMORPHIC IN MODALITA CHIARA CON SHADOW MULTILAYER */
-  .event-light-wow-wrapper .m-card {
-    background: rgba(255, 255, 255, 0.92) !important;
-    border: 1px solid rgba(226, 232, 240, 0.95) !important;
-    box-shadow: 0 10px 30px -8px rgba(15, 23, 42, 0.06), 0 2px 8px -2px rgba(15, 23, 42, 0.03) !important;
-    color: #1e293b !important;
+  /* CARD GLASSMORPHIC DARK COSMIC AD ALTO CONTRASTO */
+  .event-cosmic-landing .m-card {
+    background: rgba(13, 17, 28, 0.94) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6) !important;
+    color: #f1f5f9 !important;
+    border-radius: 18px !important;
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
 
-  .event-light-wow-wrapper .m-card-gold-glow {
-    border-color: rgba(217, 119, 6, 0.45) !important;
-    box-shadow: 0 12px 36px -6px rgba(217, 119, 6, 0.15), 0 4px 12px -2px rgba(217, 119, 6, 0.08) !important;
+  .event-cosmic-landing .m-card-gold-glow {
+    border-color: rgba(255, 215, 0, 0.45) !important;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7), 0 0 28px rgba(255, 215, 0, 0.14) !important;
   }
 
-  /* TITOLI E GERARCHIA TIPOGRAFICA AD ALTO CONTRASTO */
-  .event-light-wow-wrapper h1,
-  .event-light-wow-wrapper h2,
-  .event-light-wow-wrapper h3,
-  .event-light-wow-wrapper b,
-  .event-light-wow-wrapper strong {
-    color: #0f172a !important;
+  /* GERARCHIA TIPOGRAFICA AD ALTISSIMO CONTRASTO (ZERO BIANCO SU BIANCO) */
+  .event-cosmic-landing h1,
+  .event-cosmic-landing h2,
+  .event-cosmic-landing h3,
+  .event-cosmic-landing h4 {
+    color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.7);
   }
 
-  .event-light-wow-wrapper .m-card [style*="color: #ffffff"],
-  .event-light-wow-wrapper .m-card [style*="color: #FFFFFF"],
-  .event-light-wow-wrapper [style*="color: #ffffff"],
-  .event-light-wow-wrapper [style*="color: #FFFFFF"] {
-    color: #0f172a !important;
+  /* INPUT FORM DARK CON FOCUS NEON CIANO/ORO */
+  .event-cosmic-landing .m-input,
+  .event-cosmic-landing .m-select {
+    background: rgba(7, 10, 18, 0.92) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
+    color: #ffffff !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
   }
-
-  .event-light-wow-wrapper .m-card [style*="color: #cbd5e1"],
-  .event-light-wow-wrapper .m-card [style*="color: #e2e8f0"],
-  .event-light-wow-wrapper [style*="color: #cbd5e1"],
-  .event-light-wow-wrapper [style*="color: #e2e8f0"] {
-    color: #334155 !important;
+  .event-cosmic-landing .m-input:focus,
+  .event-cosmic-landing .m-select:focus {
+    border-color: var(--neon-cyan) !important;
+    box-shadow: 0 0 14px rgba(0, 212, 255, 0.4) !important;
+    outline: none !important;
   }
-
-  .event-light-wow-wrapper .m-card [style*="color: #94a3b8"],
-  .event-light-wow-wrapper .m-card [style*="color: #a1a1aa"],
-  .event-light-wow-wrapper [style*="color: #94a3b8"] {
-    color: #64748b !important;
-  }
-
-  /* COLORI ACCENTO PER LO SFONDO CHIARO */
-  .event-light-wow-wrapper [style*="color: #d4af37"],
-  .event-light-wow-wrapper [style*="color: #D4AF37"] {
-    color: #b45309 !important;
-  }
-
-  .event-light-wow-wrapper [style*="color: #10b981"] {
-    color: #047857 !important;
-  }
-
-  /* SFONDI SCURI TRASFORMATI IN CHIARI ELEGANTI */
-  .event-light-wow-wrapper [style*="background: rgba(14, 17, 24"],
-  .event-light-wow-wrapper [style*="background: rgba(22, 25, 36"],
-  .event-light-wow-wrapper [style*="background: rgba(20, 24, 35"],
-  .event-light-wow-wrapper [style*="background: rgba(18, 23, 36"],
-  .event-light-wow-wrapper [style*="background: rgba(10, 12, 18"],
-  .event-light-wow-wrapper [style*="background: rgba(14, 20, 32"] {
-    background: rgba(248, 250, 252, 0.95) !important;
-    border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  .event-cosmic-landing .m-form-group label {
+    color: #f1f5f9 !important;
+    font-weight: 750 !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 6px !important;
+    display: block !important;
   }
 
   /* TAB VIEWER LOCANDINE */
-  .event-light-wow-wrapper .m-tab-bar {
-    background: #e2e8f0 !important;
-    border: 1px solid #cbd5e1 !important;
+  .event-cosmic-landing .m-tab-bar {
+    background: rgba(8, 11, 20, 0.9) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 12px !important;
   }
-  .event-light-wow-wrapper .m-tab-btn {
-    color: #475569 !important;
+  .event-cosmic-landing .m-tab-btn {
+    color: #94a3b8 !important;
   }
-  .event-light-wow-wrapper .m-tab-btn.active {
-    background: #ffffff !important;
-    color: #b45309 !important;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
-  }
-
-  /* INPUT FORM E CONTROLLI */
-  .event-light-wow-wrapper .m-input {
-    background: #ffffff !important;
-    border: 1.5px solid #cbd5e1 !important;
-    color: #0f172a !important;
-    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.02) !important;
-  }
-  .event-light-wow-wrapper .m-input:focus {
-    border-color: #d97706 !important;
-    box-shadow: 0 0 0 3.5px rgba(217, 119, 6, 0.15) !important;
-    outline: none !important;
-  }
-  .event-light-wow-wrapper .m-label {
-    color: #334155 !important;
-    font-weight: 750;
+  .event-cosmic-landing .m-tab-btn.active {
+    background: rgba(255, 215, 0, 0.18) !important;
+    color: #ffd700 !important;
+    border: 1px solid rgba(255, 215, 0, 0.4) !important;
+    box-shadow: 0 0 14px rgba(255, 215, 0, 0.25) !important;
   }
 
-  /* PULSANTI CON PROFONDITA VISIVA */
-  .event-light-wow-wrapper .m-btn-primary {
-    background: linear-gradient(135deg, #d97706 0%, #b45309 100%) !important;
+  /* BOTTONI SOVRANI */
+  .event-cosmic-landing .m-btn-primary {
+    background: var(--rainbow-gradient) !important;
     color: #ffffff !important;
-    box-shadow: 0 8px 24px rgba(217, 119, 6, 0.28) !important;
+    font-weight: 900 !important;
     border: none !important;
+    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.35), 0 0 15px rgba(255, 119, 0, 0.3) !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
   }
-  .event-light-wow-wrapper .m-btn-outline {
-    background: #ffffff !important;
-    border: 1.5px solid #cbd5e1 !important;
-    color: #334155 !important;
-    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.03) !important;
-  }
-  .event-light-wow-wrapper .m-btn-whatsapp {
-    background: #25D366 !important;
+  .event-cosmic-landing .m-btn-outline {
+    background: rgba(15, 20, 32, 0.8) !important;
+    border: 1.5px solid rgba(255, 215, 0, 0.35) !important;
     color: #ffffff !important;
-    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.28) !important;
+  }
+  .event-cosmic-landing .m-btn-whatsapp {
+    background: #25D366 !important;
+    color: #030712 !important;
+    font-weight: 900 !important;
+    box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35) !important;
   }
 
-  /* BADGES */
-  .event-light-wow-wrapper .m-badge-green {
-    background: rgba(16, 185, 129, 0.14) !important;
-    color: #047857 !important;
-    border: 1px solid rgba(16, 185, 129, 0.35) !important;
-  }
-  .event-light-wow-wrapper .m-badge-red {
-    background: rgba(239, 68, 68, 0.14) !important;
-    color: #b91c1c !important;
-    border: 1px solid rgba(239, 68, 68, 0.35) !important;
-  }
-
-  /* BARRA INFERIORE STICKY PER SMARTPHONE */
-  .event-light-wow-wrapper .m-sticky-bar {
-    background: rgba(255, 255, 255, 0.94) !important;
-    border-top: 1px solid #e2e8f0 !important;
-    box-shadow: 0 -8px 28px rgba(15, 23, 42, 0.07) !important;
-    backdrop-filter: blur(18px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
-  }
-
-  /* ACCORDION DEL PROGRAMMA */
-  .event-light-wow-wrapper .m-accordion-head {
-    color: #0f172a !important;
-  }
-  .event-light-wow-wrapper .m-accordion-body {
-    border-top: 1px solid #e2e8f0 !important;
-  }
-
-  /* SEZIONE SPONSOR SU SFONDO CHIARO */
-  .event-light-wow-wrapper [id^="spCard-"] {
-    background: rgba(255, 255, 255, 0.95) !important;
-    border: 1px solid #e2e8f0 !important;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04) !important;
-  }
-  .event-light-wow-wrapper [id^="spCard-"]:hover {
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08) !important;
-    border-color: rgba(217, 119, 6, 0.4) !important;
+  /* STICKY BOTTOM BAR SMARTPHONE */
+  .event-cosmic-landing .m-sticky-bar {
+    background: rgba(10, 13, 22, 0.95) !important;
+    border-top: 1px solid rgba(255, 215, 0, 0.3) !important;
+    box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.85) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
   }
 </style>
 
-<div class="event-light-wow-wrapper">
-  <!-- AMBIENT FLOATING AURORA LIGHT BLOBS -->
-  <div class="light-aurora-orb light-orb-gold" aria-hidden="true"></div>
-  <div class="light-aurora-orb light-orb-cyan" aria-hidden="true"></div>
-  <div class="light-aurora-orb light-orb-emerald" aria-hidden="true"></div>
-  <div class="light-aurora-orb light-orb-amber" aria-hidden="true"></div>
+<div class="event-cosmic-landing">
+  <!-- 7 SFERE LUMINOSE AURORA (I 7 COLORI ARCOBALENO) -->
+  <div class="aurora-orb orb-1-red" aria-hidden="true"></div>
+  <div class="aurora-orb orb-2-orange" aria-hidden="true"></div>
+  <div class="aurora-orb orb-3-gold" aria-hidden="true"></div>
+  <div class="aurora-orb orb-4-green" aria-hidden="true"></div>
+  <div class="aurora-orb orb-5-cyan" aria-hidden="true"></div>
+  <div class="aurora-orb orb-6-indigo" aria-hidden="true"></div>
+  <div class="aurora-orb orb-7-violet" aria-hidden="true"></div>
 
 <!-- MOBILE-FIRST 9:16 CONTAINER (Zero sbordature, responsive smartphone shell) -->
 <div class="mobile-916-shell">
@@ -469,37 +387,40 @@ require '_header.php';
         </a>
       </section>
 
-      <!-- GRIGLIA UFFICIALE DEI 28 SPONSOR & ASSET DELL'ECOSISTEMA -->
-      <div class="order-m-8" style="display: flex; flex-direction: column; gap: 14px;">
-        <?php require_once __DIR__ . '/templates/_sponsor_grid.php'; ?>
-        <div class="text-center" style="font-size: 0.78rem; color: #94a3b8; margin-top: 6px;">
-          <p style="margin: 0 0 4px;">Organizzazione: <b>ACAT Basso Polesine O.D.V.</b></p>
-          <p style="margin: 0;">Referente Iscrizioni: <b>Grazia Nicosia</b> · Tel. WhatsApp <strong>347 884 4271</strong></p>
-        </div>
-      </div>
-
     </div> <!-- /.split-col-left -->
 
     <!-- COLONNA DESTRA PC/TABLET 16:9 (Hero, Dati, Iscrizione, WhatsApp, Programma) -->
     <div class="split-col-right">
 
       <!-- HERO EVENTO (DATI & CLAIM) -->
-      <article class="m-card m-card-gold-glow text-center order-m-1">
+      <article class="m-card m-card-gold-glow text-center order-m-1" style="border-radius: 22px; position: relative; overflow: hidden;">
         
-        <div style="font-size: 0.72rem; font-weight: 800; color: #d4af37; text-transform: uppercase; letter-spacing: 0.06em;">
-          Corso Esperienziale 1° Livello · Metodo Hudolin
+        <div class="badge-neon-rainbow mb-2" style="font-size: 0.74rem; padding: 4px 14px;">
+          <span class="dot"></span>
+          <span class="text-rainbow">APPROCCIO ECOLOGICO-SOCIALE HUDOLIN · 1° LIVELLO</span>
         </div>
 
-        <h1 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 5.5vw, 1.95rem); color: #ffffff; line-height: 1.25; margin: 6px 0 10px; font-weight: 900;">
-          A Scuola di Comunicazione e Resilienza
+        <h1 style="font-family: var(--font-serif); font-size: clamp(1.65rem, 5vw, 2.3rem); color: #ffffff; line-height: 1.25; margin: 6px 0 10px; font-weight: 900;">
+          A Scuola di <span class="rainbow-text">Comunicazione e Resilienza</span>
         </h1>
 
+        <!-- I 7 COLORI DELLA TRASFORMAZIONE (FREQUENZE DI SOVRANITÀ) -->
+        <div class="d-flex justify-content-center gap-1 my-3 flex-wrap" style="font-size: 0.68rem; font-weight: 800; letter-spacing: 0.04em;">
+          <span style="color: var(--neon-red); background: rgba(255,51,68,0.12); border: 1px solid rgba(255,51,68,0.3); padding: 2px 8px; border-radius: 6px;">Senti</span>
+          <span style="color: var(--neon-orange); background: rgba(255,119,0,0.12); border: 1px solid rgba(255,119,0,0.3); padding: 2px 8px; border-radius: 6px;">Agisci</span>
+          <span style="color: var(--neon-gold); background: rgba(255,215,0,0.12); border: 1px solid rgba(255,215,0,0.3); padding: 2px 8px; border-radius: 6px;">Comunica</span>
+          <span style="color: var(--neon-green); background: rgba(0,255,119,0.12); border: 1px solid rgba(0,255,119,0.3); padding: 2px 8px; border-radius: 6px;">Vedi</span>
+          <span style="color: var(--neon-cyan); background: rgba(0,212,255,0.12); border: 1px solid rgba(0,212,255,0.3); padding: 2px 8px; border-radius: 6px;">Ama</span>
+          <span style="color: var(--neon-indigo); background: rgba(58,85,255,0.12); border: 1px solid rgba(58,85,255,0.3); padding: 2px 8px; border-radius: 6px;">Costruisci</span>
+          <span style="color: var(--neon-violet); background: rgba(184,41,255,0.12); border: 1px solid rgba(184,41,255,0.3); padding: 2px 8px; border-radius: 6px;">Sii</span>
+        </div>
+
         <!-- SOTTOTITOLO ORIENTATO AL RISULTATO -->
-        <div style="background: rgba(20, 24, 35, 0.95); border-left: 4px solid #d4af37; border-radius: 12px; padding: 12px; text-align: left; margin: 10px 0 14px;">
-          <p style="font-size: 1rem; font-weight: 850; color: #ffffff; margin: 0 0 4px; line-height: 1.35;">
+        <div style="background: rgba(18, 24, 38, 0.95); border-left: 4px solid var(--neon-gold); border-radius: 12px; padding: 14px; text-align: left; margin: 12px 0 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.4);">
+          <p style="font-size: 1.05rem; font-weight: 850; color: #ffffff; margin: 0 0 6px; line-height: 1.35;">
             "Impara a comunicare senza litigare e a non farti caricare dai problemi degli altri."
           </p>
-          <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0; line-height: 1.45;">
+          <p style="font-size: 0.85rem; color: #cbd5e1; margin: 0; line-height: 1.45;">
             Corso rivolto a <strong>chi vive in famiglia una situazione di dipendenza</strong>, oltre a operatori, volontari e membri impegnati nei Club.
           </p>
         </div>
@@ -881,6 +802,17 @@ require '_header.php';
 
   </div> <!-- /.adaptive-169-split -->
 
+  <!-- ============================================================== -->
+  <!-- GRIGLIA SPONSOR DELL'EVENTO A TUTTO SCHERMO (16:9 E 9:16)      -->
+  <!-- ============================================================== -->
+  <div style="margin-top: 36px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+    <?php require_once __DIR__ . '/templates/_sponsor_grid.php'; ?>
+    <div class="text-center" style="font-size: 0.82rem; color: #94a3b8; margin-top: 14px;">
+      <p style="margin: 0 0 6px;">Organizzazione: <b style="color: #ffffff;">ACAT Basso Polesine O.D.V.</b></p>
+      <p style="margin: 0;">Referente Iscrizioni: <b style="color: #ffffff;">Grazia Nicosia</b> · Tel. WhatsApp <strong style="color: #25D366;">347 884 4271</strong></p>
+    </div>
+  </div>
+
 </div> <!-- /.mobile-916-shell -->
 
 <!-- STICKY BOTTOM ACTION BAR PER SMARTPHONE (9:16 SAFE-AREA) -->
@@ -1165,6 +1097,6 @@ async function submitUsdtTx() {
   }
 }
 </script>
-</div> <!-- /.event-light-wow-wrapper -->
+</div> <!-- /.event-cosmic-landing -->
 
 <?php require '_footer.php';?>

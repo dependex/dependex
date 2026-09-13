@@ -85,10 +85,10 @@ $trips = [
 ];
 ?>
 
-<main class="container py-5">
+<div class="container-169 py-4">
 
   <!-- ============================================================== -->
-  <!-- HERO BANNER PANORAMICO BEWAY.LIFE x DEPENDEX                   -->
+  <!-- HERO BANNER PANORAMICO BEWAY.LIFE x DEPENDEX (16:9 & 9:16)      -->
   <!-- ============================================================== -->
   <section class="mb-5 text-center">
     <div class="badge-neon-rainbow mb-3" style="font-size: 0.8rem; padding: 6px 18px;">
@@ -235,7 +235,7 @@ $trips = [
       </h2>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px;">
+    <div class="grid-169-3col" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 28px;">
       <?php foreach($trips as $t): ?>
         <article class="card p-4" style="display: flex; flex-direction: column; justify-content: space-between; border-radius: 22px; background: rgba(12, 16, 26, 0.94); border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 12px 35px rgba(0,0,0,0.6);">
           <div>
@@ -318,6 +318,6 @@ $trips = [
     </div>
   </section>
 
-</main>
+</div> <!-- /.container-169 -->
 
 <?php require '_footer.php'; ?>

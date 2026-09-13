@@ -125,10 +125,10 @@ $itinerary = [
 ];
 ?>
 
-<main class="container py-5">
+<div class="container-169 py-4">
 
   <!-- ============================================================== -->
-  <!-- HERO BANNER CINEMATICO                                         -->
+  <!-- HERO BANNER CINEMATICO (16:9 WIDESCREEN & MOBILE 9:16)          -->
   <!-- ============================================================== -->
   <section class="mb-5 text-center">
     <div class="badge-neon-rainbow mb-3" style="font-size: 0.8rem; padding: 6px 18px;">
@@ -226,7 +226,7 @@ $itinerary = [
       </p>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 26px;">
+    <div class="grid-169-3col" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 26px;">
       <?php foreach($cabinTiers as $cb): ?>
         <article class="card p-4" style="display: flex; flex-direction: column; justify-content: space-between; border-radius: 22px; background: rgba(12, 16, 26, 0.94); border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 12px 40px rgba(0,0,0,0.65);">
           
@@ -355,6 +355,6 @@ $itinerary = [
     </a>
   </section>
 
-</main>
+</div> <!-- /.container-169 -->
 
 <?php require '_footer.php'; ?>

@@ -160,17 +160,69 @@ require '_header.php';
     100% { transform: translate3d(-25px, 20px, 0) scale(0.95); }
   }
 
-  /* SHELL CONTAINER 9:16 IN VERSIONE LIGHT */
+  /* SHELL CONTAINER DUAL-RATIO: 9:16 SMARTPHONE / 16:9 PC-TABLET */
   .event-light-wow-wrapper .mobile-916-shell {
     position: relative;
     z-index: 2;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 10px 12px 110px;
+    transition: max-width 0.3s ease, padding 0.3s ease;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     .event-light-wow-wrapper .mobile-916-shell {
-      background: rgba(255, 255, 255, 0.84) !important;
+      max-width: 1440px !important;
+      margin: 20px auto !important;
+      padding: 24px 36px 60px !important;
+      background: rgba(255, 255, 255, 0.88) !important;
       border: 1px solid rgba(226, 232, 240, 0.95) !important;
       box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.1), 0 0 35px rgba(217, 119, 6, 0.08) !important;
+      border-radius: 28px !important;
     }
+
+    .event-light-wow-wrapper .adaptive-169-split {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.25fr) !important;
+      gap: 32px !important;
+      align-items: start !important;
+    }
+
+    .event-light-wow-wrapper .split-col-left {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+    }
+
+    .event-light-wow-wrapper .split-col-right {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+    }
+
+    .event-light-wow-wrapper .m-sticky-bar {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .event-light-wow-wrapper .adaptive-169-split {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
+    }
+    .event-light-wow-wrapper .split-col-left,
+    .event-light-wow-wrapper .split-col-right {
+      display: contents !important;
+    }
+    .order-m-1 { order: 1 !important; }
+    .order-m-2 { order: 2 !important; }
+    .order-m-3 { order: 3 !important; }
+    .order-m-4 { order: 4 !important; }
+    .order-m-5 { order: 5 !important; }
+    .order-m-6 { order: 6 !important; }
+    .order-m-7 { order: 7 !important; }
+    .order-m-8 { order: 8 !important; }
   }
 
   /* CARD GLASSMORPHIC IN MODALITA CHIARA CON SHADOW MULTILAYER */
@@ -357,108 +409,167 @@ require '_header.php';
     <div>A.C.A.T. Basso Polesine · Coord. A.C.A.T. Polesane · A.M.A. Gruppi Azzardo · Dipartimento Dipendenze ULSS 5 Polesana · Comune e Parrocchia di Taglio di Po</div>
   </div>
 
-  <!-- HERO EVENTO 9:16 -->
-  <article class="m-card m-card-gold-glow text-center">
+  <!-- DUAL-RATIO ADAPTIVE SYSTEM: 16:9 PC/TABLET 2-COLUMNS & 9:16 MOBILE STACK -->
+  <div class="adaptive-169-split">
     
-    <div style="font-size: 0.72rem; font-weight: 800; color: #d4af37; text-transform: uppercase; letter-spacing: 0.06em;">
-      Corso Esperienziale 1° Livello · Metodo Hudolin
-    </div>
+    <!-- COLONNA SINISTRA PC/TABLET 16:9 (Visual, Media, Docente, Sede, Sponsor) -->
+    <div class="split-col-left">
+      
+      <!-- TAB VIEWER LOCANDINE UFFICIALI HD -->
+      <section class="m-card order-m-2" id="locandinaViewer">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+          <span style="color: #d4af37;"><?=dx_icon('image', '', 18)?></span>
+          <h2 style="font-size: 1.05rem; font-weight: 850; color: #ffffff; margin: 0;">Locandine & Programma Ufficiale HD</h2>
+        </div>
 
-    <h1 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 5.5vw, 1.95rem); color: #ffffff; line-height: 1.25; margin: 6px 0 10px; font-weight: 900;">
-      A Scuola di Comunicazione e Resilienza
-    </h1>
+        <div class="m-tab-bar" id="mediaTabs">
+          <button type="button" class="m-tab-btn active" onclick="switchMediaTab('locandina_fronte', this)">Locandina Ufficiale (Fronte)</button>
+          <button type="button" class="m-tab-btn" onclick="switchMediaTab('programma_retro', this)">Programma Completo (Retro)</button>
+          <button type="button" class="m-tab-btn" onclick="switchMediaTab('locandina_oratorio', this)">Locandina Oratorio</button>
+        </div>
 
-    <!-- SOTTOTITOLO ORIENTATO AL RISULTATO -->
-    <div style="background: rgba(20, 24, 35, 0.95); border-left: 4px solid #d4af37; border-radius: 12px; padding: 12px; text-align: left; margin: 10px 0 14px;">
-      <p style="font-size: 1rem; font-weight: 850; color: #ffffff; margin: 0 0 4px; line-height: 1.35;">
-        "Impara a comunicare senza litigare e a non farti caricare dai problemi degli altri."
-      </p>
-      <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0; line-height: 1.45;">
-        Corso rivolto a <strong>chi vive in famiglia una situazione di dipendenza</strong>, oltre a operatori, volontari e membri impegnati nei Club.
-      </p>
-    </div>
+        <div class="m-poster-box" id="mediaDisplay">
+          <img id="activeMediaImg" src="assets/img/events/evento-ottobre-taglio-di-po.jpeg" alt="Locandina Ufficiale Corso — Taglio di Po">
+          <div style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.78); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 8px; font-size: 0.72rem; color: #fff; border: 1px solid rgba(255,255,255,0.2);">
+            <?=dx_icon('image', '', 12)?> <span id="mediaCaption">Locandina Ufficiale (Fronte)</span>
+          </div>
+        </div>
+      </section>
 
-    <!-- TAB SWITCHER LOCANDINE (HD VIEWER) -->
-    <div class="m-tab-bar" id="mediaTabs">
-      <button type="button" class="m-tab-btn active" onclick="switchMediaTab('locandina_fronte', this)">Locandina Ufficiale (Fronte)</button>
-      <button type="button" class="m-tab-btn" onclick="switchMediaTab('programma_retro', this)">Programma Completo (Retro)</button>
-      <button type="button" class="m-tab-btn" onclick="switchMediaTab('locandina_oratorio', this)">Locandina Oratorio</button>
-    </div>
+      <!-- DOCENTE & FORMATORE -->
+      <section class="m-card order-m-5">
+        <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px;">
+          <div style="width: 52px; height: 52px; border-radius: 14px; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4); display: grid; place-items: center; color: #d4af37;">
+            <?=dx_icon('award', '', 26)?>
+          </div>
+          <div>
+            <div style="font-size: 0.72rem; color: #d4af37; font-weight: 800; text-transform: uppercase;">Docente e Formatore</div>
+            <h3 style="font-size: 1.05rem; color: #ffffff; margin: 2px 0 0; font-weight: 850;">Dott. Adelmo Di Salvatore</h3>
+          </div>
+        </div>
+        <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.5; margin: 0 0 10px;">
+          Psichiatra e Psicoterapeuta, formatore autorizzato nell'Approccio Centrato sulla Persona (Carl Rogers), Approccio Motivazionale (Miller e Rollnick), Programmazione NeuroLinguistica (Bandler e Grinder), Approccio Ecologico-Sociale (Vladimir Hudolin), con esperienza ultratrentennale come Servitore-Insegnante nei Club Alcologici Territoriali e di Ecologia Familiare e Sociale.
+        </p>
+      </section>
 
-    <!-- IMMAGINI LOCANDINE 9:16 -->
-    <div class="m-poster-box" id="mediaDisplay">
-      <img id="activeMediaImg" src="assets/img/events/evento-ottobre-taglio-di-po.jpeg" alt="Locandina Ufficiale Corso — Taglio di Po">
-      <div style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.78); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 8px; font-size: 0.72rem; color: #fff; border: 1px solid rgba(255,255,255,0.2);">
-        <?=dx_icon('image', '', 12)?> <span id="mediaCaption">Locandina Ufficiale (Fronte)</span>
+      <!-- SEDE & LOGISTICA -->
+      <section class="m-card order-m-7">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+          <span style="color: #d4af37;"><?=dx_icon('map-pin', '', 18)?></span>
+          <h2 style="font-size: 1.05rem; font-weight: 850; color: #ffffff; margin: 0;">Sede & Logistica</h2>
+        </div>
+        <div style="font-size: 0.86rem; color: #ffffff; font-weight: 750; margin-bottom: 4px;">
+          Oratorio San Francesco d'Assisi
+        </div>
+        <div style="font-size: 0.82rem; color: #cbd5e1; margin-bottom: 12px;">
+          Vicolo San Francesco 1, Taglio di Po (RO)
+        </div>
+        <a href="https://maps.google.com/?q=Oratorio+San+Francesco+d'Assisi+Taglio+di+Po" target="_blank" rel="noopener" class="m-btn m-btn-outline" style="min-height: 42px; font-size: 0.84rem;">
+          <?=dx_icon('map-pin', '', 14)?> Apri Navigatore Google Maps
+        </a>
+      </section>
+
+      <!-- GRIGLIA UFFICIALE DEI 28 SPONSOR & ASSET DELL'ECOSISTEMA -->
+      <div class="order-m-8" style="display: flex; flex-direction: column; gap: 14px;">
+        <?php require_once __DIR__ . '/templates/_sponsor_grid.php'; ?>
+        <div class="text-center" style="font-size: 0.78rem; color: #94a3b8; margin-top: 6px;">
+          <p style="margin: 0 0 4px;">Organizzazione: <b>ACAT Basso Polesine O.D.V.</b></p>
+          <p style="margin: 0;">Referente Iscrizioni: <b>Grazia Nicosia</b> · Tel. WhatsApp <strong>347 884 4271</strong></p>
+        </div>
       </div>
-    </div>
 
-    <!-- DATI CHIAVE -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0; text-align: left;">
-      <div style="background: rgba(22, 25, 36, 0.85); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px;">
-        <div style="color: #d4af37; font-size: 0.72rem; font-weight: 800; text-transform: uppercase;">Date & Orari</div>
-        <div style="color: #ffffff; font-weight: 850; font-size: 0.88rem; margin-top: 2px;">9-10-11 Ottobre 2026</div>
-        <div style="color: #94a3b8; font-size: 0.74rem;">Ven 14:30 – Dom 13:00</div>
-      </div>
+    </div> <!-- /.split-col-left -->
 
-      <div style="background: rgba(22, 25, 36, 0.85); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px;">
-        <div style="color: #d4af37; font-size: 0.72rem; font-weight: 800; text-transform: uppercase;">Sede del Corso</div>
-        <div style="color: #ffffff; font-weight: 850; font-size: 0.88rem; margin-top: 2px;">Taglio di Po (RO)</div>
-        <div style="color: #94a3b8; font-size: 0.74rem;">Oratorio S. Francesco</div>
-      </div>
+    <!-- COLONNA DESTRA PC/TABLET 16:9 (Hero, Dati, Iscrizione, WhatsApp, Programma) -->
+    <div class="split-col-right">
 
-      <div style="background: rgba(22, 25, 36, 0.85); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px;">
-        <div style="color: #d4af37; font-size: 0.72rem; font-weight: 800; text-transform: uppercase;">Quota Partecipazione</div>
-        <div style="color: #10b981; font-weight: 900; font-size: 1.05rem; margin-top: 2px;">10,00 €</div>
-        <div style="color: #94a3b8; font-size: 0.74rem;">Pranzo sabato compreso</div>
-      </div>
+      <!-- HERO EVENTO (DATI & CLAIM) -->
+      <article class="m-card m-card-gold-glow text-center order-m-1">
+        
+        <div style="font-size: 0.72rem; font-weight: 800; color: #d4af37; text-transform: uppercase; letter-spacing: 0.06em;">
+          Corso Esperienziale 1° Livello · Metodo Hudolin
+        </div>
 
-      <div style="background: rgba(22, 25, 36, 0.85); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px;">
-        <div style="color: #d4af37; font-size: 0.72rem; font-weight: 800; text-transform: uppercase;">Formatore</div>
-        <div style="color: #ffffff; font-weight: 850; font-size: 0.88rem; margin-top: 2px;">A. Di Salvatore</div>
-        <div style="color: #94a3b8; font-size: 0.74rem;">Psichiatra & Terapeuta</div>
-      </div>
-    </div>
+        <h1 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 5.5vw, 1.95rem); color: #ffffff; line-height: 1.25; margin: 6px 0 10px; font-weight: 900;">
+          A Scuola di Comunicazione e Resilienza
+        </h1>
 
-    <!-- STATO CAPIENZA POSTI (30 POSTI MAX) -->
-    <div style="background: rgba(14, 17, 24, 0.95); border: 1px solid rgba(212,175,55,0.3); border-radius: 14px; padding: 10px 12px; margin-bottom: 12px; text-align: left;">
-      <div style="display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 750;">
-        <span style="color: #cbd5e1;">Posti Ufficiali (Numero Chiuso):</span>
-        <b style="color: <?=!$isFull ? '#10b981' : '#ef4444'?>;"><?=$totalBooked?> / <?=$capacity?> Occupati</b>
-      </div>
-      <div class="m-progress-bar">
-        <div class="m-progress-fill" style="width: <?=$percentBooked?>%;"></div>
-      </div>
-      <div style="font-size: 0.72rem; color: #94a3b8; display: flex; justify-content: space-between;">
-        <span>Chiusura: 1° Ottobre 2026</span>
-        <span><?=!$isFull ? "$seatsRemaining posti disponibili" : "Posti esauriti · Waitlist attiva"?></span>
-      </div>
-    </div>
+        <!-- SOTTOTITOLO ORIENTATO AL RISULTATO -->
+        <div style="background: rgba(20, 24, 35, 0.95); border-left: 4px solid #d4af37; border-radius: 12px; padding: 12px; text-align: left; margin: 10px 0 14px;">
+          <p style="font-size: 1rem; font-weight: 850; color: #ffffff; margin: 0 0 4px; line-height: 1.35;">
+            "Impara a comunicare senza litigare e a non farti caricare dai problemi degli altri."
+          </p>
+          <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0; line-height: 1.45;">
+            Corso rivolto a <strong>chi vive in famiglia una situazione di dipendenza</strong>, oltre a operatori, volontari e membri impegnati nei Club.
+          </p>
+        </div>
 
-    <!-- QUICK ACTIONS -->
-    <div style="display: flex; flex-direction: column; gap: 8px;">
-      <a href="#prenotazione" class="m-btn m-btn-primary">
-        <?=dx_icon('check-circle', '', 18)?>
-        <span><?=!$isFull ? "COMPILA ISCRIZIONE ONLINE (10€)" : "ISCRIVITI IN LISTA D'ATTESA"?></span>
-      </a>
+        <!-- DATI CHIAVE -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0; text-align: left;">
+          <div style="background: rgba(22, 25, 36, 0.85); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px;">
+            <div style="color: #d4af37; font-size: 0.72rem; font-weight: 800; text-transform: uppercase;">Date & Orari</div>
+            <div style="color: #ffffff; font-weight: 850; font-size: 0.88rem; margin-top: 2px;">9-10-11 Ottobre 2026</div>
+            <div style="color: #94a3b8; font-size: 0.74rem;">Ven 14:30 – Dom 13:00</div>
+          </div>
 
-      <a href="https://wa.me/393478844271?text=Ciao%20Grazia,%20sono%20[nome],%20mi%20interessa%20partecipare%20all'evento%20A%20Scuola%20di%20Comunicazione%20Resilienza%20a%20Taglio%20di%20Po." target="_blank" rel="noopener" class="m-btn m-btn-whatsapp">
-        <?=dx_icon('message-circle', '', 18)?>
-        <span>Scrivi a Grazia su WhatsApp (+39 347 884 4271)</span>
-      </a>
+          <div style="background: rgba(22, 25, 36, 0.85); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px;">
+            <div style="color: #d4af37; font-size: 0.72rem; font-weight: 800; text-transform: uppercase;">Sede del Corso</div>
+            <div style="color: #ffffff; font-weight: 850; font-size: 0.88rem; margin-top: 2px;">Taglio di Po (RO)</div>
+            <div style="color: #94a3b8; font-size: 0.74rem;">Oratorio S. Francesco</div>
+          </div>
 
-      <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="background: rgba(37, 211, 102, 0.15); border: 1px solid #25D366; color: #25D366; font-weight: 800; min-height: 48px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">
-        <?=dx_icon('users', '', 18)?>
-        <span>Entra nel Gruppo WhatsApp Ufficiale</span>
-      </a>
+          <div style="background: rgba(22, 25, 36, 0.85); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px;">
+            <div style="color: #d4af37; font-size: 0.72rem; font-weight: 800; text-transform: uppercase;">Quota Partecipazione</div>
+            <div style="color: #10b981; font-weight: 900; font-size: 1.05rem; margin-top: 2px;">10,00 €</div>
+            <div style="color: #94a3b8; font-size: 0.74rem;">Pranzo sabato compreso</div>
+          </div>
 
-      <a href="event-ics.php?event=<?=urlencode($sic)?>" download class="m-btn m-btn-outline" style="min-height: 44px; font-size: 0.88rem;">
-        <?=dx_icon('calendar', '', 16)?>
-        <span>Aggiungi al Calendario (.ics)</span>
-      </a>
-    </div>
+          <div style="background: rgba(22, 25, 36, 0.85); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px;">
+            <div style="color: #d4af37; font-size: 0.72rem; font-weight: 800; text-transform: uppercase;">Formatore</div>
+            <div style="color: #ffffff; font-weight: 850; font-size: 0.88rem; margin-top: 2px;">A. Di Salvatore</div>
+            <div style="color: #94a3b8; font-size: 0.74rem;">Psichiatra & Terapeuta</div>
+          </div>
+        </div>
 
-  </article>
+        <!-- STATO CAPIENZA POSTI (30 POSTI MAX) -->
+        <div style="background: rgba(14, 17, 24, 0.95); border: 1px solid rgba(212,175,55,0.3); border-radius: 14px; padding: 10px 12px; margin-bottom: 12px; text-align: left;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 750;">
+            <span style="color: #cbd5e1;">Posti Ufficiali (Numero Chiuso):</span>
+            <b style="color: <?=!$isFull ? '#10b981' : '#ef4444'?>;"><?=$totalBooked?> / <?=$capacity?> Occupati</b>
+          </div>
+          <div class="m-progress-bar">
+            <div class="m-progress-fill" style="width: <?=$percentBooked?>%;"></div>
+          </div>
+          <div style="font-size: 0.72rem; color: #94a3b8; display: flex; justify-content: space-between;">
+            <span>Chiusura: 1° Ottobre 2026</span>
+            <span><?=!$isFull ? "$seatsRemaining posti disponibili" : "Posti esauriti · Waitlist attiva"?></span>
+          </div>
+        </div>
+
+        <!-- QUICK ACTIONS -->
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <a href="#prenotazione" class="m-btn m-btn-primary">
+            <?=dx_icon('check-circle', '', 18)?>
+            <span><?=!$isFull ? "COMPILA ISCRIZIONE ONLINE (10€)" : "ISCRIVITI IN LISTA D'ATTESA"?></span>
+          </a>
+
+          <a href="https://wa.me/393478844271?text=Ciao%20Grazia,%20sono%20[nome],%20mi%20interessa%20partecipare%20all'evento%20A%20Scuola%20di%20Comunicazione%20Resilienza%20a%20Taglio%20di%20Po." target="_blank" rel="noopener" class="m-btn m-btn-whatsapp">
+            <?=dx_icon('message-circle', '', 18)?>
+            <span>Scrivi a Grazia su WhatsApp (+39 347 884 4271)</span>
+          </a>
+
+          <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="background: rgba(37, 211, 102, 0.15); border: 1px solid #25D366; color: #25D366; font-weight: 800; min-height: 48px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">
+            <?=dx_icon('users', '', 18)?>
+            <span>Entra nel Gruppo WhatsApp Ufficiale</span>
+          </a>
+
+          <a href="event-ics.php?event=<?=urlencode($sic)?>" download class="m-btn m-btn-outline" style="min-height: 44px; font-size: 0.88rem;">
+            <?=dx_icon('calendar', '', 16)?>
+            <span>Aggiungi al Calendario (.ics)</span>
+          </a>
+        </div>
+
+      </article>
 
   <!-- FORM PRENOTAZIONE DIRETTA (ONE-THUMB MOBILE FLOW) -->
   <section class="m-card m-card-gold-glow" id="prenotazione">
@@ -766,77 +877,11 @@ require '_header.php';
     </div>
   </section>
 
-  <!-- DOCENTE & FORMATORE -->
-  <section class="m-card">
-    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px;">
-      <div style="width: 52px; height: 52px; border-radius: 14px; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4); display: grid; place-items: center; color: #d4af37;">
-        <?=dx_icon('award', '', 26)?>
-      </div>
-      <div>
-        <div style="font-size: 0.72rem; color: #d4af37; font-weight: 800; text-transform: uppercase;">Docente e Formatore</div>
-        <h3 style="font-size: 1.05rem; color: #ffffff; margin: 2px 0 0; font-weight: 850;">Dott. Adelmo Di Salvatore</h3>
-      </div>
-    </div>
-    <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.5; margin: 0 0 10px;">
-      Psichiatra e Psicoterapeuta, formatore autorizzato nell'Approccio Centrato sulla Persona (Carl Rogers), Approccio Motivazionale (Miller e Rollnick), Programmazione NeuroLinguistica (Bandler e Grinder), Approccio Ecologico-Sociale (Vladimir Hudolin), con esperienza ultratrentennale come Servitore-Insegnante nei Club Alcologici Territoriali e di Ecologia Familiare e Sociale.
-    </p>
-  </section>
+    </div> <!-- /.split-col-right -->
 
-  <!-- SEDE & LOGISTICA -->
-  <section class="m-card">
-    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-      <span style="color: #d4af37;"><?=dx_icon('map-pin', '', 18)?></span>
-      <h2 style="font-size: 1.05rem; font-weight: 850; color: #ffffff; margin: 0;">Sede & Logistica</h2>
-    </div>
-    <div style="font-size: 0.86rem; color: #ffffff; font-weight: 750; margin-bottom: 4px;">
-      Oratorio San Francesco d'Assisi
-    </div>
-    <div style="font-size: 0.82rem; color: #cbd5e1; margin-bottom: 12px;">
-      Vicolo San Francesco 1, Taglio di Po (RO)
-    </div>
-    <a href="https://maps.google.com/?q=Oratorio+San+Francesco+d'Assisi+Taglio+di+Po" target="_blank" rel="noopener" class="m-btn m-btn-outline" style="min-height: 42px; font-size: 0.84rem;">
-      <?=dx_icon('map-pin', '', 14)?> Apri Navigatore Google Maps
-    </a>
-  </section>
+  </div> <!-- /.adaptive-169-split -->
 
-
-
-  <!-- CANALI UFFICIALI WHATSAPP -->
-  <section class="m-card" style="background: linear-gradient(145deg, rgba(22, 27, 40, 0.95), rgba(14, 28, 20, 0.9)); border: 1px solid rgba(37, 211, 102, 0.4); margin-bottom: 16px;">
-    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-      <span style="color: #25D366;"><?=dx_icon('message-circle', '', 20)?></span>
-      <h3 style="font-size: 1.05rem; font-weight: 850; color: #ffffff; margin: 0;">
-        Canali Ufficiali WhatsApp dell'Evento
-      </h3>
-    </div>
-
-    <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0 0 12px; line-height: 1.45;">
-      Per domande dirette sull'iscrizione o per accedere al gruppo ufficiale con gli aggiornamenti in tempo reale e il materiale del corso:
-    </p>
-
-    <div style="display: flex; flex-direction: column; gap: 8px;">
-      <a href="https://wa.me/393478844271?text=Ciao%20Grazia,%20sono%20[nome],%20mi%20interessa%20partecipare%20all'evento%20A%20Scuola%20di%20Comunicazione%20Resilienza%20a%20Taglio%20di%20Po." target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="font-size: 0.88rem;">
-        <?=dx_icon('message-circle', '', 18)?>
-        <span>Scrivi a Grazia Nicosia (+39 347 884 4271)</span>
-      </a>
-
-      <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="background: rgba(37, 211, 102, 0.18); border: 1px solid #25D366; color: #25D366; font-weight: 800; min-height: 48px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; font-size: 0.88rem;">
-        <?=dx_icon('users', '', 18)?>
-        <span>Entra nel Gruppo WhatsApp Ufficiale</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- GRIGLIA UFFICIALE DEI 28 SPONSOR & ASSET DELL'ECOSISTEMA -->
-  <?php require_once __DIR__ . '/templates/_sponsor_grid.php'; ?>
-
-  <!-- CONTATTI UFFICIALI -->
-  <div class="text-center" style="font-size: 0.78rem; color: #94a3b8; margin-top: 14px;">
-    <p style="margin: 0 0 4px;">Organizzazione: <b>ACAT Basso Polesine O.D.V.</b></p>
-    <p style="margin: 0;">Referente Iscrizioni: <b>Grazia Nicosia</b> · Tel. WhatsApp <strong>347 884 4271</strong></p>
-  </div>
-
-</div>
+</div> <!-- /.mobile-916-shell -->
 
 <!-- STICKY BOTTOM ACTION BAR PER SMARTPHONE (9:16 SAFE-AREA) -->
 <div class="m-sticky-bar">

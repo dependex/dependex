@@ -22,25 +22,105 @@ img, svg, video, canvas {
   display: block;
 }
 
-/* Container principale Mobile-First in formato 9:16 */
+/* Container principale Mobile-First in formato 9:16 per Smartphone */
 .mobile-916-shell {
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
   padding: 10px 12px 110px;
   position: relative;
+  transition: max-width 0.3s ease, padding 0.3s ease;
+}
+
+/* FORMATO PC / TABLET 16:9 WIDESCREEN (Schermi ampi, Desktop, Notebook e Tablet) */
+@media (min-width: 992px) {
+  .mobile-916-shell {
+    max-width: 1440px !important;
+    margin: 24px auto !important;
+    padding: 24px 32px 60px !important;
+    background: rgba(10, 12, 18, 0.55);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 28px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(212, 175, 55, 0.08);
+  }
+
+  /* LAYOUT CINEMATICO A 2 COLONNE 16:9 (Visual & Azione Affiancati) */
+  .adaptive-169-split {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) !important;
+    gap: 32px !important;
+    align-items: start !important;
+  }
+
+  .adaptive-169-split .split-col-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: sticky;
+    top: 90px;
+  }
+
+  .adaptive-169-split .split-col-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* La barra sticky da smartphone su desktop 16:9 non serve */
+  .m-sticky-bar {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1400px) {
+  .mobile-916-shell {
+    max-width: 1560px !important;
+    padding: 30px 42px 70px !important;
+  }
+  .adaptive-169-split {
+    gap: 40px !important;
+  }
+}
+
+/* HELPER PROPORZIONALI ASPECT-RATIO 16:9 E 9:16 */
+.ratio-16-9 {
+  aspect-ratio: 16 / 9 !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+.ratio-9-16 {
+  aspect-ratio: 9 / 16 !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+/* GRIGLIE WIDESCREEN ADATTIVE 16:9 */
+.grid-169-2col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+.grid-169-3col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+.grid-169-4col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
 }
 
 @media (min-width: 768px) {
-  .mobile-916-shell {
-    max-width: 520px;
-    margin: 20px auto;
-    padding: 16px 18px 120px;
-    background: rgba(10, 12, 18, 0.7);
-    border: 1px solid rgba(212, 175, 55, 0.25);
-    border-radius: 28px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(212, 175, 55, 0.12);
-  }
+  .grid-169-2col { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .grid-169-3col { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .grid-169-4col { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+}
+
+@media (min-width: 1024px) {
+  .grid-169-3col { grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .grid-169-4col { grid-template-columns: repeat(4, 1fr); gap: 20px; }
 }
 
 /* Card Luxury Mobile 9:16 */

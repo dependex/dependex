@@ -263,13 +263,13 @@ $booksCatalog = [
 ];
 ?>
 
-<main class="container py-5">
+<div class="container-169 py-4">
 
   <!-- ============================================================== -->
-  <!-- HERO BANNER PANORAMICO                                         -->
+  <!-- HERO BANNER PANORAMICO (16:9 WIDESCREEN & MOBILE 9:16 ADAPTIVE) -->
   <!-- ============================================================== -->
   <div class="rainbow-panorama-banner mb-4">
-    <img src="assets/img/rainbow-nebula-panorama.jpg" alt="Collana Editoriale Ufficiale Amazon KDP" style="max-height: 340px; object-fit: cover; width: 100%; border-radius: 20px;">
+    <img src="assets/img/rainbow-nebula-panorama.jpg" alt="Collana Editoriale Ufficiale Amazon KDP" style="max-height: 360px; aspect-ratio: 16 / 7; object-fit: cover; width: 100%; border-radius: 20px; box-shadow: var(--shadow);">
   </div>
 
   <section class="mb-5">
@@ -305,7 +305,7 @@ $booksCatalog = [
   <!-- GRIGLIA LIBRI A 3 TIER                                          -->
   <!-- ============================================================== -->
   <section class="mb-5">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 28px;">
+    <div class="grid-169-3col" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 28px;">
       <?php foreach($booksCatalog as $b): ?>
         <article class="card <?=$b['color_theme']?> p-4" style="display: flex; flex-direction: column; justify-content: space-between; border-radius: 22px; background: rgba(12, 16, 26, 0.94); border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 12px 35px rgba(0,0,0,0.6);">
           
@@ -437,6 +437,6 @@ $booksCatalog = [
     </a>
   </section>
 
-</main>
+</div> <!-- /.container-169 -->
 
 <?php require '_footer.php'; ?>

@@ -70,6 +70,12 @@ require '_dependex-world-map.php';
     </span>
   </div>
 
+  <div style="margin-top:1.8rem;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+    <a href="mappa-club.php" class="btn primary glow" style="font-size:1.02rem;padding:12px 24px;border-radius:14px;background:linear-gradient(135deg, #00f0ff, #0077ff);color:#070a12;font-weight:800;box-shadow:0 0 25px rgba(0,240,255,0.45);text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
+      <?=dx_icon('map-pin', '', 18)?> <b>Mappa Georeferenziata 2D d'Italia (322 Club con GPS)</b>
+    </a>
+  </div>
+
   <!-- NUMERO VERDE NAZIONALE DIRETTO -->
   <div style="max-width:680px;margin:1.8rem auto 0;background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.5);border-radius:14px;padding:12px 20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;">
     <div style="display:flex;align-items:center;gap:8px;">

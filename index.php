@@ -49,17 +49,17 @@ try {
       </p>
 
       <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center;">
-        <a href="world-club-explorer.php" class="btn-rainbow-neon" title="Cerca il Club più vicino alla tua zona">
+        <a href="mappa-club.php" class="btn-rainbow-neon" title="Cerca il Club più vicino alla tua zona su Mappa Georeferenziata 2D">
           <?=dx_icon('map-pin', '', 18)?>
-          <span style="margin-left: 8px;">Trova il tuo Club</span>
+          <span style="margin-left: 8px;">Mappa Club 2D (322 Nodi)</span>
         </a>
-        <a href="parla-con-noi.php" class="btn-rainbow-outline" style="border-color: var(--neon-cyan); color: #ffffff;" title="Inizia una conversazione riservata">
-          <?=dx_icon('message-circle', 'text-neon-cyan', 18)?>
+        <a href="world-club-explorer.php" class="btn-rainbow-outline" style="border-color: var(--neon-cyan); color: #ffffff;" title="Cerca il Club nell'elenco alfabetico">
+          <?=dx_icon('search', 'text-neon-cyan', 18)?>
+          <span style="margin-left: 8px;">Elenco Club</span>
+        </a>
+        <a href="parla-con-noi.php" class="btn-rainbow-outline" style="border-color: var(--neon-gold); color: #ffffff;" title="Inizia una conversazione riservata">
+          <?=dx_icon('message-circle', 'text-neon-gold', 18)?>
           <span style="margin-left: 8px;">Parla con Noi</span>
-        </a>
-        <a href="#cosa-succede" class="btn-rainbow-outline" style="border-color: var(--neon-gold); color: #ffffff;">
-          <?=dx_icon('help-circle', 'text-neon-gold', 18)?>
-          <span style="margin-left: 8px;">Cosa succede al Club?</span>
         </a>
       </div>
     </div>

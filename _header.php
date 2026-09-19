@@ -220,6 +220,10 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
     <nav class="topbar-nav" aria-label="Navigazione principale">
       <a href="index.php" class="topbar-nav-link <?=($curScript==='index.php'||$curScript==='')?'active':''?>">Home</a>
       <a href="world-club-explorer.php" class="topbar-nav-link <?=$curScript==='world-club-explorer.php'||$curScript==='club-public.php'?'active':''?>">Trova un Club</a>
+      <a href="mappa-club.php" class="topbar-nav-link <?=$curScript==='mappa-club.php'?'active':''?>" style="position:relative;" title="Mappa Georeferenziata 2D dei 322 Club Italiani con GPS">
+        <span style="color:#00f0ff;font-weight:700;">Mappa 2D</span>
+        <span style="font-size:0.62rem;background:#00f0ff;color:#070a12;font-weight:800;padding:1px 5px;border-radius:6px;margin-left:2px;">322</span>
+      </a>
       <a href="events-public.php" class="topbar-nav-link <?=$curScript==='events-public.php'||$curScript==='event-detail.php'?'active':''?>">Vivi la Comunità</a>
       <a href="storie.php" class="topbar-nav-link <?=$curScript==='storie.php'?'active':''?>">Storie</a>
       <a href="metodo.php" class="topbar-nav-link <?=$curScript==='metodo.php'||$curScript==='academy-public.php'?'active':''?>">Impara</a>
@@ -290,6 +294,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         <nav class="drawer-nav-group">
           <span class="drawer-section-title">I PILASTRI DELLA COMUNITÀ</span>
           <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'||$curScript==='club-public.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> Trova un Club Territoriale</a>
+          <a href="mappa-club.php" class="drawer-link <?=$curScript==='mappa-club.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa 2D Italia (322 Club)</b></a>
           <a href="parla-con-noi.php" class="drawer-link <?=$curScript==='parla-con-noi.php'?'active':''?>"><?=dx_icon('message-circle','text-neon-cyan',18)?> <b>Parla con Noi (Ascolto Riservato)</b></a>
           <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Vivi la Comunità & Eventi</a>
           <a href="storie.php" class="drawer-link <?=$curScript==='storie.php'?'active':''?>"><?=dx_icon('users','',18)?> Storie di Comunità</a>
@@ -322,6 +327,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           <span class="drawer-section-title text-amber">I PILASTRI DELLA COMUNITÀ</span>
           <a href="index.php" class="drawer-link <?=$curScript==='index.php'?'active':''?>"><?=dx_icon('home','',18)?> Home</a>
           <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'||$curScript==='club-public.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> <b>Trova un Club Territoriale</b></a>
+          <a href="mappa-club.php" class="drawer-link <?=$curScript==='mappa-club.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa 2D Italia (322 Club)</b></a>
           <a href="parla-con-noi.php" class="drawer-link highlight-gold <?=$curScript==='parla-con-noi.php'?'active':''?>"><?=dx_icon('message-circle','text-neon-gold',18)?> <b>Parla con Noi (Ascolto)</b></a>
           <a href="storie.php" class="drawer-link <?=$curScript==='storie.php'?'active':''?>"><?=dx_icon('users','',18)?> Storie di Comunità</a>
           <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Vivi la Comunità (Eventi)</a>

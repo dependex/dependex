@@ -31,6 +31,8 @@ ROOT_DIR = r"c:\81PLUS_GLOBAL_MASTER\dependex.social"
 # File e cartelle prioritari da sincronizzare
 FILES_TO_SYNC = [
     # Core pagine aggiornate
+    "mappa-club.php",
+    "api-clubs-italy.php",
     "world-club-explorer.php",
     "_header.php",
     "_footer.php",
@@ -51,6 +53,7 @@ FILES_TO_SYNC = [
 
     # Dati e database aggiornati
     os.path.join("data", "acat_community.sqlite"),
+    os.path.join("data", "CENSIMENTO_CLUB_CAT_ITALIA_2026.csv"),
     os.path.join("data", "ACAT_Italia_Club_Census_V1.csv"),
     os.path.join("data", "DEPENDEX_World_Registry_Master.csv"),
     os.path.join("data", "DEPENDEX_World_Registry_Normalized_V5.csv"),

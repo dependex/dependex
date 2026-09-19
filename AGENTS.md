@@ -34,6 +34,11 @@
    - **Altezza Dinamica & Touch:** `min-height: 100dvh` con fallback `100vh` (MAI `height: 900px` fissa), touch target minimo 44×44px, ancore con `scroll-margin-top`.
    - **No Fixed Width & No Content Hidden:** Nessun `width: [px fissi]` strutturale; MAI usare `display: none` per nascondere contenuti critici per rimediare al layout.
    - Specifica integrale dei 37 articoli in [`docs/MOBILE_FIRST_VIEWPORT_SPEC.md`](file:///c:/81PLUS_GLOBAL_MASTER/dependex.social/docs/MOBILE_FIRST_VIEWPORT_SPEC.md).
+7. **Human Welfare OS 4.0 & Orientamento Non-Diagnostico (Vincolo Deontologico Assoluto):**
+   - I modelli concettuali (Hudolin = relazione/comunità, Maslow = bisogni, Ruota della Vita = fotografia privata, Tradizioni vediche = Dharma/Artha/Kama/Moksha, 7 Energie del Welfare = Radicamento, Vitalità, Autonomia, Relazione, Espressione, Consapevolezza, Significato) sono esclusivamente **mappe di orientamento e consapevolezza**, MAI diagnosi mediche, terapie cliniche o sistemi di ranking e giudizio della persona.
+   - È vietato nominare i chakra come struttura di prodotto o promettere guarigioni; l'energia del benessere è usata come metafora organizzativa ed esperienziale.
+   - La persona non viene mai etichettata ("non devi avere già un'etichetta") e sceglie liberamente da dove iniziare ("questa parte della mia vita oggi chiede attenzione"). Il sistema risponde sempre: *"Partiamo da lì. Vediamo cosa può aiutarti a rimettere in movimento la tua vita e quali persone e comunità possono accompagnarti"*.
+   - Specifica integrale dei 53 articoli in [`docs/HUMAN_WELFARE_OS_4.md`](file:///c:/81PLUS_GLOBAL_MASTER/dependex.social/docs/HUMAN_WELFARE_OS_4.md).
 
 ---
 

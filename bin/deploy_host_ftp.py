@@ -61,7 +61,9 @@ FILES_TO_SYNC = [
     "faq.php",
     "ruota-della-vita.php",
     "piramide-maslow.php",
+    "orientamento.php",
     "dashboard.php",
+    os.path.join("modules", "welfare", "HumanWelfareEngine.php"),
     os.path.join("modules", "reviews", "ReviewsService.php"),
     os.path.join("modules", "telemetry", "dx-telemetry-engine.php"),
     os.path.join("assets", "js", "dx-telemetry.js"),
@@ -108,8 +110,10 @@ FILES_TO_SYNC = [
     "AGENTS.md",
     "MASTER_EMAIL_OS_PROMPT.md",
     os.path.join("docs", "MOBILE_FIRST_VIEWPORT_SPEC.md"),
+    os.path.join("docs", "HUMAN_WELFARE_OS_4.md"),
     os.path.join("tests", "test_mobile_first_viewport_e2e.php"),
-    os.path.join("tests", "test_sovereign_mobile_pwa_sos_e2e.php")
+    os.path.join("tests", "test_sovereign_mobile_pwa_sos_e2e.php"),
+    os.path.join("tests", "test_human_welfare_os_e2e.php")
 ]
 
 def ensure_remote_dir(ftp, remote_dir_path):

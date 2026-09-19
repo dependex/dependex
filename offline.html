@@ -147,6 +147,38 @@
       <em>"Un giorno alla volta. Respira a fondo: la serenità è qui e adesso."</em>
     </div>
 
+    <!-- Strumento di Respirazione Guidata Offline 4-7-8 -->
+    <div style="margin: 20px 0; padding: 16px; background: rgba(0, 212, 255, 0.06); border: 1px solid rgba(0, 212, 255, 0.25); border-radius: 16px;">
+      <div style="font-size: 0.8rem; font-weight: 800; color: #00d4ff; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">
+        Esercizio di Calma 4-7-8
+      </div>
+      <div id="offline-breathe" style="width: 100px; height: 100px; margin: 10px auto; border-radius: 50%; border: 2px solid #00d4ff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; color: #fff; background: rgba(0,212,255,0.15); transition: all 1s ease;">
+        Inspira
+      </div>
+      <p style="font-size: 0.8rem; color: #a1a1aa; margin: 0;">4s Inspira · 7s Trattieni · 8s Espira</p>
+    </div>
+    <script>
+      (function() {
+        const b = document.getElementById('offline-breathe');
+        if (!b) return;
+        const cycle = [
+          { t: 'Inspira (4s)', c: '#00d4ff', s: 'scale(1.25)', d: 4000 },
+          { t: 'Trattieni (7s)', c: '#ffd700', s: 'scale(1.25)', d: 7000 },
+          { t: 'Espira (8s)', c: '#00ff77', s: 'scale(1.0)', d: 8000 }
+        ];
+        let idx = 0;
+        function run() {
+          const cur = cycle[idx];
+          b.textContent = cur.t;
+          b.style.borderColor = cur.c;
+          b.style.transform = cur.s;
+          idx = (idx + 1) % cycle.length;
+          setTimeout(run, cur.d);
+        }
+        run();
+      })();
+    </script>
+
     <div class="emergency-box">
       <h3>Hai bisogno di ascolto immediato?</h3>
       <p style="margin-bottom: 8px; font-size: 0.88rem; color: #a1a1aa;">

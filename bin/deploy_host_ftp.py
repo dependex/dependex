@@ -91,17 +91,25 @@ FILES_TO_SYNC = [
     os.path.join("assets", "css", "rainbow-neon.css"),
     os.path.join("assets", "css", "universal-cart-checkout.css"),
     os.path.join("assets", "css", "universal-chat-ai.css"),
+    os.path.join("assets", "js", "app.js"),
     os.path.join("assets", "js", "universal-cart-checkout.js"),
     os.path.join("assets", "js", "universal-chat-ai.js"),
     os.path.join("assets", "logo.png"),
     os.path.join("assets", "logo.svg"),
     os.path.join("api", "paypal_capture.php"),
 
+    # PWA & Offline Readiness
+    "service-worker.js",
+    "offline.html",
+    "manifest.webmanifest",
+    "llms-full.txt",
+
     # Governance e Specifiche Mobile First
     "AGENTS.md",
     "MASTER_EMAIL_OS_PROMPT.md",
     os.path.join("docs", "MOBILE_FIRST_VIEWPORT_SPEC.md"),
-    os.path.join("tests", "test_mobile_first_viewport_e2e.php")
+    os.path.join("tests", "test_mobile_first_viewport_e2e.php"),
+    os.path.join("tests", "test_sovereign_mobile_pwa_sos_e2e.php")
 ]
 
 def ensure_remote_dir(ftp, remote_dir_path):

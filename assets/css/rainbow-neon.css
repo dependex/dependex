@@ -1145,3 +1145,161 @@ p {
   color: #cbd5e1 !important;
 }
 
+/* ==========================================================================
+   MOBILE-FIRST SOVEREIGN BOTTOM BAR & SOS GROUNDING MODAL
+   SPEC: docs/MOBILE_FIRST_VIEWPORT_SPEC.md (Art. 6, 8, 17, 30)
+   ========================================================================== */
+
+/* Spazio di sicurezza inferiore su schermi piccoli */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 10px)) !important;
+  }
+}
+
+/* Mobile Bottom Bar (Solo per Viewport Smartphone < 768px) */
+.dx-mobile-bottom-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .dx-mobile-bottom-bar {
+    display: flex !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: calc(60px + env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+    background: rgba(6, 8, 14, 0.96) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.7) !important;
+    z-index: 9999 !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .dx-bottom-nav-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #94a3b8 !important;
+    text-decoration: none !important;
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.02em !important;
+    min-width: 54px !important;
+    height: 100% !important;
+    min-height: 48px !important;
+    padding: 4px 6px !important;
+    transition: color 0.2s ease, transform 0.15s ease !important;
+    touch-action: manipulation !important;
+  }
+
+  .dx-bottom-nav-item:active {
+    transform: scale(0.92) !important;
+  }
+
+  .dx-bottom-nav-item.active,
+  .dx-bottom-nav-item:hover {
+    color: #00d4ff !important;
+  }
+
+  .dx-bottom-nav-item svg {
+    width: 22px !important;
+    height: 22px !important;
+    margin-bottom: 2px !important;
+    stroke-width: 2 !important;
+  }
+
+  .dx-bottom-nav-item.sos-badge {
+    color: #ff3344 !important;
+    position: relative !important;
+  }
+
+  .dx-bottom-nav-item.sos-badge .sos-pulse {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 51, 68, 0.16) !important;
+    border: 1px solid rgba(255, 51, 68, 0.6) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 2px !important;
+    box-shadow: 0 0 12px rgba(255, 51, 68, 0.4) !important;
+  }
+}
+
+/* SOS Modal & Grounding */
+.dx-sos-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 5, 8, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.dx-sos-modal.active {
+  display: flex !important;
+  animation: dxFadeIn 0.25s ease-out;
+}
+
+.dx-sos-card {
+  background: #0d111a;
+  border: 1px solid rgba(255, 51, 68, 0.4);
+  box-shadow: 0 0 40px rgba(255, 51, 68, 0.25), 0 20px 50px rgba(0,0,0,0.8);
+  border-radius: 24px;
+  max-width: 480px;
+  width: 100%;
+  padding: 28px 22px;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.dx-breath-circle {
+  width: 120px;
+  height: 120px;
+  margin: 16px auto;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.25) 0%, rgba(184, 41, 255, 0.08) 70%);
+  border: 2px solid #00d4ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #ffffff;
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
+  transition: transform 4s ease-in-out;
+}
+
+@keyframes breatheAnimation {
+  0% { transform: scale(1); box-shadow: 0 0 15px rgba(0,212,255,0.3); }
+  21% { transform: scale(1.35); box-shadow: 0 0 35px rgba(0,212,255,0.7); } /* Inspira 4s */
+  58% { transform: scale(1.35); box-shadow: 0 0 35px rgba(255,215,0,0.7); } /* Trattieni 7s */
+  100% { transform: scale(1); box-shadow: 0 0 15px rgba(0,212,255,0.3); } /* Espira 8s */
+}
+
+.dx-breathing {
+  animation: breatheAnimation 19s infinite linear;
+}
+
+@keyframes dxFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+

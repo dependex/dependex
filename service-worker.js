@@ -1,7 +1,13 @@
-const CACHE_NAME = 'oltre-pwa-kdp-v3';
+const CACHE_NAME = 'dependex-pwa-v4';
 const STATIC_ASSETS = [
   'offline.html',
-  'manifest.webmanifest'
+  'manifest.webmanifest',
+  'assets/css/rainbow-neon.css',
+  'assets/css/app.css',
+  'assets/js/dx-telemetry.js',
+  'data/recensioni_club_italia.json',
+  'assets/img/favicon.svg',
+  'assets/img/app-icon.svg'
 ];
 
 self.addEventListener('install', (event) => {

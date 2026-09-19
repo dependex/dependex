@@ -162,18 +162,148 @@
   </div>
 </footer>
 
-<!-- PULSANTE FLOTTANTE DI ASCOLTO & ORIENTAMENTO RISERVATO -->
-<div class="floating-quick-support" style="position: fixed; bottom: <?=($u??null)?'74px':'24px'?>; right: 20px; z-index: 999;">
+<!-- ==========================================================================
+     MOBILE-FIRST SOVEREIGN BOTTOM BAR & SOS GROUNDING DRAWER
+     ========================================================================== -->
+<?php $currentFile = basename($_SERVER['SCRIPT_NAME'] ?? ''); ?>
+<nav class="dx-mobile-bottom-bar" aria-label="Navigazione Mobile Sovrana">
+  <a href="index.php" class="dx-bottom-nav-item <?=$currentFile==='index.php'?'active':''?>">
+    <?=dx_icon('home', '', 20)?>
+    <span>Home</span>
+  </a>
+  <a href="world-club-explorer.php" class="dx-bottom-nav-item <?=in_array($currentFile, ['world-club-explorer.php','mappa-club.php'], true)?'active':''?>">
+    <?=dx_icon('map-pin', '', 20)?>
+    <span>Trova Club</span>
+  </a>
+  <a href="parla-con-noi.php" class="dx-bottom-nav-item <?=$currentFile==='parla-con-noi.php'?'active':''?>">
+    <?=dx_icon('message-circle', '', 20)?>
+    <span>Parla</span>
+  </a>
+  <a href="dashboard.php" class="dx-bottom-nav-item <?=$currentFile==='dashboard.php'?'active':''?>">
+    <?=dx_icon('bar-chart-2', '', 20)?>
+    <span>Dashboard</span>
+  </a>
+  <a href="javascript:void(0)" class="dx-bottom-nav-item sos-badge" onclick="dxToggleSosModal(true)">
+    <div class="sos-pulse">
+      <?=dx_icon('shield', '', 18)?>
+    </div>
+    <span style="color:#ff6677;">SOS Calma</span>
+  </a>
+</nav>
+
+<!-- PULSANTE FLOTTANTE DESKTOP (Nascosto su Mobile) -->
+<div class="floating-quick-support" style="position: fixed; bottom: 24px; right: 24px; z-index: 998; display: none;">
   <a href="parla-con-noi.php" 
      class="btn-floating-support" 
      data-funnel-action="CLICK_FLOATING_SUPPORT"
      data-funnel-stage="ACTION"
-     style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #00f0ff, #0077ff); color: #070a12; font-weight: 800; font-size: 0.86rem; padding: 10px 18px; border-radius: 999px; text-decoration: none; box-shadow: 0 4px 20px rgba(0,240,255,0.4); transition: transform 0.2s ease;">
+     style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #00f0ff, #0077ff); color: #070a12; font-weight: 800; font-size: 0.86rem; padding: 12px 20px; border-radius: 999px; text-decoration: none; box-shadow: 0 6px 25px rgba(0,240,255,0.4); transition: transform 0.2s ease;">
     <?=dx_icon('message-circle', '', 18)?>
-    <span class="d-none d-sm-inline">Ascolto & Orientamento Riservato</span>
-    <span class="d-inline d-sm-none">Aiuto</span>
+    <span>Ascolto & Orientamento Riservato</span>
   </a>
 </div>
+<style>
+@media (min-width: 769px) {
+  .floating-quick-support { display: block !important; }
+}
+</style>
+
+<!-- MODAL SOS: DE-ESCALATION PSICOLOGICA & RESPIRAZIONE HUDOLIN (4-7-8) -->
+<div id="dx-sos-modal" class="dx-sos-modal" role="dialog" aria-modal="true" aria-labelledby="dx-sos-title" onclick="if(event.target===this) dxToggleSosModal(false)">
+  <div class="dx-sos-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+      <span style="font-size: 0.76rem; font-weight: 850; letter-spacing: 0.1em; color: #ff6677; text-transform: uppercase;">
+        Spazio di De-Escalation & Ascolto
+      </span>
+      <button type="button" onclick="dxToggleSosModal(false)" style="background: none; border: none; color: #94a3b8; font-size: 1.4rem; cursor: pointer; padding: 4px 8px; line-height: 1;">&times;</button>
+    </div>
+
+    <h3 id="dx-sos-title" style="font-size: 1.35rem; color: #ffffff; font-weight: 900; margin-bottom: 6px; letter-spacing: -0.01em;">
+      Un momento difficile? Non sei solo.
+    </h3>
+    <p style="font-size: 0.88rem; color: #cbd5e1; margin-bottom: 16px; line-height: 1.5;">
+      Non devi vincere tutta la vita oggi. Solo i prossimi cinque minuti. Segui il cerchio di respirazione:
+    </p>
+
+    <!-- Cerchio di respirazione interattivo 4-7-8 -->
+    <div class="dx-breath-circle dx-breathing" id="dx-breath-circle">
+      <span id="dx-breath-text">Respira</span>
+    </div>
+
+    <div style="background: rgba(255, 255, 255, 0.04); border-radius: 12px; padding: 10px 14px; margin-bottom: 20px; font-size: 0.82rem; color: #94a3b8;">
+      <b style="color: #ffd700;">Tecnica 4-7-8:</b> 4 sec Inspira dal naso · 7 sec Trattieni l'aria · 8 sec Espira lentamente dalla bocca.
+    </div>
+
+    <!-- Azioni Rapide a 1 Tocco -->
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <a href="tel:800632000" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 16px; background: rgba(37,211,102,0.18); border: 1px solid #25d366; color: #25d366; border-radius: 12px; font-weight: 850; font-size: 0.95rem; text-decoration: none;">
+        <?=dx_icon('phone', '', 18)?>
+        <span>Chiama Telefono Verde Alcol (800 632 000)</span>
+      </a>
+
+      <a href="parla-con-noi.php" onclick="dxToggleSosModal(false)" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 16px; background: linear-gradient(135deg, #00f0ff, #0077ff); color: #070a12; border-radius: 12px; font-weight: 850; font-size: 0.95rem; text-decoration: none;">
+        <?=dx_icon('message-circle', '', 18)?>
+        <span>Scrivi a una Persona del Club (Anonimo)</span>
+      </a>
+
+      <a href="world-club-explorer.php" onclick="dxToggleSosModal(false)" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 10px 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #ffffff; border-radius: 12px; font-weight: 750; font-size: 0.85rem; text-decoration: none;">
+        <?=dx_icon('map-pin', '', 16)?>
+        <span>Trova il Club più vicino a te stasera</span>
+      </a>
+    </div>
+
+    <button type="button" onclick="dxToggleSosModal(false)" style="margin-top: 16px; background: none; border: none; color: #64748b; font-size: 0.82rem; cursor: pointer; text-decoration: underline;">
+      Sto meglio, torna alla pagina
+    </button>
+  </div>
+</div>
+
+<script>
+function dxToggleSosModal(show) {
+  const modal = document.getElementById('dx-sos-modal');
+  if (!modal) return;
+  if (show) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    startBreathingCycle();
+    if (window.DxTelemetry) {
+      window.DxTelemetry.logAction('OPEN_SOS_MODAL', { page: window.location.pathname });
+    }
+  } else {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    stopBreathingCycle();
+  }
+}
+
+let breathInterval = null;
+function startBreathingCycle() {
+  const txt = document.getElementById('dx-breath-text');
+  if (!txt) return;
+  let phase = 0; // 0 = Inspira (4s), 1 = Trattieni (7s), 2 = Espira (8s)
+  const steps = [
+    { label: 'Inspira (4s)', color: '#00d4ff', duration: 4000 },
+    { label: 'Trattieni (7s)', color: '#ffd700', duration: 7000 },
+    { label: 'Espira (8s)', color: '#00ff77', duration: 8000 }
+  ];
+  
+  function nextStep() {
+    const step = steps[phase];
+    txt.textContent = step.label;
+    txt.style.color = step.color;
+    phase = (phase + 1) % steps.length;
+    breathInterval = setTimeout(nextStep, step.duration);
+  }
+  nextStep();
+}
+
+function stopBreathingCycle() {
+  if (breathInterval) {
+    clearTimeout(breathInterval);
+    breathInterval = null;
+  }
+}
+</script>
 
 <script src="assets/js/app.js?v=<?=filemtime(__DIR__.'/assets/js/app.js')?>"></script>
 <script src="assets/js/universal-chat-ai.js?v=<?=filemtime(__DIR__.'/assets/js/universal-chat-ai.js')?>" data-brand="<?=h(site_brand()['name'])?>" data-domain="<?=h(site_brand()['domain'])?>"></script>

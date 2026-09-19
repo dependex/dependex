@@ -18,10 +18,24 @@ OLTRE (per l'Italia) e DEPENDEX (per la rete internazionale) digitalizza e raffo
 - **DRX Ledger**: Token di riconoscimento sociale non monetario (*Dialogo · Relazioni · eXperienza*), append-only con idempotenza rigorosa. Assegna punteggi per la costanza quotidiana, i traguardi di sobrietà (1, 3, 7, 14, 30, 60, 90, 101, 501, 1001 giorni), la partecipazione alle lezioni dell'Academy e le ore di volontariato.
 - **Privacy by Design**: Nessun tracciamento commerciale o pubblicitario. Nessun invio di password via email non protette. I dati di automonitoraggio (diario, check-in) restano privati e strettamente protetti da permessi ACL.
 
-## 3. Glossario di Dominio
+## 3. Strumenti Interattivi & Gamification del Metodo Hudolin
+- **Dashboard Sobrietà & Quest System**: Contatore giorni continui di sobrietà, calcolatore denaro risparmiato e bicchieri evitati, missioni quotidiane (Hudolin Quests) basate sui principi del cambiamento dello stile di vita.
+- **Ruota della Vita Hudolin 2D & 3D (Three.js)**: Radar chart e scultura geometrica interattiva che misura l'equilibrio su 12 dimensioni esistenziali (famiglia, sobrietà, salute, relazioni, comunità, lavoro, tempo libero, spiritualità, gestione emozioni, crescita personale, servizio, equilibrio economico).
+- **Piramide di Maslow Hudolin 2D & 3D**: Rappresentazione piramidale a 5 stadi della rinascita multifamiliare, culminante nella Trascendenza e nel Servizio Disinteressato alla Comunità.
+- **SOS Calma & Grounding 4-7-8**: Strumento interattivo per la de-escalation rapida dal craving e dall'ansia, con respirazione guidata ritmica (4 sec inspira, 7 sec trattieni, 8 sec espira), frase rassicurante e connessione a 1 tocco con il Telefono Verde Alcol (800 632 000) e i volontari dei Club.
+
+## 4. Glossario di Dominio
 - **DRX**: Dialogo, Relazioni, eXperienza.
 - **CAT**: Club Alcologico Territoriale.
-- **Servitore-Insegnante**: Facilitatore del Club.
+- **Servitore-Insegnante**: Facilitatore del Club con formazione di 1° livello (Corso di Sensibilizzazione di 50 ore).
 - **Sobrietà**: Non semplice astinenza da sostanze, ma conquista di uno stile di vita sereno, consapevole, empatico e responsabile.
 - **Interclub**: Riunione periodica di più Club di uno stesso territorio o regione.
 - **Scuola di Ecologia Familiare**: Percorso di formazione continua per famiglie e comunità.
+- **4 Porte d'Ingresso**: Accoglienza psicologica stratificata: "Cerco Aiuto", "Cerco un Club", "Cerco di Capire", "Voglio Partecipare".
+
+## 5. Contatti Istituzionali & Segreteria
+- **Email Mittente e Supporto Ufficiale**: info@dependex.support
+- **Numero Verde AICAT**: 800 974250
+- **Telefono Verde Alcol (Istituto Superiore di Sanità)**: 800 632 000
+- **Numero Unico Emergenze Europeo**: 112
+- **Organizzazione Territoriale di Riferimento**: ACAT Basso Polesine O.D.V. (Taglio di Po, RO, Italia)

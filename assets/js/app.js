@@ -48,7 +48,7 @@ window.addEventListener('appinstalled', () => {
   deferredInstallPrompt = null;
   const banner = document.querySelector('#pwaBanner');
   if (banner) banner.style.display = 'none';
-  toast('OLTRE installata con successo sulla schermata Home!');
+  toast('DEPENDEX installata con successo sulla schermata Home!');
 });
 
 document.addEventListener('click', async (e) => {

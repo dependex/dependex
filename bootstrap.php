@@ -470,3 +470,6 @@ function emergency_sos_contact(string $userSic): array {
         'meeting' => 'Disponibile nella mappa'
     ];
 }
+
+// Inclusione Motore Telemetria, Funnel Psicologico e Watchdog di Sistema
+require_once __DIR__ . '/modules/telemetry/dx-telemetry-engine.php';

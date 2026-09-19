@@ -126,6 +126,7 @@
           <li><a href="privacy.php" style="color: #cbd5e1; text-decoration: none;">Privacy Policy (GDPR)</a></li>
           <li><a href="privacy-center.php" style="color: #cbd5e1; text-decoration: none;">Gestione Consensi & Cookie</a></li>
           <li><a href="terms.php" style="color: #cbd5e1; text-decoration: none;">Termini & Trasparenza ACAT</a></li>
+          <li><a href="telemetria.php" style="color: #00f0ff; text-decoration: none; font-weight: 600;">Console Telemetria & Watchdog</a></li>
           <li><a href="help.php" style="color: #cbd5e1; text-decoration: none;">Aiuto & Emergenze (112)</a></li>
           <li><a href="mailto:info@dependex.support" style="color: #b829ff; font-weight: 750; text-decoration: none;">info@dependex.support</a></li>
         </ul>
@@ -165,6 +166,8 @@
 <div class="floating-quick-support" style="position: fixed; bottom: <?=($u??null)?'74px':'24px'?>; right: 20px; z-index: 999;">
   <a href="parla-con-noi.php" 
      class="btn-floating-support" 
+     data-funnel-action="CLICK_FLOATING_SUPPORT"
+     data-funnel-stage="ACTION"
      style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #00f0ff, #0077ff); color: #070a12; font-weight: 800; font-size: 0.86rem; padding: 10px 18px; border-radius: 999px; text-decoration: none; box-shadow: 0 4px 20px rgba(0,240,255,0.4); transition: transform 0.2s ease;">
     <?=dx_icon('message-circle', '', 18)?>
     <span class="d-none d-sm-inline">Ascolto & Orientamento Riservato</span>
@@ -175,5 +178,6 @@
 <script src="assets/js/app.js?v=<?=filemtime(__DIR__.'/assets/js/app.js')?>"></script>
 <script src="assets/js/universal-chat-ai.js?v=<?=filemtime(__DIR__.'/assets/js/universal-chat-ai.js')?>" data-brand="<?=h(site_brand()['name'])?>" data-domain="<?=h(site_brand()['domain'])?>"></script>
 <script src="assets/js/universal-cart-checkout.js?v=<?=filemtime(__DIR__.'/assets/js/universal-cart-checkout.js')?>" data-brand="<?=h(site_brand()['name'])?>"></script>
+<script src="assets/js/dx-telemetry.js?v=<?=filemtime(__DIR__.'/assets/js/dx-telemetry.js')?>"></script>
 </body>
 </html>

@@ -89,7 +89,12 @@ try {
     <div class="row g-3">
       <!-- PORTA 1 -->
       <div class="col-sm-6 col-lg-3">
-        <a href="parla-con-noi.php?porta=aiuto" class="h-100 p-3 text-decoration-none d-block" style="background: rgba(239, 68, 68, 0.08); border: 1.5px solid rgba(239, 68, 68, 0.4); border-radius: 16px; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;">
+        <a href="parla-con-noi.php?porta=aiuto" 
+           data-funnel-action="CLICK_PORTA_AIUTO" 
+           data-funnel-stage="ORIENTATION" 
+           data-funnel-porta="aiuto"
+           class="h-100 p-3 text-decoration-none d-block" 
+           style="background: rgba(239, 68, 68, 0.08); border: 1.5px solid rgba(239, 68, 68, 0.4); border-radius: 16px; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
             <span style="font-size: 0.78rem; font-weight: 800; color: #f87171; letter-spacing: 0.05em; text-transform: uppercase;">01 · ASCOLTO</span>
             <?=dx_icon('heart', 'text-neon-red', 18)?>
@@ -101,7 +106,12 @@ try {
 
       <!-- PORTA 2 -->
       <div class="col-sm-6 col-lg-3">
-        <a href="mappa-club.php" class="h-100 p-3 text-decoration-none d-block" style="background: rgba(6, 182, 212, 0.08); border: 1.5px solid rgba(6, 182, 212, 0.4); border-radius: 16px; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;">
+        <a href="mappa-club.php" 
+           data-funnel-action="CLICK_PORTA_CLUB" 
+           data-funnel-stage="EXPLORATION" 
+           data-funnel-porta="club"
+           class="h-100 p-3 text-decoration-none d-block" 
+           style="background: rgba(6, 182, 212, 0.08); border: 1.5px solid rgba(6, 182, 212, 0.4); border-radius: 16px; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
             <span style="font-size: 0.78rem; font-weight: 800; color: #38bdf8; letter-spacing: 0.05em; text-transform: uppercase;">02 · TERRITORIO</span>
             <?=dx_icon('map-pin', 'text-neon-cyan', 18)?>
@@ -113,7 +123,12 @@ try {
 
       <!-- PORTA 3 -->
       <div class="col-sm-6 col-lg-3">
-        <a href="metodo.php" class="h-100 p-3 text-decoration-none d-block" style="background: rgba(234, 179, 8, 0.08); border: 1.5px solid rgba(234, 179, 8, 0.4); border-radius: 16px; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;">
+        <a href="metodo.php" 
+           data-funnel-action="CLICK_PORTA_CAPIRE" 
+           data-funnel-stage="ORIENTATION" 
+           data-funnel-porta="capire"
+           class="h-100 p-3 text-decoration-none d-block" 
+           style="background: rgba(234, 179, 8, 0.08); border: 1.5px solid rgba(234, 179, 8, 0.4); border-radius: 16px; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
             <span style="font-size: 0.78rem; font-weight: 800; color: #fde047; letter-spacing: 0.05em; text-transform: uppercase;">03 · CHIAREZZA</span>
             <?=dx_icon('book-open', 'text-neon-gold', 18)?>
@@ -125,7 +140,12 @@ try {
 
       <!-- PORTA 4 -->
       <div class="col-sm-6 col-lg-3">
-        <a href="domande-frequenti.php" class="h-100 p-3 text-decoration-none d-block" style="background: rgba(16, 185, 129, 0.08); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: 16px; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;">
+        <a href="domande-frequenti.php" 
+           data-funnel-action="CLICK_PORTA_PARTECIPARE" 
+           data-funnel-stage="REASSURANCE" 
+           data-funnel-porta="partecipare"
+           class="h-100 p-3 text-decoration-none d-block" 
+           style="background: rgba(16, 185, 129, 0.08); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: 16px; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
             <span style="font-size: 0.78rem; font-weight: 800; color: #6ee7b7; letter-spacing: 0.05em; text-transform: uppercase;">04 · COMUNITÀ</span>
             <?=dx_icon('users', 'text-neon-green', 18)?>
@@ -153,42 +173,69 @@ try {
 
   <div class="row g-3 text-center">
     <div class="col-4 col-md-2">
-      <a href="dashboard.php" class="p-3 d-block text-decoration-none h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
+      <a href="dashboard.php" 
+         data-funnel-action="CLICK_PATH_ME" 
+         data-funnel-stage="ORIENTATION"
+         class="p-3 d-block text-decoration-none h-100" 
+         style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
         <div style="margin-bottom: 6px;"><?=dx_icon('user', 'text-neon-gold', 24)?></div>
         <div style="font-weight: 700; font-size: 0.92rem; color: #fff;">Da me</div>
         <div style="font-size: 0.76rem; color: #94a3b8;">La mia vita & sobrietà</div>
       </a>
     </div>
     <div class="col-4 col-md-2">
-      <a href="guida-gratuita.php" class="p-3 d-block text-decoration-none h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
+      <a href="guida-gratuita.php" 
+         data-funnel-action="CLICK_PATH_FAMIGLIA" 
+         data-funnel-stage="REASSURANCE"
+         data-funnel-porta="famiglia"
+         class="p-3 d-block text-decoration-none h-100" 
+         style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
         <div style="margin-bottom: 6px;"><?=dx_icon('heart-handshake', 'text-neon-cyan', 24)?></div>
         <div style="font-weight: 700; font-size: 0.92rem; color: #fff;">Dalla famiglia</div>
         <div style="font-size: 0.76rem; color: #94a3b8;">Come sostenersi</div>
       </a>
     </div>
     <div class="col-4 col-md-2">
-      <a href="mappa-club.php" class="p-3 d-block text-decoration-none h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
+      <a href="mappa-club.php" 
+         data-funnel-action="CLICK_PATH_TERRITORIO" 
+         data-funnel-stage="EXPLORATION"
+         data-funnel-porta="club"
+         class="p-3 d-block text-decoration-none h-100" 
+         style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
         <div style="margin-bottom: 6px;"><?=dx_icon('map-pin', 'text-neon-green', 24)?></div>
         <div style="font-weight: 700; font-size: 0.92rem; color: #fff;">Dal territorio</div>
         <div style="font-size: 0.76rem; color: #94a3b8;">Mappa e sedi reali</div>
       </a>
     </div>
     <div class="col-4 col-md-2">
-      <a href="world-club-explorer.php" class="p-3 d-block text-decoration-none h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
+      <a href="world-club-explorer.php" 
+         data-funnel-action="CLICK_PATH_CLUB" 
+         data-funnel-stage="EXPLORATION"
+         class="p-3 d-block text-decoration-none h-100" 
+         style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
         <div style="margin-bottom: 6px;"><?=dx_icon('home', 'text-neon-orange', 24)?></div>
         <div style="font-weight: 700; font-size: 0.92rem; color: #fff;">Dal Club</div>
         <div style="font-size: 0.76rem; color: #94a3b8;">Cos'è il cerchio</div>
       </a>
     </div>
     <div class="col-4 col-md-2">
-      <a href="metodo.php" class="p-3 d-block text-decoration-none h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
+      <a href="metodo.php" 
+         data-funnel-action="CLICK_PATH_COME_FUNZIONA" 
+         data-funnel-stage="ORIENTATION"
+         data-funnel-porta="capire"
+         class="p-3 d-block text-decoration-none h-100" 
+         style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
         <div style="margin-bottom: 6px;"><?=dx_icon('book-open', 'text-neon-indigo', 24)?></div>
         <div style="font-weight: 700; font-size: 0.92rem; color: #fff;">Come funziona</div>
         <div style="font-size: 0.76rem; color: #94a3b8;">Il Metodo Hudolin</div>
       </a>
     </div>
     <div class="col-4 col-md-2">
-      <a href="world-map.php" class="p-3 d-block text-decoration-none h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
+      <a href="world-map.php" 
+         data-funnel-action="CLICK_PATH_RETE" 
+         data-funnel-stage="EXPLORATION"
+         class="p-3 d-block text-decoration-none h-100" 
+         style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
         <div style="margin-bottom: 6px;"><?=dx_icon('globe', 'text-neon-violet', 24)?></div>
         <div style="font-weight: 700; font-size: 0.92rem; color: #fff;">Dalla rete</div>
         <div style="font-size: 0.76rem; color: #94a3b8;">540+ nodi mondiali</div>

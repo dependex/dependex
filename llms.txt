@@ -28,6 +28,7 @@
 - [Viaggi Esperienziali](viaggi-esperienziali.php): Ritiri sobrio-esperienziali e Masterclass Benessere nel Mediterraneo.
 - [Collana Didattica & KDP](offers.php): Manuali, diari dei 90 giorni e guide operative per conduttori e famiglie.
 - [Privacy e Sovranità](privacy.php): Approccio privacy-first, conformità GDPR, zero tracciamento invasivo e anonimato garantito.
+- [Console Telemetria & Funnel Psicologico](telemetria.php): Osservabilità etica anonimizzata, monitoraggio Watchdog del sistema e avanzamento nel percorso comunitario.
 
 ## Contatti di Riferimento & Segreteria
 - **Email Istituzionale e Segreteria**: info@dependex.support

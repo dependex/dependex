@@ -107,6 +107,16 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/piramide-maslow.php"/>
   </url>
 
+  <!-- 4.6 CONSOLE TELEMETRIA & FUNNEL PSICOLOGICO (WATCHDOG) -->
+  <url>
+    <loc>https://dependex.social/telemetria.php</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/telemetria.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/telemetria.php"/>
+  </url>
+
   <!-- 5. EVENTO FORMATIVO OTTOBRE TAGLIO DI PO (FLAGSHIP EVENT) -->
   <url>
     <loc>https://dependex.social/evento-ottobre-taglio-di-po.php</loc>

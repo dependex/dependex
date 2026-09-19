@@ -146,7 +146,11 @@ require '_header.php';
     <div class="row g-4">
       <?php foreach ($faqList as $idx => $faq): ?>
       <div class="col-lg-6">
-        <article class="p-4 h-100" style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; transition: transform 0.2s ease, border-color 0.2s ease;">
+        <article class="p-4 h-100" 
+                 data-funnel-action="FAQ_READ_QUESTION" 
+                 data-funnel-stage="REASSURANCE"
+                 id="faq-item-<?=($idx+1)?>"
+                 style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; transition: transform 0.2s ease, border-color 0.2s ease; cursor: pointer;">
           <div class="d-flex align-items-start gap-3 mb-3">
             <div style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 215, 0, 0.12); border: 1px solid rgba(255, 215, 0, 0.35); display: flex; align-items: center; justify-content: center; color: var(--neon-gold); font-weight: 800; font-size: 0.9rem;">
               <?=($idx + 1)?>

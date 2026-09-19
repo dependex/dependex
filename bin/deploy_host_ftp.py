@@ -31,6 +31,9 @@ ROOT_DIR = r"c:\81PLUS_GLOBAL_MASTER\dependex.social"
 # File e cartelle prioritari da sincronizzare
 FILES_TO_SYNC = [
     # Core pagine aggiornate
+    "bootstrap.php",
+    "api.php",
+    "telemetria.php",
     "mappa-club.php",
     "api-clubs-italy.php",
     "cortex.php",
@@ -60,6 +63,8 @@ FILES_TO_SYNC = [
     "piramide-maslow.php",
     "dashboard.php",
     os.path.join("modules", "reviews", "ReviewsService.php"),
+    os.path.join("modules", "telemetry", "dx-telemetry-engine.php"),
+    os.path.join("assets", "js", "dx-telemetry.js"),
     os.path.join("data", "recensioni_club_italia.json"),
     "academy-public.php",
     "help.php",

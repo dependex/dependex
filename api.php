@@ -17,4 +17,63 @@ if($action==='stats'){
  $globalClubs=(int)db()->query("SELECT COUNT(*) FROM network_entities WHERE network_enabled=1 AND level='CLUB'")->fetchColumn();
  echo json_encode(compact('italy','italyClubs','global','globalClubs'));exit;
 }
+
+// 1. Tracciamento Apertura Reale Email (Pixel GIF 1x1 trasparente)
+if($action==='track_open'){
+ $sendId = trim((string)($_GET['s'] ?? 'anonymous'));
+ $token = trim((string)($_GET['t'] ?? ''));
+ dx_record_email_open($sendId, $token);
+ dx_output_transparent_pixel();
+}
+
+// 2. Tracciamento Click Reale Email (Redirect sicuro 302)
+if($action==='track_click'){
+ $sendId = trim((string)($_GET['s'] ?? 'anonymous'));
+ $targetUrl = trim((string)($_GET['u'] ?? '/index.php'));
+ $tag = trim((string)($_GET['tag'] ?? 'email_link'));
+ $destination = dx_record_email_click($sendId, $targetUrl, $tag);
+ header('Location: ' . $destination, true, 302);
+ exit;
+}
+
+// 3. Heartbeat / Ping Client-Side (Dwell time & Scroll depth)
+if($action==='ping'){
+ $input = json_decode((string)file_get_contents('php://input'), true) ?: $_POST ?: $_GET;
+ $dwell = max(0, (int)($input['dwell'] ?? 0));
+ $scroll = min(100, max(0, (int)($input['scroll'] ?? 0)));
+ $page = trim((string)($input['page'] ?? ($_SERVER['HTTP_REFERER'] ?? '/')));
+ $porta = !empty($input['porta']) ? trim((string)$input['porta']) : null;
+ 
+ $res = dx_process_ping($dwell, $scroll, $page, $porta);
+ echo json_encode($res, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+ exit;
+}
+
+// 4. Tracciamento Eventi Funnel Psicologico
+if($action==='funnel_event'){
+ $input = json_decode((string)file_get_contents('php://input'), true) ?: $_POST ?: $_GET;
+ $evtAction = trim((string)($input['action_name'] ?? ($input['event'] ?? 'VISIT')));
+ $stage = strtoupper(trim((string)($input['stage'] ?? 'ORIENTATION')));
+ $meta = is_array($input['meta'] ?? null) ? $input['meta'] : [];
+ 
+ $res = dx_track_funnel_event($evtAction, $stage, $meta);
+ echo json_encode($res, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+ exit;
+}
+
+// 5. Watchdog Diagnostic Probe
+if($action==='watchdog'){
+ $report = dx_watchdog_check();
+ echo json_encode($report, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+ exit;
+}
+
+// 6. Funnel Stats & Psychological Intents Distribution
+if($action==='funnel_stats'){
+ $funnel = dx_get_funnel_stats();
+ $intents = dx_get_psychological_intents();
+ echo json_encode(['ok' => true, 'funnel' => $funnel, 'intents' => $intents], JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+ exit;
+}
+
 http_response_code(404);echo json_encode(['error'=>'Not found']);

@@ -13,6 +13,7 @@
 
 ## Risorse Principali
 - [Mappa Georeferenziata 2D Italia](mappa-club.php): Censimento ufficiale 2026 con 322 Club CAT, ACAT e ARCAT, coordinate geografiche 2D, orari, giorni di incontro e prossimità GPS.
+- [Le Domande che Forse Ti Vergogni a Fare](domande-frequenti.php): Risposte empatiche, dirette e senza giudizio ai dubbi più intimi (familiari, ricadute, riservatezza, gratuità, etichette).
 - [Recensioni & Testimonianze Verificate](recensioni.php): Riprova sociale ed esperienze autentiche di membri, famiglie e servitori-insegnanti dei Club d'Italia.
 - [Dashboard & Contatore Sobrietà](dashboard.php): Monitoraggio giorni lucidi, calcolatore risparmio economico, pietre miliari e quest system quotidiano del Metodo Hudolin.
 - [Ruota della Vita 2D & 3D](ruota-della-vita.php): Strumento di auto-valutazione interattivo sulle 12 aree della vita con indice di equilibrio e rendering WebGL Three.js.

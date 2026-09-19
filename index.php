@@ -29,9 +29,9 @@ try {
 ?>
 
 <!-- ============================================================== -->
-<!-- 1. HERO EMPATICA CON BORDO RAINBOW & GLOW NEON                 -->
+<!-- 1. HERO EMPATICA: 4 PORTE D'INGRESSO & ABBATTIMENTO BARRIERE   -->
 <!-- ============================================================== -->
-<section class="human-hero-card my-4">
+<section class="human-hero-card my-4" style="background: linear-gradient(180deg, rgba(14, 20, 36, 0.95) 0%, rgba(9, 13, 26, 0.98) 100%); border: 1.5px solid rgba(255, 215, 0, 0.3); border-radius: 24px; padding: 2.5rem 1.8rem; box-shadow: 0 0 35px rgba(255, 215, 0, 0.08);">
   <div class="row align-items-center g-4">
     <div class="col-lg-8">
       <div class="badge-neon-rainbow mb-3">
@@ -39,43 +39,160 @@ try {
         <span style="color: #fde68a;">UNA COMUNITÀ MONDIALE DI PERSONE, FAMIGLIE E CLUB</span>
       </div>
 
-      <h1 class="human-hero-title">
-        Hai bisogno di parlarne?<br>
-        <span class="text-rainbow">Non devi sapere già tutto. Puoi semplicemente iniziare.</span>
+      <h1 class="human-hero-title" style="font-family: var(--font-serif); font-size: clamp(2.1rem, 4.2vw, 3.3rem); line-height: 1.15; font-weight: 800; color: #ffffff; margin-bottom: 1rem;">
+        Non devi sapere già tutto.<br>
+        <span class="text-rainbow">Puoi semplicemente fare una domanda.</span>
       </h1>
 
-      <p class="human-hero-desc">
-        Che tu stia vivendo una difficoltà legata all'alcol, ad altre sostanze, al gioco o a un momento di solitudine, o che tu sia un familiare che non sa più come aiutare chi ama: nei Club Alcologici Territoriali trovi persone che si incontrano ogni settimana per camminare insieme. Senza cartelle cliniche, senza costi, senza giudizio.
+      <div class="p-3 mb-4" style="background: rgba(255, 255, 255, 0.03); border-left: 3px solid var(--neon-cyan); border-radius: 0 12px 12px 0;">
+        <p style="font-size: 1.12rem; color: #f1f5f9; line-height: 1.6; margin: 0; font-weight: 500;">
+          Non devi conoscere il Metodo Hudolin. Non devi sapere se questo è "il posto giusto".<br>
+          <strong style="color: var(--neon-gold);">Non serve avere un'etichetta per cercare una comunità.</strong>
+        </p>
+      </div>
+
+      <p class="human-hero-desc" style="font-size: 1.05rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 1.8rem;">
+        Non siamo qui per giudicare né per combattere: siamo qui per <strong>ritrovare possibilità</strong>, rimettere in movimento la propria vita, incontrare altre persone e famiglie e <strong>non affrontare tutto da soli</strong>. Un luogo caldo dove incontrarsi ogni settimana, gratuitamente e nel rispetto totale della tua riservatezza.
       </p>
 
-      <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center;">
-        <a href="mappa-club.php" class="btn-rainbow-neon" title="Cerca il Club più vicino alla tua zona su Mappa Georeferenziata 2D">
-          <?=dx_icon('map-pin', '', 18)?>
-          <span style="margin-left: 8px;">Mappa Club 2D (322 Nodi)</span>
-        </a>
-        <a href="world-club-explorer.php" class="btn-rainbow-outline" style="border-color: var(--neon-cyan); color: #ffffff;" title="Cerca il Club nell'elenco alfabetico">
-          <?=dx_icon('search', 'text-neon-cyan', 18)?>
-          <span style="margin-left: 8px;">Elenco Club</span>
-        </a>
-        <a href="parla-con-noi.php" class="btn-rainbow-outline" style="border-color: var(--neon-gold); color: #ffffff;" title="Inizia una conversazione riservata">
-          <?=dx_icon('message-circle', 'text-neon-gold', 18)?>
-          <span style="margin-left: 8px;">Parla con Noi</span>
-        </a>
+      <!-- MANIFESTO IL PRIMO PASSO -->
+      <div class="p-3 mb-4" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 182, 212, 0.08)); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 12px;">
+        <div style="font-size: 0.96rem; color: #e2e8f0; line-height: 1.6;">
+          <strong style="color: var(--neon-green);"><?=dx_icon('check-circle', 'text-neon-green', 16)?> Non devi cambiare tutta la tua vita oggi.</strong>
+          Puoi semplicemente: fare una domanda · trovare un Club · conoscere qualcuno · andare a un incontro. <em>Poi decidi tu.</em>
+        </div>
       </div>
     </div>
 
     <div class="col-lg-4 text-center d-none d-lg-block">
-      <div class="rainbow-border p-4" style="background: rgba(8, 11, 20, 0.88); backdrop-filter: blur(16px); text-align: center;">
-        <div style="margin-bottom: 18px; display: inline-block;">
-          <img src="assets/img/dependex-rainbow-badge.webp" alt="Sigillo Cosmico Dependex" style="width: 150px; height: 150px; border-radius: 50%; box-shadow: var(--rainbow-glow); border: 2px solid rgba(255,215,0,0.45); animation: rainbow-pulse 4s ease-in-out infinite;">
+      <div class="rainbow-border p-4" style="background: rgba(8, 11, 20, 0.92); backdrop-filter: blur(16px); text-align: center;">
+        <div style="margin-bottom: 16px; display: inline-block;">
+          <img src="assets/img/dependex-rainbow-badge.webp" alt="Sigillo Cosmico Dependex" style="width: 140px; height: 140px; border-radius: 50%; box-shadow: var(--rainbow-glow); border: 2px solid rgba(255,215,0,0.45); animation: rainbow-pulse 4s ease-in-out infinite;">
         </div>
-        <h3 style="font-family: var(--font-serif); color: #FFFFFF; font-size: 1.3rem; margin-bottom: 8px; font-weight: 800;">
-          <span class="text-rainbow">Porte Sempre Aperte</span>
-        </h3>
-        <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.6; margin: 0;">
-          Non serve una ricetta medica né un'iscrizione formale. C'è una sedia pronta per te in ogni Club d'Italia e del mondo.
+        <h2 style="font-family: var(--font-serif); color: #FFFFFF; font-size: 1.25rem; margin-bottom: 8px; font-weight: 800;">
+          <span class="text-rainbow">DEPENDEX è digitale. La comunità è reale.</span>
+        </h2>
+        <p style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.6; margin: 0;">
+          Il nostro lavoro online serve solo a farti trovare persone, famiglie e Club accoglienti nel mondo reale. Dalla persona alla comunità.
         </p>
       </div>
+    </div>
+  </div>
+
+  <!-- LE 4 PORTE D'INGRESSO PSICOLOGICHE -->
+  <div style="margin-top: 1.8rem; padding-top: 1.8rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+    <div style="font-size: 0.82rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--neon-gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
+      <?=dx_icon('compass', 'text-neon-gold', 16)?>
+      <span>COSA STAI CERCANDO IN QUESTO MOMENTO? SCEGLI LA TUA PORTA</span>
+    </div>
+
+    <div class="row g-3">
+      <!-- PORTA 1 -->
+      <div class="col-sm-6 col-lg-3">
+        <a href="parla-con-noi.php?porta=aiuto" class="h-100 p-3 text-decoration-none d-block" style="background: rgba(239, 68, 68, 0.08); border: 1.5px solid rgba(239, 68, 68, 0.4); border-radius: 16px; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+            <span style="font-size: 0.78rem; font-weight: 800; color: #f87171; letter-spacing: 0.05em; text-transform: uppercase;">01 · ASCOLTO</span>
+            <?=dx_icon('heart', 'text-neon-red', 18)?>
+          </div>
+          <div style="font-size: 1.12rem; font-weight: 800; color: #ffffff; margin-bottom: 6px;">CERCO AIUTO</div>
+          <div style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.5;">Non so da dove cominciare. Vorrei solo parlare con qualcuno che capisce.</div>
+        </a>
+      </div>
+
+      <!-- PORTA 2 -->
+      <div class="col-sm-6 col-lg-3">
+        <a href="mappa-club.php" class="h-100 p-3 text-decoration-none d-block" style="background: rgba(6, 182, 212, 0.08); border: 1.5px solid rgba(6, 182, 212, 0.4); border-radius: 16px; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+            <span style="font-size: 0.78rem; font-weight: 800; color: #38bdf8; letter-spacing: 0.05em; text-transform: uppercase;">02 · TERRITORIO</span>
+            <?=dx_icon('map-pin', 'text-neon-cyan', 18)?>
+          </div>
+          <div style="font-size: 1.12rem; font-weight: 800; color: #ffffff; margin-bottom: 6px;">CERCO UN CLUB</div>
+          <div style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.5;">Voglio conoscere una comunità reale di persone e famiglie vicino a me.</div>
+        </a>
+      </div>
+
+      <!-- PORTA 3 -->
+      <div class="col-sm-6 col-lg-3">
+        <a href="metodo.php" class="h-100 p-3 text-decoration-none d-block" style="background: rgba(234, 179, 8, 0.08); border: 1.5px solid rgba(234, 179, 8, 0.4); border-radius: 16px; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+            <span style="font-size: 0.78rem; font-weight: 800; color: #fde047; letter-spacing: 0.05em; text-transform: uppercase;">03 · CHIAREZZA</span>
+            <?=dx_icon('book-open', 'text-neon-gold', 18)?>
+          </div>
+          <div style="font-size: 1.12rem; font-weight: 800; color: #ffffff; margin-bottom: 6px;">CERCO DI CAPIRE</div>
+          <div style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.5;">Voglio sapere con parole semplici come funziona e cosa accade nel cerchio.</div>
+        </a>
+      </div>
+
+      <!-- PORTA 4 -->
+      <div class="col-sm-6 col-lg-3">
+        <a href="domande-frequenti.php" class="h-100 p-3 text-decoration-none d-block" style="background: rgba(16, 185, 129, 0.08); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: 16px; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+            <span style="font-size: 0.78rem; font-weight: 800; color: #6ee7b7; letter-spacing: 0.05em; text-transform: uppercase;">04 · COMUNITÀ</span>
+            <?=dx_icon('users', 'text-neon-green', 18)?>
+          </div>
+          <div style="font-size: 1.12rem; font-weight: 800; color: #ffffff; margin-bottom: 6px;">VOGLIO PARTECIPARE</div>
+          <div style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.5;">Voglio entrare nella comunità, fare una prova o iniziare a frequentare.</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== -->
+<!-- FIRMA UX: DA DOVE VUOI INIZIARE? (6 PERCORSI SU MISURA)        -->
+<!-- ============================================================== -->
+<section class="my-4 p-4" style="background: rgba(11, 15, 27, 0.88); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px;">
+  <div class="text-center mb-3">
+    <div style="font-size: 0.82rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 4px;">
+      NAVIGAZIONE INTUITIVA
+    </div>
+    <h2 style="font-family: var(--font-serif); font-size: 1.5rem; color: #ffffff; font-weight: 800; margin: 0;">
+      Da dove vuoi iniziare? <span class="text-rainbow">Scegli tu il tuo punto di partenza</span>
+    </h2>
+  </div>
+
+  <div class="row g-3 text-center">
+    <div class="col-4 col-md-2">
+      <a href="dashboard.php" class="p-3 d-block text-decoration-none h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
+        <div style="margin-bottom: 6px;"><?=dx_icon('user', 'text-neon-gold', 24)?></div>
+        <div style="font-weight: 700; font-size: 0.92rem; color: #fff;">Da me</div>
+        <div style="font-size: 0.76rem; color: #94a3b8;">La mia vita & sobrietà</div>
+      </a>
+    </div>
+    <div class="col-4 col-md-2">
+      <a href="guida-gratuita.php" class="p-3 d-block text-decoration-none h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
+        <div style="margin-bottom: 6px;"><?=dx_icon('heart-handshake', 'text-neon-cyan', 24)?></div>
+        <div style="font-weight: 700; font-size: 0.92rem; color: #fff;">Dalla famiglia</div>
+        <div style="font-size: 0.76rem; color: #94a3b8;">Come sostenersi</div>
+      </a>
+    </div>
+    <div class="col-4 col-md-2">
+      <a href="mappa-club.php" class="p-3 d-block text-decoration-none h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
+        <div style="margin-bottom: 6px;"><?=dx_icon('map-pin', 'text-neon-green', 24)?></div>
+        <div style="font-weight: 700; font-size: 0.92rem; color: #fff;">Dal territorio</div>
+        <div style="font-size: 0.76rem; color: #94a3b8;">Mappa e sedi reali</div>
+      </a>
+    </div>
+    <div class="col-4 col-md-2">
+      <a href="world-club-explorer.php" class="p-3 d-block text-decoration-none h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
+        <div style="margin-bottom: 6px;"><?=dx_icon('home', 'text-neon-orange', 24)?></div>
+        <div style="font-weight: 700; font-size: 0.92rem; color: #fff;">Dal Club</div>
+        <div style="font-size: 0.76rem; color: #94a3b8;">Cos'è il cerchio</div>
+      </a>
+    </div>
+    <div class="col-4 col-md-2">
+      <a href="metodo.php" class="p-3 d-block text-decoration-none h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
+        <div style="margin-bottom: 6px;"><?=dx_icon('book-open', 'text-neon-indigo', 24)?></div>
+        <div style="font-weight: 700; font-size: 0.92rem; color: #fff;">Come funziona</div>
+        <div style="font-size: 0.76rem; color: #94a3b8;">Il Metodo Hudolin</div>
+      </a>
+    </div>
+    <div class="col-4 col-md-2">
+      <a href="world-map.php" class="p-3 d-block text-decoration-none h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
+        <div style="margin-bottom: 6px;"><?=dx_icon('globe', 'text-neon-violet', 24)?></div>
+        <div style="font-weight: 700; font-size: 0.92rem; color: #fff;">Dalla rete</div>
+        <div style="font-size: 0.76rem; color: #94a3b8;">540+ nodi mondiali</div>
+      </a>
     </div>
   </div>
 </section>
@@ -249,32 +366,54 @@ try {
     </div>
   </div>
 
-  <!-- FAQ RASSICURANTI IN LUXURY CARDS -->
-  <div class="lux-metallic-card p-4 p-md-5 my-4" style="border: 1px solid rgba(212, 175, 55, 0.35);">
-    <h3 style="font-family: var(--font-serif); color: #ffffff; font-size: 1.4rem; margin-bottom: 22px; display: flex; align-items: center; gap: 10px;">
-      <?=dx_icon('help-circle', 'text-neon-gold', 24)?> 
-      <span>Risposte ai dubbi più comuni</span>
-    </h3>
+  <!-- ============================================================== -->
+  <!-- LE DOMANDE CHE FORSE TI VERGOGNI A FARE (RASSICURAZIONE REALE)  -->
+  <!-- ============================================================== -->
+  <div class="lux-metallic-card p-4 p-md-5 my-5" style="border: 1.5px solid rgba(212, 175, 55, 0.4); background: rgba(10, 14, 25, 0.95); border-radius: 20px;">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+      <div>
+        <div style="font-size: 0.8rem; font-weight: 800; color: var(--neon-gold); letter-spacing: 0.08em; text-transform: uppercase;">
+          NESSUN GIUDIZIO · RISPOSTE CHIARE
+        </div>
+        <h3 style="font-family: var(--font-serif); color: #ffffff; font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 800; margin: 4px 0 0;">
+          <span class="text-rainbow">Le domande che forse ti vergogni a fare</span>
+        </h3>
+      </div>
+      <a href="domande-frequenti.php" class="btn-rainbow-outline" style="border-color: var(--neon-gold); color: #fff; font-size: 0.88rem;">
+        <?=dx_icon('help-circle', 'text-neon-gold', 16)?>
+        <span style="margin-left: 6px;">Vedi tutte le 11 risposte &rarr;</span>
+      </a>
+    </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px;">
-      <div style="border-left: 3px solid var(--neon-cyan); padding-left: 14px;">
-        <h4 style="color: #38bdf8; font-size: 1.05rem; font-weight: 750; margin-bottom: 6px;">Posso venire anche se non sono sicuro di smettere?</h4>
-        <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Sì. Il Club non richiede un esame d'ingresso. Puoi venire a sentire le esperienze degli altri per capire quale cammino desideri intraprendere.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr)); gap: 20px;">
+      <div class="p-3" style="background: rgba(255,255,255,0.02); border-left: 3px solid var(--neon-cyan); border-radius: 0 10px 10px 0;">
+        <h4 style="color: #38bdf8; font-size: 1rem; font-weight: 750; margin-bottom: 6px;">&ldquo;E se beve solo mio marito o mia moglie?&rdquo;</h4>
+        <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; margin: 0;">Il Club è per le famiglie. Puoi venire tu da solo/a: la serenità ritrovata da un familiare è spesso il primo faro che illumina anche chi in questo momento non se la sente.</p>
       </div>
 
-      <div style="border-left: 3px solid var(--neon-green); padding-left: 14px;">
-        <h4 style="color: #34d399; font-size: 1.05rem; font-weight: 750; margin-bottom: 6px;">Devo venire con la mia famiglia?</h4>
-        <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">La famiglia è sempre benvenuta perché la serenità riguarda tutti. Ma puoi venire da solo, oppure la famiglia può venire anche senza di te se in questo momento non te la senti.</p>
+      <div class="p-3" style="background: rgba(255,255,255,0.02); border-left: 3px solid var(--neon-green); border-radius: 0 10px 10px 0;">
+        <h4 style="color: #34d399; font-size: 1rem; font-weight: 750; margin-bottom: 6px;">&ldquo;E se vengo ma non me la sento di parlare?&rdquo;</h4>
+        <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; margin: 0;">Nessuno ti forzerà mai. Puoi sederti, ascoltare le storie degli altri e prendere un tè. I tuoi silenzi saranno protetti e rispettati per tutto il tempo di cui hai bisogno.</p>
       </div>
 
-      <div style="border-left: 3px solid var(--neon-gold); padding-left: 14px;">
-        <h4 style="color: #fde68a; font-size: 1.05rem; font-weight: 750; margin-bottom: 6px;">Quanto costa partecipare?</h4>
-        <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">È completamente gratuito. I Club si fondano sull'auto-mutuo-aiuto e sulla solidarietà comunitaria.</p>
+      <div class="p-3" style="background: rgba(255,255,255,0.02); border-left: 3px solid var(--neon-gold); border-radius: 0 10px 10px 0;">
+        <h4 style="color: #fde68a; font-size: 1rem; font-weight: 750; margin-bottom: 6px;">&ldquo;E se ho già provato altre volte ed è andata male?&rdquo;</h4>
+        <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; margin: 0;">Non sei un caso clinico e non teniamo registri dei fallimenti. Ogni cammino umano conosce ricadute e ripartenze. Al Club conta solo la possibilità di ricominciare insieme oggi.</p>
       </div>
 
-      <div style="border-left: 3px solid var(--neon-violet); padding-left: 14px;">
-        <h4 style="color: #e879f9; font-size: 1.05rem; font-weight: 750; margin-bottom: 6px;">Posso contattare qualcuno prima di andare?</h4>
-        <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Certamente. Puoi contattare la segreteria di accoglienza dalla pagina "Parla con Noi", scrivere via email a info@dependex.support o chiamare il Numero Verde AICAT 800 974250.</p>
+      <div class="p-3" style="background: rgba(255,255,255,0.02); border-left: 3px solid var(--neon-orange); border-radius: 0 10px 10px 0;">
+        <h4 style="color: #fb923c; font-size: 1rem; font-weight: 750; margin-bottom: 6px;">&ldquo;E se mi vergogno che qualcuno mi veda?&rdquo;</h4>
+        <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; margin: 0;">La riservatezza nel Club è assoluta. Tutti quelli che oggi vedi sorridere e parlare liberamente hanno provato lo stesso identico timore prima di varcare quella porta.</p>
+      </div>
+
+      <div class="p-3" style="background: rgba(255,255,255,0.02); border-left: 3px solid var(--neon-indigo); border-radius: 0 10px 10px 0;">
+        <h4 style="color: #818cf8; font-size: 1rem; font-weight: 750; margin-bottom: 6px;">&ldquo;E se penso di non avere un problema grave?&rdquo;</h4>
+        <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; margin: 0;">Non serve toccare il fondo né definirsi "alcolisti". Se desideri chiarire le tue abitudini o alleggerire le tensioni quotidiane, il Club è uno spazio aperto di confronto vitale.</p>
+      </div>
+
+      <div class="p-3" style="background: rgba(255,255,255,0.02); border-left: 3px solid var(--neon-violet); border-radius: 0 10px 10px 0;">
+        <h4 style="color: #e879f9; font-size: 1rem; font-weight: 750; margin-bottom: 6px;">&ldquo;Mi giudicheranno per quello che ho fatto?&rdquo;</h4>
+        <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; margin: 0;">Nel cerchio non esistono cattedre né giudici. Troverai solo persone che riconoscono la fragilità umana e che hanno scelto di camminare alla pari, con dignità e rispetto.</p>
       </div>
     </div>
   </div>
@@ -658,17 +797,28 @@ try {
 <!-- ============================================================== -->
 <!-- 10. SECTION 10: CHIUSURA IDENTITARIA RAINBOW                   -->
 <!-- ============================================================== -->
-<section class="rainbow-border text-center my-5 p-5" style="background: rgba(10, 13, 24, 0.95); box-shadow: var(--rainbow-glow);">
+<section class="rainbow-border text-center my-5 p-5" style="background: rgba(10, 13, 24, 0.95); box-shadow: var(--rainbow-glow); border-radius: 24px;">
+  <div class="badge-neon-rainbow mb-3">
+    <span class="dot"></span>
+    <span style="color: #fde68a;">DALLA PERSONA ALLA COMUNITÀ</span>
+  </div>
   <h2 style="font-family: var(--font-serif); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 900; letter-spacing: 0.04em; margin-bottom: 10px;">
     <span class="text-rainbow">AL CLUB. COL CLUB.</span>
   </h2>
-  <p style="color: #ffffff; font-weight: 800; font-size: 1.15rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 28px; text-shadow: 0 0 20px rgba(0,212,255,0.6);">
-    Trova · Parla · Partecipa · Impara · Condividi
+  <p style="color: #ffffff; font-weight: 800; font-size: 1.15rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; text-shadow: 0 0 20px rgba(0,212,255,0.6);">
+    Non devi sapere già tutto. Trova una comunità. Parla. Partecipa. Impara. Condividi.
+  </p>
+  <p style="color: var(--neon-cyan); font-size: 1.05rem; font-weight: 600; margin-bottom: 28px;">
+    Dal digitale al reale. Dalla persona alla comunità.
   </p>
   <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-    <a href="world-club-explorer.php" class="btn-rainbow-neon">
+    <a href="mappa-club.php" class="btn-rainbow-neon">
       <?=dx_icon('map-pin', '', 18)?>
       <span style="margin-left: 8px;">Trova il tuo Club</span>
+    </a>
+    <a href="domande-frequenti.php" class="btn-rainbow-outline" style="border-color: var(--neon-gold); color: #fff;">
+      <?=dx_icon('help-circle', 'text-neon-gold', 18)?>
+      <span style="margin-left: 8px;">Le risposte ai tuoi dubbi</span>
     </a>
     <a href="parla-con-noi.php" class="btn-rainbow-outline" style="border-color: var(--neon-cyan); color: #fff;">
       <?=dx_icon('message-circle', 'text-neon-cyan', 18)?>

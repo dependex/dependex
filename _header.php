@@ -356,7 +356,8 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         </nav>
 
         <nav class="drawer-nav-group">
-          <span class="drawer-section-title">SUPPORTO & PRIVACY</span>
+          <span class="drawer-section-title">SUPPORTO & RASSICURAZIONE</span>
+          <a href="domande-frequenti.php" class="drawer-link <?=$curScript==='domande-frequenti.php'?'active':''?>"><?=dx_icon('help-circle','text-neon-gold',18)?> <b>Domande che vuoi fare</b></a>
           <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>"><?=dx_icon('shield','',18)?> Aiuto Immediato & Emergenze</a>
           <a href="privacy.php" class="drawer-link <?=$curScript==='privacy.php'?'active':''?>"><?=dx_icon('lock','',18)?> Riservatezza & Anonimato</a>
           <a href="terms.php" class="drawer-link <?=$curScript==='terms.php'?'active':''?>"><?=dx_icon('file-text','',18)?> Termini e Trasparenza</a>

@@ -39,6 +39,8 @@ $pageSchemaJson = [
 // Gestione invio modulo di orientamento riservato
 $messageSent = false;
 $errorMsg = null;
+$portaSelezionata = trim((string)($_GET['porta'] ?? 'aiuto'));
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'orientamento') {
     csrf_check();
     $nome = trim((string)($_POST['nome'] ?? 'Anonimo'));
@@ -58,12 +60,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                 'citta' => $citta,
                 'ruolo' => $ruolo,
                 'messaggio' => $messaggio,
+                'porta' => $portaSelezionata,
                 'data' => date('c')
             ];
             audit(null, 'PARLA_CON_NOI_RICHIESTA', null, $meta);
             $messageSent = true;
         } catch (Throwable $e) {
-            $errorMsg = 'Qualcosa non ha funzionato. Puoi contattarci direttamente su WhatsApp o via email.';
+            $errorMsg = 'Qualcosa non ha funzionato. Puoi contattarci direttamente via email a info@dependex.support.';
         }
     }
 }
@@ -74,21 +77,25 @@ require '_header.php';
 <div class="container py-4" style="max-width: 1040px; margin: 0 auto; padding: 0 1rem;">
 
   <!-- HERO DELLA PAGINA PARLA CON NOI -->
-  <section class="human-hero-card text-center" style="margin-top: 1rem;">
+  <section class="human-hero-card text-center" style="margin-top: 1rem; border-radius: 20px; padding: 2.2rem 1.5rem;">
     <div class="badge-human mb-3">
       <span class="dot"></span>
       <span>SPAZIO PROTETTO · ASCOLTO SENZA GIUDIZIO</span>
     </div>
 
     <h1 class="human-hero-title" style="font-size: clamp(2rem, 4.5vw, 3rem);">
-      Non devi affrontare tutto questo da solo.<br>
-      <span class="text-rainbow">Siamo qui per ascoltarti.</span>
+      Non devi sapere già tutto.<br>
+      <span class="text-rainbow">Siamo qui semplicemente per ascoltarti.</span>
     </h1>
 
-    <p class="human-hero-desc mx-auto">
-      Hai una domanda? Non sai a quale Club rivolgerti? Vuoi capire come si svolge un incontro prima di presentarti? 
-      Puoi iniziare con una telefonata al Numero Verde, una semplice email o inviando una richiesta tramite il modulo qui sotto.
-    </p>
+    <div class="p-3 my-3 mx-auto" style="max-width: 720px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 12px;">
+      <p style="font-size: 1.05rem; color: #fde68a; margin: 0; font-weight: 600;">
+        Non serve avere un'etichetta per cercare una comunità.
+      </p>
+      <p style="font-size: 0.9rem; color: #cbd5e1; margin: 4px 0 0;">
+        Puoi fare una semplice domanda, chiedere se c'è un Club nella tua zona, o capire come funziona. Nessun obbligo, nessuna registrazione medica.
+      </p>
+    </div>
 
     <!-- CANALI RAPIDI IN EVIDENZA -->
     <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
@@ -98,6 +105,13 @@ require '_header.php';
          title="Scrivi direttamente dal sito">
         <?=dx_icon('send', '', 18)?>
         <span>Modulo Riservato Online</span>
+      </a>
+      <a href="domande-frequenti.php" 
+         class="btn-community-wa" 
+         style="background: rgba(255, 215, 0, 0.15); border: 1px solid var(--neon-gold); color: #ffd700;"
+         title="Leggi prima le risposte ai dubbi comuni">
+        <?=dx_icon('help-circle', '', 18)?>
+        <span>Domande che forse ti vergogni a fare</span>
       </a>
 
       <a href="tel:800974250" class="btn-rainbow-neon" style="box-shadow: var(--glow-gold);" title="Chiama il numero verde AICAT">
@@ -193,12 +207,13 @@ require '_header.php';
         </div>
 
         <div>
-          <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #ffffff; margin-bottom: 6px;">Stai cercando aiuto per te o per una persona cara?</label>
+          <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #ffffff; margin-bottom: 6px;">Qual è la tua situazione in questo momento?</label>
           <select name="ruolo" style="width: 100%; padding: 12px 14px; background: rgba(9, 13, 26, 0.9); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--dx-radius-md); color: #fff; font-size: 0.95rem;">
-            <option value="PERSONA">Per me stesso / me stessa</option>
-            <option value="FAMIGLIA">Per un familiare o il partner</option>
-            <option value="AMICO">Per un amico o conoscente</option>
-            <option value="INFORMAZIONE">Desidero solo informazioni generali</option>
+            <option value="AIUTO" <?=($portaSelezionata === 'aiuto' ? 'selected' : '')?>>Non so da dove cominciare, vorrei solo un orientamento</option>
+            <option value="CLUB" <?=($portaSelezionata === 'club' ? 'selected' : '')?>>Voglio conoscere un Club vicino a me</option>
+            <option value="FAMIGLIA" <?=($portaSelezionata === 'famiglia' ? 'selected' : '')?>>Cerco supporto per un mio familiare o per il partner</option>
+            <option value="CAPIRE" <?=($portaSelezionata === 'capire' ? 'selected' : '')?>>Voglio capire come funziona prima di decidere</option>
+            <option value="PARTECIPARE" <?=($portaSelezionata === 'partecipare' ? 'selected' : '')?>>Desidero partecipare attivamente o formarmi</option>
           </select>
         </div>
 

@@ -54,6 +54,8 @@ FILES_TO_SYNC = [
     os.path.join("templates", "_reviews_ticker.php"),
     "recensioni.php",
     "testimonianze.php",
+    "domande-frequenti.php",
+    "faq.php",
     "ruota-della-vita.php",
     "piramide-maslow.php",
     "dashboard.php",

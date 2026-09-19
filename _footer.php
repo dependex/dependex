@@ -79,6 +79,7 @@
           <li><a href="index.php" style="color: #cbd5e1; text-decoration: none;">Pagina Principale</a></li>
           <li><a href="world-club-explorer.php" style="color: var(--dx-amber); font-weight: 750; text-decoration: none;">Trova un Club Territoriale</a></li>
           <li><a href="mappa-club.php" style="color: #67e8f9; font-weight: 750; text-decoration: none;">Mappa 2D Italia (322 Club)</a></li>
+          <li><a href="domande-frequenti.php" style="color: #fde68a; font-weight: 750; text-decoration: none;">Domande che vuoi fare</a></li>
           <li><a href="recensioni.php" style="color: var(--dx-amber); font-weight: 750; text-decoration: none;">Recensioni & Testimonianze</a></li>
           <li><a href="parla-con-noi.php" style="color: #ffffff; font-weight: 700; text-decoration: none;">Parla con Noi (Ascolto)</a></li>
           <li><a href="events-public.php" style="color: #cbd5e1; text-decoration: none;">Vivi la Comunità (Eventi)</a></li>

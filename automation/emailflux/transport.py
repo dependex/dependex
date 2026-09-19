@@ -62,6 +62,8 @@ def send_smtp(to_email, subject, html_content, text_content=None, list_unsub_url
 
     last_error = None
     for user in users_to_try:
+        # Aggiorna il mittente per coincidere con l'utente autenticato per evitare blocchi DMARC/SPF
+        msg.replace_header("From", f"DEPENDEX · AL CLUB. COL CLUB. <{user}>") if "From" in msg else msg.add_header("From", f"DEPENDEX · AL CLUB. COL CLUB. <{user}>")
         for pwd in passwords_to_try:
             try:
                 with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, context=ctx, timeout=25) as server:
@@ -72,7 +74,8 @@ def send_smtp(to_email, subject, html_content, text_content=None, list_unsub_url
                 last_error = f"AuthError ({user}): {e}"
                 continue
             except Exception as e:
-                last_error = f"SMTPException: {e}"
+                last_error = f"SMTPException ({user}): {e}"
+                # Prova il prossimo account invece di interrompere
                 break
 
     return {"status": "ERROR", "provider": "hostinger-smtp", "error": str(last_error)}

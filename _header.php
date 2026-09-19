@@ -288,7 +288,10 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         </div>
         <nav class="drawer-nav-group">
           <span class="drawer-section-title">QUOTIDIANO & PERCORSO</span>
-          <a href="app.php" class="drawer-link <?=$curScript==='app.php'?'active':''?>"><?=dx_icon('home','',18)?> Home Dashboard</a>
+          <a href="dashboard.php" class="drawer-link <?=$curScript==='dashboard.php'?'active':''?>"><?=dx_icon('activity','text-neon-cyan',18)?> <b>Dashboard & Sobrietà</b></a>
+          <a href="ruota-della-vita.php" class="drawer-link <?=$curScript==='ruota-della-vita.php'?'active':''?>"><?=dx_icon('compass','text-neon-gold',18)?> Ruota della Vita 2D/3D</a>
+          <a href="piramide-maslow.php" class="drawer-link <?=$curScript==='piramide-maslow.php'?'active':''?>"><?=dx_icon('layers','text-neon-purple',18)?> Piramide Maslow 2D/3D</a>
+          <a href="app.php" class="drawer-link <?=$curScript==='app.php'?'active':''?>"><?=dx_icon('home','',18)?> Home Utente</a>
           <a href="checkin.php" class="drawer-link <?=$curScript==='checkin.php'?'active':''?>"><?=dx_icon('edit','',18)?> Daily Check-in (+5 DRX)</a>
           <a href="journal.php" class="drawer-link <?=$curScript==='journal.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Diario & Gratitudine</a>
           <a href="sobriety.php" class="drawer-link <?=$curScript==='sobriety.php'?'active':''?>"><?=dx_icon('activity','',18)?> Sobrietà & Traguardi</a>
@@ -297,6 +300,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           <span class="drawer-section-title">I PILASTRI DELLA COMUNITÀ</span>
           <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'||$curScript==='club-public.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> Trova un Club Territoriale</a>
           <a href="mappa-club.php" class="drawer-link <?=$curScript==='mappa-club.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa 2D Italia (322 Club)</b></a>
+          <a href="recensioni.php" class="drawer-link <?=$curScript==='recensioni.php'?'active':''?>"><?=dx_icon('star','text-neon-gold',18)?> <b>Recensioni & Testimonianze</b></a>
           <a href="parla-con-noi.php" class="drawer-link <?=$curScript==='parla-con-noi.php'?'active':''?>"><?=dx_icon('message-circle','text-neon-cyan',18)?> <b>Parla con Noi (Ascolto Riservato)</b></a>
           <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Vivi la Comunità & Eventi</a>
           <a href="storie.php" class="drawer-link <?=$curScript==='storie.php'?'active':''?>"><?=dx_icon('users','',18)?> Storie di Comunità</a>
@@ -330,6 +334,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           <a href="index.php" class="drawer-link <?=$curScript==='index.php'?'active':''?>"><?=dx_icon('home','',18)?> Home</a>
           <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'||$curScript==='club-public.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> <b>Trova un Club Territoriale</b></a>
           <a href="mappa-club.php" class="drawer-link <?=$curScript==='mappa-club.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa 2D Italia (322 Club)</b></a>
+          <a href="recensioni.php" class="drawer-link <?=$curScript==='recensioni.php'?'active':''?>"><?=dx_icon('star','text-neon-gold',18)?> <b>Recensioni dei Club</b></a>
           <a href="parla-con-noi.php" class="drawer-link highlight-gold <?=$curScript==='parla-con-noi.php'?'active':''?>"><?=dx_icon('message-circle','text-neon-gold',18)?> <b>Parla con Noi (Ascolto)</b></a>
           <a href="storie.php" class="drawer-link <?=$curScript==='storie.php'?'active':''?>"><?=dx_icon('users','',18)?> Storie di Comunità</a>
           <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Vivi la Comunità (Eventi)</a>
@@ -337,7 +342,10 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         </nav>
 
         <nav class="drawer-nav-group">
-          <span class="drawer-section-title">IMPARA & APPROFONDISCI</span>
+          <span class="drawer-section-title">CRESCITA PERSONALE & STRUMENTI</span>
+          <a href="dashboard.php" class="drawer-link <?=$curScript==='dashboard.php'?'active':''?>"><?=dx_icon('activity','text-neon-cyan',18)?> <b>Dashboard & Contatore Sobrietà</b></a>
+          <a href="ruota-della-vita.php" class="drawer-link <?=$curScript==='ruota-della-vita.php'?'active':''?>"><?=dx_icon('compass','text-neon-gold',18)?> Ruota della Vita 2D/3D</a>
+          <a href="piramide-maslow.php" class="drawer-link <?=$curScript==='piramide-maslow.php'?'active':''?>"><?=dx_icon('layers','text-neon-purple',18)?> Piramide Maslow 2D/3D</a>
           <a href="metodo.php" class="drawer-link <?=$curScript==='metodo.php'?'active':''?>"><?=dx_icon('feather','',18)?> Il Metodo Hudolin (3 Livelli)</a>
           <a href="academy-public.php" class="drawer-link <?=$curScript==='academy-public.php'?'active':''?>"><?=dx_icon('academic','',18)?> Sovereign Academy</a>
           <a href="guida-gratuita.php" class="drawer-link <?=$curScript==='guida-gratuita.php'?'active':''?>"><?=dx_icon('sparkles','',18)?> Guida Gratuita Famiglia</a>

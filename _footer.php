@@ -78,6 +78,8 @@
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
           <li><a href="index.php" style="color: #cbd5e1; text-decoration: none;">Pagina Principale</a></li>
           <li><a href="world-club-explorer.php" style="color: var(--dx-amber); font-weight: 750; text-decoration: none;">Trova un Club Territoriale</a></li>
+          <li><a href="mappa-club.php" style="color: #67e8f9; font-weight: 750; text-decoration: none;">Mappa 2D Italia (322 Club)</a></li>
+          <li><a href="recensioni.php" style="color: var(--dx-amber); font-weight: 750; text-decoration: none;">Recensioni & Testimonianze</a></li>
           <li><a href="parla-con-noi.php" style="color: #ffffff; font-weight: 700; text-decoration: none;">Parla con Noi (Ascolto)</a></li>
           <li><a href="events-public.php" style="color: #cbd5e1; text-decoration: none;">Vivi la Comunità (Eventi)</a></li>
           <li><a href="world-map.php" style="color: #cbd5e1; text-decoration: none;">Mappa Mondiale 2D/3D</a></li>
@@ -90,6 +92,9 @@
           <?=dx_icon('book-open', 'text-green', 16)?> Metodo & Comunità
         </h4>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
+          <li><a href="dashboard.php" style="color: #86efac; font-weight: 750; text-decoration: none;">Dashboard & Sobrietà</a></li>
+          <li><a href="ruota-della-vita.php" style="color: #cbd5e1; text-decoration: none;">Ruota della Vita 2D/3D</a></li>
+          <li><a href="piramide-maslow.php" style="color: #cbd5e1; text-decoration: none;">Piramide di Maslow 2D/3D</a></li>
           <li><a href="metodo.php" style="color: #cbd5e1; text-decoration: none;">Il Metodo Hudolin (3 Livelli)</a></li>
           <li><a href="storie.php" style="color: #ffffff; font-weight: 700; text-decoration: none;">Storie di Comunità</a></li>
           <li><a href="academy-public.php" style="color: #cbd5e1; text-decoration: none;">Sovereign Academy</a></li>

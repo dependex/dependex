@@ -57,6 +57,46 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/mappa-club.php"/>
   </url>
 
+  <!-- 4.2 RECENSIONI & TESTIMONIANZE VERIFICATE DEI CLUB -->
+  <url>
+    <loc>https://dependex.social/recensioni.php</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.92</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/recensioni.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/recensioni.php"/>
+  </url>
+
+  <!-- 4.3 DASHBOARD UTENTE & CONTATORE SOBRIETÀ -->
+  <url>
+    <loc>https://dependex.social/dashboard.php</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/dashboard.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/dashboard.php"/>
+  </url>
+
+  <!-- 4.4 RUOTA DELLA VITA 2D & 3D -->
+  <url>
+    <loc>https://dependex.social/ruota-della-vita.php</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/ruota-della-vita.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/ruota-della-vita.php"/>
+  </url>
+
+  <!-- 4.5 PIRAMIDE DI MASLOW HUDOLIN 2D & 3D -->
+  <url>
+    <loc>https://dependex.social/piramide-maslow.php</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/piramide-maslow.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/piramide-maslow.php"/>
+  </url>
+
   <!-- 5. EVENTO FORMATIVO OTTOBRE TAGLIO DI PO (FLAGSHIP EVENT) -->
   <url>
     <loc>https://dependex.social/evento-ottobre-taglio-di-po.php</loc>

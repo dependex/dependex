@@ -13,6 +13,10 @@
 
 ## Risorse Principali
 - [Mappa Georeferenziata 2D Italia](mappa-club.php): Censimento ufficiale 2026 con 322 Club CAT, ACAT e ARCAT, coordinate geografiche 2D, orari, giorni di incontro e prossimità GPS.
+- [Recensioni & Testimonianze Verificate](recensioni.php): Riprova sociale ed esperienze autentiche di membri, famiglie e servitori-insegnanti dei Club d'Italia.
+- [Dashboard & Contatore Sobrietà](dashboard.php): Monitoraggio giorni lucidi, calcolatore risparmio economico, pietre miliari e quest system quotidiano del Metodo Hudolin.
+- [Ruota della Vita 2D & 3D](ruota-della-vita.php): Strumento di auto-valutazione interattivo sulle 12 aree della vita con indice di equilibrio e rendering WebGL Three.js.
+- [Piramide di Maslow Hudolin 2D & 3D](piramide-maslow.php): I 5 gradini della rinascita ecologico-sociale, dai bisogni biologici alla trascendenza nel servizio alla comunità.
 - [Trova un Club Territoriale](world-club-explorer.php): Directory nazionale e ricerca per comune, provincia e regione.
 - [Parla con Noi](parla-con-noi.php): Sportello di ascolto riservato e segreteria di accoglienza per orientamento e supporto.
 - [Guida Gratuita per la Famiglia](guida-gratuita.php): Protocollo di primo contatto e consigli per familiari e persone vicine.

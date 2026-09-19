@@ -41,13 +41,14 @@
    - **Trauma-Informed UX & Small Steps Engine:** Massimo 3 opzioni post-esplorazione (zero overwhelm), domande aperte maieutiche, stile motivazionale senza imposizioni ("Se vuoi, puoi iniziare da qui").
    - La persona sceglie liberamente da dove iniziare ("Questa parte della mia vita oggi chiede attenzione") e il sistema risponde sempre: *"Partiamo da lì. Vediamo cosa può aiutarti a rimettere in movimento la tua vita e quali persone e comunità possono accompagnarti"*.
    - Specifiche integrali in [`docs/HUMAN_WELFARE_OS_4.md`](file:///c:/81PLUS_GLOBAL_MASTER/dependex.social/docs/HUMAN_WELFARE_OS_4.md) e [`docs/HUMAN_WELFARE_ENGINE_5.md`](file:///c:/81PLUS_GLOBAL_MASTER/dependex.social/docs/HUMAN_WELFARE_ENGINE_5.md).
-8. **Omni-Welfare Gamification Engine 6.0 (Life Playground & No Pain Gamification):**
-   - **Zero Minestrone & Separazione Rigorosa:** Le pratiche olistiche, somatiche, vediche, di respiro, Metodo H+, Metodo ABC, BetterWay, Ikigai e Metodo Hudolin NON sono un'unica disciplina e non sono cure mediche. Ogni metodo mantiene esplicita la propria fonte.
-   - **Non Gamificare la Sofferenza:** Vietato assegnare punti o badge a dolore, ansia, traumi, ricadute o sintomi.
-   - **No Streak Punitivi:** Nessuna punizione o colpevolizzazione per giorni di assenza ("Bentornato", non "hai perso la streak").
-   - **Esperienza Prima dei Termini Tecnici:** L'utente accede da *"Come ti senti oggi?"* o *"Cosa vuoi esplorare?"*, mai da una lista di etichette complesse.
-   - **Screen Off → Life On:** Le missioni spingono alla vita reale (passeggiata, respiro, contatto umano, partecipazione al Club).
-   - Specifica integrale in [`docs/OMNI_WELFARE_GAMIFICATION_6.md`](file:///c:/81PLUS_GLOBAL_MASTER/dependex.social/docs/OMNI_WELFARE_GAMIFICATION_6.md).
+8. **Omni-Welfare Gamification Engine 6.0 (Life Playground & No Pain Gamification — 60 Articoli):**
+   - **Zero Minestrone & Separazione Rigorosa delle Fonti:** Le pratiche olistiche, somatiche, vediche, di respiro, Metodo H+, 44 protocolli in 6 aree, Metodo ABC, BetterWay (6 pilastri e Life Surf: *"Non puoi fermare le onde, puoi imparare a navigarle"*), Ikigai, `mircopregnolato.it` come source library accreditata, `BEWAY.LIFE` come input esterno da acquisire/analizzare senza presumere, e Metodo Hudolin NON sono un'unica disciplina e non sono cure mediche. Ogni metodo mantiene esplicita la propria fonte originale.
+   - **Non Gamificare la Sofferenza & Zero "Wellness Score":** Vietato assegnare punti o badge a dolore, ansia, traumi, ricadute o sintomi. Vietato calcolare punteggi numerici di benessere.
+   - **No Streak Punitivi:** Nessuna punizione o colpevolizzazione per giorni di assenza ("Bentornato", mai "hai perso la streak").
+   - **Esperienza Prima dei Termini Tecnici:** L'utente accede da *"Come ti senti oggi?"* o *"Cosa vuoi esplorare?"* tra 11 portali maieutici, mai da etichette astratte. Zero manuali, zero complessità (<10 secondi per capire l'attività).
+   - **Bussola a 9 Raggi (The Dependex Compass):** Al centro l'**IO**; attorno: Corpo, Mente, Relazioni, Famiglia, Lavoro, Risorse, Comunità, Significato, Territorio (Delta del Po).
+   - **Screen Off → Life On:** Le micro-missioni guidate (30s, 60s, 2m, 5m, 10m, 81 giorni) spingono sempre all'incontro e all'azione nella vita reale e nei Club multifamiliari.
+   - Specifica integrale dei 60 articoli congelata in [`docs/OMNI_WELFARE_GAMIFICATION_6.md`](file:///c:/81PLUS_GLOBAL_MASTER/dependex.social/docs/OMNI_WELFARE_GAMIFICATION_6.md).
 
 ---
 

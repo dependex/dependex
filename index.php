@@ -56,10 +56,54 @@ try {
       </p>
 
       <!-- MANIFESTO IL PRIMO PASSO -->
-      <div class="p-3 mb-4" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 182, 212, 0.08)); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 12px;">
+      <div class="p-3 mb-3" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 182, 212, 0.08)); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 14px;">
         <div style="font-size: 0.96rem; color: #e2e8f0; line-height: 1.6;">
           <strong style="color: var(--neon-green);"><?=dx_icon('check-circle', 'text-neon-green', 16)?> Non devi cambiare tutta la tua vita oggi.</strong>
           Puoi semplicemente: fare una domanda · trovare un Club · conoscere qualcuno · andare a un incontro. <em>Poi decidi tu.</em>
+        </div>
+      </div>
+
+      <!-- PRIMARY ACTION CLUSTER (CTA-ENGINE & MOBILE-FIRST-UX) -->
+      <div class="d-flex flex-wrap gap-2 mb-4">
+        <a href="world-club-explorer.php" 
+           class="btn-rainbow-glow d-inline-flex align-items-center justify-content-center text-decoration-none"
+           style="background: linear-gradient(135deg, #00f0ff, #0077ff); color: #070a12; font-weight: 850; font-size: 0.96rem; padding: 14px 22px; border-radius: 14px; box-shadow: 0 4px 20px rgba(0, 240, 255, 0.35); min-height: 48px; gap: 8px;">
+          <?=dx_icon('map-pin', '', 18)?>
+          <span>Trova il Tuo Club (322+ in Italia)</span>
+        </a>
+        <a href="playground.php" 
+           class="d-inline-flex align-items-center justify-content-center text-decoration-none"
+           style="background: rgba(212, 175, 55, 0.12); border: 1.5px solid #d4af37; color: #ffd700; font-weight: 800; font-size: 0.94rem; padding: 14px 20px; border-radius: 14px; min-height: 48px; gap: 8px; backdrop-filter: blur(8px);">
+          <?=dx_icon('sparkles', 'text-neon-gold', 18)?>
+          <span>Entra nel Life Playground</span>
+        </a>
+      </div>
+
+      <!-- TRUST & REASSURANCE STRIP (TRUST-DESIGN) -->
+      <div class="row g-2 mb-2">
+        <div class="col-6 col-md-3">
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 8px 10px; font-size: 0.78rem; color: #cbd5e1; display: flex; align-items: center; gap: 6px;">
+            <?=dx_icon('shield-check', 'text-neon-cyan', 15)?>
+            <span><strong>100% Gratuito</strong> e solidale</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 8px 10px; font-size: 0.78rem; color: #cbd5e1; display: flex; align-items: center; gap: 6px;">
+            <?=dx_icon('lock', 'text-neon-gold', 15)?>
+            <span><strong>Anonimato</strong> garantito</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 8px 10px; font-size: 0.78rem; color: #cbd5e1; display: flex; align-items: center; gap: 6px;">
+            <?=dx_icon('users', 'text-neon-purple', 15)?>
+            <span><strong>Famiglie & Pari</strong> accoglienti</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 8px 10px; font-size: 0.78rem; color: #cbd5e1; display: flex; align-items: center; gap: 6px;">
+            <?=dx_icon('heart', 'text-neon-green', 15)?>
+            <span><strong>Zero Giudizio</strong> morale</span>
+          </div>
         </div>
       </div>
     </div>

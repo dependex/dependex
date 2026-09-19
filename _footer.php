@@ -178,15 +178,15 @@
     <?=dx_icon('map-pin', '', 20)?>
     <span>Trova Club</span>
   </a>
+  <a href="playground.php" class="dx-bottom-nav-item <?=$currentFile==='playground.php'?'active':''?>" style="color: #00d4ff;">
+    <?=dx_icon('sparkles', 'text-neon-cyan', 20)?>
+    <span>Playground</span>
+  </a>
   <a href="parla-con-noi.php" class="dx-bottom-nav-item <?=$currentFile==='parla-con-noi.php'?'active':''?>">
     <?=dx_icon('message-circle', '', 20)?>
     <span>Parla</span>
   </a>
-  <a href="dashboard.php" class="dx-bottom-nav-item <?=$currentFile==='dashboard.php'?'active':''?>">
-    <?=dx_icon('bar-chart-2', '', 20)?>
-    <span>Dashboard</span>
-  </a>
-  <a href="javascript:void(0)" class="dx-bottom-nav-item sos-badge" onclick="dxToggleSosModal(true)">
+  <a href="javascript:void(0)" class="dx-bottom-nav-item sos-badge" onclick="dxToggleSosModal(true)" aria-label="Apri SOS Calma e respirazione">
     <div class="sos-pulse">
       <?=dx_icon('shield', '', 18)?>
     </div>

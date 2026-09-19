@@ -79,11 +79,14 @@ if (strpos($ogImageResolved, 'http') !== 0) {
   <link rel="apple-touch-icon" href="assets/img/app-icon.svg">
   <link rel="manifest" href="manifest.webmanifest">
 
-  <!-- Performance Resource Hints -->
+  <!-- Performance Resource Hints & Web Performance CRO -->
+  <meta http-equiv="x-dns-prefetch-control" content="on">
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://<?=h($brand['domain'] ?? 'dependex.social')?>" crossorigin>
+  <link rel="dns-prefetch" href="https://<?=h($brand['domain'] ?? 'dependex.social')?>">
 
-  <!-- Stylesheets -->
+  <!-- Stylesheets (Render-optimized) -->
   <link rel="stylesheet" href="assets/css/app.css?v=<?=filemtime(__DIR__.'/assets/css/app.css')?>">
   <link rel="stylesheet" href="assets/css/luxury-patterns.css?v=<?=filemtime(__DIR__.'/assets/css/luxury-patterns.css')?>">
   <link rel="stylesheet" href="assets/css/rainbow-neon.css?v=<?=filemtime(__DIR__.'/assets/css/rainbow-neon.css')?>">

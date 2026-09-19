@@ -1,62 +1,79 @@
 <?php
-require_once __DIR__.'/bootstrap.php';
-$pageTitle = 'Dalla dipendenza alla sovranità personale · Riconquista la tua lucidità';
-$metaDesc = 'Basta con la favola del "smetto quando voglio". Riconquista lucidità mentale, rispetto e serenità familiare con la rete di oltre 540 Club e il Metodo Hudolin.';
+require_once __DIR__ . '/bootstrap.php';
+
+$pageTitle = 'Hai Bisogno di Parlarne? · Trova la tua Comunità nei Club Territoriali';
+$metaDesc = 'Non devi sapere già tutto. Puoi semplicemente iniziare. Oltre 540 Club Alcologici Territoriali gratuiti e aperti alle famiglie. Metodo Hudolin, zero giudizio.';
+$canonicalUrl = 'https://' . ($brand['domain'] ?? 'dependex.social') . '/';
+
+$pageSchemaJson = [
+    "@context" => "https://schema.org",
+    "@type" => "WebSite",
+    "name" => "DEPENDEX · AL CLUB. COL CLUB.",
+    "description" => $metaDesc,
+    "url" => $canonicalUrl,
+    "potentialAction" => [
+        "@type" => "SearchAction",
+        "target" => "https://" . ($brand['domain'] ?? 'dependex.social') . "/world-club-explorer.php?q={search_term_string}",
+        "query-input" => "required name=search_term_string"
+    ]
+];
+
 require '_header.php';
 
-// Fetch 360° ACAT, ARCAT, SAT News for the CSS Ticker
-$newsCards = AcatNewsService::getLatestCards(10);
+// Notizie dalla rete per il ticker
+$newsCards = AcatNewsService::getLatestCards(8);
+$totalNodes = 542;
+try {
+    $totalNodes = (int)db()->query("SELECT COUNT(*) FROM dependex_world_registry")->fetchColumn() ?: 542;
+} catch (Throwable $e) {}
 ?>
+
 <!-- ============================================================== -->
-<!-- HERO: COSMIC RAINBOW NEON HERO SECTION                         -->
+<!-- 1. HERO EMPATICA: "HAI BISOGNO DI PARLARNE?"                   -->
 <!-- ============================================================== -->
-<section class="hero-cosmic-section rainbow-border p-4 p-md-5 my-4" style="border-radius: 24px;">
-  <div class="row align-items-center g-4 position-relative" style="z-index: 2; width: 100%;">
+<section class="human-hero-card my-4">
+  <div class="row align-items-center g-4">
     <div class="col-lg-8">
-      <div class="badge-neon-rainbow mb-3">
+      <div class="badge-human mb-3">
         <span class="dot"></span>
-        <span class="text-rainbow">APPROCCIO ECOLOGICO-SOCIALE HUDOLIN · 361 CLUB VERIFICATI</span>
+        <span>UNA COMUNITÀ MONDIALE DI PERSONE, FAMIGLIE E CLUB</span>
       </div>
 
-      <h1 style="font-family: var(--font-serif); font-size: clamp(2.3rem, 5.5vw, 4.1rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.25rem; color: #FFFFFF; text-shadow: 0 4px 20px rgba(0,0,0,0.9);">
-        Basta raccontarti la favola del "smetto quando voglio".<br>
-        <span class="rainbow-text">Riconquista la tua sovranità personale.</span>
+      <h1 class="human-hero-title">
+        Hai bisogno di parlarne?<br>
+        <span class="text-amber">Non devi sapere già tutto. Puoi semplicemente iniziare.</span>
       </h1>
 
-      <p style="font-size: 1.18rem; line-height: 1.7; max-width: 720px; color: #e2e8f0; margin-bottom: 2rem; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
-        La dipendenza ti ha venduto l’illusione di rilassarti, ma ti ha addebitato il conto: notti insonni, liti a tavola, promesse infrante e quel velo di vergogna nello stomaco. Non sei rotto e non sei una causa persa: sei solo dentro un loop cognitivo. Nei 546 Club territoriali trovi persone e famiglie che hanno già smontato quel trucco.
+      <p class="human-hero-desc">
+        Che tu stia vivendo una difficoltà legata all'alcol, ad altre sostanze, al gioco o a un momento di solitudine, o che tu sia un familiare che non sa più come aiutare chi ama: nei Club Alcologici Territoriali trovi persone che si incontrano ogni settimana per camminare insieme. Senza cartelle cliniche, senza costi, senza giudizio.
       </p>
 
-      <div class="d-flex gap-3 flex-wrap align-items-center">
-        <a href="world-club-explorer.php" class="btn-rainbow-neon">
+      <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center;">
+        <a href="world-club-explorer.php" class="btn-community-primary" title="Cerca il Club più vicino alla tua zona">
           <?=dx_icon('map-pin', '', 18)?>
-          <span style="margin-left: 8px;">Trova una sedia nel Club più vicino</span>
+          <span>Trova il tuo Club</span>
         </a>
-        <a href="guida-gratuita.php" class="btn-rainbow-outline" style="border-color: var(--neon-gold); color: #FFFFFF;">
-          <?=dx_icon('sparkles', '', 18)?>
-          <span style="margin-left: 8px;">Guida Gratuita Famiglia</span>
+        <a href="parla-con-noi.php" class="btn-community-outline" title="Inizia una conversazione riservata">
+          <?=dx_icon('message-circle', '', 18)?>
+          <span>Parla con Noi</span>
         </a>
-        <a href="metodo.php" class="btn-rainbow-outline">
-          <?=dx_icon('feather', '', 18)?>
-          <span style="margin-left: 8px;">Lo Schema dei 5 Passi</span>
-        </a>
-        <a href="offers.php" class="btn-rainbow-outline" style="border-color: var(--neon-cyan);">
-          <?=dx_icon('book-open', '', 18)?>
-          <span style="margin-left: 8px;">Libri Amazon KDP</span>
+        <a href="#cosa-succede" class="btn-community-outline" style="border-color: rgba(224, 169, 109, 0.4);">
+          <?=dx_icon('help-circle', 'text-amber', 18)?>
+          <span>Cosa succede al Club?</span>
         </a>
       </div>
     </div>
 
     <div class="col-lg-4 text-center d-none d-lg-block">
-      <div class="rainbow-border p-4" style="background: rgba(8, 11, 20, 0.85); backdrop-filter: blur(16px); text-align: center;">
-        <div style="margin-bottom: 18px; display: inline-block;">
-          <img src="assets/img/dependex-rainbow-badge.jpg" alt="Sigillo Cosmico Dependex" style="width: 170px; height: 170px; border-radius: 50%; box-shadow: var(--rainbow-glow); border: 2px solid rgba(255,215,0,0.4);">
+      <div style="background: rgba(10, 15, 28, 0.9); border: 1px solid var(--dx-night-border); border-radius: var(--dx-radius-xl); padding: 32px 24px; box-shadow: var(--dx-shadow-soft);">
+        <div style="margin-bottom: 18px; display: inline-flex; align-items: center; justify-content: center; width: 110px; height: 110px; border-radius: 50%; background: rgba(224, 169, 109, 0.12); border: 2px solid var(--dx-amber); box-shadow: 0 0 25px rgba(224,169,109,0.25);">
+          <?=dx_icon('heart-handshake', 'text-amber', 56)?>
         </div>
-        <h4 style="font-family: var(--font-serif); color: #FFFFFF; margin-bottom: 8px; font-weight: 800; font-size: 1.25rem;">
-          <span class="text-rainbow">Zero Giudizio. Solo Presenza.</span>
-        </h4>
-        <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.55; margin-bottom: 0;">
-          Nessuna etichetta clinica. Sei un essere umano con un potenziale intatto pronto a riprendersi stima, rispetto e serenità.
+        <h3 style="font-family: var(--dx-font-serif); color: #FFFFFF; font-size: 1.3rem; margin-bottom: 8px; font-weight: 800;">
+          Porte Sempre Aperte
+        </h3>
+        <p style="font-size: 0.9rem; color: var(--dx-text-subtle); line-height: 1.6; margin: 0;">
+          Non serve una ricetta medica né un'iscrizione formale. C'è una sedia pronta per te in ogni Club d'Italia e del mondo.
         </p>
       </div>
     </div>
@@ -64,405 +81,49 @@ $newsCards = AcatNewsService::getLatestCards(10);
 </section>
 
 <!-- ============================================================== -->
-<!-- 7 PILASTRI DELL'ARCOBALENO: FREQUENZE DI SOVRANITÀ E RINASCITA -->
+<!-- 2. SECTION 2: TROVA LA TUA COMUNITÀ (RICERCA & MAPPA)          -->
 <!-- ============================================================== -->
-<section class="my-4">
-  <div class="rainbow-pillars-grid">
-    <div class="rainbow-pillar-card pillar-red">
-      <span class="pillar-icon"><?=dx_icon('lotus', 'text-neon-red', 32)?></span>
-      <div class="pillar-title text-neon-red">Senti</div>
-      <div class="pillar-sub">Radicarsi · Ascoltare · Sentire</div>
-    </div>
-    <div class="rainbow-pillar-card pillar-orange">
-      <span class="pillar-icon"><?=dx_icon('waves', 'text-neon-orange', 32)?></span>
-      <div class="pillar-title text-neon-orange">Agisci</div>
-      <div class="pillar-sub">Fluire · Muovere · Creare</div>
-    </div>
-    <div class="rainbow-pillar-card pillar-gold">
-      <span class="pillar-icon"><?=dx_icon('mic', 'text-neon-gold', 32)?></span>
-      <div class="pillar-title text-neon-gold">Comunica</div>
-      <div class="pillar-sub">Esprimere · Dire · Manifestare</div>
-    </div>
-    <div class="rainbow-pillar-card pillar-green">
-      <span class="pillar-icon"><?=dx_icon('mountain', 'text-neon-green', 32)?></span>
-      <div class="pillar-title text-neon-green">Vedi</div>
-      <div class="pillar-sub">Osservare · Scegliere · Orientarsi</div>
-    </div>
-    <div class="rainbow-pillar-card pillar-cyan">
-      <span class="pillar-icon"><?=dx_icon('heart-handshake', 'text-neon-cyan', 32)?></span>
-      <div class="pillar-title text-neon-cyan">Ama</div>
-      <div class="pillar-sub">Amare · Relazionare · Accogliere</div>
-    </div>
-    <div class="rainbow-pillar-card pillar-indigo">
-      <span class="pillar-icon"><?=dx_icon('feather', 'text-neon-indigo', 32)?></span>
-      <div class="pillar-title text-neon-indigo">Costruisci</div>
-      <div class="pillar-sub">Strutturare · Creare · Costruire</div>
-    </div>
-    <div class="rainbow-pillar-card pillar-violet">
-      <span class="pillar-icon"><?=dx_icon('crown', 'text-neon-violet', 32)?></span>
-      <div class="pillar-title text-neon-violet">Sii</div>
-      <div class="pillar-sub">Integrare · Trascendere · Diventare</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================== -->
-<!-- PANORAMA ARCOBALENO DEI 7 PORTALI                              -->
-<!-- ============================================================== -->
-<div class="rainbow-panorama-banner my-4">
-  <img src="assets/img/rainbow-portals.jpg" alt="I 7 Portali dell'Arcobaleno e Frequenze di Rinascita" loading="lazy">
-</div>
-
-<!-- ============================================================== -->
-<!-- QUICK LEAD CAPTURE & CLUB FINDER BOX                           -->
-<!-- ============================================================== -->
-<section class="rainbow-border p-4 my-4" style="background: rgba(13, 18, 31, 0.85); backdrop-filter: blur(16px);">
-  <div class="row align-items-center g-3">
-    <div class="col-lg-6">
-      <div style="color: #D4AF37; font-size: 0.8rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">
-        <?=dx_icon('map-pin', '', 14)?> ORIENTAMENTO RISERVATO · 100% GRATUITO
+<section class="community-search-container my-5" id="trova-club">
+  <div class="row align-items-center g-4">
+    <div class="col-lg-7">
+      <div class="badge-human emerald mb-2">
+        <span class="dot"></span>
+        <span><?=$totalNodes?> NODI TERRITORIALI CENSITI & VERIFICATI</span>
       </div>
-      <h3 style="color: #FFFFFF; font-size: 1.35rem; margin: 4px 0 8px 0; font-family: var(--font-serif);">
-        Ricevi i 3 Club territoriali più vicini e la Guida del 1° Giorno
-      </h3>
-      <p style="color: #cbd5e1; font-size: 0.92rem; margin: 0; line-height: 1.6;">
-        Inserisci la tua città e la tua email: ti invieremo l'indirizzo esatto, il giorno di riunione e la checklist delle 7 azioni per non restare solo.
+      <h2 style="font-family: var(--dx-font-serif); font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: #ffffff; margin: 6px 0 10px; font-weight: 800;">
+        Trova la tua comunità
+      </h2>
+      <p style="color: var(--dx-text-subtle); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        Cerca il Club più vicino a te. Puoi inserire la tua città, il CAP, la provincia o il territorio.
       </p>
-    </div>
-    <div class="col-lg-6">
-      <form action="lead.php?magnet=club" method="POST" style="display: flex; gap: 10px; flex-wrap: wrap;">
-        <input type="text" name="citta" required placeholder="La tua città o provincia..." style="flex: 1; min-width: 170px; padding: 12px 14px; background: rgba(14, 18, 28, 0.9); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 10px; color: #fff; font-size: 0.95rem;">
-        <input type="email" name="email" required placeholder="La tua email riservata..." style="flex: 1.2; min-width: 200px; padding: 12px 14px; background: rgba(14, 18, 28, 0.9); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 10px; color: #fff; font-size: 0.95rem;">
-        <button type="submit" class="btn primary" style="white-space: nowrap; font-size: 0.95rem; min-height: 48px; border-radius: 12px; padding: 0 20px;">
-          Invia i 3 Club
+
+      <form action="world-club-explorer.php" method="GET" class="community-search-form">
+        <input type="text" 
+               name="q" 
+               required 
+               placeholder="Inserisci la tua città o provincia (es. Rovigo, Milano, Napoli, Padova...)" 
+               class="community-search-input"
+               aria-label="Cerca Club per comune o provincia">
+        <button type="submit" class="btn-community-primary" style="white-space: nowrap;">
+          <?=dx_icon('search', '', 18)?>
+          <span>Cerca Club</span>
         </button>
       </form>
-      <small style="display: block; font-size: 0.78rem; color: #cbd5e1; margin-top: 6px;">
-        Nessun archivio pubblico. Riservatezza assoluta. Disiscrizione garantita in 1 click.
+      <small style="display: block; font-size: 0.82rem; color: var(--dx-text-muted); margin-top: 10px;">
+        Nessun dato personale richiesto per la ricerca. Consultazione 100% libera e riservata.
       </small>
     </div>
-  </div>
-</section>
-<!-- ============================================================== -->
-<!-- CSS NEWS TICKER: HUB NAZIONALE DIPENDENZE (ACAT, SER.D, COMUNITÀ, GAP) -->
-<!-- ============================================================== -->
-<section class="dx-news-ticker-section my-4">
-  <div class="dx-ticker-header">
-    <h3>
-      <?=dx_icon('newspaper', 'text-neon-cyan', 22)?>
-      <span>HUB NAZIONALE DIPENDENZE · EVENTI & NOTIZIE D'ITALIA</span>
-    </h3>
-    <a href="events-public.php" class="dx-ticker-link" style="font-size: 0.85rem;">
-      Tutti gli eventi e congressi nazionali <?=dx_icon('arrow-right', '', 14)?>
-    </a>
-  </div>
 
-  <div class="dx-ticker-wrapper" aria-label="News ticker Hub Nazionale Dipendenze">
-    <div class="dx-ticker-track">
-      <?php 
-      // Double the array for seamless infinite looping
-      $loopNews = array_merge($newsCards, $newsCards);
-      foreach($loopNews as $item): 
-        $isPinned = !empty($item['is_pinned']);
-      ?>
-        <article class="dx-ticker-card" style="<?=$isPinned ? 'border: 2px solid #d4af37; background: rgba(212,175,55,0.12); box-shadow: 0 0 20px rgba(212,175,55,0.25);' : ''?>">
-          <div>
-            <span class="dx-ticker-badge" style="<?=$isPinned ? 'background: #d4af37; color: #030712; font-weight: 900;' : ''?>"><?=h($item['tag_label'])?></span>
-            <h4 class="dx-ticker-title" style="<?=$isPinned ? 'color: #fef08a;' : ''?>"><?=h($item['title'])?></h4>
-            <p class="dx-ticker-desc"><?=h($item['summary'])?></p>
-          </div>
-          <div class="dx-ticker-meta">
-            <span><?=dx_icon('calendar', '', 12)?> <?=h($item['published_date'])?></span>
-            <a href="<?=h($item['source_url'])?>" target="<?=$isPinned ? '_self' : '_blank'?>" rel="noopener" class="dx-ticker-link" style="<?=$isPinned ? 'color: #fef08a; font-weight: 850;' : ''?>">
-              <?=h($item['source_name'])?> <?=dx_icon('external-link', '', 12)?>
-            </a>
-          </div>
-        </article>
-      <?php endforeach; ?>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================== -->
-<!-- EVENTO UFFICIALE FLAGSHIP & FAST CHECKOUT (TAGLIO DI PO)        -->
-<!-- ============================================================== -->
-<?php require_once __DIR__ . '/templates/_event_fast_checkout.php'; ?>
-
-<!-- ============================================================== -->
-<!-- TRUST STRIP · PURE GOLD, BLACK & WHITE                        -->
-<!-- ============================================================== -->
-<!-- TRUST NUMBERS STRIP                                            -->
-<!-- ============================================================== -->
-<div class="trust-strip rainbow-border p-3" style="background: rgba(11, 12, 16, 0.85); margin: 30px 0;">
-  <div class="trust-item">
-    <span class="trust-number text-neon-gold">361+</span>
-    <span class="trust-label" style="color: #cbd5e1;">Club Attivi & Verificati in Italia</span>
-  </div>
-  <div class="trust-item">
-    <span class="trust-number text-neon-green">40+</span>
-    <span class="trust-label" style="color: #cbd5e1;">Anni di Metodo Hudolin</span>
-  </div>
-  <div class="trust-item">
-    <span class="trust-number text-neon-cyan">100%</span>
-    <span class="trust-label" style="color: #cbd5e1;">Riservatezza & Anonimato</span>
-  </div>
-  <div class="trust-item">
-    <span class="trust-number text-neon-violet">24/7</span>
-    <span class="trust-label" style="color: #cbd5e1;">Cortex AI & Rete Attiva H24</span>
-  </div>
-</div>
-
-<!-- ============================================================== -->
-<!-- BEFORE / AFTER TRANSFORMATION GRID (PNL REFRAMING)            -->
-<!-- ============================================================== -->
-<section class="my-5">
-  <div class="text-center mb-4">
-    <div class="badge-neon-rainbow mb-2">
-      <span class="dot"></span>
-      <span class="text-rainbow">IL REFRAMING: COSA CAMBIA DAL PRIMO GIORNO</span>
-    </div>
-    <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: #FFFFFF; margin-top: 6px;">
-      Dalla Trappola dell'Autogiustificazione alla <span class="text-rainbow">Padronanza Mentale</span>
-    </h2>
-    <p style="color: #cbd5e1; max-width: 640px; margin: 0 auto; font-size: 1.05rem; line-height: 1.6;">
-      Nessuno cerca una piattaforma per collezionare statistiche. La cerchi per spegnere l'ansia delle 18:00, smettere di mentire a chi ami e risvegliarti la mattina fiero di chi sei.
-    </p>
-  </div>
-
-  <div class="transformation-grid">
-    <!-- BEFORE -->
-    <div class="transformation-card before card-neon-red" style="background: rgba(18, 12, 16, 0.85); border-radius: 18px; padding: 28px; border: 1px solid rgba(255, 51, 68, 0.35);">
-      <span class="transformation-badge" style="background: rgba(255, 51, 68, 0.15); color: #ff3344; border: 1px solid rgba(255, 51, 68, 0.4); font-weight: 800;">
-        <?=dx_icon('alert-triangle', '', 14)?> LA VECCHIA FAVOLA: DA SOLI NEL LOOP
-      </span>
-      <ul class="transformation-list" style="margin-top: 20px; list-style: none; padding-left: 0;">
-        <li style="display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px;">
-          <span style="color: var(--neon-red); flex-shrink: 0;"><?=dx_icon('alert-triangle', '', 20)?></span>
-          <div><strong style="color: #FFFFFF;">La scusa del "controllo io":</strong> Raccontarsi che bere o giocare sia una libera scelta, mentre in realtà è un pilota automatico che prosciuga energia e autostima.</div>
-        </li>
-        <li style="display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px;">
-          <span style="color: var(--neon-red); flex-shrink: 0;"><?=dx_icon('clock', '', 20)?></span>
-          <div><strong style="color: #FFFFFF;">L'ansia e la stanchezza cronica:</strong> Svegliarsi col batticuore, la nebbia nel cervello e il senso di colpa per quello che è sfuggito di mano la sera prima.</div>
-        </li>
-        <li style="display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px;">
-          <span style="color: var(--neon-red); flex-shrink: 0;"><?=dx_icon('heart', '', 20)?></span>
-          <div><strong style="color: #FFFFFF;">Tensioni e sguardi feriti a casa:</strong> I silenzi pesanti a tavola, la delusione negli occhi del partner o dei figli e la paura costante della prossima litigata.</div>
-        </li>
-        <li style="display: flex; gap: 14px; align-items: flex-start;">
-          <span style="color: var(--neon-red); flex-shrink: 0;"><?=dx_icon('lock', '', 20)?></span>
-          <div><strong style="color: #FFFFFF;">Migliaia di euro buttati:</strong> Soldi bruciati in bottiglie, giocate compulsive o tentativi terapeutici solitari senza una comunità di riferimento.</div>
-        </li>
-      </ul>
-    </div>
-
-    <!-- AFTER -->
-    <div class="transformation-card after card-neon-green" style="background: rgba(10, 20, 16, 0.85); border-radius: 18px; padding: 28px; border: 1px solid rgba(0, 255, 119, 0.35);">
-      <span class="transformation-badge" style="background: rgba(0, 255, 119, 0.15); color: #00ff77; border: 1px solid rgba(0, 255, 119, 0.4); font-weight: 800;">
-        <?=dx_icon('crown', '', 14)?> CON DEPENDEX & LA RETE DEI CLUB
-      </span>
-      <ul class="transformation-list" style="margin-top: 20px; list-style: none; padding-left: 0;">
-        <li style="display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px;">
-          <span style="color: var(--neon-green); flex-shrink: 0;"><?=dx_icon('brain', '', 20)?></span>
-          <div><strong style="color: #FFFFFF;">Mente lucida come un diamante:</strong> Svegliarsi col pieno di energia, concentrati sul lavoro, pronti ad affrontare le sfide senza bisogno di anestetici chimici.</div>
-        </li>
-        <li style="display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px;">
-          <span style="color: var(--neon-green); flex-shrink: 0;"><?=dx_icon('users', '', 20)?></span>
-          <div><strong style="color: #FFFFFF;">La protezione dei pari (546 Club):</strong> Sedersi in cerchio una volta a settimana dove nessuno ti giudica perché tutti conoscono la strada.</div>
-        </li>
-        <li style="display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px;">
-          <span style="color: var(--neon-green); flex-shrink: 0;"><?=dx_icon('crown', '', 20)?></span>
-          <div><strong style="color: #FFFFFF;">Rispetto e orgoglio familiare riconquistati:</strong> Tornare a essere la roccia della famiglia, una persona integra di cui andare profondamente fieri.</div>
-        </li>
-        <li style="display: flex; gap: 14px; align-items: flex-start;">
-          <span style="color: var(--neon-green); flex-shrink: 0;"><?=dx_icon('sparkles', '', 20)?></span>
-          <div><strong style="color: #FFFFFF;">Company Brain Cortex 24/7:</strong> Intelligenza artificiale addestrata sull'approccio ecologico-sociale che ti orienta e supporta giorno e notte.</div>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- BANNER LEAD MAGNET GUIDA GRATUITA FAMIGLIA -->
-  <div class="lux-metallic-card p-4 p-md-5 mt-4 text-center" style="background: rgba(12, 16, 28, 0.95); border: 2px solid var(--neon-gold); border-radius: 20px; box-shadow: 0 0 30px rgba(212,175,55,0.15);">
-    <div class="badge-neon-rainbow mb-2" style="font-size: 0.72rem;">
-      <span class="dot"></span>
-      <span class="text-rainbow">RISORSA GRATUITA PER LA FAMIGLIA · DOWNLOAD IMMEDIATO</span>
-    </div>
-    <h3 style="font-family: var(--font-serif); font-size: clamp(1.4rem, 3vw, 1.9rem); color: #FFFFFF; margin: 8px 0 12px;">
-      Non sai come parlare a chi ami o hai paura della prossima crisi?
-    </h3>
-    <p style="color: #cbd5e1; max-width: 680px; margin: 0 auto 20px; font-size: 1rem; line-height: 1.6;">
-      Scarica subito la guida pratica <strong>"I Primi 7 Giorni"</strong>: cosa non dire mai stasera, come superare la negazione e come la famiglia può farsi aiutare nei Club anche da sola.
-    </p>
-    <div class="d-flex justify-content-center gap-3 flex-wrap">
-      <a href="guida-gratuita.php" class="btn primary" style="padding: 12px 28px; text-decoration: none; border-radius: 12px;">
-        <?=dx_icon('sparkles', '', 18)?>
-        <span style="margin-left: 8px;">Scarica Gratis la Guida (PDF)</span>
-      </a>
-      <a href="guida-gratuita.php?view=document" target="_blank" class="btn-rainbow-outline" style="padding: 12px 24px; text-decoration: none; border-radius: 12px;">
-        <?=dx_icon('book-open', '', 18)?>
-        <span style="margin-left: 8px;">Leggi Anteprima Senza Iscrizione</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================== -->
-<!-- THE 6 PSYCHOLOGICAL LEVERS (SUPER WOW LUXURY NEON CARDS)       -->
-<!-- ============================================================== -->
-<section class="my-5">
-  <div class="text-center mb-4">
-    <div class="badge-neon-rainbow mb-2">
-      <span class="dot"></span>
-      <span class="text-rainbow">LEVE DI POTERE PERSONALE</span>
-    </div>
-    <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: #FFFFFF;">
-      Perché Questo Percorso Funziona Senza Sforzi Inutili
-    </h2>
-    <p style="color: #cbd5e1; max-width: 620px; margin: 0 auto; font-size: 1rem;">
-      Non serve una forza di volontà disumana. Serve una struttura intelligente che assorbe la fatica e toglie potere alla dipendenza.
-    </p>
-  </div>
-
-  <div class="levers-grid">
-    <div class="lever-card card-neon-red p-4" style="background: rgba(14, 16, 26, 0.85); border-radius: 16px;">
-      <div style="color: var(--neon-red); margin-bottom: 12px;"><?=dx_icon('clock', '', 32)?></div>
-      <h3 class="lever-title" style="color: #FFFFFF;">Risparmi Anni di Tentativi a Vuoto</h3>
-      <p class="lever-desc" style="color: #cbd5e1;">Con il censimento globale trovi subito l'orario e il contatto del Club più vicino. Basta brancolare nel buio.</p>
-    </div>
-    <div class="lever-card card-neon-orange p-4" style="background: rgba(14, 16, 26, 0.85); border-radius: 16px;">
-      <div style="color: var(--neon-orange); margin-bottom: 12px;"><?=dx_icon('shield-check', '', 32)?></div>
-      <h3 class="lever-title" style="color: #FFFFFF;">Risparmi Migliaia di Euro</h3>
-      <p class="lever-desc" style="color: #cbd5e1;">La rete dei Club territoriali è solidale e accessibile, distruggendo le speculazioni delle cliniche private a pagamento.</p>
-    </div>
-    <div class="lever-card card-neon-gold p-4" style="background: rgba(14, 16, 26, 0.85); border-radius: 16px;">
-      <div style="color: var(--neon-gold); margin-bottom: 12px;"><?=dx_icon('brain', '', 32)?></div>
-      <h3 class="lever-title" style="color: #FFFFFF;">Disinneschi l'Ansia da Prestazione</h3>
-      <p class="lever-desc" style="color: #cbd5e1;">Un protocollo in 5 fasi collaudato da 40 anni che ti dice esattamente cosa fare, un giorno alla volta.</p>
-    </div>
-    <div class="lever-card card-neon-green p-4" style="background: rgba(14, 16, 26, 0.85); border-radius: 16px;">
-      <div style="color: var(--neon-green); margin-bottom: 12px;"><?=dx_icon('crown', '', 32)?></div>
-      <h3 class="lever-title" style="color: #FFFFFF;">Da Persona Fragile a Guida Rispettata</h3>
-      <p class="lever-desc" style="color: #cbd5e1;">Con i moduli SAT e l'Academy puoi abilitarti come Servitore-Insegnante e trasformare la tua esperienza in risorsa per gli altri.</p>
-    </div>
-    <div class="lever-card card-neon-cyan p-4" style="background: rgba(14, 16, 26, 0.85); border-radius: 16px;">
-      <div style="color: var(--neon-cyan); margin-bottom: 12px;"><?=dx_icon('heart-handshake', '', 32)?></div>
-      <h3 class="lever-title" style="color: #FFFFFF;">Pace e Unione nel Nucleo Familiare</h3>
-      <p class="lever-desc" style="color: #cbd5e1;">Il Metodo Hudolin coinvolge tutta la famiglia. La sofferenza condivisa diventa complicità e nuova serenità domestica.</p>
-    </div>
-    <div class="lever-card card-neon-violet p-4" style="background: rgba(14, 16, 26, 0.85); border-radius: 16px;">
-      <div style="color: var(--neon-violet); margin-bottom: 12px;"><?=dx_icon('lock', '', 32)?></div>
-      <h3 class="lever-title" style="color: #FFFFFF;">Riservatezza & Anonimato Totale</h3>
-      <p class="lever-desc" style="color: #cbd5e1;">Nessun dato venduto a terzi, zero profilazione commerciale. Sovranità assoluta della tua privacy.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================== -->
-<!-- WORLD CLUB EXPLORER (INTERACTIVE MAP PREVIEW)                   -->
-<!-- ============================================================== -->
-<section class="card public-map-home lux-metallic-card my-5" style="border: 1px solid rgba(212,175,55,0.25); background: #0B0C10;">
-  <div class="section-head compact p-4">
-    <div>
-      <div class="gold-glow-badge mb-2">
-        <?=dx_icon('compass', '', 14)?>
-        <span>WORLD CLUB EXPLORER · RETE APERTA</span>
-      </div>
-      <h2 style="font-family: var(--font-serif); color: #FFFFFF; margin-top: 4px;">Trova il tuo punto di ancoraggio nel mondo</h2>
-      <p style="color: #cbd5e1; margin-bottom: 0;">542 nodi territoriali attivi, indirizzi verificati, giorni di riunione e contatti diretti.</p>
-    </div>
-  </div>
-  <div class="map-home-actions px-4 pb-3" style="display: flex; gap: 12px; flex-wrap: wrap;">
-    <a class="btn primary" href="world-map.php">
-      <?=dx_icon('compass', '', 18)?>
-      <span style="margin-left: 8px;">Apri Mappa Mondiale 2D/3D</span>
-    </a>
-    <a class="btn-rainbow-outline" href="world-club-explorer.php">
-      <?=dx_icon('map-pin', '', 18)?>
-      <span style="margin-left: 8px;">Cerca per Città o Regione</span>
-    </a>
-  </div>
-  <div class="map-preview-shell">
-    <iframe src="world-map.php?embed=1" title="DEPENDEX World Club Explorer" loading="lazy" style="border-radius: 0 0 var(--radius-md) var(--radius-md); border-top: 1px solid rgba(212,175,55,0.2);"></iframe>
-  </div>
-</section>
-
-<!-- ============================================================== -->
-<!-- SOLIDARIETÀ & VOLONTARIATO DEI CLUB                            -->
-<!-- ============================================================== -->
-<section class="luxury-hero-card lux-metallic-card p-4 p-md-5 my-5 text-center" style="border: 1px solid rgba(212,175,55,0.35); background: #0B0C10;">
-  <div class="gold-glow-badge mb-3">
-    <?=dx_icon('shield-check', '', 14)?>
-    <span>100% VOLONTARIATO SOCIALE · GRATUITO · SOLIDARIETÀ MULTIFAMILIARE</span>
-  </div>
-  <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: #FFFFFF; margin-bottom: 0.75rem;">
-    Nei Club non si compra la guarigione.<br>
-    <span class="gold-foil-text">Si cammina insieme, senza spendere un solo centesimo.</span>
-  </h2>
-  <p style="color: #cbd5e1; max-width: 720px; margin: 0 auto 1.75rem; font-size: 1.05rem; line-height: 1.65;">
-    I 542 Club Alcologici Territoriali accolgono chiunque voglia liberarsi dalle dipendenze e tutte le famiglie coinvolte. Non vendiamo soluzioni illusorie, non abbiamo abbonamenti né pacchetti a pagamento: offriamo una comunità viva, il metodo scientifico del Prof. Hudolin e una sedia sempre pronta per te.
-  </p>
-  <div class="d-flex justify-content-center gap-3 flex-wrap">
-    <a href="world-club-explorer.php" class="btn primary" style="padding: 0 28px; text-decoration: none;">
-      <?=dx_icon('map-pin', '', 18)?>
-      <span style="margin-left: 8px;">Trova il Club più vicino alla tua città</span>
-    </a>
-    <a href="metodo.php" class="btn-rainbow-outline" style="text-decoration: none; padding: 0 24px;">
-      <?=dx_icon('feather', '', 18)?>
-      <span style="margin-left: 8px;">Come Funziona il Metodo</span>
-    </a>
-  </div>
-</section>
-
-<!-- ============================================================== -->
-<!-- BEWAY.LIFE x DEPENDEX: VIAGGI ESPERIENZIALI & CROCIERE A TEMA  -->
-<!-- ============================================================== -->
-<section class="my-5 p-4 p-md-5 lux-metallic-card rainbow-border" style="background: radial-gradient(circle at top right, rgba(0,212,255,0.14), rgba(12,16,28,0.96)); border-radius: 24px; box-shadow: 0 16px 50px rgba(0,0,0,0.8);">
-  <div class="row align-items-center g-4">
-    <div class="col-lg-8">
-      <div class="badge-neon-rainbow mb-2">
-        <span class="dot"></span>
-        <span class="text-rainbow">BEWAY.LIFE x DEPENDEX · IL VIAGGIO TRASFORMATIVO</span>
-      </div>
-      <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: #FFFFFF; font-weight: 900; margin-bottom: 0.8rem; line-height: 1.2;">
-        Dalla Sobrietà Quotidiana alla <span class="text-rainbow">Grande Crociera della Rinascita</span>
-      </h2>
-      <p style="color: #cbd5e1; font-size: 1.05rem; line-height: 1.65; margin-bottom: 1.2rem;">
-        La trasformazione si consolida quando vivi la bellezza del mondo in un ambiente protetto e privo di stimoli tossici. Scopri i <strong>Viaggi Esperienziali di BEWAY.LIFE</strong>: 8 giorni e 7 notti nel Mediterraneo con formula 100% analcolica, cucina gourmet vitale, risveglio all'alba sul ponte e <strong>Masterclass intensive con Mirco Pregnolato</strong>.
-      </p>
-
-      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 1.4rem;">
-        <span class="dx-ticker-badge" style="color: var(--neon-gold); border-color: var(--neon-gold); font-size: 0.8rem;">
-          Crociera Mediterraneo: Santorini · Mykonos · Atene · Kotor
-        </span>
-        <span class="dx-ticker-badge" style="color: var(--neon-cyan); border-color: var(--neon-cyan); font-size: 0.8rem;">
-          Cabine da 890 € (o Caparra 190 €)
-        </span>
-        <span class="dx-ticker-badge" style="color: var(--neon-green); border-color: var(--neon-green); font-size: 0.8rem;">
-          Ritiro Biohacking Dolomiti (450 €)
-        </span>
-      </div>
-
-      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-        <a href="crociera-benessere-masterclass.php" class="btn primary" style="text-decoration: none; border-radius: 12px; font-weight: 800; padding: 12px 26px;">
-          <?=dx_icon('compass', '', 16)?> Scopri la Grande Crociera
-        </a>
-        <a href="viaggi-esperienziali.php" class="btn" style="text-decoration: none; border-radius: 12px; font-weight: 700; border: 1px solid rgba(255,255,255,0.25); color: #fff; padding: 12px 22px;">
-          Tutti i Viaggi & Ritiri BEWAY.LIFE
-        </a>
-      </div>
-    </div>
-
-    <div class="col-lg-4 text-center">
-      <div style="background: rgba(8,12,22,0.9); border: 1px solid rgba(0,212,255,0.3); border-radius: 18px; padding: 22px; box-shadow: 0 10px 30px rgba(0,212,255,0.2);">
-        <div style="margin-bottom: 12px; display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; border-radius: 50%; background: rgba(0, 212, 255, 0.12); border: 1px solid rgba(0, 212, 255, 0.35); box-shadow: 0 0 16px rgba(0, 212, 255, 0.3);">
-          <?=dx_icon('ship', 'text-neon-cyan', 32)?>
-        </div>
-        <h4 style="color: #FFF; font-size: 1.15rem; font-weight: 800; margin-bottom: 6px;">Partnership Ufficiale</h4>
-        <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">
-          L'unione perfetta tra il supporto comunitario di <strong>DEPENDEX</strong> e lo stile di vita consapevole di <strong>BEWAY.LIFE</strong>.
+    <div class="col-lg-5">
+      <div style="background: rgba(9, 13, 26, 0.7); border: 1px solid var(--dx-night-border); border-radius: var(--dx-radius-lg); padding: 22px; text-align: center;">
+        <div style="color: var(--dx-amber); margin-bottom: 8px;"><?=dx_icon('compass', '', 36)?></div>
+        <h4 style="color: #ffffff; font-size: 1.15rem; font-weight: 800; margin-bottom: 6px;">Esplora la Mappa Mondiale</h4>
+        <p style="color: var(--dx-text-subtle); font-size: 0.88rem; line-height: 1.5; margin-bottom: 16px;">
+          Visualizza i presidi sul globo terrestre in modalità interattiva 2D e 3D.
         </p>
-        <a href="https://beway.life" target="_blank" rel="noopener" style="color: var(--neon-cyan); font-weight: 800; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 6px; text-decoration: none;">
-          Visita beway.life <?=dx_icon('external-link', '', 14)?>
+        <a href="world-map.php" class="btn-community-outline small" style="width: 100%;">
+          <?=dx_icon('globe', '', 16)?>
+          <span style="margin-left: 6px;">Apri Mappa Mondiale Club</span>
         </a>
       </div>
     </div>
@@ -470,89 +131,489 @@ $newsCards = AcatNewsService::getLatestCards(10);
 </section>
 
 <!-- ============================================================== -->
-<!-- VETRINA EDITORIALE: LIBRI AMAZON KDP A 3 TIER (M. PREGNOLATO)  -->
+<!-- 3. SECTION 3: NON SEI MAI STATO IN UN CLUB?                    -->
 <!-- ============================================================== -->
-<section class="my-5">
+<section class="my-5" id="cosa-succede">
   <div class="text-center mb-4">
-    <div class="badge-neon-rainbow mb-2" style="font-size: 0.74rem;">
+    <div class="badge-human mb-2">
       <span class="dot"></span>
-      <span class="text-rainbow">COLLANA EDITORIALE UFFICIALE DIRETTA</span>
+      <span>SENZA PAROLE DIFFICILI · COSA ASPETTARSI</span>
     </div>
-    <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: #FFFFFF; font-weight: 900;">
-      I Libri & Diari di Mirco Pregnolato <span class="text-rainbow">a 3 Tier</span>
+    <h2 style="font-family: var(--dx-font-serif); font-size: clamp(1.8rem, 3.8vw, 2.7rem); color: #ffffff; margin-top: 6px; font-weight: 800;">
+      Non sei mai stato in un Club?
     </h2>
-    <p style="color: #cbd5e1; max-width: 720px; margin: 0 auto; font-size: 1rem; line-height: 1.6;">
-      Quaderno della Famiglia, Diario del Club 90 Giorni, Diario Servitore Insegnante, Crescita Esponenziale, Trilogia SAT e 52 Settimane di Cambiamento. Scegli tra <strong>PDF Digitale</strong>, <strong>Cartaceo Amazon Prime</strong> e <strong>Bundle con Masterclass</strong>.
+    <p style="color: var(--dx-text-subtle); max-width: 680px; margin: 0 auto; font-size: 1.05rem; line-height: 1.65;">
+      La paura dell'ignoto è normale. Ti spieghiamo passo dopo passo cosa succede quando decidi di partecipare al tuo primo incontro.
     </p>
   </div>
 
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 2rem;">
-    <div class="card card-neon-gold p-4" style="background: rgba(12,16,26,0.92); border-radius: 18px; border: 1px solid rgba(255,255,255,0.1);">
-      <small style="color: var(--neon-gold); font-weight: 800; font-size: 0.75rem;">BEST SELLER</small>
-      <h4 style="color: #FFF; font-size: 1.15rem; font-weight: 800; margin: 4px 0 8px;">Il Diario del Club: 90 Giorni</h4>
-      <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">Il diario operativo per consolidare la sobrietà nei primi tre mesi del percorso.</p>
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span style="color: var(--neon-gold); font-weight: 800; font-size: 0.95rem;">Da 14,90 €</span>
-        <a href="offers.php" class="btn primary small" style="text-decoration: none; font-size: 0.8rem; border-radius: 8px;">Vedi i 3 Tier</a>
-      </div>
+  <!-- VIAGGIO IN 6 TAPPE -->
+  <div class="journey-stepper-grid">
+    <div class="journey-step-card">
+      <span class="step-num">01</span>
+      <h3 class="step-title">Arrivi</h3>
+      <p class="step-desc">
+        Entri in una sala semplice, ospitata in un centro civico o parrocchiale. Nessuna sala d'attesa medica, nessun bancone burocratico.
+      </p>
     </div>
 
-    <div class="card card-neon-cyan p-4" style="background: rgba(12,16,26,0.92); border-radius: 18px; border: 1px solid rgba(255,255,255,0.1);">
-      <small style="color: var(--neon-cyan); font-weight: 800; font-size: 0.75rem;">FAMIGLIA & DIALOGO</small>
-      <h4 style="color: #FFF; font-size: 1.15rem; font-weight: 800; margin: 4px 0 8px;">Quaderno della Famiglia</h4>
-      <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">Lo strumento per ricostruire il patto di fiducia e dialogo a casa.</p>
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span style="color: var(--neon-cyan); font-weight: 800; font-size: 0.95rem;">Da 14,90 €</span>
-        <a href="offers.php" class="btn primary small" style="text-decoration: none; font-size: 0.8rem; border-radius: 8px;">Vedi i 3 Tier</a>
-      </div>
+    <div class="journey-step-card">
+      <span class="step-num">02</span>
+      <h3 class="step-title">Trovi altre persone</h3>
+      <p class="step-desc">
+        Incontri persone di ogni età, famiglie e compagni di cammino che hanno attraversato le tue stesse fatiche e ti accolgono con calore.
+      </p>
     </div>
 
-    <div class="card card-neon-orange p-4" style="background: rgba(12,16,26,0.92); border-radius: 18px; border: 1px solid rgba(255,255,255,0.1);">
-      <small style="color: var(--neon-orange); font-weight: 800; font-size: 0.75rem;">CRESCITA ESPONENZIALE</small>
-      <h4 style="color: #FFF; font-size: 1.15rem; font-weight: 800; margin: 4px 0 8px;">Diario di Crescita Esponenziale</h4>
-      <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">386 pagine per 365 giorni di potenziamento personale e sovranità mentale.</p>
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span style="color: var(--neon-orange); font-weight: 800; font-size: 0.95rem;">Da 19,90 €</span>
-        <a href="offers.php" class="btn primary small" style="text-decoration: none; font-size: 0.8rem; border-radius: 8px;">Vedi i 3 Tier</a>
-      </div>
+    <div class="journey-step-card">
+      <span class="step-num">03</span>
+      <h3 class="step-title">Ascolti</h3>
+      <p class="step-desc">
+        Ci si dispone in cerchio. Ciascuno racconta come è andata la settimana, i momenti sereni e le difficoltà quotidiane, senza filtri.
+      </p>
+    </div>
+
+    <div class="journey-step-card">
+      <span class="step-num">04</span>
+      <h3 class="step-title">Parli quando te la senti</h3>
+      <p class="step-desc">
+        Nessuno ti interroga. Se al primo incontro preferisci restare in silenzio e ascoltare, sei liberissimo di farlo. I tuoi tempi sono rispettati.
+      </p>
+    </div>
+
+    <div class="journey-step-card">
+      <span class="step-num">05</span>
+      <h3 class="step-title">Conosci la comunità</h3>
+      <p class="step-desc">
+        È presente un Servitore-Insegnante formato secondo il Metodo Hudolin che facilita la conversazione e garantisce riservatezza e rispetto.
+      </p>
+    </div>
+
+    <div class="journey-step-card">
+      <span class="step-num">06</span>
+      <h3 class="step-title">Decidi tu il tuo passo</h3>
+      <p class="step-desc">
+        A fine incontro non firmi nulla e non paghi nulla. Sei tu a scegliere liberamente se tornare la settimana successiva.
+      </p>
     </div>
   </div>
 
-  <div class="text-center">
-    <a href="offers.php" class="btn primary" style="padding: 12px 32px; border-radius: 14px; font-weight: 800; text-decoration: none;">
-      <?=dx_icon('book-open', '', 16)?> Esplora Tutti i 6 Libri & Scegli il tuo Formato
+  <!-- FAQ RASSICURANTI -->
+  <div style="background: var(--dx-night-card); border: 1px solid var(--dx-night-border-subtle); border-radius: var(--dx-radius-xl); padding: clamp(1.8rem, 3vw, 2.5rem); margin-top: 2rem;">
+    <h3 style="font-family: var(--dx-font-serif); color: #ffffff; font-size: 1.4rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+      <?=dx_icon('help-circle', 'text-amber', 22)?> Risposte ai dubbi più comuni
+    </h3>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px;">
+      <div>
+        <h4 style="color: var(--dx-amber); font-size: 1rem; font-weight: 700; margin-bottom: 6px;">Posso venire anche se non sono sicuro di smettere?</h4>
+        <p style="color: var(--dx-text-subtle); font-size: 0.9rem; line-height: 1.55; margin: 0;">Sì. Il Club non richiede un esame d'ingresso. Puoi venire a sentire le esperienze degli altri per capire quale cammino desideri intraprendere.</p>
+      </div>
+
+      <div>
+        <h4 style="color: var(--dx-amber); font-size: 1rem; font-weight: 700; margin-bottom: 6px;">Devo venire con la mia famiglia?</h4>
+        <p style="color: var(--dx-text-subtle); font-size: 0.9rem; line-height: 1.55; margin: 0;">La famiglia è sempre benvenuta perché la serenità riguarda tutti. Ma puoi venire da solo, oppure la famiglia può venire anche senza di te se in questo momento non te la senti.</p>
+      </div>
+
+      <div>
+        <h4 style="color: var(--dx-amber); font-size: 1rem; font-weight: 700; margin-bottom: 6px;">Quanto costa partecipare?</h4>
+        <p style="color: var(--dx-text-subtle); font-size: 0.9rem; line-height: 1.55; margin: 0;">È completamente gratuito. I Club si fondano sull'auto-mutuo-aiuto e sulla solidarietà comunitaria.</p>
+      </div>
+
+      <div>
+        <h4 style="color: var(--dx-amber); font-size: 1rem; font-weight: 700; margin-bottom: 6px;">Posso contattare qualcuno prima di andare?</h4>
+        <p style="color: var(--dx-text-subtle); font-size: 0.9rem; line-height: 1.55; margin: 0;">Certamente. Puoi scrivere su WhatsApp al 347 884 4271 per parlare con Grazia o chiamare il Numero Verde AICAT 800 974250.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 4. SECTION 4: PARLA CON NOI (GATEWAY DI CONVERSAZIONE)          -->
+<!-- ============================================================== -->
+<section class="talk-gateway-box text-center">
+  <div class="badge-human mb-2">
+    <span class="dot"></span>
+    <span>NON RIMANERE NEL DUBBIO</span>
+  </div>
+  <h2 style="font-family: var(--dx-font-serif); color: #ffffff; font-size: clamp(1.8rem, 3.8vw, 2.5rem); margin: 6px 0 10px; font-weight: 800;">
+    Parla con noi
+  </h2>
+  <p style="color: var(--dx-text-subtle); max-width: 680px; margin: 0 auto 24px; font-size: 1.05rem; line-height: 1.65;">
+    Hai una domanda specifica? Vuoi capire quale Club è più comodo per la tua famiglia? 
+    Ti rispondiamo con garbo, riservatezza e senza alcuna pressione.
+  </p>
+
+  <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+    <a href="https://wa.me/393478844271?text=<?=urlencode('Buongiorno Grazia, vorrei informazioni riservate sui Club e sul Metodo.')?>" 
+       target="_blank" rel="noopener" 
+       class="btn-community-wa">
+      <?=dx_icon('message-circle', '', 20)?>
+      <span>Scrivi su WhatsApp a Grazia (347 884 4271)</span>
+    </a>
+
+    <a href="tel:800974250" class="btn-community-primary">
+      <?=dx_icon('phone', '', 18)?>
+      <span>Numero Verde AICAT: 800 974250</span>
+    </a>
+
+    <a href="parla-con-noi.php" class="btn-community-outline">
+      <?=dx_icon('send', '', 18)?>
+      <span>Invia un messaggio dal sito</span>
     </a>
   </div>
 </section>
 
 <!-- ============================================================== -->
-<!-- QUICK NAVIGATION TILES (PURE GOLD/BLACK/WHITE SVG)             -->
+<!-- 5. SECTION 5: VIVI LA COMUNITÀ (EVENTI & NOTIZIE)               -->
 <!-- ============================================================== -->
-<section class="bubble-grid my-4">
-  <a class="bubble lux-metallic-card" href="world-club-explorer.php" style="color: #FFFFFF; border: 1px solid rgba(212,175,55,0.3);">
-    <span style="color: #D4AF37;"><?=dx_icon('compass', '', 32)?></span>
-    <span style="font-weight: 800; margin-top: 10px; font-size: 0.95rem;"><?=h(tr('club.find','Trova Club'))?></span>
-  </a>
-  <a class="bubble lux-metallic-card" href="viaggi-esperienziali.php" style="color: #FFFFFF; border: 1px solid rgba(0,212,255,0.4);">
-    <span style="color: var(--neon-cyan);"><?=dx_icon('compass', '', 32)?></span>
-    <span style="font-weight: 800; margin-top: 10px; font-size: 0.95rem;">Viaggi BEWAY</span>
-  </a>
-  <a class="bubble lux-metallic-card" href="offers.php" style="color: #FFFFFF; border: 1px solid rgba(212,175,55,0.3);">
-    <span style="color: #D4AF37;"><?=dx_icon('book-open', '', 32)?></span>
-    <span style="font-weight: 800; margin-top: 10px; font-size: 0.95rem;">Libri KDP (3 Tier)</span>
-  </a>
-  <a class="bubble lux-metallic-card" href="metodo.php" style="color: #FFFFFF; border: 1px solid rgba(212,175,55,0.3);">
-    <span style="color: #D4AF37;"><?=dx_icon('feather', '', 32)?></span>
-    <span style="font-weight: 800; margin-top: 10px; font-size: 0.95rem;">Metodo Hudolin</span>
-  </a>
-  <a class="bubble lux-metallic-card" href="events-public.php" style="color: #FFFFFF; border: 1px solid rgba(212,175,55,0.3);">
-    <span style="color: #D4AF37;"><?=dx_icon('calendar', '', 32)?></span>
-    <span style="font-weight: 800; margin-top: 10px; font-size: 0.95rem;">Eventi & Moduli SAT</span>
-  </a>
-  <a class="bubble lux-metallic-card" href="cart.php" style="color: #FFFFFF; border: 1px solid rgba(0,255,100,0.3);">
-    <span style="color: var(--neon-green);"><?=dx_icon('shopping-cart', '', 32)?></span>
-    <span style="font-weight: 800; margin-top: 10px; font-size: 0.95rem;">Carrello Acquisti</span>
-  </a>
+<section class="my-5" id="vivi-comunita">
+  <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-4">
+    <div>
+      <div class="badge-human emerald mb-2">
+        <span class="dot"></span>
+        <span>INCONTRI, CORSI & VITA DEI CLUB</span>
+      </div>
+      <h2 style="font-family: var(--dx-font-serif); font-size: clamp(1.7rem, 3.5vw, 2.4rem); color: #ffffff; margin: 0; font-weight: 800;">
+        Vivi la comunità
+      </h2>
+      <p style="color: var(--dx-text-subtle); margin: 6px 0 0; font-size: 0.98rem;">
+        Il Club non è solo la riunione settimanale: è una rete viva di scambi, corsi e momenti di crescita condivisa.
+      </p>
+    </div>
+    <div>
+      <a href="events-public.php" class="btn-community-outline small">
+        <span>Tutti gli eventi nazionali</span>
+        <?=dx_icon('arrow-right', '', 14)?>
+      </a>
+    </div>
+  </div>
+
+  <!-- EVENTO PRINCIPALE IN EVIDENZA: CORSO TAGLIO DI PO -->
+  <div class="card p-4 p-md-5 mb-4" style="background: var(--dx-night-card); border: 1.5px solid var(--dx-amber); border-radius: var(--dx-radius-xl); box-shadow: var(--dx-shadow-soft);">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-8">
+        <div class="badge-human mb-2" style="font-size: 0.74rem;">
+          <span class="dot"></span>
+          <span>CORSO ESPERIENZIALE PER FAMIGLIE & CONDUTTORI</span>
+        </div>
+        <h3 style="font-family: var(--dx-font-serif); font-size: clamp(1.4rem, 3vw, 1.9rem); color: #ffffff; font-weight: 800; margin: 6px 0 10px;">
+          A Scuola di Comunicazione e Resilienza — 1° Livello
+        </h3>
+        <p style="color: var(--dx-text-subtle); font-size: 1rem; line-height: 1.6; margin-bottom: 14px;">
+          Tre giornate esperienziali a Taglio di Po (RO) condotte dal dott. <strong>Adelmo Di Salvatore</strong> (psichiatra e formatore Metodo Hudolin). Strumenti pratici per imparare a comunicare in famiglia senza litigare e non farsi schiacciare dai problemi altrui.
+        </p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.88rem; color: var(--dx-amber); margin-bottom: 16px;">
+          <span><?=dx_icon('calendar', '', 14)?> 9-10-11 Ottobre 2026</span>
+          <span><?=dx_icon('map-pin', '', 14)?> Oratorio San Francesco d'Assisi, Taglio di Po (RO)</span>
+          <span><?=dx_icon('users', '', 14)?> Max 30 posti · Quota solidale 10€ con pranzo</span>
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="evento-ottobre-taglio-di-po.php" class="btn-community-primary small">
+            <?=dx_icon('ticket', '', 16)?>
+            <span>Scheda e Prenotazione Posto</span>
+          </a>
+          <a href="events-public.php" class="btn-community-outline small">
+            <span>Dettagli Programma</span>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4 text-center">
+        <img src="assets/img/events/evento-ottobre-taglio-di-po.jpeg" alt="Locandina Corso Taglio di Po" style="max-width: 220px; width: 100%; border-radius: var(--dx-radius-md); box-shadow: var(--dx-shadow-soft); border: 1px solid rgba(255,255,255,0.15);">
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWS TICKER RAPIDO DALLA RETE -->
+  <?php if (!empty($newsCards)): ?>
+    <div class="dx-ticker-header" style="margin-top: 1.5rem;">
+      <h3 style="font-size: 1.05rem; color: #fff; display: flex; align-items: center; gap: 8px;">
+        <?=dx_icon('newspaper', 'text-amber', 18)?>
+        <span>Notizie e Aggiornamenti dalle ACAT e dai Territori</span>
+      </h3>
+    </div>
+    <div class="dx-ticker-wrapper" style="margin-top: 10px;">
+      <div class="dx-ticker-track">
+        <?php foreach (array_merge($newsCards, $newsCards) as $item): ?>
+          <article class="dx-ticker-card">
+            <div>
+              <span class="dx-ticker-badge"><?=h($item['tag_label'])?></span>
+              <h4 class="dx-ticker-title"><?=h($item['title'])?></h4>
+              <p class="dx-ticker-desc"><?=h($item['summary'])?></p>
+            </div>
+            <div class="dx-ticker-meta">
+              <span><?=dx_icon('calendar', '', 12)?> <?=h($item['published_date'])?></span>
+              <a href="<?=h($item['source_url'])?>" target="_blank" rel="noopener" class="dx-ticker-link">
+                <?=h($item['source_name'])?> <?=dx_icon('external-link', '', 12)?>
+              </a>
+            </div>
+          </article>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  <?php endif; ?>
+</section>
+
+<!-- ============================================================== -->
+<!-- 6. SECTION 6: STORIE DI COMUNITÀ                               -->
+<!-- ============================================================== -->
+<section class="my-5" id="storie">
+  <div class="text-center mb-4">
+    <div class="badge-human mb-2">
+      <span class="dot"></span>
+      <span>PERSONE · FAMIGLIE · CAMBIAMENTI</span>
+    </div>
+    <h2 style="font-family: var(--dx-font-serif); font-size: clamp(1.8rem, 3.8vw, 2.6rem); color: #ffffff; margin-top: 6px; font-weight: 800;">
+      Storie di comunità
+    </h2>
+    <p style="color: var(--dx-text-subtle); max-width: 680px; margin: 0 auto; font-size: 1.02rem; line-height: 1.65;">
+      La sobrietà non è un'astratta vittoria della volontà solitaria: è il frutto di relazioni autentiche riscoperte nel tempo.
+    </p>
+  </div>
+
+  <div class="story-card-grid">
+    <article class="story-card">
+      <div>
+        <div class="badge-human mb-2" style="font-size: 0.74rem;">TESTIMONIANZA DIRETTA</div>
+        <p class="story-card-quote">
+          «Pensavo di essere l'unico a svegliarsi con quel peso sullo stomaco. Al Club ho trovato persone che mi hanno guardato negli occhi senza farmi sentire un fallito.»
+        </p>
+        <div class="story-card-timeline">
+          <div><b>Prima:</b> Tentativi solitari, promesse infrante e isolamento a casa.</div>
+          <div><b>Al Club:</b> Il sollievo di potersi sedere in cerchio e ascoltare senza l'obbligo di giustificarsi.</div>
+          <div><b>Oggi:</b> Una ritrovata presenza con la famiglia e la gioia di accogliere i nuovi arrivati.</div>
+        </div>
+      </div>
+      <div class="pt-3" style="border-top: 1px solid var(--dx-night-border-subtle); display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 0.84rem; color: var(--dx-text-muted);">Marco, 4 anni nel Club</span>
+        <a href="storie.php" class="text-amber" style="font-size: 0.86rem; font-weight: 700; text-decoration: none;">Leggi la storia &rarr;</a>
+      </div>
+    </article>
+
+    <article class="story-card">
+      <div>
+        <div class="badge-human emerald mb-2" style="font-size: 0.74rem;">IL PUNTO DI VISTA FAMILIARE</div>
+        <p class="story-card-quote">
+          «Ero andata per capire come farlo smettere. Ho scoperto che il Club ha dato a me lo spazio per respirare e smettere di vivere nell'ansia costante.»
+        </p>
+        <div class="story-card-timeline">
+          <div><b>Prima:</b> Notte insonni, controllo maniacale e solitudine profonda.</div>
+          <div><b>Al Club:</b> La scoperta che anche i familiari hanno diritto a ritrovare pace e serenità.</div>
+          <div><b>Oggi:</b> Il dialogo è tornato a essere sincero e il cammino si fa insieme ogni settimana.</div>
+        </div>
+      </div>
+      <div class="pt-3" style="border-top: 1px solid var(--dx-night-border-subtle); display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 0.84rem; color: var(--dx-text-muted);">Elena, familiare</span>
+        <a href="storie.php" class="text-emerald" style="font-size: 0.86rem; font-weight: 700; text-decoration: none;">Leggi la storia &rarr;</a>
+      </div>
+    </article>
+  </div>
+
+  <div class="text-center mt-3">
+    <a href="storie.php" class="btn-community-outline">
+      <?=dx_icon('book-open', '', 16)?>
+      <span>Leggi tutte le storie di comunità</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 7. SECTION 7: IMPARA (I 3 LIVELLI DEL METODO HUDOLIN)           -->
+<!-- ============================================================== -->
+<section class="my-5" id="impara">
+  <div class="text-center mb-4">
+    <div class="badge-human mb-2">
+      <span class="dot"></span>
+      <span>CULTURA, SCIENZA & APPRENDIMENTO</span>
+    </div>
+    <h2 style="font-family: var(--dx-font-serif); font-size: clamp(1.8rem, 3.8vw, 2.6rem); color: #ffffff; margin-top: 6px; font-weight: 800;">
+      Impara: l'Approccio Ecologico-Sociale
+    </h2>
+    <p style="color: var(--dx-text-subtle); max-width: 680px; margin: 0 auto; font-size: 1.02rem; line-height: 1.65;">
+      Il metodo fondato dal Prof. Vladimir Hudolin concepisce la dipendenza non come una colpa morale o una malattia biologica ineluttabile, ma come uno stile di vita che si trasforma nel sistema delle relazioni.
+    </p>
+  </div>
+
+  <div class="learn-levels-grid">
+    <!-- LIVELLO 1: SCOPRI -->
+    <div class="learn-level-card">
+      <div>
+        <span class="level-tag">LIVELLO 1 · SCOPRI</span>
+        <h3 style="font-family: var(--dx-font-serif); color: #ffffff; font-size: 1.25rem; margin: 6px 0 10px;">
+          Cos'è il Club e perché la Famiglia
+        </h3>
+        <p style="color: var(--dx-text-subtle); font-size: 0.92rem; line-height: 1.6; margin-bottom: 16px;">
+          I principi cardine dell'accoglienza: l'assenza di cartelle cliniche, il valore del cerchio multifamiliare e la gratuità della solidarietà.
+        </p>
+      </div>
+      <a href="metodo.php#scopri" class="btn-community-outline small">
+        <span>Scopri le basi</span> &rarr;
+      </a>
+    </div>
+
+    <!-- LIVELLO 2: COMPRENDI -->
+    <div class="learn-level-card">
+      <div>
+        <span class="level-tag">LIVELLO 2 · COMPRENDI</span>
+        <h3 style="font-family: var(--dx-font-serif); color: #ffffff; font-size: 1.25rem; margin: 6px 0 10px;">
+          Vladimir Hudolin e la Rete
+        </h3>
+        <p style="color: var(--dx-text-subtle); font-size: 0.92rem; line-height: 1.6; margin-bottom: 16px;">
+          La storia, l'esperienza nei reparti ospedalieri e la scelta rivoluzionaria di portare la salute nella comunità e nelle case delle famiglie.
+        </p>
+      </div>
+      <a href="metodo.php#hudolin" class="btn-community-outline small">
+        <span>Approfondisci il Metodo</span> &rarr;
+      </a>
+    </div>
+
+    <!-- LIVELLO 3: FORMATI -->
+    <div class="learn-level-card">
+      <div>
+        <span class="level-tag">LIVELLO 3 · FORMATI</span>
+        <h3 style="font-family: var(--dx-font-serif); color: #ffffff; font-size: 1.25rem; margin: 6px 0 10px;">
+          Sovereign Academy & Servitori
+        </h3>
+        <p style="color: var(--dx-text-subtle); font-size: 0.92rem; line-height: 1.6; margin-bottom: 16px;">
+          Moduli di formazione permanente, corsi di sensibilizzazione e aggiornamento per chi desidera facilitare un Club come Servitore-Insegnante.
+        </p>
+      </div>
+      <a href="academy-public.php" class="btn-community-outline small">
+        <span>Esplora l'Academy</span> &rarr;
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 8. SECTION 8: UNA RETE MONDIALE SOLIDALE                       -->
+<!-- ============================================================== -->
+<section class="my-5 p-4 p-md-5" style="background: var(--dx-night-card); border: 1px solid var(--dx-night-border-subtle); border-radius: var(--dx-radius-xl);">
+  <div class="row align-items-center g-4">
+    <div class="col-lg-7">
+      <div class="badge-human mb-2">
+        <span class="dot"></span>
+        <span>RETE FEDERATA ITALIANA & MONDIALE</span>
+      </div>
+      <h2 style="font-family: var(--dx-font-serif); color: #ffffff; font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin: 6px 0 12px; font-weight: 800;">
+        Una rete mondiale di solidarietà
+      </h2>
+      <p style="color: var(--dx-text-subtle); font-size: 1rem; line-height: 1.65; margin-bottom: 14px;">
+        I Club Alcologici Territoriali costituiscono un tessuto capillare presente in ogni regione d'Italia e in numerosi Paesi del mondo (collegati attraverso AICAT e WACAT).
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin: 20px 0;">
+        <div style="background: rgba(9, 13, 26, 0.7); border: 1px solid var(--dx-night-border-subtle); border-radius: var(--dx-radius-md); padding: 12px; text-align: center;">
+          <b style="font-size: 1.4rem; color: var(--dx-amber); display: block;"><?=$totalNodes?></b>
+          <span style="font-size: 0.8rem; color: var(--dx-text-muted);">Nodi Totali</span>
+        </div>
+        <div style="background: rgba(9, 13, 26, 0.7); border: 1px solid var(--dx-night-border-subtle); border-radius: var(--dx-radius-md); padding: 12px; text-align: center;">
+          <b style="font-size: 1.4rem; color: var(--dx-emerald); display: block;">100%</b>
+          <span style="font-size: 0.8rem; color: var(--dx-text-muted);">Volontariato Solidale</span>
+        </div>
+        <div style="background: rgba(9, 13, 26, 0.7); border: 1px solid var(--dx-night-border-subtle); border-radius: var(--dx-radius-md); padding: 12px; text-align: center;">
+          <b style="font-size: 1.4rem; color: var(--dx-sky); display: block;">40+</b>
+          <span style="font-size: 0.8rem; color: var(--dx-text-muted);">Anni di Cammino</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="world-club-explorer.php" class="btn-community-primary small">
+          <?=dx_icon('map-pin', '', 16)?>
+          <span>Cerca nella Directory</span>
+        </a>
+        <a href="world-map.php" class="btn-community-outline small">
+          <?=dx_icon('globe', '', 16)?>
+          <span>Mappa dei Presidi</span>
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-5 text-center">
+      <div style="background: rgba(9, 13, 26, 0.9); border: 1px solid var(--dx-night-border); border-radius: var(--dx-radius-lg); padding: 24px;">
+        <h4 style="color: #ffffff; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Hai bisogno di assistenza o orientamento?</h4>
+        <p style="color: var(--dx-text-subtle); font-size: 0.88rem; line-height: 1.55; margin-bottom: 16px;">
+          Se non riesci a individuare il Club più vicino o vuoi parlare prima con un facilitatore della rete:
+        </p>
+        <a href="parla-con-noi.php" class="btn-community-primary" style="width: 100%;">
+          <?=dx_icon('message-circle', '', 16)?>
+          <span>Contatta la Segreteria di Accoglienza</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 9. SECTION 9: RISORSE & APPROFONDIMENTI                        -->
+<!-- ============================================================== -->
+<section class="my-5">
+  <div class="text-center mb-4">
+    <div class="badge-human mb-2">
+      <span class="dot"></span>
+      <span>RISORSE EDUCATIVE & FORMATIVE</span>
+    </div>
+    <h2 style="font-family: var(--dx-font-serif); font-size: clamp(1.6rem, 3.5vw, 2.2rem); color: #ffffff; font-weight: 800;">
+      Approfondimenti per il cammino
+    </h2>
+    <p style="color: var(--dx-text-subtle); max-width: 640px; margin: 0 auto; font-size: 0.98rem;">
+      Materiali didattici, guide per la famiglia e letture di consolidamento personale.
+    </p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px;">
+    <div class="card p-4" style="background: var(--dx-night-card); border: 1px solid var(--dx-night-border-subtle); border-radius: var(--dx-radius-lg); display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="color: var(--dx-amber); margin-bottom: 8px;"><?=dx_icon('sparkles', '', 28)?></div>
+        <h3 style="color: #ffffff; font-size: 1.15rem; font-weight: 750; margin: 0 0 6px;">Guida Gratuita per la Famiglia</h3>
+        <p style="color: var(--dx-text-subtle); font-size: 0.88rem; line-height: 1.55; margin-bottom: 16px;">
+          Cosa dire e cosa non dire, come affrontare le prime serate difficili e come trovare aiuto anche prima che la persona sia pronta.
+        </p>
+      </div>
+      <a href="guida-gratuita.php" class="btn-community-outline small">Scarica la Guida (PDF) &rarr;</a>
+    </div>
+
+    <div class="card p-4" style="background: var(--dx-night-card); border: 1px solid var(--dx-night-border-subtle); border-radius: var(--dx-radius-lg); display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="color: var(--dx-emerald); margin-bottom: 8px;"><?=dx_icon('book-open', '', 28)?></div>
+        <h3 style="color: #ffffff; font-size: 1.15rem; font-weight: 750; margin: 0 0 6px;">Collana Didattica & Manuali</h3>
+        <p style="color: var(--dx-text-subtle); font-size: 0.88rem; line-height: 1.55; margin-bottom: 16px;">
+          Diari dei primi 90 giorni, quaderni di dialogo familiare e manuali per Servitori-Insegnanti disponibili in formato digitale e cartaceo.
+        </p>
+      </div>
+      <a href="offers.php" class="btn-community-outline small">Consulta la Collana &rarr;</a>
+    </div>
+
+    <div class="card p-4" style="background: var(--dx-night-card); border: 1px solid var(--dx-night-border-subtle); border-radius: var(--dx-radius-lg); display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="color: var(--dx-sky); margin-bottom: 8px;"><?=dx_icon('compass', '', 28)?></div>
+        <h3 style="color: #ffffff; font-size: 1.15rem; font-weight: 750; margin: 0 0 6px;">Viaggi Esperienziali</h3>
+        <p style="color: var(--dx-text-subtle); font-size: 0.88rem; line-height: 1.55; margin-bottom: 16px;">
+          Percorsi residenziali di rigenerazione emotiva e relazione d'aiuto per famiglie e conduttori in formula analcolica.
+        </p>
+      </div>
+      <a href="viaggi-esperienziali.php" class="btn-community-outline small">Scheda Informativa &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 10. SECTION 10: CHIUSURA IDENTITARIA                          -->
+<!-- ============================================================== -->
+<section class="text-center my-5 py-4" style="border-top: 1px solid var(--dx-night-border-subtle);">
+  <div style="font-family: var(--dx-font-serif); font-size: clamp(1.5rem, 3.2vw, 2.2rem); color: #ffffff; font-weight: 900; letter-spacing: 0.04em; margin-bottom: 8px;">
+    AL CLUB. COL CLUB.
+  </div>
+  <p style="color: var(--dx-amber); font-weight: 800; font-size: 1.05rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 24px;">
+    Trova. Parla. Partecipa. Impara. Condividi.
+  </p>
+  <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+    <a href="world-club-explorer.php" class="btn-community-primary">
+      <?=dx_icon('map-pin', '', 18)?>
+      <span>Trova il tuo Club</span>
+    </a>
+    <a href="parla-con-noi.php" class="btn-community-outline">
+      <?=dx_icon('message-circle', '', 18)?>
+      <span>Parla con Noi</span>
+    </a>
+  </div>
 </section>
 
 <?php require '_footer.php'; ?>

@@ -1,0 +1,454 @@
+/**
+ * DEPENDEX.SOCIAL — DESIGN SYSTEM: HUMAN + DIGITAL + COMMUNITY
+ * Versione: 2.0 (Global Restyle)
+ * Filosofia: La tecnologia si fa da parte per far spazio alla relazione umana.
+ */
+
+:root {
+  --dx-night-bg: #090d1a;
+  --dx-night-surface: #0f1629;
+  --dx-night-card: rgba(18, 26, 48, 0.88);
+  --dx-night-border: rgba(224, 169, 109, 0.22);
+  --dx-night-border-subtle: rgba(255, 255, 255, 0.08);
+
+  --dx-amber: #e0a96d;
+  --dx-amber-light: #fbeedb;
+  --dx-amber-glow: rgba(224, 169, 109, 0.25);
+  --dx-gold: #d4af37;
+  
+  --dx-emerald: #10b981;
+  --dx-emerald-glow: rgba(16, 185, 129, 0.2);
+  --dx-emerald-bg: rgba(16, 185, 129, 0.1);
+
+  --dx-coral: #e76f51;
+  --dx-sky: #38bdf8;
+  --dx-indigo: #6366f1;
+
+  --dx-text-main: #f8fafc;
+  --dx-text-subtle: #cbd5e1;
+  --dx-text-muted: #94a3b8;
+
+  --dx-radius-sm: 8px;
+  --dx-radius-md: 14px;
+  --dx-radius-lg: 20px;
+  --dx-radius-xl: 28px;
+  --dx-radius-pill: 9999px;
+
+  --dx-shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --dx-shadow-hover: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(224, 169, 109, 0.15);
+
+  --dx-font-serif: Georgia, "Times New Roman", "Playfair Display", serif;
+  --dx-font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ========================================================= */
+/* ACCESSIBILITA' & RESET DI BASE                            */
+/* ========================================================= */
+*:focus-visible {
+  outline: 3px solid var(--dx-amber) !important;
+  outline-offset: 3px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================================= */
+/* TIPOGRAFIA & ACCENTI EMPATICI                             */
+/* ========================================================= */
+.font-serif-human {
+  font-family: var(--dx-font-serif);
+}
+
+.text-amber { color: var(--dx-amber) !important; }
+.text-gold { color: var(--dx-gold) !important; }
+.text-emerald { color: var(--dx-emerald) !important; }
+.text-sky { color: var(--dx-sky) !important; }
+.text-coral { color: var(--dx-coral) !important; }
+
+.badge-human {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--dx-radius-pill);
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: rgba(224, 169, 109, 0.12);
+  border: 1px solid var(--dx-amber);
+  color: #fff;
+}
+.badge-human.emerald {
+  background: var(--dx-emerald-bg);
+  border-color: var(--dx-emerald);
+  color: #a7f3d0;
+}
+.badge-human.sky {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: var(--dx-sky);
+  color: #bae6fd;
+}
+.badge-human .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* ========================================================= */
+/* BOTTONI COMUNITARI AD ALTA USABILITA' (TOUCH >= 48px)     */
+/* ========================================================= */
+.btn-community-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--dx-amber) 0%, #c48847 100%);
+  color: #111827 !important;
+  font-weight: 800;
+  font-size: 0.98rem;
+  border-radius: var(--dx-radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 6px 20px rgba(224, 169, 109, 0.3);
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: all 0.22s ease-in-out;
+}
+.btn-community-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(224, 169, 109, 0.45);
+  background: linear-gradient(135deg, #f0b87c 0%, #d49552 100%);
+}
+
+.btn-community-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 22px;
+  background: rgba(18, 26, 48, 0.7);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: var(--dx-radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  text-decoration: none !important;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-community-outline:hover {
+  background: rgba(30, 42, 74, 0.85);
+  border-color: var(--dx-amber);
+  color: var(--dx-amber) !important;
+  transform: translateY(-2px);
+}
+
+.btn-community-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 22px;
+  background: rgba(37, 211, 102, 0.15);
+  border: 1.5px solid #25d366;
+  color: #25d366 !important;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border-radius: var(--dx-radius-md);
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+.btn-community-wa:hover {
+  background: #25d366;
+  color: #052e16 !important;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+  transform: translateY(-2px);
+}
+
+/* ========================================================= */
+/* HERO DELLA HOMEPAGE EMPATICA                              */
+/* ========================================================= */
+.human-hero-card {
+  position: relative;
+  background: radial-gradient(circle at top right, rgba(224, 169, 109, 0.16), transparent 50%),
+              radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.1), transparent 55%),
+              var(--dx-night-surface);
+  border: 1px solid var(--dx-night-border);
+  border-radius: var(--dx-radius-xl);
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem);
+  box-shadow: var(--dx-shadow-soft);
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+
+.human-hero-title {
+  font-family: var(--dx-font-serif);
+  font-size: clamp(2.1rem, 5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+  margin: 0.8rem 0 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.human-hero-desc {
+  font-size: clamp(1.05rem, 2vw, 1.22rem);
+  line-height: 1.7;
+  color: var(--dx-text-subtle);
+  max-width: 740px;
+  margin-bottom: 2rem;
+}
+
+/* ========================================================= */
+/* RICERCA COMUNITARIA & CARD DEL CLUB                       */
+/* ========================================================= */
+.community-search-container {
+  background: var(--dx-night-card);
+  border: 1px solid var(--dx-night-border);
+  border-radius: var(--dx-radius-lg);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  box-shadow: var(--dx-shadow-soft);
+  margin-bottom: 3rem;
+}
+
+.community-search-form {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+}
+
+.community-search-input {
+  flex: 1;
+  min-width: 240px;
+  min-height: 52px;
+  padding: 12px 18px;
+  background: rgba(9, 13, 26, 0.9);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--dx-radius-md);
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-family: var(--dx-font-sans);
+  transition: border-color 0.2s ease;
+}
+.community-search-input:focus {
+  border-color: var(--dx-amber);
+}
+
+.club-door-card {
+  background: var(--dx-night-card);
+  border: 1px solid var(--dx-night-border-subtle);
+  border-radius: var(--dx-radius-lg);
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--dx-shadow-soft);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+.club-door-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--dx-amber);
+  box-shadow: var(--dx-shadow-hover);
+}
+.club-door-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--dx-amber), var(--dx-emerald));
+  opacity: 0.8;
+}
+
+/* ========================================================= */
+/* VIAGGIO IN 6 TAPPE: "COSA SUCCEDE AL PRIMO INCONTRO?"     */
+/* ========================================================= */
+.journey-stepper-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 18px;
+  margin: 2rem 0;
+}
+
+.journey-step-card {
+  background: var(--dx-night-card);
+  border: 1px solid var(--dx-night-border-subtle);
+  border-radius: var(--dx-radius-lg);
+  padding: 1.6rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.journey-step-card .step-num {
+  font-size: 2.2rem;
+  font-family: var(--dx-font-serif);
+  font-weight: 800;
+  color: var(--dx-amber);
+  line-height: 1;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+.journey-step-card .step-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 8px;
+}
+.journey-step-card .step-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--dx-text-subtle);
+  margin: 0;
+}
+
+/* ========================================================= */
+/* STORIE DI COMUNITA'                                       */
+/* ========================================================= */
+.story-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 22px;
+  margin: 2rem 0;
+}
+
+.story-card {
+  background: var(--dx-night-card);
+  border: 1px solid var(--dx-night-border-subtle);
+  border-radius: var(--dx-radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--dx-shadow-soft);
+  transition: all 0.25s ease;
+}
+.story-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(224, 169, 109, 0.4);
+}
+.story-card-quote {
+  font-family: var(--dx-font-serif);
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: #ffffff;
+  font-style: italic;
+  margin-bottom: 1.4rem;
+  position: relative;
+}
+.story-card-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 14px;
+  background: rgba(9, 13, 26, 0.6);
+  border-radius: var(--dx-radius-md);
+  font-size: 0.86rem;
+  color: var(--dx-text-subtle);
+  margin-bottom: 1.2rem;
+  border-left: 3px solid var(--dx-amber);
+}
+
+/* ========================================================= */
+/* GATEWAY "PARLA CON NOI"                                   */
+/* ========================================================= */
+.talk-gateway-box {
+  background: linear-gradient(135deg, rgba(22, 32, 60, 0.95), rgba(11, 16, 32, 0.98));
+  border: 1.5px solid var(--dx-amber);
+  border-radius: var(--dx-radius-xl);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(224, 169, 109, 0.15);
+  margin: 3rem 0;
+}
+
+/* ========================================================= */
+/* SEZIONE IMPARA PROGRESSIVA (3 LIVELLI)                    */
+/* ========================================================= */
+.learn-levels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 20px;
+  margin: 2rem 0;
+}
+
+.learn-level-card {
+  background: var(--dx-night-card);
+  border: 1px solid var(--dx-night-border-subtle);
+  border-radius: var(--dx-radius-lg);
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.learn-level-card .level-tag {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dx-amber);
+  margin-bottom: 6px;
+}
+
+/* ========================================================= */
+/* BARRA DI NAVIGAZIONE PRIMARIA DESKTOP A 6 PILASTRI        */
+/* ========================================================= */
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 20px;
+}
+@media (max-width: 1023px) {
+  .topbar-nav {
+    display: none !important;
+  }
+}
+.topbar-nav-link {
+  color: #cbd5e1;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  padding: 6px 12px;
+  border-radius: var(--dx-radius-sm);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.topbar-nav-link:hover, .topbar-nav-link.active {
+  color: var(--dx-amber) !important;
+  background: rgba(224, 169, 109, 0.12);
+}
+.topbar-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background: linear-gradient(135deg, var(--dx-amber), #c48847);
+  color: #111827 !important;
+  font-weight: 800;
+  font-size: 0.88rem;
+  border-radius: var(--dx-radius-pill);
+  text-decoration: none !important;
+  box-shadow: 0 4px 14px rgba(224, 169, 109, 0.28);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.topbar-nav-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(224, 169, 109, 0.45);
+}

@@ -73,43 +73,42 @@
 
       <!-- COLONNA 1: RETE & TERRITORIO -->
       <div>
-        <h4 style="font-size: 0.85rem; font-weight: 900; color: #ff7700; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; display: flex; align-items: center; gap: 8px;">
-          <?=dx_icon('users', 'text-orange', 16)?> Rete Territoriale
+        <h4 style="font-size: 0.85rem; font-weight: 900; color: var(--dx-amber); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; display: flex; align-items: center; gap: 8px;">
+          <?=dx_icon('map-pin', 'text-amber', 16)?> Rete & Territorio
         </h4>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
-          <li><a href="index.php" style="color: #cbd5e1; text-decoration: none; transition: color 0.2s ease;">Pagina Principale</a></li>
-          <li><a href="world-club-explorer.php" style="color: #f59e0b; font-weight: 750; text-decoration: none;">Trova un Club Territoriale</a></li>
+          <li><a href="index.php" style="color: #cbd5e1; text-decoration: none;">Pagina Principale</a></li>
+          <li><a href="world-club-explorer.php" style="color: var(--dx-amber); font-weight: 750; text-decoration: none;">Trova un Club Territoriale</a></li>
+          <li><a href="parla-con-noi.php" style="color: #ffffff; font-weight: 700; text-decoration: none;">Parla con Noi (Ascolto)</a></li>
+          <li><a href="events-public.php" style="color: #cbd5e1; text-decoration: none;">Vivi la Comunità (Eventi)</a></li>
           <li><a href="world-map.php" style="color: #cbd5e1; text-decoration: none;">Mappa Mondiale 2D/3D</a></li>
-          <li><a href="events-public.php" style="color: #cbd5e1; text-decoration: none;">Hub Nazionale Eventi</a></li>
-          <li><a href="evento-ottobre-taglio-di-po.php" style="color: #ffd700; font-weight: 800; text-decoration: none;">Corso Taglio di Po (10€)</a></li>
         </ul>
       </div>
 
-      <!-- COLONNA 2: METODO & FORMAZIONE -->
+      <!-- COLONNA 2: METODO & COMUNITÀ -->
       <div>
-        <h4 style="font-size: 0.85rem; font-weight: 900; color: #00ff77; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; display: flex; align-items: center; gap: 8px;">
-          <?=dx_icon('book-open', 'text-green', 16)?> Metodo & Formazione
+        <h4 style="font-size: 0.85rem; font-weight: 900; color: var(--dx-emerald); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; display: flex; align-items: center; gap: 8px;">
+          <?=dx_icon('book-open', 'text-green', 16)?> Metodo & Comunità
         </h4>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
-          <li><a href="metodo.php" style="color: #cbd5e1; text-decoration: none;">Il Metodo Hudolin</a></li>
+          <li><a href="metodo.php" style="color: #cbd5e1; text-decoration: none;">Il Metodo Hudolin (3 Livelli)</a></li>
+          <li><a href="storie.php" style="color: #ffffff; font-weight: 700; text-decoration: none;">Storie di Comunità</a></li>
           <li><a href="academy-public.php" style="color: #cbd5e1; text-decoration: none;">Sovereign Academy</a></li>
-          <li><a href="metodo.php#senti" style="color: #cbd5e1; text-decoration: none;">I 7 Rami del Cammino</a></li>
-          <li><a href="guida-gratuita.php" style="color: #00ff77; font-weight: 750; text-decoration: none;">Guida Gratuita 7 Giorni</a></li>
-          <li><a href="cortex.php" style="color: #cbd5e1; text-decoration: none;">Cortex AI (Supporto 24/7)</a></li>
+          <li><a href="guida-gratuita.php" style="color: var(--dx-emerald); font-weight: 750; text-decoration: none;">Guida Gratuita Famiglia</a></li>
+          <li><a href="evento-ottobre-taglio-di-po.php" style="color: #cbd5e1; text-decoration: none;">Corso Esperienziale Taglio di Po</a></li>
         </ul>
       </div>
 
-      <!-- COLONNA 3: ASSET SOVRANI & VIAGGI -->
+      <!-- COLONNA 3: ASSET & APPROFONDIMENTI -->
       <div>
-        <h4 style="font-size: 0.85rem; font-weight: 900; color: #00d4ff; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; display: flex; align-items: center; gap: 8px;">
-          <?=dx_icon('compass', 'text-cyan', 16)?> Asset Sovrani & Viaggi
+        <h4 style="font-size: 0.85rem; font-weight: 900; color: var(--dx-sky); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; display: flex; align-items: center; gap: 8px;">
+          <?=dx_icon('compass', 'text-cyan', 16)?> Risorse & Approfondimenti
         </h4>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
-          <li><a href="offers.php" style="color: #cbd5e1; text-decoration: none;">Libri Amazon KDP</a></li>
-          <li><a href="viaggi-esperienziali.php" style="color: #00d4ff; font-weight: 750; text-decoration: none;">Viaggi BEWAY.LIFE</a></li>
-          <li><a href="crociera-benessere-masterclass.php" style="color: #cbd5e1; text-decoration: none;">Crociera della Rinascita</a></li>
+          <li><a href="offers.php" style="color: #cbd5e1; text-decoration: none;">Collana Libri KDP</a></li>
+          <li><a href="viaggi-esperienziali.php" style="color: #cbd5e1; text-decoration: none;">Viaggi Esperienziali</a></li>
+          <li><a href="https://oltre.social" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">OLTRE.SOCIAL <?=dx_icon('external-link', '', 11)?></a></li>
           <li><a href="https://beway.life" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">beway.life <?=dx_icon('external-link', '', 11)?></a></li>
-          <li><a href="https://oltre.social" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Oltre.social <?=dx_icon('external-link', '', 11)?></a></li>
         </ul>
       </div>
 
@@ -121,8 +120,8 @@
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
           <li><a href="privacy.php" style="color: #cbd5e1; text-decoration: none;">Privacy Policy (GDPR)</a></li>
           <li><a href="privacy-center.php" style="color: #cbd5e1; text-decoration: none;">Gestione Consensi & Cookie</a></li>
-          <li><a href="terms.php" style="color: #cbd5e1; text-decoration: none;">Termini & Condizioni</a></li>
-          <li><a href="help.php" style="color: #cbd5e1; text-decoration: none;">Aiuto & Supporto Utenti</a></li>
+          <li><a href="terms.php" style="color: #cbd5e1; text-decoration: none;">Termini & Trasparenza ACAT</a></li>
+          <li><a href="help.php" style="color: #cbd5e1; text-decoration: none;">Aiuto & Emergenze (112)</a></li>
           <li><a href="mailto:info@dependex.support" style="color: #b829ff; font-weight: 750; text-decoration: none;">info@dependex.support</a></li>
         </ul>
       </div>

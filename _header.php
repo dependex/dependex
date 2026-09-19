@@ -5,6 +5,36 @@ $pageTitle = $pageTitle ?? APP_NAME;
 $brand = site_brand();
 $locale = site_locale();
 $metaDesc = $metaDesc ?? 'DEPENDEX — AL CLUB. COL CLUB. Cammino di sobrietà, Club Alcologici Territoriali, Academy e supporto continuo.';
+$curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
+
+// Canonical URL calculation
+if (!isset($canonicalUrl)) {
+    $rawUri = $_SERVER['REQUEST_URI'] ?? '/';
+    $reqPath = parse_url($rawUri, PHP_URL_PATH) ?: '/';
+    if ($reqPath === '/index.php') {
+        $reqPath = '/';
+    }
+    $canonicalUrl = 'https://' . ($brand['domain'] ?? 'dependex.social') . $reqPath;
+}
+
+// Dynamic Robots Meta Tag to protect private panels & conserve crawl budget
+$privateScripts = [
+    'admin.php', 'app.php', 'checkin.php', 'journal.php', 'profile.php', 
+    'cortex.php', 'cortex-dashboard.php', 'email-admin.php', 'vault-admin.php', 
+    'geo-admin.php', 'ncke-admin.php', 'ncke-console.php', 'club-admin.php', 
+    'admin-orders.php', 'event-admin.php', 'event-builder.php', 'social-admin.php',
+    'finance.php', 'acl-admin.php', 'company-brain.php', 'company-brain-start.php',
+    'order-confirmation.php', 'checkout.php', 'cart.php', 'wallet.php', 'preferences.php'
+];
+$isNoIndex = ($u !== null) || in_array($curScript, $privateScripts, true) || !empty($noIndexPage);
+$metaRobotsDirective = $isNoIndex ? 'noindex, nofollow, noarchive' : ($metaRobots ?? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+
+// Absolute OpenGraph & Twitter Card Image
+$defaultOgImg = 'https://' . ($brand['domain'] ?? 'dependex.social') . '/assets/img/dependex-rainbow-badge.jpg';
+$ogImageResolved = !empty($ogImage) ? $ogImage : $defaultOgImg;
+if (strpos($ogImageResolved, 'http') !== 0) {
+    $ogImageResolved = 'https://' . ($brand['domain'] ?? 'dependex.social') . '/' . ltrim($ogImageResolved, '/');
+}
 ?>
 <!doctype html>
 <html lang="<?=h($locale)?>">
@@ -17,43 +47,141 @@ $metaDesc = $metaDesc ?? 'DEPENDEX — AL CLUB. COL CLUB. Cammino di sobrietà, 
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="<?=h($brand['name'])?>">
   <meta name="description" content="<?=h($metaDesc)?>">
+  <meta name="robots" content="<?=h($metaRobotsDirective)?>">
+
+  <!-- SEO Canonical & Multilingual Hreflang -->
+  <link rel="canonical" href="<?=h($canonicalUrl)?>">
+  <link rel="alternate" hreflang="it" href="<?=h($canonicalUrl)?>">
+  <link rel="alternate" hreflang="x-default" href="<?=h($canonicalUrl)?>">
+  <link rel="help" type="text/plain" href="https://<?=h($brand['domain'] ?? 'dependex.social')?>/llms.txt" title="LLM Knowledge Context">
 
   <!-- OpenGraph / Facebook -->
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="<?=$ogType ?? 'website'?>">
   <meta property="og:title" content="<?=h($pageTitle)?> · <?=h($brand['name'])?>">
   <meta property="og:description" content="<?=h($metaDesc)?>">
+  <meta property="og:url" content="<?=h($canonicalUrl)?>">
   <meta property="og:site_name" content="<?=h($brand['name'])?>">
-  <meta property="og:image" content="assets/img/app-icon.svg">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:image" content="<?=h($ogImageResolved)?>">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="<?=h($pageTitle)?>">
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="<?=h($pageTitle)?> · <?=h($brand['name'])?>">
   <meta name="twitter:description" content="<?=h($metaDesc)?>">
-  <meta name="twitter:image" content="assets/img/app-icon.svg">
+  <meta name="twitter:image" content="<?=h($ogImageResolved)?>">
 
+  <!-- Favicon & Icons -->
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="shortcut icon" href="assets/img/favicon.svg">
   <link rel="apple-touch-icon" href="assets/img/app-icon.svg">
   <link rel="manifest" href="manifest.webmanifest">
+
+  <!-- Performance Resource Hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/app.css?v=<?=filemtime(__DIR__.'/assets/css/app.css')?>">
   <link rel="stylesheet" href="assets/css/luxury-patterns.css?v=<?=filemtime(__DIR__.'/assets/css/luxury-patterns.css')?>">
   <link rel="stylesheet" href="assets/css/rainbow-neon.css?v=<?=filemtime(__DIR__.'/assets/css/rainbow-neon.css')?>">
   <link rel="stylesheet" href="assets/css/mobile-916.css?v=<?=filemtime(__DIR__.'/assets/css/mobile-916.css')?>">
+  <link rel="stylesheet" href="assets/css/dependex-human-community.css?v=<?=filemtime(__DIR__.'/assets/css/dependex-human-community.css')?>">
   <title><?=h($pageTitle)?> · <?=h($brand['name'])?></title>
 
-  <!-- Schema.org JSON-LD -->
+  <!-- Schema.org Global JSON-LD (Organization & WebSite) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "NGO",
-    "name": "<?=h($brand['name'])?>",
-    "alternateName": "DIPENDEX Social",
-    "description": "<?=h($metaDesc)?>",
-    "url": "https://<?=h($brand['domain'])?>",
-    "email": "info@dependex.support",
-    "logo": "https://<?=h($brand['domain'])?>/assets/img/app-icon.svg"
+    "@graph": [
+      {
+        "@type": "NGO",
+        "@id": "https://<?=h($brand['domain'])?>/#organization",
+        "name": "<?=h($brand['name'])?>",
+        "alternateName": ["OLTRE Social", "Club Alcologici Territoriali", "ACAT Basso Polesine O.D.V."],
+        "description": "<?=h($metaDesc)?>",
+        "url": "https://<?=h($brand['domain'])?>/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://<?=h($brand['domain'])?>/assets/img/dependex-rainbow-badge.jpg"
+        },
+        "email": "info@dependex.support",
+        "telephone": "+39-347-884-4271",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+39-347-884-4271",
+            "contactType": "orientamento e accoglienza",
+            "areaServed": "IT",
+            "availableLanguage": ["Italian"]
+          },
+          {
+            "@type": "ContactPoint",
+            "email": "info@dependex.support",
+            "contactType": "supporto tecnico e istituzionale",
+            "areaServed": "IT",
+            "availableLanguage": ["Italian"]
+          }
+        ],
+        "sameAs": [
+          "https://oltre.social",
+          "https://beway.life"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://<?=h($brand['domain'])?>/#website",
+        "url": "https://<?=h($brand['domain'])?>/",
+        "name": "<?=h($brand['name'])?>",
+        "description": "Piattaforma ecologico-sociale per la sobrietà e rete dei Club Alcologici Territoriali",
+        "publisher": {
+          "@id": "https://<?=h($brand['domain'])?>/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://<?=h($brand['domain'])?>/world-club-explorer.php?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
+        "inLanguage": "it-IT"
+      }
+    ]
   }
   </script>
+
+  <?php if (!empty($breadcrumbs) && is_array($breadcrumbs)): ?>
+  <!-- BreadcrumbList JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      <?php 
+      $bItems = [];
+      $bPos = 1;
+      foreach ($breadcrumbs as $bName => $bUrl) {
+          $bTarget = strpos($bUrl, 'http') === 0 ? $bUrl : ('https://' . ($brand['domain'] ?? 'dependex.social') . '/' . ltrim($bUrl, '/'));
+          $bItems[] = json_encode([
+              "@type" => "ListItem",
+              "position" => $bPos++,
+              "name" => $bName,
+              "item" => $bTarget
+          ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+      }
+      echo implode(",\n      ", $bItems);
+      ?>
+    ]
+  }
+  </script>
+  <?php endif; ?>
+
+  <?php if (!empty($pageSchemaJson)): ?>
+  <!-- Page Specific JSON-LD -->
+  <script type="application/ld+json">
+  <?=is_string($pageSchemaJson) ? $pageSchemaJson : json_encode($pageSchemaJson, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)?>
+  </script>
+  <?php endif; ?>
 
   <script>
     (function(){
@@ -84,9 +212,22 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
   <a href="#mainContent" class="skip-link">Salta al contenuto principale</a>
   <header class="topbar">
     <a class="brand" href="<?=$u ? 'app.php' : 'index.php'?>">
-      <span class="brand-mark brand-mark-rainbow"><img src="assets/img/dependex-rainbow-badge.jpg" alt="Logo DEPENDEX"></span>
+      <span class="brand-mark brand-mark-rainbow"><img src="assets/img/dependex-badge-icon.webp" alt="Logo DEPENDEX" width="44" height="44"></span>
       <span><b><?=h($brand['name'])?></b><small><?=h(APP_PAYOFF)?></small></span>
     </a>
+
+    <!-- BARRA DI NAVIGAZIONE PRIMARIA DESKTOP (6 PILASTRI + PARLA CON NOI) -->
+    <nav class="topbar-nav" aria-label="Navigazione principale">
+      <a href="index.php" class="topbar-nav-link <?=($curScript==='index.php'||$curScript==='')?'active':''?>">Home</a>
+      <a href="world-club-explorer.php" class="topbar-nav-link <?=$curScript==='world-club-explorer.php'||$curScript==='club-public.php'?'active':''?>">Trova un Club</a>
+      <a href="events-public.php" class="topbar-nav-link <?=$curScript==='events-public.php'||$curScript==='event-detail.php'?'active':''?>">Vivi la Comunità</a>
+      <a href="storie.php" class="topbar-nav-link <?=$curScript==='storie.php'?'active':''?>">Storie</a>
+      <a href="metodo.php" class="topbar-nav-link <?=$curScript==='metodo.php'||$curScript==='academy-public.php'?'active':''?>">Impara</a>
+      <a href="world-map.php" class="topbar-nav-link <?=$curScript==='world-map.php'?'active':''?>">Rete</a>
+      <a href="parla-con-noi.php" class="topbar-nav-btn <?=$curScript==='parla-con-noi.php'?'active':''?>">
+        <?=dx_icon('message-circle', '', 14)?> Parla con Noi
+      </a>
+    </nav>
 
     <!-- TOPBAR METRICS (VISITATORI TOTALI & UTENTI LIVE CON PULSE GLOW) -->
     <?php $dxTelemetry = site_live_telemetry(); ?>
@@ -147,83 +288,60 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           <a href="sobriety.php" class="drawer-link <?=$curScript==='sobriety.php'?'active':''?>"><?=dx_icon('activity','',18)?> Sobrietà & Traguardi</a>
         </nav>
         <nav class="drawer-nav-group">
-          <span class="drawer-section-title">COMMUNITY DEI CLUB (100% VOLONTARIATO)</span>
-          <a href="evento-ottobre-taglio-di-po.php" class="drawer-link highlight-gold <?=$curScript==='evento-ottobre-taglio-di-po.php'||$curScript==='event-detail.php'?'active':''?>"><?=dx_icon('award','text-neon-gold',18)?> <b>Evento Taglio di Po (10€)</b></a>
-          <a href="club.php" class="drawer-link <?=$curScript==='club.php'?'active':''?>"><?=dx_icon('users','',18)?> Il mio Club</a>
+          <span class="drawer-section-title">I PILASTRI DELLA COMUNITÀ</span>
+          <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'||$curScript==='club-public.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> Trova un Club Territoriale</a>
+          <a href="parla-con-noi.php" class="drawer-link <?=$curScript==='parla-con-noi.php'?'active':''?>"><?=dx_icon('message-circle','text-neon-cyan',18)?> <b>Parla con Noi (Ascolto Riservato)</b></a>
+          <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Vivi la Comunità & Eventi</a>
+          <a href="storie.php" class="drawer-link <?=$curScript==='storie.php'?'active':''?>"><?=dx_icon('users','',18)?> Storie di Comunità</a>
           <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>"><?=dx_icon('compass','',18)?> Mappa Mondiale 2D/3D</a>
-          <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> Trova un Club Territoriale</a>
-          <a href="metodo.php" class="drawer-link <?=$curScript==='metodo.php'?'active':''?>"><?=dx_icon('feather','',18)?> Metodo Hudolin</a>
+          <a href="metodo.php" class="drawer-link <?=$curScript==='metodo.php'?'active':''?>"><?=dx_icon('feather','',18)?> Il Metodo Hudolin</a>
           <a href="academy.php" class="drawer-link <?=$curScript==='academy.php'?'active':''?>"><?=dx_icon('academic','',18)?> Formazione Servitori</a>
-          <a href="events.php" class="drawer-link <?=$curScript==='events.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Calendario Eventi & Moduli</a>
-          <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Hub Nazionale Eventi</a>
-          <a href="dao.php" class="drawer-link <?=$curScript==='dao.php'?'active':''?>"><?=dx_icon('scale','',18)?> Partecipazione Comunitaria</a>
-          <a href="cortex.php" class="drawer-link <?=$curScript==='cortex.php'?'active':''?>"><?=dx_icon('brain','',18)?> Cortex AI (Supporto 24/7)</a>
+          <a href="club.php" class="drawer-link <?=$curScript==='club.php'?'active':''?>"><?=dx_icon('users','',18)?> Il mio Club</a>
         </nav>
         <nav class="drawer-nav-group">
-          <span class="drawer-section-title text-rainbow">I 7 RAMI DEL METODO (FREQUENZE ARCOBALENO)</span>
-          <div class="drawer-rainbow-branches">
-            <a href="metodo.php#senti" class="branch-item red"><span class="branch-dot"></span> 1. SENTI (Radici & Ascolto)</a>
-            <a href="metodo.php#agisci" class="branch-item orange"><span class="branch-dot"></span> 2. AGISCI (Flusso & Volontà)</a>
-            <a href="metodo.php#comunica" class="branch-item gold"><span class="branch-dot"></span> 3. COMUNICA (Voce & Verità)</a>
-            <a href="metodo.php#vedi" class="branch-item green"><span class="branch-dot"></span> 4. VEDI (Sobrietà & Visione)</a>
-            <a href="metodo.php#ama" class="branch-item cyan"><span class="branch-dot"></span> 5. AMA (Relazione & Cerchio)</a>
-            <a href="metodo.php#costruisci" class="branch-item indigo"><span class="branch-dot"></span> 6. COSTRUISCI (Dignità & Azione)</a>
-            <a href="metodo.php#sii" class="branch-item violet"><span class="branch-dot"></span> 7. SII (Sovranità & Trascendenza)</a>
-          </div>
-        </nav>
-        <nav class="drawer-nav-group">
-          <span class="drawer-section-title">PROFILO, SUPPORTO & STRUMENTI</span>
+          <span class="drawer-section-title">RISORSE & SERVIZI</span>
           <a href="profile.php" class="drawer-link <?=$curScript==='profile.php'?'active':''?>"><?=dx_icon('users','',18)?> Il mio Profilo</a>
-          <a href="certificates.php" class="drawer-link <?=$curScript==='certificates.php'?'active':''?>"><?=dx_icon('award','',18)?> Attestati & Corsi</a>
           <a href="guida-gratuita.php" class="drawer-link <?=$curScript==='guida-gratuita.php'?'active':''?>"><?=dx_icon('sparkles','',18)?> Guida Gratuita Famiglia</a>
-          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Libri & Manuali Amazon KDP</a>
-          <a href="viaggi-esperienziali.php" class="drawer-link <?=$curScript==='viaggi-esperienziali.php'?'active':''?>"><?=dx_icon('compass','',18)?> BEWAY.LIFE · Viaggi & Crociere</a>
+          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Collana Didattica KDP</a>
           <a href="cart.php" class="drawer-link <?=$curScript==='cart.php'?'active':''?>"><?=dx_icon('shopping-cart','',18)?> Carrello Acquisti</a>
-          <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>"><?=dx_icon('shield','',18)?> Supporto & Aiuto</a>
+          <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>"><?=dx_icon('shield','',18)?> Supporto Immediato</a>
           <a href="privacy.php" class="drawer-link <?=$curScript==='privacy.php'?'active':''?>"><?=dx_icon('lock','',18)?> Riservatezza & Anonimato</a>
           <a href="logout.php" class="drawer-link drawer-logout"><?=dx_icon('log-out','',18)?> Esci dall'App</a>
         </nav>
       <?php else:?>
-        <div class="drawer-auth-card" style="padding:16px;border-radius:18px;background:rgba(12,16,26,0.9);border:1px solid rgba(0,212,255,0.35);box-shadow:0 0 20px rgba(0,212,255,0.2);margin-bottom:14px;">
-          <div class="badge-neon-rainbow mb-2" style="font-size:0.72rem;"><span class="dot"></span> RETE GRATUITA DEI CLUB</div>
-          <p style="font-size:0.84rem;color:#cbd5e1;line-height:1.45;margin:0 0 12px;">542 Club territoriali, metodo Hudolin e supporto continuativo senza giudizio.</p>
+        <div class="drawer-auth-card" style="padding:16px;border-radius:18px;background:rgba(12,16,26,0.9);border:1px solid rgba(224,169,109,0.35);box-shadow:0 0 20px rgba(224,169,109,0.15);margin-bottom:14px;">
+          <div class="badge-human mb-2" style="font-size:0.72rem;"><span class="dot"></span> RETE GRATUITA DEI CLUB</div>
+          <p style="font-size:0.84rem;color:#cbd5e1;line-height:1.45;margin:0 0 12px;">Oltre 540 Club territoriali, metodo Hudolin e supporto continuativo senza giudizio.</p>
           <div style="display:flex;gap:8px;">
             <a class="btn primary small" href="login.php" style="flex:1;text-align:center;">Accedi</a>
-            <a class="btn small" href="register.php" style="flex:1;border:1px solid rgba(0,212,255,0.4);color:#ffffff;border-radius:12px;text-align:center;">Registrati</a>
+            <a class="btn small" href="register.php" style="flex:1;border:1px solid rgba(224,169,109,0.4);color:#ffffff;border-radius:12px;text-align:center;">Registrati</a>
           </div>
         </div>
+
         <nav class="drawer-nav-group">
-          <span class="drawer-section-title text-rainbow">I 7 RAMI DEL METODO (FREQUENZE ARCOBALENO)</span>
-          <div class="drawer-rainbow-branches">
-            <a href="metodo.php#senti" class="branch-item red"><span class="branch-dot"></span> 1. SENTI (Radici & Ascolto)</a>
-            <a href="metodo.php#agisci" class="branch-item orange"><span class="branch-dot"></span> 2. AGISCI (Flusso & Volontà)</a>
-            <a href="metodo.php#comunica" class="branch-item gold"><span class="branch-dot"></span> 3. COMUNICA (Voce & Verità)</a>
-            <a href="metodo.php#vedi" class="branch-item green"><span class="branch-dot"></span> 4. VEDI (Sobrietà & Visione)</a>
-            <a href="metodo.php#ama" class="branch-item cyan"><span class="branch-dot"></span> 5. AMA (Relazione & Cerchio)</a>
-            <a href="metodo.php#costruisci" class="branch-item indigo"><span class="branch-dot"></span> 6. COSTRUISCI (Dignità & Azione)</a>
-            <a href="metodo.php#sii" class="branch-item violet"><span class="branch-dot"></span> 7. SII (Sovranità & Trascendenza)</a>
-          </div>
-        </nav>
-        <nav class="drawer-nav-group">
-          <span class="drawer-section-title">COMMUNITY DEI CLUB (100% VOLONTARIATO)</span>
-          <a href="index.php" class="drawer-link <?=$curScript==='index.php'?'active':''?>"><?=dx_icon('home','',18)?> Pagina Principale</a>
-          <a href="evento-ottobre-taglio-di-po.php" class="drawer-link highlight-gold <?=$curScript==='evento-ottobre-taglio-di-po.php'||$curScript==='event-detail.php'?'active':''?>"><?=dx_icon('award','text-neon-gold',18)?> <b>Evento Taglio di Po (10€)</b></a>
-          <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Hub Nazionale Eventi</a>
-          <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> Trova un Club Territoriale</a>
+          <span class="drawer-section-title text-amber">I PILASTRI DELLA COMUNITÀ</span>
+          <a href="index.php" class="drawer-link <?=$curScript==='index.php'?'active':''?>"><?=dx_icon('home','',18)?> Home</a>
+          <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'||$curScript==='club-public.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> <b>Trova un Club Territoriale</b></a>
+          <a href="parla-con-noi.php" class="drawer-link highlight-gold <?=$curScript==='parla-con-noi.php'?'active':''?>"><?=dx_icon('message-circle','text-neon-gold',18)?> <b>Parla con Noi (Ascolto)</b></a>
+          <a href="storie.php" class="drawer-link <?=$curScript==='storie.php'?'active':''?>"><?=dx_icon('users','',18)?> Storie di Comunità</a>
+          <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Vivi la Comunità (Eventi)</a>
           <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>"><?=dx_icon('compass','',18)?> Mappa Mondiale Club</a>
-          <a href="metodo.php" class="drawer-link <?=$curScript==='metodo.php'?'active':''?>"><?=dx_icon('feather','',18)?> Il Metodo Hudolin</a>
-          <a href="academy-public.php" class="drawer-link <?=$curScript==='academy-public.php'?'active':''?>"><?=dx_icon('academic','',18)?> Academy Servitori-Insegnanti</a>
-          <a href="cortex.php" class="drawer-link <?=$curScript==='cortex.php'?'active':''?>"><?=dx_icon('brain','',18)?> Cortex AI (Supporto 24/7 Anonimo)</a>
         </nav>
+
         <nav class="drawer-nav-group">
-          <span class="drawer-section-title">RISORSE & STILE DI VITA</span>
+          <span class="drawer-section-title">IMPARA & APPROFONDISCI</span>
+          <a href="metodo.php" class="drawer-link <?=$curScript==='metodo.php'?'active':''?>"><?=dx_icon('feather','',18)?> Il Metodo Hudolin (3 Livelli)</a>
+          <a href="academy-public.php" class="drawer-link <?=$curScript==='academy-public.php'?'active':''?>"><?=dx_icon('academic','',18)?> Sovereign Academy</a>
           <a href="guida-gratuita.php" class="drawer-link <?=$curScript==='guida-gratuita.php'?'active':''?>"><?=dx_icon('sparkles','',18)?> Guida Gratuita Famiglia</a>
-          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Libri & Manuali Amazon KDP</a>
-          <a href="viaggi-esperienziali.php" class="drawer-link <?=$curScript==='viaggi-esperienziali.php'?'active':''?>"><?=dx_icon('compass','',18)?> BEWAY.LIFE · Viaggi & Crociere</a>
-          <a href="cart.php" class="drawer-link <?=$curScript==='cart.php'?'active':''?>"><?=dx_icon('shopping-cart','',18)?> Carrello Acquisti</a>
-          <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>"><?=dx_icon('shield','',18)?> Aiuto Immediato & Numeri Utili</a>
+          <a href="evento-ottobre-taglio-di-po.php" class="drawer-link <?=$curScript==='evento-ottobre-taglio-di-po.php'||$curScript==='event-detail.php'?'active':''?>"><?=dx_icon('award','',18)?> Corso Esperienziale Taglio di Po</a>
+          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Libri & Collana KDP</a>
+        </nav>
+
+        <nav class="drawer-nav-group">
+          <span class="drawer-section-title">SUPPORTO & PRIVACY</span>
+          <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>"><?=dx_icon('shield','',18)?> Aiuto Immediato & Emergenze</a>
           <a href="privacy.php" class="drawer-link <?=$curScript==='privacy.php'?'active':''?>"><?=dx_icon('lock','',18)?> Riservatezza & Anonimato</a>
-          <a href="terms.php" class="drawer-link <?=$curScript==='terms.php'?'active':''?>"><?=dx_icon('file-text','',18)?> Termini e Condizioni</a>
+          <a href="terms.php" class="drawer-link <?=$curScript==='terms.php'?'active':''?>"><?=dx_icon('file-text','',18)?> Termini e Trasparenza</a>
         </nav>
       <?php endif;?>
     </div>

@@ -2,8 +2,63 @@
 require_once __DIR__.'/bootstrap.php';
 $pageTitle = 'Il Metodo Hudolin · Scienza, Comunità e Sovranità';
 $metaDesc = 'Il Metodo Hudolin: basta con l’illusione della forza di volontà solitaria. Approccio ecologico-sociale in 5 fasi per riconquistare lucidità, famiglia e dignità.';
+$breadcrumbs = [
+    'Home' => '/',
+    'Metodo Hudolin' => 'metodo.php'
+];
+$pageSchemaJson = [
+    "@context" => "https://schema.org",
+    "@graph" => [
+        [
+            "@type" => "Article",
+            "@id" => "https://" . ($brand['domain'] ?? 'dependex.social') . "/metodo.php#article",
+            "headline" => "Il Metodo Hudolin · Scienza, Comunità e Sovranità",
+            "description" => $metaDesc,
+            "inLanguage" => "it-IT",
+            "author" => [
+                "@type" => "Organization",
+                "name" => "Rete Nazionale Club Alcologici Territoriali & ACAT Basso Polesine"
+            ],
+            "publisher" => [
+                "@id" => "https://" . ($brand['domain'] ?? 'dependex.social') . "/#organization"
+            ],
+            "mainEntityOfPage" => "https://" . ($brand['domain'] ?? 'dependex.social') . "/metodo.php"
+        ],
+        [
+            "@type" => "FAQPage",
+            "@id" => "https://" . ($brand['domain'] ?? 'dependex.social') . "/metodo.php#faq",
+            "mainEntity" => [
+                [
+                    "@type" => "Question",
+                    "name" => "Cos'è il Metodo Hudolin e come si differenzia dagli approcci tradizionali?",
+                    "acceptedAnswer" => [
+                        "@type" => "Answer",
+                        "text" => "Il Metodo ideato dal Prof. Vladimir Hudolin interpreta le problematiche alcolcorrelate non come una malattia biologica o una colpa morale, ma come uno stile di vita e una sofferenza del sistema relazionale. Il recupero avviene attraverso la comunità multifamiliare nel Club Territoriale."
+                    ]
+                ],
+                [
+                    "@type" => "Question",
+                    "name" => "La famiglia deve partecipare agli incontri di Club?",
+                    "acceptedAnswer" => [
+                        "@type" => "Answer",
+                        "text" => "Sì, la presenza della famiglia o delle persone significative è centrale nel Metodo Hudolin. Se la persona con problema nega o rifiuta l'aiuto, i familiari possono frequentare il Club anche da soli per iniziare il cambiamento."
+                    ]
+                ],
+                [
+                    "@type" => "Question",
+                    "name" => "Quanto costa partecipare a un Club Alcologico Territoriale?",
+                    "acceptedAnswer" => [
+                        "@type" => "Answer",
+                        "text" => "La partecipazione al Club è completamente gratuita e basata sul volontariato solidale e sull'auto-mutuo-aiuto."
+                    ]
+                ]
+            ]
+        ]
+    ]
+];
 require '_header.php';
 ?>
+
 
 <main class="container py-5">
   <!-- Header -->
@@ -21,8 +76,8 @@ require '_header.php';
     </p>
   </section>
 
-  <!-- Key Insight Card -->
-  <div class="luxury-hero-card lux-metallic-card p-4 p-md-5 mb-5">
+  <!-- Key Insight Card: LIVELLO 1 (SCOPRI) -->
+  <div class="luxury-hero-card lux-metallic-card p-4 p-md-5 mb-5" id="scopri">
     <div class="row align-items-center g-4">
       <div class="col-md-7">
         <h3 style="font-family: var(--font-serif); color: #FFFFFF; font-size: 1.8rem; margin-bottom: 1rem; font-weight: 800;">
@@ -35,7 +90,7 @@ require '_header.php';
           Nei Club Alcologici Territoriali non usiamo etichette umilianti. Sei una persona con una storia, dei talenti e una famiglia che ha il diritto di tornare a guardarti negli occhi con fierezza.
         </p>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-5" id="hudolin">
         <div class="p-4 rounded-4" style="background: rgba(10,11,16,0.9); border: 1px solid rgba(212,175,55,0.3);">
           <div style="color: #D4AF37; margin-bottom: 12px;"><?=dx_icon('message-circle', '', 32)?></div>
           <blockquote style="font-style: italic; font-size: 1rem; line-height: 1.6; color: #FFFFFF; margin-bottom: 12px;">

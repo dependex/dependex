@@ -4,7 +4,7 @@
  * OMNI-WELFARE GAMIFICATION ENGINE 6.0 — LIFE PLAYGROUND
  * 
  * Interfaccia maieutica, giocabile, mobile-first per l'esplorazione del benessere,
- * delle pratiche contemplative, della natura e della comunità.
+ * delle pratiche contemplative, della natura e della comunità reale.
  * 
  * VINCOLI DEONTOLOGICI ASSOLUTI:
  * - Zero diagnosi cliniche, zero promesse terapeutiche o mediche.
@@ -25,6 +25,12 @@ $feelings = $engine->getFeelingEntries();
 $quests = $engine->getMicroQuests();
 $taxonomy = $engine->getMethodTaxonomy();
 $levels = $engine->getParticipationLevels();
+$compassDims = $engine->getCompassDimensions();
+$sevenWorlds = $engine->getSevenWorlds();
+$dailyExp = $engine->getDailyExperience();
+$weeklyTheme = $engine->getWeeklyTheme();
+$oneButton = $engine->getOneButtonExperience();
+$ikigaiCards = $engine->getIkigaiCards();
 
 // Selezione iniziale feeling tramite query param opzionale
 $selectedFeelingId = trim($_GET['feeling'] ?? '');
@@ -48,6 +54,18 @@ include __DIR__ . '/_header.php';
         Scegli da dove partire. Un respiro, una riflessione o un passo verso la comunità.
       </p>
 
+      <!-- MODALITÀ ONE BUTTON: INIZIA ORA -->
+      <div class="one-button-hero-box">
+        <div class="one-button-intro">
+          <span class="one-button-tag">Per chi non vuole pensare</span>
+          <h3><?=h($oneButton['title'])?></h3>
+          <p><?=h($oneButton['prompt'])?></p>
+        </div>
+        <a href="<?=h($oneButton['action_url'])?>" class="btn-one-button-primary">
+          <?=dx_icon('play', '', 18)?> <span>Inizia Ora (60s)</span>
+        </a>
+      </div>
+
       <!-- SELETTORE MAIEUTICO DELLE 11 PORTE D'INGRESSO -->
       <div class="feeling-grid" role="region" aria-label="Porte di ingresso esperienziali">
         <?php foreach ($feelings as $fId => $f): 
@@ -61,6 +79,37 @@ include __DIR__ . '/_header.php';
             <span class="feeling-label"><?=h($f['label'])?></span>
           </a>
         <?php endforeach; ?>
+      </div>
+
+      <!-- DAILY & WEEKLY DEPENDEX WIDGETS -->
+      <div class="daily-weekly-grid">
+        <!-- DAILY CARD -->
+        <div class="dw-card daily-card">
+          <div class="dw-header">
+            <span class="dw-badge">OGGI PER TE · <?=$dailyExp['date_formatted']?></span>
+            <span class="dw-dur"><?=$dailyExp['duration']?></span>
+          </div>
+          <h4><?=h($dailyExp['title'])?></h4>
+          <p><?=h($dailyExp['prompt'])?></p>
+          <div class="dw-footer">
+            <a href="playground.php#<?=h($dailyExp['target_id'])?>" class="btn-dw-action">
+              <?=h($dailyExp['action_label'])?> <?=dx_icon('arrow-right', '', 13)?>
+            </a>
+          </div>
+        </div>
+
+        <!-- WEEKLY CARD -->
+        <div class="dw-card weekly-card">
+          <div class="dw-header">
+            <span class="dw-badge weekly">SETTIMANA <?=h($weeklyTheme['week_number'])?></span>
+            <span class="dw-theme"><?=h($weeklyTheme['theme'])?></span>
+          </div>
+          <h4>7 Giorni, Un Piccolo Passo</h4>
+          <p>Un percorso lieve attraverso i giorni per coltivare attenzione e presenza senza sforzo.</p>
+          <div class="weekly-today-bullet">
+            <?=h($weeklyTheme['days'][(int)date('N')] ?? 'Oggi: ascolta il tuo ritmo naturale.')?>
+          </div>
+        </div>
       </div>
 
       <?php if ($selectedFeelingId && !empty($activeRecommendations)): ?>
@@ -99,6 +148,51 @@ include __DIR__ . '/_header.php';
     </div>
   </div>
 
+  <!-- THE DEPENDEX COMPASS: LA BUSSOLA A 9 RAGGI -->
+  <section class="playground-tool-section" id="compass-tool">
+    <div class="container-mobile">
+      <div class="section-card compass-card">
+        <div class="section-card-header">
+          <div class="badge-human"><span class="dot"></span> THE DEPENDEX COMPASS</div>
+          <h2>La Bussola della Vita</h2>
+          <p>Al centro ci sei <strong>TU</strong>. Attorno si muovono le nove dimensioni della quotidianità. Tocca un'area per osservare, giocare e agire.</p>
+        </div>
+
+        <div class="compass-layout">
+          <div class="compass-wheel-grid">
+            <?php foreach ($compassDims as $cId => $c): ?>
+              <button type="button" class="compass-dim-btn" onclick="selectCompassDim('<?=h($cId)?>')" id="btn-compass-<?=h($cId)?>">
+                <span class="dim-icon"><?=$c['icon']?></span>
+                <span class="dim-name"><?=h($c['name'])?></span>
+              </button>
+            <?php endforeach; ?>
+          </div>
+
+          <div class="compass-detail-card" id="compassDetailCard">
+            <div class="compass-detail-top">
+              <span id="cDetailIcon" class="compass-detail-icon">🫁</span>
+              <h3 id="cDetailName" class="compass-detail-title">Corpo</h3>
+            </div>
+            <div class="compass-modes-grid">
+              <div class="c-mode-box guarda">
+                <span class="c-mode-badge">GUARDA</span>
+                <p id="cDetailGuarda"><?=$compassDims['corpo']['guarda']?></p>
+              </div>
+              <div class="c-mode-box gioca">
+                <span class="c-mode-badge">GIOCA</span>
+                <p id="cDetailGioca"><?=$compassDims['corpo']['gioca']?></p>
+              </div>
+              <div class="c-mode-box agisci">
+                <span class="c-mode-badge">AGISCI</span>
+                <p id="cDetailAgisci"><?=$compassDims['corpo']['agisci']?></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SEZIONE INTERATTIVA: 60 SECONDI DI RESPIRO CONSAPEVOLE -->
   <section class="playground-tool-section" id="breath-tool">
     <div class="container-mobile">
@@ -132,6 +226,32 @@ include __DIR__ . '/_header.php';
               Questa è una pratica di consapevolezza somatica (Fonte: <em>Metodo H+ — Mirco Pregnolato</em>). Se avverti disagio o giramenti di testa, interrompila naturalmente. Non costituisce terapia medica.
             </small>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIOCO IKIGAI A 4 CARTE -->
+  <section class="playground-tool-section" id="ikigai-tool">
+    <div class="container-mobile">
+      <div class="section-card ikigai-card">
+        <div class="section-card-header">
+          <div class="badge-human"><span class="dot"></span> IKIGAI MAIEUTICO A 4 CARTE</div>
+          <h2>Trova le Tue Possibili Intersezioni</h2>
+          <p>L'Ikigai non è una formula fissa: è uno spazio giocabile per ascoltare vocazione, doni e bisogni della comunità.</p>
+        </div>
+
+        <div class="ikigai-cards-grid">
+          <?php foreach ($ikigaiCards as $kId => $k): ?>
+            <div class="ikigai-card-item" style="border-top:3px solid <?=$k['color']?>;">
+              <h3 style="color:<?=$k['color']?>;"><?=h($k['title'])?></h3>
+              <p><?=h($k['desc'])?></p>
+              <textarea class="ikigai-textarea" placeholder="Scrivi liberamente qui..." rows="2"></textarea>
+            </div>
+          <?php endforeach; ?>
+        </div>
+        <div class="ikigai-feedback-banner">
+          <span>Non cerchiamo un verdetto definitivo: <strong>"Hai trovato alcune possibili intersezioni con cui iniziare."</strong></span>
         </div>
       </div>
     </div>
@@ -178,6 +298,35 @@ include __DIR__ . '/_header.php';
             Conserva nel Diario Privato
           </button>
           <span id="gratitudeFeedback" class="gratitude-feedback"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- I SETTE MONDI DEL WELFARE (7 DIMENSIONI LAICHE) -->
+  <section class="playground-tool-section" id="seven-worlds-tool">
+    <div class="container-mobile">
+      <div class="section-card worlds-card">
+        <div class="section-card-header">
+          <div class="badge-human"><span class="dot"></span> WELFARE ENERGY FRAMEWORK</div>
+          <h2>I Sette Mondi del Benessere</h2>
+          <p>Sette sfere di esperienza umana da esplorare passo dopo passo. Ognuna racchiude una pratica corporea o relazionale.</p>
+        </div>
+
+        <div class="seven-worlds-grid">
+          <?php foreach ($sevenWorlds as $wNum => $w): ?>
+            <div class="world-item-card" style="border-left: 4px solid <?=$w['color']?>;">
+              <div class="world-item-top">
+                <span class="world-icon"><?=$w['icon']?></span>
+                <span class="world-num">MONDO <?=$wNum?></span>
+              </div>
+              <h3 class="world-title"><?=h($w['name'])?></h3>
+              <p class="world-focus"><?=h($w['focus'])?></p>
+              <div class="world-practice-box">
+                <strong>Micro-pratica:</strong> <?=h($w['practice'])?>
+              </div>
+            </div>
+          <?php endforeach; ?>
         </div>
       </div>
     </div>
@@ -278,10 +427,9 @@ include __DIR__ . '/_header.php';
         <div class="levels-step-grid">
           <?php foreach ($levels as $lvl): ?>
             <div class="level-card-step">
-              <span class="level-num">Livello <?=$lvl['level']?></span>
+              <span class="level-num">Livello <?=$lvl['level'] ?? ''?></span>
               <h3 class="level-name"><?=h($lvl['title'])?></h3>
-              <p class="level-desc"><?=h($lvl['meaning'])?></p>
-              <div class="level-req">Azione: <?=h($lvl['requirement'])?></div>
+              <p class="level-desc"><?=h($lvl['desc'] ?? '')?></p>
             </div>
           <?php endforeach; ?>
         </div>
@@ -349,8 +497,64 @@ include __DIR__ . '/_header.php';
   font-size: clamp(0.95rem, 2.5vw, 1.15rem);
   color: #94a3b8;
   max-width: 680px;
-  margin: 0 auto 24px;
+  margin: 0 auto 20px;
   line-height: 1.5;
+}
+
+/* ONE BUTTON HERO BOX */
+.one-button-hero-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: linear-gradient(135deg, rgba(20, 32, 54, 0.9), rgba(12, 18, 30, 0.95));
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+  border-radius: 18px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.one-button-tag {
+  font-size: 0.72rem;
+  color: #00f0ff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.one-button-intro h3 {
+  margin: 4px 0 2px;
+  font-size: 1.15rem;
+  color: #fff;
+}
+
+.one-button-intro p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.btn-one-button-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #00f0ff, #0077ff);
+  color: #070a12;
+  font-weight: 800;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  box-shadow: 0 4px 18px rgba(0, 240, 255, 0.4);
+  min-height: 44px;
+  transition: transform 0.2s ease;
+}
+
+.btn-one-button-primary:hover {
+  transform: translateY(-2px);
 }
 
 /* 11 FEELING CARDS GRID */
@@ -358,7 +562,7 @@ include __DIR__ . '/_header.php';
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
   gap: 10px;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .feeling-card {
@@ -399,6 +603,290 @@ include __DIR__ . '/_header.php';
   font-size: 0.78rem;
   font-weight: 600;
   line-height: 1.25;
+}
+
+/* DAILY & WEEKLY WIDGETS */
+.daily-weekly-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.dw-card {
+  background: rgba(18, 26, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.dw-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.dw-badge {
+  font-size: 0.7rem;
+  color: #ffd700;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.dw-badge.weekly {
+  color: #a78bfa;
+}
+
+.dw-dur, .dw-theme {
+  font-size: 0.72rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 8px;
+  border-radius: 6px;
+  color: #cbd5e1;
+}
+
+.dw-card h4 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  color: #fff;
+}
+
+.dw-card p {
+  font-size: 0.84rem;
+  color: #94a3b8;
+  line-height: 1.4;
+  margin: 0 0 12px;
+}
+
+.btn-dw-action {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #00f0ff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.weekly-today-bullet {
+  font-size: 0.8rem;
+  color: #a78bfa;
+  background: rgba(167, 139, 250, 0.1);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+}
+
+/* THE DEPENDEX COMPASS STYLES */
+.compass-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 14px;
+}
+
+@media (max-width: 768px) {
+  .compass-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.compass-wheel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.compass-dim-btn {
+  background: rgba(20, 28, 44, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px 6px;
+  color: #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  min-height: 72px;
+  transition: all 0.2s ease;
+}
+
+.compass-dim-btn:hover, .compass-dim-btn.active {
+  border-color: #00f0ff;
+  background: rgba(26, 38, 62, 0.95);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+}
+
+.dim-icon {
+  font-size: 1.4rem;
+}
+
+.dim-name {
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.compass-detail-card {
+  background: rgba(20, 28, 44, 0.9);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.compass-detail-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.compass-detail-icon {
+  font-size: 1.8rem;
+}
+
+.compass-detail-title {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.compass-modes-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.c-mode-box {
+  background: rgba(7, 10, 18, 0.6);
+  border-radius: 10px;
+  padding: 10px 12px;
+  border-left: 3px solid #64748b;
+}
+
+.c-mode-box.guarda { border-color: #60a5fa; }
+.c-mode-box.gioca { border-color: #ffd700; }
+.c-mode-box.agisci { border-color: #00ff77; }
+
+.c-mode-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 2px;
+  display: block;
+}
+
+.c-mode-box p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  line-height: 1.35;
+}
+
+/* IKIGAI CARDS GRID */
+.ikigai-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.ikigai-card-item {
+  background: rgba(20, 28, 44, 0.85);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.ikigai-card-item h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+}
+
+.ikigai-card-item p {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  line-height: 1.35;
+  margin: 0 0 10px;
+}
+
+.ikigai-textarea {
+  width: 100%;
+  padding: 8px 10px;
+  background: rgba(7, 10, 18, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.82rem;
+  box-sizing: border-box;
+}
+
+.ikigai-feedback-banner {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  color: #ffd700;
+  text-align: center;
+}
+
+/* SEVEN WORLDS GRID */
+.seven-worlds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.world-item-card {
+  background: rgba(20, 28, 44, 0.85);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.world-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.world-icon {
+  font-size: 1.4rem;
+}
+
+.world-num {
+  font-size: 0.68rem;
+  color: #94a3b8;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.world-title {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  color: #fff;
+}
+
+.world-focus {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  line-height: 1.35;
+  margin: 0 0 10px;
+}
+
+.world-practice-box {
+  font-size: 0.78rem;
+  color: #cbd5e1;
+  background: rgba(7, 10, 18, 0.6);
+  padding: 8px 10px;
+  border-radius: 8px;
+  line-height: 1.35;
 }
 
 /* FOCUS RECOMMENDATION PANEL */
@@ -629,7 +1117,7 @@ include __DIR__ . '/_header.php';
   background: linear-gradient(135deg, #00f0ff, #0099ff);
   color: #070a12;
   border: none;
-  font-weight: 700;
+  font-weight: 750;
   padding: 12px 24px;
   border-radius: 999px;
   font-size: 0.95rem;
@@ -725,7 +1213,7 @@ include __DIR__ . '/_header.php';
   background: #ffd700;
   color: #070a12;
   border: none;
-  font-weight: 700;
+  font-weight: 750;
   padding: 10px 20px;
   border-radius: 999px;
   font-size: 0.88rem;
@@ -903,13 +1391,7 @@ include __DIR__ . '/_header.php';
   font-size: 0.82rem;
   color: #94a3b8;
   line-height: 1.4;
-  margin: 0 0 10px;
-}
-
-.level-req {
-  font-size: 0.72rem;
-  color: #ffd700;
-  font-weight: 600;
+  margin: 0;
 }
 
 @media (max-width: 600px) {
@@ -920,6 +1402,26 @@ include __DIR__ . '/_header.php';
 </style>
 
 <script>
+// THE DEPENDEX COMPASS DATA & INTERACTION
+const compassData = <?=json_encode($compassDims, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP)?>;
+
+function selectCompassDim(dimId) {
+  const data = compassData[dimId];
+  if (!data) return;
+
+  // Toggle active class on buttons
+  document.querySelectorAll('.compass-dim-btn').forEach(btn => btn.classList.remove('active'));
+  const activeBtn = document.getElementById('btn-compass-' + dimId);
+  if (activeBtn) activeBtn.classList.add('active');
+
+  // Update detail card
+  document.getElementById('cDetailIcon').textContent = data.icon;
+  document.getElementById('cDetailName').textContent = data.name;
+  document.getElementById('cDetailGuarda').textContent = data.guarda;
+  document.getElementById('cDetailGioca').textContent = data.gioca;
+  document.getElementById('cDetailAgisci').textContent = data.agisci;
+}
+
 // BREATH SIMULATOR LOGIC (4s INHALE, 2s HOLD, 4s EXHALE, 2s PAUSE)
 let breathTimer = null;
 let breathTimeRemaining = 60;
@@ -1049,7 +1551,6 @@ function savePrivateReflection() {
 }
 
 function openQuestModal(questId) {
-  // Se esiste l'ancora nel tool o navigazione
   window.location.hash = 'quests-grid-tool';
 }
 </script>

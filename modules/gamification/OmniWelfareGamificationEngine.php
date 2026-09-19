@@ -317,4 +317,277 @@ class OmniWelfareGamificationEngine {
             'quests' => array_slice($recommended, 0, 3)
         ];
     }
+
+    /**
+     * THE DEPENDEX COMPASS: Le 9 Dimensioni della Vita attorno all'IO
+     * Centro: IO
+     * Periferia: Corpo, Mente, Relazioni, Famiglia, Lavoro, Risorse, Comunità, Significato, Territorio
+     */
+    public static function getCompassDimensions(): array {
+        return [
+            'corpo' => [
+                'id' => 'corpo',
+                'name' => 'Corpo',
+                'icon' => '🫁',
+                'color' => '#00f0ff',
+                'guarda' => 'Il corpo è la tua prima casa. Ascolta le sue tensioni senza giudizio.',
+                'gioca' => 'Fai un respiro diaframmatico profondo rilasciando le spalle per 60 secondi.',
+                'agisci' => 'Bevi un bicchiere d\'acqua con calma o fai una breve camminata a piedi scalzi.'
+            ],
+            'mente' => [
+                'id' => 'mente',
+                'name' => 'Mente',
+                'icon' => '🧠',
+                'color' => '#93c5fd',
+                'guarda' => 'I pensieri sono come nuvole nel cielo: passano, non definiscono chi sei.',
+                'gioca' => 'Scrivi su un foglio il pensiero più pesante che hai oggi e poi piegalo.',
+                'agisci' => 'Concediti 5 minuti di silenzio staccando tutte le notifiche digitali.'
+            ],
+            'relazioni' => [
+                'id' => 'relazioni',
+                'name' => 'Relazioni',
+                'icon' => '🤝',
+                'color' => '#f43f5e',
+                'guarda' => 'Siamo esseri relazionali. La solitudine si dissolve nell\'incontro autentico.',
+                'gioca' => 'Pensa a una persona che stimi e trova una cosa bella di lei.',
+                'agisci' => 'Scrivi o chiama quella persona per dirle semplicemente: "Ti ho pensato".'
+            ],
+            'famiglia' => [
+                'id' => 'famiglia',
+                'name' => 'Famiglia',
+                'icon' => '🏠',
+                'color' => '#fbbf24',
+                'guarda' => 'La famiglia è un sistema vivo. Quando uno si muove, tutto il sistema si adatta.',
+                'gioca' => 'Oggi ascolta un familiare per 3 minuti consecutivi senza interrompere o dare consigli.',
+                'agisci' => 'Condividi un momento sereno a tavola senza schermi accesi.'
+            ],
+            'lavoro' => [
+                'id' => 'lavoro',
+                'name' => 'Lavoro & Vocazione',
+                'icon' => '💼',
+                'color' => '#a78bfa',
+                'guarda' => 'Il lavoro acquista valore quando è utile alla comunità e rispettoso della persona.',
+                'gioca' => 'Identifica un compito lavorativo fatto bene oggi e riconoscitene il merito.',
+                'agisci' => 'Ringrazia un collega o collaboratore per il suo supporto quotidiano.'
+            ],
+            'risorse' => [
+                'id' => 'risorse',
+                'name' => 'Risorse & Sostenibilità',
+                'icon' => '⚖️',
+                'color' => '#34d399',
+                'guarda' => 'Le risorse materiali sono strumenti di serenità e servizio, non fini a se stesse.',
+                'gioca' => 'Fai una lista delle 3 cose materiali più semplici che oggi ti danno comfort.',
+                'agisci' => 'Evita un acquisto impulsivo e destina quell\'energia a una passeggiata.'
+            ],
+            'comunita' => [
+                'id' => 'comunita',
+                'name' => 'Comunità & Club',
+                'icon' => '👥',
+                'color' => '#38bdf8',
+                'guarda' => 'Nel cerchio del Club nessuno è solo, nessuno giudica e ogni storia ha dignità.',
+                'gioca' => 'Cerca dove si trova il Club Alcologico Territoriale più vicino a te sulla mappa.',
+                'agisci' => 'Partecipa all\'incontro settimanale di 90 minuti del Club CAT.'
+            ],
+            'significato' => [
+                'id' => 'significato',
+                'name' => 'Significato & Valori',
+                'icon' => '✨',
+                'color' => '#ffd700',
+                'guarda' => 'Il significato della vita non si trova pronto: si costruisce giorno dopo giorno.',
+                'gioca' => 'Qual è il valore che vorresti guidasse la tua giornata di oggi?',
+                'agisci' => 'Fai una piccola azione concreta coerente con quel valore.'
+            ],
+            'territorio' => [
+                'id' => 'territorio',
+                'name' => 'Territorio & Natura',
+                'icon' => '🌿',
+                'color' => '#4ade80',
+                'guarda' => 'La terra del Delta del Po ci ricorda che il fiume trova sempre la strada per il mare.',
+                'gioca' => 'Guarda il cielo o gli alberi per 2 minuti osservando i dettagli della luce.',
+                'agisci' => 'Fai una camminata all\'aria aperta respirando a pieni polmoni.'
+            ]
+        ];
+    }
+
+    /**
+     * I SETTE MONDI DEL WELFARE (Framework simbolico DEPENDEX a 7 dimensioni)
+     */
+    public static function getSevenWorlds(): array {
+        return [
+            1 => [
+                'id' => 'radicamento',
+                'name' => 'Mondo 1 — Radicamento',
+                'focus' => 'Casa, sicurezza materiale, stabilità, corpo e territorio.',
+                'color' => '#ef4444',
+                'icon' => '🌱',
+                'practice' => 'Esercizio "Sei Qui": tocca il terreno e stabilisci il tuo appoggio sicuro.'
+            ],
+            2 => [
+                'id' => 'vitalita',
+                'name' => 'Mondo 2 — Vitalità',
+                'focus' => 'Movimento fluido, piacere sano della vita, creatività corporea.',
+                'color' => '#f97316',
+                'icon' => '🔥',
+                'practice' => 'Movimento libero per 2 minuti lasciando sciogliere le rigidità del bacino e delle braccia.'
+            ],
+            3 => [
+                'id' => 'autonomia',
+                'name' => 'Mondo 3 — Autonomia',
+                'focus' => 'Scelta consapevole, responsabilità personale, confini sani.',
+                'color' => '#eab308',
+                'icon' => '⚡',
+                'practice' => 'Dì un "no" gentile a una richiesta non urgente per proteggere la tua quiete.'
+            ],
+            4 => [
+                'id' => 'relazione',
+                'name' => 'Mondo 4 — Relazione',
+                'focus' => 'Famiglia, amicizia sincera, incontro tra pari nel cerchio di comunità.',
+                'color' => '#22c55e',
+                'icon' => '❤️',
+                'practice' => 'Ascolto empatico senza giudizio: ascolta qualcuno senza dare pareri non richiesti.'
+            ],
+            5 => [
+                'id' => 'espressione',
+                'name' => 'Mondo 5 — Espressione',
+                'focus' => 'Parola autentica, verità interiore, ascolto e creatività comunicativa.',
+                'color' => '#06b6d4',
+                'icon' => '🗣️',
+                'practice' => 'Esprimi chiaramente come ti senti con una persona di cui ti fidi.'
+            ],
+            6 => [
+                'id' => 'consapevolezza',
+                'name' => 'Mondo 6 — Consapevolezza',
+                'focus' => 'Osservazione limpida, studio, attenzione aperta, senso di coerenza.',
+                'color' => '#6366f1',
+                'icon' => '👁️',
+                'practice' => '2 minuti di silenzio: osserva i suoni della stanza come spettatore sereno.'
+            ],
+            7 => [
+                'id' => 'significato',
+                'name' => 'Mondo 7 — Significato',
+                'focus' => 'Valori guida, trascendenza, servizio al bene comune e pace interiore.',
+                'color' => '#a855f7',
+                'icon' => '✨',
+                'practice' => 'Fai una piccola azione di volontariato o solidarietà senza aspettarti nulla in cambio.'
+            ]
+        ];
+    }
+
+    /**
+     * DAILY DEPENDEX: "Una cosa al giorno"
+     * Micro-esperienza del giorno dinamica (mai obbligatoria)
+     */
+    public static function getDailyExperience(): array {
+        $todaySeed = (int)date('z'); // Giorno dell'anno da 0 a 365
+        $pool = [
+            [
+                'title' => 'Un minuto di respiro consapevole',
+                'category' => 'Respiro',
+                'duration' => '60 secondi',
+                'prompt' => 'Oggi concediti un minuto: 4 secondi inspira, 2 secondi pausa, 4 secondi espira.',
+                'action_label' => 'Avvia Respiro',
+                'target_id' => 'breath-tool'
+            ],
+            [
+                'title' => 'Una parola a una persona cara',
+                'category' => 'Relazione',
+                'duration' => '2 minuti',
+                'prompt' => 'Scrivi un messaggio sincero a qualcuno che non senti da tempo: "Ti ho pensato oggi".',
+                'action_label' => 'Scrivi Ora',
+                'target_id' => 'gratitude-tool'
+            ],
+            [
+                'title' => 'Dieci minuti di cielo e passi',
+                'category' => 'Natura & Territorio',
+                'duration' => '10 minuti',
+                'prompt' => 'Esci all\'aria aperta senza cuffie: nota tre colori naturali che normalmente ignori.',
+                'action_label' => 'Esplora Fuori',
+                'target_id' => 'quests-grid-tool'
+            ],
+            [
+                'title' => 'Una piccola gratitudine privata',
+                'category' => 'Mindfulness',
+                'duration' => '90 secondi',
+                'prompt' => 'Scrivi sul tuo dispositivo una cosa semplice accaduta oggi che ti ha fatto piacere.',
+                'action_label' => 'Scrivi Carta',
+                'target_id' => 'gratitude-tool'
+            ],
+            [
+                'title' => 'Ascolto del cerchio tra pari',
+                'category' => 'Comunità Hudolin',
+                'duration' => '90 minuti',
+                'prompt' => 'Trova il Club più vicino sulla mappa: nel cerchio non ci sono etichette, solo persone.',
+                'action_label' => 'Trova Club',
+                'target_id' => 'world-club-explorer.php'
+            ]
+        ];
+        $selected = $pool[$todaySeed % count($pool)];
+        $selected['date_formatted'] = date('d/m/Y');
+        return $selected;
+    }
+
+    /**
+     * WEEKLY DEPENDEX: "Una settimana, una dimensione"
+     */
+    public static function getWeeklyTheme(): array {
+        $weekNumber = (int)date('W');
+        $dimensions = ['Relazione & Ascolto', 'Respiro & Calma Somatica', 'Natura & Territorio', 'Comunità & Famiglia', 'Chiarezza & Significato'];
+        $currentTheme = $dimensions[$weekNumber % count($dimensions)];
+
+        return [
+            'week_number' => $weekNumber,
+            'theme' => $currentTheme,
+            'days' => [
+                1 => 'Lunedì: Osserva come ti senti all\'inizio della settimana.',
+                2 => 'Martedì: Ascolta una persona senza interrompere.',
+                3 => 'Mercoledì: Fai una pausa di 60 secondi di respiro diaframmatico.',
+                4 => 'Giovedì: Ringrazia per una cosa semplice della giornata.',
+                5 => 'Venerdì: Partecipa a un momento comunitario reale.',
+                6 => 'Sabato: Cammina 10 minuti all\'aperto senza notifiche.',
+                7 => 'Domenica: Rifletti con gratitudine sulla settimana trascorsa.'
+            ]
+        ];
+    }
+
+    /**
+     * ONE BUTTON EXPERIENCE: "Inizia Ora"
+     * Per chi non sa da dove cominciare: un'azione a sorpresa immediata
+     */
+    public static function getOneButtonExperience(): array {
+        return [
+            'title' => 'Inizia Ora · Ferma Tutto per 60 Secondi',
+            'prompt' => 'Non devi capire nulla del sito. Fai un respiro profondo, rilassa la fronte e le spalle.',
+            'action_url' => 'playground.php#breath-tool',
+            'instruction' => 'Segui il cerchio visuale per un solo minuto. Poi decidi liberamente se proseguire.'
+        ];
+    }
+
+    /**
+     * IKIGAI A 4 CARTE: Intersezioni della Vocazione
+     */
+    public static function getIkigaiCards(): array {
+        return [
+            'love' => [
+                'title' => 'Ciò che amo',
+                'desc' => 'Le attività che faresti anche senza ricompensa, che ti fanno dimenticare il tempo.',
+                'color' => '#f43f5e'
+            ],
+            'good_at' => [
+                'title' => 'Ciò in cui riesco',
+                'desc' => 'I tuoi talenti naturali, le abilità acquisite e ciò che gli altri ti riconoscono.',
+                'color' => '#3b82f6'
+            ],
+            'world_needs' => [
+                'title' => 'Ciò di cui il mondo ha bisogno',
+                'desc' => 'I bisogni reali della tua comunità, della famiglia e delle persone attorno a te.',
+                'color' => '#10b981'
+            ],
+            'paid_for' => [
+                'title' => 'Ciò che può dare valore',
+                'desc' => 'Le competenze attraverso cui puoi sostenerti dignitosamente e creare ricchezza etica.',
+                'color' => '#f59e0b'
+            ]
+        ];
+    }
 }
+

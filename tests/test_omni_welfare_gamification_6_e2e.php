@@ -158,6 +158,33 @@ assert_test("AGENTS.md specifies Hard Constraint 8 (Omni-Welfare Gamification En
 $masterPromptContent = file_get_contents($root . '/MASTER_EMAIL_OS_PROMPT.md');
 assert_test("MASTER_EMAIL_OS_PROMPT.md integrates OMNI-WELFARE GAMIFICATION ENGINE 6.0", strpos($masterPromptContent, 'OMNI-WELFARE GAMIFICATION ENGINE 6.0') !== false);
 
+// 9. Verifica The Dependex Compass, Sette Mondi, Daily/Weekly & Ikigai
+echo "\n[TEST SET 9: Compass, Seven Worlds, Daily/Weekly & Ikigai]\n";
+$compass = $engine->getCompassDimensions();
+assert_test("The Dependex Compass has exactly 9 dimensions around IO", count($compass) === 9);
+assert_test("Compass contains 'corpo' with guarda/gioca/agisci", isset($compass['corpo']['guarda'], $compass['corpo']['gioca'], $compass['corpo']['agisci']));
+assert_test("Compass contains 'territorio' (Delta del Po / Natura)", isset($compass['territorio']));
+
+$worlds = $engine->getSevenWorlds();
+assert_test("Seven Worlds count is exactly 7", count($worlds) === 7);
+assert_test("World 1 is Radicamento", $worlds[1]['name'] === 'Mondo 1 — Radicamento');
+assert_test("World 7 is Significato", $worlds[7]['name'] === 'Mondo 7 — Significato');
+
+$daily = $engine->getDailyExperience();
+assert_test("Daily Dependex returns valid experience", !empty($daily['title']) && !empty($daily['duration']));
+
+$weekly = $engine->getWeeklyTheme();
+assert_test("Weekly Dependex returns theme and 7 days", !empty($weekly['theme']) && count($weekly['days']) === 7);
+
+$oneBtn = $engine->getOneButtonExperience();
+assert_test("One Button Experience provides immediate action", !empty($oneBtn['title']) && !empty($oneBtn['action_url']));
+
+$ikigai = $engine->getIkigaiCards();
+assert_test("Ikigai cards count is exactly 4", count($ikigai) === 4);
+
+$docContent = file_get_contents($docGamification);
+assert_test("docs/OMNI_WELFARE_GAMIFICATION_6.md contains BEWAY vs DEPENDEX Matrix", strpos($docContent, 'MATRICE BEWAY.LIFE VS DEPENDEX') !== false);
+
 echo "\n=== RIEPILOGO TEST OMNI-WELFARE GAMIFICATION ENGINE 6.0 ===\n";
 echo "Totale Asserzioni: {$testCount}\n";
 echo "Superate: {$passedCount}\n";

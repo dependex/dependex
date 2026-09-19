@@ -274,7 +274,7 @@ try {
 
       <div style="border-left: 3px solid var(--neon-violet); padding-left: 14px;">
         <h4 style="color: #e879f9; font-size: 1.05rem; font-weight: 750; margin-bottom: 6px;">Posso contattare qualcuno prima di andare?</h4>
-        <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Certamente. Puoi scrivere su WhatsApp al 347 884 4271 per parlare con Grazia o chiamare il Numero Verde AICAT 800 974250.</p>
+        <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Certamente. Puoi contattare la segreteria di accoglienza dalla pagina "Parla con Noi", scrivere via email a info@dependex.support o chiamare il Numero Verde AICAT 800 974250.</p>
       </div>
     </div>
   </div>
@@ -297,11 +297,9 @@ try {
   </p>
 
   <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-    <a href="https://wa.me/393478844271?text=<?=urlencode('Buongiorno Grazia, vorrei informazioni riservate sui Club e sul Metodo.')?>" 
-       target="_blank" rel="noopener" 
-       class="btn-community-wa">
+    <a href="parla-con-noi.php" class="btn-rainbow-neon" style="box-shadow: var(--glow-cyan);">
       <?=dx_icon('message-circle', '', 20)?>
-      <span>WhatsApp Diretto: Grazia Nicosia (347 884 4271)</span>
+      <span style="margin-left: 8px;">Scrivi alla Segreteria di Accoglienza</span>
     </a>
 
     <a href="tel:800974250" class="btn-rainbow-neon" style="box-shadow: var(--glow-gold);">
@@ -636,9 +634,10 @@ try {
     <div class="card card-neon-cyan p-4" style="display: flex; flex-direction: column; justify-content: space-between;">
       <div>
         <div style="color: var(--neon-cyan); margin-bottom: 8px;"><?=dx_icon('compass', 'text-neon-cyan', 32)?></div>
+        <span class="badge mb-2" style="background: rgba(0,212,255,0.15); color: var(--neon-cyan); font-size: 0.72rem; font-weight: 800; border: 1px solid rgba(0,212,255,0.3); padding: 2px 8px; border-radius: 6px; display: inline-block;">BEWAY.LIFE x DEPENDEX</span>
         <h3 style="color: #ffffff; font-size: 1.15rem; font-weight: 750; margin: 0 0 6px;">Viaggi Esperienziali</h3>
         <p style="color: #cbd5e1; font-size: 0.88rem; line-height: 1.55; margin-bottom: 16px;">
-          Percorsi residenziali di rigenerazione emotiva e relazione d'aiuto per famiglie e conduttori in formula analcolica.
+          Percorsi residenziali e la <a href="crociera-benessere-masterclass.php" style="color: var(--neon-cyan); text-decoration: underline;">Crociera Benessere Masterclass</a> nel Mediterraneo per famiglie e conduttori in formula sobria.
         </p>
       </div>
       <a href="viaggi-esperienziali.php" class="btn-rainbow-outline small" style="border-color: var(--neon-cyan); color: #fff;">Scheda Informativa &rarr;</a>

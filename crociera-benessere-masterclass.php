@@ -315,8 +315,8 @@ $itinerary = [
             <a href="https://mircopregnolato.it/ciurma.html" target="_blank" rel="noopener" class="btn primary" style="width: 100%; border-radius: 12px; font-weight: 800; font-size: 0.92rem; text-decoration: none; text-align: center;">
               <?=dx_icon('external-link', '', 14)?> Richiedi Info & Iscrizione su mircopregnolato.it
             </a>
-            <a href="https://wa.me/393478844271?text=<?=urlencode('Buongiorno, vorrei informazioni sulle disponibilità cabine per il percorso CIURMA.')?>" target="_blank" rel="noopener" class="btn" style="width: 100%; border-radius: 12px; font-weight: 700; font-size: 0.86rem; border: 1px solid rgba(255,255,255,0.2); color: #fff; text-decoration: none; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
-              <?=dx_icon('whatsapp', '', 14)?> Concierge Agenzia Viaggi (+39 347 884 4271)
+            <a href="mailto:info@dependex.support?subject=Informazioni%20Crociera%20CIURMA" class="btn" style="width: 100%; border-radius: 12px; font-weight: 700; font-size: 0.86rem; border: 1px solid rgba(255,255,255,0.2); color: #fff; text-decoration: none; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+              <?=dx_icon('mail', '', 14)?> Contatta il Servizio Assistenza (info@dependex.support)
             </a>
           </div>
 
@@ -391,10 +391,10 @@ $itinerary = [
       Hai domande specifiche sulla cabina, sulla rotta o sull'accompagnamento?
     </h3>
     <p style="color: #cbd5e1; max-width: 660px; margin: 0 auto 1.5rem; font-size: 1rem; line-height: 1.6;">
-      Contatta direttamente il team di bordo <strong>BEWAY.LIFE</strong> tramite WhatsApp per una chiamata conoscitiva riservata senza alcun impegno.
+      Contatta direttamente la nostra segreteria via email o tramite il form dedicato per una risposta riservata senza alcun impegno.
     </p>
-    <a href="https://wa.me/393478844271?text=<?=urlencode('Buongiorno, vorrei informazioni personalizzate sulla Crociera della Rinascita BEWAY.LIFE.')?>" target="_blank" rel="noopener" class="btn" style="background: #25D366; color: #000; font-weight: 800; padding: 14px 32px; border-radius: 14px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
-      <?=dx_icon('whatsapp', '', 20)?> Chatta con il Concierge (+39 347 884 4271)
+    <a href="mailto:info@dependex.support?subject=Informazioni%20Crociera%20della%20Rinascita" class="btn primary glow" style="font-weight: 800; padding: 14px 32px; border-radius: 14px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+      <?=dx_icon('mail', '', 20)?> Scrivi al Concierge (info@dependex.support)
     </a>
   </section>
 

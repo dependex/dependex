@@ -25,7 +25,7 @@ $pageSchemaJson = [
             "name" => "Come posso contattare un facilitatore in totale riservatezza?",
             "acceptedAnswer" => [
                 "@type" => "Answer",
-                "text" => "È possibile contattare la segreteria di accoglienza via WhatsApp al 347 884 4271 o via email all'indirizzo info@dependex.support."
+                "text" => "È possibile contattare la segreteria di accoglienza tramite la pagina 'Parla con Noi', via email all'indirizzo info@dependex.support o chiamando il Numero Verde AICAT 800 974250."
             ]
         ]
     ]

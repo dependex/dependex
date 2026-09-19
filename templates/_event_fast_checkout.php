@@ -98,8 +98,8 @@ $paypalClientId = (string)CommerceEnv::get('PAYPAL_CLIENT_ID', '');
         <a href="evento-ottobre-taglio-di-po.php" class="btn-rainbow-outline" style="font-size: 0.82rem; padding: 6px 14px; border-color: rgba(212,175,55,0.5);">
           <?=dx_icon('info', '', 14)?> Dettagli Programma Completo
         </a>
-        <a href="https://wa.me/393478844271?text=Ciao%20Grazia,%20sono%20[nome],%20mi%20interessa%20partecipare%20all'evento%20A%20Scuola%20di%20Comunicazione%20Resilienza%20a%20Taglio%20di%20Po." target="_blank" rel="noopener" class="btn-rainbow-outline" style="border-color: #25d366; color: #25d366; font-size: 0.82rem; padding: 6px 14px;">
-          <?=dx_icon('message-circle', '', 14)?> Contatta Grazia (WhatsApp)
+        <a href="mailto:info@dependex.support?subject=Richiesta%20informazioni%20evento%20Taglio%20di%20Po" class="btn-rainbow-outline" style="border-color: #00d4ff; color: #00d4ff; font-size: 0.82rem; padding: 6px 14px;">
+          <?=dx_icon('mail', '', 14)?> Info Segreteria (Email)
         </a>
         <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="btn-rainbow-outline" style="border-color: #25d366; color: #25d366; font-size: 0.82rem; padding: 6px 14px;">
           <?=dx_icon('users', '', 14)?> Gruppo WhatsApp Evento
@@ -274,8 +274,7 @@ async function handleHomeFastBooking(e) {
       alertBox.style.background = 'rgba(16, 185, 129, 0.2)';
       alertBox.style.border = '1px solid #10b981';
       alertBox.style.color = '#ffffff';
-      alertBox.innerHTML = '<b>Iscrizione Registrata!</b> Codice: <strong style="color:#d4af37;">' + homeCurrentBookingSic + '</strong>. Quota di 10€ versabile all\'accoglienza. ' +
-        (data.whatsapp_link ? '<br><a href="' + data.whatsapp_link + '" target="_blank" rel="noopener" style="color:#25d366; font-weight:bold; display:inline-block; margin-top:6px;">Avvisa Grazia su WhatsApp →</a>' : '');
+      alertBox.innerHTML = '<b>Iscrizione Registrata!</b> Codice: <strong style="color:#d4af37;">' + homeCurrentBookingSic + '</strong>. Quota di 10€ versabile all\'accoglienza.';
       form.reset();
 
     } else {

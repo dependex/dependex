@@ -71,7 +71,7 @@ La barra di navigazione globale (desktop e mobile drawer) adotta 6 pilastri fond
 
 7. **CTA DIRETTA: [ PARLA CON NOI ] (`parla-con-noi.php`):**
    - Non una fredda pagina "Contatti" aziendale, ma una porta d'ascolto:
-     - WhatsApp immediato con facilitatrice di accoglienza (Grazia Nicosia · 347 884 4271)
+     - Segreteria di accoglienza e ascolto orientativo (Rete dei Club)
      - Email di ascolto e orientamento (`info@dependex.support`)
      - Modulo riservato per essere ricontattati dal Club più vicino
      - Numeri di emergenza medica (112) e Telefono Verde Alcol ISS (800 632 000).

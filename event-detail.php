@@ -571,9 +571,9 @@ require '_header.php';
             <span><?=!$isFull ? "COMPILA ISCRIZIONE ONLINE (10€)" : "ISCRIVITI IN LISTA D'ATTESA"?></span>
           </a>
 
-          <a href="https://wa.me/393478844271?text=Ciao%20Grazia,%20sono%20[nome],%20mi%20interessa%20partecipare%20all'evento%20A%20Scuola%20di%20Comunicazione%20Resilienza%20a%20Taglio%20di%20Po." target="_blank" rel="noopener" class="m-btn m-btn-whatsapp">
-            <?=dx_icon('message-circle', '', 18)?>
-            <span>Scrivi a Grazia su WhatsApp (+39 347 884 4271)</span>
+          <a href="mailto:info@dependex.support?subject=Richiesta%20informazioni%20evento%20Taglio%20di%20Po" class="m-btn m-btn-outline" style="min-height: 48px;">
+            <?=dx_icon('mail', 'text-neon-cyan', 18)?>
+            <span>Richiedi Informazioni (info@dependex.support)</span>
           </a>
 
           <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="background: rgba(37, 211, 102, 0.15); border: 1px solid #25D366; color: #25D366; font-weight: 800; min-height: 48px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">
@@ -1022,7 +1022,7 @@ require '_header.php';
     <?php require_once __DIR__ . '/templates/_sponsor_grid.php'; ?>
     <div class="text-center" style="font-size: 0.82rem; color: #94a3b8; margin-top: 14px;">
       <p style="margin: 0 0 6px;">Organizzazione: <b style="color: #ffffff;">ACAT Basso Polesine O.D.V.</b></p>
-      <p style="margin: 0;">Referente Iscrizioni: <b style="color: #ffffff;">Grazia Nicosia</b> · Tel. WhatsApp <strong style="color: #25D366;">347 884 4271</strong></p>
+      <p style="margin: 0;">Referente Iscrizioni: <b style="color: #ffffff;">Segreteria ACAT Basso Polesine</b> · Email <strong style="color: #00d4ff;">info@dependex.support</strong></p>
     </div>
   </div>
 
@@ -1034,8 +1034,8 @@ require '_header.php';
     <a href="#prenotazione" class="m-btn m-btn-primary" style="flex: 1; min-height: 48px; font-size: 0.92rem; padding: 0 12px;">
       <?=dx_icon('check-circle', '', 16)?> Prenota Quota 10€
     </a>
-    <a href="https://wa.me/393478844271?text=Ciao%20Grazia,%20sono%20[nome],%20mi%20interessa%20partecipare%20all'evento%20A%20Scuola%20di%20Comunicazione%20Resilienza%20a%20Taglio%20di%20Po." target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="width: 48px; min-height: 48px; padding: 0; flex-shrink: 0;" title="Scrivi a Grazia su WhatsApp">
-      <?=dx_icon('message-circle', '', 20)?>
+    <a href="mailto:info@dependex.support?subject=Iscrizione%20Evento%20Taglio%20di%20Po" class="m-btn m-btn-outline" style="width: 48px; min-height: 48px; padding: 0; flex-shrink: 0;" title="Contatta la Segreteria via Email">
+      <?=dx_icon('mail', '', 20)?>
     </a>
     <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="width: 48px; min-height: 48px; padding: 0; flex-shrink: 0; background: rgba(37,211,102,0.18); border: 1px solid #25D366; color: #25D366;" title="Gruppo WhatsApp Evento">
       <?=dx_icon('users', '', 18)?>
@@ -1119,10 +1119,7 @@ async function handleMobileBooking(e) {
                    "Iscrizione Inserita in Lista d'Attesa (Posizione #" + (data.waitlist_position || 1) + ")</div>";
         html += '<p style="margin: 0 0 8px;">Codice Prenotazione: <strong style="color: #d4af37;">' + currentBookingSic + '</strong></p>';
         html += '<p style="margin: 0 0 10px; font-size: 0.84rem;">' + data.message + '</p>';
-        if (data.whatsapp_link) {
-          html += '<a href="' + data.whatsapp_link + '" target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="min-height: 44px; font-size: 0.88rem; margin-bottom: 8px;">' +
-                  '<?=dx_icon("message-circle", "", 16)?> Apri WhatsApp e Avvisa Grazia</a>';
-        }
+
         html += '<a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="min-height: 44px; font-size: 0.88rem; margin-bottom: 8px; background: rgba(37,211,102,0.18); border: 1px solid #25d366; color: #25d366; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">' +
                 '<?=dx_icon("users", "", 16)?> Entra nel Gruppo WhatsApp Ufficiale</a>';
         alertBox.innerHTML = html;
@@ -1160,10 +1157,7 @@ async function handleMobileBooking(e) {
       html += '<p style="margin: 0 0 8px;">Codice Prenotazione: <strong style="color: #d4af37;">' + currentBookingSic + '</strong></p>';
       html += '<p style="margin: 0 0 10px; font-size: 0.84rem;">La tua iscrizione è stata memorizzata nel database. Verserai la quota di 10,00 € (pranzo compreso) direttamente all\'accoglienza venerdì 9 ottobre.</p>';
       
-      if (data.whatsapp_link) {
-        html += '<a href="' + data.whatsapp_link + '" target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="min-height: 44px; font-size: 0.88rem; margin-bottom: 8px;">' +
-                '<?=dx_icon("message-circle", "", 16)?> Apri WhatsApp e Avvisa Grazia</a>';
-      }
+
 
       html += '<a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="min-height: 44px; font-size: 0.88rem; margin-bottom: 8px; background: rgba(37,211,102,0.18); border: 1px solid #25d366; color: #25d366; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">' +
               '<?=dx_icon("users", "", 16)?> Entra nel Gruppo WhatsApp Ufficiale</a>';
@@ -1240,10 +1234,7 @@ function renderPayPalButtons(bookingSic) {
         html += '<p style="color: #ffffff; margin: 0 0 8px;">Codice Iscrizione: <strong style="color: #d4af37;">' + bookingSic + '</strong></p>';
         html += '<p style="color: #cbd5e1; font-size: 0.84rem; margin: 0 0 14px;">Abbiamo inviato la ricevuta e i dettagli al tuo indirizzo email. Il tuo posto a Taglio di Po è confermato al 100%.</p>';
         
-        if (captureData.whatsapp_link) {
-          html += '<a href="' + captureData.whatsapp_link + '" target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="min-height: 44px; font-size: 0.88rem; margin-bottom: 8px;">' +
-                  '<?=dx_icon("message-circle", "", 16)?> Apri WhatsApp e Avvisa Grazia</a>';
-        }
+
         
         html += '<a href="event-ics.php?event=<?=urlencode($sic)?>" download class="m-btn m-btn-outline" style="min-height: 42px; font-size: 0.84rem;">' +
                 '<?=dx_icon("calendar", "", 14)?> Salva Promemoria su Calendario (.ics)</a>';
@@ -1289,10 +1280,7 @@ async function submitUsdtTx() {
       html += '<p style="color: #ffffff; margin: 0 0 8px;">Codice Iscrizione: <strong style="color: #d4af37;">' + currentBookingSic + '</strong></p>';
       html += '<p style="color: #cbd5e1; font-size: 0.84rem; margin: 0 0 14px;">La transazione è stata salvata nel database ed è in fase di verifica on-chain. Il tuo posto in aula è riservato.</p>';
 
-      if (data.whatsapp_link) {
-        html += '<a href="' + data.whatsapp_link + '" target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="min-height: 44px; font-size: 0.88rem; margin-bottom: 8px;">' +
-                '<?=dx_icon("message-circle", "", 16)?> Invia TX Hash a Grazia su WhatsApp</a>';
-      }
+
 
       html += '<a href="event-ics.php?event=<?=urlencode($sic)?>" download class="m-btn m-btn-outline" style="min-height: 42px; font-size: 0.84rem;">' +
               '<?=dx_icon("calendar", "", 14)?> Salva Promemoria su Calendario (.ics)</a>';

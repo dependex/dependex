@@ -101,7 +101,7 @@ assertCheck("Contiene 'La Grande Crociera della Rinascita'", str_contains($trave
 assertCheck("Contiene 'Ritiro Forestale & Biohacking Dolomiti'", str_contains($travelContent, 'Ritiro Forestale & Biohacking Dolomiti'));
 assertCheck("Contiene 'Cammino del Delta del Po'", str_contains($travelContent, 'Cammino del Delta del Po'));
 assertCheck("Contiene link alla monografia della crociera", str_contains($travelContent, 'crociera-benessere-masterclass.php'));
-assertCheck("Contiene contatto concierge WhatsApp (+39 347 884 4271)", str_contains($travelContent, '3478844271'));
+assertCheck("Contiene contatto concierge BeWay (info@beway.life)", str_contains($travelContent, 'info@beway.life'));
 
 // 5. VERIFICA PAGINA MONOGRAFICA CROCIERA A TEMA
 echo "\n5. Verifica Monografia crociera-benessere-masterclass.php:\n";

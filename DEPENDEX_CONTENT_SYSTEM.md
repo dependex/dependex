@@ -73,7 +73,7 @@ Il tono di voce di DEPENDEX deve essere:
 5. **Chi troverò lì dentro?**  
    *Troverai altre persone e famiglie del tuo territorio, insieme a un Servitore-Insegnante di Club formato secondo il Metodo Hudolin.*
 6. **Posso parlare con qualcuno prima di presentarmi?**  
-   *Certamente. Clicca su "Parla con noi" o scrivici su WhatsApp al 347 884 4271.*
+   *Certamente. Clicca su "Parla con noi" o scrivici tramite la Segreteria di Accoglienza.*
 
 ### E. Sezione "Parla con Noi"
 - **Titolo:**  
@@ -81,7 +81,7 @@ Il tono di voce di DEPENDEX deve essere:
 - **Testo:**  
   `Hai una domanda? Non sai quale Club contattare? Vuoi parlare prima con una persona che conosce la rete?`
 - **Canali:**
-  - **WhatsApp Diretto:** Dialoga con Grazia Nicosia (Accoglienza e Rete dei Club)
+  - **Sportello Riservato:** Scrivi alla Segreteria di Accoglienza (Rete dei Club)
   - **Email Riservata:** `info@dependex.support`
   - **Numero Verde Nazionale AICAT:** `800 974250` (Gratuito da tutta Italia)
   - **Assistenza Medica Urgente:** Se sei in pericolo clinico o astinenza acuta, contatta immediatamente il 112.

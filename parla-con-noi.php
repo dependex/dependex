@@ -21,8 +21,8 @@ $pageSchemaJson = [
     "contactPoint" => [
         [
             "@type" => "ContactPoint",
-            "telephone" => "+39-347-884-4271",
-            "contactType" => "Accoglienza e Rete dei Club",
+            "telephone" => "+39-800-974-250",
+            "contactType" => "Numero Verde Nazionale AICAT",
             "areaServed" => "IT",
             "availableLanguage" => ["Italian"]
         ],
@@ -87,17 +87,17 @@ require '_header.php';
 
     <p class="human-hero-desc mx-auto">
       Hai una domanda? Non sai a quale Club rivolgerti? Vuoi capire come si svolge un incontro prima di presentarti? 
-      Puoi iniziare con un messaggio su WhatsApp, una telefonata o una semplice email.
+      Puoi iniziare con una telefonata al Numero Verde, una semplice email o inviando una richiesta tramite il modulo qui sotto.
     </p>
 
     <!-- CANALI RAPIDI IN EVIDENZA -->
     <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
-      <a href="https://wa.me/393478844271?text=<?=urlencode('Buongiorno, vorrei informazioni sui Club e su come partecipare.')?>" 
-         target="_blank" rel="noopener" 
+      <a href="#modulo-orientamento" 
          class="btn-community-wa" 
-         title="Scrivi a Grazia su WhatsApp">
-        <?=dx_icon('message-circle', '', 20)?>
-        <span>Scrivi su WhatsApp (347 884 4271)</span>
+         style="background: rgba(0, 240, 255, 0.15); border: 1px solid var(--neon-cyan); color: #00f0ff;"
+         title="Scrivi direttamente dal sito">
+        <?=dx_icon('send', '', 18)?>
+        <span>Modulo Riservato Online</span>
       </a>
 
       <a href="tel:800974250" class="btn-rainbow-neon" style="box-shadow: var(--glow-gold);" title="Chiama il numero verde AICAT">
@@ -126,7 +126,7 @@ require '_header.php';
           Dall'altra parte non c'è un call center commerciale né una voce automatica. Troverai persone che conoscono da vicino l'esperienza dei Club Alcologici Territoriali e delle famiglie:
         </p>
         <ul style="color: var(--dx-text-subtle); font-size: 0.92rem; line-height: 1.6; padding-left: 1.2rem; margin: 0;">
-          <li style="margin-bottom: 8px;"><b>Grazia Nicosia:</b> referente per l'accoglienza e l'orientamento di famiglie e persone in cammino.</li>
+          <li style="margin-bottom: 8px;"><b>Segreteria di Accoglienza:</b> referente per l'orientamento iniziale e l'accoglienza empatica di famiglie e persone in cammino.</li>
           <li style="margin-bottom: 8px;"><b>Servitori-Insegnanti del territorio:</b> volontari formati secondo il Metodo Hudolin disponibili a indicarti il Club più vicino a casa tua.</li>
           <li><b>Riservatezza totale:</b> non ti verrà mai chiesto di rivelare dati che non desideri condividere.</li>
         </ul>

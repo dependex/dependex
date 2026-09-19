@@ -82,7 +82,7 @@
 
 ### D. Box e Pulsante "Parla con Noi" (`.talk-gateway-box`)
 - Presente in ogni pagina chiave.
-- Canale WhatsApp diretto (Grazia Nicosia, Segreteria di accoglienza).
+- Canale riservato di contatto (Segreteria di accoglienza e ascolto).
 - Canale Email istituzionale (`info@dependex.support`).
 - Numero verde AICAT gratuito (800 974250).
 

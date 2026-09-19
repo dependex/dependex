@@ -177,8 +177,8 @@ $trips = [
           <a href="crociera-benessere-masterclass.php" class="btn" style="padding: 12px 22px; font-weight: 700; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); color: #fff; text-decoration: none; font-size: 0.92rem;">
             <?=dx_icon('compass', '', 16)?> Scheda Advisor
           </a>
-          <a href="https://wa.me/393478844271?text=<?=urlencode('Buongiorno, desidero informazioni sull\'iniziativa residenziale CIURMA.')?>" target="_blank" rel="noopener" class="btn" style="background: #25D366; color: #000; font-weight: 800; border-radius: 12px; text-decoration: none; border: none; padding: 12px 20px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem;">
-            <?=dx_icon('whatsapp', '', 16)?> Concierge Agenzia
+          <a href="mailto:info@beway.life?subject=Informazioni%20CIURMA" class="btn" style="background: rgba(0,212,255,0.15); border: 1px solid #00d4ff; color: #00d4ff; font-weight: 800; border-radius: 12px; text-decoration: none; padding: 12px 20px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem;">
+            <?=dx_icon('mail', '', 16)?> Concierge Agenzia
           </a>
         </div>
       </div>
@@ -340,8 +340,8 @@ $trips = [
     </p>
 
     <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
-      <a href="https://wa.me/393478844271?text=<?=urlencode('Buongiorno, vorrei parlare con il concierge BEWAY.LIFE per informazioni sui viaggi esperienziali.')?>" target="_blank" rel="noopener" class="btn" style="background: #25D366; color: #000; font-weight: 800; padding: 12px 28px; border-radius: 12px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
-        <?=dx_icon('whatsapp', '', 18)?> Parla con il Concierge (+39 347 884 4271)
+      <a href="mailto:info@beway.life?subject=Richiesta%20Assistenza%20Viaggi" class="btn primary glow" style="font-weight: 800; padding: 12px 28px; border-radius: 12px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+        <?=dx_icon('mail', '', 18)?> Parla con il Concierge (info@beway.life)
       </a>
       <a href="mailto:info@beway.life" class="btn" style="border: 1px solid rgba(255,255,255,0.25); color: #FFF; padding: 12px 24px; border-radius: 12px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
         <?=dx_icon('mail', '', 18)?> Scrivi a info@beway.life

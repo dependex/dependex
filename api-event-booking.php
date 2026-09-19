@@ -249,17 +249,13 @@ try {
             if ($paymentMethod === 'ON_SITE' || $isWaitlist) {
                 if ($isWaitlist) {
                     $subject = "Lista d'Attesa (#{$waitlistPosition}): " . $event['title'];
-                    $body = "Ciao {$fullName},\n\nI 30 posti in aula per \"{$event['title']}\" sono al completo e sei in lista d'attesa al posto [{$waitlistPosition}].\n\nCodice Prenotazione: {$bookingSic}\nQualora si liberasse un posto sarai contattato/a prioritariamente.\n\nContatti Segreteria: Grazia Nicosia (347 884 4271)\nACAT Basso Polesine";
+                    $body = "Ciao {$fullName},\n\nI 30 posti in aula per \"{$event['title']}\" sono al completo e sei in lista d'attesa al posto [{$waitlistPosition}].\n\nCodice Prenotazione: {$bookingSic}\nQualora si liberasse un posto sarai contattato/a prioritariamente.\n\nSegreteria: ACAT Basso Polesine (info@dependex.support)";
                 } else {
                     $subject = "Conferma Iscrizione: " . $event['title'];
-                    $body = "Gentile {$fullName},\n\nLa tua iscrizione per il corso \"{$event['title']}\" (Taglio di Po, 9-11 Ottobre 2026) è stata registrata con successo!\n\nCodice Iscrizione: {$bookingSic}\nQuota: 10,00 € (pranzo del sabato incluso, saldo al desk d'accoglienza).\n\nSede: Oratorio San Francesco, Taglio di Po (RO)\nFormatore: Adelmo Di Salvatore\n\nReferente: Grazia Nicosia (347 884 4271)\nACAT Basso Polesine";
+                    $body = "Gentile {$fullName},\n\nLa tua iscrizione per il corso \"{$event['title']}\" (Taglio di Po, 9-11 Ottobre 2026) è stata registrata con successo!\n\nCodice Iscrizione: {$bookingSic}\nQuota: 10,00 € (pranzo del sabato incluso, saldo al desk d'accoglienza).\n\nSede: Oratorio San Francesco, Taglio di Po (RO)\nFormatore: Adelmo Di Salvatore\n\nSegreteria: ACAT Basso Polesine (info@dependex.support)";
                 }
                 send_event_email_async($email, $subject, $body);
             }
-
-            $waText = $isWaitlist
-                ? "Ciao Grazia, sono {$fullName}, mi interessa partecipare all'evento A Scuola di Comunicazione Resilienza a Taglio di Po (Registrato in lista d'attesa #{$waitlistPosition}, Codice: {$bookingSic})."
-                : "Ciao Grazia, sono {$fullName}, mi interessa partecipare all'evento A Scuola di Comunicazione Resilienza a Taglio di Po (Iscrizione: {$bookingSic}).";
 
             echo json_encode([
                 'success' => true,
@@ -271,7 +267,7 @@ try {
                 'payment_method' => $paymentMethod,
                 'status' => $status,
                 'message' => $isWaitlist ? "Sei in Lista d'Attesa (Posizione #{$waitlistPosition})" : "Iscrizione registrata con successo!",
-                'whatsapp_link' => "https://wa.me/393478844271?text=" . urlencode($waText),
+                'whatsapp_link' => null,
                 'whatsapp_group_link' => 'https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel'
             ]);
             event_api_exit(); return;
@@ -371,7 +367,7 @@ try {
                           . "• Stato: CONFERMATO AL 100%\n\n"
                           . "Sede: Oratorio San Francesco d'Assisi, Vicolo San Francesco 1, Taglio di Po (RO)\n"
                           . "Docente: Dott. Adelmo Di Salvatore\n\n"
-                          . "Referente Iscrizioni: Grazia Nicosia (347 884 4271)\n\n"
+                          . "Referente Iscrizioni: Segreteria ACAT Basso Polesine (info@dependex.support)\n\n"
                           . "Ci vediamo venerdì 9 ottobre alle 14:30 al desk accoglienza!";
                     send_event_email_async($bk['email'], $subject, $body);
 
@@ -383,15 +379,13 @@ try {
                     ]);
                 }
 
-                $waText = "Ciao Grazia, ho appena versato la quota di 10€ con Carta/PayPal per il corso di Taglio di Po (Codice: {$bookingSic}, ID PayPal: {$paypalOrderId}).";
-
                 echo json_encode([
                     'success' => true,
                     'status' => 'COMPLETED',
                     'message' => 'Pagamento di 10,00 € confermato con successo! Posto riservato in aula.',
                     'booking_sic' => $bookingSic,
                     'tx_id' => $paypalOrderId,
-                    'whatsapp_link' => "https://wa.me/393478844271?text=" . urlencode($waText)
+                    'whatsapp_link' => null
                 ]);
             } else {
                 event_set_status(400);
@@ -452,14 +446,12 @@ try {
                   . "ACAT Basso Polesine & DEPENDEX";
             send_event_email_async($bk['email'], $subject, $body);
 
-            $waText = "Ciao Grazia, ho registrato il pagamento di 10 USDT su Polygon per il corso di Taglio di Po. Codice Prenotazione: {$bookingSic}, Tx Hash: {$txHash}.";
-
             echo json_encode([
                 'success' => true,
                 'message' => 'Transazione USDT registrata! Il tuo posto è confermato.',
                 'booking_sic' => $bookingSic,
                 'tx_hash' => $txHash,
-                'whatsapp_link' => "https://wa.me/393478844271?text=" . urlencode($waText)
+                'whatsapp_link' => null
             ]);
             event_api_exit(); return;
 

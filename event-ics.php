@@ -42,7 +42,7 @@ $now = (new DateTime('now', new DateTimeZone('UTC')))->format('Ymd\THis\Z');
 
 $title = preg_replace('/[\r\n]+/', ' ', $e['title']);
 $venue = preg_replace('/[\r\n]+/', ' ', $e['venue'] . ' - ' . ($e['address'] ?? 'Taglio di Po'));
-$description = preg_replace('/[\r\n]+/', '\n', $e['description'] . '\nQuota: 10€ | Iscrizioni entro 1 Ottobre a Grazia Nicosia: 347 884 4271');
+$description = preg_replace('/[\r\n]+/', '\n', $e['description'] . '\nQuota: 10€ | Iscrizioni entro 1 Ottobre: Segreteria ACAT Basso Polesine (info@dependex.support)');
 
 $filename = 'evento-' . preg_replace('/[^a-zA-Z0-9_-]/', '-', strtolower($title)) . '.ics';
 

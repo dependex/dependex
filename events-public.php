@@ -139,9 +139,9 @@ require '_header.php';
         <span>PAGINA EVENTO DEDICATA & PRENOTA</span>
       </a>
 
-      <a href="https://wa.me/393478844271?text=Ciao%20Grazia,%20sono%20[nome],%20mi%20interessa%20partecipare%20all'evento%20A%20Scuola%20di%20Comunicazione%20Resilienza%20a%20Taglio%20di%20Po." target="_blank" rel="noopener" class="m-btn m-btn-whatsapp">
-        <?=dx_icon('message-circle', '', 18)?>
-        <span>Scrivi a Grazia su WhatsApp (+39 347 884 4271)</span>
+      <a href="mailto:info@dependex.support?subject=Richiesta%20informazioni%20evento%20Taglio%20di%20Po" class="m-btn m-btn-outline" style="min-height: 48px;">
+        <?=dx_icon('mail', 'text-neon-cyan', 18)?>
+        <span>Richiedi Informazioni (info@dependex.support)</span>
       </a>
 
       <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="background: rgba(37, 211, 102, 0.18); border: 1px solid #25D366; color: #25D366; font-weight: 800; min-height: 48px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">
@@ -347,7 +347,7 @@ require '_header.php';
 
   <!-- FOOTER DELLA SCHEDA MOBILE -->
   <div class="text-center" style="margin-top: 16px; font-size: 0.78rem; color: #94a3b8;">
-    <p style="margin: 0 0 4px;">Per informazioni e iscrizioni telefoniche: Grazia Nicosia (Servitrice-Insegnante) · <strong>Tel. 347 884 4271</strong></p>
+    <p style="margin: 0 0 4px;">Per informazioni e iscrizioni: Segreteria ACAT Basso Polesine · <strong>info@dependex.support</strong></p>
     <p style="margin: 0; color: #d4af37;">100% Digitale · Zero carta · Zero sprechi · Posti certificati</p>
   </div>
 
@@ -359,8 +359,8 @@ require '_header.php';
     <a href="event-detail.php?event=<?=urlencode($sic)?>" class="m-btn m-btn-primary" style="flex: 1; min-height: 48px; font-size: 0.92rem; padding: 0 12px;">
       <?=dx_icon('check-circle', '', 16)?> Iscriviti (10€)
     </a>
-    <a href="https://wa.me/393478844271?text=Ciao%20Grazia,%20sono%20[nome],%20mi%20interessa%20partecipare%20all'evento%20A%20Scuola%20di%20Comunicazione%20Resilienza%20a%20Taglio%20di%20Po." target="_blank" rel="noopener" class="m-btn m-btn-whatsapp" style="width: 48px; min-height: 48px; padding: 0; flex-shrink: 0;" title="Contatta Grazia su WhatsApp">
-      <?=dx_icon('message-circle', '', 20)?>
+    <a href="mailto:info@dependex.support?subject=Iscrizione%20Evento%20Taglio%20di%20Po" class="m-btn m-btn-outline" style="width: 48px; min-height: 48px; padding: 0; flex-shrink: 0;" title="Contatta la Segreteria via Email">
+      <?=dx_icon('mail', '', 20)?>
     </a>
     <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="width: 48px; min-height: 48px; padding: 0; flex-shrink: 0; background: rgba(37,211,102,0.18); border: 1px solid #25D366; color: #25D366;" title="Gruppo WhatsApp Evento">
       <?=dx_icon('users', '', 18)?>

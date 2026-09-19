@@ -48,14 +48,13 @@
         </div>
       </div>
 
-      <!-- CONTATTI RAPIDI GOVERNANCE & WHATSAPP -->
+      <!-- CONTATTI RAPIDI GOVERNANCE & ACCOGLIENZA -->
       <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
-        <a href="https://wa.me/393478844271?text=<?=urlencode('Buongiorno Grazia, vorrei informazioni riservate sull\'evento e sui Club.')?>" 
-           target="_blank" rel="noopener" 
+        <a href="parla-con-noi.php" 
            class="btn small" 
            style="background: rgba(37,211,102,0.15); border: 1px solid #25D366; color: #25D366; font-weight: 750; font-size: 0.82rem; padding: 8px 16px; border-radius: 10px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
           <?=dx_icon('message-circle', '', 15)?>
-          <span>Grazia Nicosia · WhatsApp 347 884 4271</span>
+          <span>Segreteria di Accoglienza · Parla con Noi</span>
         </a>
 
         <a href="mailto:info@dependex.support" 
@@ -156,14 +155,13 @@
   </div>
 </footer>
 
-<!-- PULSANTE FLOTTANTE DI CONTATTO RISERVATO WHATSAPP / AIUTO -->
+<!-- PULSANTE FLOTTANTE DI ASCOLTO & ORIENTAMENTO RISERVATO -->
 <div class="floating-quick-support" style="position: fixed; bottom: <?=($u??null)?'74px':'24px'?>; right: 20px; z-index: 999;">
-  <a href="https://wa.me/393478844271?text=<?=urlencode('Buongiorno Grazia, vorrei un orientamento riservato su un Club o sul Metodo Hudolin.')?>" 
-     target="_blank" rel="noopener" 
+  <a href="parla-con-noi.php" 
      class="btn-floating-support" 
-     style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #000000; font-weight: 800; font-size: 0.86rem; padding: 10px 18px; border-radius: 999px; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.2s ease;">
-    <?=dx_icon('whatsapp', '', 18)?>
-    <span class="d-none d-sm-inline">Orientamento Riservato WhatsApp</span>
+     style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #00f0ff, #0077ff); color: #070a12; font-weight: 800; font-size: 0.86rem; padding: 10px 18px; border-radius: 999px; text-decoration: none; box-shadow: 0 4px 20px rgba(0,240,255,0.4); transition: transform 0.2s ease;">
+    <?=dx_icon('message-circle', '', 18)?>
+    <span class="d-none d-sm-inline">Ascolto & Orientamento Riservato</span>
     <span class="d-inline d-sm-none">Aiuto</span>
   </a>
 </div>

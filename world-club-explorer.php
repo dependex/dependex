@@ -400,8 +400,8 @@ require '_dependex-world-map.php';
         <a href="parla-con-noi.php" class="btn-community-primary" style="padding:12px 24px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
           <?=dx_icon('message-circle', '', 18)?> Parla con Noi
         </a>
-        <a href="https://wa.me/393478844271?text=<?=urlencode('Buongiorno, non ho trovato un Club vicino a me tramite la ricerca su Dependex. Potete aiutarmi a capire dove rivolgermi?')?>" target="_blank" rel="noopener" class="btn-community-wa" style="padding:12px 24px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
-          <?=dx_icon('message-circle', '', 18)?> WhatsApp Diretto
+        <a href="mailto:info@dependex.support" class="btn-community-wa" style="padding:12px 24px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,255,0.15);border:1px solid #00d4ff;color:#00d4ff;">
+          <?=dx_icon('mail', '', 18)?> Scrivi a info@dependex.support
         </a>
       </div>
     </div>
@@ -426,18 +426,13 @@ require '_dependex-world-map.php';
       <?=dx_icon('book-open', '', 16)?>
       <span style="margin-left:6px;">Libri & Manuali Amazon KDP</span>
     </a>
-    <a class="btn-rainbow-outline" href="help.php" style="padding:0 22px;">
-      <?=dx_icon('shield', '', 16)?>
+    <a class="btn-rainbow-outline" href="parla-con-noi.php" style="padding:0 22px;">
+      <?=dx_icon('message-circle', '', 16)?>
       <span style="margin-left:6px;">Richiedi Orientamento Riservato</span>
     </a>
     <a class="btn small" href="tel:800974250" 
        style="background:rgba(212,175,55,0.2);border:1px solid #ffd700;color:#ffd700;font-weight:800;border-radius:10px;padding:0 18px;display:inline-flex;align-items:center;gap:6px;">
       <?=dx_icon('phone', '', 16)?> Numero Verde 800 974250
-    </a>
-    <a class="btn small" href="https://wa.me/393478844271?text=<?=urlencode('Buongiorno Grazia, vorrei informazioni riservate sui Club e sul Metodo Hudolin.')?>" 
-       target="_blank" rel="noopener" 
-       style="background:#25D366;color:#000000;font-weight:800;border-radius:10px;padding:0 18px;display:inline-flex;align-items:center;gap:6px;">
-      <?=dx_icon('message-circle', '', 16)?> WhatsApp Diretto
     </a>
   </div>
 </section>

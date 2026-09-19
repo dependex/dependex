@@ -103,9 +103,9 @@ require '_header.php';
         <span>DETTAGLI COMPLETI & PRENOTAZIONE</span>
       </a>
 
-      <a href="https://wa.me/393478844271?text=Ciao%20Grazia,%20sono%20[nome],%20mi%20interessa%20partecipare%20all'evento%20A%20Scuola%20di%20Comunicazione%20Resilienza%20a%20Taglio%20di%20Po." target="_blank" rel="noopener" class="m-btn m-btn-whatsapp">
-        <?=dx_icon('message-circle', '', 18)?>
-        <span>Scrivi a Grazia su WhatsApp (+39 347 884 4271)</span>
+      <a href="mailto:info@dependex.support?subject=Richiesta%20informazioni%20evento%20Taglio%20di%20Po" class="m-btn m-btn-outline" style="min-height: 48px;">
+        <?=dx_icon('mail', 'text-neon-cyan', 18)?>
+        <span>Richiedi Informazioni (info@dependex.support)</span>
       </a>
 
       <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="background: rgba(37, 211, 102, 0.18); border: 1px solid #25D366; color: #25D366; font-weight: 800; min-height: 48px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">

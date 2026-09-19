@@ -108,12 +108,12 @@ if (strpos($ogImageResolved, 'http') !== 0) {
           "url": "https://<?=h($brand['domain'])?>/assets/img/dependex-rainbow-badge.jpg"
         },
         "email": "info@dependex.support",
-        "telephone": "+39-347-884-4271",
+        "telephone": "+39-800-974-250",
         "contactPoint": [
           {
             "@type": "ContactPoint",
-            "telephone": "+39-347-884-4271",
-            "contactType": "orientamento e accoglienza",
+            "telephone": "+39-800-974-250",
+            "contactType": "Numero Verde AICAT",
             "areaServed": "IT",
             "availableLanguage": ["Italian"]
           },
@@ -341,6 +341,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           <a href="guida-gratuita.php" class="drawer-link <?=$curScript==='guida-gratuita.php'?'active':''?>"><?=dx_icon('sparkles','',18)?> Guida Gratuita Famiglia</a>
           <a href="evento-ottobre-taglio-di-po.php" class="drawer-link <?=$curScript==='evento-ottobre-taglio-di-po.php'||$curScript==='event-detail.php'?'active':''?>"><?=dx_icon('award','',18)?> Corso Esperienziale Taglio di Po</a>
           <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Libri & Collana KDP</a>
+          <a href="viaggi-esperienziali.php" class="drawer-link <?=$curScript==='viaggi-esperienziali.php'||$curScript==='crociera-benessere-masterclass.php'?'active':''?>"><?=dx_icon('compass','',18)?> Viaggi Esperienziali (BEWAY.LIFE)</a>
         </nav>
 
         <nav class="drawer-nav-group">

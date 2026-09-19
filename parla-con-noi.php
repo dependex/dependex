@@ -82,7 +82,7 @@ require '_header.php';
 
     <h1 class="human-hero-title" style="font-size: clamp(2rem, 4.5vw, 3rem);">
       Non devi affrontare tutto questo da solo.<br>
-      <span class="text-amber">Siamo qui per ascoltarti.</span>
+      <span class="text-rainbow">Siamo qui per ascoltarti.</span>
     </h1>
 
     <p class="human-hero-desc mx-auto">
@@ -100,14 +100,14 @@ require '_header.php';
         <span>Scrivi su WhatsApp (347 884 4271)</span>
       </a>
 
-      <a href="tel:800974250" class="btn-community-primary" title="Chiama il numero verde AICAT">
+      <a href="tel:800974250" class="btn-rainbow-neon" style="box-shadow: var(--glow-gold);" title="Chiama il numero verde AICAT">
         <?=dx_icon('phone', '', 18)?>
-        <span>Numero Verde AICAT: 800 974250</span>
+        <span style="margin-left: 8px;">Numero Verde AICAT: 800 974250</span>
       </a>
 
-      <a href="mailto:info@dependex.support" class="btn-community-outline" title="Invia una email riservata">
-        <?=dx_icon('mail', '', 18)?>
-        <span>info@dependex.support</span>
+      <a href="mailto:info@dependex.support" class="btn-rainbow-outline" style="border-color: var(--neon-cyan); color: #fff;" title="Invia una email riservata">
+        <?=dx_icon('mail', 'text-neon-cyan', 18)?>
+        <span style="margin-left: 8px;">info@dependex.support</span>
       </a>
     </div>
   </section>
@@ -207,9 +207,9 @@ require '_header.php';
           <textarea name="messaggio" rows="3" placeholder="Scrivi quello che ti senti, senza timore..." style="width: 100%; padding: 12px 14px; background: rgba(9, 13, 26, 0.8); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--dx-radius-md); color: #fff; font-size: 0.95rem;"></textarea>
         </div>
 
-        <button type="submit" class="btn-community-primary" style="width: 100%; margin-top: 8px;">
+        <button type="submit" class="btn-rainbow-neon" style="width: 100%; margin-top: 8px; justify-content: center;">
           <?=dx_icon('send', '', 18)?>
-          <span>Invia la richiesta riservata</span>
+          <span style="margin-left: 8px;">Invia la richiesta riservata</span>
         </button>
 
         <small style="display: block; font-size: 0.78rem; color: var(--dx-text-muted); text-align: center; margin-top: 6px;">

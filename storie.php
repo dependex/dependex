@@ -34,7 +34,7 @@ require '_header.php';
 
     <h1 class="human-hero-title">
       Persone. Famiglie. Cambiamenti.<br>
-      <span class="text-amber">La forza del rispecchiamento.</span>
+      <span class="text-rainbow">La forza del rispecchiamento.</span>
     </h1>
 
     <p class="human-hero-desc mx-auto">
@@ -43,13 +43,13 @@ require '_header.php';
     </p>
 
     <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-      <a href="world-club-explorer.php" class="btn-community-primary">
+      <a href="world-club-explorer.php" class="btn-rainbow-neon">
         <?=dx_icon('map-pin', '', 18)?>
-        <span>Trova un Club vicino a te</span>
+        <span style="margin-left: 8px;">Trova un Club vicino a te</span>
       </a>
-      <a href="parla-con-noi.php" class="btn-community-outline">
-        <?=dx_icon('message-circle', '', 18)?>
-        <span>Parla prima con noi</span>
+      <a href="parla-con-noi.php" class="btn-rainbow-outline" style="border-color: var(--neon-cyan); color: #fff;">
+        <?=dx_icon('message-circle', 'text-neon-cyan', 18)?>
+        <span style="margin-left: 8px;">Parla prima con noi</span>
       </a>
     </div>
   </section>

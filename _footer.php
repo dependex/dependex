@@ -112,6 +112,7 @@
           <?=dx_icon('compass', 'text-cyan', 16)?> Risorse & Approfondimenti
         </h4>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
+          <li><a href="clips.php" style="color: #fbbf24; font-weight: 750; text-decoration: none;">Clip Motivazionali 9:16</a></li>
           <li><a href="offers.php" style="color: #cbd5e1; text-decoration: none;">Collana Libri KDP</a></li>
           <li><a href="viaggi-esperienziali.php" style="color: #cbd5e1; text-decoration: none;">Viaggi Esperienziali</a></li>
           <li><a href="https://oltre.social" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">OLTRE.SOCIAL <?=dx_icon('external-link', '', 11)?></a></li>

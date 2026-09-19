@@ -120,7 +120,21 @@ FILES_TO_SYNC = [
     os.path.join("tests", "test_sovereign_mobile_pwa_sos_e2e.php"),
     os.path.join("tests", "test_human_welfare_os_e2e.php"),
     os.path.join("tests", "test_human_welfare_engine_5_e2e.php"),
-    os.path.join("tests", "test_omni_welfare_gamification_6_e2e.php")
+    os.path.join("tests", "test_omni_welfare_gamification_6_e2e.php"),
+    os.path.join("tests", "test_motivational_clips_e2e.php"),
+
+    # Clip Video Motivazionali (8-10s)
+    "clips.php",
+    os.path.join("assets", "clips", "clip1_non_devi_sapere_tutto.mp4"),
+    os.path.join("assets", "clips", "clip1_bg.jpg"),
+    os.path.join("assets", "clips", "clip2_nessuno_e_solo.mp4"),
+    os.path.join("assets", "clips", "clip2_bg.jpg"),
+    os.path.join("assets", "clips", "clip3_fermati_e_respira.mp4"),
+    os.path.join("assets", "clips", "clip3_bg.jpg"),
+    os.path.join("assets", "clips", "clip4_navigare_le_onde.mp4"),
+    os.path.join("assets", "clips", "clip4_bg.jpg"),
+    os.path.join("assets", "clips", "clip5_rinascita_quotidiana.mp4"),
+    os.path.join("assets", "clips", "clip5_bg.jpg")
 ]
 
 def ensure_remote_dir(ftp, remote_dir_path):

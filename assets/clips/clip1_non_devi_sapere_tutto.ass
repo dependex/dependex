@@ -1,0 +1,15 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,58,&H00FFFFFF,&H000000FF,&H00000000,&HA0000000,-1,0,0,0,100,100,1,0,1,4,5,5,80,80,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,00:00:00.50,00:00:03.50,Default,,0,0,0,,{\fad(350,350)}Non devi sapere gia' tutto.
+Dialogue: 0,00:00:03.80,00:00:06.50,Default,,0,0,0,,{\fad(350,350)}Non devi avere gia' le risposte.
+Dialogue: 0,00:00:06.80,00:00:09.70,Default,,0,0,0,,{\fad(350,350)}Fai solo il primo passo.\NIl cerchio e' qui per te.\N\N{\fs36\c&H00F0FF&}dependex.social

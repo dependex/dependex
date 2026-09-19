@@ -290,13 +290,23 @@ function tr(string $key,?string $fallback=null): string {static $cache=[];$loc=s
 function site_brand(): array {return ['name'=>'DEPENDEX','subtitle'=>'AL CLUB. COL CLUB.','domain'=>(site_mode()==='DEPENDEX'?'dependex.social':'oltre.social'),'email'=>'info@dependex.social'];}
 
 function site_live_telemetry(): array {
-    $pdo = db();
+    $cacheFile = __DIR__ . '/data/.telemetry_cache.json';
     $now = time();
+
+    // Lettura veloce da cache se recente (< 60s)
+    if (file_exists($cacheFile)) {
+        $data = @json_decode(file_get_contents($cacheFile), true);
+        if (is_array($data) && isset($data['expires']) && $data['expires'] > $now) {
+            return $data['payload'];
+        }
+    }
+
+    $pdo = db();
     $ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
     $ipHash = hash('sha256', $ip . 'dx_salt_telemetry');
     $userSic = $_SESSION['user_sic_id'] ?? null;
     
-    // Heartbeat tracking per sessione / IP
+    // Heartbeat tracking per sessione / IP (eseguito solo al refresh della cache)
     try {
         $pdo->prepare("
             INSERT INTO site_live_sessions (session_token, user_sic_id, ip_hash, last_seen, created_at)
@@ -315,22 +325,30 @@ function site_live_telemetry(): array {
         $auditHits = (int)($cntSt ? $cntSt->fetchColumn() : 0);
         $totalVisits = $baseTotalVisits + $auditHits;
 
-        // Conteggio live online (ultimi 5 minuti, minimo realistico 12)
+        // Conteggio live online (ultimi 5 minuti, baseline 14-25 live)
         $liveSt = $pdo->prepare("SELECT COUNT(DISTINCT ip_hash) FROM site_live_sessions WHERE last_seen >= ?");
         $liveSt->execute([$now - 300]);
         $realLive = (int)$liveSt->fetchColumn();
-        $liveUsers = max(14, $realLive + 11); // baseline 14-25 live
+        $liveUsers = max(14, $realLive + 11);
     } catch (Throwable $e) {
         $totalVisits = 142890;
         $liveUsers = 18;
     }
 
-    return [
+    $payload = [
         'total_visits' => $totalVisits,
         'live_users' => $liveUsers,
         'formatted_visits' => number_format($totalVisits, 0, ',', '.'),
         'formatted_live' => (string)$liveUsers
     ];
+
+    // Scrittura cache 60 secondi
+    @file_put_contents($cacheFile, json_encode([
+        'expires' => $now + 60,
+        'payload' => $payload
+    ], JSON_UNESCAPED_SLASHES));
+
+    return $payload;
 }
 
 function vault_pool_balance(string $pool): float {$st=db()->prepare("SELECT COALESCE(SUM(CASE WHEN direction='IN' THEN amount ELSE -amount END),0) FROM drx_vault_ledger WHERE pool=?");$st->execute([$pool]);return (float)$st->fetchColumn();}

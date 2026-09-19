@@ -60,6 +60,8 @@ if ($viewDocument):
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>I Primi 7 Giorni: Guida di Orientamento per la Famiglia · Metodo Hudolin</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://dependex.social/guida-gratuita.php">
   <style>
     @page { size: A4; margin: 18mm 16mm; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #111827; line-height: 1.6; margin: 0; padding: 24px; background: #fafafa; }
@@ -166,6 +168,61 @@ endif;
 // Vista standard Landing Page
 $pageTitle = 'Guida Gratuita per la Famiglia · I Primi 7 Giorni · DEPENDEX';
 $metaDesc = 'Scarica gratis la Guida di Orientamento per la Famiglia: cosa fare stasera, cosa non dire mai e come trovare una sedia libera nei Club Alcologici Territoriali.';
+$breadcrumbs = [
+    'Home' => '/',
+    'Guida Gratuita Famiglia' => 'guida-gratuita.php'
+];
+$pageSchemaJson = [
+    "@context" => "https://schema.org",
+    "@type" => "HowTo",
+    "name" => "I Primi 7 Giorni: Orientamento e Rinascita per la Famiglia",
+    "description" => $metaDesc,
+    "totalTime" => "P7D",
+    "step" => [
+        [
+            "@type" => "HowToStep",
+            "position" => 1,
+            "name" => "Giorno 1 · Sospendere l'Inquisizione e il Ricatto",
+            "text" => "Sospendere il controllo delle bottiglie e la ricerca di colpevoli, aprendo a un primo dialogo non accusatorio."
+        ],
+        [
+            "@type" => "HowToStep",
+            "position" => 2,
+            "name" => "Giorno 2 · Separare la Persona dal Comportamento",
+            "text" => "Comprendere la differenza tra l'identità del proprio caro e la nebbia biochimica della dipendenza."
+        ],
+        [
+            "@type" => "HowToStep",
+            "position" => 3,
+            "name" => "Giorno 3 · Uscire dall'Isolamento e dalla Vergogna Domestica",
+            "text" => "Riconoscere che centinaia di migliaia di famiglie affrontano la medesima situazione senza alcuna colpa."
+        ],
+        [
+            "@type" => "HowToStep",
+            "position" => 4,
+            "name" => "Giorno 4 · Frequentare il Club anche da soli",
+            "text" => "La famiglia può iniziare il percorso al Club indipendentemente dalla disponibilità iniziale del congiunto."
+        ],
+        [
+            "@type" => "HowToStep",
+            "position" => 5,
+            "name" => "Giorno 5 · Individuare il Club territoriale",
+            "text" => "Consultare la mappa e scegliere la sede e l'orario più comodo."
+        ],
+        [
+            "@type" => "HowToStep",
+            "position" => 6,
+            "name" => "Giorno 6 · Il Primo Incontro nel Cerchio",
+            "text" => "Ascolto reciproco in assenza di giudizio."
+        ],
+        [
+            "@type" => "HowToStep",
+            "position" => 7,
+            "name" => "Giorno 7 · La Costanza nel Cammino",
+            "text" => "Costruzione di una nuova quotidianità serena e condivisa."
+        ]
+    ]
+];
 require '_header.php';
 ?>
 

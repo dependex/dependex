@@ -20,6 +20,6 @@
 - [Privacy e Sicurezza](privacy.php): Approccio privacy-first, protezione dei dati personali e assenza di tracciamento invasivo.
 
 ## Contatti di Riferimento & Segreteria
-- **Email Istituzionale e Supporto**: info@dependex.social
+- **Email Istituzionale e Supporto**: info@dependex.support
 - Telefono Verde Alcol (Istituto Superiore di Sanità - Italia): 800 632 000
 - Numero Unico Europeo Emergenze: 112

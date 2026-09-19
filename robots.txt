@@ -1,11 +1,71 @@
+# ==============================================================================
+# DEPENDEX.SOCIAL & OLTRE.SOCIAL — ROBOTS.TXT
+# Protocollo di Scansione, Indicizzazione e Direttive AI SGE
+# ==============================================================================
+
+# 1. Regole per tutti i motori di ricerca generali (Google, Bing, Yahoo, DuckDuckGo)
 User-agent: *
 Allow: /
-Disallow: /cortex.php
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /sitemap.xml
+
+# Protezione pannelli riservati, endpoint di controllo e sessioni private
 Disallow: /admin.php
+Disallow: /admin-orders.php
+Disallow: /acl-admin.php
+Disallow: /club-admin.php
+Disallow: /geo-admin.php
+Disallow: /ncke-admin.php
+Disallow: /ncke-console.php
+Disallow: /vault-admin.php
+Disallow: /social-admin.php
+Disallow: /event-admin.php
+Disallow: /event-builder.php
 Disallow: /email-admin.php
+Disallow: /cortex-dashboard.php
+Disallow: /cortex.php
 Disallow: /app.php
 Disallow: /checkin.php
 Disallow: /journal.php
 Disallow: /profile.php
+Disallow: /finance.php
+Disallow: /company-brain.php
+Disallow: /company-brain-start.php
+Disallow: /api/
+Disallow: /api-*.php
+Disallow: /webhook-*.php
+Disallow: /checkout.php
+Disallow: /order-confirmation.php
+Disallow: /cart.php
+Disallow: /wallet.php
+Disallow: /*.sqlite$
+Disallow: /*.log$
+Disallow: /*.env$
 
+# 2. Direttive per Crawler di Intelligenza Artificiale (AI Search & SGE)
+# Consentiamo la comprensione del metodo e del censimento dei Club tramite llms.txt
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Google-Extended
+User-agent: Amazonbot
+User-agent: Applebot-Extended
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /metodo.php
+Allow: /world-club-explorer.php
+Allow: /guida-gratuita.php
+Allow: /events-public.php
+Allow: /offers.php
+Disallow: /admin*
+Disallow: /cortex*
+Disallow: /api*
+
+# 3. Mappe del Sito Ufficiali
 Sitemap: https://dependex.social/sitemap.xml
+Sitemap: https://dependex.social/sitemap-clubs.xml
+Sitemap: https://oltre.social/sitemap.xml
+Sitemap: https://oltre.social/sitemap-clubs.xml

@@ -180,13 +180,13 @@ body {
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px rgba(0, 212, 255, 0.35)) !important;
 }
 
-.text-neon-red { color: var(--neon-red) !important; text-shadow: var(--glow-red); }
-.text-neon-orange { color: var(--neon-orange) !important; text-shadow: var(--glow-orange); }
-.text-neon-gold { color: var(--neon-gold) !important; text-shadow: var(--glow-gold); }
-.text-neon-green { color: var(--neon-green) !important; text-shadow: var(--glow-green); }
-.text-neon-cyan { color: var(--neon-cyan) !important; text-shadow: var(--glow-cyan); }
-.text-neon-indigo { color: var(--neon-indigo) !important; text-shadow: var(--glow-indigo); }
-.text-neon-violet { color: var(--neon-violet) !important; text-shadow: var(--glow-violet); }
+.text-neon-red { color: #ff6677 !important; text-shadow: var(--glow-red); }
+.text-neon-orange { color: #ffa333 !important; text-shadow: var(--glow-orange); }
+.text-neon-gold { color: #fde68a !important; text-shadow: var(--glow-gold); }
+.text-neon-green { color: #34d399 !important; text-shadow: var(--glow-green); }
+.text-neon-cyan { color: #38bdf8 !important; text-shadow: var(--glow-cyan); }
+.text-neon-indigo { color: #a5b4fc !important; text-shadow: 0 0 16px rgba(165, 180, 252, 0.65); }
+.text-neon-violet { color: #e879f9 !important; text-shadow: var(--glow-violet); }
 
 /* Badge & Eyebrow Neon */
 .eyebrow, .gold-glow-badge, .public-badge, .dx-ticker-badge {
@@ -195,12 +195,12 @@ body {
   gap: 8px !important;
   padding: 6px 14px !important;
   border-radius: 9999px !important;
-  background: rgba(14, 18, 28, 0.85) !important;
-  border: 1px solid rgba(0, 212, 255, 0.3) !important;
-  color: var(--neon-gold) !important;
-  font-size: 0.76rem !important;
+  background: rgba(14, 18, 28, 0.9) !important;
+  border: 1px solid rgba(0, 212, 255, 0.35) !important;
+  color: #fde68a !important;
+  font-size: 0.8125rem !important;
   font-weight: 800 !important;
-  letter-spacing: 0.08em !important;
+  letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
   box-shadow: 0 0 16px rgba(0, 212, 255, 0.25) !important;
 }
@@ -590,15 +590,22 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .rainbow-pillars-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
   gap: 12px;
   margin: 32px 0;
 }
 
+@media (max-width: 480px) {
+  .rainbow-pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
 .rainbow-pillar-card {
-  background: rgba(12, 16, 26, 0.75);
+  background: rgba(12, 16, 26, 0.85);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 16px;
   padding: 16px 12px;
   text-align: center;
@@ -608,7 +615,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .rainbow-pillar-card:hover {
   transform: translateY(-4px);
-  background: rgba(18, 24, 40, 0.9);
+  background: rgba(18, 24, 40, 0.95);
 }
 
 .pillar-red:hover { border-color: var(--neon-red); box-shadow: var(--glow-red); }
@@ -620,23 +627,23 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .pillar-violet:hover { border-color: var(--neon-violet); box-shadow: var(--glow-violet); }
 
 .pillar-icon {
-  font-size: 24px;
+  font-size: 26px;
   margin-bottom: 8px;
   display: block;
 }
 
 .pillar-title {
-  font-size: 0.85rem;
-  font-weight: 800;
+  font-size: 0.92rem;
+  font-weight: 850;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 4px;
 }
 
 .pillar-sub {
-  font-size: 0.72rem;
-  color: #94a3b8;
-  line-height: 1.25;
+  font-size: 0.8125rem;
+  color: #cbd5e1;
+  line-height: 1.35;
 }
 
 /* ==========================================================================
@@ -895,9 +902,9 @@ p, li, span, label {
 }
 
 .counter-lbl {
-  font-size: 0.70rem;
-  font-weight: 650;
-  color: #94a3b8;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #cbd5e1;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-family: Inter, system-ui, sans-serif;
@@ -928,10 +935,11 @@ p, li, span, label {
     display: none; /* Su schermi piccolissimi mostra solo gli utenti LIVE per zero sbordature */
   }
   .counter-val {
-    font-size: 0.82rem;
+    font-size: 0.85rem;
   }
   .counter-lbl {
-    font-size: 0.65rem;
+    font-size: 0.72rem;
+    color: #cbd5e1;
   }
 }
 
@@ -1004,5 +1012,83 @@ pre, code {
 .fast-checkout-card, .event-hero-card, .dx-ticker-wrapper, .mobile-916-shell {
   max-width: 100% !important;
   overflow: hidden !important;
+}
+
+/* ==========================================================================
+   27. RESPONSIVE GRIDS & ANTI-SBORDATURA DEFINITIVA
+   ========================================================================== */
+.dir-cards-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)) !important;
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+@media (max-width: 640px) {
+  .dir-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+}
+
+.grid-169-3col {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)) !important;
+  gap: 24px !important;
+  width: 100% !important;
+}
+
+@media (max-width: 768px) {
+  .grid-169-3col {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
+
+.transformation-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)) !important;
+  gap: 20px !important;
+  width: 100% !important;
+}
+
+@media (max-width: 768px) {
+  .transformation-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
+
+.card, .dir-card, .transformation-card, .dx-ticker-card, article {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+}
+
+@media (max-width: 640px) {
+  .card.p-4, .dir-card.p-4, .transformation-card {
+    padding: 16px 14px !important;
+  }
+  .row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+  .row > * {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
+/* Garanzia di leggibilità e contrasto globale */
+p, li, span, label, small {
+  overflow-wrap: break-word;
+}
+p {
+  color: #e2e8f0;
+  line-height: 1.6;
+}
+.dir-card p, .card p {
+  color: #cbd5e1 !important;
 }
 

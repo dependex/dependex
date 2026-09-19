@@ -83,6 +83,59 @@ $isFull = ($seatsRemaining <= 0);
 $percentBooked = $capacity > 0 ? min(100, round(($totalBooked / $capacity) * 100)) : 0;
 
 $pageTitle = 'A Scuola di Comunicazione e Resilienza · Taglio di Po · ACAT';
+$metaDesc = '9-10-11 Ottobre 2026, Oratorio San Francesco d\'Assisi, Taglio di Po. Corso esperienziale con Adelmo Di Salvatore. Max 30 posti, quota 10€ con pranzo compreso.';
+$ogImage = 'assets/img/events/evento-ottobre-taglio-di-po.jpeg';
+$canonicalUrl = 'https://' . ($brand['domain'] ?? 'dependex.social') . '/evento-ottobre-taglio-di-po.php';
+$breadcrumbs = [
+    'Home' => '/',
+    'Eventi' => 'events-public.php',
+    'Corso Taglio di Po (10€)' => 'evento-ottobre-taglio-di-po.php'
+];
+
+$pageSchemaJson = [
+    "@context" => "https://schema.org",
+    "@type" => "EducationEvent",
+    "name" => $e['title'] ?? 'A Scuola di Comunicazione e Resilienza — 1° Livello',
+    "description" => $e['description'] ?? 'Corso di formazione esperienziale rivolto a famiglie, operatori e membri dei Club Alcologici Territoriali.',
+    "startDate" => "2026-10-09T14:30:00+02:00",
+    "endDate" => "2026-10-11T13:00:00+02:00",
+    "eventStatus" => "https://schema.org/EventScheduled",
+    "eventAttendanceMode" => "https://schema.org/OfflineEventAttendanceMode",
+    "location" => [
+        "@type" => "Place",
+        "name" => $e['venue'] ?? "Oratorio San Francesco d'Assisi",
+        "address" => [
+            "@type" => "PostalAddress",
+            "streetAddress" => "Vicolo San Francesco 1",
+            "addressLocality" => "Taglio di Po",
+            "addressRegion" => "Rovigo",
+            "postalCode" => "45019",
+            "addressCountry" => "IT"
+        ]
+    ],
+    "image" => [
+        "https://" . ($brand['domain'] ?? 'dependex.social') . "/assets/img/events/evento-ottobre-taglio-di-po.jpeg"
+    ],
+    "performer" => [
+        "@type" => "Person",
+        "name" => "Adelmo Di Salvatore",
+        "jobTitle" => "Psichiatra, Psicoterapeuta, Formatore Metodo Hudolin"
+    ],
+    "organizer" => [
+        "@type" => "Organization",
+        "name" => $e['organizer'] ?? "ACAT Basso Polesine O.D.V.",
+        "url" => "https://" . ($brand['domain'] ?? 'dependex.social')
+    ],
+    "offers" => [
+        "@type" => "Offer",
+        "url" => "https://" . ($brand['domain'] ?? 'dependex.social') . "/evento-ottobre-taglio-di-po.php",
+        "price" => "10.00",
+        "priceCurrency" => "EUR",
+        "availability" => $isFull ? "https://schema.org/SoldOut" : "https://schema.org/InStock",
+        "validFrom" => "2026-09-01T00:00:00+02:00"
+    ]
+];
+
 require '_header.php';
 ?>
 

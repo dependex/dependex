@@ -4,6 +4,26 @@ $u = current_user();
 $courses = db()->query("SELECT * FROM academy_courses WHERE status='ACTIVE' ORDER BY category,title")->fetchAll();
 $pageTitle = 'Academy · Formazione Continua & Servitori-Insegnanti';
 $metaDesc = 'Percorsi accreditati per famiglie, membri e Servitori-Insegnanti. Impara l’approccio ecologico-sociale Hudolin, applica gli strumenti e condividi.';
+$breadcrumbs = [
+    'Home' => '/',
+    'Academy Formazione' => 'academy-public.php'
+];
+$pageSchemaJson = [
+    "@context" => "https://schema.org",
+    "@type" => "Course",
+    "name" => "Sovereign Academy · Formazione Metodo Hudolin & Servitori-Insegnanti",
+    "description" => $metaDesc,
+    "provider" => [
+        "@type" => "Organization",
+        "name" => "Sovereign Academy & ACAT Basso Polesine",
+        "url" => "https://" . ($brand['domain'] ?? 'dependex.social') . "/academy-public.php"
+    ],
+    "hasCourseInstance" => [
+        "@type" => "CourseInstance",
+        "courseMode" => "blended",
+        "courseWorkload" => "PT20H"
+    ]
+];
 require '_header.php';
 ?>
 

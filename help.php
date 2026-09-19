@@ -1,6 +1,35 @@
 <?php 
 $pageTitle = 'Aiuto e Supporto Immediato · Zero Giudizio';
-$metaDesc = 'Non sei solo e non sei giudicato. Spazio protetto in puro oro e nero per persone e famiglie: orientamento immediato, 542 Club e supporto empatico.';
+$metaDesc = 'Non sei solo e non sei giudicato. Spazio protetto per persone e famiglie: orientamento immediato, 542 Club e supporto empatico.';
+$breadcrumbs = [
+    'Home' => '/',
+    'Centro Aiuto & Supporto' => 'help.php'
+];
+$pageSchemaJson = [
+    "@context" => "https://schema.org",
+    "@type" => "ContactPage",
+    "name" => "Centro Aiuto e Supporto Immediato · DEPENDEX",
+    "description" => $metaDesc,
+    "url" => "https://" . ($brand['domain'] ?? 'dependex.social') . "/help.php",
+    "mainEntity" => [
+        [
+            "@type" => "Question",
+            "name" => "Cosa fare in caso di emergenza medica o crisi acuta da astinenza?",
+            "acceptedAnswer" => [
+                "@type" => "Answer",
+                "text" => "In caso di emergenza medica acuta chiamare immediatamente il Numero Unico Europeo Emergenze 112. I Club non sostituiscono il pronto soccorso ospedaliero."
+            ]
+        ],
+        [
+            "@type" => "Question",
+            "name" => "Come posso contattare un facilitatore in totale riservatezza?",
+            "acceptedAnswer" => [
+                "@type" => "Answer",
+                "text" => "È possibile contattare la segreteria di accoglienza via WhatsApp al 347 884 4271 o via email all'indirizzo info@dependex.support."
+            ]
+        ]
+    ]
+];
 require '_header.php';
 ?>
 
@@ -105,9 +134,9 @@ require '_header.php';
       Inviaci un messaggio in totale anonimato. Nessun bot di vendita, nessuna pressione commerciale. Ti risponderà un Servitore-Insegnante con l'esperienza necessaria per darti le coordinate esatte.
     </p>
     <p style="font-size:1.15rem;margin:1.2rem 0 0;">
-      <a href="mailto:info@dependex.social" class="text-neon-cyan" style="font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
+      <a href="mailto:info@dependex.support" class="text-neon-cyan" style="font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
         <?=dx_icon('mail', '', 18)?>
-        <span>info@dependex.social</span>
+        <span>info@dependex.support</span>
       </a>
     </p>
     <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap;">

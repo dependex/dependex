@@ -1,69 +1,173 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- 1. HOMEPAGE -->
   <url>
     <loc>https://dependex.social/</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/"/>
+    <image:image>
+      <image:loc>https://dependex.social/assets/img/dependex-rainbow-badge.jpg</image:loc>
+      <image:title>DEPENDEX · Al Club. Col Club.</image:title>
+    </image:image>
   </url>
+
+  <!-- 2. GUIDA GRATUITA PER LA FAMIGLIA (LEAD MAGNET) -->
   <url>
     <loc>https://dependex.social/guida-gratuita.php</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/guida-gratuita.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/guida-gratuita.php"/>
   </url>
+
+  <!-- 3. METODO HUDOLIN (PILLAR DI AUTORITÀ E-E-A-T) -->
   <url>
     <loc>https://dependex.social/metodo.php</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/metodo.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/metodo.php"/>
   </url>
-  <url>
-    <loc>https://dependex.social/offers.php</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
+
+  <!-- 4. TROVA UN CLUB (DIRECTORY LOCALE CON OLTRE 540 CLUB) -->
   <url>
     <loc>https://dependex.social/world-club-explorer.php</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/world-club-explorer.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/world-club-explorer.php"/>
   </url>
+
+  <!-- 5. EVENTO FORMATIVO OTTOBRE TAGLIO DI PO (FLAGSHIP EVENT) -->
+  <url>
+    <loc>https://dependex.social/evento-ottobre-taglio-di-po.php</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/evento-ottobre-taglio-di-po.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/evento-ottobre-taglio-di-po.php"/>
+    <image:image>
+      <image:loc>https://dependex.social/assets/img/events/evento-ottobre-taglio-di-po.jpeg</image:loc>
+      <image:title>A Scuola di Comunicazione e Resilienza · Taglio di Po</image:title>
+    </image:image>
+  </url>
+
+  <!-- 6. HUB NAZIONALE EVENTI -->
   <url>
     <loc>https://dependex.social/events-public.php</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/events-public.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/events-public.php"/>
   </url>
+
+  <!-- 7. LIBRI AMAZON KDP & COLLANA EDITORIALE -->
+  <url>
+    <loc>https://dependex.social/offers.php</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/offers.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/offers.php"/>
+  </url>
+
+  <!-- 8. SOVEREIGN ACADEMY -->
   <url>
     <loc>https://dependex.social/academy-public.php</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.80</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/academy-public.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/academy-public.php"/>
   </url>
+
+  <!-- 9. VIAGGI ESPERIENZIALI & RITIRI NATURA -->
+  <url>
+    <loc>https://dependex.social/viaggi-esperienziali.php</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/viaggi-esperienziali.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/viaggi-esperienziali.php"/>
+  </url>
+
+  <!-- 10. CROCIERA BENESSERE MASTERCLASS (CIURMA) -->
+  <url>
+    <loc>https://dependex.social/crociera-benessere-masterclass.php</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/crociera-benessere-masterclass.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/crociera-benessere-masterclass.php"/>
+  </url>
+
+  <!-- 11. MAPPA MONDIALE 2D/3D -->
+  <url>
+    <loc>https://dependex.social/world-map.php</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/world-map.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/world-map.php"/>
+  </url>
+
+  <!-- 12. AIUTO, SUPPORTO & FAQ -->
   <url>
     <loc>https://dependex.social/help.php</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.70</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/help.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/help.php"/>
   </url>
+
+  <!-- 13. ORIENTAMENTO CONFIDENZIALE / CONTATTO DIRETTO -->
   <url>
     <loc>https://dependex.social/lead.php</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.70</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/lead.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/lead.php"/>
   </url>
+
+  <!-- 14. PRIVACY POLICY (GDPR) -->
   <url>
     <loc>https://dependex.social/privacy.php</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.50</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/privacy.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/privacy.php"/>
   </url>
+
+  <!-- 15. CENTRO PRIVACY & GESTIONE CONSENSI -->
+  <url>
+    <loc>https://dependex.social/privacy-center.php</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/privacy-center.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/privacy-center.php"/>
+  </url>
+
+  <!-- 16. TERMINI DI SERVIZIO -->
   <url>
     <loc>https://dependex.social/terms.php</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.50</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/terms.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/terms.php"/>
   </url>
 </urlset>

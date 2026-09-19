@@ -10,7 +10,10 @@ require_once 'bootstrap.php';
 
 $pageTitle = 'Collana Libri Amazon KDP · Mirco Pregnolato & Metodo Hudolin';
 $metaDesc = 'I libri, diari operativi e manuali di crescita e sobrietà scritti da Mirco Pregnolato e pubblicati su Amazon KDP. Scegli tra formato Digitale, Cartaceo Prime e Bundle Formazione.';
-require '_header.php';
+$breadcrumbs = [
+    'Home' => '/',
+    'Collana Libri KDP' => 'offers.php'
+];
 
 // Catalogo Completo dei 6 Libri di Mirco Pregnolato con i 3 Tier di Prezzo
 $booksCatalog = [
@@ -261,6 +264,45 @@ $booksCatalog = [
         ]
     ]
 ];
+
+$schemaItems = [];
+$pos = 1;
+foreach ($booksCatalog as $bk) {
+    $schemaItems[] = [
+        "@type" => "ListItem",
+        "position" => $pos++,
+        "item" => [
+            "@type" => "Book",
+            "name" => $bk['title'],
+            "headline" => $bk['subtitle'],
+            "description" => $bk['description'],
+            "author" => [
+                "@type" => "Person",
+                "name" => "Mirco Pregnolato"
+            ],
+            "publisher" => [
+                "@type" => "Organization",
+                "name" => "Amazon KDP & ACAT Basso Polesine"
+            ],
+            "offers" => [
+                "@type" => "AggregateOffer",
+                "priceCurrency" => "EUR",
+                "lowPrice" => "14.90",
+                "highPrice" => "69.00",
+                "offerCount" => count($bk['tiers'])
+            ]
+        ]
+    ];
+}
+$pageSchemaJson = [
+    "@context" => "https://schema.org",
+    "@type" => "ItemList",
+    "name" => "Collana Libri Amazon KDP · Mirco Pregnolato",
+    "description" => $metaDesc,
+    "itemListElement" => $schemaItems
+];
+
+require '_header.php';
 ?>
 
 <div class="container-169 py-4">

@@ -10,6 +10,30 @@ require_once 'bootstrap.php';
 
 $pageTitle = 'Viaggi Esperienziali, Ritiri & Crociere a Tema · BEWAY.LIFE x DEPENDEX';
 $metaDesc = 'Vivi la trasformazione in contesti straordinari: la Grande Crociera della Rinascita nel Mediterraneo con Workshop e Masterclass, ritiri immersivi nelle Dolomiti e cammini di consapevolezza.';
+$breadcrumbs = [
+    'Home' => '/',
+    'Viaggi Esperienziali' => 'viaggi-esperienziali.php'
+];
+$pageSchemaJson = [
+    "@context" => "https://schema.org",
+    "@type" => "ItemList",
+    "name" => "Viaggi Esperienziali & Ritiri Sobrietà BEWAY.LIFE x DEPENDEX",
+    "description" => $metaDesc,
+    "itemListElement" => [
+        [
+            "@type" => "ListItem",
+            "position" => 1,
+            "name" => "La Grande Crociera della Rinascita: Masterclass & Workshop in Mare Aperto",
+            "url" => "https://" . ($brand['domain'] ?? 'dependex.social') . "/crociera-benessere-masterclass.php"
+        ],
+        [
+            "@type" => "ListItem",
+            "position" => 2,
+            "name" => "Ritiro Forestale & Biohacking Dolomiti: Reset Neurovegetativo",
+            "url" => "https://" . ($brand['domain'] ?? 'dependex.social') . "/viaggi-esperienziali.php#ritiro-dolomiti-2026"
+        ]
+    ]
+];
 require '_header.php';
 
 $trips = [
@@ -122,14 +146,18 @@ $trips = [
       <div class="col-lg-7">
         <div class="badge-neon-rainbow mb-2">
           <span class="dot"></span>
-          <span class="text-rainbow">EVENTO DI PUNTA INTERNAZIONALE 2026</span>
+          <span class="text-rainbow">AVVISO COMMUNITY · INIZIATIVA RESIDENZIALE CIURMA</span>
         </div>
         <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 900; color: #FFFFFF; line-height: 1.2; margin-bottom: 1rem;">
-          La Grande Crociera della Rinascita: <br><span class="text-rainbow">Masterclass & Workshop in Mare Aperto</span>
+          Iniziativa Residenziale CIURMA: <br><span class="text-rainbow">Percorso di Rinascita & Famiglie sul Mare</span>
         </h2>
         <p style="color: #cbd5e1; font-size: 1.05rem; line-height: 1.65; margin-bottom: 1.2rem;">
-          8 giorni e 7 notti tra le isole più affascinanti del Mediterraneo. Un'esperienza immersiva al 100% analcolica, con Mocktail Bar molecolari d'autore, cucina mediterranea viva, alba sul ponte con pratiche respiratorie e <strong>Masterclass quotidiane esclusive tenute da Mirco Pregnolato</strong> sui pilastri della trasformazione radicale e del Metodo Hudolin.
+          8 giorni e 7 notti tra le isole più affascinanti del Mediterraneo. Un'esperienza immersiva al 100% analcolica, con cucina viva, alba sul ponte con pratiche respiratorie e <strong>accompagnamento intensivo tenuto da Mirco Pregnolato</strong> sui pilastri della trasformazione e della relazione d'aiuto.
         </p>
+
+        <div style="background: rgba(0, 212, 255, 0.08); border-left: 3px solid var(--neon-cyan); padding: 10px 14px; border-radius: 0 10px 10px 0; margin-bottom: 1.2rem; font-size: 0.88rem; color: #e2e8f0;">
+          <strong>Nota trasparenza:</strong> DEPENDEX è solo Advisor informativo. Le iscrizioni e il programma sono ospitati su <a href="https://mircopregnolato.it/ciurma.html" target="_blank" rel="noopener" style="color: var(--neon-cyan); font-weight: 800;">mircopregnolato.it</a>. La logistica nave è venduta in via esclusiva dall'Agenzia Viaggi partner autorizzata.
+        </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 1.8rem;">
           <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px 14px;">
@@ -137,17 +165,20 @@ $trips = [
             <b style="color: #FFFFFF; font-size: 0.92rem;">Santorini · Mykonos · Atene · Kotor</b>
           </div>
           <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px 14px;">
-            <small style="color: var(--neon-cyan); font-weight: 800; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.05em; display: block;">QUOTA DA</small>
-            <b style="color: #FFFFFF; font-size: 0.92rem;">890 € (Caparra da 190 €)</b>
+            <small style="color: var(--neon-cyan); font-weight: 800; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.05em; display: block;">FORMULA</small>
+            <b style="color: #FFFFFF; font-size: 0.92rem;">Famiglie & Conduttori</b>
           </div>
         </div>
 
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-          <a href="crociera-benessere-masterclass.php" class="btn primary" style="padding: 12px 28px; font-weight: 800; border-radius: 12px; text-decoration: none; font-size: 0.98rem;">
-            <?=dx_icon('external-link', '', 16)?> Dettagli Completi, Cabine & Iscrizione
+          <a href="https://mircopregnolato.it/ciurma.html" target="_blank" rel="noopener" class="btn primary" style="padding: 12px 28px; font-weight: 800; border-radius: 12px; text-decoration: none; font-size: 0.98rem;">
+            <?=dx_icon('external-link', '', 16)?> Iscrizioni su mircopregnolato.it
           </a>
-          <a href="https://wa.me/393478844271?text=<?=urlencode('Buongiorno, desidero informazioni sulla Crociera della Rinascita BEWAY.LIFE x DEPENDEX')?>" target="_blank" rel="noopener" class="btn" style="background: #25D366; color: #000; font-weight: 800; border-radius: 12px; text-decoration: none; border: none; padding: 12px 22px; display: inline-flex; align-items: center; gap: 8px;">
-            <?=dx_icon('whatsapp', '', 16)?> Concierge WhatsApp (+39 347 884 4271)
+          <a href="crociera-benessere-masterclass.php" class="btn" style="padding: 12px 22px; font-weight: 700; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); color: #fff; text-decoration: none; font-size: 0.92rem;">
+            <?=dx_icon('compass', '', 16)?> Scheda Advisor
+          </a>
+          <a href="https://wa.me/393478844271?text=<?=urlencode('Buongiorno, desidero informazioni sull\'iniziativa residenziale CIURMA.')?>" target="_blank" rel="noopener" class="btn" style="background: #25D366; color: #000; font-weight: 800; border-radius: 12px; text-decoration: none; border: none; padding: 12px 20px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem;">
+            <?=dx_icon('whatsapp', '', 16)?> Concierge Agenzia
           </a>
         </div>
       </div>

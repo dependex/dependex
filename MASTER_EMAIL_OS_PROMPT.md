@@ -464,8 +464,8 @@ Documento master esteso: docs/MOBILE_FIRST_VIEWPORT_SPEC.md.
 
 ---
 
-# DEPENDEX.SOCIAL · HUMAN WELFARE OS 4.0
-## ARCHITETTURA DI ORIENTAMENTO DELLA PERSONA (NON-DIAGNOSTICA)
+# DEPENDEX.SOCIAL · HUMAN WELFARE OS 4.0 & ENGINE 5.0
+## ARCHITETTURA DI ORIENTAMENTO DELLA PERSONA (MULTI-MODEL HUMAN FRAMEWORK)
 
 1. MATRICE INTERLACCIATA DEL WELFARE:
    - Hudolin = Relazione e Comunità multifamiliare (non medica, non punitiva).
@@ -473,17 +473,18 @@ Documento master esteso: docs/MOBILE_FIRST_VIEWPORT_SPEC.md.
    - Ruota della Vita = Fotografia privata di consapevolezza (zero giudizio, zero classifiche o voti).
    - Tradizioni Vediche = Direzione e Valori etici universali (Dharma/scopo, Artha/risorse, Kama/vitalità, Moksha/libertà interiore).
    - 7 Energie del Welfare = Mappa esperienziale dell'equilibrio (Radicamento, Vitalità, Autonomia, Relazione, Espressione, Consapevolezza, Significato), SENZA MAI nominare i chakra come struttura di prodotto.
+   - Salutogenesi (Antonovsky) = Costruzione attiva di risorse e Sense of Coherence (Comprensibilità, Gestibilità, Significato).
+   - Self-Determination Theory (Deci & Ryan) = Preservazione di Autonomia, Competenza e Relazione.
+   - COM-B (Michie) = Progettazione comportamentale (Capability, Opportunity, Motivation) senza forzature.
    - Famiglia, Club e Territorio = Nodi reali di incontro e rinascita.
 
 2. VINCOLO DEONTOLOGICO ASSOLUTO:
    - Nessun modello è una diagnosi medica o clinica né un sistema di ranking o classificazione della persona.
+   - Divieto assoluto di "Wellness Score", indici percentuali di salute o rischio sociale.
    - Non chiedere mai "Qual è il tuo problema?", ma chiedere "Da dove vuoi iniziare?".
-   - La Ruota della Vita permette alla persona di dire: "Questa parte della mia vita oggi chiede attenzione".
-   - Il sistema risponde sempre: "Partiamo da lì. Vediamo cosa può aiutarti a rimettere in movimento la tua vita e quali persone e comunità possono accompagnarti".
-   - Documento master esteso: docs/HUMAN_WELFARE_OS_4.md.
+   - Risposta cardine maieutica: "Questa parte della mia vita oggi chiede attenzione" -> "Partiamo da lì. Vediamo cosa può aiutarti a rimettere in movimento la tua vita e quali persone e comunità possono accompagnarti".
+   - Trauma-Informed UX & Small Steps Engine (massimo 3 opzioni post-esplorazione, zero overwhelm).
+   - Documenti di riferimento: docs/HUMAN_WELFARE_OS_4.md e docs/HUMAN_WELFARE_ENGINE_5.md.
 
 ---
-
 END MASTER BUILD PROMPT
-
-

@@ -34,11 +34,13 @@
    - **Altezza Dinamica & Touch:** `min-height: 100dvh` con fallback `100vh` (MAI `height: 900px` fissa), touch target minimo 44×44px, ancore con `scroll-margin-top`.
    - **No Fixed Width & No Content Hidden:** Nessun `width: [px fissi]` strutturale; MAI usare `display: none` per nascondere contenuti critici per rimediare al layout.
    - Specifica integrale dei 37 articoli in [`docs/MOBILE_FIRST_VIEWPORT_SPEC.md`](file:///c:/81PLUS_GLOBAL_MASTER/dependex.social/docs/MOBILE_FIRST_VIEWPORT_SPEC.md).
-7. **Human Welfare OS 4.0 & Orientamento Non-Diagnostico (Vincolo Deontologico Assoluto):**
-   - I modelli concettuali (Hudolin = relazione/comunità, Maslow = bisogni, Ruota della Vita = fotografia privata, Tradizioni vediche = Dharma/Artha/Kama/Moksha, 7 Energie del Welfare = Radicamento, Vitalità, Autonomia, Relazione, Espressione, Consapevolezza, Significato) sono esclusivamente **mappe di orientamento e consapevolezza**, MAI diagnosi mediche, terapie cliniche o sistemi di ranking e giudizio della persona.
+7. **Human Welfare OS 4.0 & Human Welfare Engine 5.0 (Vincolo Deontologico Assoluto):**
+   - I modelli concettuali (Hudolin = relazione/comunità, Maslow = bisogni, Ruota della Vita = fotografia privata, Tradizioni vediche = Dharma/Artha/Kama/Moksha, 7 Energie del Welfare = Radicamento, Vitalità, Autonomia, Relazione, Espressione, Consapevolezza, Significato, Salutogenesi = Sense of Coherence, Self-Determination = Autonomia/Competenza/Relazione, COM-B = Capability/Opportunity/Motivation) sono esclusivamente **lenti maieutiche di orientamento e consapevolezza**, MAI diagnosi cliniche o classificazioni.
+   - **Divieto Assoluto di "Wellness Score":** È vietato calcolare punteggi di benessere (es. "72/100"), indici di felicità o percentuali di rischio sociale.
    - È vietato nominare i chakra come struttura di prodotto o promettere guarigioni; l'energia del benessere è usata come metafora organizzativa ed esperienziale.
-   - La persona non viene mai etichettata ("non devi avere già un'etichetta") e sceglie liberamente da dove iniziare ("questa parte della mia vita oggi chiede attenzione"). Il sistema risponde sempre: *"Partiamo da lì. Vediamo cosa può aiutarti a rimettere in movimento la tua vita e quali persone e comunità possono accompagnarti"*.
-   - Specifica integrale dei 53 articoli in [`docs/HUMAN_WELFARE_OS_4.md`](file:///c:/81PLUS_GLOBAL_MASTER/dependex.social/docs/HUMAN_WELFARE_OS_4.md).
+   - **Trauma-Informed UX & Small Steps Engine:** Massimo 3 opzioni post-esplorazione (zero overwhelm), domande aperte maieutiche, stile motivazionale senza imposizioni ("Se vuoi, puoi iniziare da qui").
+   - La persona sceglie liberamente da dove iniziare ("Questa parte della mia vita oggi chiede attenzione") e il sistema risponde sempre: *"Partiamo da lì. Vediamo cosa può aiutarti a rimettere in movimento la tua vita e quali persone e comunità possono accompagnarti"*.
+   - Specifiche integrali in [`docs/HUMAN_WELFARE_OS_4.md`](file:///c:/81PLUS_GLOBAL_MASTER/dependex.social/docs/HUMAN_WELFARE_OS_4.md) e [`docs/HUMAN_WELFARE_ENGINE_5.md`](file:///c:/81PLUS_GLOBAL_MASTER/dependex.social/docs/HUMAN_WELFARE_ENGINE_5.md).
 
 ---
 

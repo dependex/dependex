@@ -278,4 +278,207 @@ class HumanWelfareEngine {
             'resource_recommended' => $dim['resources'][0]['title'] ?? 'Guida gratuita di orientamento per la famiglia'
         ];
     }
+
+    /**
+     * SALUTOGENESI: Sense of Coherence (Aaron Antonovsky)
+     * Comprensibilità, Gestibilità, Significato
+     */
+    public static function getSenseOfCoherence(): array {
+        return [
+            'comprensibilita' => [
+                'id' => 'comprensibilita',
+                'title' => 'Comprensibilità',
+                'question' => 'Capisco cosa sta succedendo?',
+                'principle' => 'Fornire trasparenza sui meccanismi della dipendenza, del bere e del cambiamento ecologico-sociale, togliendo la nebbia e la vergogna.'
+            ],
+            'gestibilita' => [
+                'id' => 'gestibilita',
+                'title' => 'Gestibilità',
+                'question' => 'Ho o posso trovare risorse per affrontarlo?',
+                'principle' => 'Rendere accessibili strumenti pratici, supporto comunitario e la presenza calda di persone che hanno già fatto il cammino.'
+            ],
+            'significato' => [
+                'id' => 'significato',
+                'title' => 'Significato',
+                'question' => 'Perché vale la pena occuparmene?',
+                'principle' => 'Ritrovare il valore della propria vita, la dignità, l\'amore dei familiari e la motivazione profonda a rinascere.'
+            ]
+        ];
+    }
+
+    /**
+     * SELF-DETERMINATION THEORY (Deci & Ryan)
+     * Autonomia, Competenza, Relazione
+     */
+    public static function getSelfDetermination(): array {
+        return [
+            'autonomia' => [
+                'id' => 'autonomia',
+                'name' => 'Autonomia',
+                'description' => 'La persona sceglie liberamente il proprio cammino: mai imposizioni, mai paternalismo. "Se vuoi, puoi iniziare da qui".'
+            ],
+            'competenza' => [
+                'id' => 'competenza',
+                'name' => 'Competenza',
+                'description' => 'La persona impara e sviluppa nuove abilità quotidiane per gestire le tensioni emotive senza ricorrere alle sostanze.'
+            ],
+            'relazione' => [
+                'id' => 'relazione',
+                'name' => 'Relazione',
+                'description' => 'La persona si sente accolta, protetta e connessa ad altri esseri umani che condividono lo stesso percorso con amicizia e rispetto.'
+            ]
+        ];
+    }
+
+    /**
+     * COM-B BEHAVIORAL ARCHITECTURE (Michie)
+     * Capability, Opportunity, Motivation
+     */
+    public static function getComBAnalysis(string $action = 'club'): array {
+        return [
+            'action' => $action,
+            'capability' => [
+                'label' => 'Capacità (So cosa aspettarmi)',
+                'description' => 'Spiegazione chiara: una riunione dura 90 minuti, non si è obbligati a parlare, non ci sono cattedre né prescrizioni.'
+            ],
+            'opportunity' => [
+                'label' => 'Opportunità (È vicino e accessibile)',
+                'description' => 'Presenza capillare di 322+ Club gratuiti sul territorio italiano, raggiungibili la sera senza burocrazia né costi.'
+            ],
+            'motivation' => [
+                'label' => 'Motivazione (Vale la pena provare)',
+                'description' => 'Storie reali di famiglie rinate, sollievo dalla solitudine e speranza concreta di ritrovare la serenità.'
+            ]
+        ];
+    }
+
+    /**
+     * I 3 MICRO-JOURNEYS DI ORIENTAMENTO UMANO
+     */
+    public static function getMicroJourneys(): array {
+        return [
+            'non_so_da_dove_iniziare' => [
+                'id' => 'non_so_da_dove_iniziare',
+                'title' => 'Non so da dove iniziare',
+                'tagline' => 'Accoglienza senza etichette per chi si sente sopraffatto o confuso.',
+                'steps' => [
+                    'Respira: non devi decidere tutto oggi né devi cambiare la tua vita in un giorno.',
+                    'Scegli se preferisci leggere in silenzio o scambiare due parole con un volontario empatico.',
+                    'Esplora la mappa dei Club o poni una domanda anonima senza alcun impegno.'
+                ],
+                'primary_cta' => ['label' => 'Esplora la Mappa del Benessere', 'url' => 'orientamento.php'],
+                'secondary_cta' => ['label' => 'Leggi le Domande che vuoi fare', 'url' => 'domande-frequenti.php']
+            ],
+            'cerco_un_club' => [
+                'id' => 'cerco_un_club',
+                'title' => 'Cerco un Club vicino a me',
+                'tagline' => 'Trova la comunità reale nel tuo comune o quartiere.',
+                'steps' => [
+                    'Inserisci la tua città, CAP o attiva la geolocalizzazione per vedere le sedi.',
+                    'Scegli il giorno e l\'orario più comodo per te.',
+                    'Presentati all\'incontro: puoi venire da solo o con chi ti vuole bene. Sarai accolto senza giudizio.'
+                ],
+                'primary_cta' => ['label' => 'Cerca un Club Territoriale', 'url' => 'cerca-club.php'],
+                'secondary_cta' => ['label' => 'Come Funziona una Riunione', 'url' => 'come-funziona-il-club.php']
+            ],
+            'aiuto_una_persona' => [
+                'id' => 'aiuto_una_persona',
+                'title' => 'Voglio aiutare una persona cara',
+                'tagline' => 'Orientamento per familiari, partner, amici e colleghi.',
+                'steps' => [
+                    'Non sei solo: l\'approccio Hudolin è multifamiliare e protegge prima di tutto i legami affettivi.',
+                    'Puoi iniziare a frequentare il Club anche se la persona coinvolta rifiuta di venire o dice di non avere problemi.',
+                    'Il sollievo e il cambiamento nell\'atmosfera di casa iniziano dalla tua presenza nel cerchio.'
+                ],
+                'primary_cta' => ['label' => 'Scarica la Guida Gratuita Famiglia', 'url' => 'guida-gratuita.php'],
+                'secondary_cta' => ['label' => 'Parla con un Servitore Insegnante', 'url' => 'parla-con-noi.php']
+            ]
+        ];
+    }
+
+    /**
+     * SMALL STEPS ENGINE: Restituisce massimo 3 prossimi passi per prevenire l'overwhelm
+     */
+    public static function getSmallSteps(string $areaId): array {
+        $dim = self::getWelfareDimensions()[$areaId] ?? self::getWelfareDimensions()['radicamento'];
+        
+        $steps = [
+            [
+                'title' => 'Incontro al Club Locale',
+                'description' => 'Unisciti a un cerchio settimanale di 90 minuti: gratuito, anonimo e aperto a tutti.',
+                'url' => 'cerca-club.php',
+                'cta' => 'Trova Club'
+            ],
+            [
+                'title' => 'Ascolto Riservato',
+                'description' => 'Scrivi o parla con un volontario preparato che ti ascolta senza giudicare.',
+                'url' => 'parla-con-noi.php',
+                'cta' => 'Parla con Noi'
+            ],
+            [
+                'title' => 'Risorsa di Rinascita',
+                'description' => $dim['resources'][0]['title'] ?? 'Guide gratuite e testimonianze di comunità.',
+                'url' => $dim['resources'][0]['url'] ?? 'guida-gratuita.php',
+                'cta' => 'Approfondisci'
+            ]
+        ];
+
+        // Tassativamente massimo 3 passi (Small Steps Engine)
+        return array_slice($steps, 0, 3);
+    }
+
+    /**
+     * WELFARE COMPASS: Le 12 aree maieutiche della vita
+     */
+    public static function getWelfareCompassAreas(): array {
+        return [
+            'corpo' => ['name' => 'Corpo & Salute', 'question' => 'Come sta il tuo corpo e quale cura desidera oggi?'],
+            'sicurezza' => ['name' => 'Sicurezza & Casa', 'question' => 'Senti che il tuo ambiente quotidiano è protetto e stabile?'],
+            'relazioni' => ['name' => 'Relazioni & Amicizie', 'question' => 'Chi sono le persone con cui puoi essere autentico senza maschere?'],
+            'autonomia' => ['name' => 'Autonomia & Scelta', 'question' => 'Quanto spazio senti di avere per decidere della tua vita?'],
+            'espressione' => ['name' => 'Espressione & Parola', 'question' => 'Riesci a dire quello che provi senza timore del giudizio?'],
+            'consapevolezza' => ['name' => 'Consapevolezza & Mente', 'question' => 'Cosa ti aiuta a mantenere lucidità e chiarezza interiore?'],
+            'significato' => ['name' => 'Significato & Valori', 'question' => 'Qual è il senso o lo scopo che ti dà energia ogni mattina?'],
+            'comunita' => ['name' => 'Comunità & Appartenenza', 'question' => 'In quale gruppo o comunità ti senti accolto e a casa?'],
+            'lavoro' => ['name' => 'Lavoro & Dignità', 'question' => 'Come vivi le tue attività e la tua sostenibilità quotidiana?'],
+            'famiglia' => ['name' => 'Famiglia & Legami', 'question' => 'Quale cura o riconciliazione chiedono i tuoi affetti più cari?'],
+            'territorio' => ['name' => 'Territorio & Spazio', 'question' => 'Come vivi il rapporto con i luoghi in cui risiedi?'],
+            'partecipazione' => ['name' => 'Partecipazione & Servizio', 'question' => 'Come desideri contribuire al benessere degli altri?']
+        ];
+    }
+
+    /**
+     * RACCOMANDAZIONI SPIEGABILI (Explainable Recommendations)
+     */
+    public static function explainRecommendation(string $type, string $itemName, string $userContext): string {
+        return "Ti mostriamo {$itemName} perché hai dichiarato interesse per {$userContext}, in conformità con la scelta libera e non invasiva.";
+    }
+
+    /**
+     * COMMUNITY CAPITAL OVERVIEW (Aggregato, senza classifiche individuali)
+     */
+    public static function getCommunityCapitalOverview(): array {
+        return [
+            'clubs_count' => '322+',
+            'weekly_circles' => '540+',
+            'annual_circle_hours' => '48.000+',
+            'verified_stories' => '15+',
+            'free_access' => '100%',
+            'territorial_coverage' => 'Tutte le 20 regioni d\'Italia'
+        ];
+    }
+
+    /**
+     * CONTRIBUTION ENGINE: Dal ricevere al generare comunità
+     */
+    public static function getContributionPaths(): array {
+        return [
+            ['stage' => 'RICEVERE', 'desc' => 'Vieni al Club e sperimenta l\'accoglienza senza dover dare nulla in cambio.'],
+            ['stage' => 'PARTECIPARE', 'desc' => 'Partecipa regolarmente e condividi la tua presenza nel cerchio.'],
+            ['stage' => 'APPRENDERE', 'desc' => 'Approfondisci il Metodo e le dinamiche di crescita personale e familiare.'],
+            ['stage' => 'CONTRIBUIRE', 'desc' => 'Sostieni il Club nella logistica, nell\'apertura della sala o nell\'accoglienza.'],
+            ['stage' => 'AIUTARE', 'desc' => 'Metti a disposizione la tua esperienza di sobrietà per accompagnare chi è all\'inizio.'],
+            ['stage' => 'GENERARE COMUNITÀ', 'desc' => 'Formati come Servitore-Insegnante e aiuta ad aprire nuovi Club sul territorio.']
+        ];
+    }
 }

@@ -5,8 +5,8 @@ require_once __DIR__ . '/modules/welfare/HumanWelfareEngine.php';
 $u = current_user();
 $brand = site_brand();
 
-$pageTitle = 'Mappa del Benessere & Orientamento alla Vita · Human Welfare OS';
-$metaDesc = 'Un sistema di orientamento e consapevolezza personale senza diagnosi né giudizi. Esplora le 7 dimensioni del benessere e trova la comunità reale più vicina a te.';
+$pageTitle = 'Mappa del Benessere & Orientamento alla Vita · Human Welfare Engine 5.0';
+$metaDesc = 'Un sistema di orientamento e consapevolezza personale senza diagnosi né giudizi. Esplora le dimensioni del benessere, i micro-percorsi e la comunità reale più vicina a te.';
 $canonicalUrl = 'https://' . ($brand['domain'] ?? 'dependex.social') . '/orientamento.php';
 
 $breadcrumbs = [
@@ -17,22 +17,29 @@ $breadcrumbs = [
 $dimensions = HumanWelfareEngine::getDimensions();
 $purposes = HumanWelfareEngine::getLifePurposes();
 $hudolinCore = HumanWelfareEngine::getHudolinPillars();
+$microJourneys = HumanWelfareEngine::getMicroJourneys();
+$soc = HumanWelfareEngine::getSenseOfCoherence();
+$selfDet = HumanWelfareEngine::getSelfDetermination();
+$compassAreas = HumanWelfareEngine::getWelfareCompassAreas();
+$communityCapital = HumanWelfareEngine::getCommunityCapitalOverview();
+$contributionPaths = HumanWelfareEngine::getContributionPaths();
 
 // Parametro opzionale da query string per pre-selezionare una dimensione
 $activeKey = isset($_GET['area']) && isset($dimensions[$_GET['area']]) ? $_GET['area'] : 'radicamento';
 $activeData = $dimensions[$activeKey] ?? $dimensions['radicamento'];
 $orientationManifesto = HumanWelfareEngine::orientate($activeKey);
+$smallSteps = HumanWelfareEngine::getSmallSteps($activeKey);
 
 require '_header.php';
 ?>
 
 <div class="container py-4" style="max-width: 1180px; margin: 0 auto; padding: 0 1rem;">
 
-  <!-- HERO UMANA & NON DIAGNOSTICA -->
+  <!-- HERO UMANA & NON DIAGNOSTICA (TRAUMA-INFORMED) -->
   <section class="human-hero-card text-center my-4" style="padding: clamp(1.8rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem); background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15) 0%, rgba(12, 16, 28, 0.95) 80%); border: 1px solid rgba(129, 140, 248, 0.35); border-radius: var(--dx-radius-lg, 20px);">
     <div class="badge-neon-rainbow mb-3">
       <span class="dot"></span>
-      <span style="color:#c7d2fe;">HUMAN WELFARE OS · MAPPA DI ORIENTAMENTO</span>
+      <span style="color:#c7d2fe;">HUMAN WELFARE ENGINE 5.0 · ORIENTAMENTO & CONSAPEVOLEZZA</span>
     </div>
 
     <h1 style="font-family: var(--font-serif); font-size: clamp(2rem, 4.5vw, 3.2rem); color: #ffffff; font-weight: 800; margin: 0 0 16px; line-height: 1.18;">
@@ -41,8 +48,8 @@ require '_header.php';
     </h1>
 
     <p style="color: #cbd5e1; max-width: 760px; margin: 0 auto 20px; font-size: clamp(0.98rem, 2vw, 1.15rem); line-height: 1.6;">
-      Nessuna diagnosi. Nessun voto alla persona. Nessun test clinico.<br>
-      Questa mappa ti aiuta a dare voce a ciò che senti:
+      Nessuna diagnosi. Nessun voto alla persona. Nessun test clinico né punteggio di benessere.<br>
+      Questa mappa maieutica ti aiuta a dare voce a ciò che senti:
       <em>“Questa parte della mia vita oggi chiede attenzione.”</em>
     </p>
 
@@ -51,27 +58,77 @@ require '_header.php';
       <div class="col-12 col-sm-6 col-md-3">
         <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px 14px; height: 100%;">
           <div style="font-size: 0.8rem; font-weight: 700; color: #38bdf8; margin-bottom: 2px;">ZERO ETICHETTE</div>
-          <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.35;">La persona viene prima di qualsiasi problema o passato.</div>
+          <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.35;">La persona viene prima di qualsiasi passato o diagnosi.</div>
         </div>
       </div>
       <div class="col-12 col-sm-6 col-md-3">
         <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px 14px; height: 100%;">
           <div style="font-size: 0.8rem; font-weight: 700; color: #4ade80; margin-bottom: 2px;">ZERO GIUDIZIO</div>
-          <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.35;">Non c'è una "normalità" a cui conformarsi né un voto da prendere.</div>
+          <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.35;">Nessun "wellness score", classifica o indice di normalità.</div>
         </div>
       </div>
       <div class="col-12 col-sm-6 col-md-3">
         <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px 14px; height: 100%;">
           <div style="font-size: 0.8rem; font-weight: 700; color: #fbbf24; margin-bottom: 2px;">COMUNITÀ REALE</div>
-          <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.35;">Il digitale orienta, ma la vera forza nasce nell'incontro umano.</div>
+          <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.35;">Il digitale orienta, ma la vera rinascita nasce nell'incontro umano.</div>
         </div>
       </div>
       <div class="col-12 col-sm-6 col-md-3">
         <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px 14px; height: 100%;">
           <div style="font-size: 0.8rem; font-weight: 700; color: #c084fc; margin-bottom: 2px;">SEMPRE GRATUITO</div>
-          <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.35;">Tutti i Club territoriali sono aperti e accessibili a tutti.</div>
+          <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.35;">Tutti i Club territoriali sono beni comuni aperti a tutti.</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- I 3 MICRO-JOURNEYS DI ORIENTAMENTO UMANO (SMALL STEPS) -->
+  <section class="my-5" id="micro-percorsi">
+    <div class="text-center mb-4" style="max-width: 780px; margin-left: auto; margin-right: auto;">
+      <div class="badge-neon-rainbow mb-2">
+        <span class="dot"></span>
+        <span style="color:#67e8f9;">MICRO-JOURNEY ENGINE · UN PICCOLO PASSO ALLA VOLTA</span>
+      </div>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.4rem, 3vw, 2rem); color: #ffffff; margin: 0 0 8px;">
+        Tre Porte Semplici per Iniziare
+      </h2>
+      <p style="color: #94a3b8; font-size: 0.95rem; margin: 0;">
+        Non devi cambiare tutta la tua vita oggi. Scegli il percorso più vicino al tuo momento presente.
+      </p>
+    </div>
+
+    <div class="row g-3">
+      <?php foreach ($microJourneys as $jKey => $j): ?>
+        <div class="col-12 col-md-4">
+          <div class="p-4 h-100 d-flex flex-column justify-content-between" style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px;">
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 700; color: #38bdf8; text-transform: uppercase; margin-bottom: 4px;">PERCORSO GUIDATO</div>
+              <h3 style="font-size: 1.18rem; color: #ffffff; font-weight: 700; margin-bottom: 6px; font-family: var(--font-serif);">
+                <?= htmlspecialchars($j['title']) ?>
+              </h3>
+              <div style="font-size: 0.85rem; color: #94a3b8; line-height: 1.4; margin-bottom: 16px;">
+                <?= htmlspecialchars($j['tagline']) ?>
+              </div>
+              <ul style="list-style: none; padding: 0; margin: 0 0 20px; display: flex; flex-direction: column; gap: 8px; font-size: 0.82rem; color: #cbd5e1;">
+                <?php foreach ($j['steps'] as $idx => $st): ?>
+                  <li style="display: flex; gap: 8px; align-items: flex-start;">
+                    <span style="display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: rgba(56,189,248,0.2); color: #38bdf8; text-align: center; line-height: 18px; font-weight: 700; font-size: 0.72rem; flex-shrink: 0;"><?= $idx+1 ?></span>
+                    <span><?= htmlspecialchars($st) ?></span>
+                  </li>
+                <?php endforeach; ?>
+              </ul>
+            </div>
+            <div>
+              <a href="<?= htmlspecialchars($j['primary_cta']['url']) ?>" class="btn btn-primary w-100 py-2 fw-bold mb-2" style="border-radius: 10px; font-size: 0.88rem; min-height: 44px; display: flex; align-items: center; justify-content: center;">
+                <?= htmlspecialchars($j['primary_cta']['label']) ?>
+              </a>
+              <a href="<?= htmlspecialchars($j['secondary_cta']['url']) ?>" class="btn btn-outline-secondary w-100 py-2" style="border-radius: 10px; font-size: 0.82rem; color: #cbd5e1; border-color: rgba(255,255,255,0.15);">
+                <?= htmlspecialchars($j['secondary_cta']['label']) ?>
+              </a>
+            </div>
+          </div>
+        </div>
+      <?php endforeach; ?>
     </div>
   </section>
 
@@ -122,7 +179,7 @@ require '_header.php';
       <?php endforeach; ?>
     </div>
 
-    <!-- FOCUS AREA ATTIVA: "PARTIAMO DA LÌ" -->
+    <!-- FOCUS AREA ATTIVA: "PARTIAMO DA LÌ" + SMALL STEPS ENGINE -->
     <div id="orientamento-focus" class="p-4 p-md-5" 
          style="background: rgba(15, 23, 42, 0.85); border: 1px solid <?= htmlspecialchars($activeData['color']) ?>; border-radius: var(--dx-radius-lg, 20px); box-shadow: 0 12px 32px rgba(0,0,0,0.4);">
       
@@ -145,12 +202,12 @@ require '_header.php';
           </div>
 
           <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.6; margin-bottom: 16px;">
-            <?= htmlspecialchars($activeData['description']) ?>
+            <?= htmlspecialchars($activeData['response_manifesto'] ?? $activeData['tagline']) ?>
           </p>
 
           <div class="d-flex flex-wrap gap-2 mb-4">
             <span style="font-size: 0.8rem; color: #94a3b8; margin-right: 4px;">Aree correlate:</span>
-            <?php foreach ($activeData['facets'] as $facet): ?>
+            <?php foreach (($activeData['facets'] ?? []) as $facet): ?>
               <span class="badge" style="background: rgba(255,255,255,0.06); color: #e2e8f0; font-weight: 500; font-size: 0.78rem; padding: 6px 10px; border-radius: 6px;">
                 <?= htmlspecialchars($facet) ?>
               </span>
@@ -172,41 +229,27 @@ require '_header.php';
         </div>
 
         <div class="col-12 col-lg-5">
-          <!-- CARD RELAZIONI & RISORSE APERTE -->
+          <!-- SMALL STEPS ENGINE (MASSIMO 3 PASSI) -->
           <div class="p-4 h-100 d-flex flex-column justify-content-between" 
                style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px;">
             
             <div>
               <div style="font-size: 0.78rem; font-weight: 700; color: #818cf8; text-transform: uppercase; margin-bottom: 8px;">
-                I PASSI CONCRETI DELLA COMUNITÀ
+                SMALL STEPS ENGINE · I 3 PASSI CONCRETI
               </div>
               <h3 style="font-size: 1.2rem; color: #ffffff; font-weight: 700; margin-bottom: 14px;">
-                Cosa può aiutarti a rimettere in moto la tua vita
+                Come iniziare senza stress né fretta
               </h3>
 
-              <div class="mb-3 d-flex gap-3 align-items-start">
-                <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">1</div>
-                <div>
-                  <div style="font-size: 0.92rem; font-weight: 700; color: #f1f5f9;">Incontro Settimanale al Club</div>
-                  <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.4;">90 minuti di ascolto circolare e reciprocità. Con la famiglia o da soli. Gratuito e anonimo.</div>
+              <?php foreach ($smallSteps as $sIdx => $st): ?>
+                <div class="mb-3 d-flex gap-3 align-items-start">
+                  <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;"><?= $sIdx + 1 ?></div>
+                  <div>
+                    <div style="font-size: 0.92rem; font-weight: 700; color: #f1f5f9;"><?= htmlspecialchars($st['title']) ?></div>
+                    <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.4;"><?= htmlspecialchars($st['description']) ?></div>
+                  </div>
                 </div>
-              </div>
-
-              <div class="mb-3 d-flex gap-3 align-items-start">
-                <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(74, 222, 128, 0.15); color: #4ade80; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">2</div>
-                <div>
-                  <div style="font-size: 0.92rem; font-weight: 700; color: #f1f5f9;">Parla con un Servitore Insegnante</div>
-                  <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.4;">Un facilitatore formato con esperienza di vita che ti accoglie senza giudicare.</div>
-                </div>
-              </div>
-
-              <div class="mb-4 d-flex gap-3 align-items-start">
-                <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(244, 114, 182, 0.15); color: #f472b6; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">3</div>
-                <div>
-                  <div style="font-size: 0.92rem; font-weight: 700; color: #f1f5f9;">Risorsa Pratica Consigliata</div>
-                  <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.4;"><?= htmlspecialchars($orientationManifesto['resource_recommended']) ?></div>
-                </div>
-              </div>
+              <?php endforeach; ?>
             </div>
 
             <div class="pt-3 border-top border-secondary border-opacity-25">
@@ -223,6 +266,91 @@ require '_header.php';
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- WELFARE COMPASS: LE 12 AREE DELLA BUSSOLA MAIEUTICA -->
+  <section class="my-5 p-4 p-md-5" id="welfare-compass" style="background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--dx-radius-lg, 20px);">
+    <div class="text-center mb-4" style="max-width: 780px; margin-left: auto; margin-right: auto;">
+      <div class="badge-neon-rainbow mb-2">
+        <span class="dot"></span>
+        <span style="color:#fde68a;">WELFARE COMPASS · BUSSOLA DI VITA</span>
+      </div>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 3.2vw, 2.2rem); color: #ffffff; font-weight: 700; margin: 0 0 10px;">
+        Le 12 Aree della Bussola del Welfare
+      </h2>
+      <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+        Nessun voto numerico o percentuale di normalità. Scegli semplicemente l'area a cui desideri dedicare uno sguardo consapevole.
+      </p>
+    </div>
+
+    <div class="row g-2 g-md-3">
+      <?php foreach ($compassAreas as $cKey => $area): ?>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="p-3 h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.92rem; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">
+                <?= htmlspecialchars($area['name']) ?>
+              </div>
+              <div style="font-size: 0.8rem; color: #94a3b8; line-height: 1.4; font-style: italic;">
+                “<?= htmlspecialchars($area['question']) ?>”
+              </div>
+            </div>
+            <div class="mt-3 pt-2 border-top border-secondary border-opacity-25 text-end">
+              <a href="cerca-club.php" style="font-size: 0.75rem; color: #67e8f9; text-decoration: none; font-weight: 600;">Esplora risorse &rarr;</a>
+            </div>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </section>
+
+  <!-- SALUTOGENESI (SENSE OF COHERENCE) & SELF-DETERMINATION THEORY -->
+  <section class="my-5 p-4 p-md-5" style="background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.12) 0%, rgba(15, 23, 42, 0.95) 80%); border: 1px solid rgba(129, 140, 248, 0.3); border-radius: var(--dx-radius-lg, 20px);">
+    <div class="row g-4 align-items-center">
+      <div class="col-12 col-lg-6">
+        <div style="font-size: 0.8rem; font-weight: 800; color: #818cf8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
+          SALUTOGENESI & COSTRUZIONE DI RISORSE
+        </div>
+        <h2 style="font-family: var(--font-serif); font-size: clamp(1.4rem, 3vw, 2rem); color: #ffffff; font-weight: 700; margin: 0 0 14px;">
+          Sense of Coherence: Ritrovare Chiarezza e Potere di Agire
+        </h2>
+        <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+          La salute non è la semplice assenza di un problema, ma la capacità di costruire risorse interiori e comunitarie. 
+          Secondo la teoria di Aaron Antonovsky, il benessere poggia su tre pilastri maieutici:
+        </p>
+
+        <div class="d-flex flex-column gap-3 mb-3">
+          <?php foreach ($soc as $sc): ?>
+            <div class="p-3" style="background: rgba(255,255,255,0.03); border-left: 3px solid #818cf8; border-radius: 0 8px 8px 0;">
+              <div style="font-size: 0.88rem; font-weight: 700; color: #f8fafc;"><?= htmlspecialchars($sc['title']) ?> · <em>“<?= htmlspecialchars($sc['question']) ?>”</em></div>
+              <div style="font-size: 0.8rem; color: #94a3b8; line-height: 1.4; margin-top: 2px;"><?= htmlspecialchars($sc['principle']) ?></div>
+            </div>
+          <?php endforeach; ?>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6">
+        <div style="font-size: 0.8rem; font-weight: 800; color: #4ade80; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
+          SELF-DETERMINATION THEORY
+        </div>
+        <h2 style="font-family: var(--font-serif); font-size: clamp(1.4rem, 3vw, 2rem); color: #ffffff; font-weight: 700; margin: 0 0 14px;">
+          Autonomia, Competenza, Relazione
+        </h2>
+        <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+          Per Deci & Ryan, ogni essere umano fiorisce quando ha la libertà di scegliere senza imposizioni paternalistiche, 
+          scopre di essere capace e si sente accolto:
+        </p>
+
+        <div class="d-flex flex-column gap-3 mb-3">
+          <?php foreach ($selfDet as $sd): ?>
+            <div class="p-3" style="background: rgba(255,255,255,0.03); border-left: 3px solid #4ade80; border-radius: 0 8px 8px 0;">
+              <div style="font-size: 0.88rem; font-weight: 700; color: #f8fafc;"><?= htmlspecialchars($sd['name']) ?></div>
+              <div style="font-size: 0.8rem; color: #94a3b8; line-height: 1.4; margin-top: 2px;"><?= htmlspecialchars($sd['description']) ?></div>
+            </div>
+          <?php endforeach; ?>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -264,6 +392,56 @@ require '_header.php';
           </div>
         </div>
       <?php endforeach; ?>
+    </div>
+  </section>
+
+  <!-- CONTRIBUTION ENGINE: DAL RICEVERE AL GENERARE COMUNITÀ -->
+  <section class="my-5 p-4 p-md-5" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--dx-radius-lg, 20px);">
+    <div class="text-center mb-4" style="max-width: 780px; margin-left: auto; margin-right: auto;">
+      <div class="badge-neon-rainbow mb-2">
+        <span class="dot"></span>
+        <span style="color:#4ade80;">CONTRIBUTION ENGINE · LA SPIRALE VIRTUOSA DEL WELFARE</span>
+      </div>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.4rem, 3vw, 2rem); color: #ffffff; font-weight: 700; margin: 0 0 8px;">
+        “Come Posso Essere Utile?”
+      </h2>
+      <p style="color: #94a3b8; font-size: 0.95rem; margin: 0;">
+        Il benessere non finisce quando ricevi: fiorisce quando la tua esperienza diventa una risorsa preziosa per gli altri.
+      </p>
+    </div>
+
+    <div class="row g-2">
+      <?php foreach ($contributionPaths as $cp): ?>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+          <div class="p-3 h-100 text-center" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+            <div style="font-size: 0.85rem; font-weight: 800; color: #4ade80; margin-bottom: 4px; letter-spacing: 0.05em;"><?= htmlspecialchars($cp['stage']) ?></div>
+            <div style="font-size: 0.78rem; color: #94a3b8; line-height: 1.35;"><?= htmlspecialchars($cp['desc']) ?></div>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </section>
+
+  <!-- COMMUNITY CAPITAL (PATRIMONIO AGGREGATO) -->
+  <section class="my-5 p-4 text-center" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 16px;">
+    <div style="font-size: 0.8rem; font-weight: 700; color: #38bdf8; text-transform: uppercase; margin-bottom: 6px;">COMMUNITY CAPITAL · IL PATRIMONIO DELLA RETE DEI CLUB</div>
+    <div class="row g-3 justify-content-center text-center mt-1">
+      <div class="col-6 col-md-2">
+        <div style="font-size: 1.6rem; font-weight: 800; color: #ffffff; font-family: var(--font-serif);"><?= htmlspecialchars($communityCapital['clubs_count']) ?></div>
+        <div style="font-size: 0.75rem; color: #94a3b8;">Club Attivi</div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div style="font-size: 1.6rem; font-weight: 800; color: #ffffff; font-family: var(--font-serif);"><?= htmlspecialchars($communityCapital['weekly_circles']) ?></div>
+        <div style="font-size: 0.75rem; color: #94a3b8;">Cerchi Settimanali</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div style="font-size: 1.6rem; font-weight: 800; color: #ffffff; font-family: var(--font-serif);"><?= htmlspecialchars($communityCapital['annual_circle_hours']) ?></div>
+        <div style="font-size: 0.75rem; color: #94a3b8;">Ore Annue di Ascolto</div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div style="font-size: 1.6rem; font-weight: 800; color: #ffffff; font-family: var(--font-serif);"><?= htmlspecialchars($communityCapital['free_access']) ?></div>
+        <div style="font-size: 0.75rem; color: #94a3b8;">Gratuito Sempre</div>
+      </div>
     </div>
   </section>
 

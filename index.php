@@ -322,7 +322,7 @@ try {
     <div>
       <div class="gold-glow-badge mb-2">
         <?=dx_icon('calendar', 'text-neon-gold', 14)?>
-        <span>INCONTRI, CORSI & VITA DEI CLUB</span>
+        <span>INCONTRI, CORSI, VITA DEI CLUB & HUB NAZIONALE DIPENDENZE</span>
       </div>
       <h2 style="font-family: var(--font-serif); font-size: clamp(1.7rem, 3.5vw, 2.5rem); color: #ffffff; margin: 0; font-weight: 800;">
         <span class="text-rainbow">Vivi la comunità</span>
@@ -374,34 +374,39 @@ try {
     </div>
   </div>
 
+  <!-- COMPONENTE FAST CHECKOUT IMMEDIATO -->
+  <?php require __DIR__ . '/templates/_event_fast_checkout.php'; ?>
+
   <!-- NEWS TICKER RAPIDO DALLA RETE -->
-  <?php if (!empty($newsCards)): ?>
-    <div class="dx-ticker-header" style="margin-top: 1.5rem;">
-      <h3 style="font-size: 1.05rem; color: #fff; display: flex; align-items: center; gap: 8px;">
-        <?=dx_icon('newspaper', 'text-neon-gold', 18)?>
-        <span>Notizie e Aggiornamenti dalle ACAT e dai Territori</span>
-      </h3>
-    </div>
-    <div class="dx-ticker-wrapper" style="margin-top: 10px;">
-      <div class="dx-ticker-track">
-        <?php foreach (array_merge($newsCards, $newsCards) as $item): ?>
-          <article class="dx-ticker-card">
-            <div>
-              <span class="dx-ticker-badge"><?=h($item['tag_label'])?></span>
-              <h4 class="dx-ticker-title"><?=h($item['title'])?></h4>
-              <p class="dx-ticker-desc"><?=h($item['summary'])?></p>
-            </div>
-            <div class="dx-ticker-meta">
-              <span><?=dx_icon('calendar', '', 12)?> <?=h($item['published_date'])?></span>
-              <a href="<?=h($item['source_url'])?>" target="_blank" rel="noopener" class="dx-ticker-link">
-                <?=h($item['source_name'])?> <?=dx_icon('external-link', '', 12)?>
-              </a>
-            </div>
-          </article>
-        <?php endforeach; ?>
+  <div class="dx-news-ticker-section">
+    <?php if (!empty($newsCards)): ?>
+      <div class="dx-ticker-header" style="margin-top: 1.5rem;">
+        <h3 style="font-size: 1.05rem; color: #fff; display: flex; align-items: center; gap: 8px;">
+          <?=dx_icon('newspaper', 'text-neon-gold', 18)?>
+          <span>Notizie e Aggiornamenti dalle ACAT e dai Territori</span>
+        </h3>
       </div>
-    </div>
-  <?php endif; ?>
+      <div class="dx-ticker-wrapper" style="margin-top: 10px;">
+        <div class="dx-ticker-track">
+          <?php foreach (array_merge($newsCards, $newsCards) as $item): ?>
+            <article class="dx-ticker-card">
+              <div>
+                <span class="dx-ticker-badge"><?=h($item['tag_label'])?></span>
+                <h4 class="dx-ticker-title"><?=h($item['title'])?></h4>
+                <p class="dx-ticker-desc"><?=h($item['summary'])?></p>
+              </div>
+              <div class="dx-ticker-meta">
+                <span><?=dx_icon('calendar', '', 12)?> <?=h($item['published_date'])?></span>
+                <a href="<?=h($item['source_url'])?>" target="_blank" rel="noopener" class="dx-ticker-link">
+                  <?=h($item['source_name'])?> <?=dx_icon('external-link', '', 12)?>
+                </a>
+              </div>
+            </article>
+          <?php endforeach; ?>
+        </div>
+      </div>
+    <?php endif; ?>
+  </div>
 </section>
 
 <!-- ============================================================== -->

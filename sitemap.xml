@@ -40,11 +40,21 @@
   <!-- 4. TROVA UN CLUB (DIRECTORY LOCALE CON OLTRE 540 CLUB) -->
   <url>
     <loc>https://dependex.social/world-club-explorer.php</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/world-club-explorer.php"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/world-club-explorer.php"/>
+  </url>
+
+  <!-- 4.1 MAPPA GEOREFERENZIATA 2D ITALIA (322 CLUB CENSITI) -->
+  <url>
+    <loc>https://dependex.social/mappa-club.php</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/mappa-club.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/mappa-club.php"/>
   </url>
 
   <!-- 5. EVENTO FORMATIVO OTTOBRE TAGLIO DI PO (FLAGSHIP EVENT) -->

@@ -33,6 +33,8 @@ FILES_TO_SYNC = [
     # Core pagine aggiornate
     "mappa-club.php",
     "api-clubs-italy.php",
+    "cortex.php",
+    "api-cortex.php",
     "world-club-explorer.php",
     "_header.php",
     "_footer.php",
@@ -122,20 +124,37 @@ def deploy_target(target):
         remote_dir = os.path.dirname(remote_normalized)
         remote_filename = os.path.basename(remote_normalized)
 
-        # Riposiziona sempre su root_pwd
-        ftp.cwd(root_pwd)
-        if remote_dir:
-            ensure_remote_dir(ftp, root_pwd.rstrip("/") + "/" + remote_dir)
-
         print(f" -> Upload: {remote_normalized} ({file_size:,} bytes)...", end="", flush=True)
-        try:
-            with open(local_path, "rb") as fp:
-                ftp.storbinary(f"STOR {remote_filename}", fp)
-            print(" [OK]")
-            uploaded_count += 1
-        except Exception as err:
-            print(f" [ERRORE: {err}]")
-            errors.append((rel_path, str(err)))
+        success = False
+        for attempt in range(3):
+            try:
+                ftp.cwd(root_pwd)
+                if remote_dir:
+                    ensure_remote_dir(ftp, root_pwd.rstrip("/") + "/" + remote_dir)
+                with open(local_path, "rb") as fp:
+                    ftp.storbinary(f"STOR {remote_filename}", fp)
+                print(" [OK]")
+                uploaded_count += 1
+                success = True
+                break
+            except Exception as err:
+                if attempt < 2:
+                    print(f" [RETRY {attempt+1}...]", end="", flush=True)
+                    try:
+                        ftp.close()
+                    except Exception:
+                        pass
+                    import time
+                    time.sleep(2)
+                    try:
+                        ftp = ftplib.FTP(FTP_HOST, timeout=30)
+                        ftp.login(target["user"], FTP_PASS)
+                        ftp.set_pasv(True)
+                    except Exception:
+                        pass
+                else:
+                    print(f" [ERRORE: {err}]")
+                    errors.append((rel_path, str(err)))
 
     ftp.cwd(root_pwd)
     ftp.quit()

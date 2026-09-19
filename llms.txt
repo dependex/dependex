@@ -12,14 +12,20 @@
 - **Identificatore Pubblico Universale**: SIC-ID (Crockford Base32 su 80 bit con checksum Luhn mod32, es. `SIC-XXXXXXXX-XXXXXXXX-C`).
 
 ## Risorse Principali
-- [Metodo DIPENDEX](metodo.php): Principi del metodo Hudolin, comunità multifamiliari, sobrietà e prevenzione delle ricadute.
-- [Trova un Club](world-club-explorer.php): Censimento geografico con 379+ Club territoriali e coordinate.
-- [Mappa Mondiale](world-map.php): Visualizzazione interattiva dei nodi globali e gerarchia continentale/nazionale/regionale/territoriale.
+- [Mappa Georeferenziata 2D Italia](mappa-club.php): Censimento ufficiale 2026 con 322 Club CAT, ACAT e ARCAT, coordinate geografiche 2D, orari, giorni di incontro e prossimità GPS.
+- [Trova un Club Territoriale](world-club-explorer.php): Directory nazionale e ricerca per comune, provincia e regione.
+- [Parla con Noi](parla-con-noi.php): Sportello di ascolto riservato e segreteria di accoglienza per orientamento e supporto.
+- [Guida Gratuita per la Famiglia](guida-gratuita.php): Protocollo di primo contatto e consigli per familiari e persone vicine.
+- [Metodo Hudolin](metodo.php): I 3 livelli di apprendimento dell'approccio ecologico-sociale, cerchio multifamiliare e sobrietà comunitaria.
+- [Mappa Mondiale](world-map.php): Visualizzazione interattiva dei nodi globali e gerarchia internazionale dei Club.
 - [Academy](academy-public.php): Percorsi formativi per famiglie, volontari e servitori-insegnanti.
-- [Eventi](events-public.php): Interclub, scuole di ecologia familiare, convegni e assemblee.
-- [Privacy e Sicurezza](privacy.php): Approccio privacy-first, protezione dei dati personali e assenza di tracciamento invasivo.
+- [Eventi & Corsi](events-public.php): Corsi esperienziali, interclub e scuole di ecologia familiare.
+- [Viaggi Esperienziali](viaggi-esperienziali.php): Ritiri sobrio-esperienziali e Masterclass Benessere nel Mediterraneo.
+- [Collana Didattica & KDP](offers.php): Manuali, diari dei 90 giorni e guide operative per conduttori e famiglie.
+- [Privacy e Sovranità](privacy.php): Approccio privacy-first, conformità GDPR, zero tracciamento invasivo e anonimato garantito.
 
 ## Contatti di Riferimento & Segreteria
-- **Email Istituzionale e Supporto**: info@dependex.support
-- Telefono Verde Alcol (Istituto Superiore di Sanità - Italia): 800 632 000
-- Numero Unico Europeo Emergenze: 112
+- **Email Istituzionale e Segreteria**: info@dependex.support
+- **Numero Verde Nazionale AICAT**: 800 974250 (Gratuito da tutta Italia)
+- **Telefono Verde Alcol (Istituto Superiore di Sanità - ISS)**: 800 632 000
+- **Numero Unico Europeo Emergenze**: 112

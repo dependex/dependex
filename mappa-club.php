@@ -742,7 +742,7 @@ require '_header.php';
       <!-- BOTTONE GEOLOCALIZZAZIONE GPS -->
       <button type="button" id="btnGeolocate" class="geo-btn" title="Usa il GPS del tuo dispositivo per trovare i club più vicini">
         <?=dx_icon('map-pin', '', 16)?>
-        <span>📍 Vicino a Me</span>
+        <span>Vicino a Me (GPS)</span>
       </button>
 
       <!-- RESET -->
@@ -1024,14 +1024,14 @@ function applyFilters() {
       <div class="popup-inner-card">
         <span class="club-type-tag tag-local" style="margin-bottom:4px;display:inline-block;">${levelLabel}</span>
         <h4>${escapeHtml(club.entity_name)}</h4>
-        <p><b>📍 Sede:</b> ${escapeHtml(club.address || club.city)} (${escapeHtml(club.province || '')})</p>
-        ${club.meeting_day ? `<p><b>🗓️ Incontro:</b> ${escapeHtml(club.meeting_day)} ${escapeHtml(club.meeting_time || '')}</p>` : ''}
-        ${club.servitore_insegnante ? `<p><b>👤 Referente:</b> ${escapeHtml(club.servitore_insegnante)}</p>` : ''}
-        ${club._distance !== undefined ? `<p style="color:#00ff88;"><b>📍 Distanza:</b> ${club._distance} km da te</p>` : ''}
+        <p><b>Sede:</b> ${escapeHtml(club.address || club.city)} (${escapeHtml(club.province || '')})</p>
+        ${club.meeting_day ? `<p><b>Incontro:</b> ${escapeHtml(club.meeting_day)} ${escapeHtml(club.meeting_time || '')}</p>` : ''}
+        ${club.servitore_insegnante ? `<p><b>Referente:</b> ${escapeHtml(club.servitore_insegnante)}</p>` : ''}
+        ${club._distance !== undefined ? `<p style="color:#00ff88;"><b>Distanza:</b> ${club._distance} km da te</p>` : ''}
         
         <div class="popup-actions">
-          ${club.phone ? `<a href="tel:${club.phone.replace(/[^0-9+]/g, '')}" class="card-action-btn btn-phone">📞 Chiama</a>` : ''}
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}" target="_blank" class="card-action-btn btn-directions">🗺️ Indicazioni</a>
+          ${club.phone ? `<a href="tel:${club.phone.replace(/[^0-9+]/g, '')}" class="card-action-btn btn-phone">Chiama</a>` : ''}
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}" target="_blank" class="card-action-btn btn-directions">Indicazioni</a>
         </div>
       </div>
     `;
@@ -1089,33 +1089,32 @@ function renderClubCards(clubs) {
     card.innerHTML = `
       <div class="club-card-top">
         <span class="club-type-tag ${tagClass}">${tagText}</span>
-        ${c._distance !== undefined ? `<span class="distance-badge">📍 ${c._distance} km</span>` : `<span style="font-size:0.75rem;color:#64748b;">${escapeHtml(c.province || '')}</span>`}
+        ${c._distance !== undefined ? `<span class="distance-badge">${c._distance} km</span>` : `<span style="font-size:0.75rem;color:#64748b;">${escapeHtml(c.province || '')}</span>`}
       </div>
       <div class="club-card-name">${escapeHtml(c.entity_name)}</div>
       <div class="club-card-location">
-        <span>📍</span>
         <span>${escapeHtml(c.city)}${c.address ? ' · ' + escapeHtml(c.address) : ''} (${escapeHtml(c.region)})</span>
       </div>
       ${c.meeting_day ? `
         <div class="club-card-meeting">
-          🗓️ <b>${escapeHtml(c.meeting_day)}</b> ${c.meeting_time ? 'ore ' + escapeHtml(c.meeting_time) : ''}
+          <b>${escapeHtml(c.meeting_day)}</b> ${c.meeting_time ? 'ore ' + escapeHtml(c.meeting_time) : ''}
           ${c.servitore_insegnante ? `<br><small style="color:#94a3b8;">Servitore: ${escapeHtml(c.servitore_insegnante)}</small>` : ''}
         </div>
       ` : ''}
       <div class="club-card-actions">
         <button type="button" class="card-action-btn btn-map-focus" onclick="focusOnClub(${c.id}, ${lat}, ${lon})">
-          🎯 Mappa
+          Mappa
         </button>
         ${cleanPhone ? `
           <a href="tel:${cleanPhone}" class="card-action-btn btn-phone">
-            📞 Chiama
+            Chiama
           </a>
           <a href="https://wa.me/${cleanPhone.replace('+', '')}?text=Salve,%20ho%20trovato%20il%20vostro%20Club%20su%20Dependex%20e%20vorrei%20informazioni" target="_blank" class="card-action-btn btn-wa">
-            💬 WhatsApp
+            WhatsApp
           </a>
         ` : ''}
         <a href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}" target="_blank" class="card-action-btn btn-directions">
-          🗺️ Itinerario
+          Itinerario
         </a>
       </div>
     `;
@@ -1159,7 +1158,7 @@ document.getElementById('btnGeolocate').addEventListener('click', function() {
   }
 
   btn.classList.add('active');
-  btn.innerHTML = `<span>⏳ Localizzazione...</span>`;
+  btn.innerHTML = `<span>Localizzazione in corso...</span>`;
 
   navigator.geolocation.getCurrentPosition(
     (pos) => {
@@ -1178,20 +1177,20 @@ document.getElementById('btnGeolocate').addEventListener('click', function() {
           iconAnchor: [11, 11]
         });
         userGpsMarker = L.marker([lat, lon], { icon: userIcon, zIndexOffset: 1000 }).addTo(mapInstance);
-        userGpsMarker.bindPopup('<b>📍 La tua posizione attuale</b>').openPopup();
+        userGpsMarker.bindPopup('<b>La tua posizione attuale</b>').openPopup();
       }
 
       // Centra mappa sulla posizione utente
       mapInstance.setView([lat, lon], 10, { animate: true });
 
-      btn.innerHTML = `<span>📍 Posizione Trovata</span>`;
+      btn.innerHTML = `<span>Posizione Rilevata</span>`;
 
       // Ri-applica filtri con ordinamento di prossimità
       applyFilters();
     },
     (err) => {
       btn.classList.remove('active');
-      btn.innerHTML = `<span>📍 Vicino a Me</span>`;
+      btn.innerHTML = `<span>Vicino a Me (GPS)</span>`;
       alert('Impossibile ottenere la posizione GPS: ' + err.message);
     },
     { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
@@ -1224,7 +1223,7 @@ document.getElementById('btnResetFilters').addEventListener('click', () => {
   currentUserCoords = null;
   const geoBtn = document.getElementById('btnGeolocate');
   geoBtn.classList.remove('active');
-  geoBtn.innerHTML = `<span>📍 Vicino a Me</span>`;
+  geoBtn.innerHTML = `<span>Vicino a Me (GPS)</span>`;
   if (userGpsMarker) {
     mapInstance.removeLayer(userGpsMarker);
     userGpsMarker = null;

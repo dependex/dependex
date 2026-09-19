@@ -89,6 +89,8 @@ if (strpos($ogImageResolved, 'http') !== 0) {
   <link rel="stylesheet" href="assets/css/rainbow-neon.css?v=<?=filemtime(__DIR__.'/assets/css/rainbow-neon.css')?>">
   <link rel="stylesheet" href="assets/css/mobile-916.css?v=<?=filemtime(__DIR__.'/assets/css/mobile-916.css')?>">
   <link rel="stylesheet" href="assets/css/dependex-human-community.css?v=<?=filemtime(__DIR__.'/assets/css/dependex-human-community.css')?>">
+  <link rel="stylesheet" href="assets/css/universal-cart-checkout.css?v=<?=filemtime(__DIR__.'/assets/css/universal-cart-checkout.css')?>">
+  <link rel="stylesheet" href="assets/css/universal-chat-ai.css?v=<?=filemtime(__DIR__.'/assets/css/universal-chat-ai.css')?>">
   <title><?=h($pageTitle)?> · <?=h($brand['name'])?></title>
 
   <!-- Schema.org Global JSON-LD (Organization & WebSite) -->
@@ -342,6 +344,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           <a href="evento-ottobre-taglio-di-po.php" class="drawer-link <?=$curScript==='evento-ottobre-taglio-di-po.php'||$curScript==='event-detail.php'?'active':''?>"><?=dx_icon('award','',18)?> Corso Esperienziale Taglio di Po</a>
           <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Libri & Collana KDP</a>
           <a href="viaggi-esperienziali.php" class="drawer-link <?=$curScript==='viaggi-esperienziali.php'||$curScript==='crociera-benessere-masterclass.php'?'active':''?>"><?=dx_icon('compass','',18)?> Viaggi Esperienziali (BEWAY.LIFE)</a>
+          <a href="cortex.php" class="drawer-link <?=$curScript==='cortex.php'?'active':''?>"><?=dx_icon('cpu','',18)?> Cortex AI & Ascolto</a>
         </nav>
 
         <nav class="drawer-nav-group">

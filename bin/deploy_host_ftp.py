@@ -63,7 +63,9 @@ FILES_TO_SYNC = [
     "piramide-maslow.php",
     "orientamento.php",
     "welfare-compass.php",
+    "playground.php",
     "dashboard.php",
+    os.path.join("modules", "gamification", "OmniWelfareGamificationEngine.php"),
     os.path.join("modules", "welfare", "HumanWelfareEngine.php"),
     os.path.join("modules", "reviews", "ReviewsService.php"),
     os.path.join("modules", "telemetry", "dx-telemetry-engine.php"),
@@ -113,10 +115,12 @@ FILES_TO_SYNC = [
     os.path.join("docs", "MOBILE_FIRST_VIEWPORT_SPEC.md"),
     os.path.join("docs", "HUMAN_WELFARE_OS_4.md"),
     os.path.join("docs", "HUMAN_WELFARE_ENGINE_5.md"),
+    os.path.join("docs", "OMNI_WELFARE_GAMIFICATION_6.md"),
     os.path.join("tests", "test_mobile_first_viewport_e2e.php"),
     os.path.join("tests", "test_sovereign_mobile_pwa_sos_e2e.php"),
     os.path.join("tests", "test_human_welfare_os_e2e.php"),
-    os.path.join("tests", "test_human_welfare_engine_5_e2e.php")
+    os.path.join("tests", "test_human_welfare_engine_5_e2e.php"),
+    os.path.join("tests", "test_omni_welfare_gamification_6_e2e.php")
 ]
 
 def ensure_remote_dir(ftp, remote_dir_path):

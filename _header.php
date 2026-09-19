@@ -231,6 +231,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
       <a href="metodo.php" class="topbar-nav-link <?=$curScript==='metodo.php'||$curScript==='academy-public.php'?'active':''?>">Impara</a>
       <a href="world-map.php" class="topbar-nav-link <?=$curScript==='world-map.php'?'active':''?>">Rete</a>
       <a href="orientamento.php" class="topbar-nav-link <?=$curScript==='orientamento.php'?'active':''?>" title="Mappa del Benessere e Orientamento">Orientamento</a>
+      <a href="playground.php" class="topbar-nav-link <?=$curScript==='playground.php'?'active':''?>" title="Life Playground 6.0: Respiro, Pratiche e Comunità">Playground</a>
       <a href="parla-con-noi.php" class="topbar-nav-btn <?=$curScript==='parla-con-noi.php'?'active':''?>">
         <?=dx_icon('message-circle', '', 14)?> Parla con Noi
       </a>
@@ -290,6 +291,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         <nav class="drawer-nav-group">
           <span class="drawer-section-title">QUOTIDIANO & PERCORSO</span>
           <a href="dashboard.php" class="drawer-link <?=$curScript==='dashboard.php'?'active':''?>"><?=dx_icon('activity','text-neon-cyan',18)?> <b>Dashboard & Sobrietà</b></a>
+          <a href="playground.php" class="drawer-link <?=$curScript==='playground.php'?'active':''?>"><?=dx_icon('sparkles','text-neon-cyan',18)?> <b>Life Playground 6.0</b></a>
           <a href="orientamento.php" class="drawer-link <?=$curScript==='orientamento.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa del Benessere 4.0</b></a>
           <a href="ruota-della-vita.php" class="drawer-link <?=$curScript==='ruota-della-vita.php'?'active':''?>"><?=dx_icon('compass','text-neon-gold',18)?> Ruota della Vita 2D/3D</a>
           <a href="piramide-maslow.php" class="drawer-link <?=$curScript==='piramide-maslow.php'?'active':''?>"><?=dx_icon('layers','text-neon-purple',18)?> Piramide Maslow 2D/3D</a>
@@ -345,6 +347,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
 
         <nav class="drawer-nav-group">
           <span class="drawer-section-title">CRESCITA PERSONALE & STRUMENTI</span>
+          <a href="playground.php" class="drawer-link <?=$curScript==='playground.php'?'active':''?>"><?=dx_icon('sparkles','text-neon-cyan',18)?> <b>Life Playground 6.0</b></a>
           <a href="orientamento.php" class="drawer-link <?=$curScript==='orientamento.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa del Benessere 4.0</b></a>
           <a href="dashboard.php" class="drawer-link <?=$curScript==='dashboard.php'?'active':''?>"><?=dx_icon('activity','text-neon-cyan',18)?> <b>Dashboard & Contatore Sobrietà</b></a>
           <a href="ruota-della-vita.php" class="drawer-link <?=$curScript==='ruota-della-vita.php'?'active':''?>"><?=dx_icon('compass','text-neon-gold',18)?> Ruota della Vita 2D/3D</a>

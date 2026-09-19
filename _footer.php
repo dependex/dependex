@@ -93,6 +93,7 @@
           <?=dx_icon('book-open', 'text-green', 16)?> Metodo & Comunità
         </h4>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
+          <li><a href="playground.php" style="color: #00f0ff; font-weight: 800; text-decoration: none;">Life Playground 6.0</a></li>
           <li><a href="orientamento.php" style="color: #67e8f9; font-weight: 750; text-decoration: none;">Mappa del Benessere 4.0</a></li>
           <li><a href="dashboard.php" style="color: #86efac; font-weight: 750; text-decoration: none;">Dashboard & Sobrietà</a></li>
           <li><a href="ruota-della-vita.php" style="color: #cbd5e1; text-decoration: none;">Ruota della Vita 2D/3D</a></li>

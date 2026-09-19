@@ -41,6 +41,13 @@
    - **Trauma-Informed UX & Small Steps Engine:** Massimo 3 opzioni post-esplorazione (zero overwhelm), domande aperte maieutiche, stile motivazionale senza imposizioni ("Se vuoi, puoi iniziare da qui").
    - La persona sceglie liberamente da dove iniziare ("Questa parte della mia vita oggi chiede attenzione") e il sistema risponde sempre: *"Partiamo da lì. Vediamo cosa può aiutarti a rimettere in movimento la tua vita e quali persone e comunità possono accompagnarti"*.
    - Specifiche integrali in [`docs/HUMAN_WELFARE_OS_4.md`](file:///c:/81PLUS_GLOBAL_MASTER/dependex.social/docs/HUMAN_WELFARE_OS_4.md) e [`docs/HUMAN_WELFARE_ENGINE_5.md`](file:///c:/81PLUS_GLOBAL_MASTER/dependex.social/docs/HUMAN_WELFARE_ENGINE_5.md).
+8. **Omni-Welfare Gamification Engine 6.0 (Life Playground & No Pain Gamification):**
+   - **Zero Minestrone & Separazione Rigorosa:** Le pratiche olistiche, somatiche, vediche, di respiro, Metodo H+, Metodo ABC, BetterWay, Ikigai e Metodo Hudolin NON sono un'unica disciplina e non sono cure mediche. Ogni metodo mantiene esplicita la propria fonte.
+   - **Non Gamificare la Sofferenza:** Vietato assegnare punti o badge a dolore, ansia, traumi, ricadute o sintomi.
+   - **No Streak Punitivi:** Nessuna punizione o colpevolizzazione per giorni di assenza ("Bentornato", non "hai perso la streak").
+   - **Esperienza Prima dei Termini Tecnici:** L'utente accede da *"Come ti senti oggi?"* o *"Cosa vuoi esplorare?"*, mai da una lista di etichette complesse.
+   - **Screen Off → Life On:** Le missioni spingono alla vita reale (passeggiata, respiro, contatto umano, partecipazione al Club).
+   - Specifica integrale in [`docs/OMNI_WELFARE_GAMIFICATION_6.md`](file:///c:/81PLUS_GLOBAL_MASTER/dependex.social/docs/OMNI_WELFARE_GAMIFICATION_6.md).
 
 ---
 

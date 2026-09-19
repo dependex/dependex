@@ -487,4 +487,39 @@ Documento master esteso: docs/MOBILE_FIRST_VIEWPORT_SPEC.md.
    - Documenti di riferimento: docs/HUMAN_WELFARE_OS_4.md e docs/HUMAN_WELFARE_ENGINE_5.md.
 
 ---
+
+# DEPENDEX.SOCIAL · OMNI-WELFARE GAMIFICATION ENGINE 6.0
+## LIFE PLAYGROUND — ESPERIENZE, PRATICHE E COMUNITÀ REALE
+
+1. CONCETTO: DEPENDEX LIFE PLAYGROUND:
+   - Non una biblioteca nozionistica di discipline, ma un ambiente maieutico interattivo, giocabile e accessibile.
+   - Core Loop: SCOPRI → GIOCA → OSSERVA → IMPARA → SCEGLI → CONNETTI → PARTECIPA → CONTRIBUISCI → TORNA → CONDIVIDI → CREA COMUNITÀ.
+   - Zero manuali, zero termini tecnici astrusi: l'esperienza viene prima, la disciplina viene dopo.
+
+2. INGRESSO MAIEUTICO EMOTIVO ED ESPERIENZIALE:
+   - L'utente accede da "Come ti senti oggi?" o "Cosa vuoi esplorare?" scegliendo fra 11 portali:
+     Stare meglio · Ritrovare equilibrio · Rallentare · Respirare · Connessione · Direzione · Energia · Chiarezza · Conoscere persone · Cambiamento · "Surfarmi" la vita.
+   - La piattaforma risponde con al massimo 3 micro-passi suggeriti (Small Steps Engine, zero overwhelm).
+
+3. NON GAMIFICARE LA SOFFERENZA & NESSUN PUNTEGGIO MEDICO:
+   - Divieto assoluto di assegnare punti a dolore, sofferenza, dipendenza, traumi, ansia o sintomi.
+   - Divieto assoluto di "Wellness Score", indici numerici di felicità o livelli di patologia.
+   - Zero streak punitivi: nessuna penalità comportamentale per assenze prolungate ("Bentornato").
+
+4. SEPARAZIONE RIGOROSA DELLE FONTI (ZERO MINESTRONE) & ATTRIBUZIONE:
+   - Vladimir Hudolin = Relazione, approccio ecologico-sociale, Club CAT multifamiliari.
+   - Mirco Pregnolato (mircopregnolato.it) = Metodo H+, 44 protocolli/quest, Metodo ABC, BetterWay, 81 micro-esperienze.
+   - BEWAY.LIFE = Viaggi esperienziali ed ecologia nel Delta del Po.
+   - Tradizioni orientali e vediche = Principi etici universali laici (Dharma, Artha, Kama, Moksha).
+   - Maslow & Ruota della Vita = Mappe orientative di riflessione personale.
+   - Ogni risorsa deve dichiarare esplicitamente la fonte originale. Nessuna pratica può essere presentata come cura medica o sostitutiva di trattamenti sanitari.
+
+5. SCREEN OFF → LIFE ON:
+   - Micro-esperienze guidate (Respiro 60s, Radicamento "Sei Qui", 3 Carte della Gratitudine, Scrivi a una persona cara, 10 min Natura fuori, Cerchio di 90 min al Club).
+   - Livelli di partecipazione alla piattaforma (non di valore umano): Esploratore, Osservatore, Praticante, Partecipante, Contributore, Facilitatore.
+   - Il fine ultimo del digitale è facilitare l'incontro, la relazione e la vita reale nella comunità.
+   - Documento master esteso: docs/OMNI_WELFARE_GAMIFICATION_6.md e playground.php.
+
+---
 END MASTER BUILD PROMPT
+

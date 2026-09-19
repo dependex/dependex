@@ -14,7 +14,7 @@
  * - Attribuzione trasparente delle fonti (Hudolin, H+, ABC, BetterWay, Veda, Maslow).
  */
 
-require_once __DIR__ . '/_inc.php';
+require_once __DIR__ . '/bootstrap.php';
 require_once __DIR__ . '/modules/gamification/OmniWelfareGamificationEngine.php';
 
 $pageTitle = "Life Playground 6.0 · Esplora, Gioca, Connettiti";

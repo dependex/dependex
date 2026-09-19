@@ -54,6 +54,65 @@
 }
 
 /* ==========================================================================
+   0. MOBILE-FIRST ARCHITECTURE & ZERO HORIZONTAL OVERFLOW RESETS
+   SPEC: docs/MOBILE_FIRST_VIEWPORT_SPEC.md (Art. 1-37)
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  width: 100%;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  max-width: 100%;
+  width: 100%;
+  overflow-x: clip;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Salvaguardia scroll-margin-top per ancore (Header fisso non copre mai il contenuto) */
+[id] {
+  scroll-margin-top: calc(80px + env(safe-area-inset-top, 0px));
+}
+
+/* Media fluidi: nessuna sbordatura orizzontale */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Touch targets minimi 44x44px per interattività mobile */
+button, 
+.btn, 
+.btn-rainbow-neon, 
+.btn-rainbow-outline, 
+.btn-community-wa, 
+.nav-link-item,
+.drawer-link {
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+/* Tabelle fluide con scroll orizzontale interno controllato */
+.table-responsive {
+  max-width: 100%;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ==========================================================================
    1. SELECTION & SCROLLBAR NEON
    ========================================================================== */
 ::selection {

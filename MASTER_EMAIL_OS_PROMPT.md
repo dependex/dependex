@@ -413,4 +413,56 @@ universale.
 
 Il sistema migliora nel tempo senza perdere auditabilità.
 
+---
+
+# DEPENDEX.SOCIAL · MOBILE-FIRST / RESPONSIVE / VIEWPORT MASTER SPEC
+## VINCOLO TECNICO ASSOLUTO (NON NEGOZIABILE)
+
+1. MOBILE FIRST ASSOLUTO:
+   MAI progettare prima desktop e poi adattare mobile. DEPENDEX nasce mobile-first e scala:
+   Mobile → Tablet → Desktop → Large Desktop.
+   Il primo layout da progettare, sviluppare e verificare è rigorosamente quello smartphone.
+
+2. VIEWPORT TARGET:
+   - Smartphone: 9:19, 19:9, 9:16, 16:9 landscape
+   - Tablet: portrait, landscape, 16:10, 4:3
+   - Desktop: 16:9, 16:10, ultrawide, finestre ridimensionate.
+   Requisito fondamentale: NESSUNA SBORDATURA.
+
+3. ZERO HORIZONTAL OVERFLOW:
+   Vietato avere horizontal overflow, horizontal scrolling, content clipped, buttons fuori viewport, cards più larghe dello schermo.
+   Layout conforme a `max-width: 100%; width: 100%; box-sizing: border-box;`.
+   Usare `overflow-x: clip;` solo come salvaguardia finale. MAI usare `overflow-x: hidden` per mascherare bug strutturali.
+
+4. VIEWPORT CONTRACT & HEADER FISSO:
+   Header sempre visibile (sticky/fixed) coerente su mobile, tablet e desktop.
+   Su smartphone l'header è ultracompatto (Logo, ☰, [CTA]).
+   Nessun contenuto coperto dall'header. Safe-area (`env(safe-area-inset-top)`) e `scroll-margin-top` su tutte le ancore.
+
+5. MOBILE VIEWPORT HEIGHT & HERO:
+   Usare `100dvh` con fallback (MAI `100vh` fisso né `height: 900px` rigido). Content-driven height, clamp() e responsive spacing.
+
+6. COMPOSIZIONE 9:19 & 16:9:
+   Progettare composizioni verticali autonome (9:19 smartphone, 9:16 video/stories) e composizioni orizzontali cinematiche (16:9 desktop).
+
+7. TOUCH TARGET & PULSANTI:
+   Touch target minimo 44×44px su mobile. Pulsanti responsive, mai tagliati, full-width dove utile.
+
+8. NO FIXED WIDTH & NO HIDDEN FIXES:
+   Evitare componenti a larghezza fissa (es. `width: 900px`).
+   MAI risolvere un problema mobile applicando `display: none` a contenuti importanti.
+
+9. AUTOMATED QA TEST:
+   Se `document.documentElement.scrollWidth > document.documentElement.clientWidth`, la build responsive è considerata FAILED.
+   Testare obbligatoriamente a 320px, 360px, 375px, 390px, 414px, 430px, 768px, 820px, 1024px, 1280px, 1440px, 1920px.
+
+PRINCIPIO FINALE:
+ONE DEPENDEX. EVERY SCREEN. ZERO FRICTION.
+MOBILE FIRST. FIXED HEADER. ZERO OVERFLOW. 9:19 · 9:16 · 16:9. PHONE · TABLET · DESKTOP.
+Tutto deve stare dentro lo schermo. Sempre.
+Documento master esteso: docs/MOBILE_FIRST_VIEWPORT_SPEC.md.
+
+---
+
 END MASTER BUILD PROMPT
+

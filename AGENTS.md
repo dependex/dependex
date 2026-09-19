@@ -26,6 +26,14 @@
    - Tracciamento consensi GDPR conforme (double opt-in, provenance, timestamp, retention).
    - Unsubscribe one-click RFC 8058 (`List-Unsubscribe` e `List-Unsubscribe-Post`).
    - Nessun acquisto o scraping illecito di liste contatti.
+6. **Mobile-First / Responsive / Viewport Master Spec (Vincolo Tecnico Assoluto):**
+   - **MAI progettare prima desktop e poi adattare mobile.** DEPENDEX nasce **MOBILE-FIRST ASSOLUTO** e scala progressivamente: `Mobile ↓ Tablet ↓ Desktop ↓ Large Desktop`.
+   - **ZERO HORIZONTAL OVERFLOW:** Nessuna sbordatura ammessa. Se `scrollWidth > clientWidth`, la build responsive è bloccata e considerata FAILED.
+   - **Viewport Target:** Smartphone (9:19, 19:9, 9:16), Tablet (portrait/landscape 4:3, 16:10), Desktop (16:9, 16:10, ultrawide).
+   - **Header Fisso/Sticky Globale:** Sempre visibile con safe-area (`env(safe-area-inset-top)`), compatto su mobile (Logo, ☰, [CTA]), mai coprente contenuti.
+   - **Altezza Dinamica & Touch:** `min-height: 100dvh` con fallback `100vh` (MAI `height: 900px` fissa), touch target minimo 44×44px, ancore con `scroll-margin-top`.
+   - **No Fixed Width & No Content Hidden:** Nessun `width: [px fissi]` strutturale; MAI usare `display: none` per nascondere contenuti critici per rimediare al layout.
+   - Specifica integrale dei 37 articoli in [`docs/MOBILE_FIRST_VIEWPORT_SPEC.md`](file:///c:/81PLUS_GLOBAL_MASTER/dependex.social/docs/MOBILE_FIRST_VIEWPORT_SPEC.md).
 
 ---
 

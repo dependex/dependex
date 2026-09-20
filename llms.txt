@@ -12,7 +12,10 @@
 - **Identificatore Pubblico Universale**: SIC-ID (Crockford Base32 su 80 bit con checksum Luhn mod32, es. `SIC-XXXXXXXX-XXXXXXXX-C`).
 
 ## Risorse Principali
-- [Mappa Georeferenziata 2D Italia](mappa-club.php): Censimento ufficiale 2026 con 322 Club CAT, ACAT e ARCAT, coordinate geografiche 2D, orari, giorni di incontro e prossimità GPS.
+- [Mappa Georeferenziata 2D Italia](mappa-club.php): Censimento ufficiale 2026 con 395 Club CAT, ACAT, APCAT e ARCAT, oltre 51.500 famiglie nei cerchi multifamiliari, coordinate geografiche 2D, orari, giorni di incontro e prossimità GPS.
+- [OpenData GeoJSON RFC 7946](api-opendata-geojson.php): Endpoint GeoJSON standard per interoperabilità con Ser.D, ASL, distretti sanitari, comuni e sistemi GIS.
+- [Feed Territoriale Atom 1.0 / GeoRSS](api-feed-territorio.php): Feed XML conforme a RFC 4287 per aggiornamenti georeferenziati continui dei presidi.
+- [Widget Embed Iframe Trova-Club](widget-club.php): Componente leggero gratuito incorporabile da Comuni, ASL, Ser.D e parrocchie per la ricerca locale dei presidi.
 - [Le Domande che Forse Ti Vergogni a Fare](domande-frequenti.php): Risposte empatiche, dirette e senza giudizio ai dubbi più intimi (familiari, ricadute, riservatezza, gratuità, etichette).
 - [Recensioni & Testimonianze Verificate](recensioni.php): Riprova sociale ed esperienze autentiche di membri, famiglie e servitori-insegnanti dei Club d'Italia.
 - [Dashboard & Contatore Sobrietà](dashboard.php): Monitoraggio giorni lucidi, calcolatore risparmio economico, pietre miliari e quest system quotidiano del Metodo Hudolin.
@@ -26,7 +29,7 @@
 - [Academy](academy-public.php): Percorsi formativi per famiglie, volontari e servitori-insegnanti.
 - [Eventi & Corsi](events-public.php): Corsi esperienziali, interclub e scuole di ecologia familiare.
 - [Viaggi Esperienziali](viaggi-esperienziali.php): Ritiri sobrio-esperienziali e Masterclass Benessere nel Mediterraneo.
-- [Collana Didattica & KDP](offers.php): Manuali, diari dei 90 giorni e guide operative per conduttori e famiglie.
+- [Collana Didattica & Risorse](offers.php): Manuali, diari dei 90 giorni e guide operative per conduttori e famiglie.
 - [Privacy e Sovranità](privacy.php): Approccio privacy-first, conformità GDPR, zero tracciamento invasivo e anonimato garantito.
 - [Console Telemetria & Funnel Psicologico](telemetria.php): Osservabilità etica anonimizzata, monitoraggio Watchdog del sistema e avanzamento nel percorso comunitario.
 

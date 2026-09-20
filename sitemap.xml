@@ -47,14 +47,40 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/world-club-explorer.php"/>
   </url>
 
-  <!-- 4.1 MAPPA GEOREFERENZIATA 2D ITALIA (322 CLUB CENSITI) -->
+  <!-- 4.1 MAPPA GEOREFERENZIATA 2D ITALIA (395 CLUB CENSITI & OPENDATA) -->
   <url>
     <loc>https://dependex.social/mappa-club.php</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/mappa-club.php"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/mappa-club.php"/>
+  </url>
+
+  <!-- 4.1.0 WIDGET EMBED GRATUITO TROVA-CLUB (COMUNI, ASL, TERZO SETTORE) -->
+  <url>
+    <loc>https://dependex.social/widget-club.php</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/widget-club.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/widget-club.php"/>
+  </url>
+
+  <!-- 4.1.0.1 OPENDATA GEOJSON RFC 7946 (INTEROPERABILITA GIS & SANITARIA) -->
+  <url>
+    <loc>https://dependex.social/api-opendata-geojson.php</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <!-- 4.1.0.2 FEED TERRITORIALE ATOM 1.0 / GEORSS PER SER.D & ASL -->
+  <url>
+    <loc>https://dependex.social/api-feed-territorio.php</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.88</priority>
   </url>
 
   <!-- 4.1.1 DOMANDE CHE FORSE TI VERGOGNI A FARE (RASSICURAZIONE & FAQ) -->

@@ -53,6 +53,7 @@ if (strpos($ogImageResolved, 'http') !== 0) {
   <link rel="canonical" href="<?=h($canonicalUrl)?>">
   <link rel="alternate" hreflang="it" href="<?=h($canonicalUrl)?>">
   <link rel="alternate" hreflang="x-default" href="<?=h($canonicalUrl)?>">
+  <link rel="alternate" type="application/atom+xml" title="Rete Presidi Territoriali Club Hudolin (GeoRSS/Atom)" href="https://<?=h($brand['domain'] ?? 'dependex.social')?>/api-feed-territorio.php">
   <link rel="help" type="text/plain" href="https://<?=h($brand['domain'] ?? 'dependex.social')?>/llms.txt" title="LLM Knowledge Context">
 
   <!-- OpenGraph / Facebook -->
@@ -83,6 +84,10 @@ if (strpos($ogImageResolved, 'http') !== 0) {
   <meta http-equiv="x-dns-prefetch-control" content="on">
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="dns-prefetch" href="https://unpkg.com">
+  <link rel="preconnect" href="https://carto.com" crossorigin>
+  <link rel="dns-prefetch" href="https://carto.com">
   <link rel="preconnect" href="https://<?=h($brand['domain'] ?? 'dependex.social')?>" crossorigin>
   <link rel="dns-prefetch" href="https://<?=h($brand['domain'] ?? 'dependex.social')?>">
 

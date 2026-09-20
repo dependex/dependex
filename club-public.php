@@ -3,12 +3,41 @@ require_once __DIR__ . '/bootstrap.php';
 
 $u = current_user();
 $brand = site_brand();
-$sic = trim((string)($_GET['id'] ?? $_GET['club'] ?? ''));
+$sic = trim((string)($_GET['sic'] ?? $_GET['id'] ?? $_GET['club'] ?? ''));
 
-// Ricerca per sic_id o ID numerico
+// Ricerca per sic_id o ID numerico nel registro mondiale
 $st = db()->prepare("SELECT * FROM dependex_world_registry WHERE sic_id = ? OR id = ? LIMIT 1");
 $st->execute([$sic, is_numeric($sic) ? (int)$sic : 0]);
 $c = $st->fetch();
+
+// Fallback: ricerca nel CRM Club Italia se non presente nel world registry
+if (!$c && $sic !== '') {
+    $cst = db()->prepare("SELECT * FROM crm_club_contacts WHERE sic_id = ? OR id = ? LIMIT 1");
+    $cst->execute([$sic, is_numeric($sic) ? (int)$sic : 0]);
+    $raw = $cst->fetch();
+    if ($raw) {
+        $c = [
+            'id' => $raw['id'],
+            'sic_id' => $raw['sic_id'],
+            'entity_name' => $raw['entity_name'],
+            'original_name' => $raw['entity_name'],
+            'network_level' => $raw['level'],
+            'city' => $raw['city'],
+            'province' => $raw['province'],
+            'region' => $raw['region'],
+            'address' => $raw['address'],
+            'postal_code' => $raw['cap'] ?? '',
+            'phone' => $raw['primary_phone'],
+            'email' => $raw['primary_email'],
+            'website' => $raw['website'],
+            'meeting' => trim(($raw['meeting_day'] ?? '') . ' ' . ($raw['meeting_time'] ?? '')),
+            'families_count' => $raw['families_count'] ?? 12,
+            'parent_sic_id' => '',
+            'latitude' => 45.0,
+            'longitude' => 12.0
+        ];
+    }
+}
 
 if (!$c) {
     http_response_code(404);
@@ -29,6 +58,30 @@ if (!$c) {
     </section>
     <?php
     require __DIR__ . '/_footer.php';
+    exit;
+}
+
+// Export vCard (.vcf) per salvataggio istantaneo nella rubrica dello smartphone
+if (isset($_GET['vcard'])) {
+    $cleanFilename = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $c['entity_name'] ?: 'Club_Territoriale');
+    header('Content-Type: text/vcard; charset=utf-8');
+    header('Content-Disposition: attachment; filename="' . $cleanFilename . '.vcf"');
+    echo "BEGIN:VCARD\r\n";
+    echo "VERSION:3.0\r\n";
+    echo "FN:" . $c['entity_name'] . "\r\n";
+    echo "ORG:Rete Hudolin - Club Alcologico Territoriale\r\n";
+    if (!empty($c['phone'])) {
+        echo "TEL;TYPE=VOICE,WORK:" . preg_replace('/[^0-9+]/', '', $c['phone']) . "\r\n";
+    }
+    if (!empty($c['email'])) {
+        echo "EMAIL;TYPE=INTERNET,PREF:" . $c['email'] . "\r\n";
+    }
+    if (!empty($c['address']) || !empty($c['city'])) {
+        echo "ADR;TYPE=WORK:;;" . ($c['address'] ?? '') . ";" . ($c['city'] ?? '') . ";" . ($c['province'] ?? '') . ";" . ($c['postal_code'] ?? '') . ";Italia\r\n";
+    }
+    echo "URL:" . ('https://' . ($brand['domain'] ?? 'dependex.social') . '/club/' . urlencode($c['sic_id'])) . "\r\n";
+    echo "NOTE:Club Territoriale Metodo Hudolin. Incontri settimanali gratuiti e riservati per famiglie.\\nCodice SIC: " . $c['sic_id'] . "\r\n";
+    echo "END:VCARD\r\n";
     exit;
 }
 
@@ -59,7 +112,7 @@ $schemaOrg = [
     "@context" => "https://schema.org",
     "@graph" => [
         [
-            "@type" => "NGO",
+            "@type" => ["CommunityCenter", "NGO"],
             "@id" => $canonicalUrl . "/#organization",
             "name" => $c['entity_name'],
             "alternateName" => $c['original_name'] ?: $c['entity_name'],
@@ -196,6 +249,16 @@ require __DIR__ . '/_header.php';
           <?=dx_icon('navigation', 'text-amber', 16)?> Come Arrivare (Maps)
         </a>
       <?php endif; ?>
+
+      <!-- SCARICA CONTATTO VCARD .VCF PER RUBRICA SMARTPHONE -->
+      <a href="?sic=<?=urlencode($c['sic_id'] ?: $c['id'])?>&vcard=1" class="btn-community-outline" style="padding:10px 18px;font-size:0.95rem;" title="Salva recapiti del Club nella rubrica del telefono">
+        <?=dx_icon('download', 'text-amber', 16)?> Salva in Rubrica (.vcf)
+      </a>
+
+      <!-- CONDIVIDI SCHEDA TRAMITE WEB SHARE API O APPUNTI -->
+      <button type="button" onclick="window.dxShareClub('<?=addslashes(h($c['entity_name']))?>', 'Informazioni sul Club Territoriale: <?=addslashes(h($c['entity_name']))?>', '<?=addslashes($canonicalUrl)?>')" class="btn-community-outline" style="padding:10px 18px;font-size:0.95rem;cursor:pointer;background:transparent;">
+        <?=dx_icon('share-2', 'text-cyan', 16)?> Condividi Scheda
+      </button>
 
       <a href="/parla-con-noi.php" class="btn-community-outline" style="padding:10px 18px;font-size:0.95rem;">
         <?=dx_icon('message-circle', 'text-cyan', 16)?> Vuoi parlare prima con noi?

@@ -1303,3 +1303,32 @@ p {
   to { opacity: 1; transform: scale(1); }
 }
 
+/* PANIC EXIT BUTTON (TRAUMA-INFORMED UX) */
+.panic-exit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 9px;
+  background: rgba(248, 81, 73, 0.12);
+  border: 1px solid rgba(248, 81, 73, 0.4);
+  color: #ff7b72;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.panic-exit-btn:hover, .panic-exit-btn:focus {
+  background: rgba(248, 81, 73, 0.3);
+  border-color: #ff7b72;
+  color: #ffffff;
+  outline: 2px solid #ff7b72;
+}
+@media (max-width: 540px) {
+  .panic-exit-btn .panic-label {
+    display: none;
+  }
+}
+

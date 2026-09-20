@@ -199,6 +199,7 @@ if (strpos($ogImageResolved, 'http') !== 0) {
       document.documentElement.setAttribute('data-theme', t);
     })();
   </script>
+  <script src="assets/js/dx-safety-wellbeing.js" defer></script>
 </head>
 <?php
 $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
@@ -230,9 +231,9 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
     <nav class="topbar-nav" aria-label="Navigazione principale">
       <a href="index.php" class="topbar-nav-link <?=($curScript==='index.php'||$curScript==='')?'active':''?>">Home</a>
       <a href="world-club-explorer.php" class="topbar-nav-link <?=$curScript==='world-club-explorer.php'||$curScript==='club-public.php'?'active':''?>">Trova un Club</a>
-      <a href="mappa-club.php" class="topbar-nav-link <?=$curScript==='mappa-club.php'?'active':''?>" style="position:relative;" title="Mappa Georeferenziata 2D dei 322 Club Italiani con GPS">
+      <a href="mappa-club.php" class="topbar-nav-link <?=$curScript==='mappa-club.php'?'active':''?>" style="position:relative;" title="Mappa Georeferenziata 2D dei 395 Club Italiani con GPS">
         <span style="color:#00f0ff;font-weight:700;">Mappa 2D</span>
-        <span style="font-size:0.62rem;background:#00f0ff;color:#070a12;font-weight:800;padding:1px 5px;border-radius:6px;margin-left:2px;">322</span>
+        <span style="font-size:0.62rem;background:#00f0ff;color:#070a12;font-weight:800;padding:1px 5px;border-radius:6px;margin-left:2px;">395</span>
       </a>
       <a href="events-public.php" class="topbar-nav-link <?=$curScript==='events-public.php'||$curScript==='event-detail.php'?'active':''?>">Vivi la Comunità</a>
       <a href="storie.php" class="topbar-nav-link <?=$curScript==='storie.php'?'active':''?>">Storie</a>
@@ -266,6 +267,11 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
     </div>
 
     <div class="header-actions">
+      <!-- PULSANTE USCITA RAPIDA / PANIC EXIT -->
+      <a href="https://www.meteo.it" onclick="window.dxPanicExit(event);" class="panic-exit-btn" id="panicExitBtn" title="Uscita Rapida: chiudi subito e proteggi la tua privacy [ESC]" aria-label="Uscita Rapida">
+        <span class="panic-icon">🛡️</span>
+        <span class="panic-label">Esci</span>
+      </a>
       <a href="cart.php" class="topbar-cart-btn" title="Carrello Acquisti" aria-label="Carrello">
         <?=dx_icon('shopping-cart', 'text-neon-gold', 18)?>
       </a>
@@ -312,7 +318,8 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         <nav class="drawer-nav-group">
           <span class="drawer-section-title">I PILASTRI DELLA COMUNITÀ</span>
           <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'||$curScript==='club-public.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> Trova un Club Territoriale</a>
-          <a href="mappa-club.php" class="drawer-link <?=$curScript==='mappa-club.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa 2D Italia (322 Club)</b></a>
+          <a href="mappa-club.php" class="drawer-link <?=$curScript==='mappa-club.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa 2D Italia (395 Club)</b></a>
+          <a href="crm-clubs.php" class="drawer-link <?=$curScript==='crm-clubs.php'?'active':''?>"><?=dx_icon('database','text-neon-green',18)?> <b>Console CRM Club Italia</b></a>
           <a href="recensioni.php" class="drawer-link <?=$curScript==='recensioni.php'?'active':''?>"><?=dx_icon('star','text-neon-gold',18)?> <b>Recensioni & Testimonianze</b></a>
           <a href="parla-con-noi.php" class="drawer-link <?=$curScript==='parla-con-noi.php'?'active':''?>"><?=dx_icon('message-circle','text-neon-cyan',18)?> <b>Parla con Noi (Ascolto Riservato)</b></a>
           <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Vivi la Comunità & Eventi</a>

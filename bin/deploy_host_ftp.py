@@ -41,6 +41,7 @@ FILES_TO_SYNC = [
     "cortex.php",
     "api-cortex.php",
     "world-club-explorer.php",
+    "club-public.php",
     "widget-club.php",
     "_header.php",
     "_footer.php",
@@ -127,6 +128,7 @@ FILES_TO_SYNC = [
     os.path.join("assets", "js", "dx-voice-sos.js"),
     os.path.join("assets", "js", "dx-micro-checkin.js"),
     os.path.join("assets", "js", "dx-local-reminders.js"),
+    os.path.join("assets", "js", "dx-safety-wellbeing.js"),
     os.path.join("assets", "js", "universal-cart-checkout.js"),
     os.path.join("assets", "js", "universal-chat-ai.js"),
     os.path.join("assets", "logo.png"),
@@ -165,6 +167,7 @@ FILES_TO_SYNC = [
     os.path.join("docs", "STRATEGIA_EMAIL_MARKETING_CRM_CLUB_FLUX100_EMM.md"),
     os.path.join("tests", "test_territorial_network_v6_e2e.php"),
     os.path.join("tests", "test_crm_club_outreach_e2e.php"),
+    os.path.join("tests", "test_safety_wellbeing_accessibility_e2e.php"),
 
     # Clip Video Motivazionali (8-10s)
     "clips.php",

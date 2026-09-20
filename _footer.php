@@ -78,7 +78,7 @@
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
           <li><a href="index.php" style="color: #cbd5e1; text-decoration: none;">Pagina Principale</a></li>
           <li><a href="world-club-explorer.php" style="color: var(--dx-amber); font-weight: 750; text-decoration: none;">Trova un Club Territoriale</a></li>
-          <li><a href="mappa-club.php" style="color: #67e8f9; font-weight: 750; text-decoration: none;">Mappa 2D Italia (322 Club)</a></li>
+          <li><a href="mappa-club.php" style="color: #67e8f9; font-weight: 750; text-decoration: none;">Mappa 2D Italia (395 Club & GeoJSON)</a></li>
           <li><a href="domande-frequenti.php" style="color: #fde68a; font-weight: 750; text-decoration: none;">Domande che vuoi fare</a></li>
           <li><a href="recensioni.php" style="color: var(--dx-amber); font-weight: 750; text-decoration: none;">Recensioni & Testimonianze</a></li>
           <li><a href="parla-con-noi.php" style="color: #ffffff; font-weight: 700; text-decoration: none;">Parla con Noi (Ascolto)</a></li>
@@ -237,6 +237,21 @@
       <b style="color: #ffd700;">Tecnica 4-7-8:</b> 4 sec Inspira dal naso · 7 sec Trattieni l'aria · 8 sec Espira lentamente dalla bocca.
     </div>
 
+    <!-- ASCOLTO VOCALE EMPATICO MAIEUTICO ON-DEVICE (100% PRIVATO NEL BROWSER) -->
+    <div style="background: rgba(0, 240, 255, 0.05); border: 1px dashed rgba(0, 240, 255, 0.35); border-radius: 12px; padding: 12px 14px; margin-bottom: 16px; text-align: center;">
+      <div style="font-size: 0.82rem; color: #94a3b8; margin-bottom: 8px;">
+        Vuoi semplicemente dire a voce cosa provi adesso? (100% privato nel tuo telefono)
+      </div>
+      <button type="button" id="dxVoiceSosBtn" onclick="if(window.startVoiceSos) window.startVoiceSos();" style="background: rgba(0, 240, 255, 0.15); border: 1px solid #00f0ff; color: #00f0ff; border-radius: 999px; padding: 8px 18px; font-weight: 800; font-size: 0.88rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+        <span style="font-size: 1.1rem;">🎙️</span>
+        <span id="dxVoiceStatusTxt">Parla liberamente a voce</span>
+      </button>
+      <div id="dxVoiceTranscriptBox" style="display: none; margin-top: 10px; font-size: 0.84rem; text-align: left; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 10px; color: #e2e8f0; line-height: 1.4;">
+        <div id="dxUserSpeech" style="color: #67e8f9; font-style: italic; margin-bottom: 6px;"></div>
+        <div id="dxMaieuticReply" style="color: #a7f3d0; font-weight: 650;"></div>
+      </div>
+    </div>
+
     <!-- Azioni Rapide a 1 Tocco -->
     <div style="display: flex; flex-direction: column; gap: 10px;">
       <a href="tel:800632000" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 16px; background: rgba(37,211,102,0.18); border: 1px solid #25d366; color: #25d366; border-radius: 12px; font-weight: 850; font-size: 0.95rem; text-decoration: none;">
@@ -312,6 +327,8 @@ function stopBreathingCycle() {
 <script src="assets/js/universal-chat-ai.js?v=<?=filemtime(__DIR__.'/assets/js/universal-chat-ai.js')?>" data-brand="<?=h(site_brand()['name'])?>" data-domain="<?=h(site_brand()['domain'])?>"></script>
 <script src="assets/js/universal-cart-checkout.js?v=<?=filemtime(__DIR__.'/assets/js/universal-cart-checkout.js')?>" data-brand="<?=h(site_brand()['name'])?>"></script>
 <script src="assets/js/dx-telemetry.js?v=<?=filemtime(__DIR__.'/assets/js/dx-telemetry.js')?>"></script>
+<script src="assets/js/dx-voice-sos.js?v=<?=filemtime(__DIR__.'/assets/js/dx-voice-sos.js')?>"></script>
+<script src="assets/js/dx-micro-checkin.js?v=<?=filemtime(__DIR__.'/assets/js/dx-micro-checkin.js')?>"></script>
 <script src="assets/js/dx-pwa-companion.js?v=<?=filemtime(__DIR__.'/assets/js/dx-pwa-companion.js')?>"></script>
 </body>
 </html>

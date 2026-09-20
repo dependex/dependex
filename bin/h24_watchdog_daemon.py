@@ -34,6 +34,8 @@ TARGET_ENDPOINTS = [
     {"name": "Eventi & Prenotazioni", "url": "https://dependex.social/events-public.php", "min_bytes": 30000},
     {"name": "Ascolto Anonimo", "url": "https://dependex.social/parla-con-noi.php", "min_bytes": 15000},
     {"name": "Telemetria & Watchdog API", "url": "https://dependex.social/api.php?action=watchdog", "min_bytes": 100},
+    {"name": "OpenData GeoJSON RFC 7946", "url": "https://dependex.social/api-opendata-geojson.php", "min_bytes": 50000},
+    {"name": "Feed Territoriale Atom/GeoRSS", "url": "https://dependex.social/api-feed-territorio.php", "min_bytes": 50000},
     {"name": "Home Oltre Social", "url": "https://oltre.social/index.php", "min_bytes": 100000},
     {"name": "Life Playground Oltre", "url": "https://oltre.social/playground.php?v=2", "min_bytes": 40000},
 ]

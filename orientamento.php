@@ -82,6 +82,9 @@ require '_header.php';
     </div>
   </section>
 
+  <!-- WIDGET MICRO-CHECKIN RISERVATO 100% LOCALE (ON-DEVICE) -->
+  <div id="dx-micro-checkin-container" style="margin: 2rem auto 3rem; max-width: 680px;"></div>
+
   <!-- I 3 MICRO-JOURNEYS DI ORIENTAMENTO UMANO (SMALL STEPS) -->
   <section class="my-5" id="micro-percorsi">
     <div class="text-center mb-4" style="max-width: 780px; margin-left: auto; margin-right: auto;">

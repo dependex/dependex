@@ -860,6 +860,12 @@ require '_header.php';
         <a href="data/CENSIMENTO_CLUB_CAT_ITALIA_2026.csv" class="btn small primary" download style="text-align:center;">
           <?=dx_icon('download', '', 14)?> Scarica CSV Completo (2026)
         </a>
+        <a href="api-opendata-geojson.php" target="_blank" class="btn small" style="text-align:center;border:1px solid rgba(0,240,255,0.3);color:#00f0ff;background:rgba(0,240,255,0.08);">
+          <?=dx_icon('map-pin', '', 14)?> Standard GeoJSON (RFC 7946 per Ser.D/GIS)
+        </a>
+        <a href="api-feed-territorio.php" target="_blank" class="btn small" style="text-align:center;border:1px solid rgba(251,191,36,0.35);color:#fbbf24;background:rgba(251,191,36,0.08);">
+          <?=dx_icon('rss', '', 14)?> Feed Territoriale Atom/GeoRSS (Ser.D & ASL)
+        </a>
         <a href="api-clubs-italy.php?action=list" target="_blank" class="btn small" style="text-align:center;border:1px solid rgba(255,255,255,0.15);color:#ffffff;">
           <?=dx_icon('code', '', 14)?> Esplora API JSON
         </a>
@@ -867,6 +873,49 @@ require '_header.php';
     </div>
 
   </div>
+
+  <!-- DATI STRUTTURATI SCHEMA.ORG PER INDICIZZAZIONE TERRITORIALE (ITEMLIST / NGO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Rete Nazionale Presidi Club Hudolin (CAT, ACAT, APCAT, ARCAT)",
+    "description": "Censimento georeferenziato dei Club territoriali di auto-mutuo-aiuto per problemi alcolcorrelati e benessere multifamiliare in Italia",
+    "numberOfItems": <?=count($allClubs)?>,
+    "itemListElement": [
+      <?php
+      $ldItems = [];
+      $pos = 1;
+      foreach (array_slice($allClubs, 0, 50) as $c) {
+          $ldItems[] = json_encode([
+              "@type" => "ListItem",
+              "position" => $pos++,
+              "item" => [
+                  "@type" => "NGO",
+                  "name" => $c['entity_name'],
+                  "address" => [
+                      "@type" => "PostalAddress",
+                      "streetAddress" => $c['address'],
+                      "addressLocality" => $c['city'],
+                      "addressRegion" => $c['region'],
+                      "postalCode" => $c['cap'],
+                      "addressCountry" => "IT"
+                  ],
+                  "geo" => [
+                      "@type" => "GeoCoordinates",
+                      "latitude" => (float)$c['latitude'],
+                      "longitude" => (float)$c['longitude']
+                  ],
+                  "telephone" => !empty($c['phone']) ? $c['phone'] : null,
+                  "url" => "https://dependex.social/world-club-explorer.php?id=" . $c['id']
+              ]
+          ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+      }
+      echo implode(",\n      ", $ldItems);
+      ?>
+    ]
+  }
+  </script>
 
 </main>
 

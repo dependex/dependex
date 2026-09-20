@@ -98,14 +98,32 @@ TEMPLATES = {
               <span class="badge">PRESENZA TERRITORIALE</span>
               <h1>C'è una sedia pronta per te, senza bisogno di parlare.</h1>
               <p>Ciao {nome}, la paura più diffusa prima del primo incontro è sentirsi giudicati o dover confessare chissà quali colpe.</p>
-              <p>Nei Club Alcologici Territoriali accade l'opposto: puoi entrare, sederti in cerchio e limitarti ad ascoltare. Non sei obbligato a prendere la parola se non te la senti.</p>
-              <div class="highlight-box">
-                <strong>Nota per i familiari:</strong> Se chi beve non si sente ancora pronto a venire, puoi partecipare tu da solo. Il percorso inizia dalla persona che per prima decide di spezzare il silenzio.
-              </div>
-              <p>Verifica subito la mappa con oltre 360 sedi italiane attive e certificate con indirizzo e orario di riunione.</p>
             """,
             cta_text="Trova la Sede Più Vicina",
             cta_url="https://dependex.social/world-club-explorer.php"
+        )
+    },
+    "locator_apcat_match": {
+        "nome": "Riepilogo Club & APCAT Territoriale",
+        "oggetto": "{nome}, ecco i dettagli del Club più vicino a te",
+        "corpo": get_base_html_layout(
+            title="Il tuo Club Territoriale",
+            preheader="Indirizzo, orario e recapiti diretti per partecipare al prossimo incontro.",
+            body_content="""
+              <span class="badge">CONNESSIONE COMUNITARIA</span>
+              <h1>Abbiamo individuato il Club di riferimento per la tua zona.</h1>
+              <p>Gentile {nome},</p>
+              <p>In base alla tua posizione o ricerca, ecco il cerchio multifamiliare più vicino:</p>
+              <div class="highlight-box">
+                <strong>{club_name} ({club_level})</strong><br>
+                <strong>Sede:</strong> {club_address}, {club_city} ({club_province})<br>
+                <strong>Incontro:</strong> {club_meeting_day} {club_meeting_time}<br>
+                <strong>Referente:</strong> {club_contact}
+              </div>
+              <p>Ricorda: la sedia al Club è sempre gratuita, aperta a familiari e amici, e non richiede alcuna prescrizione medica.</p>
+            """,
+            cta_text="Apri la Mappa e Indicazioni",
+            cta_url="https://dependex.social/mappa-club.php"
         )
     },
     "welcome_03_problema": {

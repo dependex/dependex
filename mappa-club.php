@@ -405,6 +405,12 @@ require '_header.php';
   border: 1px solid rgba(0, 240, 255, 0.3);
 }
 
+.tag-apcat {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+}
+
 .tag-acat {
   background: rgba(255, 215, 0, 0.15);
   color: #ffd700;
@@ -540,6 +546,11 @@ require '_header.php';
 .marker-local {
   background: radial-gradient(circle, #00f0ff 20%, #0077ff 100%);
   color: #00f0ff;
+}
+
+.marker-apcat {
+  background: radial-gradient(circle, #c084fc 20%, #7e22ce 100%);
+  color: #c084fc;
 }
 
 .marker-acat {
@@ -706,7 +717,7 @@ require '_header.php';
       Mappa Georeferenziata 2D dei Club CAT & ACAT d'Italia
     </h1>
     <p>
-      Trova il Club Alcologico Territoriale più vicino alla tua città. <b>322 Club, ACAT ed ARCAT censiti</b> con coordinate 2D, recapiti telefonici, orari di incontro e collegamenti diretti. Nessuna prescrizione o spesa: la sedia al Club è sempre aperta.
+      Trova il Club Alcologico Territoriale o l'APCAT provinciale più vicina alla tua città. <b><?=$totalClubs?> Club, APCAT, ACAT ed ARCAT censiti</b> con coordinate 2D, recapiti telefonici, orari di incontro e collegamenti diretti. Nessuna prescrizione o spesa: la sedia al Club è sempre aperta.
     </p>
   </section>
 
@@ -717,7 +728,7 @@ require '_header.php';
       <!-- RICERCA TESTO -->
       <div class="search-input-wrapper">
         <span class="search-input-icon"><?=dx_icon('search', '', 18)?></span>
-        <input type="text" id="filterQuery" placeholder="Cerca club, comune, via, provincia o servitore..." autocomplete="off">
+        <input type="text" id="filterQuery" placeholder="Cerca club, APCAT, comune, via, provincia o servitore..." autocomplete="off">
       </div>
 
       <!-- SELETTORE REGIONE -->
@@ -756,6 +767,7 @@ require '_header.php';
       <div class="level-pills-group" id="levelPills">
         <button type="button" class="level-pill active" data-level="ALL">Tutti i Livelli</button>
         <button type="button" class="level-pill" data-level="LOCAL_CLUB">Club CAT Locali</button>
+        <button type="button" class="level-pill" data-level="PROVINCIAL_APCAT">APCAT Provinciali</button>
         <button type="button" class="level-pill" data-level="TERRITORIAL">ACAT Territoriali</button>
         <button type="button" class="level-pill" data-level="REGIONAL">ARCAT Regionali</button>
         <button type="button" class="level-pill" data-level="NATIONAL">AICAT Nazionale</button>
@@ -907,11 +919,14 @@ function initMap() {
 }
 
 // Creazione Icona Marker personalizzata in base al livello
-function createMarkerIcon(level) {
+function createMarkerIcon(level, entityName) {
   let markerClass = 'marker-local';
   let label = 'CAT';
 
-  if (level === 'TERRITORIAL' || level === 'TERRITORIAL_ASSOCIATION') {
+  if (level === 'PROVINCIAL_APCAT' || (entityName && entityName.includes('APCAT'))) {
+    markerClass = 'marker-apcat';
+    label = 'APCAT';
+  } else if (level === 'TERRITORIAL' || level === 'TERRITORIAL_ASSOCIATION' || level === 'PROVINCIAL') {
     markerClass = 'marker-acat';
     label = 'ACAT';
   } else if (level === 'REGIONAL') {
@@ -957,7 +972,8 @@ function applyFilters() {
     // Filtro livello
     if (activeLevel !== 'ALL') {
       if (activeLevel === 'LOCAL_CLUB' && club.level !== 'LOCAL_CLUB') return false;
-      if (activeLevel === 'TERRITORIAL' && !['TERRITORIAL','TERRITORIAL_ASSOCIATION','PROVINCIAL'].includes(club.level)) return false;
+      if (activeLevel === 'PROVINCIAL_APCAT' && club.level !== 'PROVINCIAL_APCAT' && !club.entity_name.includes('APCAT')) return false;
+      if (activeLevel === 'TERRITORIAL' && !['TERRITORIAL','TERRITORIAL_ASSOCIATION'].includes(club.level)) return false;
       if (activeLevel === 'REGIONAL' && club.level !== 'REGIONAL') return false;
       if (activeLevel === 'NATIONAL' && club.level !== 'NATIONAL') return false;
     }
@@ -1012,17 +1028,30 @@ function applyFilters() {
     if (isNaN(lat) || isNaN(lon)) return;
 
     const marker = L.marker([lat, lon], {
-      icon: createMarkerIcon(club.level),
+      icon: createMarkerIcon(club.level, club.entity_name),
       title: club.entity_name
     });
 
     // Costruzione Popup interattivo
-    const levelLabel = club.level === 'LOCAL_CLUB' ? 'Club CAT Territoriale' : 
-                       (club.level === 'REGIONAL' ? 'ARCAT Regionale' : 'Associazione ACAT');
+    let levelLabel = 'Club CAT Territoriale';
+    let popupTagClass = 'tag-local';
+    if (club.level === 'PROVINCIAL_APCAT' || (club.entity_name && club.entity_name.includes('APCAT'))) {
+      levelLabel = 'APCAT Provinciale';
+      popupTagClass = 'tag-apcat';
+    } else if (['TERRITORIAL','TERRITORIAL_ASSOCIATION','PROVINCIAL'].includes(club.level)) {
+      levelLabel = 'Associazione ACAT';
+      popupTagClass = 'tag-acat';
+    } else if (club.level === 'REGIONAL') {
+      levelLabel = 'ARCAT Regionale';
+      popupTagClass = 'tag-arcat';
+    } else if (club.level === 'NATIONAL') {
+      levelLabel = 'AICAT Nazionale';
+      popupTagClass = 'tag-aicat';
+    }
     
     let popupHtml = `
       <div class="popup-inner-card">
-        <span class="club-type-tag tag-local" style="margin-bottom:4px;display:inline-block;">${levelLabel}</span>
+        <span class="club-type-tag ${popupTagClass}" style="margin-bottom:4px;display:inline-block;">${levelLabel}</span>
         <h4>${escapeHtml(club.entity_name)}</h4>
         <p><b>Sede:</b> ${escapeHtml(club.address || club.city)} (${escapeHtml(club.province || '')})</p>
         ${club.meeting_day ? `<p><b>Incontro:</b> ${escapeHtml(club.meeting_day)} ${escapeHtml(club.meeting_time || '')}</p>` : ''}
@@ -1073,7 +1102,10 @@ function renderClubCards(clubs) {
 
     let tagClass = 'tag-local';
     let tagText = 'Club CAT';
-    if (['TERRITORIAL','TERRITORIAL_ASSOCIATION','PROVINCIAL'].includes(c.level)) {
+    if (c.level === 'PROVINCIAL_APCAT' || (c.entity_name && c.entity_name.includes('APCAT'))) {
+      tagClass = 'tag-apcat';
+      tagText = 'APCAT';
+    } else if (['TERRITORIAL','TERRITORIAL_ASSOCIATION','PROVINCIAL'].includes(c.level)) {
       tagClass = 'tag-acat';
       tagText = 'ACAT';
     } else if (c.level === 'REGIONAL') {

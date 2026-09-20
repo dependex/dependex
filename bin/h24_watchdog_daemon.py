@@ -24,8 +24,10 @@ STATUS_JSON = os.path.join(DATA_DIR, "h24_watchdog_status.json")
 
 TARGET_ENDPOINTS = [
     {"name": "Home Dependex", "url": "https://dependex.social/index.php", "min_bytes": 100000},
-    {"name": "World Club Explorer (322+ Club)", "url": "https://dependex.social/world-club-explorer.php", "min_bytes": 200000},
-    {"name": "Mappa 2D Interattiva", "url": "https://dependex.social/mappa-club.php", "min_bytes": 150000},
+    {"name": "World Club Explorer (366+ Club & APCAT)", "url": "https://dependex.social/world-club-explorer.php", "min_bytes": 200000},
+    {"name": "Mappa 2D Interattiva & APCAT", "url": "https://dependex.social/mappa-club.php", "min_bytes": 150000},
+    {"name": "Club Locator Geodesico (API)", "url": "https://dependex.social/api-club-locator.php?lat=44.9961&lon=12.2133", "min_bytes": 300},
+    {"name": "Ruota della Vita & Orientamento", "url": "https://dependex.social/ruota-della-vita.php", "min_bytes": 20000},
     {"name": "Orientamento Maieutico 5.0", "url": "https://dependex.social/orientamento.php", "min_bytes": 30000},
     {"name": "Life Playground 6.0", "url": "https://dependex.social/playground.php?v=2", "min_bytes": 40000},
     {"name": "Motivational Clips 9:16", "url": "https://dependex.social/clips.php", "min_bytes": 20000},

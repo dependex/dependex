@@ -72,7 +72,7 @@ require '_dependex-world-map.php';
 
   <div style="margin-top:1.8rem;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
     <a href="mappa-club.php" class="btn primary glow" style="font-size:1.02rem;padding:12px 24px;border-radius:14px;background:linear-gradient(135deg, #00f0ff, #0077ff);color:#070a12;font-weight:800;box-shadow:0 0 25px rgba(0,240,255,0.45);text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
-      <?=dx_icon('map-pin', '', 18)?> <b>Mappa Georeferenziata 2D d'Italia (322 Club con GPS)</b>
+      <?=dx_icon('map-pin', '', 18)?> <b>Mappa Georeferenziata 2D d'Italia (Club & APCAT con GPS)</b>
     </a>
   </div>
 

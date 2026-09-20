@@ -65,10 +65,10 @@
       "icons": [{ "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
-      "name": "Trova Club",
-      "short_name": "Club",
-      "description": "Mappa e contatti dei 542 Club territoriali",
-      "url": "world-club-explorer.php",
+      "name": "Mappa 2D & SOS Club (GPS)",
+      "short_name": "Mappa & SOS",
+      "description": "Trova all'istante il Club o APCAT più vicino con GPS",
+      "url": "mappa-club.php",
       "icons": [{ "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {

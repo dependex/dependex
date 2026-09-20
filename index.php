@@ -886,6 +886,11 @@ try {
 </section>
 
 <!-- ============================================================== -->
+<!-- 9.1 WIDGET 1-TAP CLUB & APCAT LOCATOR (GEODESICO GPS)          -->
+<!-- ============================================================== -->
+<?php require __DIR__ . '/templates/_club_locator_widget.php'; ?>
+
+<!-- ============================================================== -->
 <!-- 10. SECTION 10: CHIUSURA IDENTITARIA RAINBOW                   -->
 <!-- ============================================================== -->
 <section class="rainbow-border text-center my-5 p-5" style="background: rgba(10, 13, 24, 0.95); box-shadow: var(--rainbow-glow); border-radius: 24px;">

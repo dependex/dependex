@@ -16,7 +16,32 @@ $breadcrumbs = [
 require '_header.php';
 ?>
 
+<style>
+@media print {
+  body { background: #ffffff !important; color: #000000 !important; }
+  header, footer, nav, .site-header, .site-footer, .btn, button, #btnMode2D, #btnMode3D, .hero, .badge-neon-rainbow, .opendata-card, [style*="border-top"] {
+    display: none !important;
+  }
+  .container { max-width: 100% !important; padding: 0 !important; }
+  .human-hero-card { background: none !important; border: none !important; padding: 0 !important; color: #000 !important; text-align: left !important; }
+  .human-hero-card h1 { color: #000 !important; font-size: 24pt !important; }
+  .human-hero-card p { color: #444 !important; font-size: 11pt !important; }
+  .row { display: flex !important; flex-direction: column !important; }
+  .col-lg-7, .col-lg-5 { width: 100% !important; max-width: 100% !important; }
+  div[style*="background: rgba(12, 16, 28"] { background: #ffffff !important; border: 1px solid #ccc !important; color: #000000 !important; }
+  #wheelCanvas2D { filter: invert(1) hue-rotate(180deg); margin: 0 auto; display: block; }
+  #slidersList { max-height: none !important; overflow: visible !important; }
+  #balanceScore { color: #000 !important; font-size: 16pt !important; }
+  #coachingHint { color: #222 !important; font-size: 11pt !important; border: 1px solid #ddd !important; padding: 12px !important; }
+  .print-only-header { display: block !important; margin-bottom: 20px; font-size: 10pt; color: #666; border-bottom: 1px solid #ccc; padding-bottom: 8px; }
+}
+.print-only-header { display: none; }
+</style>
+
 <div class="container py-4" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+  <div class="print-only-header">
+    <strong>DEPENDEX.SOCIAL — Scheda Privata di Riflessione e Orientamento</strong> · Generata localmente sul tuo dispositivo. Nessun dato clinico memorizzato su server.
+  </div>
 
   <!-- HERO HEADER -->
   <section class="human-hero-card text-center my-3" style="padding: 2.2rem 1.5rem; background: radial-gradient(circle at 50% 0%, rgba(224, 169, 109, 0.15) 0%, rgba(12, 16, 28, 0.95) 75%); border: 1px solid rgba(224, 169, 109, 0.35); border-radius: var(--dx-radius-lg, 20px);">
@@ -54,15 +79,15 @@ require '_header.php';
     <div class="col-lg-7">
       <div class="p-3 p-md-4 h-100 d-flex flex-column" style="background: rgba(12, 16, 28, 0.95); border: 1px solid rgba(224, 169, 109, 0.3); border-radius: 18px; min-height: 520px; position: relative;">
         
-        <!-- HEADER GRAFICO & SCORE -->
-        <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- HEADER GRAFICO & ORIENTAMENTO MAIEUTICO (NO WELLNESS SCORE) -->
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
           <div>
-            <span style="font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px;">Indice di Equilibrio</span>
-            <div id="balanceScore" style="font-size: 1.8rem; font-weight: 800; color: #fde68a; font-family: var(--font-serif);">72%</div>
+            <span style="font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px;">Area che oggi chiede attenzione</span>
+            <div id="balanceScore" style="font-size: 1.4rem; font-weight: 800; color: #fde68a; font-family: var(--font-serif);">Relazioni Familiari</div>
           </div>
           <div class="text-end">
-            <span id="balanceLevel" class="badge" style="background: rgba(34,197,94,0.15); color: #86efac; border: 1px solid rgba(34,197,94,0.3); font-size: 0.82rem; padding: 6px 12px; border-radius: 20px;">
-              Armonia in Crescita
+            <span id="balanceLevel" class="badge" style="background: rgba(0,240,255,0.12); color: #00f0ff; border: 1px solid rgba(0,240,255,0.3); font-size: 0.82rem; padding: 6px 12px; border-radius: 20px;">
+              Lente di Consapevolezza Privata
             </span>
           </div>
         </div>
@@ -82,10 +107,15 @@ require '_header.php';
 
         <!-- FOOTER GRAFICO -->
         <div class="pt-3 mt-2 d-flex justify-content-between align-items-center flex-wrap gap-2" style="border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.82rem; color: #94a3b8;">
-          <span><?=dx_icon('shield-check', 'text-neon-green', 14)?> Salvataggio locale automatico</span>
-          <button type="button" class="btn small" style="border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 8px;" onclick="resetValues()">
-            <?=dx_icon('refresh-cw', '', 12)?> Reimposta Valori
-          </button>
+          <span><?=dx_icon('shield-check', 'text-neon-green', 14)?> Salvataggio solo locale sul tuo dispositivo (Privacy 100%)</span>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn small" style="border: 1px solid rgba(0,240,255,0.4); color: #00f0ff; border-radius: 8px; background: rgba(0,240,255,0.1);" onclick="window.print()">
+              <?=dx_icon('printer', '', 12)?> Stampa / Salva PDF
+            </button>
+            <button type="button" class="btn small" style="border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 8px;" onclick="resetValues()">
+              <?=dx_icon('refresh-cw', '', 12)?> Reimposta
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -246,7 +276,6 @@ function renderSliders() {
 }
 
 function calculateScore() {
-  let total = 0;
   let minArea = AREAS[0];
   let maxArea = AREAS[0];
   let minVal = 11;
@@ -254,31 +283,27 @@ function calculateScore() {
 
   AREAS.forEach(a => {
     const v = values[a.id];
-    total += v;
     if (v < minVal) { minVal = v; minArea = a; }
     if (v > maxVal) { maxVal = v; maxArea = a; }
   });
 
-  const percent = Math.round((total / (AREAS.length * 10)) * 100);
-  document.getElementById('balanceScore').innerText = percent + '%';
+  // Zero Wellness Score: mostriamo l'area di ascolto senza punteggio numerico di salute
+  const scoreEl = document.getElementById('balanceScore');
+  if (scoreEl) {
+    scoreEl.innerText = minArea.label;
+  }
 
   const lvlBadge = document.getElementById('balanceLevel');
-  if (percent >= 80) {
-    lvlBadge.innerText = 'Armonia Sovrana';
-    lvlBadge.style.color = '#86efac';
-    lvlBadge.style.borderColor = 'rgba(34,197,94,0.4)';
-  } else if (percent >= 60) {
-    lvlBadge.innerText = 'Cammino in Crescita';
-    lvlBadge.style.color = '#fde68a';
-    lvlBadge.style.borderColor = 'rgba(253,230,138,0.4)';
-  } else {
-    lvlBadge.innerText = 'Richiede Cura al Club';
-    lvlBadge.style.color = '#fca5a5';
-    lvlBadge.style.borderColor = 'rgba(239,68,68,0.4)';
+  if (lvlBadge) {
+    lvlBadge.innerText = 'Lente Maieutica Attiva';
+    lvlBadge.style.color = '#00f0ff';
+    lvlBadge.style.borderColor = 'rgba(0,240,255,0.4)';
   }
 
   const hint = document.getElementById('coachingHint');
-  hint.innerHTML = `Punto di forza: <strong>${maxArea.label} (${maxVal}/10)</strong>. Area che richiede ascolto: <strong>${minArea.label} (${minVal}/10)</strong>. Porta questo spunto al prossimo incontro del Club per condividere con i compagni come riequilibrarla.`;
+  if (hint) {
+    hint.innerHTML = `Questa parte della tua vita oggi chiede attenzione: <strong>${minArea.label}</strong>.<br><span style="color:#00ff88;">Partiamo da lì.</span> Vediamo cosa può aiutarti a rimettere in movimento le tue energie e quali persone e comunità del Club possono accompagnarti, senza fretta né giudizio.`;
+  }
 }
 
 function resetValues() {

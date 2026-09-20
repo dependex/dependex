@@ -1,25 +1,25 @@
 {
-  "timestamp": "2026-09-20T14:36:02.457017",
-  "healthy": false,
-  "avg_latency_ms": 1754,
+  "timestamp": "2026-09-20T15:38:42.707908",
+  "healthy": true,
+  "avg_latency_ms": 534,
   "total_endpoints": 11,
-  "successful_endpoints": 10,
+  "successful_endpoints": 11,
   "endpoints": [
     {
       "name": "Home Dependex",
       "url": "https://dependex.social/index.php",
-      "status_code": 0,
-      "latency_ms": 11162,
-      "bytes": 0,
-      "ok": false,
-      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+      "status_code": 200,
+      "latency_ms": 901,
+      "bytes": 276471,
+      "ok": true,
+      "error": null
     },
     {
       "name": "World Club Explorer (322+ Club)",
       "url": "https://dependex.social/world-club-explorer.php",
       "status_code": 200,
-      "latency_ms": 1233,
-      "bytes": 406114,
+      "latency_ms": 430,
+      "bytes": 543550,
       "ok": true,
       "error": null
     },
@@ -27,8 +27,8 @@
       "name": "Mappa 2D Interattiva",
       "url": "https://dependex.social/mappa-club.php",
       "status_code": 200,
-      "latency_ms": 956,
-      "bytes": 328226,
+      "latency_ms": 308,
+      "bytes": 366002,
       "ok": true,
       "error": null
     },
@@ -36,7 +36,7 @@
       "name": "Orientamento Maieutico 5.0",
       "url": "https://dependex.social/orientamento.php",
       "status_code": 200,
-      "latency_ms": 353,
+      "latency_ms": 369,
       "bytes": 119154,
       "ok": true,
       "error": null
@@ -45,7 +45,7 @@
       "name": "Life Playground 6.0",
       "url": "https://dependex.social/playground.php?v=2",
       "status_code": 200,
-      "latency_ms": 399,
+      "latency_ms": 528,
       "bytes": 138791,
       "ok": true,
       "error": null
@@ -54,7 +54,7 @@
       "name": "Motivational Clips 9:16",
       "url": "https://dependex.social/clips.php",
       "status_code": 200,
-      "latency_ms": 713,
+      "latency_ms": 362,
       "bytes": 66642,
       "ok": true,
       "error": null
@@ -63,7 +63,7 @@
       "name": "Eventi & Prenotazioni",
       "url": "https://dependex.social/events-public.php",
       "status_code": 200,
-      "latency_ms": 1197,
+      "latency_ms": 436,
       "bytes": 135267,
       "ok": true,
       "error": null
@@ -72,7 +72,7 @@
       "name": "Ascolto Anonimo",
       "url": "https://dependex.social/parla-con-noi.php",
       "status_code": 200,
-      "latency_ms": 450,
+      "latency_ms": 586,
       "bytes": 61967,
       "ok": true,
       "error": null
@@ -81,7 +81,7 @@
       "name": "Telemetria & Watchdog API",
       "url": "https://dependex.social/api.php?action=watchdog",
       "status_code": 200,
-      "latency_ms": 383,
+      "latency_ms": 609,
       "bytes": 348,
       "ok": true,
       "error": null
@@ -90,8 +90,8 @@
       "name": "Home Oltre Social",
       "url": "https://oltre.social/index.php",
       "status_code": 200,
-      "latency_ms": 1726,
-      "bytes": 263694,
+      "latency_ms": 883,
+      "bytes": 276432,
       "ok": true,
       "error": null
     },
@@ -99,7 +99,7 @@
       "name": "Life Playground Oltre",
       "url": "https://oltre.social/playground.php?v=2",
       "status_code": 200,
-      "latency_ms": 727,
+      "latency_ms": 472,
       "bytes": 138311,
       "ok": true,
       "error": null

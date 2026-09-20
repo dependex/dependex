@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dependex-pwa-v4';
+const CACHE_NAME = 'dependex-pwa-v5';
 const STATIC_ASSETS = [
   'offline.html',
   'manifest.webmanifest',
@@ -6,8 +6,9 @@ const STATIC_ASSETS = [
   'assets/css/app.css',
   'assets/js/dx-telemetry.js',
   'data/recensioni_club_italia.json',
-  'assets/img/favicon.svg',
-  'assets/img/app-icon.svg'
+  'data/CENSIMENTO_CLUB_CAT_ITALIA_2026.csv',
+  'assets/logo.svg',
+  'assets/logo.png'
 ];
 
 self.addEventListener('install', (event) => {

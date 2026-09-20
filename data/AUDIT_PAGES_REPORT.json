@@ -4,10 +4,26 @@
   "banned_terms": [],
   "live_http_errors": [
     [
-      "telemetria.php",
+      "offers.php",
+      "Errore connessione: The read operation timed out"
+    ],
+    [
+      "orientamento.php",
+      "Errore connessione: The read operation timed out"
+    ],
+    [
+      "register.php",
+      "Errore connessione: The read operation timed out"
+    ],
+    [
+      "sobriety.php",
+      "Errore connessione: The read operation timed out"
+    ],
+    [
+      "terms.php",
       "Errore connessione: The read operation timed out"
     ]
   ],
-  "healthy_count": 405,
-  "checked_files": 406
+  "healthy_count": 403,
+  "checked_files": 408
 }

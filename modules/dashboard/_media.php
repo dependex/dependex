@@ -1,0 +1,2 @@
+<?php
+// Media assets shim

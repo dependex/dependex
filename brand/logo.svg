@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="phoenixGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFBEB"/>
+      <stop offset="40%" stop-color="#FDE68A"/>
+      <stop offset="80%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#78350F"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="#0F0E17" rx="40"/>
+  <circle cx="400" cy="340" r="240" stroke="url(#phoenixGold)" stroke-width="3" stroke-dasharray="8,8" fill="none" opacity="0.5"/>
+  <polygon points="320,180 340,240 370,200 400,240 430,200 460,240 480,180 400,260" fill="url(#phoenixGold)"/>
+  <path d="M400,240 Q330,290 240,270 Q300,380 400,480 Q500,380 560,270 Q470,290 400,240 Z" fill="url(#phoenixGold)"/>
+  <path d="M270,470 L340,510 M460,510 L530,470" stroke="#94A3B8" stroke-width="8" stroke-linecap="round" stroke-dasharray="14,14"/>
+  <text x="400" y="615" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="42" font-weight="900" fill="url(#phoenixGold)" letter-spacing="5">DEPENDEX.SOCIAL</text>
+  <text x="400" y="665" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="18" font-weight="700" fill="#FFFFFF" letter-spacing="6">SOCIAL HEALTH &amp; REBIRTH</text>
+  <text x="400" y="705" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="13" font-weight="500" fill="#FDE68A" letter-spacing="4">DECONSTRUCTION OF MODERN ADDICTIONS</text>
+</svg>

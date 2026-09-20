@@ -1,0 +1,13 @@
+{
+  "syntax_errors": [],
+  "broken_includes": [],
+  "banned_terms": [],
+  "live_http_errors": [
+    [
+      "telemetria.php",
+      "Errore connessione: The read operation timed out"
+    ]
+  ],
+  "healthy_count": 405,
+  "checked_files": 406
+}

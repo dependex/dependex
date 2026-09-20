@@ -105,12 +105,15 @@ FILES_TO_SYNC = [
     os.path.join("data", "DEPENDEX_World_Registry_Master.csv"),
     os.path.join("data", "DEPENDEX_World_Registry_Normalized_V5.csv"),
     os.path.join("data", "OLTRE_Global_Hudolin_CAT_Network_V1.csv"),
+    os.path.join("data", "OSINT_100_CYCLES_DISCOVERY_REPORT.json"),
+    os.path.join("data", "CENSIMENTO_FAMIGLIE_CLUB_ITALIA_2026.md"),
     os.path.join("data", "dependex.db"),
 
     # Script di migrazione e arricchimento
     os.path.join("bin", "enrich-cat-network.php"),
     os.path.join("bin", "update-cat-intel-v2.php"),
     os.path.join("bin", "update-cat-intel-v3.php"),
+    os.path.join("bin", "osint_100_cycles_club_discovery.py"),
 
     # Asset universali e API
     os.path.join("assets", "css", "rainbow-neon.css"),

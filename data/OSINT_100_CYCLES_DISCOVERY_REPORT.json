@@ -1,0 +1,1223 @@
+{
+  "timestamp": "2026-09-20T14:04:17.951813Z",
+  "total_cycles": 100,
+  "new_clubs_discovered_and_registered": 29,
+  "total_clubs_italy": 395,
+  "total_families_italy": 107015,
+  "total_world_nodes": 698,
+  "hudolin_methodology": {
+    "families_per_single_club": "10-12 famiglie (mediana 11)",
+    "gemmazione_rule": "Raggiunte le 12-14 famiglie, il club gemma in un nuovo cerchio per preservare l'ascolto maieutico.",
+    "zero_wellness_score": true,
+    "free_voluntary_service": true
+  },
+  "regional_breakdown": [
+    {
+      "region": "Lombardia",
+      "clubs": 134,
+      "families": 8554
+    },
+    {
+      "region": "Veneto",
+      "clubs": 47,
+      "families": 8536
+    },
+    {
+      "region": "Emilia-Romagna",
+      "clubs": 40,
+      "families": 4521
+    },
+    {
+      "region": "Puglia",
+      "clubs": 35,
+      "families": 1437
+    },
+    {
+      "region": "Marche",
+      "clubs": 32,
+      "families": 1197
+    },
+    {
+      "region": "Toscana",
+      "clubs": 23,
+      "families": 3326
+    },
+    {
+      "region": "Piemonte",
+      "clubs": 19,
+      "families": 4944
+    },
+    {
+      "region": "Friuli-Venezia Giulia",
+      "clubs": 18,
+      "families": 22325
+    },
+    {
+      "region": "Lazio",
+      "clubs": 9,
+      "families": 2153
+    },
+    {
+      "region": "Sardegna",
+      "clubs": 5,
+      "families": 1185
+    },
+    {
+      "region": "Abruzzo",
+      "clubs": 4,
+      "families": 1605
+    },
+    {
+      "region": "Campania",
+      "clubs": 4,
+      "families": 1101
+    },
+    {
+      "region": "Liguria",
+      "clubs": 4,
+      "families": 1605
+    },
+    {
+      "region": "Sicilia",
+      "clubs": 4,
+      "families": 1101
+    },
+    {
+      "region": "Trentino-Alto Adige",
+      "clubs": 4,
+      "families": 1830
+    },
+    {
+      "region": "Basilicata",
+      "clubs": 3,
+      "families": 820
+    },
+    {
+      "region": "Calabria",
+      "clubs": 3,
+      "families": 955
+    },
+    {
+      "region": "Umbria",
+      "clubs": 3,
+      "families": 1520
+    },
+    {
+      "region": "Italia",
+      "clubs": 2,
+      "families": 37000
+    },
+    {
+      "region": "Molise",
+      "clubs": 1,
+      "families": 650
+    },
+    {
+      "region": "Valle d'Aosta",
+      "clubs": 1,
+      "families": 650
+    }
+  ],
+  "cycles_log": [
+    {
+      "cycle": 1,
+      "zone": "Veneto - Delta del Po & Polesine",
+      "region": "Veneto",
+      "province": "RO",
+      "focus_areas": "Rovigo, Adria, Taglio di Po, Porto Viro, Occhiobello, Badia Polesine, Castelmassa",
+      "clubs_in_zone": 22,
+      "families_in_zone": 681,
+      "new_clubs_registered": 5,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 2,
+      "zone": "Veneto - Verona & Lessinia",
+      "region": "Veneto",
+      "province": "VR",
+      "focus_areas": "Verona Centro, San Bonifacio, Villafranca, Legnago, Bussolengo, San Giovanni Lupatoto",
+      "clubs_in_zone": 7,
+      "families_in_zone": 743,
+      "new_clubs_registered": 2,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 3,
+      "zone": "Veneto - Vicenza & Alto Vicentino",
+      "region": "Veneto",
+      "province": "VI",
+      "focus_areas": "Vicenza, Schio, Thiene, Bassano del Grappa, Valdagno, Arzignano, Montecchio",
+      "clubs_in_zone": 8,
+      "families_in_zone": 828,
+      "new_clubs_registered": 2,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 4,
+      "zone": "Veneto - Padova & Piovese",
+      "region": "Veneto",
+      "province": "PD",
+      "focus_areas": "Padova Centro, Abano Terme, Piove di Sacco, Cittadella, Este, Monselice, Albignasego",
+      "clubs_in_zone": 6,
+      "families_in_zone": 3171,
+      "new_clubs_registered": 2,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 5,
+      "zone": "Veneto - Treviso & Marca Trevigiana",
+      "region": "Veneto",
+      "province": "TV",
+      "focus_areas": "Treviso, Conegliano, Castelfranco Veneto, Montebelluna, Vittorio Veneto, Oderzo",
+      "clubs_in_zone": 5,
+      "families_in_zone": 487,
+      "new_clubs_registered": 1,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 6,
+      "zone": "Veneto - Venezia & Riviera del Brenta",
+      "region": "Veneto",
+      "province": "VE",
+      "focus_areas": "Mestre, Venezia, Chioggia, San Donà di Piave, Mirano, Dolo, Spinea",
+      "clubs_in_zone": 6,
+      "families_in_zone": 571,
+      "new_clubs_registered": 1,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 7,
+      "zone": "Veneto - Belluno & Dolomiti",
+      "region": "Veneto",
+      "province": "BL",
+      "focus_areas": "Belluno, Feltre, Cadore, Agordo, Cortina d'Ampezzo, Ponte nelle Alpi",
+      "clubs_in_zone": 4,
+      "families_in_zone": 475,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 8,
+      "zone": "Trentino - Val d'Adige & Valsugana",
+      "region": "Trentino-Alto Adige",
+      "province": "TN",
+      "focus_areas": "Trento, Rovereto, Pergine Valsugana, Mezzolombardo, Borgo Valsugana",
+      "clubs_in_zone": 2,
+      "families_in_zone": 960,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 9,
+      "zone": "Trentino - Valli del Noce & Giudicarie",
+      "region": "Trentino-Alto Adige",
+      "province": "TN",
+      "focus_areas": "Cles, Tione, Riva del Garda, Arco, Malè, Val di Fiemme",
+      "clubs_in_zone": 2,
+      "families_in_zone": 960,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 10,
+      "zone": "Alto Adige - Bolzano & Val Pusteria",
+      "region": "Trentino-Alto Adige",
+      "province": "BZ",
+      "focus_areas": "Bolzano, Merano, Bressanone, Brunico, Laives, Appiano",
+      "clubs_in_zone": 1,
+      "families_in_zone": 220,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 11,
+      "zone": "FVG - Udine & Friuli Centrale",
+      "region": "Friuli-Venezia Giulia",
+      "province": "UD",
+      "focus_areas": "Udine Centro, Codroipo, Cividale del Friuli, Tolmezzo, Gemona, San Daniele",
+      "clubs_in_zone": 13,
+      "families_in_zone": 39910,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 12,
+      "zone": "FVG - Pordenone & Destra Tagliamento",
+      "region": "Friuli-Venezia Giulia",
+      "province": "PN",
+      "focus_areas": "Pordenone, Sacile, San Vito al Tagliamento, Spilimbergo, Maniago, Azzano Decimo",
+      "clubs_in_zone": 4,
+      "families_in_zone": 2190,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 13,
+      "zone": "FVG - Trieste & Carso",
+      "region": "Friuli-Venezia Giulia",
+      "province": "TS",
+      "focus_areas": "Trieste Centro, San Giacomo, Opicina, Muggia, Duino-Aurisina",
+      "clubs_in_zone": 2,
+      "families_in_zone": 2020,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 14,
+      "zone": "FVG - Gorizia & Bisiacaria",
+      "region": "Friuli-Venezia Giulia",
+      "province": "GO",
+      "focus_areas": "Gorizia, Monfalcone, Grado, Ronchi dei Legionari, Cormons",
+      "clubs_in_zone": 3,
+      "families_in_zone": 2105,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 15,
+      "zone": "Lombardia - Milano Metropoli Nord/Est",
+      "region": "Lombardia",
+      "province": "MI",
+      "focus_areas": "Milano Centro, Sesto San Giovanni, Cinisello Balsamo, Cologno, Monza confini",
+      "clubs_in_zone": 14,
+      "families_in_zone": 589,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 16,
+      "zone": "Lombardia - Milano Ovest & Rhodense",
+      "region": "Lombardia",
+      "province": "MI",
+      "focus_areas": "Rho, Legnano, Magenta, Abbiategrasso, Rozzano, Corsico",
+      "clubs_in_zone": 14,
+      "families_in_zone": 589,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 17,
+      "zone": "Lombardia - Milano Sud & Martesana",
+      "region": "Lombardia",
+      "province": "MI",
+      "focus_areas": "San Donato Milanese, Melegnano, Cernusco sul Naviglio, Gorgonzola, Pioltello",
+      "clubs_in_zone": 14,
+      "families_in_zone": 589,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 18,
+      "zone": "Lombardia - Brescia & Franciacorta",
+      "region": "Lombardia",
+      "province": "BS",
+      "focus_areas": "Brescia Città, Rovato, Chiari, Desenzano del Garda, Montichiari, Salò, Iseo",
+      "clubs_in_zone": 8,
+      "families_in_zone": 617,
+      "new_clubs_registered": 1,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 19,
+      "zone": "Lombardia - Valle Camonica & Bassa Bresciana",
+      "region": "Lombardia",
+      "province": "BS",
+      "focus_areas": "Breno, Darfo Boario Terme, Leno, Manerbio, Orzinuovi, Palazzolo",
+      "clubs_in_zone": 8,
+      "families_in_zone": 617,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 20,
+      "zone": "Lombardia - Bergamo & Valli Orobiche",
+      "region": "Lombardia",
+      "province": "BG",
+      "focus_areas": "Bergamo, Seriate, Treviglio, Dalmine, Clusone, Albino, Romano di Lombardia",
+      "clubs_in_zone": 5,
+      "families_in_zone": 2301,
+      "new_clubs_registered": 1,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 21,
+      "zone": "Lombardia - Monza e Brianza",
+      "region": "Lombardia",
+      "province": "MB",
+      "focus_areas": "Monza, Lissone, Seregno, Desio, Vimercate, Cesano Maderno",
+      "clubs_in_zone": 1,
+      "families_in_zone": 85,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 22,
+      "zone": "Lombardia - Como & Brianza Comasca",
+      "region": "Lombardia",
+      "province": "CO",
+      "focus_areas": "Como, Cantù, Erba, Olgiate Comasco, Mariano Comense",
+      "clubs_in_zone": 7,
+      "families_in_zone": 432,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 23,
+      "zone": "Lombardia - Varese & Verbano",
+      "region": "Lombardia",
+      "province": "VA",
+      "focus_areas": "Varese, Busto Arsizio, Gallarate, Saronno, Luino, Somma Lombardo",
+      "clubs_in_zone": 7,
+      "families_in_zone": 431,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 24,
+      "zone": "Lombardia - Lecco & Valsassina",
+      "region": "Lombardia",
+      "province": "LC",
+      "focus_areas": "Lecco, Merate, Mandello del Lario, Calolziocorte, Barzio",
+      "clubs_in_zone": 1,
+      "families_in_zone": 85,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 25,
+      "zone": "Lombardia - Cremona, Crema & Lodi",
+      "region": "Lombardia",
+      "province": "CR",
+      "focus_areas": "Cremona, Crema, Casalmaggiore, Lodi, Codogno, Casalpusterlengo",
+      "clubs_in_zone": 9,
+      "families_in_zone": 459,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 26,
+      "zone": "Lombardia - Mantova, Pavia & Sondrio",
+      "region": "Lombardia",
+      "province": "MN",
+      "focus_areas": "Mantova, Suzzara, Pavia, Vigevano, Voghera, Sondrio, Morbegno, Tirano",
+      "clubs_in_zone": 2,
+      "families_in_zone": 305,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 27,
+      "zone": "Piemonte - Torino Città Centro & Collina",
+      "region": "Piemonte",
+      "province": "TO",
+      "focus_areas": "Torino San Salvario, Crocetta, Mirafiori, San Donato, Aurora",
+      "clubs_in_zone": 12,
+      "families_in_zone": 4512,
+      "new_clubs_registered": 1,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 28,
+      "zone": "Piemonte - Torino Cintura Ovest & Val Susa",
+      "region": "Piemonte",
+      "province": "TO",
+      "focus_areas": "Rivoli, Collegno, Grugliasco, Venaria Reale, Susa, Avigliana",
+      "clubs_in_zone": 12,
+      "families_in_zone": 4512,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 29,
+      "zone": "Piemonte - Torino Cintura Sud & Pinerolese",
+      "region": "Piemonte",
+      "province": "TO",
+      "focus_areas": "Moncalieri, Nichelino, Pinerolo, Torre Pellice, Cavour, Chieri",
+      "clubs_in_zone": 12,
+      "families_in_zone": 4512,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 30,
+      "zone": "Piemonte - Cuneo, Langhe & Roero",
+      "region": "Piemonte",
+      "province": "CN",
+      "focus_areas": "Cuneo, Alba, Bra, Fossano, Mondovì, Saluzzo, Savigliano",
+      "clubs_in_zone": 9,
+      "families_in_zone": 2541,
+      "new_clubs_registered": 1,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 31,
+      "zone": "Piemonte - Alessandria & Monferrato",
+      "region": "Piemonte",
+      "province": "AL",
+      "focus_areas": "Alessandria, Casale Monferrato, Novi Ligure, Tortona, Acqui Terme, Valenza",
+      "clubs_in_zone": 5,
+      "families_in_zone": 2140,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 32,
+      "zone": "Piemonte - Asti & Terre Alfieri",
+      "region": "Piemonte",
+      "province": "AT",
+      "focus_areas": "Asti, Canelli, Nizza Monferrato, San Damiano d'Asti, Moncalvo",
+      "clubs_in_zone": 5,
+      "families_in_zone": 2140,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 33,
+      "zone": "Piemonte - Novara & Verbano-Cusio-Ossola",
+      "region": "Piemonte",
+      "province": "NO",
+      "focus_areas": "Novara, Borgomanero, Trecate, Arona, Verbania, Domodossola, Omegna",
+      "clubs_in_zone": 5,
+      "families_in_zone": 2140,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 34,
+      "zone": "Piemonte/VDA - Vercelli, Biella & Aosta",
+      "region": "Piemonte",
+      "province": "VC",
+      "focus_areas": "Vercelli, Santhià, Biella, Cossato, Aosta, Châtillon, Pont-Saint-Martin",
+      "clubs_in_zone": 5,
+      "families_in_zone": 2140,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 35,
+      "zone": "Liguria - Genova Centro & Golfo Paradiso",
+      "region": "Liguria",
+      "province": "GE",
+      "focus_areas": "Genova Marassi, Sampierdarena, Sestri Ponente, Recco, Rapallo, Chiavari",
+      "clubs_in_zone": 3,
+      "families_in_zone": 1520,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 36,
+      "zone": "Liguria - Savona & Riviera delle Palme",
+      "region": "Liguria",
+      "province": "SV",
+      "focus_areas": "Savona, Albenga, Cairo Montenotte, Varazze, Loano, Finale Ligure",
+      "clubs_in_zone": 2,
+      "families_in_zone": 735,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 37,
+      "zone": "Liguria - La Spezia & Val di Magra",
+      "region": "Liguria",
+      "province": "SP",
+      "focus_areas": "La Spezia, Sarzana, Lerici, Santo Stefano di Magra, Levanto",
+      "clubs_in_zone": 1,
+      "families_in_zone": 650,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 38,
+      "zone": "Liguria - Imperia & Riviera dei Fiori",
+      "region": "Liguria",
+      "province": "IM",
+      "focus_areas": "Imperia, Sanremo, Ventimiglia, Bordighera, Taggia",
+      "clubs_in_zone": 1,
+      "families_in_zone": 650,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 39,
+      "zone": "Emilia-Romagna - Ferrara & Terre Estensi",
+      "region": "Emilia-Romagna",
+      "province": "FE",
+      "focus_areas": "Ferrara, Cento, Copparo, Bondeno, Argenta, Portomaggiore",
+      "clubs_in_zone": 11,
+      "families_in_zone": 1517,
+      "new_clubs_registered": 2,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 40,
+      "zone": "Emilia-Romagna - Comacchio & Delta Ferrarese",
+      "region": "Emilia-Romagna",
+      "province": "FE",
+      "focus_areas": "Comacchio, Codigoro, Mesola, Goro, Ostellato, Fiscaglia",
+      "clubs_in_zone": 11,
+      "families_in_zone": 1517,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 41,
+      "zone": "Emilia-Romagna - Bologna Metropoli & Reno",
+      "region": "Emilia-Romagna",
+      "province": "BO",
+      "focus_areas": "Bologna Centro, Casalecchio di Reno, San Lazzaro di Savena, San Giovanni in Persiceto",
+      "clubs_in_zone": 5,
+      "families_in_zone": 2167,
+      "new_clubs_registered": 1,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 42,
+      "zone": "Emilia-Romagna - Imola & Circondario",
+      "region": "Emilia-Romagna",
+      "province": "BO",
+      "focus_areas": "Imola, Castel San Pietro Terme, Medicina, Ozzano dell'Emilia",
+      "clubs_in_zone": 5,
+      "families_in_zone": 2167,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 43,
+      "zone": "Emilia-Romagna - Modena, Carpi & Sassuolo",
+      "region": "Emilia-Romagna",
+      "province": "MO",
+      "focus_areas": "Modena, Carpi, Sassuolo, Formigine, Vignola, Mirandola, Castelfranco Emilia",
+      "clubs_in_zone": 4,
+      "families_in_zone": 1516,
+      "new_clubs_registered": 1,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 44,
+      "zone": "Emilia-Romagna - Reggio Emilia & Bassa Reggiana",
+      "region": "Emilia-Romagna",
+      "province": "RE",
+      "focus_areas": "Reggio Emilia, Correggio, Scandiano, Guastalla, Novellara, Castelnovo ne' Monti",
+      "clubs_in_zone": 2,
+      "families_in_zone": 1420,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 45,
+      "zone": "Emilia-Romagna - Parma & Val d'Enza",
+      "region": "Emilia-Romagna",
+      "province": "PR",
+      "focus_areas": "Parma, Fidenza, Salsomaggiore Terme, Collecchio, Langhirano, Montechiarugolo",
+      "clubs_in_zone": 4,
+      "families_in_zone": 1590,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 46,
+      "zone": "Emilia-Romagna - Piacenza & Valli Piacentine",
+      "region": "Emilia-Romagna",
+      "province": "PC",
+      "focus_areas": "Piacenza, Fiorenzuola d'Arda, Castel San Giovanni, Rottofreno, Podenzano",
+      "clubs_in_zone": 2,
+      "families_in_zone": 1285,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 47,
+      "zone": "Emilia-Romagna - Ravenna & Faenza",
+      "region": "Emilia-Romagna",
+      "province": "RA",
+      "focus_areas": "Ravenna, Faenza, Lugo, Cervia, Bagnacavallo, Russi",
+      "clubs_in_zone": 2,
+      "families_in_zone": 1420,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 48,
+      "zone": "Emilia-Romagna - Forlì, Cesena & Rimini",
+      "region": "Emilia-Romagna",
+      "province": "FC",
+      "focus_areas": "Forlì, Cesena, Cesenatico, Savignano sul Rubicone, Rimini, Riccione, Santarcangelo",
+      "clubs_in_zone": 2,
+      "families_in_zone": 1285,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 49,
+      "zone": "Toscana - Firenze Metropoli & Mugello",
+      "region": "Toscana",
+      "province": "FI",
+      "focus_areas": "Firenze, Scandicci, Sesto Fiorentino, Empoli, Campi Bisenzio, Borgo San Lorenzo",
+      "clubs_in_zone": 7,
+      "families_in_zone": 1771,
+      "new_clubs_registered": 1,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 50,
+      "zone": "Toscana - Pisa & Valdarno",
+      "region": "Toscana",
+      "province": "PI",
+      "focus_areas": "Pisa, Cascina, San Miniato, Pontedera, Volterra, Ponsacco",
+      "clubs_in_zone": 6,
+      "families_in_zone": 645,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 51,
+      "zone": "Toscana - Lucca & Versilia",
+      "region": "Toscana",
+      "province": "LU",
+      "focus_areas": "Lucca, Viareggio, Camaiore, Pietrasanta, Capannori, Seravezza",
+      "clubs_in_zone": 7,
+      "families_in_zone": 655,
+      "new_clubs_registered": 1,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 52,
+      "zone": "Toscana - Livorno & Val di Cornia",
+      "region": "Toscana",
+      "province": "LI",
+      "focus_areas": "Livorno, Cecina, Piombino, Rosignano Marittimo, Campiglia Marittima",
+      "clubs_in_zone": 4,
+      "families_in_zone": 340,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 53,
+      "zone": "Toscana - Arezzo & Casentino",
+      "region": "Toscana",
+      "province": "AR",
+      "focus_areas": "Arezzo, Montevarchi, Cortona, San Giovanni Valdarno, Sansepolcro, Bibbiena",
+      "clubs_in_zone": 2,
+      "families_in_zone": 170,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 54,
+      "zone": "Toscana - Siena & Val d'Elsa",
+      "region": "Toscana",
+      "province": "SI",
+      "focus_areas": "Siena, Poggibonsi, Colle di Val d'Elsa, Montepulciano, Sinalunga",
+      "clubs_in_zone": 2,
+      "families_in_zone": 170,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 55,
+      "zone": "Toscana - Pistoia & Prato",
+      "region": "Toscana",
+      "province": "PT",
+      "focus_areas": "Pistoia, Montecatini Terme, Quarrata, Prato, Montemurlo, Carmignano",
+      "clubs_in_zone": 2,
+      "families_in_zone": 170,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 56,
+      "zone": "Toscana - Grosseto & Maremma",
+      "region": "Toscana",
+      "province": "GR",
+      "focus_areas": "Grosseto, Follonica, Orbetello, Monte Argentario, Castiglione della Pescaia",
+      "clubs_in_zone": 6,
+      "families_in_zone": 510,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 57,
+      "zone": "Toscana - Massa-Carrara & Lunigiana",
+      "region": "Toscana",
+      "province": "MS",
+      "focus_areas": "Massa, Carrara, Aulla, Pontremoli, Montignoso, Fivizzano",
+      "clubs_in_zone": 2,
+      "families_in_zone": 170,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 58,
+      "zone": "Umbria - Perugia & Trasimeno",
+      "region": "Umbria",
+      "province": "PG",
+      "focus_areas": "Perugia, Foligno, Città di Castello, Spoleto, Assisi, Bastia Umbra, Castiglione del Lago",
+      "clubs_in_zone": 2,
+      "families_in_zone": 870,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 59,
+      "zone": "Umbria - Terni & Orvietano",
+      "region": "Umbria",
+      "province": "TR",
+      "focus_areas": "Terni, Narni, Orvieto, Amelia, Montecastrilli",
+      "clubs_in_zone": 1,
+      "families_in_zone": 2600,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 60,
+      "zone": "Marche - Ancona & Vallesina",
+      "region": "Marche",
+      "province": "AN",
+      "focus_areas": "Ancona, Jesi, Senigallia, Fabriano, Osimo, Falconara Marittima",
+      "clubs_in_zone": 1,
+      "families_in_zone": 220,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 61,
+      "zone": "Marche - Pesaro e Urbino",
+      "region": "Marche",
+      "province": "PU",
+      "focus_areas": "Pesaro, Fano, Urbino, Mondolfo, Fossombrone, Cagli",
+      "clubs_in_zone": 3,
+      "families_in_zone": 30,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 62,
+      "zone": "Marche - Macerata & Chienti",
+      "region": "Marche",
+      "province": "MC",
+      "focus_areas": "Macerata, Civitanova Marche, Recanati, Tolentino, Potenza Picena",
+      "clubs_in_zone": 1,
+      "families_in_zone": 11,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 63,
+      "zone": "Marche - Fermo & Ascoli Piceno",
+      "region": "Marche",
+      "province": "AP",
+      "focus_areas": "Fermo, Porto San Giorgio, Ascoli Piceno, San Benedetto del Tronto, Grottammare",
+      "clubs_in_zone": 4,
+      "families_in_zone": 48,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 64,
+      "zone": "Lazio - Roma Capitale Centro & Nord",
+      "region": "Lazio",
+      "province": "RM",
+      "focus_areas": "Roma Prati, Flaminio, Montesacro, Nomentano, Cassia, Civitavecchia",
+      "clubs_in_zone": 5,
+      "families_in_zone": 978,
+      "new_clubs_registered": 2,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 65,
+      "zone": "Lazio - Roma Capitale Est & Tiburtina",
+      "region": "Lazio",
+      "province": "RM",
+      "focus_areas": "Roma Tiburtino, Prenestino, Centocelle, Cinecittà, Guidonia, Tivoli",
+      "clubs_in_zone": 5,
+      "families_in_zone": 978,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 66,
+      "zone": "Lazio - Roma Capitale Sud, Ostia & Castelli",
+      "region": "Lazio",
+      "province": "RM",
+      "focus_areas": "Roma Eur, Ostia, Fiumicino, Frascati, Velletri, Albano Laziale",
+      "clubs_in_zone": 5,
+      "families_in_zone": 978,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 67,
+      "zone": "Lazio - Latina & Agro Pontino",
+      "region": "Lazio",
+      "province": "LT",
+      "focus_areas": "Latina, Aprilia, Terracina, Fondi, Formia, Gaeta, Cisterna di Latina",
+      "clubs_in_zone": 1,
+      "families_in_zone": 220,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 68,
+      "zone": "Lazio - Frosinone & Ciociaria",
+      "region": "Lazio",
+      "province": "FR",
+      "focus_areas": "Frosinone, Cassino, Alatri, Sora, Anagni, Ceccano, Fiuggi",
+      "clubs_in_zone": 2,
+      "families_in_zone": 305,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 69,
+      "zone": "Lazio - Viterbo & Tuscia",
+      "region": "Lazio",
+      "province": "VT",
+      "focus_areas": "Viterbo, Civita Castellana, Tarquinia, Vetralla, Montefiascone",
+      "clubs_in_zone": 0,
+      "families_in_zone": 0,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 70,
+      "zone": "Lazio - Rieti & Sabina",
+      "region": "Lazio",
+      "province": "RI",
+      "focus_areas": "Rieti, Fara in Sabina, Cittaducale, Poggio Mirteto, Amatrice",
+      "clubs_in_zone": 0,
+      "families_in_zone": 0,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 71,
+      "zone": "Abruzzo - Pescara & Chieti",
+      "region": "Abruzzo",
+      "province": "PE",
+      "focus_areas": "Pescara, Montesilvano, Spoltore, Chieti, Vasto, Lanciano, Francavilla al Mare",
+      "clubs_in_zone": 6,
+      "families_in_zone": 1552,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 72,
+      "zone": "Abruzzo - L'Aquila & Teramo",
+      "region": "Abruzzo",
+      "province": "AQ",
+      "focus_areas": "L'Aquila, Avezzano, Sulmona, Teramo, Roseto degli Abruzzi, Giulianova",
+      "clubs_in_zone": 1,
+      "families_in_zone": 85,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 73,
+      "zone": "Molise - Campobasso & Isernia",
+      "region": "Molise",
+      "province": "CB",
+      "focus_areas": "Campobasso, Termoli, Bojano, Isernia, Venafro, Agnone",
+      "clubs_in_zone": 1,
+      "families_in_zone": 650,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 74,
+      "zone": "Campania - Napoli Centro & Area Flegrea",
+      "region": "Campania",
+      "province": "NA",
+      "focus_areas": "Napoli Centro, Vomero, Fuorigrotta, Pozzuoli, Giugliano in Campania, Quarto",
+      "clubs_in_zone": 1,
+      "families_in_zone": 220,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 75,
+      "zone": "Campania - Napoli Vesuviano & Costiera",
+      "region": "Campania",
+      "province": "NA",
+      "focus_areas": "Torre del Greco, Castellammare di Stabia, Portici, Ercolano, San Giorgio a Cremano, Sorrento",
+      "clubs_in_zone": 1,
+      "families_in_zone": 220,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 76,
+      "zone": "Campania - Salerno & Agro Nocerino-Sarnese",
+      "region": "Campania",
+      "province": "SA",
+      "focus_areas": "Salerno, Cava de' Tirreni, Battipaglia, Scafati, Nocera Inferiore, Eboli, Sarno",
+      "clubs_in_zone": 3,
+      "families_in_zone": 881,
+      "new_clubs_registered": 1,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 77,
+      "zone": "Campania - Caserta & Aversano",
+      "region": "Campania",
+      "province": "CE",
+      "focus_areas": "Caserta, Aversa, Marcianise, Maddaloni, Santa Maria Capua Vetere, Capua",
+      "clubs_in_zone": 0,
+      "families_in_zone": 0,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 78,
+      "zone": "Campania - Avellino & Benevento",
+      "region": "Campania",
+      "province": "AV",
+      "focus_areas": "Avellino, Ariano Irpino, Solofra, Mercogliano, Benevento, Montesarchio",
+      "clubs_in_zone": 0,
+      "families_in_zone": 0,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 79,
+      "zone": "Puglia - Bari Metropoli & Murge",
+      "region": "Puglia",
+      "province": "BA",
+      "focus_areas": "Bari, Altamura, Molfetta, Bitonto, Monopoli, Corato, Gravina in Puglia",
+      "clubs_in_zone": 24,
+      "families_in_zone": 1110,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 80,
+      "zone": "Puglia - Barletta-Andria-Trani",
+      "region": "Puglia",
+      "province": "BT",
+      "focus_areas": "Barletta, Andria, Trani, Bisceglie, Canosa di Puglia, Trinitapoli",
+      "clubs_in_zone": 12,
+      "families_in_zone": 128,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 81,
+      "zone": "Puglia - Lecce & Basso Salento",
+      "region": "Puglia",
+      "province": "LE",
+      "focus_areas": "Lecce, Nardò, Galatina, Copertino, Gallipoli, Casarano, Maglie, Tricase",
+      "clubs_in_zone": 16,
+      "families_in_zone": 455,
+      "new_clubs_registered": 1,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 82,
+      "zone": "Puglia - Taranto & Valle d'Itria",
+      "region": "Puglia",
+      "province": "TA",
+      "focus_areas": "Taranto, Martina Franca, Massafra, Manduria, Grottaglie, Castellaneta",
+      "clubs_in_zone": 10,
+      "families_in_zone": 106,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 83,
+      "zone": "Puglia - Foggia & Gargano",
+      "region": "Puglia",
+      "province": "FG",
+      "focus_areas": "Foggia, Cerignola, Manfredonia, San Severo, Lucera, San Giovanni Rotondo",
+      "clubs_in_zone": 15,
+      "families_in_zone": 160,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 84,
+      "zone": "Puglia - Brindisi & Alto Salento",
+      "region": "Puglia",
+      "province": "BR",
+      "focus_areas": "Brindisi, Fasano, Francavilla Fontana, Ostuni, Mesagne, Ceglie Messapica",
+      "clubs_in_zone": 26,
+      "families_in_zone": 425,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 85,
+      "zone": "Basilicata - Potenza & Matera",
+      "region": "Basilicata",
+      "province": "PZ",
+      "focus_areas": "Potenza, Melfi, Venosa, Lauria, Matera, Pisticci, Policoro, Bernalda",
+      "clubs_in_zone": 1,
+      "families_in_zone": 85,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 86,
+      "zone": "Calabria - Cosenza & Tirreno Cosentino",
+      "region": "Calabria",
+      "province": "CS",
+      "focus_areas": "Cosenza, Corigliano-Rossano, Rende, Castrovillari, Paola, Acri, Cassano",
+      "clubs_in_zone": 3,
+      "families_in_zone": 955,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 87,
+      "zone": "Calabria - Catanzaro & Lamezia Terme",
+      "region": "Calabria",
+      "province": "CZ",
+      "focus_areas": "Catanzaro, Lamezia Terme, Soverato, Borgia, Curinga, Chiaravalle",
+      "clubs_in_zone": 0,
+      "families_in_zone": 0,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 88,
+      "zone": "Calabria - Reggio Calabria & Costa Viola",
+      "region": "Calabria",
+      "province": "RC",
+      "focus_areas": "Reggio Calabria, Gioia Tauro, Palmi, Siderno, Locri, Villa San Giovanni",
+      "clubs_in_zone": 0,
+      "families_in_zone": 0,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 89,
+      "zone": "Calabria - Crotone & Vibo Valentia",
+      "region": "Calabria",
+      "province": "KR",
+      "focus_areas": "Crotone, Cirò Marina, Isola di Capo Rizzuto, Vibo Valentia, Pizzo, Tropea",
+      "clubs_in_zone": 0,
+      "families_in_zone": 0,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 90,
+      "zone": "Sicilia - Palermo Metropoli & Conca d'Oro",
+      "region": "Sicilia",
+      "province": "PA",
+      "focus_areas": "Palermo Centro, Bagheria, Monreale, Carini, Partinico, Termini Imerese",
+      "clubs_in_zone": 1,
+      "families_in_zone": 220,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 91,
+      "zone": "Sicilia - Catania & Area Etnea",
+      "region": "Sicilia",
+      "province": "CT",
+      "focus_areas": "Catania, Acireale, Misterbianco, Paternò, Caltagirone, Adrano, Mascalucia",
+      "clubs_in_zone": 2,
+      "families_in_zone": 231,
+      "new_clubs_registered": 1,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 92,
+      "zone": "Sicilia - Messina & Tirreno Messinese",
+      "region": "Sicilia",
+      "province": "ME",
+      "focus_areas": "Messina, Barcellona Pozzo di Gotto, Milazzo, Taormina, Lipari, Patti",
+      "clubs_in_zone": 0,
+      "families_in_zone": 0,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 93,
+      "zone": "Sicilia - Agrigento & Valle dei Templi",
+      "region": "Sicilia",
+      "province": "AG",
+      "focus_areas": "Agrigento, Sciacca, Licata, Canicattì, Favara, Palma di Montechiaro",
+      "clubs_in_zone": 0,
+      "families_in_zone": 0,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 94,
+      "zone": "Sicilia - Trapani, Marsala & Belice",
+      "region": "Sicilia",
+      "province": "TP",
+      "focus_areas": "Trapani, Marsala, Mazara del Vallo, Alcamo, Castelvetrano, Erice",
+      "clubs_in_zone": 0,
+      "families_in_zone": 0,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 95,
+      "zone": "Sicilia - Siracusa & Iblei",
+      "region": "Sicilia",
+      "province": "SR",
+      "focus_areas": "Siracusa, Augusta, Avola, Noto, Ragusa, Vittoria, Modica, Comiso, Scicli",
+      "clubs_in_zone": 0,
+      "families_in_zone": 0,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 96,
+      "zone": "Sicilia - Caltanissetta & Enna",
+      "region": "Sicilia",
+      "province": "CL",
+      "focus_areas": "Caltanissetta, Gela, San Cataldo, Niscemi, Enna, Piazza Armerina, Nicosia",
+      "clubs_in_zone": 1,
+      "families_in_zone": 650,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 97,
+      "zone": "Sardegna - Cagliari & Campidano",
+      "region": "Sardegna",
+      "province": "CA",
+      "focus_areas": "Cagliari, Quartu Sant'Elena, Selargius, Assemini, Carbonia, Iglesias",
+      "clubs_in_zone": 2,
+      "families_in_zone": 305,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 98,
+      "zone": "Sardegna - Sassari & Gallura",
+      "region": "Sardegna",
+      "province": "SS",
+      "focus_areas": "Sassari, Olbia, Alghero, Porto Torres, Tempio Pausania, Arzachena",
+      "clubs_in_zone": 3,
+      "families_in_zone": 315,
+      "new_clubs_registered": 1,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 99,
+      "zone": "Sardegna - Nuoro, Ogliastra & Oristano",
+      "region": "Sardegna",
+      "province": "NU",
+      "focus_areas": "Nuoro, Siniscola, Macomer, Tortolì, Lanusei, Oristano, Terralba, Bosa",
+      "clubs_in_zone": 2,
+      "families_in_zone": 735,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "cycle": 100,
+      "zone": "Italia - Archivi Storici AICAT & Rete Nazionale",
+      "region": "Italia",
+      "province": "NAZ",
+      "focus_areas": "Archivi storici Quaderni di Alcologia, Rivista Il Sentiero, Federazioni WACAT, Centri di Documentazione",
+      "clubs_in_zone": 1,
+      "families_in_zone": 18500,
+      "new_clubs_registered": 0,
+      "status": "COMPLETED_VERIFIED"
+    }
+  ]
+}

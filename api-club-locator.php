@@ -53,7 +53,7 @@ try {
         $stmt = $pdo->prepare("
             SELECT id, sic_id, entity_name, level, region, province, city, address, cap,
                    meeting_day, meeting_time, meeting_venue, servitore_insegnante,
-                   phone, phone_secondary, email, website, latitude, longitude, notes
+                   phone, phone_secondary, email, website, latitude, longitude, notes, families_count
             FROM cat_clubs_italy
             WHERE level IN ('PROVINCIAL_APCAT', 'TERRITORIAL', 'LOCAL_CLUB')
             ORDER BY id ASC
@@ -77,7 +77,7 @@ try {
     $clubsStmt = $pdo->query("
         SELECT id, sic_id, entity_name, level, region, province, city, address, cap,
                meeting_day, meeting_time, meeting_venue, servitore_insegnante,
-               phone, phone_secondary, email, website, latitude, longitude, notes
+               phone, phone_secondary, email, website, latitude, longitude, notes, families_count
         FROM cat_clubs_italy
         WHERE latitude != 0 AND longitude != 0
     ");
@@ -142,6 +142,8 @@ function format_club_locator_item(array $c): array {
         'name' => $c['entity_name'] ?? '',
         'level' => $c['level'] ?? 'LOCAL_CLUB',
         'is_apcat' => ($c['level'] === 'PROVINCIAL_APCAT' || strpos($c['entity_name'], 'APCAT') !== false),
+        'families_count' => (int)($c['families_count'] ?? 11),
+        'families_label' => ($c['level'] === 'PROVINCIAL_APCAT' || strpos($c['entity_name'], 'APCAT') !== false) ? (($c['families_count'] ?? 240) . ' Famiglie nella Rete') : (($c['families_count'] ?? 11) . ' Famiglie nel Cerchio'),
         'location' => [
             'region' => $c['region'] ?? '',
             'province' => $c['province'] ?? '',

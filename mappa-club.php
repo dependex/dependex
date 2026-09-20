@@ -11,17 +11,18 @@ $pdo = db();
 
 // Recupera statistiche generali per header e filtri
 $totalClubs = (int)$pdo->query("SELECT COUNT(*) FROM cat_clubs_italy")->fetchColumn();
+$totalFamiliesNetwork = (int)$pdo->query("SELECT SUM(families_count) FROM cat_clubs_italy WHERE level != 'NATIONAL'")->fetchColumn();
 $regions = $pdo->query("SELECT region, COUNT(*) as count FROM cat_clubs_italy WHERE region != '' GROUP BY region ORDER BY count DESC")->fetchAll(PDO::FETCH_ASSOC);
 $levels = $pdo->query("SELECT level, COUNT(*) as count FROM cat_clubs_italy GROUP BY level ORDER BY count DESC")->fetchAll(PDO::FETCH_ASSOC);
 $days = $pdo->query("SELECT meeting_day, COUNT(*) as count FROM cat_clubs_italy WHERE meeting_day != '' GROUP BY meeting_day ORDER BY count DESC")->fetchAll(PDO::FETCH_ASSOC);
 
-// Pre-carica tutti i 322 club per render ultra-reattivo
+// Pre-carica tutti i club per render ultra-reattivo
 $clubsQuery = $pdo->query("
     SELECT id, sic_id, entity_name, level, region, province, city, address, cap,
            meeting_day, meeting_time, meeting_frequency, meeting_venue,
            servitore_insegnante, phone, phone_secondary, email, website,
            parent_entity, parent_sic_id, asl_serd_reference,
-           latitude, longitude, geo_accuracy, status, source_url, source_type, notes
+           latitude, longitude, geo_accuracy, status, source_url, source_type, notes, families_count
     FROM cat_clubs_italy
     ORDER BY region ASC, city ASC, entity_name ASC
 ");
@@ -717,7 +718,7 @@ require '_header.php';
       Mappa Georeferenziata 2D dei Club CAT & ACAT d'Italia
     </h1>
     <p>
-      Trova il Club Alcologico Territoriale o l'APCAT provinciale più vicina alla tua città. <b><?=$totalClubs?> Club, APCAT, ACAT ed ARCAT censiti</b> con coordinate 2D, recapiti telefonici, orari di incontro e collegamenti diretti. Nessuna prescrizione o spesa: la sedia al Club è sempre aperta.
+      Trova il Club Alcologico Territoriale o l'APCAT provinciale più vicina alla tua città. <b><?=$totalClubs?> Club ed APCAT censiti</b> con oltre <b><?=number_format($totalFamiliesNetwork, 0, ',', '.')?> famiglie</b> accolte nei cerchi (con una media di 10-12 famiglie per Club locale prima della gemmazione). Coordinate 2D verificate, recapiti telefonici e orari di incontro. Nessuna prescrizione o spesa: la sedia al Club è sempre aperta.
     </p>
   </section>
 
@@ -748,53 +749,58 @@ require '_header.php';
         <option value="Giovedì">Giovedì</option>
         <option value="Venerdì">Venerdì</option>
         <option value="Sabato">Sabato</option>
+        <option value="Domenica">Domenica</option>
       </select>
 
       <!-- BOTTONE GEOLOCALIZZAZIONE GPS -->
-      <button type="button" id="btnGeolocate" class="geo-btn" title="Usa il GPS del tuo dispositivo per trovare i club più vicini">
-        <?=dx_icon('map-pin', '', 16)?>
+      <button type="button" id="btnGpsProximity" class="btn-gps-proximity">
+        <?=dx_icon('navigation', '', 16)?>
         <span>Vicino a Me (GPS)</span>
       </button>
 
-      <!-- RESET -->
-      <button type="button" id="btnResetFilters" class="btn-reset-filters" title="Ripristina tutti i filtri">
-        <?=dx_icon('refresh-cw', '', 14)?> Reset
+      <!-- RESET FILTRI -->
+      <button type="button" id="btnResetFilters" class="btn-reset-filters" title="Reimposta visualizzazione iniziale">
+        <?=dx_icon('refresh-cw', '', 16)?>
       </button>
+
     </div>
 
-    <!-- FILTRI LIVELLO ENTITÀ -->
+    <!-- RIGA INFORMATIVA FILTRI APPLICATI -->
     <div class="controls-row-secondary">
-      <div class="level-pills-group" id="levelPills">
-        <button type="button" class="level-pill active" data-level="ALL">Tutti i Livelli</button>
-        <button type="button" class="level-pill" data-level="LOCAL_CLUB">Club CAT Locali</button>
-        <button type="button" class="level-pill" data-level="PROVINCIAL_APCAT">APCAT Provinciali</button>
-        <button type="button" class="level-pill" data-level="TERRITORIAL">ACAT Territoriali</button>
-        <button type="button" class="level-pill" data-level="REGIONAL">ARCAT Regionali</button>
-        <button type="button" class="level-pill" data-level="NATIONAL">AICAT Nazionale</button>
+      <div class="active-filters-summary">
+        Visualizzati: <b id="displayedCount"><?=$totalClubs?></b> di <b><?=$totalClubs?> nodi</b> (<span id="userLocationStatus">Nessun punto GPS fissato</span>)
       </div>
-
-      <div class="stats-counter-tag">
-        Visualizzati: <b id="displayedCount"><?=$totalClubs?></b> su <?=$totalClubs?> entità censite
+      <div class="legend-quick-tags">
+        <span class="legend-item"><span class="legend-dot dot-local"></span> Club CAT</span>
+        <span class="legend-item"><span class="legend-dot dot-apcat"></span> APCAT Provinciale</span>
+        <span class="legend-item"><span class="legend-dot dot-acat"></span> Associazione ACAT</span>
+        <span class="legend-item"><span class="legend-dot dot-arcat"></span> ARCAT Regionale</span>
+        <span class="legend-item"><span class="legend-dot dot-aicat"></span> AICAT Nazionale</span>
       </div>
     </div>
   </div>
 
-  <!-- CONTAINER PRINCIPALE: MAPPA 2D + DRAWER CLUB -->
-  <div class="map-main-layout">
+  <!-- CONTAINER CENTRALE: MAPPA 2D + SIDEBAR CARDS -->
+  <div class="map-interface-grid">
     
-    <!-- VIEWPORT MAPPA LEAFLET -->
-    <div class="map-viewport-wrapper">
-      <div id="leafletMapContainer"></div>
+    <!-- MAPPA INTERATTIVA LEAFLET 2D -->
+    <div class="map-viewport-container">
+      <div id="catMap" class="cat-map-element" role="region" aria-label="Mappa dei Club CAT in Italia"></div>
+      
+      <!-- Pulsante galleggiante per centrare su Italia -->
+      <button type="button" id="btnResetView" class="btn-map-floating" title="Inquadra tutta Italia">
+        <?=dx_icon('compass', '', 18)?>
+      </button>
     </div>
 
-    <!-- SIDEBAR LISTA CLUB FILTRATI -->
-    <div class="club-list-panel">
-      <div class="club-list-header">
-        <h3>
-          <?=dx_icon('list', 'text-neon-cyan', 18)?>
-          <span>Elenco Club Risultanti</span>
-        </h3>
-        <span class="badge-human" id="drawerBadgeTotal"><?=$totalClubs?> Nodi</span>
+    <!-- DRAWER LATERALE: LISTA CLUB E DETTAGLI -->
+    <div class="map-sidebar-drawer" id="sidebarDrawer">
+      <div class="drawer-header">
+        <div class="drawer-title-row">
+          <h3>Elenco Territoriale</h3>
+          <span class="drawer-badge-total" id="drawerBadgeTotal"><?=$totalClubs?> Nodi</span>
+        </div>
+        <p>Tocca un Club per centrarlo sulla mappa o avviare la chiamata diretta.</p>
       </div>
 
       <div class="club-cards-scroll" id="clubCardsContainer">
@@ -821,19 +827,19 @@ require '_header.php';
       <div class="kpi-row">
         <div class="kpi-item">
           <span class="kpi-val"><?=$totalClubs?></span>
-          <span class="kpi-lbl">Entità Censite</span>
+          <span class="kpi-lbl">Club & APCAT</span>
+        </div>
+        <div class="kpi-item">
+          <span class="kpi-val"><?=number_format($totalFamiliesNetwork, 0, ',', '.')?>+</span>
+          <span class="kpi-lbl">Famiglie nei Cerchi</span>
         </div>
         <div class="kpi-item">
           <span class="kpi-val"><?=count($regions)?></span>
-          <span class="kpi-lbl">Regioni Italiane</span>
-        </div>
-        <div class="kpi-item">
-          <span class="kpi-val">100%</span>
-          <span class="kpi-lbl">Georeferenziati</span>
+          <span class="kpi-lbl">Regioni Coperte</span>
         </div>
         <div class="kpi-item">
           <span class="kpi-val">0€</span>
-          <span class="kpi-lbl">Gratuito & Aperto</span>
+          <span class="kpi-lbl">Gratuito & Solidale</span>
         </div>
       </div>
     </div>
@@ -1054,6 +1060,7 @@ function applyFilters() {
         <span class="club-type-tag ${popupTagClass}" style="margin-bottom:4px;display:inline-block;">${levelLabel}</span>
         <h4>${escapeHtml(club.entity_name)}</h4>
         <p><b>Sede:</b> ${escapeHtml(club.address || club.city)} (${escapeHtml(club.province || '')})</p>
+        <p style="color:#00f0ff; margin:3px 0 5px;"><b>Comunità:</b> ${club.families_count || 11} Famiglie ${(club.level==='PROVINCIAL_APCAT'||(club.entity_name&&club.entity_name.includes('APCAT')))?'nella Rete':'nel Cerchio'}</p>
         ${club.meeting_day ? `<p><b>Incontro:</b> ${escapeHtml(club.meeting_day)} ${escapeHtml(club.meeting_time || '')}</p>` : ''}
         ${club.servitore_insegnante ? `<p><b>Referente:</b> ${escapeHtml(club.servitore_insegnante)}</p>` : ''}
         ${club._distance !== undefined ? `<p style="color:#00ff88;"><b>Distanza:</b> ${club._distance} km da te</p>` : ''}
@@ -1132,6 +1139,7 @@ function renderClubCards(clubs) {
     card.innerHTML = `
       <div class="club-card-top">
         <span class="club-type-tag ${tagClass}">${tagText}</span>
+        <span class="badge-families" style="font-size:0.75rem; font-weight:750; color:#38bdf8; background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.3); padding:2px 7px; border-radius:6px;">${c.families_count || 11} Famiglie</span>
         ${c._distance !== undefined ? `<span class="distance-badge">${c._distance} km</span>` : `<span style="font-size:0.75rem;color:#64748b;">${escapeHtml(c.province || '')}</span>`}
       </div>
       <div class="club-card-name">${escapeHtml(c.entity_name)}</div>

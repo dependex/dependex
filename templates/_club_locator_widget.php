@@ -10,7 +10,7 @@
     <div class="locator-widget-header">
       <div class="badge-neon-cyan mb-2" style="display:inline-flex; align-items:center; gap:6px; font-size:0.8rem; padding:4px 12px; border-radius:999px; background:rgba(0,240,255,0.12); border:1px solid rgba(0,240,255,0.3); color:#00f0ff;">
         <?=dx_icon('map-pin', 'text-neon-cyan', 14)?>
-        <span>366 CLUB & APCAT GEOREFERENZIATI IN ITALIA</span>
+        <span>395 CLUB & APCAT GEOREFERENZIATI IN ITALIA</span>
       </div>
       <h2 style="font-size:clamp(1.5rem, 3vw, 2.2rem); color:#ffffff; font-weight:800; margin:0.4rem 0 0.6rem;">
         Trova il Club o l'APCAT <span style="background:linear-gradient(135deg, #00f0ff, #38bdf8); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">più vicino a te</span>
@@ -261,6 +261,7 @@
               <div>
                 <div class="locator-card-top">
                   <span style="font-size:0.7rem; font-weight:800; padding:2px 6px; border-radius:4px; background:rgba(255,255,255,0.06); ${tagClass}">${tagLabel}</span>
+                  <span style="font-size:0.72rem; font-weight:750; color:#38bdf8; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.25); padding:2px 6px; border-radius:4px;">${escapeHtml(club.families_label || (club.families_count + ' Famiglie'))}</span>
                   ${distLabel}
                 </div>
                 <h4 style="margin:8px 0 4px; color:#ffffff; font-size:1.05rem;">${escapeHtml(club.name)}</h4>

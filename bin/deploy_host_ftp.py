@@ -151,7 +151,20 @@ FILES_TO_SYNC = [
     os.path.join("tests", "test_human_welfare_os_e2e.php"),
     os.path.join("tests", "test_human_welfare_engine_5_e2e.php"),
     os.path.join("tests", "test_omni_welfare_gamification_6_e2e.php"),
-    os.path.join("tests", "test_motivational_clips_e2e.php"),
+    # Console CRM & Outreach Club Italia (FLUX100 / EMM+)
+    "crm-clubs.php",
+    "unsubscribe.php",
+    os.path.join("data", "CRM_CLUB_CONTATTI_MASTER_2026.csv"),
+    os.path.join("bin", "populate_crm_clubs.py"),
+    os.path.join("bin", "crm_clubs_dispatcher.py"),
+    os.path.join("automation", "emailflux", "templates", "club_step1_censimento.html"),
+    os.path.join("automation", "emailflux", "templates", "club_step2_widget.html"),
+    os.path.join("automation", "emailflux", "templates", "club_step3_opendata.html"),
+    os.path.join("automation", "emailflux", "templates", "club_step4_pwa_privacy.html"),
+    os.path.join("automation", "emailflux", "templates", "club_step5_dialogo.html"),
+    os.path.join("docs", "STRATEGIA_EMAIL_MARKETING_CRM_CLUB_FLUX100_EMM.md"),
+    os.path.join("tests", "test_territorial_network_v6_e2e.php"),
+    os.path.join("tests", "test_crm_club_outreach_e2e.php"),
 
     # Clip Video Motivazionali (8-10s)
     "clips.php",

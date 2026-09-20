@@ -16,6 +16,7 @@
 - [OpenData GeoJSON RFC 7946](api-opendata-geojson.php): Endpoint GeoJSON standard per interoperabilità con Ser.D, ASL, distretti sanitari, comuni e sistemi GIS.
 - [Feed Territoriale Atom 1.0 / GeoRSS](api-feed-territorio.php): Feed XML conforme a RFC 4287 per aggiornamenti georeferenziati continui dei presidi.
 - [Widget Embed Iframe Trova-Club](widget-club.php): Componente leggero gratuito incorporabile da Comuni, ASL, Ser.D e parrocchie per la ricerca locale dei presidi.
+- [Console CRM & Outreach Club Italia](crm-clubs.php): Database anagrafico 395 Club con recapiti completi, ereditarieta di contatto istituzionale e nurturing FLUX100 / EMM+.
 - [Le Domande che Forse Ti Vergogni a Fare](domande-frequenti.php): Risposte empatiche, dirette e senza giudizio ai dubbi più intimi (familiari, ricadute, riservatezza, gratuità, etichette).
 - [Recensioni & Testimonianze Verificate](recensioni.php): Riprova sociale ed esperienze autentiche di membri, famiglie e servitori-insegnanti dei Club d'Italia.
 - [Dashboard & Contatore Sobrietà](dashboard.php): Monitoraggio giorni lucidi, calcolatore risparmio economico, pietre miliari e quest system quotidiano del Metodo Hudolin.

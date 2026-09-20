@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Un servizio gratuito per il sito di {{entity_name}} e del vostro Comune: il Widget Trova-Club</title>
+</head>
+<body style="margin:0; padding:0; background-color:#0d1117; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#e6edf3; -webkit-font-smoothing:antialiased;">
+  <div style="display:none; font-size:1px; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden;">
+    Un componente gratuito copia-incolla per far trovare {{entity_name}} ai cittadini di {{city}} e provincia di {{province}}.
+  </div>
+  <table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color:#0d1117; padding:24px 12px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0" style="max-width:600px; background-color:#161b22; border:1px solid #30363d; border-radius:12px; overflow:hidden;">
+          <tr>
+            <td style="padding:28px 24px; text-align:center; background:linear-gradient(180deg, #1f242c 0%, #161b22 100%); border-bottom:1px solid #30363d;">
+              <div style="font-size:20px; font-weight:800; color:#58a6ff; letter-spacing:1px; margin-bottom:4px;">DEPENDEX · STRUMENTI PER IL TERRITORIO</div>
+              <div style="font-size:12px; color:#8b949e; text-transform:uppercase; letter-spacing:1.5px;">Adozione Gratuita del Widget Trova-Club</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:32px 24px;">
+              <h1 style="font-size:20px; font-weight:700; color:#ffffff; margin:0 0 16px 0; line-height:1.4;">
+                Come aiutare chi vive a <span style="color:#58a6ff;">{{city}}</span> a trovare il vostro Club in 1 secondo
+              </h1>
+              <p style="font-size:15px; line-height:1.6; color:#c9d1d9; margin:0 0 16px 0;">
+                Spesso le persone che cercano aiuto (o un familiare in difficoltà) visitano i siti web del proprio Comune, dell'ASL locale o dell'APCAT/ACAT provinciale, ma faticano a trovare gli indirizzi e gli orari precisi delle riunioni.
+              </p>
+              <p style="font-size:15px; line-height:1.6; color:#c9d1d9; margin:0 0 20px 0;">
+                Per questo abbiamo creato il <strong>Widget Trova-Club Ufficiale</strong>: un componente web leggero, reattivo su smartphone e completamente gratuito, che chiunque può inserire sul proprio sito con una sola riga di codice.
+              </p>
+
+              <!-- ANTEPRIMA CODICE IFRAME -->
+              <div style="background-color:#0d1117; border:1px solid #30363d; border-radius:8px; padding:20px; margin:0 0 24px 0;">
+                <div style="font-size:12px; font-weight:700; color:#38ef7d; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">
+                  💻 Codice Embed Gratuito per la Provincia di {{province}}:
+                </div>
+                <div style="background-color:#161b22; padding:12px; border-radius:6px; font-family:monospace; font-size:12px; color:#58a6ff; word-break:break-all; border:1px solid #21262d;">
+                  &lt;iframe src="https://dependex.social/widget-club.php?q={{province}}" width="100%" height="600" style="border:none; border-radius:12px;" title="Trova Club Hudolin"&gt;&lt;/iframe&gt;
+                </div>
+                <div style="font-size:12px; color:#8b949e; margin-top:10px;">
+                  ✓ Zero cookie di profilazione &nbsp;·&nbsp; ✓ Touch target 44px conforme WCAG &nbsp;·&nbsp; ✓ Chiamata diretta con 1 tap
+                </div>
+              </div>
+
+              <!-- CTA BUTTON -->
+              <table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 24px 0;">
+                <tr>
+                  <td align="center">
+                    <a href="https://dependex.social/widget-club.php?q={{province}}" target="_blank" style="display:inline-block; padding:14px 28px; background:linear-gradient(135deg, #1f6feb 0%, #58a6ff 100%); color:#ffffff; font-size:15px; font-weight:700; text-decoration:none; border-radius:8px; text-align:center; box-shadow:0 4px 12px rgba(88, 166, 255, 0.25);">
+                      Prova il Widget per la Provincia di {{province}} →
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+              <p style="font-size:14px; line-height:1.6; color:#8b949e; margin:0 0 16px 0;">
+                Se avete un sito associativo, un blog parrocchiale o contatti con l'assessorato ai servizi sociali del vostro Comune, potete fornire liberamente questo strumento: è a disposizione di tutta la comunità.
+              </p>
+              <p style="font-size:14px; line-height:1.6; color:#8b949e; margin:0;">
+                Fraternamente,<br>
+                <strong style="color:#c9d1d9;">I Volontari di dependex.social</strong>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:20px 24px; background-color:#0d1117; border-top:1px solid #30363d; font-size:12px; color:#6e7681; line-height:1.5;">
+              <p style="margin:0;">
+                Non desiderate ricevere aggiornamenti sui servizi territoriali? <a href="https://dependex.social/unsubscribe.php?token={{unsubscribe_token}}" style="color:#58a6ff; text-decoration:underline;">Disiscriviti con un clic</a>.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

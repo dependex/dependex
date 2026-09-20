@@ -128,6 +128,7 @@
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
           <li><a href="privacy.php" style="color: #cbd5e1; text-decoration: none;">Privacy Policy (GDPR)</a></li>
           <li><a href="privacy-center.php" style="color: #cbd5e1; text-decoration: none;">Gestione Consensi & Cookie</a></li>
+          <li><a href="javascript:void(0)" onclick="if(window.DxLocalReminders) window.DxLocalReminders.renderModal();" style="color: #67e8f9; text-decoration: none; font-weight: 750;">🔔 Promemoria Privati (PWA)</a></li>
           <li><a href="terms.php" style="color: #cbd5e1; text-decoration: none;">Termini & Trasparenza ACAT</a></li>
           <li><a href="telemetria.php" style="color: #00f0ff; text-decoration: none; font-weight: 600;">Console Telemetria & Watchdog</a></li>
           <li><a href="help.php" style="color: #cbd5e1; text-decoration: none;">Aiuto & Emergenze (112)</a></li>
@@ -329,6 +330,7 @@ function stopBreathingCycle() {
 <script src="assets/js/dx-telemetry.js?v=<?=filemtime(__DIR__.'/assets/js/dx-telemetry.js')?>"></script>
 <script src="assets/js/dx-voice-sos.js?v=<?=filemtime(__DIR__.'/assets/js/dx-voice-sos.js')?>"></script>
 <script src="assets/js/dx-micro-checkin.js?v=<?=filemtime(__DIR__.'/assets/js/dx-micro-checkin.js')?>"></script>
+<script src="assets/js/dx-local-reminders.js?v=<?=filemtime(__DIR__.'/assets/js/dx-local-reminders.js')?>"></script>
 <script src="assets/js/dx-pwa-companion.js?v=<?=filemtime(__DIR__.'/assets/js/dx-pwa-companion.js')?>"></script>
 </body>
 </html>

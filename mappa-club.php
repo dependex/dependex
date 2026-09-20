@@ -866,6 +866,9 @@ require '_header.php';
         <a href="api-feed-territorio.php" target="_blank" class="btn small" style="text-align:center;border:1px solid rgba(251,191,36,0.35);color:#fbbf24;background:rgba(251,191,36,0.08);">
           <?=dx_icon('rss', '', 14)?> Feed Territoriale Atom/GeoRSS (Ser.D & ASL)
         </a>
+        <button type="button" onclick="dxShowEmbedModal()" class="btn small" style="text-align:center;border:1px solid rgba(168,85,247,0.45);color:#c084fc;background:rgba(168,85,247,0.12);cursor:pointer;">
+          <?=dx_icon('code', '', 14)?> Incorpora Widget nei Siti di Comuni/ASL
+        </button>
         <a href="api-clubs-italy.php?action=list" target="_blank" class="btn small" style="text-align:center;border:1px solid rgba(255,255,255,0.15);color:#ffffff;">
           <?=dx_icon('code', '', 14)?> Esplora API JSON
         </a>
@@ -873,6 +876,48 @@ require '_header.php';
     </div>
 
   </div>
+
+  <!-- MODALE CONDIVISIONE / EMBED WIDGET GRATUITO -->
+  <div id="dxEmbedModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:9999; backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:16px;">
+    <div style="background:#0f172a; border:1px solid rgba(168,85,247,0.4); border-radius:18px; max-width:600px; width:100%; padding:24px; color:#ffffff; box-shadow:0 10px 40px rgba(0,0,0,0.6);">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <span style="font-size:0.78rem; font-weight:800; color:#c084fc; text-transform:uppercase; letter-spacing:0.08em;">
+          Bene Comune Digitale Gratuito
+        </span>
+        <button type="button" onclick="document.getElementById('dxEmbedModal').style.display='none'" style="background:none; border:none; color:#94a3b8; font-size:1.4rem; cursor:pointer;">&times;</button>
+      </div>
+      <h3 style="font-size:1.25rem; font-weight:800; margin-bottom:8px;">
+        Incorpora il "Trova Club" sul tuo Sito
+      </h3>
+      <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.5; margin-bottom:16px;">
+        Comuni, consulte del volontariato, Ser.D, ASL e parrocchie possono integrare gratuitamente il motore di ricerca dei Club con 1 riga di codice:
+      </p>
+      <textarea id="dxEmbedCodeSnippet" readonly style="width:100%; height:90px; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:10px; color:#00f0ff; font-family:monospace; font-size:0.8rem; resize:none; margin-bottom:12px;"><iframe src="https://dependex.social/widget-club.php" width="100%" height="440" style="border:none; border-radius:14px; max-width:650px; width:100%;" title="Trova Club Alcologico Territoriale CAT"></iframe></textarea>
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <a href="widget-club.php" target="_blank" style="color:#67e8f9; font-size:0.82rem; text-decoration:none;">Anteprima Widget Iframe ↗</a>
+        <button type="button" onclick="dxCopyEmbedSnippet()" id="dxCopyEmbedBtn" style="background:linear-gradient(135deg, #a855f7, #6366f1); color:#ffffff; border:none; border-radius:8px; padding:8px 18px; font-weight:750; font-size:0.85rem; cursor:pointer;">
+          Copia Codice HTML
+        </button>
+      </div>
+    </div>
+  </div>
+  <script>
+  function dxShowEmbedModal() {
+    const m = document.getElementById('dxEmbedModal');
+    if (m) m.style.display = 'flex';
+  }
+  function dxCopyEmbedSnippet() {
+    const ta = document.getElementById('dxEmbedCodeSnippet');
+    if (ta) {
+      ta.select();
+      navigator.clipboard.writeText(ta.value).then(() => {
+        const btn = document.getElementById('dxCopyEmbedBtn');
+        if (btn) btn.textContent = 'Copiato negli Appunti! ✓';
+        setTimeout(() => { if (btn) btn.textContent = 'Copia Codice HTML'; }, 2500);
+      });
+    }
+  }
+  </script>
 
   <!-- DATI STRUTTURATI SCHEMA.ORG PER INDICIZZAZIONE TERRITORIALE (ITEMLIST / NGO) -->
   <script type="application/ld+json">

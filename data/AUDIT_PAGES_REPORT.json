@@ -2,28 +2,7 @@
   "syntax_errors": [],
   "broken_includes": [],
   "banned_terms": [],
-  "live_http_errors": [
-    [
-      "offers.php",
-      "Errore connessione: The read operation timed out"
-    ],
-    [
-      "orientamento.php",
-      "Errore connessione: The read operation timed out"
-    ],
-    [
-      "register.php",
-      "Errore connessione: The read operation timed out"
-    ],
-    [
-      "sobriety.php",
-      "Errore connessione: The read operation timed out"
-    ],
-    [
-      "terms.php",
-      "Errore connessione: The read operation timed out"
-    ]
-  ],
-  "healthy_count": 403,
+  "live_http_errors": [],
+  "healthy_count": 408,
   "checked_files": 408
 }

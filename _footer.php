@@ -312,5 +312,6 @@ function stopBreathingCycle() {
 <script src="assets/js/universal-chat-ai.js?v=<?=filemtime(__DIR__.'/assets/js/universal-chat-ai.js')?>" data-brand="<?=h(site_brand()['name'])?>" data-domain="<?=h(site_brand()['domain'])?>"></script>
 <script src="assets/js/universal-cart-checkout.js?v=<?=filemtime(__DIR__.'/assets/js/universal-cart-checkout.js')?>" data-brand="<?=h(site_brand()['name'])?>"></script>
 <script src="assets/js/dx-telemetry.js?v=<?=filemtime(__DIR__.'/assets/js/dx-telemetry.js')?>"></script>
+<script src="assets/js/dx-pwa-companion.js?v=<?=filemtime(__DIR__.'/assets/js/dx-pwa-companion.js')?>"></script>
 </body>
 </html>

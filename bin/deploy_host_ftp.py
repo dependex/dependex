@@ -117,6 +117,7 @@ FILES_TO_SYNC = [
     os.path.join("assets", "css", "universal-cart-checkout.css"),
     os.path.join("assets", "css", "universal-chat-ai.css"),
     os.path.join("assets", "js", "app.js"),
+    os.path.join("assets", "js", "dx-pwa-companion.js"),
     os.path.join("assets", "js", "universal-cart-checkout.js"),
     os.path.join("assets", "js", "universal-chat-ai.js"),
     os.path.join("assets", "logo.png"),

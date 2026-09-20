@@ -1061,6 +1061,17 @@ function applyFilters() {
         <div class="popup-actions">
           ${club.phone ? `<a href="tel:${club.phone.replace(/[^0-9+]/g, '')}" class="card-action-btn btn-phone">Chiama</a>` : ''}
           <a href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}" target="_blank" class="card-action-btn btn-directions">Indicazioni</a>
+          <button type="button" class="card-action-btn btn-share" 
+                  data-club="${escapeHtml(club.entity_name)}" 
+                  data-city="${escapeHtml(club.city)}" 
+                  data-day="${escapeHtml(club.meeting_day || '')}" 
+                  data-time="${escapeHtml(club.meeting_time || '')}" 
+                  data-addr="${escapeHtml(club.address || '')}"
+                  onclick="window.handleShareClubBtn ? window.handleShareClubBtn(this) : (window.shareClubWithFamily && window.shareClubWithFamily(this.dataset.club, this.dataset.city, this.dataset.day, this.dataset.time, this.dataset.addr))"
+                  style="background:rgba(255,215,0,0.15); color:#ffd700; border:1px solid rgba(255,215,0,0.35); cursor:pointer;"
+                  title="Condividi con un familiare">
+            Ti accompagno io
+          </button>
         </div>
       </div>
     `;
@@ -1148,6 +1159,17 @@ function renderClubCards(clubs) {
         <a href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}" target="_blank" class="card-action-btn btn-directions">
           Itinerario
         </a>
+        <button type="button" class="card-action-btn btn-share" 
+                data-club="${escapeHtml(c.entity_name)}" 
+                data-city="${escapeHtml(c.city)}" 
+                data-day="${escapeHtml(c.meeting_day || '')}" 
+                data-time="${escapeHtml(c.meeting_time || '')}" 
+                data-addr="${escapeHtml(c.address || '')}"
+                onclick="window.handleShareClubBtn ? window.handleShareClubBtn(this) : (window.shareClubWithFamily && window.shareClubWithFamily(this.dataset.club, this.dataset.city, this.dataset.day, this.dataset.time, this.dataset.addr))"
+                style="background:rgba(255,215,0,0.15); color:#ffd700; border:1px solid rgba(255,215,0,0.35); cursor:pointer;"
+                title="Condividi con un familiare">
+          Ti accompagno io
+        </button>
       </div>
     `;
 

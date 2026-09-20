@@ -271,6 +271,17 @@
                 ${club.actions.call_url ? `<a href="${club.actions.call_url}" class="btn-card-action btn-card-call">Chiama</a>` : ''}
                 ${club.actions.whatsapp_url ? `<a href="${club.actions.whatsapp_url}" target="_blank" class="btn-card-action btn-card-wa">WhatsApp</a>` : ''}
                 ${club.actions.map_directions_url ? `<a href="${club.actions.map_directions_url}" target="_blank" class="btn-card-action btn-card-nav">Mappa</a>` : ''}
+                <button type="button" class="btn-card-action btn-card-share" 
+                        data-club="${escapeHtml(club.name)}" 
+                        data-city="${escapeHtml(club.location.city)}" 
+                        data-day="${escapeHtml(club.meeting.day || '')}" 
+                        data-time="${escapeHtml(club.meeting.time || '')}" 
+                        data-addr="${escapeHtml(club.location.address || '')}"
+                        onclick="window.handleShareClubBtn ? window.handleShareClubBtn(this) : (window.shareClubWithFamily && window.shareClubWithFamily(this.dataset.club, this.dataset.city, this.dataset.day, this.dataset.time, this.dataset.addr))"
+                        style="background:rgba(255,215,0,0.12); color:#ffd700; border:1px solid rgba(255,215,0,0.35); cursor:pointer;" 
+                        title="Condividi con un familiare">
+                  Ti accompagno io
+                </button>
               </div>
             </div>
           `;

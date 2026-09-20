@@ -59,6 +59,8 @@ FILES_TO_SYNC = [
     "testimonianze.php",
     "domande-frequenti.php",
     "faq.php",
+    "privacy-center.php",
+    "sobriety.php",
     "ruota-della-vita.php",
     "piramide-maslow.php",
     "orientamento.php",

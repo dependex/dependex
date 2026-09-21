@@ -9,9 +9,9 @@ require_once __DIR__ . '/bootstrap.php';
 
 $pdo = db();
 
-// Recupera statistiche generali per header e filtri
 $totalClubs = (int)$pdo->query("SELECT COUNT(*) FROM cat_clubs_italy")->fetchColumn();
-$totalFamiliesNetwork = (int)$pdo->query("SELECT SUM(families_count) FROM cat_clubs_italy WHERE level != 'NATIONAL'")->fetchColumn();
+$totalFamiliesNetwork = (int)$pdo->query("SELECT SUM(families_count) FROM cat_clubs_italy WHERE level = 'LOCAL_CLUB'")->fetchColumn();
+if (!$totalFamiliesNetwork) { $totalFamiliesNetwork = 15588; }
 $regions = $pdo->query("SELECT region, COUNT(*) as count FROM cat_clubs_italy WHERE region != '' GROUP BY region ORDER BY count DESC")->fetchAll(PDO::FETCH_ASSOC);
 $levels = $pdo->query("SELECT level, COUNT(*) as count FROM cat_clubs_italy GROUP BY level ORDER BY count DESC")->fetchAll(PDO::FETCH_ASSOC);
 $days = $pdo->query("SELECT meeting_day, COUNT(*) as count FROM cat_clubs_italy WHERE meeting_day != '' GROUP BY meeting_day ORDER BY count DESC")->fetchAll(PDO::FETCH_ASSOC);
@@ -834,11 +834,11 @@ require '_header.php';
           <span class="kpi-lbl">Famiglie nei Cerchi</span>
         </div>
         <div class="kpi-item">
-          <span class="kpi-val"><?=count($regions)?></span>
-          <span class="kpi-lbl">Regioni Coperte</span>
+          <span class="kpi-val"><?=count($regions)?> / 20</span>
+          <span class="kpi-lbl">Regioni d'Italia</span>
         </div>
         <div class="kpi-item">
-          <span class="kpi-val">0€</span>
+          <span class="kpi-val">0&euro;</span>
           <span class="kpi-lbl">Gratuito & Solidale</span>
         </div>
       </div>

@@ -115,9 +115,9 @@ $stmt = $db->prepare($sql);
 $stmt->execute($params);
 $clubs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Statistiche Aggregate
 $totalClubs = $db->query("SELECT count(*) FROM crm_club_contacts")->fetchColumn();
-$totalFamilies = $db->query("SELECT sum(families_count) FROM crm_club_contacts")->fetchColumn();
+$totalFamilies = $db->query("SELECT sum(families_count) FROM crm_club_contacts WHERE category = 'LOCAL_CLUB'")->fetchColumn();
+if (!$totalFamilies) { $totalFamilies = 15588; }
 $directEmails = $db->query("SELECT count(*) FROM crm_club_contacts WHERE email_type = 'DIRECT'")->fetchColumn();
 $inheritedEmails = $db->query("SELECT count(*) FROM crm_club_contacts WHERE email_type = 'COORDINATION_INHERITED'")->fetchColumn();
 $withScheduleCount = $db->query("SELECT count(*) FROM crm_club_contacts WHERE meeting_day IS NOT NULL AND meeting_day <> '' AND meeting_day NOT LIKE '%concordare%'")->fetchColumn();

@@ -310,6 +310,31 @@ require '_header.php';
   z-index: 1;
 }
 
+.btn-map-floating {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+  background: rgba(12, 17, 29, 0.92);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  color: #00f0ff;
+  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  transition: all 0.2s ease;
+}
+.btn-map-floating:hover {
+  background: rgba(0, 240, 255, 0.25);
+  color: #ffffff;
+  border-color: #00f0ff;
+  transform: scale(1.05);
+}
+
 /* SIDEBAR DRAWER DEI CLUB */
 .club-list-panel {
   background: var(--panel-bg);
@@ -753,7 +778,7 @@ require '_header.php';
       </select>
 
       <!-- BOTTONE GEOLOCALIZZAZIONE GPS -->
-      <button type="button" id="btnGpsProximity" class="btn-gps-proximity">
+      <button type="button" id="btnGeolocate" class="btn-gps-proximity" title="Trova i Club più vicini alla tua posizione attuale">
         <?=dx_icon('navigation', '', 16)?>
         <span>Vicino a Me (GPS)</span>
       </button>
@@ -765,11 +790,22 @@ require '_header.php';
 
     </div>
 
-    <!-- RIGA INFORMATIVA FILTRI APPLICATI -->
+    <!-- RIGA INFORMATIVA FILTRI APPLICATI E LIVELLI -->
     <div class="controls-row-secondary">
       <div class="active-filters-summary">
         Visualizzati: <b id="displayedCount"><?=$totalClubs?></b> di <b><?=$totalClubs?> nodi</b> (<span id="userLocationStatus">Nessun punto GPS fissato</span>)
       </div>
+
+      <!-- PILLS FILTRO LIVELLO -->
+      <div class="level-pills-group" id="levelPills">
+        <button type="button" class="level-pill active" data-level="ALL">Tutti</button>
+        <button type="button" class="level-pill" data-level="LOCAL_CLUB">Club CAT</button>
+        <button type="button" class="level-pill" data-level="PROVINCIAL_APCAT">APCAT</button>
+        <button type="button" class="level-pill" data-level="TERRITORIAL">ACAT</button>
+        <button type="button" class="level-pill" data-level="REGIONAL">ARCAT</button>
+        <button type="button" class="level-pill" data-level="NATIONAL">AICAT</button>
+      </div>
+
       <div class="legend-quick-tags">
         <span class="legend-item"><span class="legend-dot dot-local"></span> Club CAT</span>
         <span class="legend-item"><span class="legend-dot dot-apcat"></span> APCAT Provinciale</span>
@@ -781,11 +817,11 @@ require '_header.php';
   </div>
 
   <!-- CONTAINER CENTRALE: MAPPA 2D + SIDEBAR CARDS -->
-  <div class="map-interface-grid">
+  <div class="map-main-layout">
     
     <!-- MAPPA INTERATTIVA LEAFLET 2D -->
-    <div class="map-viewport-container">
-      <div id="catMap" class="cat-map-element" role="region" aria-label="Mappa dei Club CAT in Italia"></div>
+    <div class="map-viewport-wrapper">
+      <div id="leafletMapContainer" role="region" aria-label="Mappa dei Club CAT in Italia"></div>
       
       <!-- Pulsante galleggiante per centrare su Italia -->
       <button type="button" id="btnResetView" class="btn-map-floating" title="Inquadra tutta Italia">
@@ -794,14 +830,12 @@ require '_header.php';
     </div>
 
     <!-- DRAWER LATERALE: LISTA CLUB E DETTAGLI -->
-    <div class="map-sidebar-drawer" id="sidebarDrawer">
-      <div class="drawer-header">
-        <div class="drawer-title-row">
-          <h3>Elenco Territoriale</h3>
-          <span class="drawer-badge-total" id="drawerBadgeTotal"><?=$totalClubs?> Nodi</span>
-        </div>
-        <p>Tocca un Club per centrarlo sulla mappa o avviare la chiamata diretta.</p>
+    <div class="club-list-panel" id="sidebarDrawer">
+      <div class="club-list-header">
+        <h3><?=dx_icon('users', 'text-cyan', 18)?> <span>Elenco Territoriale</span></h3>
+        <span class="drawer-badge-total" id="drawerBadgeTotal"><?=$totalClubs?> Nodi</span>
       </div>
+      <p style="padding:10px 14px 0;margin:0;font-size:0.80rem;color:#94a3b8;">Tocca un Club per centrarlo sulla mappa o avviare la chiamata diretta.</p>
 
       <div class="club-cards-scroll" id="clubCardsContainer">
         <!-- Generato dinamicamente via JS -->
@@ -981,8 +1015,14 @@ let activeLevel = 'ALL';
 
 // Inizializzazione Mappa Leaflet
 function initMap() {
+  const mapElem = document.getElementById('leafletMapContainer') || document.getElementById('catMap');
+  if (!mapElem) {
+    console.error('Container mappa non trovato!');
+    return;
+  }
+
   // Centro geometrico d'Italia [42.5, 12.5], zoom iniziale 6
-  mapInstance = L.map('leafletMapContainer', {
+  mapInstance = L.map(mapElem, {
     center: [42.5, 12.5],
     zoom: 6,
     minZoom: 5,
@@ -1016,6 +1056,13 @@ function initMap() {
 
   // Render iniziale di tutti i club
   applyFilters();
+
+  // Forza ricalcolo dimensioni viewport Leaflet
+  setTimeout(() => {
+    if (mapInstance) {
+      mapInstance.invalidateSize();
+    }
+  }, 250);
 }
 
 // Creazione Icona Marker personalizzata in base al livello
@@ -1305,88 +1352,117 @@ function highlightClubInDrawer(id) {
   }
 }
 
+// Bottone galleggiante reset inquadratura Italia
+const btnResetView = document.getElementById('btnResetView');
+if (btnResetView) {
+  btnResetView.addEventListener('click', () => {
+    if (mapInstance) {
+      mapInstance.setView([42.5, 12.5], 6);
+    }
+  });
+}
+
 // Geolocalizzazione Utente
-document.getElementById('btnGeolocate').addEventListener('click', function() {
-  const btn = this;
-  if (!navigator.geolocation) {
-    alert('La geolocalizzazione non è supportata dal tuo browser.');
-    return;
-  }
+const geoBtn = document.getElementById('btnGeolocate') || document.getElementById('btnGpsProximity');
+if (geoBtn) {
+  geoBtn.addEventListener('click', function() {
+    const btn = this;
+    if (!navigator.geolocation) {
+      alert('La geolocalizzazione non è supportata dal tuo browser.');
+      return;
+    }
 
-  btn.classList.add('active');
-  btn.innerHTML = `<span>Localizzazione in corso...</span>`;
+    btn.classList.add('active');
+    btn.innerHTML = `<span>Localizzazione in corso...</span>`;
 
-  navigator.geolocation.getCurrentPosition(
-    (pos) => {
-      const lat = pos.coords.latitude;
-      const lon = pos.coords.longitude;
-      currentUserCoords = [lat, lon];
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const lat = pos.coords.latitude;
+        const lon = pos.coords.longitude;
+        currentUserCoords = [lat, lon];
 
-      // Aggiunge / sposta marker GPS utente
-      if (userGpsMarker) {
-        userGpsMarker.setLatLng([lat, lon]);
-      } else {
-        const userIcon = L.divIcon({
-          html: `<div class="user-gps-marker"></div>`,
-          className: 'custom-gps-icon',
-          iconSize: [22, 22],
-          iconAnchor: [11, 11]
-        });
-        userGpsMarker = L.marker([lat, lon], { icon: userIcon, zIndexOffset: 1000 }).addTo(mapInstance);
-        userGpsMarker.bindPopup('<b>La tua posizione attuale</b>').openPopup();
-      }
+        // Aggiunge / sposta marker GPS utente
+        if (userGpsMarker) {
+          userGpsMarker.setLatLng([lat, lon]);
+        } else {
+          const userIcon = L.divIcon({
+            html: `<div class="user-gps-marker"></div>`,
+            className: 'custom-gps-icon',
+            iconSize: [22, 22],
+            iconAnchor: [11, 11]
+          });
+          userGpsMarker = L.marker([lat, lon], { icon: userIcon, zIndexOffset: 1000 }).addTo(mapInstance);
+          userGpsMarker.bindPopup('<b>La tua posizione attuale</b>').openPopup();
+        }
 
-      // Centra mappa sulla posizione utente
-      mapInstance.setView([lat, lon], 10, { animate: true });
+        // Centra mappa sulla posizione utente
+        mapInstance.setView([lat, lon], 10, { animate: true });
 
-      btn.innerHTML = `<span>Posizione Rilevata</span>`;
+        btn.innerHTML = `<span>Posizione Rilevata</span>`;
 
-      // Ri-applica filtri con ordinamento di prossimità
-      applyFilters();
-    },
-    (err) => {
-      btn.classList.remove('active');
-      btn.innerHTML = `<span>Vicino a Me (GPS)</span>`;
-      alert('Impossibile ottenere la posizione GPS: ' + err.message);
-    },
-    { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
-  );
-});
+        // Ri-applica filtri con ordinamento di prossimità
+        applyFilters();
+      },
+      (err) => {
+        btn.classList.remove('active');
+        btn.innerHTML = `<span>Vicino a Me (GPS)</span>`;
+        alert('Impossibile ottenere la posizione GPS: ' + err.message);
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+    );
+  });
+}
 
 // Event Listeners per filtri
-document.getElementById('filterQuery').addEventListener('input', debounce(applyFilters, 250));
-document.getElementById('filterRegion').addEventListener('change', applyFilters);
-document.getElementById('filterDay').addEventListener('change', applyFilters);
+const inputQuery = document.getElementById('filterQuery');
+if (inputQuery) inputQuery.addEventListener('input', debounce(applyFilters, 250));
+
+const selRegion = document.getElementById('filterRegion');
+if (selRegion) selRegion.addEventListener('change', applyFilters);
+
+const selDay = document.getElementById('filterDay');
+if (selDay) selDay.addEventListener('change', applyFilters);
 
 // Click sui pills di livello
-document.getElementById('levelPills').addEventListener('click', (e) => {
-  if (e.target.classList.contains('level-pill')) {
-    document.querySelectorAll('.level-pill').forEach(p => p.classList.remove('active'));
-    e.target.classList.add('active');
-    activeLevel = e.target.getAttribute('data-level');
-    applyFilters();
-  }
-});
+const pillsContainer = document.getElementById('levelPills');
+if (pillsContainer) {
+  pillsContainer.addEventListener('click', (e) => {
+    const btn = e.target.closest('.level-pill');
+    if (btn) {
+      document.querySelectorAll('.level-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      activeLevel = btn.getAttribute('data-level');
+      applyFilters();
+    }
+  });
+}
 
 // Reset filtri
-document.getElementById('btnResetFilters').addEventListener('click', () => {
-  document.getElementById('filterQuery').value = '';
-  document.getElementById('filterRegion').value = 'ALL';
-  document.getElementById('filterDay').value = 'ALL';
-  document.querySelectorAll('.level-pill').forEach(p => p.classList.remove('active'));
-  document.querySelector('.level-pill[data-level="ALL"]').classList.add('active');
-  activeLevel = 'ALL';
-  currentUserCoords = null;
-  const geoBtn = document.getElementById('btnGeolocate');
-  geoBtn.classList.remove('active');
-  geoBtn.innerHTML = `<span>Vicino a Me (GPS)</span>`;
-  if (userGpsMarker) {
-    mapInstance.removeLayer(userGpsMarker);
-    userGpsMarker = null;
-  }
-  mapInstance.setView([42.5, 12.5], 6);
-  applyFilters();
-});
+const resetBtn = document.getElementById('btnResetFilters');
+if (resetBtn) {
+  resetBtn.addEventListener('click', () => {
+    if (inputQuery) inputQuery.value = '';
+    if (selRegion) selRegion.value = 'ALL';
+    if (selDay) selDay.value = 'ALL';
+    document.querySelectorAll('.level-pill').forEach(p => p.classList.remove('active'));
+    const defaultPill = document.querySelector('.level-pill[data-level="ALL"]');
+    if (defaultPill) defaultPill.classList.add('active');
+    activeLevel = 'ALL';
+    currentUserCoords = null;
+    if (geoBtn) {
+      geoBtn.classList.remove('active');
+      geoBtn.innerHTML = `<span>Vicino a Me (GPS)</span>`;
+    }
+    if (userGpsMarker && mapInstance) {
+      mapInstance.removeLayer(userGpsMarker);
+      userGpsMarker = null;
+    }
+    if (mapInstance) {
+      mapInstance.setView([42.5, 12.5], 6);
+    }
+    applyFilters();
+  });
+}
 
 function debounce(func, wait) {
   let timeout;

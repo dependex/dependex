@@ -21,152 +21,122 @@
   </nav>
 <?php endif;?>
 
-<!-- FOOTER UNIVERSALE DELL'ECOSISTEMA SOVRANO DEPENDEX & OLTRE -->
-<footer class="site-footer" style="padding: 56px 20px 36px; background: rgba(8, 11, 20, 0.98); border-top: 2px solid rgba(212, 175, 55, 0.35); position: relative; overflow: hidden; box-shadow: 0 -10px 40px rgba(0,0,0,0.6);">
+<!-- FOOTER UNIVERSALE DELL'ECOSISTEMA SOVRANO DEPENDEX & OLTRE (LAYOUT ORIZZONTALE 4 COLONNE) -->
+<footer class="site-footer" style="padding: 4rem 2rem 2.5rem; background: #1a1a2e; border-top: 1px solid rgba(212, 175, 55, 0.3); position: relative; overflow: hidden; color: #e2e8f0;">
 
   <!-- ACCENTO ARCOBALENO SUPERIORE -->
   <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #ff3344, #ff7700, #ffd700, #00ff77, #00d4ff, #3a55ff, #b829ff);"></div>
 
   <div style="max-width: 1280px; margin: 0 auto;">
 
-    <!-- TOP BRAND BAR: IDENTITA' & CONTATTO DIRETTO -->
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; padding-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
-      
-      <div style="display: flex; align-items: center; gap: 16px;">
-        <span class="brand-mark-rainbow" style="width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; padding: 2px; background: linear-gradient(135deg, #ff3344, #00d4ff, #b829ff);">
-          <img src="assets/img/dependex-rainbow-badge.jpg" alt="Logo DEPENDEX" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-        </span>
-        <div>
-          <div style="display: flex; align-items: baseline; gap: 8px;">
-            <b style="font-size: 1.45rem; color: #FFFFFF; letter-spacing: 0.05em; font-weight: 900;"><?=h(site_brand()['name'])?></b>
-            <span style="font-size: 0.8rem; font-weight: 850; color: #f59e0b; letter-spacing: 0.1em; text-transform: uppercase;"><?=h(APP_PAYOFF)?></span>
+    <!-- GRIGLIA ORIZZONTALE A 4 COLONNE CON SEPARATORI SOTTILI -->
+    <div class="footer-4col-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 32px; padding-bottom: 3.5rem;">
+
+      <!-- COLONNA 1 (IDENTITÀ) -->
+      <div class="footer-col" style="display: flex; flex-direction: column; gap: 14px; padding-right: 16px;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span style="width: 50px; height: 50px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; padding: 2px; background: linear-gradient(135deg, #00d4ff, #ffd700); box-shadow: 0 0 16px rgba(0, 212, 255, 0.3);">
+            <img src="assets/img/dependex-rainbow-badge.jpg" alt="Logo DEPENDEX" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+          </span>
+          <div>
+            <b style="font-size: 1.45rem; color: #FFFFFF; letter-spacing: 0.04em; font-weight: 900; display: block; line-height: 1.1;">DEPENDEX</b>
+            <span style="font-size: 0.82rem; font-weight: 800; color: #d4af37; letter-spacing: 0.1em; text-transform: uppercase;">AL CLUB. COL CLUB.</span>
           </div>
-          <div class="badge-neon-rainbow" style="font-size: 0.68rem; padding: 2px 10px; margin-top: 4px; display: inline-flex;">
-            <span class="dot"></span>
-            <span class="text-rainbow">ECOSISTEMA SOVRANO · METODO HUDOLIN · RETE 1.770+ CLUB NAZIONALI</span>
-          </div>
+        </div>
+
+        <p style="font-size: 0.86rem; color: #94a3b8; line-height: 1.55; margin: 4px 0 0;">
+          Rete ecologico-sociale nazionale di accoglienza, auto-mutuo-aiuto multifamiliare e cammino di sobrietà secondo il Metodo Hudolin.
+        </p>
+
+        <div style="margin-top: 4px;">
+          <a href="mailto:info@dependex.support" style="color: #00d4ff; text-decoration: none; font-size: 0.88rem; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">
+            <?=dx_icon('mail', '', 16)?> info@dependex.support
+          </a>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px; margin-top: 6px; font-size: 0.82rem;">
+          <span style="color: #64748b; font-weight: 600;">Ecosistema:</span>
+          <a href="https://oltre.social" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+            OLTRE.SOCIAL <?=dx_icon('external-link', '', 12)?>
+          </a>
+          <span style="color: #475569;">·</span>
+          <a href="https://beway.life" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+            beway.life <?=dx_icon('external-link', '', 12)?>
+          </a>
         </div>
       </div>
 
-      <!-- CONTATTI RAPIDI GOVERNANCE & ACCOGLIENZA -->
-      <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
-        <a href="parla-con-noi.php" 
-           class="btn small" 
-           style="background: rgba(37,211,102,0.15); border: 1px solid #25D366; color: #25D366; font-weight: 750; font-size: 0.82rem; padding: 8px 16px; border-radius: 10px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
-          <?=dx_icon('message-circle', '', 15)?>
-          <span>Segreteria di Accoglienza · Parla con Noi</span>
-        </a>
-
-        <a href="mailto:info@dependex.support" 
-           class="btn small" 
-           style="background: rgba(0, 212, 255, 0.12); border: 1px solid rgba(0, 212, 255, 0.5); color: #00d4ff; font-weight: 750; font-size: 0.82rem; padding: 8px 16px; border-radius: 10px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
-          <?=dx_icon('mail', '', 15)?>
-          <span>info@dependex.support</span>
-        </a>
-      </div>
-
-    </div>
-
-    <!-- GRIGLIA UNIVERSALE A 4 COLONNE -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 36px; padding: 40px 0 32px;">
-
-      <!-- COLONNA 1: RETE & TERRITORIO -->
-      <div>
-        <h4 style="font-size: 0.85rem; font-weight: 900; color: var(--dx-amber); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; display: flex; align-items: center; gap: 8px;">
-          <?=dx_icon('map-pin', 'text-amber', 16)?> Rete & Territorio
+      <!-- COLONNA 2 (LINK RAPIDI) -->
+      <div class="footer-col" style="padding-right: 16px;">
+        <h4 style="font-size: 0.88rem; font-weight: 900; color: #ffd700; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; display: flex; align-items: center; gap: 8px;">
+          <?=dx_icon('compass', 'text-amber', 16)?> Link Rapidi
         </h4>
-        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
-          <li><a href="/" style="color: #cbd5e1; text-decoration: none;">Pagina Principale</a></li>
-          <li><a href="world-club-explorer.php" style="color: var(--dx-amber); font-weight: 750; text-decoration: none;">Trova un Club Territoriale</a></li>
-          <li><a href="mappa-club.php" style="color: #67e8f9; font-weight: 750; text-decoration: none;">Mappa 2D Italia (1.768 Club & GeoJSON)</a></li>
-          <li><a href="piramide-rovesciata.php" style="color: #ffd700; font-weight: 800; text-decoration: none;">Piramide Rovesciata (Organigramma)</a></li>
-          <li><a href="domande-frequenti.php" style="color: #fde68a; font-weight: 750; text-decoration: none;">Domande che vuoi fare</a></li>
-          <li><a href="recensioni.php" style="color: var(--dx-amber); font-weight: 750; text-decoration: none;">Recensioni & Testimonianze</a></li>
-          <li><a href="parla-con-noi.php" style="color: #ffffff; font-weight: 700; text-decoration: none;">Parla con Noi (Ascolto)</a></li>
-          <li><a href="events-public.php" style="color: #cbd5e1; text-decoration: none;">Vivi la Comunità (Eventi)</a></li>
-          <li><a href="world-map.php" style="color: #cbd5e1; text-decoration: none;">Mappa Mondiale 2D/3D</a></li>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px; font-size: 0.88rem;">
+          <li><a href="world-club-explorer.php" style="color: #ffd700; font-weight: 750; text-decoration: none;">Trova un Club Territoriale</a></li>
+          <li><a href="mappa-club.php" style="color: #67e8f9; font-weight: 750; text-decoration: none;">Mappa 2D Italia (1.768 Club)</a></li>
+          <li><a href="piramide-rovesciata.php" style="color: #ffffff; font-weight: 700; text-decoration: none;">Piramide Rovesciata (Organigramma)</a></li>
+          <li><a href="metodo.php" style="color: #cbd5e1; text-decoration: none;">Il Metodo Hudolin</a></li>
+          <li><a href="parla-con-noi.php" style="color: #25D366; font-weight: 750; text-decoration: none;">Parla con Noi (Ascolto Riservato)</a></li>
+          <li><a href="playground.php" style="color: #cbd5e1; text-decoration: none;">Life Playground 6.0</a></li>
+          <li><a href="domande-frequenti.php" style="color: #cbd5e1; text-decoration: none;">Domande che vuoi fare</a></li>
         </ul>
       </div>
 
-      <!-- COLONNA 2: METODO & COMUNITÀ -->
-      <div>
-        <h4 style="font-size: 0.85rem; font-weight: 900; color: var(--dx-emerald); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; display: flex; align-items: center; gap: 8px;">
-          <?=dx_icon('book-open', 'text-green', 16)?> Metodo & Comunità
+      <!-- COLONNA 3 (LEGALE & TRASPARENZA) -->
+      <div class="footer-col" style="padding-right: 16px;">
+        <h4 style="font-size: 0.88rem; font-weight: 900; color: #00d4ff; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; display: flex; align-items: center; gap: 8px;">
+          <?=dx_icon('shield-check', 'text-cyan', 16)?> Legale & Trasparenza
         </h4>
-        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
-          <li><a href="playground.php" style="color: #00f0ff; font-weight: 800; text-decoration: none;">Life Playground 6.0</a></li>
-          <li><a href="orientamento.php" style="color: #67e8f9; font-weight: 750; text-decoration: none;">Mappa del Benessere 4.0</a></li>
-          <li><a href="dashboard.php" style="color: #86efac; font-weight: 750; text-decoration: none;">Dashboard & Sobrietà</a></li>
-          <li><a href="ruota-della-vita.php" style="color: #cbd5e1; text-decoration: none;">Ruota della Vita 2D/3D</a></li>
-          <li><a href="piramide-maslow.php" style="color: #cbd5e1; text-decoration: none;">Piramide di Maslow 2D/3D</a></li>
-          <li><a href="metodo.php" style="color: #cbd5e1; text-decoration: none;">Il Metodo Hudolin (3 Livelli)</a></li>
-          <li><a href="storie.php" style="color: #ffffff; font-weight: 700; text-decoration: none;">Storie di Comunità</a></li>
-          <li><a href="academy-public.php" style="color: #cbd5e1; text-decoration: none;">Sovereign Academy</a></li>
-          <li><a href="guida-gratuita.php" style="color: var(--dx-emerald); font-weight: 750; text-decoration: none;">Guida Gratuita Famiglia</a></li>
-          <li><a href="evento-ottobre-taglio-di-po.php" style="color: #cbd5e1; text-decoration: none;">Corso Esperienziale Taglio di Po</a></li>
-        </ul>
-      </div>
-
-      <!-- COLONNA 3: ASSET & APPROFONDIMENTI -->
-      <div>
-        <h4 style="font-size: 0.85rem; font-weight: 900; color: var(--dx-sky); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; display: flex; align-items: center; gap: 8px;">
-          <?=dx_icon('compass', 'text-cyan', 16)?> Risorse & Approfondimenti
-        </h4>
-        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
-          <li><a href="clips.php" style="color: #fbbf24; font-weight: 750; text-decoration: none;">Clip Motivazionali 9:16</a></li>
-          <li><a href="offers.php" style="color: #cbd5e1; text-decoration: none;">Collana Libri KDP</a></li>
-          <li><a href="viaggi-esperienziali.php" style="color: #cbd5e1; text-decoration: none;">Viaggi Esperienziali</a></li>
-          <li><a href="https://oltre.social" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">OLTRE.SOCIAL <?=dx_icon('external-link', '', 11)?></a></li>
-          <li><a href="https://beway.life" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">beway.life <?=dx_icon('external-link', '', 11)?></a></li>
-        </ul>
-      </div>
-
-      <!-- COLONNA 4: GOVERNANCE & PRIVACY -->
-      <div>
-        <h4 style="font-size: 0.85rem; font-weight: 900; color: #b829ff; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; display: flex; align-items: center; gap: 8px;">
-          <?=dx_icon('shield-check', 'text-violet', 16)?> Governance & Privacy
-        </h4>
-        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
+        <ul style="list-style: none; padding: 0; margin: 0 0 16px; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
           <li><a href="privacy.php" style="color: #cbd5e1; text-decoration: none;">Privacy Policy (GDPR)</a></li>
-          <li><a href="privacy-center.php" style="color: #cbd5e1; text-decoration: none;">Gestione Consensi & Cookie</a></li>
-          <li><a href="javascript:void(0)" onclick="if(window.DxLocalReminders) window.DxLocalReminders.renderModal();" style="color: #67e8f9; text-decoration: none; font-weight: 750;">🔔 Promemoria Privati (PWA)</a></li>
           <li><a href="terms.php" style="color: #cbd5e1; text-decoration: none;">Termini & Trasparenza ACAT</a></li>
-          <li><a href="telemetria.php" style="color: #00f0ff; text-decoration: none; font-weight: 600;">Console Telemetria & Watchdog</a></li>
-          <li><a href="help.php" style="color: #cbd5e1; text-decoration: none;">Aiuto & Emergenze (112)</a></li>
-          <li><a href="mailto:info@dependex.support" style="color: #b829ff; font-weight: 750; text-decoration: none;">info@dependex.support</a></li>
+          <li><a href="privacy-center.php" style="color: #cbd5e1; text-decoration: none;">Gestione Consensi & Cookie</a></li>
         </ul>
+
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 12px; font-size: 0.80rem; color: #94a3b8; line-height: 1.5;">
+          <b style="color: #ffd700; display: block; margin-bottom: 4px;">Quote Volontarie & Costi Vivi:</b>
+          I Club Alcologici Territoriali operano su base 100% volontaria e solidale. Eventuali contributi di partecipazione coprono esclusivamente i costi vivi di accoglienza, locali e materiale didattico.
+        </div>
+      </div>
+
+      <!-- COLONNA 4 (ISTITUZIONALE) -->
+      <div class="footer-col">
+        <h4 style="font-size: 0.88rem; font-weight: 900; color: #a78bfa; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; display: flex; align-items: center; gap: 8px;">
+          <?=dx_icon('award', 'text-violet', 16)?> Riferimento Istituzionale
+        </h4>
+
+        <div style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.5; display: flex; flex-direction: column; gap: 10px;">
+          <div>
+            <b>Quadro Normativo:</b><br>
+            <span style="color: #94a3b8;">Riconoscimento ai sensi della <b>Legge 30 marzo 2001, n. 125</b>, <b>Piano Nazionale Prevenzione (PNP)</b> e monitoraggio <b>Osservatorio Nazionale Alcol (ONA) dell'Istituto Superiore di Sanità (ISS)</b>.</span>
+          </div>
+
+          <div style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 8px; padding: 8px 12px; color: #ffd700; font-weight: 750; font-size: 0.80rem;">
+            Ente Attuatore: ACAT Basso Polesine O.D.V.
+          </div>
+
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(0, 255, 119, 0.1); border: 1px solid rgba(0, 255, 119, 0.3); border-radius: 8px; padding: 6px 12px; color: #00ff77; font-weight: 800; font-size: 0.80rem;">
+            <?=dx_icon('shield', '', 14)?> Zero Profilazione Invasiva
+          </div>
+        </div>
       </div>
 
     </div>
 
-    <!-- BANNER GARANZIA DI SOSTEGNO & BENCHMARK ISTITUZIONALE MINISTERO DELLA SALUTE -->
-    <div style="margin: 8px 0 28px; padding: 16px 20px; background: rgba(212, 175, 55, 0.07); border-radius: 12px; border: 1px dashed rgba(212, 175, 55, 0.4); display: flex; flex-direction: column; gap: 10px; font-size: 0.82rem; color: #e2e8f0; line-height: 1.55;">
-      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;">
-        <div style="display: flex; align-items: center; gap: 10px; flex: 1; min-width: 260px;">
-          <?=dx_icon('shield-check', 'text-gold', 20)?>
-          <span><b>Garanzia di Trasparenza & Servizio Solidale:</b> I Club Alcologici Territoriali operano su base 100% volontaria secondo il Metodo Hudolin. Eventuali quote di partecipazione coprono esclusivamente i costi vivi di accoglienza, pranzi comunitari e materiali didattici.</span>
-        </div>
-        <div style="font-weight: 800; color: #d4af37; white-space: nowrap;">
-          Organizzazione: ACAT Basso Polesine O.D.V.
-        </div>
-      </div>
-      <div style="padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-size: 0.80rem;">
-        <?=dx_icon('check-circle', 'text-neon-cyan', 16)?>
-        <span><b>Benchmark Istituzionale & Epidemiologico:</b> Riconoscimento ufficiale ai sensi della <b>Legge 30 marzo 2001, n. 125</b> (Legge quadro su alcol e problemi alcolcorrelati), <b>Relazione Annuale del Ministro della Salute al Parlamento</b>, <b>Piano Nazionale della Prevenzione (PNP)</b> e monitoraggio <b>Osservatorio Nazionale Alcol (ONA) dell'Istituto Superiore di Sanità (ISS)</b>. Cooperazione territoriale con i Servizi Pubblici per le Dipendenze (Ser.D / ASL) secondo il principio costituzionale di sussidiarietà orizzontale.</span>
-      </div>
-    </div>
+    <!-- SEPARATORE SOTTILE ORIZZONTALE -->
+    <div style="height: 1px; background: rgba(255, 255, 255, 0.08); margin-bottom: 24px;"></div>
 
-    <!-- BARRA COPYRIGHT DI CHIUSURA -->
-    <div style="padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.78rem; color: #94a3b8;">
+    <!-- COPYRIGHT IN BASSO CENTRATO -->
+    <div style="text-align: center; font-size: 0.82rem; color: #94a3b8; line-height: 1.6;">
       <div>
-        &copy; <?=date('Y')?> <b><?=h(site_brand()['name'])?></b> · <a href="https://oltre.social" target="_blank" rel="noopener" style="color: #94a3b8; text-decoration: none;">OLTRE.SOCIAL</a>. Tutti i diritti riservati.
+        &copy; 2026 <b>DEPENDEX</b> · <a href="https://oltre.social" target="_blank" rel="noopener" style="color: #94a3b8; text-decoration: none;">OLTRE.SOCIAL</a>. Tutti i diritti riservati.
       </div>
-      <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
-        <span>Zero Profilazione Invasiva</span>
-        <span>·</span>
+      <div style="margin-top: 6px; font-size: 0.76rem; color: #64748b;">
         <span>RFC 8058 One-Click Unsubscribe</span>
-        <span>·</span>
-        <a href="mailto:info@dependex.support" style="color: #00d4ff; text-decoration: none; font-weight: 600;">info@dependex.support</a>
+        <span style="margin: 0 8px;">·</span>
+        <span>Metodo Vladimir Hudolin (1928-1996)</span>
+        <span style="margin: 0 8px;">·</span>
+        <a href="mailto:info@dependex.support" style="color: #00d4ff; text-decoration: none;">info@dependex.support</a>
       </div>
     </div>
 

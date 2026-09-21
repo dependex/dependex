@@ -38,11 +38,11 @@
   --glow-indigo: 0 0 16px rgba(58, 85, 255, 0.65), 0 0 35px rgba(58, 85, 255, 0.35);
   --glow-violet: 0 0 16px rgba(184, 41, 255, 0.65), 0 0 35px rgba(184, 41, 255, 0.35);
 
-  /* Spettro e Gradienti Arcobaleno */
-  --rainbow-gradient: linear-gradient(135deg, #ff3344 0%, #ff7700 16.6%, #ffd700 33.3%, #00ff77 50%, #00d4ff 66.6%, #3a55ff 83.3%, #b829ff 100%);
-  --rainbow-gradient-h: linear-gradient(90deg, #ff3344 0%, #ff7700 16.6%, #ffd700 33.3%, #00ff77 50%, #00d4ff 66.6%, #3a55ff 83.3%, #b829ff 100%);
-  --rainbow-gradient-text: linear-gradient(90deg, #ff6677 0%, #ffa333 16.6%, #ffea44 33.3%, #44ff99 50%, #33eeff 66.6%, #7799ff 83.3%, #d466ff 100%);
-  --rainbow-glow: 0 0 25px rgba(255, 119, 0, 0.35), 0 0 45px rgba(0, 212, 255, 0.35), 0 0 65px rgba(184, 41, 255, 0.25);
+  /* Palette Luxury Pulita: Cyan Tecnologico, Blu Profondo & Oro Comunitario */
+  --rainbow-gradient: linear-gradient(135deg, #00d4ff 0%, #0077ff 60%, #d4af37 100%);
+  --rainbow-gradient-h: linear-gradient(90deg, #00d4ff 0%, #0077ff 100%);
+  --rainbow-gradient-text: linear-gradient(135deg, #ffffff 30%, #cbd5e1 70%, #d4af37 100%);
+  --rainbow-glow: 0 4px 20px rgba(0, 212, 255, 0.35);
 
   /* Superfici Vetro Cosmico Dark */
   --bg-dark-cosmic: #06070a;
@@ -188,8 +188,8 @@ body {
 }
 
 .burger-btn span {
-  background: var(--rainbow-gradient-h) !important;
-  box-shadow: 0 0 8px rgba(0, 212, 255, 0.7) !important;
+  background: #d4af37 !important;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.4) !important;
 }
 
 .theme-toggle:hover {
@@ -309,61 +309,14 @@ body {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
 }
 
-/* 7 Colori Ciclici Staggered su Griglie e Liste */
-:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+1) {
-  border-top: 3px solid var(--neon-red) !important;
+/* Stile Card Elegante e Uniforme (Zero Arlecchinata) */
+:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > * {
+  border-top: 1px solid rgba(0, 212, 255, 0.25) !important;
 }
-:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+1):hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), var(--glow-red) !important;
-}
-
-:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+2) {
-  border-top: 3px solid var(--neon-orange) !important;
-}
-:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+2):hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), var(--glow-orange) !important;
-}
-
-:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+3) {
-  border-top: 3px solid var(--neon-gold) !important;
-}
-:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+3):hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), var(--glow-gold) !important;
-}
-
-:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+4) {
-  border-top: 3px solid var(--neon-green) !important;
-}
-:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+4):hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), var(--glow-green) !important;
-}
-
-:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+5) {
-  border-top: 3px solid var(--neon-cyan) !important;
-}
-:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+5):hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), var(--glow-cyan) !important;
-}
-
-:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+6) {
-  border-top: 3px solid var(--neon-indigo) !important;
-}
-:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+6):hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), var(--glow-indigo) !important;
-}
-
-:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+7) {
-  border-top: 3px solid var(--neon-violet) !important;
-}
-:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:nth-child(7n+7):hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), var(--glow-violet) !important;
+:is(.dashboard-grid-16-9, .metric-grid, .bubble-grid, .quick-grid, .course-list, .event-list, .topic-list, .method-grid, .home-modules, .detail-grid, .doc-grid) > *:hover {
+  transform: translateY(-2px) !important;
+  border-top-color: #00d4ff !important;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 212, 255, 0.15) !important;
 }
 
 /* Card Neon Manuali Esplicite */
@@ -402,33 +355,27 @@ body {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  min-height: 50px !important;
-  padding: 0 26px !important;
-  font-weight: 900 !important;
-  font-size: 1rem !important;
-  letter-spacing: 0.04em !important;
-  color: #ffffff !important;
-  text-shadow: 0 1px 2px #000000, 0 2px 6px rgba(0, 0, 0, 0.95), 0 0 2px #000000 !important;
-  background: var(--rainbow-gradient-h) !important;
-  background-size: 200% auto !important;
-  border: none !important;
-  border-radius: 16px !important;
+  min-height: 48px !important;
+  padding: 0 24px !important;
+  font-weight: 800 !important;
+  font-size: 0.95rem !important;
+  letter-spacing: -0.01em !important;
+  color: #070a12 !important;
+  background: linear-gradient(135deg, #00f0ff 0%, #0077ff 100%) !important;
+  border: 1px solid rgba(0, 240, 255, 0.4) !important;
+  border-radius: 14px !important;
   cursor: pointer !important;
   text-decoration: none !important;
-  box-shadow: 0 6px 25px rgba(255, 119, 0, 0.4), 0 0 35px rgba(0, 212, 255, 0.35) !important;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  animation: rainbow-shift 6s linear infinite !important;
-}
-
-@keyframes rainbow-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  box-shadow: 0 4px 18px rgba(0, 240, 255, 0.3) !important;
+  transition: all 0.25s ease !important;
+  animation: none !important;
 }
 
 .btn.primary:hover, .btn-rainbow-neon:hover, .pwa-install-btn:hover {
-  transform: translateY(-2px) scale(1.02) !important;
-  box-shadow: 0 10px 40px rgba(255, 119, 0, 0.55), 0 0 55px rgba(0, 212, 255, 0.55), 0 0 75px rgba(184, 41, 255, 0.45) !important;
+  transform: translateY(-2px) !important;
+  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%) !important;
+  box-shadow: 0 6px 24px rgba(0, 240, 255, 0.45) !important;
+  color: #070a12 !important;
 }
 
 .btn:not(.primary), .btn-rainbow-outline {

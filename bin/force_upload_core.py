@@ -35,6 +35,8 @@ CORE_FILES = [
     "world-club-explorer.php",
     "club-public.php",
     "metodo.php",
+    "playground.php",
+    "mappa-club.php",
     "events-public.php",
     "event-detail.php",
     "academy-public.php",

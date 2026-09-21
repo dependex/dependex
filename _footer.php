@@ -76,9 +76,10 @@
           <?=dx_icon('map-pin', 'text-amber', 16)?> Rete & Territorio
         </h4>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
-          <li><a href="index.php" style="color: #cbd5e1; text-decoration: none;">Pagina Principale</a></li>
+          <li><a href="/" style="color: #cbd5e1; text-decoration: none;">Pagina Principale</a></li>
           <li><a href="world-club-explorer.php" style="color: var(--dx-amber); font-weight: 750; text-decoration: none;">Trova un Club Territoriale</a></li>
-          <li><a href="mappa-club.php" style="color: #67e8f9; font-weight: 750; text-decoration: none;">Mappa 2D Italia (1.770 Club & GeoJSON)</a></li>
+          <li><a href="mappa-club.php" style="color: #67e8f9; font-weight: 750; text-decoration: none;">Mappa 2D Italia (1.768 Club & GeoJSON)</a></li>
+          <li><a href="piramide-rovesciata.php" style="color: #ffd700; font-weight: 800; text-decoration: none;">Piramide Rovesciata (Organigramma)</a></li>
           <li><a href="domande-frequenti.php" style="color: #fde68a; font-weight: 750; text-decoration: none;">Domande che vuoi fare</a></li>
           <li><a href="recensioni.php" style="color: var(--dx-amber); font-weight: 750; text-decoration: none;">Recensioni & Testimonianze</a></li>
           <li><a href="parla-con-noi.php" style="color: #ffffff; font-weight: 700; text-decoration: none;">Parla con Noi (Ascolto)</a></li>

@@ -1,4 +1,4 @@
 <?php
 header("HTTP/1.1 301 Moved Permanently");
-header("Location: /recensioni.php");
+header("Location: /world-club-explorer.php");
 exit;

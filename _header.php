@@ -332,40 +332,52 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         </div>
 
         <nav class="drawer-nav-group">
-          <span class="drawer-section-title text-amber">I PILASTRI DELLA COMUNITÀ</span>
-          <a href="index.php" class="drawer-link <?=$curScript==='index.php'?'active':''?>"><?=dx_icon('home','',18)?> Home</a>
+          <span class="drawer-section-title text-amber">RETE & TERRITORIO</span>
+          <a href="/" class="drawer-link <?=$curScript==='index.php'?'active':''?>"><?=dx_icon('home','',18)?> Pagina Principale</a>
           <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'||$curScript==='club-public.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> <b>Trova un Club Territoriale</b></a>
-          <a href="mappa-club.php" class="drawer-link <?=$curScript==='mappa-club.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa 2D Italia (1.770 Club)</b></a>
-          <a href="recensioni.php" class="drawer-link <?=$curScript==='recensioni.php'?'active':''?>"><?=dx_icon('star','text-neon-gold',18)?> <b>Recensioni dei Club</b></a>
+          <a href="mappa-club.php" class="drawer-link <?=$curScript==='mappa-club.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa 2D Italia (1.768 Club)</b></a>
+          <a href="piramide-rovesciata.php" class="drawer-link highlight-gold <?=$curScript==='piramide-rovesciata.php'||$curScript==='organigramma.php'?'active':''?>"><?=dx_icon('layers','text-neon-gold',18)?> <b>Piramide Rovesciata (Organigramma)</b></a>
+          <a href="domande-frequenti.php" class="drawer-link <?=$curScript==='domande-frequenti.php'?'active':''?>"><?=dx_icon('help-circle','',18)?> Domande che vuoi fare</a>
+          <a href="recensioni.php" class="drawer-link <?=$curScript==='recensioni.php'?'active':''?>"><?=dx_icon('star','text-neon-gold',18)?> Recensioni & Testimonianze</a>
           <a href="parla-con-noi.php" class="drawer-link highlight-gold <?=$curScript==='parla-con-noi.php'?'active':''?>"><?=dx_icon('message-circle','text-neon-gold',18)?> <b>Parla con Noi (Ascolto)</b></a>
-          <a href="storie.php" class="drawer-link <?=$curScript==='storie.php'?'active':''?>"><?=dx_icon('users','',18)?> Storie di Comunità</a>
           <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Vivi la Comunità (Eventi)</a>
-          <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>"><?=dx_icon('compass','',18)?> Mappa Mondiale Club</a>
+          <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>"><?=dx_icon('compass','',18)?> Mappa Mondiale 2D/3D</a>
         </nav>
 
         <nav class="drawer-nav-group">
-          <span class="drawer-section-title">CRESCITA PERSONALE & STRUMENTI</span>
+          <span class="drawer-section-title text-green">METODO & COMUNITÀ</span>
           <a href="playground.php" class="drawer-link <?=$curScript==='playground.php'?'active':''?>"><?=dx_icon('sparkles','text-neon-cyan',18)?> <b>Life Playground 6.0</b></a>
-          <a href="clips.php" class="drawer-link <?=$curScript==='clips.php'?'active':''?>"><?=dx_icon('play','text-neon-gold',18)?> <b>Clip Motivazionali 9:16</b></a>
           <a href="orientamento.php" class="drawer-link <?=$curScript==='orientamento.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa del Benessere 4.0</b></a>
-          <a href="dashboard.php" class="drawer-link <?=$curScript==='dashboard.php'?'active':''?>"><?=dx_icon('activity','text-neon-cyan',18)?> <b>Dashboard & Contatore Sobrietà</b></a>
+          <a href="dashboard.php" class="drawer-link <?=$curScript==='dashboard.php'?'active':''?>"><?=dx_icon('activity','text-neon-green',18)?> <b>Dashboard & Sobrietà</b></a>
           <a href="ruota-della-vita.php" class="drawer-link <?=$curScript==='ruota-della-vita.php'?'active':''?>"><?=dx_icon('compass','text-neon-gold',18)?> Ruota della Vita 2D/3D</a>
-          <a href="piramide-maslow.php" class="drawer-link <?=$curScript==='piramide-maslow.php'?'active':''?>"><?=dx_icon('layers','text-neon-purple',18)?> Piramide Maslow 2D/3D</a>
+          <a href="piramide-maslow.php" class="drawer-link <?=$curScript==='piramide-maslow.php'?'active':''?>"><?=dx_icon('layers','text-neon-purple',18)?> Piramide di Maslow 2D/3D</a>
           <a href="metodo.php" class="drawer-link <?=$curScript==='metodo.php'?'active':''?>"><?=dx_icon('feather','',18)?> Il Metodo Hudolin (3 Livelli)</a>
-          <a href="academy-public.php" class="drawer-link <?=$curScript==='academy-public.php'?'active':''?>"><?=dx_icon('academic','',18)?> Sovereign Academy</a>
-          <a href="guida-gratuita.php" class="drawer-link <?=$curScript==='guida-gratuita.php'?'active':''?>"><?=dx_icon('sparkles','',18)?> Guida Gratuita Famiglia</a>
-          <a href="evento-ottobre-taglio-di-po.php" class="drawer-link <?=$curScript==='evento-ottobre-taglio-di-po.php'||$curScript==='event-detail.php'?'active':''?>"><?=dx_icon('award','',18)?> Corso Esperienziale Taglio di Po</a>
-          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Libri & Collana KDP</a>
-          <a href="viaggi-esperienziali.php" class="drawer-link <?=$curScript==='viaggi-esperienziali.php'||$curScript==='crociera-benessere-masterclass.php'?'active':''?>"><?=dx_icon('compass','',18)?> Viaggi Esperienziali (BEWAY.LIFE)</a>
-          <a href="cortex.php" class="drawer-link <?=$curScript==='cortex.php'?'active':''?>"><?=dx_icon('cpu','',18)?> Cortex AI & Ascolto</a>
+          <a href="storie.php" class="drawer-link <?=$curScript==='storie.php'?'active':''?>"><?=dx_icon('users','',18)?> Storie di Comunità</a>
         </nav>
 
         <nav class="drawer-nav-group">
-          <span class="drawer-section-title">SUPPORTO & RASSICURAZIONE</span>
-          <a href="domande-frequenti.php" class="drawer-link <?=$curScript==='domande-frequenti.php'?'active':''?>"><?=dx_icon('help-circle','text-neon-gold',18)?> <b>Domande che vuoi fare</b></a>
-          <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>"><?=dx_icon('shield','',18)?> Aiuto Immediato & Emergenze</a>
-          <a href="privacy.php" class="drawer-link <?=$curScript==='privacy.php'?'active':''?>"><?=dx_icon('lock','',18)?> Riservatezza & Anonimato</a>
-          <a href="terms.php" class="drawer-link <?=$curScript==='terms.php'?'active':''?>"><?=dx_icon('file-text','',18)?> Termini e Trasparenza</a>
+          <span class="drawer-section-title text-cyan">SOVEREIGN ACADEMY</span>
+          <a href="guida-gratuita.php" class="drawer-link <?=$curScript==='guida-gratuita.php'?'active':''?>"><?=dx_icon('sparkles','text-neon-gold',18)?> <b>Guida Gratuita Famiglia</b></a>
+          <a href="evento-ottobre-taglio-di-po.php" class="drawer-link <?=$curScript==='evento-ottobre-taglio-di-po.php'||$curScript==='event-detail.php'?'active':''?>"><?=dx_icon('award','',18)?> Corso Esperienziale Taglio di Po</a>
+          <a href="academy-public.php" class="drawer-link <?=$curScript==='academy-public.php'?'active':''?>"><?=dx_icon('academic','',18)?> Formazione & Sensibilizzazione</a>
+        </nav>
+
+        <nav class="drawer-nav-group">
+          <span class="drawer-section-title text-amber">RISORSE & APPROFONDIMENTI</span>
+          <a href="clips.php" class="drawer-link <?=$curScript==='clips.php'?'active':''?>"><?=dx_icon('play','text-neon-gold',18)?> Clip Motivazionali 9:16</a>
+          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Collana Libri KDP</a>
+          <a href="viaggi-esperienziali.php" class="drawer-link <?=$curScript==='viaggi-esperienziali.php'||$curScript==='crociera-benessere-masterclass.php'?'active':''?>"><?=dx_icon('compass','',18)?> Viaggi Esperienziali (BEWAY.LIFE)</a>
+          <a href="https://oltre.social" target="_blank" rel="noopener" class="drawer-link"><?=dx_icon('external-link','',18)?> OLTRE.SOCIAL ↗</a>
+        </nav>
+
+        <nav class="drawer-nav-group">
+          <span class="drawer-section-title text-violet">GOVERNANCE & PRIVACY</span>
+          <a href="privacy.php" class="drawer-link <?=$curScript==='privacy.php'?'active':''?>"><?=dx_icon('lock','',18)?> Privacy Policy (GDPR)</a>
+          <a href="privacy-center.php" class="drawer-link <?=$curScript==='privacy-center.php'?'active':''?>"><?=dx_icon('shield','',18)?> Gestione Consensi & Cookie</a>
+          <a href="javascript:void(0)" onclick="if(window.DxLocalReminders)window.DxLocalReminders.renderModal();" class="drawer-link"><?=dx_icon('bell','text-neon-cyan',18)?> Promemoria Privati (PWA)</a>
+          <a href="terms.php" class="drawer-link <?=$curScript==='terms.php'?'active':''?>"><?=dx_icon('file-text','',18)?> Termini & Trasparenza ACAT</a>
+          <a href="telemetria.php" class="drawer-link <?=$curScript==='telemetria.php'?'active':''?>"><?=dx_icon('activity','text-neon-cyan',18)?> Console Telemetria & Watchdog</a>
+          <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>"><?=dx_icon('shield','text-danger',18)?> Aiuto & Emergenze (112)</a>
         </nav>
       <?php endif;?>
     </div>

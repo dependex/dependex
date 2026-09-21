@@ -16,6 +16,9 @@
 - [OpenData GeoJSON RFC 7946](api-opendata-geojson.php): Endpoint GeoJSON standard per interoperabilità con Ser.D, ASL, distretti sanitari, comuni e sistemi GIS.
 - [Feed Territoriale Atom 1.0 / GeoRSS](api-feed-territorio.php): Feed XML conforme a RFC 4287 per aggiornamenti georeferenziati continui dei presidi.
 - [Widget Embed Iframe Trova-Club](widget-club.php): Componente leggero gratuito incorporabile da Comuni, ASL, Ser.D e parrocchie per la ricerca locale dei presidi.
+- [Generatore Widget Istituzionale](widget-generator.php): Configuratore visuale di widget Trova-Club per Comuni e ASL con selezione tema, raggio km, preview live e codice copia-incolla immediato.
+- [Orientamento Maieutico & 7 Energie del Benessere](orientamento.php): Portale trauma-informed basato su 7 dimensioni di equilibrio e Small Steps Engine (massimo 3 opzioni, zero overwhelm, nessuna diagnosi).
+- [Omni-Welfare Gamification Engine 6.0](playground.php): Life Playground con Bussola a 9 Raggi (The Dependex Compass), micro-missioni guidate (30s, 60s, 2m, 5m, 10m, 81gg) e principio 'Screen Off -> Life On'.
 - [Console CRM & Outreach Club Italia](crm-clubs.php): Database anagrafico 395 Club con recapiti completi, ereditarieta di contatto istituzionale e nurturing FLUX100 / EMM+.
 - [Le Domande che Forse Ti Vergogni a Fare](domande-frequenti.php): Risposte empatiche, dirette e senza giudizio ai dubbi più intimi (familiari, ricadute, riservatezza, gratuità, etichette).
 - [Recensioni & Testimonianze Verificate](recensioni.php): Riprova sociale ed esperienze autentiche di membri, famiglie e servitori-insegnanti dei Club d'Italia.

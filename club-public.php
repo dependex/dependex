@@ -3,7 +3,82 @@ require_once __DIR__ . '/bootstrap.php';
 
 $u = current_user();
 $brand = site_brand();
-$sic = trim((string)($_GET['sic'] ?? $_GET['id'] ?? $_GET['club'] ?? ''));
+$sic = trim((string)($_GET['sic'] ?? $_GET['id'] ?? $_GET['club'] ?? ($_POST['sic_id'] ?? '')));
+
+$updateMessage = null;
+$updateError = null;
+
+// Gestione Aggiornamento Self-Service Referente / Servitore-Insegnante
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'self_service_update') {
+    csrf_check();
+    $day = trim((string)($_POST['meeting_day'] ?? ''));
+    $time = trim((string)($_POST['meeting_time'] ?? ''));
+    $phone = trim((string)($_POST['phone'] ?? ''));
+    $email = trim((string)($_POST['email'] ?? ''));
+    $address = trim((string)($_POST['address'] ?? ''));
+    $servitore = trim((string)($_POST['servitore_insegnante'] ?? ''));
+    $notes = trim((string)($_POST['notes'] ?? ''));
+
+    if ($sic !== '') {
+        $db = db();
+        try {
+            // Aggiorna crm_club_contacts
+            $stmtCrm = $db->prepare("
+                UPDATE crm_club_contacts 
+                SET meeting_day = COALESCE(NULLIF(?, ''), meeting_day),
+                    meeting_time = COALESCE(NULLIF(?, ''), meeting_time),
+                    primary_phone = COALESCE(NULLIF(?, ''), primary_phone),
+                    primary_email = COALESCE(NULLIF(?, ''), primary_email),
+                    address = COALESCE(NULLIF(?, ''), address),
+                    servitore_insegnante = COALESCE(NULLIF(?, ''), servitore_insegnante),
+                    notes = COALESCE(NULLIF(?, ''), notes),
+                    outreach_status = 'VERIFIED',
+                    updated_at = CURRENT_TIMESTAMP
+                WHERE sic_id = ?
+            ");
+            $stmtCrm->execute([$day, $time, $phone, $email, $address, $servitore, $notes, $sic]);
+
+            // Aggiorna cat_clubs_italy
+            $stmtCat = $db->prepare("
+                UPDATE cat_clubs_italy 
+                SET meeting_day = COALESCE(NULLIF(?, ''), meeting_day),
+                    meeting_time = COALESCE(NULLIF(?, ''), meeting_time),
+                    phone = COALESCE(NULLIF(?, ''), phone),
+                    email = COALESCE(NULLIF(?, ''), email),
+                    address = COALESCE(NULLIF(?, ''), address),
+                    servitore_insegnante = COALESCE(NULLIF(?, ''), servitore_insegnante),
+                    notes = COALESCE(NULLIF(?, ''), notes),
+                    status = 'ACTIVE',
+                    updated_at = CURRENT_TIMESTAMP
+                WHERE sic_id = ?
+            ");
+            $stmtCat->execute([$day, $time, $phone, $email, $address, $servitore, $notes, $sic]);
+
+            // Aggiorna dependex_world_registry se presente
+            $meetingStr = trim("$day $time");
+            if ($meetingStr !== '') {
+                $db->prepare("
+                    UPDATE dependex_world_registry 
+                    SET meeting = ?,
+                        phone = COALESCE(NULLIF(?, ''), phone),
+                        email = COALESCE(NULLIF(?, ''), email),
+                        address = COALESCE(NULLIF(?, ''), address)
+                    WHERE sic_id = ?
+                ")->execute([$meetingStr, $phone, $email, $address, $sic]);
+            }
+
+            audit($u ? $u['sic_id'] : 'PUBLIC_SERVITORE', 'UPDATE_CLUB_VERIFICATION', $sic, [
+                'meeting_day' => $day,
+                'meeting_time' => $time,
+                'servitore' => $servitore
+            ]);
+
+            $updateMessage = "Scheda del Club verificata e aggiornata con successo! Le nuove informazioni sono subito visibili alle famiglie e sulla Mappa 2D.";
+        } catch (Throwable $e) {
+            $updateError = "Errore durante l'aggiornamento: " . $e->getMessage();
+        }
+    }
+}
 
 // Ricerca per sic_id o ID numerico nel registro mondiale
 $st = db()->prepare("SELECT * FROM dependex_world_registry WHERE sic_id = ? OR id = ? LIMIT 1");
@@ -31,6 +106,10 @@ if (!$c && $sic !== '') {
             'email' => $raw['primary_email'],
             'website' => $raw['website'],
             'meeting' => trim(($raw['meeting_day'] ?? '') . ' ' . ($raw['meeting_time'] ?? '')),
+            'meeting_day' => $raw['meeting_day'] ?? '',
+            'meeting_time' => $raw['meeting_time'] ?? '',
+            'servitore_insegnante' => $raw['servitore_insegnante'] ?? '',
+            'notes' => $raw['notes'] ?? '',
             'families_count' => $raw['families_count'] ?? 12,
             'parent_sic_id' => '',
             'latitude' => 45.0,
@@ -192,11 +271,25 @@ require __DIR__ . '/_header.php';
     <span style="color:#e2e8f0;"><?=h($c['entity_name'])?></span>
   </nav>
 
+  <?php if ($updateMessage): ?>
+    <div class="p-3 mb-4 d-flex align-items-center gap-3" style="background:rgba(34,197,94,0.15); border:1px solid #22c55e; border-radius:12px; color:#ffffff;">
+      <?=dx_icon('check-circle', 'text-success', 22)?>
+      <div style="font-size:0.95rem; font-weight:600;"><?=h($updateMessage)?></div>
+    </div>
+  <?php endif; ?>
+
+  <?php if ($updateError): ?>
+    <div class="p-3 mb-4 d-flex align-items-center gap-3" style="background:rgba(239,68,68,0.15); border:1px solid #ef4444; border-radius:12px; color:#ffffff;">
+      <?=dx_icon('alert-circle', 'text-danger', 22)?>
+      <div style="font-size:0.95rem; font-weight:600;"><?=h($updateError)?></div>
+    </div>
+  <?php endif; ?>
+
   <!-- HERO CARD DEL CLUB -->
   <section class="card p-4 p-md-5 mb-4" style="background:radial-gradient(ellipse at top, rgba(28,36,58,0.95), rgba(12,16,26,0.98));border:1px solid rgba(212,175,55,0.4);border-radius:20px;box-shadow:0 12px 40px rgba(0,0,0,0.6);">
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:16px;">
       <div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
           <span class="badge" style="background:rgba(212,175,55,0.18);color:#ffd700;border:1px solid #ffd700;font-size:0.8rem;padding:4px 10px;border-radius:6px;font-weight:700;">
             <?=h($c['network_level'])?>
           </span>
@@ -243,6 +336,11 @@ require __DIR__ . '/_header.php';
           <?=dx_icon('phone', 'text-emerald', 18)?> Chiama: <?=h($c['phone'])?>
         </a>
       <?php endif; ?>
+
+      <!-- PULSANTE AGGIORNAMENTO SELF-SERVICE PER SERVITORE-INSEGNANTE -->
+      <a href="#aggiorna-scheda" onclick="toggleServitoreBox(true)" class="btn-community-outline" style="padding:10px 18px;font-size:0.95rem;border-color:rgba(253,230,138,0.4);color:#fde68a;">
+        <?=dx_icon('edit', 'text-neon-gold', 16)?> Sei il Servitore? Aggiorna Scheda
+      </a>
 
       <?php if (!empty($c['latitude']) && !empty($c['longitude'])): ?>
         <a href="https://www.google.com/maps/dir/?api=1&destination=<?=urlencode($c['latitude'] . ',' . $c['longitude'])?>" target="_blank" rel="noopener" class="btn-community-outline" style="padding:10px 18px;font-size:0.95rem;">
@@ -320,6 +418,101 @@ require __DIR__ . '/_header.php';
       </div>
     </div>
   </div>
+
+  <!-- ======================================================== -->
+  <!-- MODULO SELF-SERVICE: VERIFICA & AGGIORNAMENTO SCHEDA      -->
+  <!-- ======================================================== -->
+  <section class="card p-4 p-md-5 mb-4" id="aggiorna-scheda" style="background: radial-gradient(ellipse at top, rgba(20,26,45,0.95), rgba(10,13,22,0.98)); border: 1px solid rgba(224, 169, 109, 0.4); border-radius: 20px; box-shadow: var(--rainbow-glow);">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
+      <div>
+        <div class="badge-neon-rainbow mb-2" style="font-size: 0.72rem;">
+          <span class="dot"></span>
+          <span style="color:#fde68a;">CENSIMENTO APERTO 2026 · RETE HUDOLIN</span>
+        </div>
+        <h3 style="font-family: var(--font-serif); font-size: clamp(1.3rem, 2.5vw, 1.8rem); color: #ffffff; font-weight: 800; margin: 0 0 6px;">
+          Sei il Servitore-Insegnante di questo Club?
+        </h3>
+        <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.5; margin: 0;">
+          Aiutaci a garantire informazioni puntuali alle famiglie in cerca di accoglienza. Conferma o aggiorna giorno, orario e recapiti di riunione.
+        </p>
+      </div>
+      <button type="button" class="btn small" onclick="toggleServitoreBox()" style="border: 1px solid rgba(253,230,138,0.4); color: #fde68a; border-radius: 10px; font-size: 0.82rem;">
+        <?=dx_icon('edit', 'text-neon-gold', 14)?> Mostra / Nascondi Modulo
+      </button>
+    </div>
+
+    <div id="servitoreFormBox" style="display: <?=$updateMessage ? 'none' : 'block'?>; margin-top: 1.5rem; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px;">
+      <form method="post" action="#aggiorna-scheda">
+        <input type="hidden" name="<?=CSRF_KEY?>" value="<?=h(csrf_token())?>">
+        <input type="hidden" name="action" value="self_service_update">
+        <input type="hidden" name="sic_id" value="<?=h($c['sic_id'])?>">
+
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label style="font-size: 0.8rem; color: #cbd5e1; font-weight: 600; display: block; margin-bottom: 4px;">Giorno della Riunione Settimanale</label>
+            <select name="meeting_day" class="form-select form-select-sm" style="background: #141a2d; color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;">
+              <?php
+              $allDays = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato', 'Domenica', 'Da concordare'];
+              $currentDay = $c['meeting_day'] ?? '';
+              ?>
+              <option value="">-- Seleziona Giorno --</option>
+              <?php foreach ($allDays as $d): ?>
+                <option value="<?=h($d)?>" <?=stripos((string)$currentDay, $d)!==false ? 'selected' : ''?>><?=h($d)?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <label style="font-size: 0.8rem; color: #cbd5e1; font-weight: 600; display: block; margin-bottom: 4px;">Orario di Incontro (es. 20:30)</label>
+            <input type="text" name="meeting_time" value="<?=h($c['meeting_time'] ?? '20:30')?>" class="form-control form-control-sm" style="background: #141a2d; color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;" placeholder="es. 20:30">
+          </div>
+
+          <div class="col-md-12">
+            <label style="font-size: 0.8rem; color: #cbd5e1; font-weight: 600; display: block; margin-bottom: 4px;">Indirizzo Esatto / Sede di Riunione</label>
+            <input type="text" name="address" value="<?=h($c['address'] ?? '')?>" class="form-control form-control-sm" style="background: #141a2d; color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;" placeholder="Via, Piazza, Numero civico, Parrocchia o Centro civico">
+          </div>
+
+          <div class="col-md-6">
+            <label style="font-size: 0.8rem; color: #cbd5e1; font-weight: 600; display: block; margin-bottom: 4px;">Telefono di Riferimento per le Famiglie</label>
+            <input type="tel" name="phone" value="<?=h($c['phone'] ?? '')?>" class="form-control form-control-sm" style="background: #141a2d; color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;" placeholder="es. 340 1234567">
+          </div>
+
+          <div class="col-md-6">
+            <label style="font-size: 0.8rem; color: #cbd5e1; font-weight: 600; display: block; margin-bottom: 4px;">Email di Contatto Club / Referente</label>
+            <input type="email" name="email" value="<?=h($c['email'] ?? '')?>" class="form-control form-control-sm" style="background: #141a2d; color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;" placeholder="es. club@dominio.it">
+          </div>
+
+          <div class="col-md-6">
+            <label style="font-size: 0.8rem; color: #cbd5e1; font-weight: 600; display: block; margin-bottom: 4px;">Nome Servitore-Insegnante / Referente (Opzionale)</label>
+            <input type="text" name="servitore_insegnante" value="<?=h($c['servitore_insegnante'] ?? '')?>" class="form-control form-control-sm" style="background: #141a2d; color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;" placeholder="Nome e Cognome o solo Nome">
+          </div>
+
+          <div class="col-md-6">
+            <label style="font-size: 0.8rem; color: #cbd5e1; font-weight: 600; display: block; margin-bottom: 4px;">Indicazioni Utili per Nuovi Partecipanti (Opzionale)</label>
+            <input type="text" name="notes" value="<?=h($c['notes'] ?? '')?>" class="form-control form-control-sm" style="background: #141a2d; color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;" placeholder="es. Ingresso laterale, citofonare Sala Club">
+          </div>
+        </div>
+
+        <div class="mt-4 text-end">
+          <button type="submit" class="btn-rainbow-neon small" style="padding: 10px 24px; font-size: 0.9rem; font-weight: 700;">
+            <?=dx_icon('check-circle', '', 16)?> Salva e Convalida Scheda Club
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script>
+  function toggleServitoreBox(forceOpen = false) {
+    const box = document.getElementById('servitoreFormBox');
+    if (!box) return;
+    if (forceOpen) {
+      box.style.display = 'block';
+    } else {
+      box.style.display = (box.style.display === 'none') ? 'block' : 'none';
+    }
+  }
+  </script>
 
   <!-- GERARCHIA TERRITORIALE E COLLEGAMENTI -->
   <?php if ($parentEntity): ?>

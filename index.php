@@ -2,7 +2,7 @@
 require_once __DIR__ . '/bootstrap.php';
 
 $pageTitle = 'Hai Bisogno di Parlarne? · Trova la tua Comunità nei Club Territoriali';
-$metaDesc = 'Non devi sapere già tutto. Puoi semplicemente iniziare. Oltre 540 Club Alcologici Territoriali gratuiti e aperti alle famiglie. Metodo Hudolin, zero giudizio.';
+$metaDesc = 'Non devi sapere già tutto. Puoi semplicemente iniziare. Oltre 1.770 Club Alcologici Territoriali gratuiti e aperti alle famiglie. Metodo Hudolin, zero giudizio.';
 $canonicalUrl = 'https://' . ($brand['domain'] ?? 'dependex.social') . '/';
 
 $pageSchemaJson = [
@@ -69,7 +69,7 @@ try {
            class="btn-rainbow-glow d-inline-flex align-items-center justify-content-center text-decoration-none"
            style="background: linear-gradient(135deg, #00f0ff, #0077ff); color: #070a12; font-weight: 850; font-size: 0.96rem; padding: 14px 22px; border-radius: 14px; box-shadow: 0 4px 20px rgba(0, 240, 255, 0.35); min-height: 48px; gap: 8px;">
           <?=dx_icon('map-pin', '', 18)?>
-          <span>Trova il Tuo Club (322+ in Italia)</span>
+          <span>Trova il Tuo Club (1.770+ in Italia)</span>
         </a>
         <a href="playground.php" 
            class="d-inline-flex align-items-center justify-content-center text-decoration-none"
@@ -282,7 +282,7 @@ try {
          style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; transition: transform 0.2s ease;">
         <div style="margin-bottom: 6px;"><?=dx_icon('globe', 'text-neon-violet', 24)?></div>
         <div style="font-weight: 700; font-size: 0.92rem; color: #fff;">Dalla rete</div>
-        <div style="font-size: 0.76rem; color: #94a3b8;">540+ nodi mondiali</div>
+        <div style="font-size: 0.76rem; color: #94a3b8;">2.070+ nodi mondiali</div>
       </a>
     </div>
   </div>
@@ -826,6 +826,93 @@ try {
           <?=dx_icon('message-circle', '', 16)?>
           <span style="margin-left: 6px;">Contatta la Segreteria di Accoglienza</span>
         </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 8.1 BENCHMARK ISTITUZIONALE & SCIENTIFICO: MINISTERO SALUTE & ISS -->
+<!-- ============================================================== -->
+<section class="rainbow-border my-5 p-4 p-md-5" style="background: linear-gradient(180deg, rgba(9, 13, 26, 0.96) 0%, rgba(14, 20, 36, 0.94) 100%); backdrop-filter: blur(20px);">
+  <div class="row align-items-center g-4">
+    <div class="col-lg-8">
+      <div class="badge-neon-rainbow mb-2">
+        <span class="dot"></span>
+        <span style="color: #fde68a;">BENCHMARK ISTITUZIONALE & SANITÀ PUBBLICA</span>
+      </div>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.6rem, 3.2vw, 2.3rem); color: #ffffff; font-weight: 800; margin: 6px 0 12px;">
+        Allineati agli Standard del <span class="text-rainbow">Ministero della Salute</span> e dell'ISS
+      </h2>
+      <p style="color: #cbd5e1; font-size: 1.02rem; line-height: 1.65; margin-bottom: 18px;">
+        La rete dei <strong>Club Alcologici Territoriali</strong> (Metodo Hudolin) è pienamente integrata e riconosciuta dalle istituzioni sanitarie della Repubblica Italiana quale presidio fondamentale di sussidiarietà orizzontale (Art. 118 Cost.) e supporto continuativo multifamiliare.
+      </p>
+
+      <div class="row g-3">
+        <div class="col-sm-6">
+          <div class="p-3 h-100 rounded-3" style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--neon-cyan);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <?=dx_icon('shield-check', 'text-neon-cyan', 16)?>
+              <strong style="color: var(--neon-cyan); font-size: 0.92rem;">Legge 30 marzo 2001, n. 125</strong>
+            </div>
+            <p style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5; margin: 0;">
+              Legge quadro nazionale che valorizza le associazioni di auto-mutuo aiuto e i Club Territoriali nella prevenzione, cura e reinserimento sociale.
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="p-3 h-100 rounded-3" style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--neon-green);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <?=dx_icon('activity', 'text-neon-green', 16)?>
+              <strong style="color: var(--neon-green); font-size: 0.92rem;">Relazione Annuale al Parlamento</strong>
+            </div>
+            <p style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5; margin: 0;">
+              Il Ministero della Salute documenta annualmente l'efficacia della sinergia operativa tra i Servizi Pubblici (Ser.D / ASL) e i gruppi territoriali.
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="p-3 h-100 rounded-3" style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--neon-gold);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <?=dx_icon('compass', 'text-neon-gold', 16)?>
+              <strong style="color: var(--neon-gold); font-size: 0.92rem;">Piano Nazionale Prevenzione (PNP)</strong>
+            </div>
+            <p style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5; margin: 0;">
+              Standard nazionali per la promozione di stili di vita sani, abbattimento dello stigma e potenziamento delle reti di prossimità comunitaria.
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="p-3 h-100 rounded-3" style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--neon-purple);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <?=dx_icon('users', 'text-neon-purple', 16)?>
+              <strong style="color: var(--neon-purple); font-size: 0.92rem;">Osservatorio Nazionale Alcol (ISS)</strong>
+            </div>
+            <p style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5; margin: 0;">
+              Monitoraggio scientifico costante condotto dall'Istituto Superiore di Sanità sui fattori protettivi e sui percorsi di benessere relazionale.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 text-center">
+      <div class="p-4 rounded-4" style="background: rgba(14, 19, 32, 0.92); border: 1.5px solid rgba(212, 175, 55, 0.4); box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);">
+        <div style="color: var(--neon-gold); margin-bottom: 10px;"><?=dx_icon('award', 'text-neon-gold', 42)?></div>
+        <h3 style="color: #ffffff; font-size: 1.25rem; font-weight: 850; margin-bottom: 8px;">1.770 Presidi Certificati</h3>
+        <p style="color: #cbd5e1; font-size: 0.88rem; line-height: 1.55; margin-bottom: 16px;">
+          L'intero territorio italiano coperto da Club attivi: accesso 100% gratuito, zero profilazione sanitaria, nessun dato sensibile richiesto.
+        </p>
+        <div class="d-flex flex-column gap-2">
+          <a href="metodo.php#scienza" class="btn-rainbow-neon small w-100 justify-content-center">
+            <?=dx_icon('book-open', '', 15)?>
+            <span style="margin-left: 6px;">Approfondisci il Metodo e le Fonti</span>
+          </a>
+          <a href="mappa-club.php" class="btn-rainbow-outline small w-100 justify-content-center" style="border-color: var(--neon-cyan); color: #fff;">
+            <?=dx_icon('map-pin', 'text-neon-cyan', 15)?>
+            <span style="margin-left: 6px;">Cerca tra i 1.770 Presidi</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>

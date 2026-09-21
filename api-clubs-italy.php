@@ -86,7 +86,7 @@ try {
     $userLat = isset($_GET['lat']) && is_numeric($_GET['lat']) ? (float)$_GET['lat'] : null;
     $userLon = isset($_GET['lon']) && is_numeric($_GET['lon']) ? (float)$_GET['lon'] : null;
     $radiusKm = isset($_GET['radius']) && is_numeric($_GET['radius']) ? (float)$_GET['radius'] : 100.0;
-    $limit = isset($_GET['limit']) && is_numeric($_GET['limit']) ? min((int)$_GET['limit'], 1000) : 500;
+    $limit = isset($_GET['limit']) && is_numeric($_GET['limit']) ? min((int)$_GET['limit'], 5000) : 2500;
 
     $where = [];
     $params = [];

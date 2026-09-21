@@ -124,11 +124,13 @@ def record_in_queue(to_email: str, subject: str, html_body: str, error: str, sic
 def main():
     parser = argparse.ArgumentParser(description="Dispatcher Email Marketing CRM Club Italia (FLUX100 / EMM+)")
     parser.add_argument("--send-test", action="store_true", help="Invia email di test")
+    parser.add_argument("--dispatch-batch", action="store_true", help="Esegue invio scaglionato batch per censimento")
     parser.add_argument("--recipient", type=str, default="labomobile.lm@gmail.com", help="Destinatario test")
     parser.add_argument("--step", type=int, default=1, help="Numero di step della sequenza (1-5)")
     parser.add_argument("--sic", type=str, default="SIC-TAGLIODIPO-RO-001", help="SIC-ID del club campione")
     parser.add_argument("--dry-run", action="store_true", help="Simula l'invio senza trasmettere dati")
-    parser.add_argument("--daily-cap", type=int, default=30, help="Limite giornaliero invii")
+    parser.add_argument("--daily-cap", type=int, default=25, help="Limite giornaliero invii")
+    parser.add_argument("--throttle-seconds", type=float, default=3.0, help="Secondi di pausa tra invii consecutivi")
     args = parser.parse_args()
 
     conn = sqlite3.connect(str(DB_PATH))
@@ -149,7 +151,7 @@ def main():
         print(f"-> Oggetto: {test_subject}")
 
         if args.dry_run:
-            print("[DRY-RUN] Invio simulato con successo.")
+            print("[DRY-RUN] Invio test simulato con successo.")
             return
 
         res = send_smtp_email(args.recipient, test_subject, html, club_dict['unsubscribe_token'])
@@ -159,7 +161,74 @@ def main():
             print(f"[INFO] Invio accodato nel sistema locale (Stato: {res['status']}) - Dettaglio: {res['error']}")
         return
 
-    print("Modalita massiva: specificare parametri di campagna o eseguire con --send-test per verifica singola.")
+    if args.dispatch_batch:
+        step_target_status = f"CONTACTED_STEP_{args.step}"
+        query = """
+            SELECT * FROM crm_club_contacts
+            WHERE primary_email IS NOT NULL AND primary_email != ''
+              AND (outreach_status IS NULL OR outreach_status = 'UNCONTACTED')
+              AND unsubscribed_at IS NULL
+            ORDER BY region ASC, city ASC, id ASC
+            LIMIT ?
+        """
+        clubs = cur.execute(query, (args.daily_cap,)).fetchall()
+        total_found = len(clubs)
+        print(f"=== BATCH DISPATCH FLUX100 / EMM+ (Step {args.step}) ===")
+        print(f"Trovati {total_found} club idonei per il batch odierno (Cap: {args.daily_cap})")
+
+        if total_found == 0:
+            print("Nessun club in attesa di primo contatto. Tutti i presidi attivi risultano già contattati.")
+            return
+
+        sent_count = 0
+        queued_count = 0
+        error_count = 0
+
+        for i, club_row in enumerate(clubs, 1):
+            club = dict(club_row)
+            dest_email = club["primary_email"].strip()
+            sic_id = club["sic_id"]
+            entity = club["entity_name"]
+            city = club["city"]
+
+            subject, html = load_and_render_template(args.step, club)
+            print(f"[{i}/{total_found}] Invio a: {entity} ({city}) <{dest_email}>...")
+
+            if args.dry_run:
+                print(f"       [DRY-RUN] Simulato invio a {dest_email}")
+                sent_count += 1
+                continue
+
+            res = send_smtp_email(dest_email, subject, html, club.get("unsubscribe_token", ""))
+
+            if res["status"] == "SUCCESS":
+                sent_count += 1
+                cur.execute("""
+                    UPDATE crm_club_contacts
+                    SET outreach_status = ?, outreach_step = ?, last_contact_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP
+                    WHERE sic_id = ?
+                """, (step_target_status, args.step, sic_id))
+                conn.commit()
+                print(f"       [OK] Trasmessa con successo (SMTP Hostinger)")
+            elif res["status"] == "QUEUED_LOCAL":
+                queued_count += 1
+                print(f"       [QUEUED] Accodata in locale ({res['error']})")
+            else:
+                error_count += 1
+                print(f"       [ERRORE] {res['error']}")
+
+            # Throttle anti-ban / deliverability safe
+            if i < total_found and args.throttle_seconds > 0:
+                time.sleep(args.throttle_seconds)
+
+        print(f"\n=== REPORT BATCH COMPLETATO ===")
+        print(f"Trasmessi con successo: {sent_count}")
+        print(f"Accodati localmente:    {queued_count}")
+        print(f"Errori:                 {error_count}")
+        conn.close()
+        return
+
+    print("Specificare --send-test per test singolo o --dispatch-batch per esecuzione batch controllata.")
 
 if __name__ == "__main__":
     main()

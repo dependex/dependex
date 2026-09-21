@@ -459,9 +459,9 @@ class HumanWelfareEngine {
      */
     public static function getCommunityCapitalOverview(): array {
         return [
-            'clubs_count' => '322+',
-            'weekly_circles' => '540+',
-            'annual_circle_hours' => '48.000+',
+            'clubs_count' => '1.770+',
+            'weekly_circles' => '1.770+',
+            'annual_circle_hours' => '92.000+',
             'verified_stories' => '15+',
             'free_access' => '100%',
             'territorial_coverage' => 'Tutte le 20 regioni d\'Italia'

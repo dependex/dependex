@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/bootstrap.php';
 require_once __DIR__ . '/modules/commerce/CommerceEnv.php';
+require_once __DIR__ . '/modules/commerce/UniversalCommerce.php';
 require_once __DIR__ . '/modules/commerce/FatturaElettronicaService.php';
 
 use Dependex\Commerce\UniversalCommerce;

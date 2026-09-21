@@ -120,7 +120,15 @@ def sync_target(target, file_list):
         except Exception:
             pass
 
-        if r_size is not None and r_size == l_size:
+        FORCE_ALWAYS = {
+            "index.php", "metodo.php", "_header.php", "_footer.php",
+            "api-clubs-italy.php", "api-opendata-geojson.php", "mappa-club.php", "crm-clubs.php",
+            "data/acat_community.sqlite", "data/CENSIMENTO_CLUB_CAT_ITALIA_2026.csv",
+            "data/CRM_CLUB_CONTATTI_MASTER_2026.csv", "data/DEPENDEX_World_Registry_Master.csv",
+            "sitemap-clubs.xml", "modules/welfare/HumanWelfareEngine.php"
+        }
+
+        if remote_normalized not in FORCE_ALWAYS and r_size is not None and r_size == l_size:
             skipped += 1
             continue
 

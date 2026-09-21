@@ -72,7 +72,7 @@ require '_header.php';
       La libertà nasce da <span class="gold-foil-text">legami autentici e dignità</span>.
     </h1>
     <p class="mx-auto" style="max-width: 720px; font-size: 1.15rem; line-height: 1.7; color: #d1d5db;">
-      Quante volte hai provato a "stringere i denti" per poi cedere alla prima giornata storta? La chimica della dipendenza batte sempre la solitudine. Da oltre 40 anni e in oltre 540 Club, il Metodo Hudolin dimostra che quando smetti di fare l'eroe solitario e ti siedi in un cerchio di pari senza giudizio, la sobrietà smette di essere una rinuncia faticosa e diventa la tua condizione naturale di benessere.
+      Quante volte hai provato a "stringere i denti" per poi cedere alla prima giornata storta? La chimica della dipendenza batte sempre la solitudine. Da oltre 40 anni e in oltre 1.770 Club, il Metodo Hudolin dimostra che quando smetti di fare l'eroe solitario e ti siedi in un cerchio di pari senza giudizio, la sobrietà smette di essere una rinuncia faticosa e diventa la tua condizione naturale di benessere.
     </p>
   </section>
 
@@ -101,6 +101,75 @@ require '_header.php';
       </div>
     </div>
   </div>
+
+  <!-- ============================================================== -->
+  <!-- BENCHMARK ISTITUZIONALE & SCIENTIFICO: MINISTERO DELLA SALUTE  -->
+  <!-- ============================================================== -->
+  <section class="rainbow-border p-4 p-md-5 mb-5" style="background: rgba(11, 15, 27, 0.94); backdrop-filter: blur(20px);">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-8">
+        <div class="gold-glow-badge mb-2">
+          <?=dx_icon('shield-check', 'text-neon-gold', 14)?>
+          <span>BENCHMARK ISTITUZIONALE & SANITÀ PUBBLICA</span>
+        </div>
+        <h2 style="font-family: var(--font-serif); font-size: clamp(1.6rem, 3.2vw, 2.4rem); color: #ffffff; font-weight: 800; margin: 8px 0 14px;">
+          Allineati al <span class="text-rainbow">Ministero della Salute</span> e all'Istituto Superiore di Sanità
+        </h2>
+        <p style="color: #cbd5e1; font-size: 1.02rem; line-height: 1.65; margin-bottom: 16px;">
+          Il Metodo Hudolin e i Club Alcologici Territoriali non sono un'iniziativa isolata o priva di riscontri: costituiscono una componente formalmente riconosciuta e valorizzata delle strategie di salute pubblica della Repubblica Italiana e dell'Organizzazione Mondiale della Sanità (OMS).
+        </p>
+
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="p-3 h-100 rounded-3" style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--neon-green);">
+              <strong style="color: var(--neon-green); font-size: 0.94rem; display: block; margin-bottom: 4px;">Legge 30 marzo 2001, n. 125</strong>
+              <small style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5; display: block;">
+                La legge quadro nazionale riconosce espressamente l'auto-mutuo aiuto e le associazioni dei Club (AICAT, ARCAT, APCAT, ACAT) quali presidi strategici di comunità, sussidiarietà orizzontale e sostegno familiare continuativo.
+              </small>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="p-3 h-100 rounded-3" style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--neon-cyan);">
+              <strong style="color: var(--neon-cyan); font-size: 0.94rem; display: block; margin-bottom: 4px;">Relazione Annuale al Parlamento</strong>
+              <small style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5; display: block;">
+                La Relazione Annuale del Ministro della Salute documenta i consumi problematici e raccomanda l'integrazione strutturata tra i Servizi Sanitari Pubblici per le Dipendenze (Ser.D / ASL) e i gruppi territoriali multifamiliari.
+              </small>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="p-3 h-100 rounded-3" style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--neon-gold);">
+              <strong style="color: var(--neon-gold); font-size: 0.94rem; display: block; margin-bottom: 4px;">Piano Nazionale Prevenzione (PNP)</strong>
+              <small style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5; display: block;">
+                Gli obiettivi di sanità pubblica del Ministero della Salute promuovono la creazione di ambienti protetti, il contrasto allo stigma sociale e il potenziamento dei fattori protettivi relazionali nelle comunità locali.
+              </small>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="p-3 h-100 rounded-3" style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--neon-purple);">
+              <strong style="color: var(--neon-purple); font-size: 0.94rem; display: block; margin-bottom: 4px;">Osservatorio Nazionale Alcol (ISS)</strong>
+              <small style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5; display: block;">
+                Monitoraggio scientifico costante dell'Istituto Superiore di Sanità sull'impatto positivo dell'approccio multifamiliare e sui percorsi di stabilizzazione della sobrietà e della qualità di vita.
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 text-center">
+        <div class="card p-4 rounded-4" style="background: rgba(10, 14, 25, 0.9); border: 1.5px solid rgba(0, 212, 255, 0.4); box-shadow: 0 0 25px rgba(0, 212, 255, 0.2);">
+          <div style="color: var(--neon-cyan); margin-bottom: 12px;"><?=dx_icon('activity', 'text-neon-cyan', 36)?></div>
+          <h3 style="color: #ffffff; font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">1.770 Presidi Nazionali</h3>
+          <p style="color: #cbd5e1; font-size: 0.88rem; line-height: 1.55; margin-bottom: 18px;">
+            La rete censita da DEPENDEX rappresenta l'infrastruttura di prossimità più estesa d'Italia per l'accoglienza e la rigenerazione relazionale, attiva in tutte le 20 Regioni.
+          </p>
+          <a href="mappa-club.php" class="btn-rainbow-neon small w-100 d-inline-flex align-items-center justify-content-center gap-2">
+            <?=dx_icon('map-pin', '', 16)?>
+            <span>Esplora la Mappa Territoriale</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- The 5 Steps of the Schema Logico -->
   <section class="mb-5">

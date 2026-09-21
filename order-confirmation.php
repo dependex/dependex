@@ -27,7 +27,7 @@ $isBonifico = ($_GET['method'] ?? '') === 'bonifico' || ($order && ($order['paym
 
     <?php if (!$order): ?>
       <div class="card" style="background:var(--bg-card);border:1px solid rgba(212,175,55,0.2);padding:50px 24px;text-align:center;border-radius:18px;">
-        <h2 style="color:#FFF;font-size:22px;margin-bottom:8px;">Ordine non trovato</h2>
+        <h1 style="color:#FFF;font-size:22px;margin-bottom:8px;">Ordine non trovato</h1>
         <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">
           Impossibile localizzare i dettagli dell'ordine specificato.
         </p>

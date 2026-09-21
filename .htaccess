@@ -5,8 +5,12 @@
 # 1. Directory Listing Protection
 Options -Indexes
 
-# 2. Deny Access to Sensitive File Types
+# 2. Deny Access to Sensitive File Types & Backend Include Libraries
 <FilesMatch "\.(sqlite|db|log|ini|env|bak|config|sh|sql)$">
+  Require all denied
+</FilesMatch>
+
+<FilesMatch "^(bootstrap|config|db|dr-env|dr-network-struttura|eco-db|eco-sic|email-engine|mailer|network-engine|company-brain-start)\.php$">
   Require all denied
 </FilesMatch>
 

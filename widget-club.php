@@ -17,6 +17,10 @@
  */
 
 require_once __DIR__ . '/bootstrap.php';
+if (!headers_sent()) {
+    header_remove('X-Frame-Options');
+    header("Content-Security-Policy: frame-ancestors *;");
+}
 
 $pdo = db();
 
@@ -66,8 +70,9 @@ $totalClubsCount = (int)$pdo->query("SELECT COUNT(*) FROM cat_clubs_italy")->fet
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Trova il Club Alcologico Territoriale (CAT) più vicino</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="description" content="Widget istituzionale per trovare il Club Alcologico Territoriale (CAT) Metodo Hudolin più vicino in tutta Italia. Aperto a tutti.">
+  <title>Trova il Club Alcologico Territoriale (CAT) più vicino · DEPENDEX</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -106,10 +111,12 @@ $totalClubsCount = (int)$pdo->query("SELECT COUNT(*) FROM cat_clubs_italy")->fet
       display: flex;
       align-items: center;
       gap: 6px;
+      margin: 0;
     }
     .widget-sub {
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       color: #94a3b8;
+      margin-top: 2px;
     }
     .search-box {
       display: flex;
@@ -118,55 +125,55 @@ $totalClubsCount = (int)$pdo->query("SELECT COUNT(*) FROM cat_clubs_italy")->fet
     }
     .search-box input {
       flex: 1;
-      padding: 8px 12px;
+      padding: 10px 12px;
       border-radius: 8px;
-      border: 1px solid <?= $theme === 'dark' ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.2)' ?>;
-      background: <?= $theme === 'dark' ? 'rgba(0,0,0,0.3)' : '#f1f5f9' ?>;
+      border: 1px solid <?= $theme === 'dark' ? 'rgba(255,255,255,0.15)' : '#cbd5e1' ?>;
+      background: <?= $theme === 'dark' ? 'rgba(0,0,0,0.3)' : '#ffffff' ?>;
       color: inherit;
-      font-size: 0.85rem;
-      min-height: 40px;
+      font-size: 0.88rem;
+      outline: none;
+      min-height: 44px;
     }
     .search-box button {
-      background: linear-gradient(135deg, #00f0ff, #0077ff);
-      color: #070a12;
-      border: none;
+      padding: 0 16px;
       border-radius: 8px;
-      padding: 8px 14px;
-      font-weight: 700;
-      font-size: 0.82rem;
+      border: none;
+      background: <?= $theme === 'dark' ? 'linear-gradient(135deg, #00f0ff, #0077ff)' : '#0066cc' ?>;
+      color: <?= $theme === 'dark' ? '#070a12' : '#ffffff' ?>;
+      font-weight: 800;
       cursor: pointer;
-      min-height: 40px;
-      white-space: nowrap;
+      font-size: 0.88rem;
+      min-height: 44px;
     }
     .clubs-list {
       display: flex;
       flex-direction: column;
       gap: 8px;
-      max-height: 240px;
+      max-height: 420px;
       overflow-y: auto;
       padding-right: 4px;
     }
     .club-item {
-      background: <?= $theme === 'dark' ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.02)' ?>;
-      border: 1px solid <?= $theme === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)' ?>;
+      background: <?= $theme === 'dark' ? 'rgba(255,255,255,0.03)' : '#f1f5f9' ?>;
+      border: 1px solid <?= $theme === 'dark' ? 'rgba(255,255,255,0.06)' : '#e2e8f0' ?>;
       border-radius: 10px;
       padding: 10px 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 10px;
-      transition: border-color 0.2s ease;
+      transition: border-color 0.15s;
     }
     .club-item:hover {
-      border-color: #00f0ff;
+      border-color: <?= $theme === 'dark' ? 'rgba(0,240,255,0.4)' : '#0066cc' ?>;
     }
     .club-info-main {
       flex: 1;
       min-width: 0;
     }
     .club-name {
-      font-size: 0.88rem;
-      font-weight: 750;
+      font-size: 0.92rem;
+      font-weight: 700;
       color: <?= $theme === 'dark' ? '#ffffff' : '#0f172a' ?>;
       white-space: nowrap;
       overflow: hidden;
@@ -175,6 +182,10 @@ $totalClubsCount = (int)$pdo->query("SELECT COUNT(*) FROM cat_clubs_italy")->fet
     .club-meta {
       font-size: 0.78rem;
       color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
       margin-top: 2px;
     }
     .club-actions {
@@ -186,13 +197,13 @@ $totalClubsCount = (int)$pdo->query("SELECT COUNT(*) FROM cat_clubs_italy")->fet
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-size: 0.78rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
       font-weight: 700;
       text-decoration: none;
-      min-height: 34px;
-      min-width: 34px;
+      min-height: 44px;
+      min-width: 44px;
     }
     .btn-call {
       background: rgba(37, 211, 102, 0.15);
@@ -226,9 +237,9 @@ $totalClubsCount = (int)$pdo->query("SELECT COUNT(*) FROM cat_clubs_italy")->fet
 <div class="widget-container">
   <div class="widget-header">
     <div>
-      <div class="widget-title">
+      <h1 class="widget-title">
         <span>📍 Trova un Club CAT</span>
-      </div>
+      </h1>
       <div class="widget-sub">Rete Auto-Mutuo-Aiuto Hudolin · Gratuito e Aperto a Tutti</div>
     </div>
     <div style="font-size: 0.75rem; color: #a7f3d0; font-weight: 700;">
@@ -280,7 +291,10 @@ $totalClubsCount = (int)$pdo->query("SELECT COUNT(*) FROM cat_clubs_italy")->fet
 
   <div class="widget-footer">
     <span>Dati aggiornati Censimento 2026</span>
-    <a href="https://dependex.social/mappa-club.php" target="_blank" rel="noopener">Mappa Completa 2D ↗</a>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <a href="widget-generator.php" target="_blank" rel="noopener" style="color: #67e8f9; font-size: 0.72rem; text-decoration: none;">Incorpora nel tuo Comune ↗</a>
+      <a href="https://dependex.social/mappa-club.php" target="_blank" rel="noopener">Mappa Completa 2D ↗</a>
+    </div>
   </div>
 </div>
 

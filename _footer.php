@@ -43,7 +43,7 @@
           </div>
           <div class="badge-neon-rainbow" style="font-size: 0.68rem; padding: 2px 10px; margin-top: 4px; display: inline-flex;">
             <span class="dot"></span>
-            <span class="text-rainbow">ECOSISTEMA SOVRANO · METODO HUDOLIN · RETE 542 CLUB</span>
+            <span class="text-rainbow">ECOSISTEMA SOVRANO · METODO HUDOLIN · RETE 1.770+ CLUB NAZIONALI</span>
           </div>
         </div>
       </div>
@@ -78,7 +78,7 @@
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
           <li><a href="index.php" style="color: #cbd5e1; text-decoration: none;">Pagina Principale</a></li>
           <li><a href="world-club-explorer.php" style="color: var(--dx-amber); font-weight: 750; text-decoration: none;">Trova un Club Territoriale</a></li>
-          <li><a href="mappa-club.php" style="color: #67e8f9; font-weight: 750; text-decoration: none;">Mappa 2D Italia (395 Club & GeoJSON)</a></li>
+          <li><a href="mappa-club.php" style="color: #67e8f9; font-weight: 750; text-decoration: none;">Mappa 2D Italia (1.770 Club & GeoJSON)</a></li>
           <li><a href="domande-frequenti.php" style="color: #fde68a; font-weight: 750; text-decoration: none;">Domande che vuoi fare</a></li>
           <li><a href="recensioni.php" style="color: var(--dx-amber); font-weight: 750; text-decoration: none;">Recensioni & Testimonianze</a></li>
           <li><a href="parla-con-noi.php" style="color: #ffffff; font-weight: 700; text-decoration: none;">Parla con Noi (Ascolto)</a></li>
@@ -138,14 +138,20 @@
 
     </div>
 
-    <!-- BANNER GARANZIA DI SOSTEGNO & TRASPARENZA VOLONTARIATO -->
-    <div style="margin: 8px 0 28px; padding: 14px 20px; background: rgba(212, 175, 55, 0.07); border-radius: 12px; border: 1px dashed rgba(212, 175, 55, 0.4); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; font-size: 0.82rem; color: #e2e8f0; line-height: 1.5;">
-      <div style="display: flex; align-items: center; gap: 10px; flex: 1; min-width: 260px;">
-        <?=dx_icon('shield-check', 'text-gold', 20)?>
-        <span><b>Garanzia di Trasparenza & Servizio Solidale:</b> I Club Alcologici Territoriali operano su base 100% volontaria secondo il Metodo Hudolin. Eventuali quote di partecipazione coprono esclusivamente i costi vivi di accoglienza, pranzo comunitario e materiali didattici.</span>
+    <!-- BANNER GARANZIA DI SOSTEGNO & BENCHMARK ISTITUZIONALE MINISTERO DELLA SALUTE -->
+    <div style="margin: 8px 0 28px; padding: 16px 20px; background: rgba(212, 175, 55, 0.07); border-radius: 12px; border: 1px dashed rgba(212, 175, 55, 0.4); display: flex; flex-direction: column; gap: 10px; font-size: 0.82rem; color: #e2e8f0; line-height: 1.55;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;">
+        <div style="display: flex; align-items: center; gap: 10px; flex: 1; min-width: 260px;">
+          <?=dx_icon('shield-check', 'text-gold', 20)?>
+          <span><b>Garanzia di Trasparenza & Servizio Solidale:</b> I Club Alcologici Territoriali operano su base 100% volontaria secondo il Metodo Hudolin. Eventuali quote di partecipazione coprono esclusivamente i costi vivi di accoglienza, pranzi comunitari e materiali didattici.</span>
+        </div>
+        <div style="font-weight: 800; color: #d4af37; white-space: nowrap;">
+          Organizzazione: ACAT Basso Polesine O.D.V.
+        </div>
       </div>
-      <div style="font-weight: 800; color: #d4af37; white-space: nowrap;">
-        Organizzazione: ACAT Basso Polesine O.D.V.
+      <div style="padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-size: 0.80rem;">
+        <?=dx_icon('check-circle', 'text-neon-cyan', 16)?>
+        <span><b>Benchmark Istituzionale & Epidemiologico:</b> Riconoscimento ufficiale ai sensi della <b>Legge 30 marzo 2001, n. 125</b> (Legge quadro su alcol e problemi alcolcorrelati), <b>Relazione Annuale del Ministro della Salute al Parlamento</b>, <b>Piano Nazionale della Prevenzione (PNP)</b> e monitoraggio <b>Osservatorio Nazionale Alcol (ONA) dell'Istituto Superiore di Sanità (ISS)</b>. Cooperazione territoriale con i Servizi Pubblici per le Dipendenze (Ser.D / ASL) secondo il principio costituzionale di sussidiarietà orizzontale.</span>
       </div>
     </div>
 

@@ -342,7 +342,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
       <?php else:?>
         <div class="drawer-auth-card" style="padding:16px;border-radius:18px;background:rgba(12,16,26,0.9);border:1px solid rgba(224,169,109,0.35);box-shadow:0 0 20px rgba(224,169,109,0.15);margin-bottom:14px;">
           <div class="badge-human mb-2" style="font-size:0.72rem;"><span class="dot"></span> RETE GRATUITA DEI CLUB</div>
-          <p style="font-size:0.84rem;color:#cbd5e1;line-height:1.45;margin:0 0 12px;">Oltre 540 Club territoriali, metodo Hudolin e supporto continuativo senza giudizio.</p>
+          <p style="font-size:0.84rem;color:#cbd5e1;line-height:1.45;margin:0 0 12px;">Oltre 1.770 Club territoriali, metodo Hudolin e supporto continuativo senza giudizio.</p>
           <div style="display:flex;gap:8px;">
             <a class="btn primary small" href="login.php" style="flex:1;text-align:center;">Accedi</a>
             <a class="btn small" href="register.php" style="flex:1;border:1px solid rgba(224,169,109,0.4);color:#ffffff;border-radius:12px;text-align:center;">Registrati</a>
@@ -353,7 +353,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           <span class="drawer-section-title text-amber">I PILASTRI DELLA COMUNITÀ</span>
           <a href="index.php" class="drawer-link <?=$curScript==='index.php'?'active':''?>"><?=dx_icon('home','',18)?> Home</a>
           <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'||$curScript==='club-public.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> <b>Trova un Club Territoriale</b></a>
-          <a href="mappa-club.php" class="drawer-link <?=$curScript==='mappa-club.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa 2D Italia (322 Club)</b></a>
+          <a href="mappa-club.php" class="drawer-link <?=$curScript==='mappa-club.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa 2D Italia (1.770 Club)</b></a>
           <a href="recensioni.php" class="drawer-link <?=$curScript==='recensioni.php'?'active':''?>"><?=dx_icon('star','text-neon-gold',18)?> <b>Recensioni dei Club</b></a>
           <a href="parla-con-noi.php" class="drawer-link highlight-gold <?=$curScript==='parla-con-noi.php'?'active':''?>"><?=dx_icon('message-circle','text-neon-gold',18)?> <b>Parla con Noi (Ascolto)</b></a>
           <a href="storie.php" class="drawer-link <?=$curScript==='storie.php'?'active':''?>"><?=dx_icon('users','',18)?> Storie di Comunità</a>

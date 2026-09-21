@@ -24,8 +24,27 @@ $compassAreas = HumanWelfareEngine::getWelfareCompassAreas();
 $communityCapital = HumanWelfareEngine::getCommunityCapitalOverview();
 $contributionPaths = HumanWelfareEngine::getContributionPaths();
 
-// Parametro opzionale da query string per pre-selezionare una dimensione
-$activeKey = isset($_GET['area']) && isset($dimensions[$_GET['area']]) ? $_GET['area'] : 'radicamento';
+// Mapping e pre-selezione dimensione maieutica (supporto diretto per i 9 raggi della Bussola)
+$rawArea = trim((string)($_GET['area'] ?? 'radicamento'));
+$dimensionMap = [
+    'corpo' => 'vitalita',
+    'vitalita' => 'vitalita',
+    'mente' => 'consapevolezza',
+    'consapevolezza' => 'consapevolezza',
+    'relazioni' => 'relazione',
+    'relazione' => 'relazione',
+    'famiglia' => 'relazione',
+    'lavoro' => 'autonomia',
+    'autonomia' => 'autonomia',
+    'risorse' => 'radicamento',
+    'radicamento' => 'radicamento',
+    'comunita' => 'espressione',
+    'espressione' => 'espressione',
+    'significato' => 'significato',
+    'territorio' => 'radicamento'
+];
+$resolvedKey = $dimensionMap[$rawArea] ?? $rawArea;
+$activeKey = isset($dimensions[$resolvedKey]) ? $resolvedKey : 'radicamento';
 $activeData = $dimensions[$activeKey] ?? $dimensions['radicamento'];
 $orientationManifesto = HumanWelfareEngine::orientate($activeKey);
 $smallSteps = HumanWelfareEngine::getSmallSteps($activeKey);
@@ -64,7 +83,7 @@ require '_header.php';
       <div class="col-12 col-sm-6 col-md-3">
         <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px 14px; height: 100%;">
           <div style="font-size: 0.8rem; font-weight: 700; color: #4ade80; margin-bottom: 2px;">ZERO GIUDIZIO</div>
-          <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.35;">Nessun "wellness score", classifica o indice di normalità.</div>
+          <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.35;">Nessun punteggio clinico, classifica o indice punitivo.</div>
         </div>
       </div>
       <div class="col-12 col-sm-6 col-md-3">

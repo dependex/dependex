@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dependex-pwa-v6.3';
+const CACHE_NAME = 'dependex-pwa-v6.4';
 const STATIC_ASSETS = [
   'offline.html',
   'manifest.webmanifest',
@@ -12,7 +12,9 @@ const STATIC_ASSETS = [
   'data/CENSIMENTO_CLUB_CAT_ITALIA_2026.csv',
   'assets/logo.svg',
   'assets/logo.png',
-  'widget-club.php'
+  'widget-club.php',
+  'widget-generator.php',
+  'orientamento.php'
 ];
 
 self.addEventListener('install', (event) => {

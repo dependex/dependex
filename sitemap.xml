@@ -275,13 +275,63 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/privacy-center.php"/>
   </url>
 
-  <!-- 16. TERMINI DI SERVIZIO -->
+  <!-- 17. ORIENTAMENTO MAIEUTICO & 7 ENERGIE -->
   <url>
-    <loc>https://dependex.social/terms.php</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://dependex.social/orientamento.php</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/orientamento.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/orientamento.php"/>
+  </url>
+
+  <!-- 18. LIFE PLAYGROUND 6.0 -->
+  <url>
+    <loc>https://dependex.social/playground.php</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/playground.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/playground.php"/>
+  </url>
+
+  <!-- 19. GENERATORE WIDGET COMUNI & ASL -->
+  <url>
+    <loc>https://dependex.social/widget-generator.php</loc>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/terms.php"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/terms.php"/>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/widget-generator.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/widget-generator.php"/>
+  </url>
+
+  <!-- 20. WIDGET EMBED TROVA-CLUB -->
+  <url>
+    <loc>https://dependex.social/widget-club.php</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/widget-club.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/widget-club.php"/>
+  </url>
+
+  <!-- 21. PARLA CON NOI (SPORTELLO DI ASCOLTO) -->
+  <url>
+    <loc>https://dependex.social/parla-con-noi.php</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/parla-con-noi.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/parla-con-noi.php"/>
+  </url>
+
+  <!-- 22. SOSTEGNO E DONAZIONI -->
+  <url>
+    <loc>https://dependex.social/donazioni.php</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://dependex.social/donazioni.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dependex.social/donazioni.php"/>
   </url>
 </urlset>

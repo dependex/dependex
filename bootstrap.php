@@ -7,6 +7,15 @@ $_SERVER['REQUEST_METHOD'] = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 $_SERVER['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
 $_SERVER['HTTP_HOST'] = $_SERVER['HTTP_HOST'] ?? 'dependex.social';
 
+// Security Headers Globali (Protezione Clickjacking, XSS, MIME Sniffing)
+if (!headers_sent()) {
+    header('X-Content-Type-Options: nosniff');
+    header('X-XSS-Protection: 1; mode=block');
+    header('Referrer-Policy: strict-origin-when-cross-origin');
+    header('Permissions-Policy: camera=(), microphone=(self), geolocation=(self)');
+    header('X-Frame-Options: SAMEORIGIN');
+}
+
 function ensure_core_schema(PDO $pdo): void {
     static $done = false;
     if ($done) return;
@@ -200,6 +209,7 @@ function require_admin(): array {$u=require_login();if(!is_admin($u['sic_id'])){
 function rank_for_drx(float $drx): string {$st=db()->prepare('SELECT name FROM ranks WHERE threshold_drx<=? ORDER BY threshold_drx DESC LIMIT 1');$st->execute([$drx]);return $st->fetchColumn()?:'SEME';}
 function drx_setting(string $key,float $fallback=0): float {$st=db()->prepare('SELECT value FROM drx_settings WHERE key=?');$st->execute([$key]);$v=$st->fetchColumn();return $v===false?$fallback:(float)$v;}
 function drx_totals(string $userSic): array {$st=db()->prepare("SELECT COALESCE(SUM(amount),0) total,COALESCE(SUM(CASE WHEN rank_eligible=1 THEN amount ELSE 0 END),0) qualifying FROM drx_ledger WHERE user_sic_id=? AND status='POSTED'");$st->execute([$userSic]);$r=$st->fetch()?:['total'=>0,'qualifying'=>0];return ['total'=>(float)$r['total'],'qualifying'=>(float)$r['qualifying']];}
+function drx_balance(string $userSic): float {return drx_totals($userSic)['total'];}
 function drx_post(?string $userSic,?string $clubSic,float $amount,string $sourceType,bool $rankEligible,string $idempotencyKey,?string $sourceSic=null,array $meta=[]): array {
     $pdo=db();$pdo->beginTransaction();
     try{

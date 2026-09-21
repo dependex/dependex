@@ -77,6 +77,7 @@ $cat = trim($_GET['cat'] ?? '');
 $reg = trim($_GET['reg'] ?? '');
 $emailType = trim($_GET['email_type'] ?? '');
 $status = trim($_GET['status'] ?? '');
+$quality = trim($_GET['quality'] ?? '');
 
 $sql = "SELECT * FROM crm_club_contacts WHERE 1=1";
 $params = [];
@@ -101,6 +102,13 @@ if ($status !== '') {
     $sql .= " AND outreach_status = :st";
     $params[':st'] = $status;
 }
+if ($quality === 'missing_schedule') {
+    $sql .= " AND (meeting_day IS NULL OR meeting_day = '' OR meeting_day LIKE '%concordare%')";
+} elseif ($quality === 'with_schedule') {
+    $sql .= " AND (meeting_day IS NOT NULL AND meeting_day <> '' AND meeting_day NOT LIKE '%concordare%')";
+} elseif ($quality === 'has_phone') {
+    $sql .= " AND (primary_phone IS NOT NULL AND primary_phone <> '')";
+}
 
 $sql .= " ORDER BY region ASC, province ASC, city ASC";
 $stmt = $db->prepare($sql);
@@ -112,6 +120,8 @@ $totalClubs = $db->query("SELECT count(*) FROM crm_club_contacts")->fetchColumn(
 $totalFamilies = $db->query("SELECT sum(families_count) FROM crm_club_contacts")->fetchColumn();
 $directEmails = $db->query("SELECT count(*) FROM crm_club_contacts WHERE email_type = 'DIRECT'")->fetchColumn();
 $inheritedEmails = $db->query("SELECT count(*) FROM crm_club_contacts WHERE email_type = 'COORDINATION_INHERITED'")->fetchColumn();
+$withScheduleCount = $db->query("SELECT count(*) FROM crm_club_contacts WHERE meeting_day IS NOT NULL AND meeting_day <> '' AND meeting_day NOT LIKE '%concordare%'")->fetchColumn();
+$missingScheduleCount = $totalClubs - $withScheduleCount;
 $regionsList = $db->query("SELECT DISTINCT region FROM crm_club_contacts ORDER BY region ASC")->fetchAll(PDO::FETCH_COLUMN);
 
 $pageTitle = "Console CRM Club Italia & Outreach Nurturing · DEPENDEX";
@@ -134,6 +144,9 @@ include __DIR__ . '/_header.php';
       </p>
     </div>
     <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <a href="widget-generator.php" target="_blank" class="btn btn-secondary" style="display:flex; align-items:center; gap:6px; font-size:13px; font-weight:600; padding:10px 16px; border-radius:8px; border:1px solid #30363d; background:#21262d; color:#fde68a; text-decoration:none;">
+        🧩 Generatore Widget Comuni & ASL
+      </a>
       <a href="data/CRM_CLUB_CONTATTI_MASTER_2026.csv" download="CRM_CLUB_CONTATTI_MASTER_2026.csv" class="btn btn-secondary" style="display:flex; align-items:center; gap:6px; font-size:13px; font-weight:600; padding:10px 16px; border-radius:8px; border:1px solid #30363d; background:#21262d; color:#e6edf3; text-decoration:none;">
         📥 Esporta CSV Master (<?=number_format($totalClubs)?> Club)
       </a>
@@ -174,9 +187,14 @@ include __DIR__ . '/_header.php';
       <div style="font-size:28px; font-weight:800; color:#e3b341;"><?=$inheritedEmails?> <span style="font-size:14px; color:#8b949e; font-weight:400;">(<?=round($inheritedEmails/$totalClubs*100)?>%)</span></div>
       <div style="font-size:12px; color:#8b949e; margin-top:4px;">Segreteria APCAT/ACAT/ARCAT</div>
     </div>
+    <div style="background:#161b22; border:1px solid #30363d; border-radius:12px; padding:20px;">
+      <div style="font-size:12px; color:#8b949e; text-transform:uppercase; font-weight:700; letter-spacing:1px; margin-bottom:4px;">Orari Incontro</div>
+      <div style="font-size:28px; font-weight:800; color:#58a6ff;"><?=$withScheduleCount?> <span style="font-size:14px; color:#8b949e; font-weight:400;">(<?=$missingScheduleCount?> da verificare)</span></div>
+      <div style="font-size:12px; color:#8b949e; margin-top:4px;">Giorno e ora riunione accertati</div>
+    </div>
   </div>
 
-  <!-- FILTRI DI RICERCA -->
+  <!-- FILTRI DI RICERCA & DATA QUALITY -->
   <div style="background:#161b22; border:1px solid #30363d; border-radius:12px; padding:18px 20px; margin-bottom:24px;">
     <form method="GET" action="crm-clubs.php" style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
       <input type="text" name="q" value="<?=htmlspecialchars($q)?>" placeholder="Cerca Club, comune, email, tel..." style="flex:1 1 200px; padding:10px 14px; background:#0d1117; border:1px solid #30363d; border-radius:8px; color:#e6edf3; font-size:14px;">
@@ -203,11 +221,22 @@ include __DIR__ . '/_header.php';
         <option value="COORDINATION_INHERITED" <?=$emailType==='COORDINATION_INHERITED'?'selected':''?>>Solo Ereditate (220)</option>
       </select>
 
+      <select name="quality" style="padding:10px 14px; background:#0d1117; border:1px solid #30363d; border-radius:8px; color:#e6edf3; font-size:14px;">
+        <option value="">Qualità Dati: Tutti</option>
+        <option value="missing_schedule" <?=$quality==='missing_schedule'?'selected':''?>>⚠️ Senza Orario Definito (<?=$missingScheduleCount?>)</option>
+        <option value="with_schedule" <?=$quality==='with_schedule'?'selected':''?>>✅ Con Orario Verificato (<?=$withScheduleCount?>)</option>
+        <option value="has_phone" <?=$quality==='has_phone'?'selected':''?>>📞 Con Telefono Presente</option>
+      </select>
+
       <button type="submit" style="padding:10px 20px; background:#238636; border:none; border-radius:8px; color:#ffffff; font-weight:700; cursor:pointer; font-size:14px;">
         Filtra Risultati
       </button>
 
-      <?php if ($q!=='' || $cat!=='' || $reg!=='' || $emailType!=='' || $status!==''): ?>
+      <a href="api-opendata-geojson.php?<?=http_build_query(['region'=>$reg])?>" target="_blank" style="padding:10px 16px; background:#21262d; border:1px solid #30363d; border-radius:8px; color:#67e8f9; font-weight:600; text-decoration:none; font-size:13px;">
+        🌐 Esporta GeoJSON
+      </a>
+
+      <?php if ($q!=='' || $cat!=='' || $reg!=='' || $emailType!=='' || $status!=='' || $quality!==''): ?>
         <a href="crm-clubs.php" style="color:#8b949e; text-decoration:underline; font-size:13px; margin-left:8px;">Resetta filtri</a>
       <?php endif; ?>
     </form>
@@ -290,8 +319,11 @@ include __DIR__ . '/_header.php';
                 </span>
               </td>
               <td style="padding:12px 16px; text-align:center; white-space:nowrap;">
+                <a href="club-public.php?sic=<?=urlencode($c['sic_id'])?>" target="_blank" style="display:inline-block; padding:4px 8px; background:#238636; border-radius:4px; color:#ffffff; text-decoration:none; font-size:11px; margin-right:4px;">
+                  Scheda Club
+                </a>
                 <a href="mappa-club.php?sic=<?=urlencode($c['sic_id'])?>" target="_blank" style="display:inline-block; padding:4px 8px; background:#21262d; border:1px solid #30363d; border-radius:4px; color:#c9d1d9; text-decoration:none; font-size:11px; margin-right:4px;">
-                  Scheda Mappa
+                  Mappa
                 </a>
                 <a href="widget-club.php?q=<?=urlencode($c['province'] ?: $c['city'])?>" target="_blank" style="display:inline-block; padding:4px 8px; background:#1f6feb; border-radius:4px; color:#ffffff; text-decoration:none; font-size:11px;">
                   Widget

@@ -8,7 +8,7 @@
  * 
  * VINCOLI DEONTOLOGICI ASSOLUTI:
  * - Zero diagnosi cliniche, zero promesse terapeutiche o mediche.
- * - Zero "wellness score", zero classifiche o competizione.
+ * - Zero indici numerici di benessere, zero classifiche o competizione.
  * - Non gamificare la sofferenza (nessun punteggio per dolore, ansia o traumi).
  * - Nessuno streak punitivo ("Bentornato").
  * - Attribuzione trasparente delle fonti (Hudolin, H+, ABC, BetterWay, Veda, Maslow).

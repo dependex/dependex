@@ -79,7 +79,7 @@ require '_header.php';
     <div class="col-lg-7">
       <div class="p-3 p-md-4 h-100 d-flex flex-column" style="background: rgba(12, 16, 28, 0.95); border: 1px solid rgba(224, 169, 109, 0.3); border-radius: 18px; min-height: 520px; position: relative;">
         
-        <!-- HEADER GRAFICO & ORIENTAMENTO MAIEUTICO (NO WELLNESS SCORE) -->
+        <!-- HEADER GRAFICO & ORIENTAMENTO MAIEUTICO PURO (NESSUN PUNTEGGIO PUNITIVO) -->
         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
           <div>
             <span style="font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px;">Area che oggi chiede attenzione</span>
@@ -287,7 +287,7 @@ function calculateScore() {
     if (v > maxVal) { maxVal = v; maxArea = a; }
   });
 
-  // Zero Wellness Score: mostriamo l'area di ascolto senza punteggio numerico di salute
+  // Zero Punteggi Numerici: mostriamo l'area di ascolto senza punteggio clinico di salute
   const scoreEl = document.getElementById('balanceScore');
   if (scoreEl) {
     scoreEl.innerText = minArea.label;

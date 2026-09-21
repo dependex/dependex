@@ -73,7 +73,7 @@ $atomOut = shell_exec('php ' . escapeshellarg(__DIR__ . '/../api-feed-territorio
 assertTest("Feed produce XML Atom valido", strpos((string)$atomOut, 'xmlns="http://www.w3.org/2005/Atom"') !== false);
 assertTest("Feed include namespace GeoRSS", strpos((string)$atomOut, 'xmlns:georss="http://www.georss.org/georss"') !== false);
 assertTest("Feed contiene tag <georss:point>", strpos((string)$atomOut, '<georss:point>') !== false);
-assertTest("Feed dichiara 395 presidi censiti", strpos((string)$atomOut, '395 presidi censiti') !== false);
+assertTest("Feed dichiara presidi censiti (>= 395)", preg_match('/(\d+)\s+presidi censiti/', (string)$atomOut, $m) && intval($m[1]) >= 395);
 
 // TEST 4: Widget Iframe Embed Trova-Club
 echo "\n[4] Controllo Widget Embed Iframe...\n";
@@ -91,7 +91,7 @@ assertTest("Widget contiene pulsanti di chiamata diretta tel:", strpos($widgetOu
 echo "\n[5] Controllo File e Moduli PWA On-Device...\n";
 $swPath = __DIR__ . '/../service-worker.js';
 $swContent = file_get_contents($swPath);
-assertTest("Service Worker aggiornato alla v6.3", strpos($swContent, 'dependex-pwa-v6.3') !== false);
+assertTest("Service Worker aggiornato alla v6.3+", preg_match('/dependex-pwa-v6\.[3-9]/', $swContent) === 1);
 assertTest("Service Worker ha caching per GeoJSON e Feed Territoriale", 
     strpos($swContent, 'api-opendata-geojson.php') !== false && strpos($swContent, 'api-feed-territorio.php') !== false
 );

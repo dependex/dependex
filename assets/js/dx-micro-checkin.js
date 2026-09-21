@@ -3,7 +3,7 @@
  * DX Micro-Checkin Maieutico (PWA & Offline Native)
  * 
  * Rispetta rigorosamente Human Welfare OS 4.0 & Omni-Welfare 6.0:
- * - ZERO "Wellness Score" o percentuali numeriche di salute
+ * - ZERO indici numerici di benessere o percentuali di salute
  * - ZERO diagnosi o giudizi clinici
  * - 100% Locale & Riservato (localStorage cifrato/locale, nessun invio dati)
  * - Approccio maieutico: ascolto dello stato presente e proposta di 1 micro-passo gentile

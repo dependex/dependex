@@ -590,58 +590,137 @@ require '_header.php';
 }
 
 /* CUSTOM LEAFLET MARKERS & POPUPS */
+.custom-div-icon,
+.custom-cluster-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
 .custom-neon-marker {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
   border-radius: 50%;
   color: #ffffff;
-  font-size: 13px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 800;
-  box-shadow: 0 0 15px currentColor;
-  transition: transform 0.2s ease;
-  border: 2px solid rgba(255, 255, 255, 0.9);
+  text-align: center;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
 .custom-neon-marker:hover {
-  transform: scale(1.25);
+  transform: scale(1.3);
+  z-index: 9999 !important;
 }
 
+/* 1. CLUB CAT (Azzurro / Sky Blue) */
 .marker-local {
-  background: radial-gradient(circle, #00d4ff 30%, #0284c7 100%);
-  color: #00d4ff;
+  width: 28px;
+  height: 28px;
+  font-size: 10px;
+  background: radial-gradient(circle at 35% 35%, #38bdf8 0%, #0284c7 70%, #0369a1 100%);
+  color: #ffffff;
   border: 2px solid #ffffff;
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.85);
+  box-shadow: 0 0 14px rgba(0, 212, 255, 0.9), 0 3px 6px rgba(0, 0, 0, 0.6);
 }
 
+/* 2. ACAT (Arancione Vivido) */
 .marker-acat {
-  background: radial-gradient(circle, #ff8800 30%, #ea580c 100%);
-  color: #ff7700;
-  border: 2px solid #ffffff;
-  box-shadow: 0 0 15px rgba(255, 119, 0, 0.85);
+  width: 34px;
+  height: 34px;
+  font-size: 10.5px;
+  background: radial-gradient(circle at 35% 35%, #fb923c 0%, #ea580c 70%, #9a3412 100%);
+  color: #ffffff;
+  border: 2.5px solid #ffffff;
+  box-shadow: 0 0 18px rgba(255, 119, 0, 0.95), 0 3px 8px rgba(0, 0, 0, 0.6);
 }
 
+/* 3. APCAT (Giallo Oro Brillante) */
 .marker-apcat {
-  background: radial-gradient(circle, #ffe600 30%, #ca8a04 100%);
-  color: #ffd700;
-  border: 2px solid #ffffff;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.85);
+  width: 36px;
+  height: 36px;
+  font-size: 10.5px;
+  background: radial-gradient(circle at 35% 35%, #fef08a 0%, #eab308 70%, #a16207 100%);
+  color: #0f172a;
+  font-weight: 900;
+  border: 2.5px solid #ffffff;
+  box-shadow: 0 0 20px rgba(250, 204, 21, 0.95), 0 3px 8px rgba(0, 0, 0, 0.6);
 }
 
+/* 4. ARCAT (Verde Smeraldo) */
 .marker-arcat {
-  background: radial-gradient(circle, #00ff88 30%, #16a34a 100%);
-  color: #00ff77;
-  border: 2px solid #ffffff;
-  box-shadow: 0 0 15px rgba(0, 255, 119, 0.85);
+  width: 38px;
+  height: 38px;
+  font-size: 11px;
+  background: radial-gradient(circle at 35% 35%, #4ade80 0%, #16a34a 70%, #14532d 100%);
+  color: #ffffff;
+  font-weight: 900;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 24px rgba(34, 197, 94, 0.95), 0 4px 10px rgba(0, 0, 0, 0.6);
 }
 
+/* 5. AICAT (Rosso Rubino Beacon) */
 .marker-aicat {
-  background: radial-gradient(circle, #ff4455 30%, #dc2626 100%);
-  color: #ff3344;
-  border: 2px solid #ffffff;
-  box-shadow: 0 0 18px rgba(255, 51, 68, 0.9);
+  width: 44px;
+  height: 44px;
+  font-size: 11.5px;
+  background: radial-gradient(circle at 35% 35%, #f87171 0%, #dc2626 70%, #7f1d1d 100%);
+  color: #ffffff;
+  font-weight: 900;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 28px rgba(239, 68, 68, 1), 0 0 50px rgba(239, 68, 68, 0.5), 0 4px 12px rgba(0, 0, 0, 0.7);
+  animation: aicat-beacon-pulse 2s infinite ease-in-out;
+}
+
+@keyframes aicat-beacon-pulse {
+  0% {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.8), 0 0 0 0 rgba(239, 68, 68, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 32px rgba(239, 68, 68, 1), 0 0 0 14px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.8), 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+/* Cluster icon specifico per Club CAT */
+.cluster-cat-badge {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #0284c7 0%, #0369a1 70%, #0c4a6e 100%);
+  color: #ffffff;
+  border: 2px solid #38bdf8;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.75), 0 3px 8px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  line-height: 1;
+  transition: transform 0.2s ease;
+  user-select: none;
+}
+.cluster-cat-badge:hover {
+  transform: scale(1.2);
+}
+.cluster-cat-badge .cluster-num {
+  font-size: 12px;
+  font-weight: 800;
+  color: #ffffff;
+}
+.cluster-cat-badge .cluster-sub {
+  font-size: 8px;
+  font-weight: 700;
+  color: #7dd3fc;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .user-gps-marker {
@@ -1058,10 +1137,31 @@ const ALL_CLUBS = <?=json_encode($allClubs, JSON_UNESCAPED_UNICODE | JSON_UNESCA
 
 let mapInstance = null;
 let markerClusterGroup = null;
+let institutionalLayerGroup = null;
 let markerLookup = new Map(); // id -> L.marker
 let userGpsMarker = null;
 let currentUserCoords = null; // [lat, lon]
 let activeLevel = 'ALL';
+
+// Classificazione rigorosa per famiglia associativa
+function getClubFamily(club) {
+  const level = (club.level || '').toUpperCase();
+  const name = (club.entity_name || '').toUpperCase();
+
+  if (level === 'NATIONAL' || name.startsWith('AICAT') || name.includes(' AICAT')) {
+    return 'AICAT';
+  }
+  if (level === 'REGIONAL' || level === 'FEDERATION_REGIONAL' || name.startsWith('ARCAT') || name.includes(' ARCAT')) {
+    return 'ARCAT';
+  }
+  if (level === 'PROVINCIAL_APCAT' || name.startsWith('APCAT') || name.includes(' APCAT')) {
+    return 'APCAT';
+  }
+  if (['TERRITORIAL', 'TERRITORIAL_ACAT', 'TERRITORIAL_ASSOCIATION', 'ASSOCIATION', 'PROVINCIAL'].includes(level) || name.startsWith('ACAT') || name.includes(' ACAT')) {
+    return 'ACAT';
+  }
+  return 'LOCAL_CLUB';
+}
 
 // Inizializzazione Mappa Leaflet
 function initMap() {
@@ -1088,6 +1188,11 @@ function initMap() {
     maxZoom: 19
   }).addTo(mapInstance);
 
+  // Layer dedicato e NON CLUSTERIZZATO per le istituzioni (AICAT, ARCAT, APCAT, ACAT)
+  // Rimangono sempre visibili con i loro colori specifici (Rosso, Verde, Giallo, Arancione) a qualsiasi livello di zoom!
+  institutionalLayerGroup = L.layerGroup().addTo(mapInstance);
+
+  // Cluster group SOLO per i Club CAT locali (Azzurro)
   markerClusterGroup = L.markerClusterGroup({
     showCoverageOnHover: false,
     maxClusterRadius: 40,
@@ -1095,9 +1200,10 @@ function initMap() {
     iconCreateFunction: function(cluster) {
       const count = cluster.getChildCount();
       return L.divIcon({
-        html: `<div class="custom-neon-marker marker-local" style="width:36px;height:36px;font-size:12px;">${count}</div>`,
+        html: `<div class="cluster-cat-badge"><span class="cluster-num">${count}</span><span class="cluster-sub">CAT</span></div>`,
         className: 'custom-cluster-icon',
-        iconSize: [36, 36]
+        iconSize: [40, 40],
+        iconAnchor: [20, 20]
       });
     }
   });
@@ -1116,33 +1222,52 @@ function initMap() {
 }
 
 // Creazione Icona Marker personalizzata in base alla famiglia di appartenenza
-function createMarkerIcon(level, entityName) {
+function createMarkerIcon(family) {
   let markerClass = 'marker-local';
   let label = 'CAT';
+  let size = 28;
+  let anchor = 14;
 
-  if (level === 'NATIONAL' || (entityName && entityName.includes('AICAT'))) {
-    markerClass = 'marker-aicat';
-    label = 'AICAT';
-  } else if (level === 'REGIONAL' || (entityName && entityName.includes('ARCAT'))) {
-    markerClass = 'marker-arcat';
-    label = 'ARCAT';
-  } else if (level === 'PROVINCIAL_APCAT' || (entityName && entityName.includes('APCAT'))) {
-    markerClass = 'marker-apcat';
-    label = 'APCAT';
-  } else if (['TERRITORIAL', 'TERRITORIAL_ASSOCIATION', 'PROVINCIAL', 'TERRITORIAL_ACAT'].includes(level) || (entityName && entityName.includes('ACAT'))) {
-    markerClass = 'marker-acat';
-    label = 'ACAT';
-  } else {
-    markerClass = 'marker-local';
-    label = 'CAT';
+  switch (family) {
+    case 'AICAT':
+      markerClass = 'marker-aicat';
+      label = 'AICAT';
+      size = 44;
+      anchor = 22;
+      break;
+    case 'ARCAT':
+      markerClass = 'marker-arcat';
+      label = 'ARCAT';
+      size = 38;
+      anchor = 19;
+      break;
+    case 'APCAT':
+      markerClass = 'marker-apcat';
+      label = 'APCAT';
+      size = 36;
+      anchor = 18;
+      break;
+    case 'ACAT':
+      markerClass = 'marker-acat';
+      label = 'ACAT';
+      size = 34;
+      anchor = 17;
+      break;
+    case 'LOCAL_CLUB':
+    default:
+      markerClass = 'marker-local';
+      label = 'CAT';
+      size = 28;
+      anchor = 14;
+      break;
   }
 
   return L.divIcon({
-    html: `<div class="custom-neon-marker ${markerClass}">${label}</div>`,
+    html: `<div class="custom-neon-marker ${markerClass}"><span>${label}</span></div>`,
     className: 'custom-div-icon',
-    iconSize: [34, 34],
-    iconAnchor: [17, 17],
-    popupAnchor: [0, -20]
+    iconSize: [size, size],
+    iconAnchor: [anchor, anchor],
+    popupAnchor: [0, -anchor - 4]
   });
 }
 
@@ -1166,16 +1291,20 @@ function applyFilters() {
   const day = document.getElementById('filterDay').value;
 
   markerClusterGroup.clearLayers();
+  if (institutionalLayerGroup) {
+    institutionalLayerGroup.clearLayers();
+  }
   markerLookup.clear();
 
   let filtered = ALL_CLUBS.filter(club => {
-    // Filtro livello
+    // Filtro livello per famiglia reale
     if (activeLevel !== 'ALL') {
-      if (activeLevel === 'LOCAL_CLUB' && club.level !== 'LOCAL_CLUB') return false;
-      if (activeLevel === 'PROVINCIAL_APCAT' && club.level !== 'PROVINCIAL_APCAT' && !club.entity_name.includes('APCAT')) return false;
-      if (activeLevel === 'TERRITORIAL' && !['TERRITORIAL','TERRITORIAL_ASSOCIATION'].includes(club.level)) return false;
-      if (activeLevel === 'REGIONAL' && club.level !== 'REGIONAL') return false;
-      if (activeLevel === 'NATIONAL' && club.level !== 'NATIONAL') return false;
+      const family = getClubFamily(club);
+      if (activeLevel === 'LOCAL_CLUB' && family !== 'LOCAL_CLUB') return false;
+      if (activeLevel === 'TERRITORIAL' && family !== 'ACAT') return false;
+      if (activeLevel === 'PROVINCIAL_APCAT' && family !== 'APCAT') return false;
+      if (activeLevel === 'REGIONAL' && family !== 'ARCAT') return false;
+      if (activeLevel === 'NATIONAL' && family !== 'AICAT') return false;
     }
 
     // Filtro regione
@@ -1221,30 +1350,69 @@ function applyFilters() {
   document.getElementById('displayedCount').textContent = filtered.length;
   document.getElementById('drawerBadgeTotal').textContent = `${filtered.length} Nodi`;
 
+  // Rileva coordinate identiche e prepara micro-offset circolare
+  // (es. ACAT Basso Polesine e Club CAT "Edera" a Taglio di Po nella stessa sede)
+  const coordCounts = {};
+  filtered.forEach(c => {
+    const lat = parseFloat(c.latitude);
+    const lon = parseFloat(c.longitude);
+    if (!isNaN(lat) && !isNaN(lon)) {
+      const k = `${lat.toFixed(4)}_${lon.toFixed(4)}`;
+      coordCounts[k] = (coordCounts[k] || 0) + 1;
+    }
+  });
+  const coordIndex = {};
+
   // Renderizzatore Markers su Mappa
   filtered.forEach(club => {
-    const lat = parseFloat(club.latitude);
-    const lon = parseFloat(club.longitude);
-    if (isNaN(lat) || isNaN(lon)) return;
+    const latRaw = parseFloat(club.latitude);
+    const lonRaw = parseFloat(club.longitude);
+    if (isNaN(latRaw) || isNaN(lonRaw)) return;
+
+    let lat = latRaw;
+    let lon = lonRaw;
+    const k = `${latRaw.toFixed(4)}_${lonRaw.toFixed(4)}`;
+    const totalAtCoord = coordCounts[k] || 1;
+
+    if (totalAtCoord > 1) {
+      const idx = coordIndex[k] || 0;
+      coordIndex[k] = idx + 1;
+      if (idx > 0) {
+        // Micro-offset di ~30 metri per renderli entrambi perfettamente visibili e cliccabili
+        const angle = (idx * 2 * Math.PI) / totalAtCoord;
+        lat = latRaw + Math.sin(angle) * 0.00030;
+        lon = lonRaw + Math.cos(angle) * 0.00040;
+      }
+    }
+
+    const family = getClubFamily(club);
+    const isInstitutional = (family !== 'LOCAL_CLUB');
+
+    let zIndex = 1000;
+    if (family === 'AICAT') zIndex = 3000;
+    else if (family === 'ARCAT') zIndex = 2500;
+    else if (family === 'APCAT') zIndex = 2000;
+    else if (family === 'ACAT') zIndex = 1500;
 
     const marker = L.marker([lat, lon], {
-      icon: createMarkerIcon(club.level, club.entity_name),
-      title: club.entity_name
+      icon: createMarkerIcon(family),
+      title: `${club.entity_name} (${family})`,
+      zIndexOffset: zIndex
     });
 
     // Costruzione Popup interattivo
     let levelLabel = 'Club CAT Territoriale';
     let popupTagClass = 'tag-local';
-    if (club.level === 'NATIONAL' || (club.entity_name && club.entity_name.includes('AICAT'))) {
+    if (family === 'AICAT') {
       levelLabel = 'AICAT Nazionale';
       popupTagClass = 'tag-aicat';
-    } else if (club.level === 'REGIONAL' || (club.entity_name && club.entity_name.includes('ARCAT'))) {
+    } else if (family === 'ARCAT') {
       levelLabel = 'ARCAT Regionale';
       popupTagClass = 'tag-arcat';
-    } else if (club.level === 'PROVINCIAL_APCAT' || (club.entity_name && club.entity_name.includes('APCAT'))) {
+    } else if (family === 'APCAT') {
       levelLabel = 'APCAT Provinciale';
       popupTagClass = 'tag-apcat';
-    } else if (['TERRITORIAL','TERRITORIAL_ASSOCIATION','PROVINCIAL','TERRITORIAL_ACAT'].includes(club.level) || (club.entity_name && club.entity_name.includes('ACAT'))) {
+    } else if (family === 'ACAT') {
       levelLabel = 'Associazione ACAT';
       popupTagClass = 'tag-acat';
     } else {
@@ -1257,14 +1425,14 @@ function applyFilters() {
         <span class="club-type-tag ${popupTagClass}" style="margin-bottom:4px;display:inline-block;">${levelLabel}</span>
         <h4>${escapeHtml(club.entity_name)}</h4>
         <p><b>Sede:</b> ${escapeHtml(club.address || club.city)} (${escapeHtml(club.province || '')})</p>
-        <p style="color:#00f0ff; margin:3px 0 5px;"><b>Comunità:</b> ${club.families_count || 11} Famiglie ${(club.level==='PROVINCIAL_APCAT'||(club.entity_name&&club.entity_name.includes('APCAT')))?'nella Rete':'nel Cerchio'}</p>
+        <p style="color:#00f0ff; margin:3px 0 5px;"><b>Comunità:</b> ${club.families_count || 11} Famiglie ${(family==='APCAT'||family==='ARCAT'||family==='AICAT')?'nella Rete':'nel Cerchio'}</p>
         ${club.meeting_day ? `<p><b>Incontro:</b> ${escapeHtml(club.meeting_day)} ${escapeHtml(club.meeting_time || '')}</p>` : ''}
         ${club.servitore_insegnante ? `<p><b>Referente:</b> ${escapeHtml(club.servitore_insegnante)}</p>` : ''}
         ${club._distance !== undefined ? `<p style="color:#00ff88;"><b>Distanza:</b> ${club._distance} km da te</p>` : ''}
         
         <div class="popup-actions">
           ${club.phone ? `<a href="tel:${club.phone.replace(/[^0-9+]/g, '')}" class="card-action-btn btn-phone">Chiama</a>` : ''}
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}" target="_blank" class="card-action-btn btn-directions">Indicazioni</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${latRaw},${lonRaw}" target="_blank" class="card-action-btn btn-directions">Indicazioni</a>
           <button type="button" class="card-action-btn btn-share" 
                   data-club="${escapeHtml(club.entity_name)}" 
                   data-city="${escapeHtml(club.city)}" 
@@ -1286,7 +1454,12 @@ function applyFilters() {
     });
 
     markerLookup.set(club.id, marker);
-    markerClusterGroup.addLayer(marker);
+
+    if (isInstitutional) {
+      institutionalLayerGroup.addLayer(marker);
+    } else {
+      markerClusterGroup.addLayer(marker);
+    }
   });
 
   // Render lista card nella sidebar drawer
@@ -1315,24 +1488,30 @@ function renderClubCards(clubs) {
     card.className = 'club-card-item';
     card.id = `clubCard_${c.id}`;
 
+    const family = getClubFamily(c);
     let tagClass = 'tag-local';
     let tagText = 'Club CAT';
-    if (c.level === 'NATIONAL' || (c.entity_name && c.entity_name.includes('AICAT'))) {
+    let borderAccent = '#00d4ff';
+
+    if (family === 'AICAT') {
       tagClass = 'tag-aicat';
-      tagText = 'AICAT';
-    } else if (c.level === 'REGIONAL' || (c.entity_name && c.entity_name.includes('ARCAT'))) {
+      tagText = 'AICAT Nazionale';
+      borderAccent = '#ff3344';
+    } else if (family === 'ARCAT') {
       tagClass = 'tag-arcat';
-      tagText = 'ARCAT';
-    } else if (c.level === 'PROVINCIAL_APCAT' || (c.entity_name && c.entity_name.includes('APCAT'))) {
+      tagText = 'ARCAT Regionale';
+      borderAccent = '#00ff77';
+    } else if (family === 'APCAT') {
       tagClass = 'tag-apcat';
-      tagText = 'APCAT';
-    } else if (['TERRITORIAL','TERRITORIAL_ASSOCIATION','PROVINCIAL','TERRITORIAL_ACAT'].includes(c.level) || (c.entity_name && c.entity_name.includes('ACAT'))) {
+      tagText = 'APCAT Provinciale';
+      borderAccent = '#ffd700';
+    } else if (family === 'ACAT') {
       tagClass = 'tag-acat';
-      tagText = 'ACAT';
-    } else {
-      tagClass = 'tag-local';
-      tagText = 'Club CAT';
+      tagText = 'Associazione ACAT';
+      borderAccent = '#ff7700';
     }
+
+    card.style.borderLeft = `3.5px solid ${borderAccent}`;
 
     const cleanPhone = (c.phone || '').replace(/[^0-9+]/g, '');
 
@@ -1385,17 +1564,21 @@ function renderClubCards(clubs) {
   });
 }
 
-// Zoom e Focus su un club specifico
+// Zoom e Focus su un club specifico (supporta sia cluster CAT che nodi istituzionali)
 function focusOnClub(id, lat, lon) {
   if (mapInstance) {
-    mapInstance.setView([lat, lon], 14, { animate: true, duration: 0.8 });
+    mapInstance.setView([lat, lon], 15, { animate: true, duration: 0.8 });
     const marker = markerLookup.get(id);
     if (marker) {
       setTimeout(() => {
-        markerClusterGroup.zoomToShowLayer(marker, () => {
+        if (markerClusterGroup && markerClusterGroup.hasLayer(marker)) {
+          markerClusterGroup.zoomToShowLayer(marker, () => {
+            marker.openPopup();
+          });
+        } else {
           marker.openPopup();
-        });
-      }, 300);
+        }
+      }, 350);
     }
   }
   highlightClubInDrawer(id);

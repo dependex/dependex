@@ -1,6 +1,6 @@
 <?php
 /**
- * DEPENDEX.SOCIAL — API ORGANIGRAMMA & STRUTTURA AD ALBERO PIRAMIDE ROVESCIATA
+ * DEPENDEX.SOCIAL — API ORGANIGRAMMA & STRUTTURA AD ALBERO DELLA RETE
  * Restituisce la struttura gerarchica della Rete dei Club Hudolin:
  * Livello Nazionale (AICAT) -> Livello Regionale (ARCAT) -> Livello Territoriale (ACAT) -> Club Locali & Famiglie.
  */

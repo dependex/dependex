@@ -336,7 +336,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           <a href="/" class="drawer-link <?=$curScript==='index.php'?'active':''?>"><?=dx_icon('home','',18)?> Pagina Principale</a>
           <a href="trova-club.php" class="drawer-link <?=$curScript==='world-club-explorer.php'||$curScript==='trova-club.php'||$curScript==='club-public.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> <b>Trova un Club Territoriale</b></a>
           <a href="italy-map.php" class="drawer-link <?=$curScript==='mappa-club.php'||$curScript==='italy-map.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa 2D Italia (1.768 Club)</b></a>
-          <a href="piramide-rovesciata.php" class="drawer-link highlight-gold <?=$curScript==='piramide-rovesciata.php'||$curScript==='organigramma.php'?'active':''?>"><?=dx_icon('layers','text-neon-gold',18)?> <b>Piramide Rovesciata (Organigramma)</b></a>
+          <a href="organigramma.php" class="drawer-link highlight-gold <?=$curScript==='organigramma.php'?'active':''?>"><?=dx_icon('layers','text-neon-gold',18)?> <b>Organigramma della Rete</b></a>
           <a href="domande.php" class="drawer-link <?=$curScript==='domande-frequenti.php'||$curScript==='domande.php'?'active':''?>"><?=dx_icon('help-circle','',18)?> Domande che vuoi fare</a>
           <a href="testimonianze.php" class="drawer-link <?=$curScript==='recensioni.php'||$curScript==='testimonianze.php'?'active':''?>"><?=dx_icon('star','text-neon-gold',18)?> Recensioni & Testimonianze</a>
           <a href="contatti.php" class="drawer-link highlight-gold <?=$curScript==='parla-con-noi.php'||$curScript==='contatti.php'?'active':''?>"><?=dx_icon('message-circle','text-neon-gold',18)?> <b>Parla con Noi</b></a>

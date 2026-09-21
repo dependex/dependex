@@ -74,7 +74,7 @@
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px; font-size: 0.88rem;">
           <li><a href="world-club-explorer.php" style="color: #ffd700; font-weight: 750; text-decoration: none;">Trova un Club Territoriale</a></li>
           <li><a href="mappa-club.php" style="color: #67e8f9; font-weight: 750; text-decoration: none;">Mappa 2D Italia (1.768 Club)</a></li>
-          <li><a href="piramide-rovesciata.php" style="color: #ffffff; font-weight: 700; text-decoration: none;">Piramide Rovesciata (Organigramma)</a></li>
+          <li><a href="organigramma.php" style="color: #ffffff; font-weight: 700; text-decoration: none;">Organigramma della Rete</a></li>
           <li><a href="metodo.php" style="color: #cbd5e1; text-decoration: none;">Il Metodo Hudolin</a></li>
           <li><a href="parla-con-noi.php" style="color: #25D366; font-weight: 750; text-decoration: none;">Parla con Noi (Ascolto Riservato)</a></li>
           <li><a href="playground.php" style="color: #cbd5e1; text-decoration: none;">Life Playground 6.0</a></li>

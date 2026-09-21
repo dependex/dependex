@@ -248,24 +248,62 @@ require '_header.php';
 }
 
 .level-pill[data-level="LOCAL_CLUB"].active {
-  border-color: #00f0ff;
-  color: #00f0ff;
+  border-color: #00d4ff;
+  color: #00d4ff;
+  background: rgba(0, 212, 255, 0.18);
 }
 
 .level-pill[data-level="TERRITORIAL"].active {
+  border-color: #ff7700;
+  color: #ff7700;
+  background: rgba(255, 119, 0, 0.18);
+}
+
+.level-pill[data-level="PROVINCIAL_APCAT"].active {
   border-color: #ffd700;
   color: #ffd700;
+  background: rgba(255, 215, 0, 0.18);
 }
 
 .level-pill[data-level="REGIONAL"].active {
-  border-color: #ff7700;
-  color: #ff7700;
+  border-color: #00ff77;
+  color: #00ff77;
+  background: rgba(0, 255, 119, 0.18);
 }
 
 .level-pill[data-level="NATIONAL"].active {
-  border-color: #b829ff;
-  color: #e0a9ff;
+  border-color: #ff3344;
+  color: #ff3344;
+  background: rgba(255, 51, 68, 0.18);
 }
+
+.legend-quick-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  font-size: 0.82rem;
+  color: #cbd5e1;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-local { background: #00d4ff; box-shadow: 0 0 8px #00d4ff; }
+.dot-acat { background: #ff7700; box-shadow: 0 0 8px #ff7700; }
+.dot-apcat { background: #ffd700; box-shadow: 0 0 8px #ffd700; }
+.dot-arcat { background: #00ff77; box-shadow: 0 0 8px #00ff77; }
+.dot-aicat { background: #ff3344; box-shadow: 0 0 8px #ff3344; }
 
 .stats-counter-tag {
   font-size: 0.88rem;
@@ -273,6 +311,8 @@ require '_header.php';
 }
 
 .stats-counter-tag b {
+  color: var(--map-cyan);
+}
   color: var(--map-cyan);
 }
 
@@ -426,33 +466,33 @@ require '_header.php';
 }
 
 .tag-local {
-  background: rgba(0, 240, 255, 0.15);
-  color: #00f0ff;
-  border: 1px solid rgba(0, 240, 255, 0.3);
-}
-
-.tag-apcat {
-  background: rgba(168, 85, 247, 0.15);
-  color: #c084fc;
-  border: 1px solid rgba(168, 85, 247, 0.35);
+  background: rgba(0, 212, 255, 0.15);
+  color: #00d4ff;
+  border: 1px solid rgba(0, 212, 255, 0.4);
 }
 
 .tag-acat {
+  background: rgba(255, 119, 0, 0.15);
+  color: #ff7700;
+  border: 1px solid rgba(255, 119, 0, 0.4);
+}
+
+.tag-apcat {
   background: rgba(255, 215, 0, 0.15);
   color: #ffd700;
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  border: 1px solid rgba(255, 215, 0, 0.4);
 }
 
 .tag-arcat {
-  background: rgba(255, 119, 0, 0.15);
-  color: #ff7700;
-  border: 1px solid rgba(255, 119, 0, 0.3);
+  background: rgba(0, 255, 119, 0.15);
+  color: #00ff77;
+  border: 1px solid rgba(0, 255, 119, 0.4);
 }
 
 .tag-aicat {
-  background: linear-gradient(135deg, rgba(255, 51, 68, 0.2), rgba(184, 41, 255, 0.2));
-  color: #e0a9ff;
-  border: 1px solid rgba(184, 41, 255, 0.4);
+  background: rgba(255, 51, 68, 0.18);
+  color: #ff4455;
+  border: 1px solid rgba(255, 51, 68, 0.45);
 }
 
 .distance-badge {
@@ -570,28 +610,38 @@ require '_header.php';
 }
 
 .marker-local {
-  background: radial-gradient(circle, #00f0ff 20%, #0077ff 100%);
-  color: #00f0ff;
-}
-
-.marker-apcat {
-  background: radial-gradient(circle, #c084fc 20%, #7e22ce 100%);
-  color: #c084fc;
+  background: radial-gradient(circle, #00d4ff 30%, #0284c7 100%);
+  color: #00d4ff;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.85);
 }
 
 .marker-acat {
-  background: radial-gradient(circle, #ffd700 20%, #ff8800 100%);
+  background: radial-gradient(circle, #ff8800 30%, #ea580c 100%);
+  color: #ff7700;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 15px rgba(255, 119, 0, 0.85);
+}
+
+.marker-apcat {
+  background: radial-gradient(circle, #ffe600 30%, #ca8a04 100%);
   color: #ffd700;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.85);
 }
 
 .marker-arcat {
-  background: radial-gradient(circle, #ff7700 20%, #d42200 100%);
-  color: #ff7700;
+  background: radial-gradient(circle, #00ff88 30%, #16a34a 100%);
+  color: #00ff77;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 15px rgba(0, 255, 119, 0.85);
 }
 
 .marker-aicat {
-  background: radial-gradient(circle, #ff3344 0%, #b829ff 100%);
-  color: #e0a9ff;
+  background: radial-gradient(circle, #ff4455 30%, #dc2626 100%);
+  color: #ff3344;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 18px rgba(255, 51, 68, 0.9);
 }
 
 .user-gps-marker {
@@ -800,18 +850,18 @@ require '_header.php';
       <div class="level-pills-group" id="levelPills">
         <button type="button" class="level-pill active" data-level="ALL">Tutti</button>
         <button type="button" class="level-pill" data-level="LOCAL_CLUB">Club CAT</button>
-        <button type="button" class="level-pill" data-level="PROVINCIAL_APCAT">APCAT</button>
         <button type="button" class="level-pill" data-level="TERRITORIAL">ACAT</button>
+        <button type="button" class="level-pill" data-level="PROVINCIAL_APCAT">APCAT</button>
         <button type="button" class="level-pill" data-level="REGIONAL">ARCAT</button>
         <button type="button" class="level-pill" data-level="NATIONAL">AICAT</button>
       </div>
 
       <div class="legend-quick-tags">
-        <span class="legend-item"><span class="legend-dot dot-local"></span> Club CAT</span>
-        <span class="legend-item"><span class="legend-dot dot-apcat"></span> APCAT Provinciale</span>
-        <span class="legend-item"><span class="legend-dot dot-acat"></span> Associazione ACAT</span>
-        <span class="legend-item"><span class="legend-dot dot-arcat"></span> ARCAT Regionale</span>
-        <span class="legend-item"><span class="legend-dot dot-aicat"></span> AICAT Nazionale</span>
+        <span class="legend-item"><span class="legend-dot dot-local"></span> <b>Club CAT</b> (Azzurro)</span>
+        <span class="legend-item"><span class="legend-dot dot-acat"></span> <b>ACAT</b> (Arancione)</span>
+        <span class="legend-item"><span class="legend-dot dot-apcat"></span> <b>APCAT</b> (Giallo)</span>
+        <span class="legend-item"><span class="legend-dot dot-arcat"></span> <b>ARCAT</b> (Verde)</span>
+        <span class="legend-item"><span class="legend-dot dot-aicat"></span> <b>AICAT</b> (Rosso)</span>
       </div>
     </div>
   </div>
@@ -1065,31 +1115,34 @@ function initMap() {
   }, 250);
 }
 
-// Creazione Icona Marker personalizzata in base al livello
+// Creazione Icona Marker personalizzata in base alla famiglia di appartenenza
 function createMarkerIcon(level, entityName) {
   let markerClass = 'marker-local';
   let label = 'CAT';
 
-  if (level === 'PROVINCIAL_APCAT' || (entityName && entityName.includes('APCAT'))) {
+  if (level === 'NATIONAL' || (entityName && entityName.includes('AICAT'))) {
+    markerClass = 'marker-aicat';
+    label = 'AICAT';
+  } else if (level === 'REGIONAL' || (entityName && entityName.includes('ARCAT'))) {
+    markerClass = 'marker-arcat';
+    label = 'ARCAT';
+  } else if (level === 'PROVINCIAL_APCAT' || (entityName && entityName.includes('APCAT'))) {
     markerClass = 'marker-apcat';
     label = 'APCAT';
-  } else if (level === 'TERRITORIAL' || level === 'TERRITORIAL_ASSOCIATION' || level === 'PROVINCIAL') {
+  } else if (['TERRITORIAL', 'TERRITORIAL_ASSOCIATION', 'PROVINCIAL', 'TERRITORIAL_ACAT'].includes(level) || (entityName && entityName.includes('ACAT'))) {
     markerClass = 'marker-acat';
     label = 'ACAT';
-  } else if (level === 'REGIONAL') {
-    markerClass = 'marker-arcat';
-    label = 'REG';
-  } else if (level === 'NATIONAL') {
-    markerClass = 'marker-aicat';
-    label = 'IT';
+  } else {
+    markerClass = 'marker-local';
+    label = 'CAT';
   }
 
   return L.divIcon({
     html: `<div class="custom-neon-marker ${markerClass}">${label}</div>`,
     className: 'custom-div-icon',
-    iconSize: [32, 32],
-    iconAnchor: [16, 16],
-    popupAnchor: [0, -18]
+    iconSize: [34, 34],
+    iconAnchor: [17, 17],
+    popupAnchor: [0, -20]
   });
 }
 
@@ -1182,18 +1235,21 @@ function applyFilters() {
     // Costruzione Popup interattivo
     let levelLabel = 'Club CAT Territoriale';
     let popupTagClass = 'tag-local';
-    if (club.level === 'PROVINCIAL_APCAT' || (club.entity_name && club.entity_name.includes('APCAT'))) {
-      levelLabel = 'APCAT Provinciale';
-      popupTagClass = 'tag-apcat';
-    } else if (['TERRITORIAL','TERRITORIAL_ASSOCIATION','PROVINCIAL'].includes(club.level)) {
-      levelLabel = 'Associazione ACAT';
-      popupTagClass = 'tag-acat';
-    } else if (club.level === 'REGIONAL') {
-      levelLabel = 'ARCAT Regionale';
-      popupTagClass = 'tag-arcat';
-    } else if (club.level === 'NATIONAL') {
+    if (club.level === 'NATIONAL' || (club.entity_name && club.entity_name.includes('AICAT'))) {
       levelLabel = 'AICAT Nazionale';
       popupTagClass = 'tag-aicat';
+    } else if (club.level === 'REGIONAL' || (club.entity_name && club.entity_name.includes('ARCAT'))) {
+      levelLabel = 'ARCAT Regionale';
+      popupTagClass = 'tag-arcat';
+    } else if (club.level === 'PROVINCIAL_APCAT' || (club.entity_name && club.entity_name.includes('APCAT'))) {
+      levelLabel = 'APCAT Provinciale';
+      popupTagClass = 'tag-apcat';
+    } else if (['TERRITORIAL','TERRITORIAL_ASSOCIATION','PROVINCIAL','TERRITORIAL_ACAT'].includes(club.level) || (club.entity_name && club.entity_name.includes('ACAT'))) {
+      levelLabel = 'Associazione ACAT';
+      popupTagClass = 'tag-acat';
+    } else {
+      levelLabel = 'Club CAT Territoriale';
+      popupTagClass = 'tag-local';
     }
     
     let popupHtml = `
@@ -1261,18 +1317,21 @@ function renderClubCards(clubs) {
 
     let tagClass = 'tag-local';
     let tagText = 'Club CAT';
-    if (c.level === 'PROVINCIAL_APCAT' || (c.entity_name && c.entity_name.includes('APCAT'))) {
-      tagClass = 'tag-apcat';
-      tagText = 'APCAT';
-    } else if (['TERRITORIAL','TERRITORIAL_ASSOCIATION','PROVINCIAL'].includes(c.level)) {
-      tagClass = 'tag-acat';
-      tagText = 'ACAT';
-    } else if (c.level === 'REGIONAL') {
-      tagClass = 'tag-arcat';
-      tagText = 'ARCAT';
-    } else if (c.level === 'NATIONAL') {
+    if (c.level === 'NATIONAL' || (c.entity_name && c.entity_name.includes('AICAT'))) {
       tagClass = 'tag-aicat';
       tagText = 'AICAT';
+    } else if (c.level === 'REGIONAL' || (c.entity_name && c.entity_name.includes('ARCAT'))) {
+      tagClass = 'tag-arcat';
+      tagText = 'ARCAT';
+    } else if (c.level === 'PROVINCIAL_APCAT' || (c.entity_name && c.entity_name.includes('APCAT'))) {
+      tagClass = 'tag-apcat';
+      tagText = 'APCAT';
+    } else if (['TERRITORIAL','TERRITORIAL_ASSOCIATION','PROVINCIAL','TERRITORIAL_ACAT'].includes(c.level) || (c.entity_name && c.entity_name.includes('ACAT'))) {
+      tagClass = 'tag-acat';
+      tagText = 'ACAT';
+    } else {
+      tagClass = 'tag-local';
+      tagText = 'Club CAT';
     }
 
     const cleanPhone = (c.phone || '').replace(/[^0-9+]/g, '');

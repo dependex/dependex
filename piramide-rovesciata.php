@@ -29,11 +29,12 @@ require '_header.php';
    ========================================================================== */
 :root {
   --tree-bg: #07090f;
-  --node-national: #d4af37;
-  --node-regional: #3b82f6;
-  --node-acat: #00d4ff;
-  --node-club: #10b981;
-  --node-family: #f59e0b;
+  --node-national: #ff3344;
+  --node-regional: #00ff77;
+  --node-acat: #ff7700;
+  --node-apcat: #ffd700;
+  --node-club: #00d4ff;
+  --node-family: #38bdf8;
 }
 
 .tree-container-wrapper {
@@ -351,11 +352,11 @@ require '_header.php';
 
     <!-- LEGENDA DEI LIVELLI -->
     <div class="tree-legend">
-      <span><span class="legend-dot" style="background:var(--node-family);"></span> Famiglie nel Cerchio</span>
-      <span><span class="legend-dot" style="background:var(--node-club);"></span> Club Locali (CAT)</span>
-      <span><span class="legend-dot" style="background:var(--node-acat);"></span> ACAT Territoriali</span>
-      <span><span class="legend-dot" style="background:var(--node-regional);"></span> ARCAT Regionali</span>
-      <span><span class="legend-dot" style="background:var(--node-national);"></span> AICAT Nazionale (Base di Supporto)</span>
+      <span><span class="legend-dot" style="background:var(--node-family);"></span> <b>Famiglie</b> nel Cerchio</span>
+      <span><span class="legend-dot" style="background:var(--node-club);"></span> <b>Club CAT</b> (Azzurro)</span>
+      <span><span class="legend-dot" style="background:var(--node-acat);"></span> <b>ACAT</b> (Arancione)</span>
+      <span><span class="legend-dot" style="background:var(--node-regional);"></span> <b>ARCAT</b> (Verde)</span>
+      <span><span class="legend-dot" style="background:var(--node-national);"></span> <b>AICAT</b> (Rosso)</span>
     </div>
 
     <!-- SIDEBAR INFORMATIVA DEL NODO CLICCATO -->
@@ -483,15 +484,17 @@ require '_header.php';
     resetView();
   }
 
-  // Colori per livello
+  // Colori per livello (Allineati allo standard DEPENDEX)
   function getNodeColor(type) {
     switch(type) {
-      case 'FAMILY': return '#f59e0b';
-      case 'LOCAL_CLUB': return '#10b981';
-      case 'TERRITORIAL_ACAT': return '#00d4ff';
-      case 'REGIONAL': return '#3b82f6';
-      case 'NATIONAL': return '#d4af37';
-      default: return '#94a3b8';
+      case 'NATIONAL': return '#ff3344';          // AICAT Nazionale: Rosso
+      case 'REGIONAL': return '#00ff77';          // ARCAT Regionale: Verde
+      case 'PROVINCIAL_APCAT': return '#ffd700';  // APCAT Provinciale: Giallo
+      case 'TERRITORIAL_ACAT':
+      case 'TERRITORIAL': return '#ff7700';       // ACAT Territoriale: Arancione
+      case 'LOCAL_CLUB': return '#00d4ff';        // Club CAT: Azzurro
+      case 'FAMILY': return '#38bdf8';            // Famiglie: Azzurro cielo
+      default: return '#00d4ff';
     }
   }
 

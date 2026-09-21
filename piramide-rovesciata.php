@@ -100,6 +100,30 @@ require '_header.php';
   filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.5));
 }
 
+/* STILE SPECIALE VISTA A STELLA (COSTELLAZIONE RADIALE 360°) */
+.tree-star-mode {
+  background: radial-gradient(circle at 50% 50%, rgba(22, 36, 64, 0.75) 0%, rgba(6, 9, 16, 0.98) 78%) !important;
+}
+.tree-star-mode .link {
+  stroke: rgba(0, 212, 255, 0.32);
+  stroke-dasharray: 4, 3;
+}
+.tree-star-mode .link.active {
+  stroke: #ffd700;
+  stroke-dasharray: none;
+  stroke-width: 2.5px;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.9));
+}
+.btn-mode-star {
+  color: #ffd700 !important;
+}
+.btn-mode-star.active {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(212, 175, 55, 0.35)) !important;
+  color: #ffd700 !important;
+  border: 1px solid rgba(255, 215, 0, 0.6) !important;
+  box-shadow: 0 0 14px rgba(255, 215, 0, 0.25);
+}
+
 /* BARRA DI CONTROLLO SUPERIORE */
 .tree-toolbar {
   position: absolute;
@@ -303,6 +327,9 @@ require '_header.php';
         <button type="button" class="tree-btn active" id="btnModeInverted" title="Vista Piramide Rovesciata (Famiglie in alto, AICAT di supporto in basso)">
           <?=dx_icon('arrow-down', '', 14)?> Piramide Rovesciata
         </button>
+        <button type="button" class="tree-btn btn-mode-star" id="btnModeStar" title="Vista a Forma di Stella (Costellazione radiale a 360°)">
+          <span style="font-size:14px;line-height:1;color:#ffd700;">★</span> Vista a Stella
+        </button>
         <button type="button" class="tree-btn" id="btnModeTree" title="Vista Albero Orizzontale Dinamico">
           <?=dx_icon('git-branch', '', 14)?> Vista Rete
         </button>
@@ -488,6 +515,7 @@ require '_header.php';
     if (currentLayoutMode === 'inverted') {
       // PIRAMIDE ROVESCIATA:
       // La radice (AICAT) è posizionata in basso (Y elevata), mentre le foglie (Club e Famiglie) salgono verso l'alto (Y bassa)
+      wrapper.classList.remove('tree-star-mode');
       treeLayout = d3.tree()
         .nodeSize([60, 120])
         .separation((a, b) => (a.parent === b.parent ? 1.2 : 1.8));
@@ -499,8 +527,33 @@ require '_header.php';
         d.targetY = -d.depth * 130; // Sale verso l'alto
         d.targetX = d.x;
       });
+    } else if (currentLayoutMode === 'star') {
+      // VISTA A FORMA DI STELLA / COSTELLAZIONE RADIALE A 360°
+      wrapper.classList.add('tree-star-mode');
+      const maxRadius = Math.min(width, height) * 0.95;
+
+      treeLayout = d3.tree()
+        .size([2 * Math.PI, maxRadius])
+        .separation((a, b) => (a.parent === b.parent ? 1 : 2) / (a.depth || 1));
+
+      treeLayout(rootNode);
+
+      rootNode.each(d => {
+        const theta = d.x - Math.PI / 2; // Inizia dal vertice ore 12
+        let r = 0;
+        if (d.depth === 1) r = 160;      // Raggio 1: 20 ARCAT Regionali (le punte maestre della stella)
+        else if (d.depth === 2) r = 310; // Raggio 2: Presidi ACAT Territoriali
+        else if (d.depth === 3) r = 460; // Raggio 3: Club Locali CAT
+        else if (d.depth >= 4) r = 590;  // Raggio 4: Famiglie nel Cerchio
+
+        d.targetX = r * Math.cos(theta);
+        d.targetY = r * Math.sin(theta);
+        d.radialAngle = theta;
+        d.radialRadius = r;
+      });
     } else {
       // VISTA RETE ORIZZONTALE
+      wrapper.classList.remove('tree-star-mode');
       treeLayout = d3.tree()
         .nodeSize([40, 220])
         .separation((a, b) => (a.parent === b.parent ? 1.1 : 1.6));
@@ -576,9 +629,9 @@ require '_header.php';
     // Etichetta del nodo
     nodeEnter.append('text')
       .attr('class', 'node-text')
-      .attr('dy', d => currentLayoutMode === 'inverted' ? (d.data.type === 'NATIONAL' ? 30 : -14) : 4)
-      .attr('x', d => currentLayoutMode === 'inverted' ? 0 : (d.children || d._children ? -16 : 16))
-      .attr('text-anchor', d => currentLayoutMode === 'inverted' ? 'middle' : (d.children || d._children ? 'end' : 'start'))
+      .attr('dy', d => getNodeTextDy(d))
+      .attr('x', d => getNodeTextX(d))
+      .attr('text-anchor', d => getNodeTextAnchor(d))
       .text(d => truncateName(d.data.name, 28));
 
     // UPDATE
@@ -600,9 +653,9 @@ require '_header.php';
 
     nodeUpdate.select('text.node-text')
       .transition().duration(duration)
-      .attr('dy', d => currentLayoutMode === 'inverted' ? (d.data.type === 'NATIONAL' ? 30 : -14) : 4)
-      .attr('x', d => currentLayoutMode === 'inverted' ? 0 : (d.children || d._children ? -16 : 16))
-      .attr('text-anchor', d => currentLayoutMode === 'inverted' ? 'middle' : (d.children || d._children ? 'end' : 'start'));
+      .attr('dy', d => getNodeTextDy(d))
+      .attr('x', d => getNodeTextX(d))
+      .attr('text-anchor', d => getNodeTextAnchor(d));
 
     // EXIT
     const nodeExit = nodeSelection.exit().transition().duration(duration)
@@ -618,12 +671,52 @@ require '_header.php';
     });
   }
 
+  // Helpers posizionamento testo per vista stella, piramide rovesciata e rete
+  function getNodeTextDy(d) {
+    if (currentLayoutMode === 'inverted') {
+      return d.data.type === 'NATIONAL' ? 30 : -14;
+    } else if (currentLayoutMode === 'star') {
+      return d.depth === 0 ? 32 : 4;
+    } else {
+      return 4;
+    }
+  }
+
+  function getNodeTextX(d) {
+    if (currentLayoutMode === 'inverted') {
+      return 0;
+    } else if (currentLayoutMode === 'star') {
+      if (d.depth === 0) return 0;
+      return d.targetX >= 0 ? 14 : -14;
+    } else {
+      return d.children || d._children ? -16 : 16;
+    }
+  }
+
+  function getNodeTextAnchor(d) {
+    if (currentLayoutMode === 'inverted') {
+      return 'middle';
+    } else if (currentLayoutMode === 'star') {
+      if (d.depth === 0) return 'middle';
+      return d.targetX >= 0 ? 'start' : 'end';
+    } else {
+      return d.children || d._children ? 'end' : 'start';
+    }
+  }
+
   // Curve per i link
   function diagonal(s, d) {
     if (currentLayoutMode === 'inverted') {
       return `M ${s.x} ${s.y}
               C ${s.x} ${(s.y + d.y) / 2},
                 ${d.x} ${(s.y + d.y) / 2},
+                ${d.x} ${d.y}`;
+    } else if (currentLayoutMode === 'star') {
+      // Curva radiale a stella
+      const midX = (s.x + d.x) / 2;
+      const midY = (s.y + d.y) / 2;
+      return `M ${s.x} ${s.y}
+              Q ${midX * 0.82} ${midY * 0.82},
                 ${d.x} ${d.y}`;
     } else {
       return `M ${s.x} ${s.y}
@@ -759,6 +852,13 @@ require '_header.php';
         .translate(width / 2, height - 90)
         .scale(0.85);
       svg.transition().duration(500).call(zoomBehavior.transform, initialTransform);
+    } else if (currentLayoutMode === 'star') {
+      // Vista a Stella: perfettamente al centro a 360 gradi
+      const starScale = width < 768 ? 0.58 : 0.82;
+      const initialTransform = d3.zoomIdentity
+        .translate(width / 2, height / 2)
+        .scale(starScale);
+      svg.transition().duration(500).call(zoomBehavior.transform, initialTransform);
     } else {
       const initialTransform = d3.zoomIdentity
         .translate(80, height / 2)
@@ -778,12 +878,24 @@ require '_header.php';
 
   // Switch modalità Layout
   const btnInv = document.getElementById('btnModeInverted');
+  const btnStar = document.getElementById('btnModeStar');
   const btnTree = document.getElementById('btnModeTree');
 
   btnInv.addEventListener('click', () => {
     if (currentLayoutMode === 'inverted') return;
     currentLayoutMode = 'inverted';
     btnInv.classList.add('active');
+    btnStar.classList.remove('active');
+    btnTree.classList.remove('active');
+    renderTree(rootNode);
+    resetView();
+  });
+
+  btnStar.addEventListener('click', () => {
+    if (currentLayoutMode === 'star') return;
+    currentLayoutMode = 'star';
+    btnStar.classList.add('active');
+    btnInv.classList.remove('active');
     btnTree.classList.remove('active');
     renderTree(rootNode);
     resetView();
@@ -794,6 +906,7 @@ require '_header.php';
     currentLayoutMode = 'horizontal';
     btnTree.classList.add('active');
     btnInv.classList.remove('active');
+    btnStar.classList.remove('active');
     renderTree(rootNode);
     resetView();
   });

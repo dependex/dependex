@@ -334,51 +334,68 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         <nav class="drawer-nav-group">
           <span class="drawer-section-title text-amber">RETE & TERRITORIO</span>
           <a href="/" class="drawer-link <?=$curScript==='index.php'?'active':''?>"><?=dx_icon('home','',18)?> Pagina Principale</a>
-          <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'||$curScript==='club-public.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> <b>Trova un Club Territoriale</b></a>
-          <a href="mappa-club.php" class="drawer-link <?=$curScript==='mappa-club.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa 2D Italia (1.768 Club)</b></a>
+          <a href="trova-club.php" class="drawer-link <?=$curScript==='world-club-explorer.php'||$curScript==='trova-club.php'||$curScript==='club-public.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> <b>Trova un Club Territoriale</b></a>
+          <a href="italy-map.php" class="drawer-link <?=$curScript==='mappa-club.php'||$curScript==='italy-map.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa 2D Italia (1.768 Club)</b></a>
           <a href="piramide-rovesciata.php" class="drawer-link highlight-gold <?=$curScript==='piramide-rovesciata.php'||$curScript==='organigramma.php'?'active':''?>"><?=dx_icon('layers','text-neon-gold',18)?> <b>Piramide Rovesciata (Organigramma)</b></a>
-          <a href="domande-frequenti.php" class="drawer-link <?=$curScript==='domande-frequenti.php'?'active':''?>"><?=dx_icon('help-circle','',18)?> Domande che vuoi fare</a>
-          <a href="recensioni.php" class="drawer-link <?=$curScript==='recensioni.php'?'active':''?>"><?=dx_icon('star','text-neon-gold',18)?> Recensioni & Testimonianze</a>
-          <a href="parla-con-noi.php" class="drawer-link highlight-gold <?=$curScript==='parla-con-noi.php'?'active':''?>"><?=dx_icon('message-circle','text-neon-gold',18)?> <b>Parla con Noi (Ascolto)</b></a>
-          <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Vivi la Comunità (Eventi)</a>
+          <a href="domande.php" class="drawer-link <?=$curScript==='domande-frequenti.php'||$curScript==='domande.php'?'active':''?>"><?=dx_icon('help-circle','',18)?> Domande che vuoi fare</a>
+          <a href="testimonianze.php" class="drawer-link <?=$curScript==='recensioni.php'||$curScript==='testimonianze.php'?'active':''?>"><?=dx_icon('star','text-neon-gold',18)?> Recensioni & Testimonianze</a>
+          <a href="contatti.php" class="drawer-link highlight-gold <?=$curScript==='parla-con-noi.php'||$curScript==='contatti.php'?'active':''?>"><?=dx_icon('message-circle','text-neon-gold',18)?> <b>Parla con Noi</b></a>
+          <a href="eventi.php" class="drawer-link <?=$curScript==='events-public.php'||$curScript==='eventi.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Vivi la Comunità</a>
           <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>"><?=dx_icon('compass','',18)?> Mappa Mondiale 2D/3D</a>
         </nav>
 
         <nav class="drawer-nav-group">
           <span class="drawer-section-title text-green">METODO & COMUNITÀ</span>
-          <a href="playground.php" class="drawer-link <?=$curScript==='playground.php'?'active':''?>"><?=dx_icon('sparkles','text-neon-cyan',18)?> <b>Life Playground 6.0</b></a>
-          <a href="orientamento.php" class="drawer-link <?=$curScript==='orientamento.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa del Benessere 4.0</b></a>
+          <a href="life-playground.php" class="drawer-link <?=$curScript==='playground.php'||$curScript==='life-playground.php'?'active':''?>"><?=dx_icon('sparkles','text-neon-cyan',18)?> <b>Life Playground 6.0</b></a>
+          <a href="mappa-benessere.php" class="drawer-link <?=$curScript==='orientamento.php'||$curScript==='mappa-benessere.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa del Benessere 4.0</b></a>
           <a href="dashboard.php" class="drawer-link <?=$curScript==='dashboard.php'?'active':''?>"><?=dx_icon('activity','text-neon-green',18)?> <b>Dashboard & Sobrietà</b></a>
-          <a href="ruota-della-vita.php" class="drawer-link <?=$curScript==='ruota-della-vita.php'?'active':''?>"><?=dx_icon('compass','text-neon-gold',18)?> Ruota della Vita 2D/3D</a>
-          <a href="piramide-maslow.php" class="drawer-link <?=$curScript==='piramide-maslow.php'?'active':''?>"><?=dx_icon('layers','text-neon-purple',18)?> Piramide di Maslow 2D/3D</a>
-          <a href="metodo.php" class="drawer-link <?=$curScript==='metodo.php'?'active':''?>"><?=dx_icon('feather','',18)?> Il Metodo Hudolin (3 Livelli)</a>
+          <a href="ruota-vita.php" class="drawer-link <?=$curScript==='ruota-della-vita.php'||$curScript==='ruota-vita.php'?'active':''?>"><?=dx_icon('compass','text-neon-gold',18)?> Ruota della Vita 2D/3D</a>
+          <a href="maslow.php" class="drawer-link <?=$curScript==='piramide-maslow.php'||$curScript==='maslow.php'?'active':''?>"><?=dx_icon('layers','text-neon-purple',18)?> Piramide di Maslow 2D/3D</a>
+          <a href="metodo.php" class="drawer-link <?=$curScript==='metodo.php'?'active':''?>"><?=dx_icon('feather','',18)?> Il Metodo Hudolin</a>
           <a href="storie.php" class="drawer-link <?=$curScript==='storie.php'?'active':''?>"><?=dx_icon('users','',18)?> Storie di Comunità</a>
         </nav>
 
         <nav class="drawer-nav-group">
           <span class="drawer-section-title text-cyan">SOVEREIGN ACADEMY</span>
-          <a href="guida-gratuita.php" class="drawer-link <?=$curScript==='guida-gratuita.php'?'active':''?>"><?=dx_icon('sparkles','text-neon-gold',18)?> <b>Guida Gratuita Famiglia</b></a>
-          <a href="evento-ottobre-taglio-di-po.php" class="drawer-link <?=$curScript==='evento-ottobre-taglio-di-po.php'||$curScript==='event-detail.php'?'active':''?>"><?=dx_icon('award','',18)?> Corso Esperienziale Taglio di Po</a>
-          <a href="academy-public.php" class="drawer-link <?=$curScript==='academy-public.php'?'active':''?>"><?=dx_icon('academic','',18)?> Formazione & Sensibilizzazione</a>
+          <a href="guida-famiglia.php" class="drawer-link <?=$curScript==='guida-gratuita.php'||$curScript==='guida-famiglia.php'?'active':''?>"><?=dx_icon('sparkles','text-neon-gold',18)?> <b>Guida Gratuita Famiglia</b></a>
+          <a href="corso-taglio-po.php" class="drawer-link <?=$curScript==='evento-ottobre-taglio-di-po.php'||$curScript==='corso-taglio-po.php'||$curScript==='event-detail.php'?'active':''?>"><?=dx_icon('award','',18)?> Corso Esperienziale Taglio di Po</a>
         </nav>
 
         <nav class="drawer-nav-group">
           <span class="drawer-section-title text-amber">RISORSE & APPROFONDIMENTI</span>
-          <a href="clips.php" class="drawer-link <?=$curScript==='clips.php'?'active':''?>"><?=dx_icon('play','text-neon-gold',18)?> Clip Motivazionali 9:16</a>
-          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Collana Libri KDP</a>
-          <a href="viaggi-esperienziali.php" class="drawer-link <?=$curScript==='viaggi-esperienziali.php'||$curScript==='crociera-benessere-masterclass.php'?'active':''?>"><?=dx_icon('compass','',18)?> Viaggi Esperienziali (BEWAY.LIFE)</a>
-          <a href="https://oltre.social" target="_blank" rel="noopener" class="drawer-link"><?=dx_icon('external-link','',18)?> OLTRE.SOCIAL ↗</a>
+          <a href="clip-motivazionali.php" class="drawer-link <?=$curScript==='clips.php'||$curScript==='clip-motivazionali.php'?'active':''?>"><?=dx_icon('play','text-neon-gold',18)?> Clip Motivazionali</a>
+          <a href="libri-kdp.php" class="drawer-link <?=$curScript==='offers.php'||$curScript==='libri-kdp.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Collana Libri KDP</a>
+          <a href="viaggi-esperienziali.php" class="drawer-link <?=$curScript==='viaggi-esperienziali.php'||$curScript==='crociera-benessere-masterclass.php'?'active':''?>"><?=dx_icon('compass','',18)?> Viaggi Esperienziali</a>
         </nav>
 
         <nav class="drawer-nav-group">
           <span class="drawer-section-title text-violet">GOVERNANCE & PRIVACY</span>
           <a href="privacy.php" class="drawer-link <?=$curScript==='privacy.php'?'active':''?>"><?=dx_icon('lock','',18)?> Privacy Policy (GDPR)</a>
-          <a href="privacy-center.php" class="drawer-link <?=$curScript==='privacy-center.php'?'active':''?>"><?=dx_icon('shield','',18)?> Gestione Consensi & Cookie</a>
-          <a href="javascript:void(0)" onclick="if(window.DxLocalReminders)window.DxLocalReminders.renderModal();" class="drawer-link"><?=dx_icon('bell','text-neon-cyan',18)?> Promemoria Privati (PWA)</a>
-          <a href="terms.php" class="drawer-link <?=$curScript==='terms.php'?'active':''?>"><?=dx_icon('file-text','',18)?> Termini & Trasparenza ACAT</a>
+          <a href="cookie.php" class="drawer-link <?=$curScript==='privacy-center.php'||$curScript==='cookie.php'?'active':''?>"><?=dx_icon('shield','',18)?> Gestione Consensi & Cookie</a>
+          <a href="pwa.php" class="drawer-link <?=$curScript==='pwa.php'?'active':''?>"><?=dx_icon('bell','text-neon-cyan',18)?> Promemoria Privati (PWA)</a>
+          <a href="termini.php" class="drawer-link <?=$curScript==='terms.php'||$curScript==='termini.php'?'active':''?>"><?=dx_icon('file-text','',18)?> Termini & Trasparenza ACAT</a>
           <a href="telemetria.php" class="drawer-link <?=$curScript==='telemetria.php'?'active':''?>"><?=dx_icon('activity','text-neon-cyan',18)?> Console Telemetria & Watchdog</a>
-          <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>"><?=dx_icon('shield','text-danger',18)?> Aiuto & Emergenze (112)</a>
+          <a href="emergenze.php" class="drawer-link <?=$curScript==='help.php'||$curScript==='emergenze.php'?'active':''?>"><?=dx_icon('shield','text-danger',18)?> Aiuto & Emergenze (112)</a>
         </nav>
+
+        <script>
+        // Auto-refresh contatori visite e utenti live (Prompt Punto 1)
+        (function(){
+          setInterval(function() {
+            fetch('api/live-stats.php', { cache: 'no-store' })
+              .then(function(r) { return r.json(); })
+              .then(function(d) {
+                if (d && d.ok) {
+                  var v = document.getElementById('dxTotalVisits');
+                  var l = document.getElementById('dxLiveUsers');
+                  if (v && d.formatted_visits) v.textContent = d.formatted_visits;
+                  if (l && d.formatted_live) l.textContent = d.formatted_live;
+                }
+              })
+              .catch(function(){});
+          }, 45000);
+        })();
+        </script>
       <?php endif;?>
     </div>
     <div class="drawer-footer">

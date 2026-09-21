@@ -347,7 +347,7 @@ require '_header.php';
           Nessuna pressione, nessun obbligo. Scegli se compiere uno di questi piccoli gesti di vita reale oggi:
         </p>
 
-        <div class="d-flex flex-column gap-3 mb-3">
+        <div id="dailyQuestsList" class="d-flex flex-column gap-3 mb-3">
           
           <!-- PASSO 1: 30 SECONDI -->
           <div class="p-3" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px;">

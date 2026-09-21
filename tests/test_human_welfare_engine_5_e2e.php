@@ -82,7 +82,7 @@ assert_test("Explainable recommendation contains transparency phrase", strpos($e
 
 // Community Capital
 $capital = HumanWelfareEngine::getCommunityCapitalOverview();
-assert_test("Community Capital includes 322+ clubs", strpos($capital['clubs_count'], '322+') !== false);
+assert_test("Community Capital includes 1.770+ clubs", strpos($capital['clubs_count'], '1.770+') !== false);
 assert_test("Community Capital includes free access 100%", $capital['free_access'] === '100%');
 
 // Contribution Paths

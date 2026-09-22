@@ -319,14 +319,17 @@ require '_dependex-world-map.php';
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.08);padding-top:10px;">
             <?php if($ent['website']): ?>
-              <a href="<?=h($ent['website'])?>" target="_blank" rel="noopener" class="btn small primary" style="flex:1;text-align:center;">
-                <?=dx_icon('external-link', '', 14)?> Sito Ufficiale ↗
+              <a href="<?=h($ent['website'])?>" target="_blank" rel="noopener" class="btn small primary" style="flex:1 1 100px;text-align:center;min-height:44px;display:inline-flex;align-items:center;justify-content:center;">
+                <?=dx_icon('external-link', '', 14)?> Sito ↗
               </a>
             <?php else: ?>
-              <span style="font-size:0.75rem;color:#94a3b8;align-self:center;font-style:italic;">Contatto istituzionale AICAT</span>
+              <span style="font-size:0.75rem;color:#94a3b8;align-self:center;font-style:italic;">Contatto AICAT</span>
             <?php endif; ?>
-            <a href="/club/<?=urlencode($ent['sic_id'])?>" class="btn small" style="background:rgba(255,255,255,0.05);color:#cbd5e1;border:1px solid rgba(255,255,255,0.15);">
-              Scheda Dependex
+            <a href="/club/<?=urlencode($ent['sic_id'])?>" class="btn small" style="flex:1 1 100px;background:rgba(255,255,255,0.05);color:#cbd5e1;border:1px solid rgba(255,255,255,0.15);min-height:44px;display:inline-flex;align-items:center;justify-content:center;">
+              Scheda
+            </a>
+            <a href="/club/<?=urlencode($ent['sic_id'])?>#contact-bridge-card" class="btn small" style="flex:1 1 110px;background:rgba(0,212,255,0.12);color:#00d4ff;border:1px solid rgba(0,212,255,0.35);min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-weight:700;" title="Partecipa al prossimo incontro di questo Club">
+              <?=dx_icon('heart', '', 14)?> Partecipa
             </a>
           </div>
         </article>
@@ -375,12 +378,15 @@ require '_dependex-world-map.php';
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.1);padding-top:10px;">
             <?php if($ent['website']): ?>
-              <a href="<?=h($ent['website'])?>" target="_blank" rel="noopener" class="btn small primary" style="flex:1 1 120px;text-align:center;padding:8px 12px;font-size:0.85rem;min-height:42px;">
-                <?=dx_icon('external-link', '', 14)?> Portale Ufficiale ↗
+              <a href="<?=h($ent['website'])?>" target="_blank" rel="noopener" class="btn small primary" style="flex:1 1 100px;text-align:center;padding:8px 12px;font-size:0.85rem;min-height:44px;display:inline-flex;align-items:center;justify-content:center;">
+                <?=dx_icon('external-link', '', 14)?> Sito ↗
               </a>
             <?php endif; ?>
-            <a href="/club/<?=urlencode($ent['sic_id'])?>" class="btn small" style="flex:1 1 120px;background:rgba(255,255,255,0.06);color:#f1f5f9;border:1px solid rgba(255,255,255,0.2);padding:8px 12px;font-size:0.85rem;text-align:center;min-height:42px;display:inline-flex;align-items:center;justify-content:center;">
-              Scheda Dependex
+            <a href="/club/<?=urlencode($ent['sic_id'])?>" class="btn small" style="flex:1 1 100px;background:rgba(255,255,255,0.06);color:#f1f5f9;border:1px solid rgba(255,255,255,0.2);padding:8px 12px;font-size:0.85rem;text-align:center;min-height:44px;display:inline-flex;align-items:center;justify-content:center;">
+              Scheda
+            </a>
+            <a href="/club/<?=urlencode($ent['sic_id'])?>#contact-bridge-card" class="btn small" style="flex:1 1 110px;background:rgba(0,212,255,0.12);color:#00d4ff;border:1px solid rgba(0,212,255,0.35);padding:8px 12px;font-size:0.85rem;text-align:center;min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-weight:700;" title="Partecipa al prossimo incontro di questo Club">
+              <?=dx_icon('heart', '', 14)?> Partecipa
             </a>
           </div>
         </article>

@@ -2,7 +2,7 @@
 /**
  * DEPENDEX.SOCIAL - Project Details & Social Impact Action
  * Protocollo Karpathy: SPEC -> VERIFIER -> ENVIRONMENT
- * Trauma-Informed, Zero Wellness Score, Mobile-First
+ * Trauma-Informed, Zero Punteggi Clinici (Divieto Punteggio Benessere), Mobile-First
  */
 require_once 'bootstrap.php';
 $u = require_login();

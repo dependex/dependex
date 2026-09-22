@@ -17,8 +17,13 @@ FILES_TO_UPLOAD = [
     "assets/js/dx-pwa-companion.js",
     "club-public.php",
     "mappa-club.php",
+    "world-club-explorer.php",
     "bootstrap.php",
     "_footer.php",
+    "profile-engine.php",
+    "project.php",
+    "rank.php",
+    "registry.php",
     "data/acat_community.sqlite"
 ]
 
@@ -77,10 +82,10 @@ time.sleep(1)
 test_urls = [
     ("https://dependex.social/offline.html", "800 974250"),
     ("https://dependex.social/service-worker.js", "dependex-pwa"),
-    ("https://dependex.social/mappa-club.php", "chunkedLoading"),
-    ("https://dependex.social/club-public.php?sic=SIC-CAT-001", "contact-bridge-card"),
+    ("https://dependex.social/club/SIC-ACAT-PELIGNA-AQ", "contact-bridge-card"),
     ("https://oltre.social/offline.html", "800 974250"),
-    ("https://oltre.social/mappa-club.php", "chunkedLoading")
+    ("https://oltre.social/mappa-club.php", "chunkedLoading"),
+    ("https://oltre.social/club/SIC-ACAT-PELIGNA-AQ", "contact-bridge-card")
 ]
 
 req_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) DependexDeployVerifier/2.0"}

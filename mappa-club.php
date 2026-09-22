@@ -313,8 +313,6 @@ require '_header.php';
 .stats-counter-tag b {
   color: var(--map-cyan);
 }
-  color: var(--map-cyan);
-}
 
 /* LAYOUT MAPPA 2D + LISTA LATERALE */
 .map-main-layout {
@@ -323,7 +321,7 @@ require '_header.php';
   display: grid;
   grid-template-columns: 1fr 420px;
   gap: 20px;
-  min-height: 720px;
+  min-height: clamp(380px, 65dvh, 720px);
 }
 
 @media (max-width: 1100px) {
@@ -1457,6 +1455,7 @@ function applyFilters() {
         
         <div class="popup-actions">
           ${club.phone ? `<a href="tel:${club.phone.replace(/[^0-9+]/g, '')}" class="card-action-btn btn-phone">Chiama</a>` : ''}
+          ${club.sic_id ? `<a href="/club/${encodeURIComponent(club.sic_id)}#contact-bridge-card" class="card-action-btn" style="background:rgba(0,212,255,0.18);color:#00d4ff;border:1px solid rgba(0,212,255,0.4);font-weight:750;">Partecipa</a>` : ''}
           <a href="https://www.google.com/maps/dir/?api=1&destination=${latRaw},${lonRaw}" target="_blank" class="card-action-btn btn-directions">Indicazioni</a>
           <button type="button" class="card-action-btn btn-share" 
                   data-club="${escapeHtml(club.entity_name)}" 
@@ -1565,6 +1564,11 @@ function buildClubCardElement(c) {
       <a href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}" target="_blank" class="card-action-btn btn-directions">
         Itinerario
       </a>
+      ${c.sic_id ? `
+        <a href="/club/${encodeURIComponent(c.sic_id)}#contact-bridge-card" class="card-action-btn" style="background:rgba(0,212,255,0.18);color:#00d4ff;border:1px solid rgba(0,212,255,0.4);font-weight:750;">
+          Partecipa
+        </a>
+      ` : ''}
       <button type="button" class="card-action-btn btn-share" 
               data-club="${escapeHtml(c.entity_name)}" 
               data-city="${escapeHtml(c.city)}" 

@@ -2,7 +2,7 @@
 /**
  * DEPENDEX.SOCIAL - Global Registry (Anagrafe Utenti, Famiglie e Professionisti)
  * Protocollo Karpathy: SPEC -> VERIFIER -> ENVIRONMENT
- * Full Separation, SIC-ID, Zero Wellness Score, Mobile-First
+ * Full Separation, SIC-ID, Zero Punteggi Clinici (Divieto Punteggio Benessere), Mobile-First
  */
 require_once 'bootstrap.php';
 $u = require_admin();

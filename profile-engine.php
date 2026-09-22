@@ -2,7 +2,7 @@
 /**
  * DEPENDEX.SOCIAL - Human Profile & Self-Awareness Map
  * Protocollo Karpathy: SPEC -> VERIFIER -> ENVIRONMENT
- * Maieutic Self-Reflection, Zero Wellness Score, Mobile-First
+ * Maieutic Self-Reflection, Zero Punteggi Clinici (Divieto Punteggio Benessere), Mobile-First
  */
 require_once 'bootstrap.php';
 $u = require_login();

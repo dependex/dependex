@@ -123,7 +123,7 @@ Creazione di due nuove tabelle dedicate e leggere in `acat_community.sqlite`:
 ### 8. Security & Privacy Review
 - **Data Minimization Rigorosa:** Il Contact Bridge non memorizza alcuna anamnesi, quantità di consumo o referti medici. I dati di contatto vengono conservati solo per il tempo necessario alla presa in carico del Club.
 - **No Indici di Benessere:** Conforme all'art. 7 di AGENTS.md, nessun campo o score numerico verrà salvato.
-- **Protezione Accesso Dashboard Club:** Autenticazione tramite magic-link token crittografato (SHA-256) per evitare che i servitori debbano ricordare password o espongano credenziali deboli.
+- **Protezione Accesso Dashboard Club:** Autenticazione tramite link crittografato one-time (secure link con hash SHA-256) per evitare che i servitori debbano ricordare password o espongano credenziali deboli.
 
 ### 9. SEO Plan
 - Ottimizzazione delle pagine territoriali: URL leggibili come `/club/{sic_id}` con Canonical, Breadcrumbs e Schema.org `CommunityCenter` / `PostalAddress`.

@@ -2,7 +2,7 @@
 /**
  * DEPENDEX.SOCIAL - DRX Rank Progression Road
  * Protocollo Karpathy: SPEC -> VERIFIER -> ENVIRONMENT
- * Non-Punitive, Merit-Based, Zero Wellness Score, Mobile-First
+ * Non-Punitive, Merit-Based, Zero Punteggi Clinici (Divieto Punteggio Benessere), Mobile-First
  */
 require_once 'bootstrap.php';
 $u = require_login();

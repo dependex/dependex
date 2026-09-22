@@ -365,7 +365,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           <span class="drawer-section-title text-amber">RISORSE & APPROFONDIMENTI</span>
           <a href="clip-motivazionali.php" class="drawer-link <?=$curScript==='clips.php'||$curScript==='clip-motivazionali.php'?'active':''?>"><?=dx_icon('play','text-neon-gold',18)?> Clip Motivazionali</a>
           <a href="libri-kdp.php" class="drawer-link <?=$curScript==='offers.php'||$curScript==='libri-kdp.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Collana Libri KDP</a>
-          <a href="viaggi-esperienziali.php" class="drawer-link <?=$curScript==='viaggi-esperienziali.php'||$curScript==='crociera-benessere-masterclass.php'?'active':''?>"><?=dx_icon('compass','',18)?> Viaggi Esperienziali</a>
+          <a href="viaggi-esperienziali.php" class="drawer-link <?=$curScript==='viaggi-esperienziali.php'||$curScript==='crociera-benessere-masterclass.php'?'active':''?>"><?=dx_icon('compass','',18)?> Viaggi Esperienziali BEWAY.LIFE</a>
         </nav>
 
         <nav class="drawer-nav-group">

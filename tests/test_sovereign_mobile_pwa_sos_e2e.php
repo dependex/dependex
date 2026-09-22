@@ -57,7 +57,7 @@ $swFile = $baseDir . '/service-worker.js';
 assertCondition("service-worker.js exists", file_exists($swFile), $errors, $tests);
 if (file_exists($swFile)) {
     $swContent = file_get_contents($swFile);
-    assertCondition("Cache name aggiornata a dependex-pwa-v4", strpos($swContent, 'dependex-pwa-v4') !== false, $errors, $tests);
+    assertCondition("Cache name aggiornata a dependex-pwa-v4+", preg_match('/dependex-pwa-v[4-9]/', $swContent) === 1, $errors, $tests);
     assertCondition("STATIC_ASSETS include rainbow-neon.css", strpos($swContent, 'assets/css/rainbow-neon.css') !== false, $errors, $tests);
     assertCondition("STATIC_ASSETS include dx-telemetry.js", strpos($swContent, 'assets/js/dx-telemetry.js') !== false, $errors, $tests);
     assertCondition("STATIC_ASSETS include recensioni_club_italia.json", strpos($swContent, 'data/recensioni_club_italia.json') !== false, $errors, $tests);

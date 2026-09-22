@@ -329,6 +329,24 @@ require '_header.php';
 @media (max-width: 1100px) {
   .map-main-layout {
     grid-template-columns: 1fr;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .map-main-layout {
+    min-height: auto;
+    margin-bottom: 1.5rem;
+    gap: 14px;
+  }
+  .map-viewport-wrapper {
+    min-height: 380px;
+  }
+  #leafletMapContainer {
+    min-height: 420px !important;
+  }
+  .club-list-panel {
+    max-height: 520px !important;
   }
 }
 
@@ -1192,11 +1210,15 @@ function initMap() {
   // Rimangono sempre visibili con i loro colori specifici (Rosso, Verde, Giallo, Arancione) a qualsiasi livello di zoom!
   institutionalLayerGroup = L.layerGroup().addTo(mapInstance);
 
-  // Cluster group SOLO per i Club CAT locali (Azzurro)
+  // Cluster group SOLO per i Club CAT locali (Azzurro) con chunkedLoading per smartphone a basso consumo
   markerClusterGroup = L.markerClusterGroup({
     showCoverageOnHover: false,
     maxClusterRadius: 40,
     spiderfyOnMaxZoom: true,
+    chunkedLoading: true,
+    chunkInterval: 50,
+    chunkDelay: 10,
+    removeOutsideVisibleBounds: true,
     iconCreateFunction: function(cluster) {
       const count = cluster.getChildCount();
       return L.divIcon({
@@ -1363,7 +1385,10 @@ function applyFilters() {
   });
   const coordIndex = {};
 
-  // Renderizzatore Markers su Mappa
+  // Renderizzatore Markers su Mappa con Batch Loading ottimizzato per basse CPU e smartphone
+  const clusterMarkers = [];
+  const instMarkers = [];
+
   filtered.forEach(club => {
     const latRaw = parseFloat(club.latitude);
     const lonRaw = parseFloat(club.longitude);
@@ -1456,22 +1481,122 @@ function applyFilters() {
     markerLookup.set(club.id, marker);
 
     if (isInstitutional) {
-      institutionalLayerGroup.addLayer(marker);
+      instMarkers.push(marker);
     } else {
-      markerClusterGroup.addLayer(marker);
+      clusterMarkers.push(marker);
     }
   });
 
-  // Render lista card nella sidebar drawer
-  renderClubCards(filtered);
+  // Batch insert ultra-performante
+  if (instMarkers.length > 0) {
+    instMarkers.forEach(m => institutionalLayerGroup.addLayer(m));
+  }
+  if (clusterMarkers.length > 0) {
+    markerClusterGroup.addLayers(clusterMarkers);
+  }
+
+  // Render lista card progressivo nella sidebar drawer (primi 30 con lazy loading)
+  renderClubCards(filtered, true);
 }
 
-// Renderizzazione delle Card nella sidebar
-function renderClubCards(clubs) {
-  const container = document.getElementById('clubCardsContainer');
-  container.innerHTML = '';
+// Costruzione Elemento DOM Singola Card
+function buildClubCardElement(c) {
+  const lat = parseFloat(c.latitude);
+  const lon = parseFloat(c.longitude);
+  const card = document.createElement('div');
+  card.className = 'club-card-item';
+  card.id = `clubCard_${c.id}`;
 
-  if (clubs.length === 0) {
+  const family = getClubFamily(c);
+  let tagClass = 'tag-local';
+  let tagText = 'Club CAT';
+  let borderAccent = '#00d4ff';
+
+  if (family === 'AICAT') {
+    tagClass = 'tag-aicat';
+    tagText = 'AICAT Nazionale';
+    borderAccent = '#ff3344';
+  } else if (family === 'ARCAT') {
+    tagClass = 'tag-arcat';
+    tagText = 'ARCAT Regionale';
+    borderAccent = '#00ff77';
+  } else if (family === 'APCAT') {
+    tagClass = 'tag-apcat';
+    tagText = 'APCAT Provinciale';
+    borderAccent = '#ffd700';
+  } else if (family === 'ACAT') {
+    tagClass = 'tag-acat';
+    tagText = 'Associazione ACAT';
+    borderAccent = '#ff7700';
+  }
+
+  card.style.borderLeft = `3.5px solid ${borderAccent}`;
+
+  const cleanPhone = (c.phone || '').replace(/[^0-9+]/g, '');
+
+  card.innerHTML = `
+    <div class="club-card-top">
+      <span class="club-type-tag ${tagClass}">${tagText}</span>
+      <span class="badge-families" style="font-size:0.75rem; font-weight:750; color:#38bdf8; background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.3); padding:2px 7px; border-radius:6px;">${c.families_count || 11} Famiglie</span>
+      ${c._distance !== undefined ? `<span class="distance-badge">${c._distance} km</span>` : `<span style="font-size:0.75rem;color:#64748b;">${escapeHtml(c.province || '')}</span>`}
+    </div>
+    <div class="club-card-name">${escapeHtml(c.entity_name)}</div>
+    <div class="club-card-location">
+      <span>${escapeHtml(c.city)}${c.address ? ' · ' + escapeHtml(c.address) : ''} (${escapeHtml(c.region)})</span>
+    </div>
+    ${c.meeting_day ? `
+      <div class="club-card-meeting">
+        <b>${escapeHtml(c.meeting_day)}</b> ${c.meeting_time ? 'ore ' + escapeHtml(c.meeting_time) : ''}
+        ${c.servitore_insegnante ? `<br><small style="color:#94a3b8;">Servitore: ${escapeHtml(c.servitore_insegnante)}</small>` : ''}
+      </div>
+    ` : ''}
+    <div class="club-card-actions">
+      <button type="button" class="card-action-btn btn-map-focus" onclick="focusOnClub(${c.id}, ${lat}, ${lon})">
+        Mappa
+      </button>
+      ${cleanPhone ? `
+        <a href="tel:${cleanPhone}" class="card-action-btn btn-phone">
+          Chiama
+        </a>
+        <a href="https://wa.me/${cleanPhone.replace('+', '')}?text=Salve,%20ho%20trovato%20il%20vostro%20Club%20su%20Dependex%20e%20vorrei%20informazioni" target="_blank" class="card-action-btn btn-wa">
+          WhatsApp
+        </a>
+      ` : ''}
+      <a href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}" target="_blank" class="card-action-btn btn-directions">
+        Itinerario
+      </a>
+      <button type="button" class="card-action-btn btn-share" 
+              data-club="${escapeHtml(c.entity_name)}" 
+              data-city="${escapeHtml(c.city)}" 
+              data-day="${escapeHtml(c.meeting_day || '')}" 
+              data-time="${escapeHtml(c.meeting_time || '')}" 
+              data-addr="${escapeHtml(c.address || '')}"
+              onclick="window.handleShareClubBtn ? window.handleShareClubBtn(this) : (window.shareClubWithFamily && window.shareClubWithFamily(this.dataset.club, this.dataset.city, this.dataset.day, this.dataset.time, this.dataset.addr))"
+              style="background:rgba(255,215,0,0.15); color:#ffd700; border:1px solid rgba(255,215,0,0.35); cursor:pointer;"
+              title="Condividi con un familiare">
+        Ti accompagno io
+      </button>
+    </div>
+  `;
+  return card;
+}
+
+// Lazy-loading progressivo delle Card nella sidebar
+let currentFilteredClubs = [];
+let renderedCardCount = 0;
+const CARD_BATCH_SIZE = 30;
+
+function renderClubCards(clubs, isNewFilter = true) {
+  const container = document.getElementById('clubCardsContainer');
+  if (!container) return;
+
+  if (isNewFilter) {
+    container.innerHTML = '';
+    currentFilteredClubs = clubs;
+    renderedCardCount = 0;
+  }
+
+  if (currentFilteredClubs.length === 0) {
     container.innerHTML = `
       <div style="text-align:center;padding:2rem 1rem;color:#94a3b8;">
         <p style="font-size:1.1rem;margin-bottom:8px;">Nessun club trovato con i filtri attuali.</p>
@@ -1481,87 +1606,34 @@ function renderClubCards(clubs) {
     return;
   }
 
-  clubs.forEach(c => {
-    const lat = parseFloat(c.latitude);
-    const lon = parseFloat(c.longitude);
-    const card = document.createElement('div');
-    card.className = 'club-card-item';
-    card.id = `clubCard_${c.id}`;
+  // Rimuove eventuale vecchio pulsante "Carica Altri" prima di aggiungere il nuovo batch
+  const oldBtn = document.getElementById('btnLoadMoreClubs');
+  if (oldBtn) oldBtn.remove();
 
-    const family = getClubFamily(c);
-    let tagClass = 'tag-local';
-    let tagText = 'Club CAT';
-    let borderAccent = '#00d4ff';
+  const nextBatch = currentFilteredClubs.slice(renderedCardCount, renderedCardCount + CARD_BATCH_SIZE);
+  const fragment = document.createDocumentFragment();
 
-    if (family === 'AICAT') {
-      tagClass = 'tag-aicat';
-      tagText = 'AICAT Nazionale';
-      borderAccent = '#ff3344';
-    } else if (family === 'ARCAT') {
-      tagClass = 'tag-arcat';
-      tagText = 'ARCAT Regionale';
-      borderAccent = '#00ff77';
-    } else if (family === 'APCAT') {
-      tagClass = 'tag-apcat';
-      tagText = 'APCAT Provinciale';
-      borderAccent = '#ffd700';
-    } else if (family === 'ACAT') {
-      tagClass = 'tag-acat';
-      tagText = 'Associazione ACAT';
-      borderAccent = '#ff7700';
-    }
-
-    card.style.borderLeft = `3.5px solid ${borderAccent}`;
-
-    const cleanPhone = (c.phone || '').replace(/[^0-9+]/g, '');
-
-    card.innerHTML = `
-      <div class="club-card-top">
-        <span class="club-type-tag ${tagClass}">${tagText}</span>
-        <span class="badge-families" style="font-size:0.75rem; font-weight:750; color:#38bdf8; background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.3); padding:2px 7px; border-radius:6px;">${c.families_count || 11} Famiglie</span>
-        ${c._distance !== undefined ? `<span class="distance-badge">${c._distance} km</span>` : `<span style="font-size:0.75rem;color:#64748b;">${escapeHtml(c.province || '')}</span>`}
-      </div>
-      <div class="club-card-name">${escapeHtml(c.entity_name)}</div>
-      <div class="club-card-location">
-        <span>${escapeHtml(c.city)}${c.address ? ' · ' + escapeHtml(c.address) : ''} (${escapeHtml(c.region)})</span>
-      </div>
-      ${c.meeting_day ? `
-        <div class="club-card-meeting">
-          <b>${escapeHtml(c.meeting_day)}</b> ${c.meeting_time ? 'ore ' + escapeHtml(c.meeting_time) : ''}
-          ${c.servitore_insegnante ? `<br><small style="color:#94a3b8;">Servitore: ${escapeHtml(c.servitore_insegnante)}</small>` : ''}
-        </div>
-      ` : ''}
-      <div class="club-card-actions">
-        <button type="button" class="card-action-btn btn-map-focus" onclick="focusOnClub(${c.id}, ${lat}, ${lon})">
-          Mappa
-        </button>
-        ${cleanPhone ? `
-          <a href="tel:${cleanPhone}" class="card-action-btn btn-phone">
-            Chiama
-          </a>
-          <a href="https://wa.me/${cleanPhone.replace('+', '')}?text=Salve,%20ho%20trovato%20il%20vostro%20Club%20su%20Dependex%20e%20vorrei%20informazioni" target="_blank" class="card-action-btn btn-wa">
-            WhatsApp
-          </a>
-        ` : ''}
-        <a href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}" target="_blank" class="card-action-btn btn-directions">
-          Itinerario
-        </a>
-        <button type="button" class="card-action-btn btn-share" 
-                data-club="${escapeHtml(c.entity_name)}" 
-                data-city="${escapeHtml(c.city)}" 
-                data-day="${escapeHtml(c.meeting_day || '')}" 
-                data-time="${escapeHtml(c.meeting_time || '')}" 
-                data-addr="${escapeHtml(c.address || '')}"
-                onclick="window.handleShareClubBtn ? window.handleShareClubBtn(this) : (window.shareClubWithFamily && window.shareClubWithFamily(this.dataset.club, this.dataset.city, this.dataset.day, this.dataset.time, this.dataset.addr))"
-                style="background:rgba(255,215,0,0.15); color:#ffd700; border:1px solid rgba(255,215,0,0.35); cursor:pointer;"
-                title="Condividi con un familiare">
-          Ti accompagno io
-        </button>
-      </div>
-    `;
-
-    container.appendChild(card);
+  nextBatch.forEach(c => {
+    const card = buildClubCardElement(c);
+    fragment.appendChild(card);
   });
+
+  container.appendChild(fragment);
+  renderedCardCount += nextBatch.length;
+
+  // Se rimangono altri club, aggiunge pulsante per caricare altri nodi
+  if (renderedCardCount < currentFilteredClubs.length) {
+    const remaining = currentFilteredClubs.length - renderedCardCount;
+    const loadMoreWrapper = document.createElement('div');
+    loadMoreWrapper.id = 'btnLoadMoreClubs';
+    loadMoreWrapper.style.cssText = 'text-align:center;padding:12px 10px;margin-top:8px;';
+    loadMoreWrapper.innerHTML = `
+      <button type="button" class="btn small" onclick="renderClubCards(currentFilteredClubs, false)" style="background:rgba(0,240,255,0.12);border:1px solid rgba(0,240,255,0.3);color:#00f0ff;font-weight:700;padding:10px 18px;border-radius:10px;cursor:pointer;width:100%;max-width:320px;">
+        + Mostra altri 30 Club (${remaining} rimanenti)
+      </button>
+    `;
+    container.appendChild(loadMoreWrapper);
+  }
 }
 
 // Zoom e Focus su un club specifico (supporta sia cluster CAT che nodi istituzionali)
@@ -1584,10 +1656,18 @@ function focusOnClub(id, lat, lon) {
   highlightClubInDrawer(id);
 }
 
-// Evidenzia la card nella lista laterale
+// Evidenzia la card nella lista laterale (creandola all'istante se non ancora caricata)
 function highlightClubInDrawer(id) {
   document.querySelectorAll('.club-card-item').forEach(el => el.classList.remove('selected'));
-  const card = document.getElementById(`clubCard_${id}`);
+  let card = document.getElementById(`clubCard_${id}`);
+  if (!card) {
+    const targetClub = currentFilteredClubs.find(c => c.id == id);
+    if (targetClub) {
+      const container = document.getElementById('clubCardsContainer');
+      card = buildClubCardElement(targetClub);
+      container.insertBefore(card, container.firstChild);
+    }
+  }
   if (card) {
     card.classList.add('selected');
     card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -1728,8 +1808,21 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
-// Avvio al caricamento del DOM
-document.addEventListener('DOMContentLoaded', initMap);
+// Avvio al caricamento del DOM e listener infinite scroll
+document.addEventListener('DOMContentLoaded', () => {
+  initMap();
+
+  const listPanel = document.querySelector('.club-list-panel');
+  if (listPanel) {
+    listPanel.addEventListener('scroll', debounce(() => {
+      if (listPanel.scrollTop + listPanel.clientHeight >= listPanel.scrollHeight - 160) {
+        if (renderedCardCount < currentFilteredClubs.length) {
+          renderClubCards(currentFilteredClubs, false);
+        }
+      }
+    }, 80));
+  }
+});
 </script>
 
 <?php require '_footer.php'; ?>

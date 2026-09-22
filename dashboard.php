@@ -535,7 +535,7 @@ require '_header.php';
         <div class="d-flex flex-column gap-2">
           <a href="mappa-club.php" class="btn-rainbow-neon small" style="justify-content: center;">
             <?=dx_icon('compass', '', 14)?>
-            <span style="margin-left: 6px;">Trova Altri Club (395 in Italia)</span>
+            <span style="margin-left: 6px;">Trova Altri Club (1.761 in Italia)</span>
           </a>
           <a href="parla-con-noi.php" class="btn small" style="border: 1px solid rgba(255,255,255,0.25); color: #fff; border-radius: 12px; justify-content: center;">
             <?=dx_icon('message-circle', 'text-neon-cyan', 14)?>

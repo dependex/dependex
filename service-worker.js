@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dependex-pwa-v6.4';
+const CACHE_NAME = 'dependex-pwa-v6.6';
 const STATIC_ASSETS = [
   'offline.html',
   'manifest.webmanifest',
@@ -8,13 +8,17 @@ const STATIC_ASSETS = [
   'assets/js/dx-voice-sos.js',
   'assets/js/dx-micro-checkin.js',
   'assets/js/dx-local-reminders.js',
+  'assets/js/dx-pwa-companion.js',
+  'api-public-metrics.php',
+  'mappa-club.php',
+  'world-club-explorer.php',
+  'orientamento.php',
   'data/recensioni_club_italia.json',
   'data/CENSIMENTO_CLUB_CAT_ITALIA_2026.csv',
   'assets/logo.svg',
   'assets/logo.png',
   'widget-club.php',
-  'widget-generator.php',
-  'orientamento.php'
+  'widget-generator.php'
 ];
 
 self.addEventListener('install', (event) => {

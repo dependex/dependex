@@ -172,4 +172,27 @@
     window.shareClubWithFamily(club || '', city || '', day || '', time || '', addr || '');
   };
 
+  // 5. Pre-caching intelligente per consultazione Offline di Mappe ed Emergenze
+  if (navigator.onLine && !localStorage.getItem('dx_cached_clubs')) {
+    setTimeout(function() {
+      fetch('api-clubs-italy.php?limit=25')
+        .then(function(r) { return r.json(); })
+        .then(function(res) {
+          if (res && res.data && Array.isArray(res.data)) {
+            const compact = res.data.slice(0, 30).map(function(c) {
+              return {
+                name: c.entity_name || c.name,
+                prov: c.province || '',
+                tel: c.primary_phone || c.phone || '800 974250',
+                address: (c.address || '') + (c.city ? ', ' + c.city : ''),
+                time: (c.meeting_day || 'Settimanale') + (c.meeting_time ? ' ' + c.meeting_time : '')
+              };
+            });
+            localStorage.setItem('dx_cached_clubs', JSON.stringify(compact));
+          }
+        })
+        .catch(function() {});
+    }, 3000);
+  }
+
 })();

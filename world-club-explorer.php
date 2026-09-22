@@ -4,11 +4,14 @@ $public = isset($_GET['public']);
 if (!$public) $u = current_user(); else $u = null;
 
 $pdo = db();
-$totalNodes = (int)$pdo->query("SELECT COUNT(*) FROM dependex_world_registry")->fetchColumn();
-$totalClubs = (int)$pdo->query("SELECT COUNT(*) FROM dependex_world_registry WHERE network_level='LOCAL_CLUB'")->fetchColumn();
-$totalAcat  = (int)$pdo->query("SELECT COUNT(*) FROM dependex_world_registry WHERE network_level IN ('TERRITORIAL','PROVINCIAL','TERRITORIAL_ASSOCIATION') AND country='Italy'")->fetchColumn();
+$natMetrics = \Dependex\Clubs\ClubMetricsService::getNationalSummary($pdo);
+$globMetrics = \Dependex\Clubs\ClubMetricsService::getGlobalSummary($pdo);
+
+$totalNodes = $globMetrics['total_nodes'];
+$totalClubs = $natMetrics['local_clubs'];
+$totalAcat  = (int)$pdo->query("SELECT COUNT(*) FROM dependex_world_registry WHERE network_level IN ('TERRITORIAL','PROVINCIAL','TERRITORIAL_ASSOCIATION','TERRITORIAL_ACAT') AND country='Italy'")->fetchColumn();
 $totalArcat = (int)$pdo->query("SELECT COUNT(*) FROM dependex_world_registry WHERE network_level='REGIONAL' AND country='Italy'")->fetchColumn();
-$totalFamilies = (int)$pdo->query("SELECT SUM(families_count) FROM dependex_world_registry WHERE country='Italy' AND network_level != 'NATIONAL'")->fetchColumn();
+$totalFamilies = $natMetrics['estimated_families'];
 
 // Recupero entità strutturate
 $nationalEntities = $pdo->query("SELECT * FROM dependex_world_registry WHERE network_level IN ('NATIONAL','WORLD','CONTINENT') AND (country='Italy' OR network_level='WORLD' OR entity_name LIKE '%Eurocare%') ORDER BY network_rank DESC, entity_name")->fetchAll(PDO::FETCH_ASSOC);
@@ -47,7 +50,7 @@ require '_dependex-world-map.php';
 <section class="hero compact" style="text-align:center;padding:3rem 1.5rem 2rem;">
   <div class="gold-glow-badge mb-3">
     <?=dx_icon('compass', '', 14)?>
-    <span>RETE ECOLOGICO-SOCIALE HUDOLIN · <?=$totalNodes?> NODI · <?=number_format($totalFamilies, 0, ',', '.')?> FAMIGLIE ACCOLTE</span>
+    <span>RETE ECOLOGICO-SOCIALE HUDOLIN · <?=$totalNodes?> NODI GLOBALI (<?=$natMetrics['total_presidi']?> IN ITALIA) · STIMA <?=number_format($totalFamilies, 0, ',', '.')?> FAMIGLIE ACCOLTE</span>
   </div>
   <h1 style="font-size:clamp(1.8rem, 3.5vw, 2.6rem);font-weight:800;letter-spacing:-0.02em;margin:0.5rem 0 0.8rem;color:#FFFFFF;">
     Trova il Club più vicino a casa tua.<br>

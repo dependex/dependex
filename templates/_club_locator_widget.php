@@ -10,7 +10,7 @@
     <div class="locator-widget-header">
       <div class="badge-neon-cyan mb-2" style="display:inline-flex; align-items:center; gap:6px; font-size:0.8rem; padding:4px 12px; border-radius:999px; background:rgba(0,240,255,0.12); border:1px solid rgba(0,240,255,0.3); color:#00f0ff;">
         <?=dx_icon('map-pin', 'text-neon-cyan', 14)?>
-        <span>395 CLUB & APCAT GEOREFERENZIATI IN ITALIA</span>
+        <span>1.761 PRESIDI GEOREFERENZIATI IN ITALIA</span>
       </div>
       <h2 style="font-size:clamp(1.5rem, 3vw, 2.2rem); color:#ffffff; font-weight:800; margin:0.4rem 0 0.6rem;">
         Trova il Club o l'APCAT <span style="background:linear-gradient(135deg, #00f0ff, #38bdf8); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">più vicino a te</span>

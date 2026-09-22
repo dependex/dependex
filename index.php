@@ -20,12 +20,13 @@ $pageSchemaJson = [
 
 require '_header.php';
 
-// Notizie dalla rete per il ticker
+// Notizie dalla rete per il ticker e metriche verificate da Single Source of Truth
 $newsCards = AcatNewsService::getLatestCards(8);
-$totalNodes = 542;
-try {
-    $totalNodes = (int)db()->query("SELECT COUNT(*) FROM dependex_world_registry")->fetchColumn() ?: 542;
-} catch (Throwable $e) {}
+$natMetrics = \Dependex\Clubs\ClubMetricsService::getNationalSummary();
+$globMetrics = \Dependex\Clubs\ClubMetricsService::getGlobalSummary();
+$totalNodes = $globMetrics['total_nodes'];
+$totalPresidi = $natMetrics['total_presidi'];
+$localClubs = $natMetrics['local_clubs'];
 ?>
 
 <!-- ============================================================== -->
@@ -68,7 +69,7 @@ try {
         <a href="world-club-explorer.php" 
            style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(135deg, #00f0ff, #0077ff); color: #070a12; font-weight: 850; font-size: 0.96rem; padding: 14px 24px; border-radius: 14px; box-shadow: 0 4px 20px rgba(0, 240, 255, 0.35); text-decoration: none; min-height: 50px; transition: transform 0.2s ease;">
           <?=dx_icon('map-pin', '', 18)?>
-          <span>Trova il Tuo Club (1.770+ in Italia)</span>
+          <span>Trova il Tuo Club (<?=number_format($totalPresidi, 0, ',', '.')?> Presidi Censiti)</span>
         </a>
         <a href="playground.php" 
            style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: rgba(212, 175, 55, 0.15); border: 1.5px solid #d4af37; color: #ffd700; font-weight: 800; font-size: 0.94rem; padding: 14px 22px; border-radius: 14px; text-decoration: none; min-height: 50px; backdrop-filter: blur(8px); transition: transform 0.2s ease;">

@@ -140,6 +140,97 @@ if (!$c) {
     exit;
 }
 
+// Gestione Contact Bridge Zero Barriere "Vorrei partecipare al prossimo incontro"
+$contactBridgeSuccess = null;
+$contactBridgeError = null;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'contact_bridge_request') {
+    csrf_check();
+    
+    // Anti-spam honeypot
+    if (!empty($_POST['website_url'])) {
+        $contactBridgeSuccess = "Grazie! La tua richiesta di partecipazione è stata registrata.";
+    } else {
+        $contactName = trim((string)($_POST['contact_name'] ?? 'Una persona / Famiglia'));
+        if ($contactName === '') {
+            $contactName = 'Una persona / Famiglia (Riservato)';
+        }
+        $contactPhone = trim((string)($_POST['contact_phone'] ?? ''));
+        $contactEmail = trim((string)($_POST['contact_email'] ?? ''));
+        $contactMethod = trim((string)($_POST['contact_method'] ?? 'DIRETTO'));
+        $messageText = trim((string)($_POST['message'] ?? ''));
+        if ($messageText === '') {
+            $messageText = 'Vorrei partecipare al prossimo incontro del Club.';
+        }
+
+        try {
+            $db = db();
+            $ipHash = hash('sha256', ($_SERVER['REMOTE_ADDR'] ?? '127.0.0.1') . 'dependex_salt_2026');
+
+            $stInq = $db->prepare("
+                INSERT INTO crm_club_inquiries (sic_id, entity_name, contact_name, contact_phone, contact_email, contact_method, message, status, ip_hash, created_at, updated_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, 'NEW', ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+            ");
+            $stInq->execute([
+                $c['sic_id'] ?: $sic,
+                $c['entity_name'],
+                $contactName,
+                $contactPhone,
+                $contactEmail,
+                $contactMethod,
+                $messageText,
+                $ipHash
+            ]);
+
+            // Invio Notifica Email al Referente del Club e alla Segreteria Centrale
+            $toClubEmail = !empty($c['email']) ? $c['email'] : 'info@dependex.support';
+            $meetingInfo = trim(($c['meeting_day'] ?? '') . ' ' . ($c['meeting_time'] ?? ''));
+            $clubLoc = implode(' · ', array_filter([$c['address'] ?? '', $c['city'] ?? '', $c['province'] ?? '']));
+
+            $subject = "Nuova Richiesta di Partecipazione al Club: " . $c['entity_name'];
+            $body = "Gentile Referente / Servitore-Insegnante,\n\n"
+                  . "Una persona o famiglia del tuo territorio ha espresso il desiderio di partecipare al prossimo incontro del vostro Club tramite il Contact Bridge 'Zero Barriere' di Dependex.social.\n\n"
+                  . "RIFERIMENTI RISERVATI DELLA RICHIESTA:\n"
+                  . "-----------------------------------------\n"
+                  . "• Club: " . $c['entity_name'] . "\n"
+                  . "• Sede: " . ($clubLoc ?: 'Territoriale') . "\n"
+                  . "• Incontro: " . ($meetingInfo ?: 'Settimanale') . "\n"
+                  . "• Nome / Riferimento: " . $contactName . "\n"
+                  . "• Recapito fornito: " . ($contactPhone ?: ($contactEmail ?: 'Partecipazione diretta di persona')) . "\n"
+                  . "• Canale preferito: " . $contactMethod . "\n"
+                  . "• Messaggio: " . $messageText . "\n"
+                  . "-----------------------------------------\n\n"
+                  . "Grazie per la vostra opera e accoglienza solidale.\n"
+                  . "Rete Territoriale Dependex.social · info@dependex.support\n"
+                  . "Numero Verde Nazionale AICAT: 800 974250";
+
+            if (function_exists('send_event_email_async')) {
+                send_event_email_async($toClubEmail, $subject, $body);
+            } else {
+                @mail($toClubEmail, $subject, $body, "From: info@dependex.support\r\nReply-To: info@dependex.support\r\nX-Mailer: PHP/" . phpversion());
+            }
+
+            // Invio Notifica Telegram (se configurato canale o bot)
+            $tgText = "🤝 <b>Nuova Partecipazione al Club!</b>\n\n"
+                    . "<b>Club:</b> " . htmlspecialchars($c['entity_name']) . " (" . htmlspecialchars($c['city'] ?? '') . ")\n"
+                    . "<b>Nome:</b> " . htmlspecialchars($contactName) . "\n"
+                    . "<b>Recapito:</b> " . htmlspecialchars($contactPhone ?: ($contactEmail ?: 'Presenza diretta')) . "\n"
+                    . "<b>Canale:</b> " . htmlspecialchars($contactMethod) . "\n"
+                    . "<b>Messaggio:</b> " . htmlspecialchars($messageText);
+            send_telegram_notification($tgText);
+
+            audit($u ? $u['sic_id'] : 'PUBLIC_GUEST', 'CONTACT_BRIDGE_PARTICIPATION_REQUEST', $c['sic_id'], [
+                'entity' => $c['entity_name'],
+                'method' => $contactMethod
+            ]);
+
+            $contactBridgeSuccess = "Grazie di cuore! La tua intenzione di partecipare è stata trasmessa al referente del Club nella massima riservatezza. Ti aspettiamo con gioia: sarai accolto a braccia aperte, senza alcun giudizio o obbligo di parlare.";
+        } catch (Throwable $e) {
+            $contactBridgeError = "Si è verificato un errore durante l'invio. Puoi comunque contattare direttamente il referente o chiamare il Numero Verde 800 974250.";
+        }
+    }
+}
+
 // Export vCard (.vcf) per salvataggio istantaneo nella rubrica dello smartphone
 if (isset($_GET['vcard'])) {
     $cleanFilename = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $c['entity_name'] ?: 'Club_Territoriale');
@@ -290,11 +381,12 @@ require __DIR__ . '/_header.php';
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:16px;">
       <div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+          <?php $statusMeta = \Dependex\Clubs\ClubMetricsService::resolveClubStatus($c); ?>
+          <span class="badge" style="<?=$statusMeta['badge_style']?>font-size:0.8rem;padding:4px 10px;border-radius:6px;font-weight:700;" title="<?=h($statusMeta['description'])?>">
+            <?=dx_icon('shield', '', 12)?> <?=h($statusMeta['label'])?>
+          </span>
           <span class="badge" style="background:rgba(212,175,55,0.18);color:#ffd700;border:1px solid #ffd700;font-size:0.8rem;padding:4px 10px;border-radius:6px;font-weight:700;">
             <?=h($c['network_level'])?>
-          </span>
-          <span class="badge" style="background:rgba(0,255,119,0.15);color:#00ff77;border:1px solid #00ff77;font-size:0.8rem;padding:4px 10px;border-radius:6px;">
-            <?=dx_icon('shield', '', 12)?> Riconosciuto Rete Hudolin
           </span>
           <span class="badge" style="background:rgba(255,255,255,0.08);color:#cbd5e1;font-size:0.8125rem;padding:4px 8px;border-radius:6px;">
             Codice: <?=h($c['sic_id'])?>
@@ -323,6 +415,128 @@ require __DIR__ . '/_header.php';
     <div style="background:rgba(255,255,255,0.03);border-left:4px solid #D4AF37;padding:12px 18px;border-radius:0 10px 10px 0;margin:1.8rem 0;color:#e2e8f0;font-size:0.95rem;line-height:1.5;">
       <b>Incontri Settimanali Gratuiti & Senza Pregiudizio:</b> Il Club è una comunità aperta alle famiglie e ai singoli, fondata sul rispetto, sull'amicizia e sulla riservatezza assoluta. Non ci sono quote di iscrizione né etichette.
     </div>
+
+    <!-- ======================================================== -->
+    <!-- POTENZIAMENTO 2: CONTACT BRIDGE ZERO BARRIERE PER I CLUB -->
+    <!-- ======================================================== -->
+    <div class="card p-4 p-md-4 mb-4" id="contact-bridge-card" style="background: radial-gradient(ellipse at top left, rgba(16,36,56,0.95), rgba(10,14,24,0.98)); border: 1.5px solid rgba(0, 212, 255, 0.45); border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.45);">
+      <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+        <div>
+          <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(0,212,255,0.12);color:#00d4ff;padding:4px 10px;border-radius:20px;font-size:0.75rem;font-weight:750;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px;border:1px solid rgba(0,212,255,0.3);">
+            <span style="width:8px;height:8px;border-radius:50%;background:#00d4ff;box-shadow:0 0 8px #00d4ff;"></span>
+            <span>Contact Bridge · Zero Barriere</span>
+          </div>
+          <h2 style="color:#ffffff;font-size:clamp(1.25rem, 2.5vw, 1.6rem);font-weight:800;margin:0 0 6px;line-height:1.3;">
+            Vorrei partecipare al prossimo incontro
+          </h2>
+          <p style="color:#cbd5e1;font-size:0.92rem;margin:0;max-width:720px;line-height:1.5;">
+            Nessun modulo formale né scheda di iscrizione. Puoi semplicemente far sapere al referente del Club che sarai presente in forma anonima o riservata, oppure contattarlo su WhatsApp.
+          </p>
+        </div>
+      </div>
+
+      <?php if ($contactBridgeSuccess): ?>
+        <div class="p-3 mt-3 d-flex align-items-center gap-3" style="background:rgba(34,197,94,0.18); border:1px solid #22c55e; border-radius:12px; color:#ffffff;">
+          <?=dx_icon('check-circle', 'text-success', 24)?>
+          <div style="font-size:0.95rem; font-weight:600;"><?=h($contactBridgeSuccess)?></div>
+        </div>
+      <?php endif; ?>
+
+      <?php if ($contactBridgeError): ?>
+        <div class="p-3 mt-3 d-flex align-items-center gap-3" style="background:rgba(239,68,68,0.18); border:1px solid #ef4444; border-radius:12px; color:#ffffff;">
+          <?=dx_icon('alert-circle', 'text-danger', 24)?>
+          <div style="font-size:0.95rem; font-weight:600;"><?=h($contactBridgeError)?></div>
+        </div>
+      <?php endif; ?>
+
+      <!-- OPZIONI DI CONTATTO E PARTECIPAZIONE ZERO ATTRITO -->
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:1.25rem;">
+        <?php
+        $cleanPhone = preg_replace('/[^0-9+]/', '', $c['phone'] ?? '');
+        if ($cleanPhone):
+          $waText = rawurlencode("Salve, ho visto la scheda del vostro Club (" . $c['entity_name'] . ") su Dependex e vorrei partecipare al prossimo incontro con la mia famiglia.");
+        ?>
+          <a href="https://wa.me/<?=ltrim($cleanPhone, '+')?>?text=<?=$waText?>" target="_blank" rel="noopener" class="btn" style="background:linear-gradient(135deg, #25D366, #128C7E);color:#070a12;font-weight:750;padding:10px 18px;border-radius:10px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-size:0.9rem;box-shadow:0 4px 15px rgba(37,211,102,0.3);min-height:44px;">
+            <?=dx_icon('message-circle', '', 18)?>
+            <span>Scrivi su WhatsApp al Referente</span>
+          </a>
+        <?php endif; ?>
+
+        <button type="button" onclick="toggleContactBridgeForm()" class="btn" style="background:rgba(0,212,255,0.15);color:#00d4ff;border:1px solid #00d4ff;font-weight:700;padding:10px 18px;border-radius:10px;display:inline-flex;align-items:center;gap:8px;font-size:0.9rem;cursor:pointer;min-height:44px;">
+          <?=dx_icon('heart', '', 18)?>
+          <span>Avvisa con 1 Tocco che Verrai (Riservato)</span>
+        </button>
+
+        <a href="tel:800974250" class="btn" style="background:rgba(255,255,255,0.06);color:#ffd700;border:1px solid rgba(255,215,0,0.3);font-weight:700;padding:10px 18px;border-radius:10px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-size:0.9rem;min-height:44px;">
+          <?=dx_icon('phone', '', 16)?>
+          <span>Numero Verde AICAT: 800 974250</span>
+        </a>
+      </div>
+
+      <!-- MODULO RISERVATO A BASSA SOGLIA -->
+      <div id="contactBridgeBox" style="display: <?=$contactBridgeSuccess ? 'none' : 'none'?>; margin-top: 1.5rem; background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 20px;">
+        <form method="post" action="#contact-bridge-card">
+          <input type="hidden" name="<?=CSRF_KEY?>" value="<?=h(csrf_token())?>">
+          <input type="hidden" name="action" value="contact_bridge_request">
+          <input type="hidden" name="sic_id" value="<?=h($c['sic_id'] ?: $c['id'])?>">
+          <!-- Honeypot anti-bot -->
+          <div style="display:none;" aria-hidden="true">
+            <input type="text" name="website_url" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label style="font-size: 0.82rem; color: #cbd5e1; font-weight: 600; display: block; margin-bottom: 4px;">Come preferisci farti chiamare? (Facoltativo)</label>
+              <input type="text" name="contact_name" class="form-control form-control-sm" style="background: #141a2d; color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;" placeholder="es. Marco, Una famiglia, o lascia vuoto">
+            </div>
+
+            <div class="col-md-6">
+              <label style="font-size: 0.82rem; color: #cbd5e1; font-weight: 600; display: block; margin-bottom: 4px;">Recapito per risposta o conferma (WhatsApp / Telefono o Email)</label>
+              <input type="text" name="contact_phone" class="form-control form-control-sm" style="background: #141a2d; color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;" placeholder="es. Cellulare o email (lascia vuoto se vieni direttamente)">
+            </div>
+
+            <div class="col-md-6">
+              <label style="font-size: 0.82rem; color: #cbd5e1; font-weight: 600; display: block; margin-bottom: 4px;">Canale preferito di accoglienza</label>
+              <select name="contact_method" class="form-select form-select-sm" style="background: #141a2d; color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;">
+                <option value="WHATSAPP">Messaggio WhatsApp</option>
+                <option value="TELEFONO">Telefonata Riservata</option>
+                <option value="EMAIL">Email</option>
+                <option value="DIRETTO">Verrò direttamente all'incontro (avviso di presenza)</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label style="font-size: 0.82rem; color: #cbd5e1; font-weight: 600; display: block; margin-bottom: 4px;">Vuoi farci sapere qualcosa prima? (Facoltativo)</label>
+              <input type="text" name="message" class="form-control form-control-sm" style="background: #141a2d; color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;" placeholder="es. Saremo in due, è la nostra prima volta">
+            </div>
+          </div>
+
+          <div class="mt-3 text-end d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <span style="font-size:0.78rem;color:#94a3b8;">
+              <?=dx_icon('shield', 'text-amber', 12)?> Nessun obbligo di parlare né schedatura. Massimo rispetto della privacy.
+            </span>
+            <button type="submit" class="btn" style="background:linear-gradient(135deg,#00d4ff,#0077ff);color:#070a12;font-weight:800;padding:8px 20px;border-radius:8px;border:none;font-size:0.88rem;cursor:pointer;min-height:44px;">
+              <?=dx_icon('send', '', 14)?> Invia Avviso Riservato di Partecipazione
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+    function toggleContactBridgeForm(forceOpen = false) {
+      const box = document.getElementById('contactBridgeBox');
+      if (!box) return;
+      if (forceOpen) {
+        box.style.display = 'block';
+      } else {
+        box.style.display = (box.style.display === 'none' || box.style.display === '') ? 'block' : 'none';
+      }
+      if (box.style.display === 'block') {
+        box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+    </script>
 
     <!-- AZIONI PRINCIPALI DELLA PORTA D'INGRESSO DEL CLUB -->
     <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:1.5rem;">

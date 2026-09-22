@@ -1,0 +1,2905 @@
+{
+  "banned_terms": [
+    {
+      "file": "AGENTS.md",
+      "term": "magico",
+      "snippet": "ase, template o prompt:      `magico`, `magic`, `M.A.G.I.C.`, `gio"
+    },
+    {
+      "file": "AGENTS.md",
+      "term": "magic",
+      "snippet": "ate o prompt:      `magico`, `magic`, `M.A.G.I.C.`, `giorgian put"
+    },
+    {
+      "file": "AGENTS.md",
+      "term": "M.A.G.I.C.",
+      "snippet": "mpt:      `magico`, `magic`, `M.A.G.I.C.`, `giorgian putanu`.    - Zer"
+    },
+    {
+      "file": "AGENTS.md",
+      "term": "giorgian putanu",
+      "snippet": "ico`, `magic`, `M.A.G.I.C.`, `giorgian putanu`.    - Zero riferimenti resid"
+    },
+    {
+      "file": "AGENTS.md",
+      "term": "81plus",
+      "snippet": "- Zero riferimenti residui a `81plus` all'interno del progetto. 4."
+    },
+    {
+      "file": "docs\\DEPENDEX_CLUB_GROWTH_SYSTEM_SPEC.md",
+      "term": "magic",
+      "snippet": "lub:** Autenticazione tramite magic-link token crittografato (SHA"
+    },
+    {
+      "file": "scratch\\amalo_national_harvest.json",
+      "term": "magico",
+      "snippet": "ruppi/associazione-il-cerchio-magico-onlus/\",     \"name\": \"ASSOCIA"
+    },
+    {
+      "file": "scratch\\amalo_national_harvest.json",
+      "term": "magico",
+      "snippet": "me\": \"ASSOCIAZIONE IL CERCHIO MAGICO Onlus\",     \"street\": \"Via Ma"
+    },
+    {
+      "file": "scratch\\amalo_national_harvest.json",
+      "term": "magico",
+      "snippet": "21405\",     \"email\": \"cerchio.magico@libero.it\",     \"incontri\": \""
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": ": \"AGENTS.md\",       \"term\": \"magico\",       \"snippet\": \"ase, temp"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "ase, template o prompt:      `magico`, `magic`, `M.A.G.I.C.`, `gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \"ate o prompt:      `magico`, `magic`, `M.A.G.I.C.`, `gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"mpt:      `magico`, `magic`, `M.A.G.I.C.`, `gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "harvest.json\",       \"term\": \"magico\",       \"snippet\": \"ruppi/ass"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "ruppi/associazione-il-cerchio-magico-onlus/\\\",     \\\"name\\\": \\\"ASS"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "harvest.json\",       \"term\": \"magico\",       \"snippet\": \"me\\\": \\\"A"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\\\": \\\"ASSOCIAZIONE IL CERCHIO MAGICO Onlus\\\",     \\\"street\\\": \\\"Vi"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "harvest.json\",       \"term\": \"magico\",       \"snippet\": \"21405\\\","
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "5\\\",     \\\"email\\\": \\\"cerchio.magico@libero.it\\\",     \\\"incontri\\\""
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "_booking.php\",       \"term\": \"magico\",       \"snippet\": \".py' ];"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": ".py' ];  $banned = ['magic', 'magico', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": ".py' ];  $banned = ['magic', 'magico', 'M.A.G.I.C.', 'gi\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \"banned = ['magic', 'magico', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "anu\",       \"snippet\": \"ic', 'magico', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "kout_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"nnedPatte"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nnedPatterns = ['/magic/i', '/magico/i', '/giorgian\\\\s*putanu/i',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nnedPatterns = ['/magic/i', '/magico/i', '/giorgian\\\\s\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "avel_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"sicale):\\"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "cale):\\\\n\\\"; $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "ippet\": \"\\\"; $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"dWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "each_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"ca...\\\\n\\"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "...\\\\n\\\"; $forbiddenWords = ['magico', 'magic', 'm.a.g.i.c.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \"$forbiddenWords = ['magico', 'magic', 'm.a.g.i.c.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"nWords = ['magico', 'magic', 'm.a.g.i.c.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "menu_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"rnance:\\\\"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "ance:\\\\n\\\"; $bannedTokens = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \"; $bannedTokens = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"Tokens = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "ll_suite.php\",       \"term\": \"magico\",       \"snippet\": \"tax check"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "tax check  */  $forbidden = ['magico', 'magic', 'm.a.g.i.c.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "snippet\": \"*/  $forbidden = ['magico', 'magic', 'm.a.g.i.c.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"bidden = ['magico', 'magic', 'm.a.g.i.c.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "ader_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"banned wo"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"banned words     $banned = ['magico', 'magic', 'm.a.g.i.c', 'gior"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \"rds     $banned = ['magico', 'magic', 'm.a.g.i.c', 'gior"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "ne_5_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"ologica:"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "ologica: zero 'chakra', zero 'magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "ne_5_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"inologica"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "inologica $forbiddenTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \"ero 'chakra', zero 'magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \"$forbiddenTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"ra', zero 'magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"nTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "e_os_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"- Zero te"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": ": \"- Zero termini proibiti (\\\"magico\\\", \\\"magic\\\", \\\"M.A.G.I.C.\\\","
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "e_os_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"i vietati"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "i vietati $forbiddenTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \"termini proibiti (\\\"magico\\\", \\\"magic\\\", \\\"M.A.G.I.C.\\\","
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \"$forbiddenTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"proibiti (\\\"magico\\\", \\\"magic\\\", \\\"M.A.G.I.C.\\\","
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"nTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "port_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"ica Rigor"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "ica Rigorosa $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \"sa $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"dWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "lips_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"arola vie"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "arola vietata     $banned = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \"ata     $banned = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"banned = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "on_6_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"*    - Ze"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"*    - Zero parole vietate: 'magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "on_6_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"ON_6.md'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "ON_6.md' ];  $bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \"ro parole vietate: 'magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \";  $bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": ",       \"snippet\": \"vietate: 'magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "ding_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"noi.php'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "noi.php' ];  $bannedWords = ['magico', 'magic', 'giorgian putanu',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \";  $bannedWords = ['magico', 'magic', 'giorgian putanu',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"dWords = ['magico', 'magic', 'giorgian putanu',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "tion_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"ia.json'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "ia.json' ];  $bannedTerms = ['magico', 'magic', 'giorgian putanu',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \";  $bannedTerms = ['magico', 'magic', 'giorgian putanu',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"dTerms = ['magico', 'magic', 'giorgian putanu',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "lity_e2e.php\",       \"term\": \"magico\",       \"snippet\": \".css' ];"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": ".css' ];  $forbiddenTerms = ['magico', 'magic', 'giorgian putanu',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \"$forbiddenTerms = ['magico', 'magic', 'giorgian putanu',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"nTerms = ['magico', 'magic', 'giorgian putanu',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "_sos_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"ica Rigor"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "ica Rigorosa $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "nippet\": \"sa $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"dWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "hdog_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"];      $"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "t\": \"];      $bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"$bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "k_v6_e2e.php\",       \"term\": \"magico\",       \"snippet\": \"ogica...\\"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "ica...\\\\n\\\"; $bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "ippet\": \"\\\"; $bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magico",
+      "snippet": "\"snippet\": \"dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ate o prompt:      `magico`, `magic`, `M.A.G.I.C.`, `gio\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": ": \"AGENTS.md\",       \"term\": \"magic\",       \"snippet\": \"ate o pro"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ate o prompt:      `magico`, `magic`, `M.A.G.I.C.`, `giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"mpt:      `magico`, `magic`, `M.A.G.I.C.`, `giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "nu\",       \"snippet\": \"ico`, `magic`, `M.A.G.I.C.`, `giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "STEM_SPEC.md\",       \"term\": \"magic\",       \"snippet\": \"lub:** Au"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "lub:** Autenticazione tramite magic-link token crittografato (SHA"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \".py' ];  $banned = ['magic', 'magico', 'M.A.G.I.C.', 'gi"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "_booking.php\",       \"term\": \"magic\",       \"snippet\": \"ing_email"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ing_email.py' ];  $banned = ['magic', 'magico', 'M.A.G.I.C.', 'gi"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "\"snippet\": \"banned = ['magic', 'magico', 'M.A.G.I.C.', 'gi"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "\"snippet\": \"nnedPatterns = ['/magic/i', '/magico/i', '/giorgian\\\\"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "kout_e2e.php\",       \"term\": \"magic\",       \"snippet\": \"php' ];"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "php' ];  $bannedPatterns = ['/magic/i', '/magico/i', '/giorgian\\\\"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "\"; $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "avel_e2e.php\",       \"term\": \"magic\",       \"snippet\": \"\\\"; $bann"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "\"; $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"dWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "nu\",       \"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "$forbiddenWords = ['magico', 'magic', 'm.a.g.i.c.', 'gio\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "each_e2e.php\",       \"term\": \"magic\",       \"snippet\": \"$forbidde"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "$forbiddenWords = ['magico', 'magic', 'm.a.g.i.c.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"nWords = ['magico', 'magic', 'm.a.g.i.c.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "nu\",       \"snippet\": \"ico', 'magic', 'm.a.g.i.c.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "; $bannedTokens = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "menu_e2e.php\",       \"term\": \"magic\",       \"snippet\": \"; $banned"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "; $bannedTokens = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"Tokens = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "nu\",       \"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "*/  $forbidden = ['magico', 'magic', 'm.a.g.i.c.', 'gio\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ll_suite.php\",       \"term\": \"magic\",       \"snippet\": \"*/  $forb"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "\"*/  $forbidden = ['magico', 'magic', 'm.a.g.i.c.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"bidden = ['magico', 'magic', 'm.a.g.i.c.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "nu\",       \"snippet\": \"ico', 'magic', 'm.a.g.i.c.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "rds     $banned = ['magico', 'magic', 'm.a.g.i.c', 'gior\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ader_e2e.php\",       \"term\": \"magic\",       \"snippet\": \"rds     $"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "rds     $banned = ['magico', 'magic', 'm.a.g.i.c', 'giorgian', 'p"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ero 'chakra', zero 'magico', 'magic', 'M.A.G.I.C.', 'gio\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "$forbiddenTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ne_5_e2e.php\",       \"term\": \"magic\",       \"snippet\": \"ero 'chak"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ero 'chakra', zero 'magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ne_5_e2e.php\",       \"term\": \"magic\",       \"snippet\": \"$forbidde"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "$forbiddenTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"ra', zero 'magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"nTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "nu\",       \"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "nu\",       \"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "rmini proibiti (\\\"magico\\\", \\\"magic\\\", \\\"M.A.G.I.C.\\\", \\\"gio\""
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "$forbiddenTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "e_os_e2e.php\",       \"term\": \"magic\",       \"snippet\": \"termini p"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "rmini proibiti (\\\"magico\\\", \\\"magic\\\", \\\"M.A.G.I.C.\\\", \\\"giorgian"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "e_os_e2e.php\",       \"term\": \"magic\",       \"snippet\": \"$forbidde"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "$forbiddenTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "et\": \"proibiti (\\\"magico\\\", \\\"magic\\\", \\\"M.A.G.I.C.\\\", \\\"giorgian"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"nTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "\",       \"snippet\": \"ico\\\", \\\"magic\\\", \\\"M.A.G.I.C.\\\", \\\"giorgian"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "nu\",       \"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "sa $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "port_e2e.php\",       \"term\": \"magic\",       \"snippet\": \"sa $banne"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "sa $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"dWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "nu\",       \"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ata     $banned = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "lips_e2e.php\",       \"term\": \"magic\",       \"snippet\": \"ata     $"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ata     $banned = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"banned = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "nu\",       \"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ro parole vietate: 'magico', 'magic', 'M.A.G.I.C.', 'gio\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": ";  $bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "on_6_e2e.php\",       \"term\": \"magic\",       \"snippet\": \"ro parole"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ro parole vietate: 'magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "on_6_e2e.php\",       \"term\": \"magic\",       \"snippet\": \";  $banne"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": ";  $bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "nippet\": \"vietate: 'magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "nu\",       \"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "nu\",       \"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": ";  $bannedWords = ['magico', 'magic', 'giorgian putanu',\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ding_e2e.php\",       \"term\": \"magic\",       \"snippet\": \";  $banne"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": ";  $bannedWords = ['magico', 'magic', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"dWords = ['magico', 'magic', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "\"81plus\",       \"snippet\": \"'magic', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": ";  $bannedTerms = ['magico', 'magic', 'giorgian putanu',\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "tion_e2e.php\",       \"term\": \"magic\",       \"snippet\": \";  $banne"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": ";  $bannedTerms = ['magico', 'magic', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"dTerms = ['magico', 'magic', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "\"81plus\",       \"snippet\": \"'magic', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "$forbiddenTerms = ['magico', 'magic', 'giorgian putanu',\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "lity_e2e.php\",       \"term\": \"magic\",       \"snippet\": \"$forbidde"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "$forbiddenTerms = ['magico', 'magic', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"nTerms = ['magico', 'magic', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "\"81plus\",       \"snippet\": \"'magic', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "sa $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "_sos_e2e.php\",       \"term\": \"magic\",       \"snippet\": \"sa $banne"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "sa $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"dWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "nu\",       \"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "$bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "hdog_e2e.php\",       \"term\": \"magic\",       \"snippet\": \"$bannedTe"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": ": \"$bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "nu\",       \"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "\"; $bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "k_v6_e2e.php\",       \"term\": \"magic\",       \"snippet\": \"\\\"; $bann"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "\"; $bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ippet\": \"dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "nu\",       \"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "ub locali.md\",       \"term\": \"magic\",       \"snippet\": \"tutte le"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "magic",
+      "snippet": "\"tutte le skills ed pro collo magic offer per costruire tutto il\""
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "mpt:      `magico`, `magic`, `M.A.G.I.C.`, `gio\"     },     {       \"f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "mpt:      `magico`, `magic`, `M.A.G.I.C.`, `giorgian put\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": ": \"AGENTS.md\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"mpt:"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "mpt:      `magico`, `magic`, `M.A.G.I.C.`, `giorgian putanu`.    - Zer"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"snippet\": \"ico`, `magic`, `M.A.G.I.C.`, `giorgian putanu`.    - Zer"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "banned = ['magic', 'magico', 'M.A.G.I.C.', 'giorgian put\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "banned = ['magic', 'magico', 'M.A.G.I.C.', 'gi\"     },     {       \"fi"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "_booking.php\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"banned ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "banned = ['magic', 'magico', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"snippet\": \"ic', 'magico', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },     {       \"f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "avel_e2e.php\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"dWords ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "nWords = ['magico', 'magic', 'm.a.g.i.c.', 'gio\"     },     {       \"f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "nWords = ['magico', 'magic', 'm.a.g.i.c.', 'giorgian put\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "each_e2e.php\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"nWords ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "nWords = ['magico', 'magic', 'm.a.g.i.c.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"snippet\": \"ico', 'magic', 'm.a.g.i.c.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "Tokens = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },     {       \"f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "Tokens = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "menu_e2e.php\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"Tokens ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "Tokens = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "bidden = ['magico', 'magic', 'm.a.g.i.c.', 'gio\"     },     {       \"f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "bidden = ['magico', 'magic', 'm.a.g.i.c.', 'giorgian put\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "ll_suite.php\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"bidden ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "bidden = ['magico', 'magic', 'm.a.g.i.c.', 'giorgian putanu']; $pages\""
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"snippet\": \"ico', 'magic', 'm.a.g.i.c.', 'giorgian putanu']; $pages"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "ra', zero 'magico', 'magic', 'M.A.G.I.C.', 'gio\"     },     {       \"f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "nTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },     {       \"f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "ra', zero 'magico', 'magic', 'M.A.G.I.C.', 'giorgian put\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "nTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "ne_5_e2e.php\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"ra', zero"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "ra', zero 'magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "ne_5_e2e.php\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"nTerms ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "nTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "iti (\\\"magico\\\", \\\"magic\\\", \\\"M.A.G.I.C.\\\", \\\"gio\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "nTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },     {       \"f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "iti (\\\"magico\\\", \\\"magic\\\", \\\"M.A.G.I.C.\\\", \\\"giorgian put\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "nTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "e_os_e2e.php\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"proibiti"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "iti (\\\"magico\\\", \\\"magic\\\", \\\"M.A.G.I.C.\\\", \\\"giorgian putanu\\\", \\\"81p"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "e_os_e2e.php\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"nTerms ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "nTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "nippet\": \"ico\\\", \\\"magic\\\", \\\"M.A.G.I.C.\\\", \\\"giorgian putanu\\\", \\\"81p"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },     {       \"f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "port_e2e.php\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"dWords ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu']; // Cont"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu']; // Cont"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "banned = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },     {       \"f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "banned = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "lips_e2e.php\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"banned ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "banned = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "vietate: 'magico', 'magic', 'M.A.G.I.C.', 'gio\"     },     {       \"f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },     {       \"f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "vietate: 'magico', 'magic', 'M.A.G.I.C.', 'giorgian put\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "on_6_e2e.php\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"vietate:"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"vietate: 'magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "on_6_e2e.php\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"dTerms ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },     {       \"f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "_sos_e2e.php\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"dWords ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu']; $filesT"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu']; $filesT"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },     {       \"f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "hdog_e2e.php\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"dTerms ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio\"     },     {       \"f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "k_v6_e2e.php\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"dTerms ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"snippet\": \"ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "ub locali.md\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"nel file."
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"nel file.  ## Sul Protocollo M.A.G.I.C.  Non si applica a un sito: co"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "ub locali.md\",       \"term\": \"M.A.G.I.C.\",       \"snippet\": \"pena appl"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "M.A.G.I.C.",
+      "snippet": "\"pena applicare il protocollo M.A.G.I.C. Non sul corso da 50 euro.  ##"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico`, `magic`, `M.A.G.I.C.`, `giorgian putanu`.    - Zer\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": ": \"AGENTS.md\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ico`, `ma"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico`, `magic`, `M.A.G.I.C.`, `giorgian putanu`.    - Zero riferimenti resid"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ic', 'magico', 'M.A.G.I.C.', 'giorgian putanu', '81plus'\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "_booking.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ic', 'mag"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ic', 'magico', 'M.A.G.I.C.', 'giorgian putanu', '81plus']; $violations = 0;"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "\"snippet\": \".G.I.C.', 'giorgian putanu', '81plus']; $violations = 0;"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "avel_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ico', 'ma"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus']; $filesToCheck =\""
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "\"snippet\": \".G.I.C.', 'giorgian putanu', '81plus']; $filesToCheck ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'm.a.g.i.c.', 'giorgian putanu', '81plus'\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "each_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ico', 'ma"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'm.a.g.i.c.', 'giorgian putanu', '81plus']; $filesToCheck =\""
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "\"snippet\": \".g.i.c.', 'giorgian putanu', '81plus']; $filesToCheck ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "menu_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ico', 'ma"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus']; $totalBanned = 0"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "\"snippet\": \".G.I.C.', 'giorgian putanu', '81plus']; $totalBanned = 0"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'm.a.g.i.c.', 'giorgian putanu']; $pages\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ll_suite.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ico', 'ma"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'm.a.g.i.c.', 'giorgian putanu']; $pages = [     'index.php'"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ne_5_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ico', 'ma"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'  * 5. Governance:\""
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ne_5_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ico', 'ma"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus']; foreach ($forbid"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "\"snippet\": \".G.I.C.', 'giorgian putanu', '81plus'  * 5. Governance:"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "\"snippet\": \".G.I.C.', 'giorgian putanu', '81plus']; foreach ($forbid"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "\\\"magic\\\", \\\"M.A.G.I.C.\\\", \\\"giorgian putanu\\\", \\\"81plus\\\"\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "e_os_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ico\\\", \\\""
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "\\\"magic\\\", \\\"M.A.G.I.C.\\\", \\\"giorgian putanu\\\", \\\"81plus\\\")  * 5. Linkage"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "e_os_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ico', 'ma"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus']; foreach ($forbid"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "\"snippet\": \".G.I.C.\\\", \\\"giorgian putanu\\\", \\\"81plus\\\")  * 5. Linkage"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "\"snippet\": \".G.I.C.', 'giorgian putanu', '81plus']; foreach ($forbid"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu']; // Cont\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "port_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ico', 'ma"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu']; // Controlliamo i file app"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "lips_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ico', 'ma"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'];     foreach ($ba"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "\"snippet\": \".G.I.C.', 'giorgian putanu', '81plus'];     foreach ($ba"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "on_6_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ico', 'ma"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'  * 5. Documentazio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "on_6_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ico', 'ma"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus']; foreach ($filesT"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "\"snippet\": \".G.I.C.', 'giorgian putanu', '81plus'  * 5. Documentazio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "\"snippet\": \".G.I.C.', 'giorgian putanu', '81plus']; foreach ($filesT"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "dWords = ['magico', 'magic', 'giorgian putanu',\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "dWords = ['magico', 'magic', 'giorgian putanu', '81plus'\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ding_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"dWords ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "dWords = ['magico', 'magic', 'giorgian putanu', '81plus']; $violations = 0;"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": ",       \"snippet\": \"'magic', 'giorgian putanu', '81plus']; $violations = 0;"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "dTerms = ['magico', 'magic', 'giorgian putanu',\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "dTerms = ['magico', 'magic', 'giorgian putanu', '81plus'\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "tion_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"dTerms ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "dTerms = ['magico', 'magic', 'giorgian putanu', '81plus', 'grazia nicosia',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": ",       \"snippet\": \"'magic', 'giorgian putanu', '81plus', 'grazia nicosia',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "nTerms = ['magico', 'magic', 'giorgian putanu',\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "nTerms = ['magico', 'magic', 'giorgian putanu', '81plus'\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "lity_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"nTerms ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "nTerms = ['magico', 'magic', 'giorgian putanu', '81plus']; $clean = true; f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": ",       \"snippet\": \"'magic', 'giorgian putanu', '81plus']; $clean = true; f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu']; $filesT\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "_sos_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ico', 'ma"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu']; $filesToCheck = [$footerFi"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "hdog_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ico', 'ma"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus', 'Grazia Nicosia',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "\"snippet\": \".G.I.C.', 'giorgian putanu', '81plus', 'Grazia Nicosia',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'\"     },     {"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "k_v6_e2e.php\",       \"term\": \"giorgian putanu\",       \"snippet\": \"ico', 'ma"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus']; $filesToCheck =\""
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "giorgian putanu",
+      "snippet": "\"snippet\": \".G.I.C.', 'giorgian putanu', '81plus']; $filesToCheck ="
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ": \"AGENTS.md\",       \"term\": \"81plus\",       \"snippet\": \"- Zero ri"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "- Zero riferimenti residui a `81plus` all'interno del progetto. 4."
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; $violations = 0;\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "_booking.php\",       \"term\": \"81plus\",       \"snippet\": \".G.I.C.',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; $violations = 0;  foreach\""
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "kout_e2e.php\",       \"term\": \"81plus\",       \"snippet\": \"i', '/gio"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "', '/giorgian\\\\s*putanu/i', '/81plus/i']; $violations = 0;  foreac"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; $filesToCheck =\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "avel_e2e.php\",       \"term\": \"81plus\",       \"snippet\": \".G.I.C.',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; $filesToCheck = [     __DI"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".g.i.c.', 'giorgian putanu', '81plus'\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".g.i.c.', 'giorgian putanu', '81plus']; $filesToCheck =\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "each_e2e.php\",       \"term\": \"81plus\",       \"snippet\": \".g.i.c.',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".g.i.c.', 'giorgian putanu', '81plus']; $filesToCheck = [     __DI"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; $totalBanned = 0\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "menu_e2e.php\",       \"term\": \"81plus\",       \"snippet\": \".G.I.C.',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; $totalBanned = 0; foreach\""
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'  * 5. Governance:\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; foreach ($forbid\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "ne_5_e2e.php\",       \"term\": \"81plus\",       \"snippet\": \".G.I.C.',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'  * 5. Governance: docs/HUMAN"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "ne_5_e2e.php\",       \"term\": \"81plus\",       \"snippet\": \".G.I.C.',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; foreach ($forbiddenTerms a"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".C.\\\", \\\"giorgian putanu\\\", \\\"81plus\\\"\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".C.\\\", \\\"giorgian putanu\\\", \\\"81plus\\\")  * 5. Linkage in\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; foreach ($forbid\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "e_os_e2e.php\",       \"term\": \"81plus\",       \"snippet\": \".G.I.C.\\\""
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".C.\\\", \\\"giorgian putanu\\\", \\\"81plus\\\")  * 5. Linkage in _header.p"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "e_os_e2e.php\",       \"term\": \"81plus\",       \"snippet\": \".G.I.C.',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; foreach ($forbiddenTerms a"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'];     foreach ($ba\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "lips_e2e.php\",       \"term\": \"81plus\",       \"snippet\": \".G.I.C.',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'];     foreach ($banned as $b"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'  * 5. Documentazio\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; foreach ($filesT\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "on_6_e2e.php\",       \"term\": \"81plus\",       \"snippet\": \".G.I.C.',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'  * 5. Documentazione: docs/O"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "on_6_e2e.php\",       \"term\": \"81plus\",       \"snippet\": \".G.I.C.',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; foreach ($filesToAudit as\""
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "'magic', 'giorgian putanu', '81plus'\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "'magic', 'giorgian putanu', '81plus']; $violations = 0;\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "ding_e2e.php\",       \"term\": \"81plus\",       \"snippet\": \"'magic',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "\"'magic', 'giorgian putanu', '81plus']; $violations = 0; foreach ("
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "'magic', 'giorgian putanu', '81plus'\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "'magic', 'giorgian putanu', '81plus', 'grazia nicosia',\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "tion_e2e.php\",       \"term\": \"81plus\",       \"snippet\": \"'magic',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "\"'magic', 'giorgian putanu', '81plus', 'grazia nicosia', '347 884\""
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "'magic', 'giorgian putanu', '81plus'\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "'magic', 'giorgian putanu', '81plus']; $clean = true; f\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "lity_e2e.php\",       \"term\": \"81plus\",       \"snippet\": \"'magic',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "\"'magic', 'giorgian putanu', '81plus']; $clean = true; foreach ($f"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus', 'Grazia Nicosia',\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "hdog_e2e.php\",       \"term\": \"81plus\",       \"snippet\": \".G.I.C.',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus', 'Grazia Nicosia', '347 884\""
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'\"     },     {       \"file\":"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; $filesToCheck =\"     },"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "k_v6_e2e.php\",       \"term\": \"81plus\",       \"snippet\": \".G.I.C.',"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; $filesToCheck = [     __DI"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "ub locali.md\",       \"term\": \"81plus\",       \"snippet\": \"METODO_EM"
+    },
+    {
+      "file": "scratch\\deep_audit_results.json",
+      "term": "81plus",
+      "snippet": "\"METODO_EMAIL81 è scritto per 81PLUS**, cioè B2B: \\\"controllo, con"
+    },
+    {
+      "file": "tests\\test_acat_event_booking.php",
+      "term": "magico",
+      "snippet": ".py' ];  $banned = ['magic', 'magico', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "tests\\test_acat_event_booking.php",
+      "term": "magic",
+      "snippet": "ing_email.py' ];  $banned = ['magic', 'magico', 'M.A.G.I.C.', 'gi"
+    },
+    {
+      "file": "tests\\test_acat_event_booking.php",
+      "term": "M.A.G.I.C.",
+      "snippet": "banned = ['magic', 'magico', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "tests\\test_acat_event_booking.php",
+      "term": "giorgian putanu",
+      "snippet": "ic', 'magico', 'M.A.G.I.C.', 'giorgian putanu', '81plus']; $violations = 0;"
+    },
+    {
+      "file": "tests\\test_acat_event_booking.php",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; $violations = 0;  foreach"
+    },
+    {
+      "file": "tests\\test_acat_october_checkout_e2e.php",
+      "term": "magico",
+      "snippet": "nnedPatterns = ['/magic/i', '/magico/i', '/giorgian\\s*putanu/i', '"
+    },
+    {
+      "file": "tests\\test_acat_october_checkout_e2e.php",
+      "term": "magic",
+      "snippet": "php' ];  $bannedPatterns = ['/magic/i', '/magico/i', '/giorgian\\s"
+    },
+    {
+      "file": "tests\\test_acat_october_checkout_e2e.php",
+      "term": "81plus",
+      "snippet": "i', '/giorgian\\s*putanu/i', '/81plus/i']; $violations = 0;  foreac"
+    },
+    {
+      "file": "tests\\test_books_beway_travel_e2e.php",
+      "term": "magico",
+      "snippet": "sicale):\\n\"; $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "tests\\test_books_beway_travel_e2e.php",
+      "term": "magic",
+      "snippet": "\"; $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "tests\\test_books_beway_travel_e2e.php",
+      "term": "M.A.G.I.C.",
+      "snippet": "dWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "tests\\test_books_beway_travel_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus']; $filesToCheck ="
+    },
+    {
+      "file": "tests\\test_books_beway_travel_e2e.php",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; $filesToCheck = [     __DI"
+    },
+    {
+      "file": "tests\\test_crm_club_outreach_e2e.php",
+      "term": "magico",
+      "snippet": "ca...\\n\"; $forbiddenWords = ['magico', 'magic', 'm.a.g.i.c.', 'gio"
+    },
+    {
+      "file": "tests\\test_crm_club_outreach_e2e.php",
+      "term": "magic",
+      "snippet": "$forbiddenWords = ['magico', 'magic', 'm.a.g.i.c.', 'giorgian put"
+    },
+    {
+      "file": "tests\\test_crm_club_outreach_e2e.php",
+      "term": "M.A.G.I.C.",
+      "snippet": "nWords = ['magico', 'magic', 'm.a.g.i.c.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "tests\\test_crm_club_outreach_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'm.a.g.i.c.', 'giorgian putanu', '81plus']; $filesToCheck ="
+    },
+    {
+      "file": "tests\\test_crm_club_outreach_e2e.php",
+      "term": "81plus",
+      "snippet": ".g.i.c.', 'giorgian putanu', '81plus']; $filesToCheck = [     __DI"
+    },
+    {
+      "file": "tests\\test_fix_ux_readability_menu_e2e.php",
+      "term": "magico",
+      "snippet": "rnance:\\n\"; $bannedTokens = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "tests\\test_fix_ux_readability_menu_e2e.php",
+      "term": "magic",
+      "snippet": "; $bannedTokens = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "tests\\test_fix_ux_readability_menu_e2e.php",
+      "term": "M.A.G.I.C.",
+      "snippet": "Tokens = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "tests\\test_fix_ux_readability_menu_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus']; $totalBanned = 0"
+    },
+    {
+      "file": "tests\\test_fix_ux_readability_menu_e2e.php",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; $totalBanned = 0; foreach"
+    },
+    {
+      "file": "tests\\test_full_suite.php",
+      "term": "magico",
+      "snippet": "tax check  */  $forbidden = ['magico', 'magic', 'm.a.g.i.c.', 'gio"
+    },
+    {
+      "file": "tests\\test_full_suite.php",
+      "term": "magic",
+      "snippet": "*/  $forbidden = ['magico', 'magic', 'm.a.g.i.c.', 'giorgian put"
+    },
+    {
+      "file": "tests\\test_full_suite.php",
+      "term": "M.A.G.I.C.",
+      "snippet": "bidden = ['magico', 'magic', 'm.a.g.i.c.', 'giorgian putanu']; $pages"
+    },
+    {
+      "file": "tests\\test_full_suite.php",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'm.a.g.i.c.', 'giorgian putanu']; $pages = [     'index.php'"
+    },
+    {
+      "file": "tests\\test_header_e2e.php",
+      "term": "magico",
+      "snippet": "banned words     $banned = ['magico', 'magic', 'm.a.g.i.c', 'gior"
+    },
+    {
+      "file": "tests\\test_header_e2e.php",
+      "term": "magic",
+      "snippet": "rds     $banned = ['magico', 'magic', 'm.a.g.i.c', 'giorgian', 'p"
+    },
+    {
+      "file": "tests\\test_human_welfare_engine_5_e2e.php",
+      "term": "magico",
+      "snippet": "ologica: zero 'chakra', zero 'magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "tests\\test_human_welfare_engine_5_e2e.php",
+      "term": "magico",
+      "snippet": "inologica $forbiddenTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "tests\\test_human_welfare_engine_5_e2e.php",
+      "term": "magic",
+      "snippet": "ero 'chakra', zero 'magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "tests\\test_human_welfare_engine_5_e2e.php",
+      "term": "magic",
+      "snippet": "$forbiddenTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "tests\\test_human_welfare_engine_5_e2e.php",
+      "term": "M.A.G.I.C.",
+      "snippet": "ra', zero 'magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "tests\\test_human_welfare_engine_5_e2e.php",
+      "term": "M.A.G.I.C.",
+      "snippet": "nTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "tests\\test_human_welfare_engine_5_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'  * 5. Governance:"
+    },
+    {
+      "file": "tests\\test_human_welfare_engine_5_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus']; foreach ($forbid"
+    },
+    {
+      "file": "tests\\test_human_welfare_engine_5_e2e.php",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'  * 5. Governance: docs/HUMAN"
+    },
+    {
+      "file": "tests\\test_human_welfare_engine_5_e2e.php",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; foreach ($forbiddenTerms a"
+    },
+    {
+      "file": "tests\\test_human_welfare_os_e2e.php",
+      "term": "magico",
+      "snippet": "- Zero termini proibiti (\"magico\", \"magic\", \"M.A.G.I.C.\", \"gio"
+    },
+    {
+      "file": "tests\\test_human_welfare_os_e2e.php",
+      "term": "magico",
+      "snippet": "i vietati $forbiddenTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "tests\\test_human_welfare_os_e2e.php",
+      "term": "magic",
+      "snippet": "termini proibiti (\"magico\", \"magic\", \"M.A.G.I.C.\", \"giorgian put"
+    },
+    {
+      "file": "tests\\test_human_welfare_os_e2e.php",
+      "term": "magic",
+      "snippet": "$forbiddenTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "tests\\test_human_welfare_os_e2e.php",
+      "term": "M.A.G.I.C.",
+      "snippet": "proibiti (\"magico\", \"magic\", \"M.A.G.I.C.\", \"giorgian putanu\", \"81plus\""
+    },
+    {
+      "file": "tests\\test_human_welfare_os_e2e.php",
+      "term": "M.A.G.I.C.",
+      "snippet": "nTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "tests\\test_human_welfare_os_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "ico\", \"magic\", \"M.A.G.I.C.\", \"giorgian putanu\", \"81plus\")  * 5. Linkage in"
+    },
+    {
+      "file": "tests\\test_human_welfare_os_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus']; foreach ($forbid"
+    },
+    {
+      "file": "tests\\test_human_welfare_os_e2e.php",
+      "term": "81plus",
+      "snippet": ".G.I.C.\", \"giorgian putanu\", \"81plus\")  * 5. Linkage in _header.ph"
+    },
+    {
+      "file": "tests\\test_human_welfare_os_e2e.php",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; foreach ($forbiddenTerms a"
+    },
+    {
+      "file": "tests\\test_mobile_first_viewport_e2e.php",
+      "term": "magico",
+      "snippet": "ica Rigorosa $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "tests\\test_mobile_first_viewport_e2e.php",
+      "term": "magic",
+      "snippet": "sa $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "tests\\test_mobile_first_viewport_e2e.php",
+      "term": "M.A.G.I.C.",
+      "snippet": "dWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu']; // Cont"
+    },
+    {
+      "file": "tests\\test_mobile_first_viewport_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu']; // Controlliamo i file app"
+    },
+    {
+      "file": "tests\\test_motivational_clips_e2e.php",
+      "term": "magico",
+      "snippet": "arola vietata     $banned = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "tests\\test_motivational_clips_e2e.php",
+      "term": "magic",
+      "snippet": "ata     $banned = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "tests\\test_motivational_clips_e2e.php",
+      "term": "M.A.G.I.C.",
+      "snippet": "banned = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "tests\\test_motivational_clips_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'];     foreach ($ba"
+    },
+    {
+      "file": "tests\\test_motivational_clips_e2e.php",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'];     foreach ($banned as $b"
+    },
+    {
+      "file": "tests\\test_omni_welfare_gamification_6_e2e.php",
+      "term": "magico",
+      "snippet": "*    - Zero parole vietate: 'magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "tests\\test_omni_welfare_gamification_6_e2e.php",
+      "term": "magico",
+      "snippet": "ON_6.md' ];  $bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "tests\\test_omni_welfare_gamification_6_e2e.php",
+      "term": "magic",
+      "snippet": "ro parole vietate: 'magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "tests\\test_omni_welfare_gamification_6_e2e.php",
+      "term": "magic",
+      "snippet": ";  $bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "tests\\test_omni_welfare_gamification_6_e2e.php",
+      "term": "M.A.G.I.C.",
+      "snippet": "vietate: 'magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "tests\\test_omni_welfare_gamification_6_e2e.php",
+      "term": "M.A.G.I.C.",
+      "snippet": "dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "tests\\test_omni_welfare_gamification_6_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'  * 5. Documentazio"
+    },
+    {
+      "file": "tests\\test_omni_welfare_gamification_6_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus']; foreach ($filesT"
+    },
+    {
+      "file": "tests\\test_omni_welfare_gamification_6_e2e.php",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus'  * 5. Documentazione: docs/O"
+    },
+    {
+      "file": "tests\\test_omni_welfare_gamification_6_e2e.php",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; foreach ($filesToAudit as"
+    },
+    {
+      "file": "tests\\test_psychological_onboarding_e2e.php",
+      "term": "magico",
+      "snippet": "noi.php' ];  $bannedWords = ['magico', 'magic', 'giorgian putanu',"
+    },
+    {
+      "file": "tests\\test_psychological_onboarding_e2e.php",
+      "term": "magic",
+      "snippet": ";  $bannedWords = ['magico', 'magic', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "tests\\test_psychological_onboarding_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "dWords = ['magico', 'magic', 'giorgian putanu', '81plus']; $violations = 0;"
+    },
+    {
+      "file": "tests\\test_psychological_onboarding_e2e.php",
+      "term": "81plus",
+      "snippet": "'magic', 'giorgian putanu', '81plus']; $violations = 0; foreach ("
+    },
+    {
+      "file": "tests\\test_reviews_gamification_e2e.php",
+      "term": "magico",
+      "snippet": "ia.json' ];  $bannedTerms = ['magico', 'magic', 'giorgian putanu',"
+    },
+    {
+      "file": "tests\\test_reviews_gamification_e2e.php",
+      "term": "magic",
+      "snippet": ";  $bannedTerms = ['magico', 'magic', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "tests\\test_reviews_gamification_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "dTerms = ['magico', 'magic', 'giorgian putanu', '81plus', 'grazia nicosia',"
+    },
+    {
+      "file": "tests\\test_reviews_gamification_e2e.php",
+      "term": "81plus",
+      "snippet": "'magic', 'giorgian putanu', '81plus', 'grazia nicosia', '347 884"
+    },
+    {
+      "file": "tests\\test_safety_wellbeing_accessibility_e2e.php",
+      "term": "magico",
+      "snippet": ".css' ];  $forbiddenTerms = ['magico', 'magic', 'giorgian putanu',"
+    },
+    {
+      "file": "tests\\test_safety_wellbeing_accessibility_e2e.php",
+      "term": "magic",
+      "snippet": "$forbiddenTerms = ['magico', 'magic', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "tests\\test_safety_wellbeing_accessibility_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "nTerms = ['magico', 'magic', 'giorgian putanu', '81plus']; $clean = true; f"
+    },
+    {
+      "file": "tests\\test_safety_wellbeing_accessibility_e2e.php",
+      "term": "81plus",
+      "snippet": "'magic', 'giorgian putanu', '81plus']; $clean = true; foreach ($f"
+    },
+    {
+      "file": "tests\\test_sovereign_mobile_pwa_sos_e2e.php",
+      "term": "magico",
+      "snippet": "ica Rigorosa $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "tests\\test_sovereign_mobile_pwa_sos_e2e.php",
+      "term": "magic",
+      "snippet": "sa $bannedWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "tests\\test_sovereign_mobile_pwa_sos_e2e.php",
+      "term": "M.A.G.I.C.",
+      "snippet": "dWords = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu']; $filesT"
+    },
+    {
+      "file": "tests\\test_sovereign_mobile_pwa_sos_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu']; $filesToCheck = [$footerFi"
+    },
+    {
+      "file": "tests\\test_telemetry_funnel_watchdog_e2e.php",
+      "term": "magico",
+      "snippet": "];      $bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "tests\\test_telemetry_funnel_watchdog_e2e.php",
+      "term": "magic",
+      "snippet": "$bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "tests\\test_telemetry_funnel_watchdog_e2e.php",
+      "term": "M.A.G.I.C.",
+      "snippet": "dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "tests\\test_telemetry_funnel_watchdog_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus', 'Grazia Nicosia',"
+    },
+    {
+      "file": "tests\\test_telemetry_funnel_watchdog_e2e.php",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus', 'Grazia Nicosia', '347 884"
+    },
+    {
+      "file": "tests\\test_territorial_network_v6_e2e.php",
+      "term": "magico",
+      "snippet": "ogica...\\n\"; $bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'gio"
+    },
+    {
+      "file": "tests\\test_territorial_network_v6_e2e.php",
+      "term": "magic",
+      "snippet": "\"; $bannedTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian put"
+    },
+    {
+      "file": "tests\\test_territorial_network_v6_e2e.php",
+      "term": "M.A.G.I.C.",
+      "snippet": "dTerms = ['magico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus'"
+    },
+    {
+      "file": "tests\\test_territorial_network_v6_e2e.php",
+      "term": "giorgian putanu",
+      "snippet": "ico', 'magic', 'M.A.G.I.C.', 'giorgian putanu', '81plus']; $filesToCheck ="
+    },
+    {
+      "file": "tests\\test_territorial_network_v6_e2e.php",
+      "term": "81plus",
+      "snippet": ".G.I.C.', 'giorgian putanu', '81plus']; $filesToCheck = [     __DI"
+    },
+    {
+      "file": "_ai_archive\\claude\\chats\\2026-09-14_Portale nazionale Dependex.social per club locali.md",
+      "term": "magic",
+      "snippet": "tutte le skills ed pro collo magic offer per costruire tutto il"
+    },
+    {
+      "file": "_ai_archive\\claude\\chats\\2026-09-14_Portale nazionale Dependex.social per club locali.md",
+      "term": "M.A.G.I.C.",
+      "snippet": "nel file.  ## Sul Protocollo M.A.G.I.C.  Non si applica a un sito: co"
+    },
+    {
+      "file": "_ai_archive\\claude\\chats\\2026-09-14_Portale nazionale Dependex.social per club locali.md",
+      "term": "M.A.G.I.C.",
+      "snippet": "pena applicare il protocollo M.A.G.I.C. Non sul corso da 50 euro.  ##"
+    },
+    {
+      "file": "_ai_archive\\claude\\chats\\2026-09-14_Portale nazionale Dependex.social per club locali.md",
+      "term": "81plus",
+      "snippet": "METODO_EMAIL81 è scritto per 81PLUS**, cioè B2B: \"controllo, conf"
+    }
+  ],
+  "broken_internal_links": [],
+  "live_probes": [
+    {
+      "route": "/",
+      "status": 200,
+      "latency_ms": 725.3,
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "route": "/world-club-explorer.php",
+      "status": 200,
+      "latency_ms": 271.6,
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "route": "/mappa-club.php",
+      "status": 200,
+      "latency_ms": 251.8,
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "route": "/organigramma.php",
+      "status": 200,
+      "latency_ms": 246.0,
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "route": "/metodo.php",
+      "status": 200,
+      "latency_ms": 247.5,
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "route": "/parla-con-noi.php",
+      "status": 200,
+      "latency_ms": 263.8,
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "route": "/playground.php",
+      "status": 200,
+      "latency_ms": 216.3,
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "route": "/domande-frequenti.php",
+      "status": 200,
+      "latency_ms": 292.9,
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "route": "/privacy.php",
+      "status": 200,
+      "latency_ms": 258.6,
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "route": "/terms.php",
+      "status": 200,
+      "latency_ms": 229.5,
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "route": "/privacy-center.php",
+      "status": 200,
+      "latency_ms": 494.5,
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "route": "/api-public-metrics.php",
+      "status": 200,
+      "latency_ms": 297.7,
+      "content_type": "application/json; charset=utf-8"
+    },
+    {
+      "route": "/api-live-stats.php",
+      "status": 200,
+      "latency_ms": 249.8,
+      "content_type": "application/json; charset=utf-8"
+    },
+    {
+      "route": "/manifest.webmanifest",
+      "status": 200,
+      "latency_ms": 242.9,
+      "content_type": "text/plain"
+    },
+    {
+      "route": "/sitemap.xml",
+      "status": 200,
+      "latency_ms": 206.7,
+      "content_type": "application/xml"
+    },
+    {
+      "route": "/robots.txt",
+      "status": 200,
+      "latency_ms": 220.4,
+      "content_type": "text/plain"
+    },
+    {
+      "route": "/orientamento.php",
+      "status": 200,
+      "latency_ms": 209.8,
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "route": "/clips.php",
+      "status": 200,
+      "latency_ms": 217.4,
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "route": "/crm-clubs.php",
+      "status": 200,
+      "latency_ms": 259.3,
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "route": "/ruota-della-vita.php",
+      "status": 200,
+      "latency_ms": 10298.2,
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "route": "/piramide-maslow.php",
+      "status": 200,
+      "latency_ms": 274.9,
+      "content_type": "text/html; charset=UTF-8"
+    }
+  ],
+  "mobile_viewport_issues": [
+    {
+      "file": "mappa-club.php",
+      "type": "fixed_large_height",
+      "matches": [
+        "height: 720px",
+        "height: 780px"
+      ]
+    }
+  ],
+  "seo_issues": [
+    {
+      "header_has_canonical": true,
+      "header_has_og": true,
+      "header_has_twitter": true,
+      "header_has_jsonld": true
+    }
+  ],
+  "deontological_checks": [
+    {
+      "file": "profile-engine.php",
+      "issue": "wellness_score_detected"
+    },
+    {
+      "file": "project.php",
+      "issue": "wellness_score_detected"
+    },
+    {
+      "file": "rank.php",
+      "issue": "wellness_score_detected"
+    },
+    {
+      "file": "registry.php",
+      "issue": "wellness_score_detected"
+    }
+  ],
+  "performance_insights": []
+}

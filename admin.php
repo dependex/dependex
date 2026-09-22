@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 $kpis = [
     'Club CAT Italia' => [
         'val' => (int)$db->query("SELECT COUNT(*) FROM crm_club_contacts")->fetchColumn(),
-        'sub' => '395 censiti su suolo nazionale',
+        'sub' => '1.761 presidi censiti su suolo nazionale',
         'icon' => 'compass',
         'color' => '#38ef7d'
     ],
@@ -144,7 +144,7 @@ require '_header.php';
           Executive Control Center
         </h1>
         <p style="color: #cbd5e1; font-size: 0.92rem; margin: 0; line-height: 1.5;">
-          Monitoraggio centralizzato: Censimento dei 395 Club CAT, Rete mondiale Vladimir Hudolin, Nurturing FLUX100, Telemetria H24 e Governance.
+          Monitoraggio centralizzato: Censimento dei presidi CAT e coordinamenti, Rete mondiale Vladimir Hudolin, Nurturing FLUX100, Telemetria H24 e Governance.
         </p>
       </div>
 
@@ -213,7 +213,7 @@ require '_header.php';
         </a>
         <a href="data/CRM_CLUB_CONTATTI_MASTER_2026.csv" download class="btn small" style="border: 1px solid rgba(255,255,255,0.25); color: #fff; border-radius: 10px; font-size: 0.82rem; padding: 8px 14px;">
           <?=dx_icon('download', 'text-neon-cyan', 14)?>
-          <span>Scarica Master CSV (395 Club)</span>
+          <span>Scarica Master CSV (1.768 Contatti)</span>
         </a>
         <a href="widget-generator.php" target="_blank" class="btn small" style="border: 1px solid rgba(253,230,138,0.3); color: #fde68a; border-radius: 10px; font-size: 0.82rem; padding: 8px 14px;">
           <?=dx_icon('code', 'text-neon-gold', 14)?>
@@ -299,7 +299,7 @@ require '_header.php';
 
         <div class="mt-4 pt-3 border-top border-secondary d-flex justify-content-between align-items-center" style="font-size: 0.8rem; color: #94a3b8;">
           <span>Riferimento istituzionale: AICAT / ARCAT / ACAT / APCAT</span>
-          <a href="crm-clubs.php" style="color: #67e8f9; text-decoration: none; font-weight: 700;">Vedi tutti i 395 Club ›</a>
+          <a href="crm-clubs.php" style="color: #67e8f9; text-decoration: none; font-weight: 700;">Vedi tutti i Presidi CRM ›</a>
         </div>
       </div>
     </div>
@@ -422,7 +422,7 @@ require '_header.php';
           </div>
           <div class="d-flex flex-column gap-2">
             <a href="crm-clubs.php" class="d-flex justify-content-between align-items-center p-2 rounded" style="background: rgba(255,255,255,0.03); color: #fff; text-decoration: none; font-size: 0.85rem;">
-              <span><strong>CRM Club Italia</strong> (395 Presidi)</span>
+              <span><strong>CRM Club Italia</strong> (1.768 Contatti)</span>
               <span style="color:#38ef7d;">›</span>
             </a>
             <a href="world-club-explorer.php" class="d-flex justify-content-between align-items-center p-2 rounded" style="background: rgba(255,255,255,0.03); color: #fff; text-decoration: none; font-size: 0.85rem;">

@@ -3,6 +3,7 @@ require_once __DIR__.'/config.php';
 require_once __DIR__.'/assets/icons.php';
 require_once __DIR__.'/modules/news/AcatNewsService.php';
 require_once __DIR__.'/modules/events/EventSyncService.php';
+require_once __DIR__.'/modules/clubs/ClubMetricsService.php';
 $_SERVER['REQUEST_METHOD'] = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 $_SERVER['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
 $_SERVER['HTTP_HOST'] = $_SERVER['HTTP_HOST'] ?? 'dependex.social';
@@ -479,6 +480,35 @@ function emergency_sos_contact(string $userSic): array {
         'phone' => null,
         'meeting' => 'Disponibile nella mappa'
     ];
+}
+
+/**
+ * Invia una notifica Telegram al canale di coordinamento territoriale o al bot centrale
+ */
+function send_telegram_notification(string $text): bool {
+    $token = getenv('TELEGRAM_BOT_TOKEN') ?: '7456789123:AAE_dependex_bot_token_placeholder';
+    $chatId = getenv('TELEGRAM_CHAT_ID') ?: '-1002345678901';
+    if (!$token || $token === '7456789123:AAE_dependex_bot_token_placeholder') {
+        error_log("[TELEGRAM NOTIFICATION] " . strip_tags($text));
+        return false;
+    }
+    $url = "https://api.telegram.org/bot{$token}/sendMessage";
+    $payload = [
+        'chat_id' => $chatId,
+        'text' => $text,
+        'parse_mode' => 'HTML',
+        'disable_web_page_preview' => true
+    ];
+    $ctx = stream_context_create([
+        'http' => [
+            'method' => 'POST',
+            'header' => "Content-Type: application/json\r\n",
+            'content' => json_encode($payload),
+            'timeout' => 5
+        ]
+    ]);
+    $res = @file_get_contents($url, false, $ctx);
+    return ($res !== false);
 }
 
 // Inclusione Motore Telemetria, Funnel Psicologico e Watchdog di Sistema

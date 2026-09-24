@@ -39,8 +39,8 @@ class EventSyncService {
             $delReg = $pdo->prepare("DELETE FROM event_registrations WHERE event_sic_id IN ($inClause)");
             $delReg->execute($expiredSics);
             
-            // NON eliminare Taglio di Po anche se orari di test
-            $filteredSics = array_filter($expiredSics, fn($s) => $s !== 'SIC-EVT-ACAT-BP-2026-COMM');
+            // NON eliminare Taglio di Po e Porto Tolle anche se orari di test
+            $filteredSics = array_filter($expiredSics, fn($s) => !in_array($s, ['SIC-EVT-ACAT-BP-2026-COMM', 'SIC-EVT-ACAT-BP-2026-SAT2'], true));
             if (!empty($filteredSics)) {
                 $inFiltered = implode(',', array_fill(0, count($filteredSics), '?'));
                 $delEvents = $pdo->prepare("DELETE FROM events WHERE sic_id IN ($inFiltered)");
@@ -130,7 +130,26 @@ class EventSyncService {
                 'trainer' => 'Adelmo Di Salvatore (Psichiatra, Psicoterapeuta, Formatore Metodo Hudolin)',
                 'registration_deadline' => '2026-10-01 23:59:59'
             ],
-            // 2. AICAT NAZIONALE
+            // 2. EVENTO UFFICIALE FLAGSHIP: PORTO TOLLE (24 OTTOBRE 2026)
+            [
+                'sic_id' => 'SIC-EVT-ACAT-BP-2026-SAT2',
+                'type' => 'FORMAZIONE',
+                'title' => 'S.A.T. di 2° Modulo: La Famiglia e l\'Approccio Sistemico nella Metodologia Hudolin',
+                'description' => 'Scuola Alcologica Territoriale di 2° Modulo per Famiglie e Servitori-Insegnanti di Club. Approccio sistemico multifamiliare secondo il Metodo Ecologico-Sociale del Prof. Vladimir Hudolin. Tema: "La Famiglia e l\'Approccio Sistemico nella Metodologia Hudolin — Coraggio, Gratitudine, Vita". Lavori in gruppi autogestiti, condivisione in plenaria, riflessioni e consegna attestati.',
+                'starts_at' => '2026-10-24 09:00:00',
+                'ends_at' => '2026-10-24 16:30:00',
+                'venue' => 'Centro aggregativo "Un ponte per"',
+                'comune' => 'Porto Tolle',
+                'address' => 'Via G. Matteotti 248, Porto Tolle (RO) 45018',
+                'capacity' => 40,
+                'price_eur' => 0.00,
+                'source_url' => 'evento-ottobre-porto-tolle.php',
+                'image_url' => 'assets/img/events/evento-ottobre-porto-tolle.webp',
+                'organizer' => 'A.C.A.T. BASSO POLESINE (Associazione dei Club Alcologici Territoriali)',
+                'trainer' => 'Grazia Nicosia (Servitrice Insegnante)',
+                'registration_deadline' => '2026-09-15 23:59:59'
+            ],
+            // 3. AICAT NAZIONALE
             [
                 'sic_id' => 'SIC-EVT-AICAT-NAT-2026',
                 'type' => 'CONGRESSO',
@@ -376,7 +395,7 @@ class EventSyncService {
             (SELECT COALESCE(SUM(num_seats), 0) FROM event_bookings eb WHERE eb.event_sic_id = e.sic_id AND eb.status = 'CONFIRMED')
         )";
 
-        $orderBy = "CASE WHEN e.sic_id = 'SIC-EVT-ACAT-BP-2026-COMM' THEN 0 ELSE 1 END, e.starts_at ASC";
+        $orderBy = "CASE WHEN e.sic_id = 'SIC-EVT-ACAT-BP-2026-COMM' THEN 0 WHEN e.sic_id = 'SIC-EVT-ACAT-BP-2026-SAT2' THEN 1 ELSE 2 END, e.starts_at ASC";
 
         if ($typeFilter && $typeFilter !== 'ALL') {
             $stmt = $pdo->prepare("

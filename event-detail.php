@@ -16,6 +16,11 @@ $paypalClientId = CommerceEnv::get('PAYPAL_CLIENT_ID', '');
 $u = current_user();
 $sic = trim((string)($_GET['event'] ?? 'SIC-EVT-ACAT-BP-2026-COMM'));
 
+if ($sic === 'SIC-EVT-ACAT-BP-2026-SAT2') {
+    require __DIR__ . '/evento-ottobre-porto-tolle.php';
+    return;
+}
+
 $pdo = db();
 $st = $pdo->prepare('SELECT * FROM events WHERE sic_id = ?');
 $st->execute([$sic]);

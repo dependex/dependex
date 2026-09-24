@@ -96,10 +96,13 @@ $paypalClientId = (string)CommerceEnv::get('PAYPAL_CLIENT_ID', '');
 
       <div style="display: flex; gap: 10px; flex-wrap: wrap;">
         <a href="evento-ottobre-taglio-di-po.php" class="btn-rainbow-outline" style="font-size: 0.82rem; padding: 6px 14px; border-color: rgba(212,175,55,0.5);">
-          <?=dx_icon('info', '', 14)?> Programma
+          <?=dx_icon('info', '', 14)?> Programma Taglio di Po
         </a>
-        <a href="mailto:info@dependex.support?subject=Richiesta%20informazioni%20evento%20Taglio%20di%20Po" class="btn-rainbow-outline" style="border-color: #00d4ff; color: #00d4ff; font-size: 0.82rem; padding: 6px 14px;">
-          <?=dx_icon('mail', '', 14)?> Contatta Segreteria
+        <a href="evento-ottobre-porto-tolle.php" class="btn-rainbow-outline" style="border-color: #10b981; color: #10b981; font-size: 0.82rem; padding: 6px 14px;">
+          <?=dx_icon('award', '', 14)?> Evento Porto Tolle (Gratuito)
+        </a>
+        <a href="mailto:info@dependex.support?subject=Richiesta%20informazioni%20eventi%20ACAT" class="btn-rainbow-outline" style="border-color: #00d4ff; color: #00d4ff; font-size: 0.82rem; padding: 6px 14px;">
+          <?=dx_icon('mail', '', 14)?> Segreteria
         </a>
         <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="btn-rainbow-outline" style="border-color: #25d366; color: #25d366; font-size: 0.82rem; padding: 6px 14px;">
           <?=dx_icon('users', '', 14)?> Gruppo WhatsApp

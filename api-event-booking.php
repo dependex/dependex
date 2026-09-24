@@ -115,7 +115,7 @@ try {
             $roleType = trim((string)($input['role_type'] ?? 'Operatore / Volontario'));
             $dietaryNotes = trim((string)($input['dietary_notes'] ?? 'Nessuna'));
             $paymentMethod = strtoupper(trim((string)($input['payment_method'] ?? 'ON_SITE')));
-            if (!in_array($paymentMethod, ['CARD', 'PAYPAL', 'USDT', 'ON_SITE'], true)) {
+            if (!in_array($paymentMethod, ['CARD', 'PAYPAL', 'USDT', 'ON_SITE', 'FREE'], true)) {
                 $paymentMethod = 'ON_SITE';
             }
             $notes = trim((string)($input['notes'] ?? ''));
@@ -172,6 +172,10 @@ try {
 
             $capacity = (int)($event['capacity'] ?? 30);
             $price = (float)($event['price_eur'] ?? 10.00);
+            $isFree = ($price <= 0 || $paymentMethod === 'FREE');
+            if ($isFree) {
+                $paymentMethod = 'FREE';
+            }
 
             // Conteggio iscritti confermati con auto-riparazione schema
             $currentBooked = 0;
@@ -203,7 +207,7 @@ try {
 
             $bookingSic = sic_id($isWaitlist ? 'WAIT' : 'BOOK');
             $status = $isWaitlist ? 'WAITLIST' : 'CONFIRMED';
-            $paymentStatus = $isWaitlist ? 'WAITLIST' : 'PENDING';
+            $paymentStatus = $isWaitlist ? 'WAITLIST' : ($isFree ? 'FREE' : 'PENDING');
             $ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
 
             $insStmt = $pdo->prepare("
@@ -245,11 +249,20 @@ try {
                 'is_waitlist' => $isWaitlist
             ]);
 
-            // Se pagamento in sede o lista d'attesa, invia subito email
-            if ($paymentMethod === 'ON_SITE' || $isWaitlist) {
+            // Invio email di conferma
+            if ($isFree) {
+                $subject = "Conferma Iscrizione: " . $event['title'];
+                $venue = $event['venue'] ?? '';
+                $address = $event['address'] ?? '';
+                $trainer = $event['trainer'] ?? '';
+                $organizer = $event['organizer'] ?? 'ACAT Basso Polesine';
+                $dateFormatted = date('d/m/Y', strtotime($event['starts_at']));
+                $body = "Gentile {$fullName},\n\nLa tua iscrizione per l'evento \"{$event['title']}\" ({$dateFormatted}) è confermata con successo!\n\nCodice Iscrizione: {$bookingSic}\nQuota: Iscrizione Gratuita\nSede: {$venue} - {$address}\nDocente/Relatrice: {$trainer}\n\nSegreteria: {$organizer} (info@dependex.support)";
+                send_event_email_async($email, $subject, $body);
+            } elseif ($paymentMethod === 'ON_SITE' || $isWaitlist) {
                 if ($isWaitlist) {
                     $subject = "Lista d'Attesa (#{$waitlistPosition}): " . $event['title'];
-                    $body = "Ciao {$fullName},\n\nI 30 posti in aula per \"{$event['title']}\" sono al completo e sei in lista d'attesa al posto [{$waitlistPosition}].\n\nCodice Prenotazione: {$bookingSic}\nQualora si liberasse un posto sarai contattato/a prioritariamente.\n\nSegreteria: ACAT Basso Polesine (info@dependex.support)";
+                    $body = "Ciao {$fullName},\n\nI posti in aula per \"{$event['title']}\" sono al completo e sei in lista d'attesa al posto [{$waitlistPosition}].\n\nCodice Prenotazione: {$bookingSic}\nQualora si liberasse un posto sarai contattato/a prioritariamente.\n\nSegreteria: ACAT Basso Polesine (info@dependex.support)";
                 } else {
                     $subject = "Conferma Iscrizione: " . $event['title'];
                     $body = "Gentile {$fullName},\n\nLa tua iscrizione per il corso \"{$event['title']}\" (Taglio di Po, 9-11 Ottobre 2026) è stata registrata con successo!\n\nCodice Iscrizione: {$bookingSic}\nQuota: 10,00 € (pranzo del sabato incluso, saldo al desk d'accoglienza).\n\nSede: Oratorio San Francesco, Taglio di Po (RO)\nFormatore: Adelmo Di Salvatore\n\nSegreteria: ACAT Basso Polesine (info@dependex.support)";
@@ -266,7 +279,7 @@ try {
                 'amount' => $price,
                 'payment_method' => $paymentMethod,
                 'status' => $status,
-                'message' => $isWaitlist ? "Sei in Lista d'Attesa (Posizione #{$waitlistPosition})" : "Iscrizione registrata con successo!",
+                'message' => $isWaitlist ? "Sei in Lista d'Attesa (Posizione #{$waitlistPosition})" : ($isFree ? "Iscrizione gratuita confermata con successo!" : "Iscrizione registrata con successo!"),
                 'whatsapp_link' => null,
                 'whatsapp_group_link' => 'https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel'
             ]);

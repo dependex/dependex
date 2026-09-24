@@ -359,6 +359,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           <span class="drawer-section-title text-cyan">SOVEREIGN ACADEMY</span>
           <a href="guida-famiglia.php" class="drawer-link <?=$curScript==='guida-gratuita.php'||$curScript==='guida-famiglia.php'?'active':''?>"><?=dx_icon('sparkles','text-neon-gold',18)?> <b>Guida Gratuita Famiglia</b></a>
           <a href="corso-taglio-po.php" class="drawer-link <?=$curScript==='evento-ottobre-taglio-di-po.php'||$curScript==='corso-taglio-po.php'||$curScript==='event-detail.php'?'active':''?>"><?=dx_icon('award','',18)?> Corso Esperienziale Taglio di Po</a>
+          <a href="evento-ottobre-porto-tolle.php" class="drawer-link <?=$curScript==='evento-ottobre-porto-tolle.php'?'active':''?>"><?=dx_icon('calendar','text-neon-cyan',18)?> SAT 2° Modulo Porto Tolle</a>
         </nav>
 
         <nav class="drawer-nav-group">

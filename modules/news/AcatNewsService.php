@@ -59,6 +59,18 @@ class AcatNewsService {
                 'published_date' => '09-11 Ott 2026',
                 'is_pinned' => 1
             ],
+            // PINNED 2: PORTO TOLLE OFFICIAL EVENT
+            [
+                'guid' => 'porto-tolle-ottobre-2026-sat2-official',
+                'tag' => 'IN EVIDENZA',
+                'tag_label' => 'EVENTO UFFICIALE · PORTO TOLLE',
+                'title' => '24 Ottobre: S.A.T. di 2° Modulo — Metodologia Hudolin',
+                'summary' => 'Scuola Alcologica Territoriale di Aggiornamento per Famiglie e Servitori-Insegnanti. Relatrice Grazia Nicosia. Centro "Un ponte per" a Porto Tolle. Iscrizioni Gratuite.',
+                'source_name' => 'ACAT Basso Polesine & DEPENDEX',
+                'source_url' => 'evento-ottobre-porto-tolle.php',
+                'published_date' => '24 Ott 2026',
+                'is_pinned' => 1
+            ],
             // AICAT NAZIONALE
             [
                 'guid' => 'aicat-congresso-nazionale-2026',
@@ -230,7 +242,7 @@ class AcatNewsService {
     public static function getLatestCards(int $limit = 14): array {
         $pdo = self::initDb();
         self::syncCuratedNews();
-        $stmt = $pdo->prepare("SELECT * FROM acat_news_feed ORDER BY is_pinned DESC, id ASC LIMIT ?");
+        $stmt = $pdo->prepare("SELECT * FROM acat_news_feed ORDER BY is_pinned DESC, CASE WHEN guid = 'taglio-di-po-ottobre-2026-official' THEN 1 WHEN guid = 'porto-tolle-ottobre-2026-sat2-official' THEN 2 ELSE 3 END, id ASC LIMIT ?");
         $stmt->execute([$limit]);
         return $stmt->fetchAll();
     }

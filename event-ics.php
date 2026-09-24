@@ -41,8 +41,9 @@ $icsEnd = $dtEnd->setTimezone(new DateTimeZone('UTC'))->format('Ymd\THis\Z');
 $now = (new DateTime('now', new DateTimeZone('UTC')))->format('Ymd\THis\Z');
 
 $title = preg_replace('/[\r\n]+/', ' ', $e['title']);
-$venue = preg_replace('/[\r\n]+/', ' ', $e['venue'] . ' - ' . ($e['address'] ?? 'Taglio di Po'));
-$description = preg_replace('/[\r\n]+/', '\n', $e['description'] . '\nQuota: 10€ | Iscrizioni entro 1 Ottobre: Segreteria ACAT Basso Polesine (info@dependex.support)');
+$priceText = ((float)($e['price_eur'] ?? 0) > 0) ? ((float)$e['price_eur'] . '€') : 'Iscrizione Gratuita';
+$deadlineText = !empty($e['registration_deadline']) ? (' | Iscrizioni entro: ' . date('d/m/Y', strtotime($e['registration_deadline']))) : '';
+$description = preg_replace('/[\r\n]+/', '\n', ($e['description'] ?? '') . '\nQuota: ' . $priceText . $deadlineText . ' | ' . ($e['organizer'] ?? 'ACAT Basso Polesine') . ' (info@dependex.support)');
 
 $filename = 'evento-' . preg_replace('/[^a-zA-Z0-9_-]/', '-', strtolower($title)) . '.ics';
 

@@ -65,16 +65,14 @@ $localClubs = $natMetrics['local_clubs'];
       </div>
 
       <!-- PRIMARY ACTION CLUSTER (PULSANTI DI NAVIGAZIONE E AZIONE) -->
-      <div style="display: flex; flex-wrap: wrap; gap: 14px; margin: 0 0 26px 0; clear: both;">
-        <a href="world-club-explorer.php" 
-           style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(135deg, #00f0ff, #0077ff); color: #070a12; font-weight: 850; font-size: 0.96rem; padding: 14px 24px; border-radius: 14px; box-shadow: 0 4px 20px rgba(0, 240, 255, 0.35); text-decoration: none; min-height: 50px; transition: transform 0.2s ease;">
+      <div class="hero-actions" style="display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 24px 0; clear: both;">
+        <a href="world-club-explorer.php" class="btn primary" style="text-decoration: none;">
           <?=dx_icon('map-pin', '', 18)?>
-          <span>Trova il Tuo Club (<?=number_format($totalPresidi, 0, ',', '.')?> Presidi Censiti)</span>
+          <span>Trova un Club</span>
         </a>
-        <a href="playground.php" 
-           style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: rgba(212, 175, 55, 0.15); border: 1.5px solid #d4af37; color: #ffd700; font-weight: 800; font-size: 0.94rem; padding: 14px 22px; border-radius: 14px; text-decoration: none; min-height: 50px; backdrop-filter: blur(8px); transition: transform 0.2s ease;">
+        <a href="playground.php" class="btn" style="border-color: rgba(212, 175, 55, 0.5); color: #ffd700; text-decoration: none;">
           <?=dx_icon('sparkles', 'text-neon-gold', 18)?>
-          <span>Entra nel Life Playground</span>
+          <span>Life Playground</span>
         </a>
       </div>
 
@@ -280,54 +278,70 @@ $localClubs = $natMetrics['local_clubs'];
 </section>
 
 <!-- ============================================================== -->
-<!-- 7 PILASTRI DELL'ARCOBALENO: FREQUENZE DI SOVRANITÀ E RINASCITA -->
+<!-- I 7 PILASTRI DI COMUNITÀ & SALUTE TERRITORIALE (HUDOLIN)       -->
 <!-- ============================================================== -->
-<section class="my-4">
-  <div class="rainbow-pillars-grid">
-    <div class="rainbow-pillar-card pillar-red">
-      <span class="pillar-icon"><?=dx_icon('lotus', 'text-neon-red', 32)?></span>
-      <div class="pillar-title text-neon-red">Senti</div>
-      <div class="pillar-sub">Radicarsi · Ascoltare · Sentire</div>
+<section class="my-4 p-4" style="background: rgba(11, 15, 27, 0.85); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px;">
+  <div class="text-center mb-3">
+    <div style="font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--neon-gold); margin-bottom: 4px;">
+      APPROCCIO ECOLOGICO-SOCIALE
     </div>
-    <div class="rainbow-pillar-card pillar-orange">
-      <span class="pillar-icon"><?=dx_icon('waves', 'text-neon-orange', 32)?></span>
-      <div class="pillar-title text-neon-orange">Agisci</div>
-      <div class="pillar-sub">Fluire · Muovere · Creare</div>
+    <h2 style="font-family: var(--font-serif); font-size: 1.45rem; color: #ffffff; font-weight: 800; margin: 0;">
+      I Valori del Cammino Comunitario
+    </h2>
+  </div>
+
+  <div class="row g-2 text-center">
+    <div class="col-6 col-md-3 col-lg">
+      <div class="p-3 h-100" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+        <div style="margin-bottom: 6px;"><?=dx_icon('lotus', 'text-neon-cyan', 22)?></div>
+        <div style="font-weight: 750; font-size: 0.88rem; color: #fff;">Presenza</div>
+        <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 2px;">Radicarsi e fermare la fuga</div>
+      </div>
     </div>
-    <div class="rainbow-pillar-card pillar-gold">
-      <span class="pillar-icon"><?=dx_icon('mic', 'text-neon-gold', 32)?></span>
-      <div class="pillar-title text-neon-gold">Comunica</div>
-      <div class="pillar-sub">Esprimere · Dire · Manifestare</div>
+    <div class="col-6 col-md-3 col-lg">
+      <div class="p-3 h-100" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+        <div style="margin-bottom: 6px;"><?=dx_icon('waves', 'text-neon-cyan', 22)?></div>
+        <div style="font-weight: 750; font-size: 0.88rem; color: #fff;">Movimento</div>
+        <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 2px;">Spezzare l'inerzia solitaria</div>
+      </div>
     </div>
-    <div class="rainbow-pillar-card pillar-green">
-      <span class="pillar-icon"><?=dx_icon('mountain', 'text-neon-green', 32)?></span>
-      <div class="pillar-title text-neon-green">Vedi</div>
-      <div class="pillar-sub">Osservare · Scegliere · Orientarsi</div>
+    <div class="col-6 col-md-3 col-lg">
+      <div class="p-3 h-100" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+        <div style="margin-bottom: 6px;"><?=dx_icon('mic', 'text-neon-gold', 22)?></div>
+        <div style="font-weight: 750; font-size: 0.88rem; color: #fff;">Ascolto</div>
+        <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 2px;">Parlare senza giudizio</div>
+      </div>
     </div>
-    <div class="rainbow-pillar-card pillar-cyan">
-      <span class="pillar-icon"><?=dx_icon('heart-handshake', 'text-neon-cyan', 32)?></span>
-      <div class="pillar-title text-neon-cyan">Ama</div>
-      <div class="pillar-sub">Amare · Relazionare · Accogliere</div>
+    <div class="col-6 col-md-3 col-lg">
+      <div class="p-3 h-100" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+        <div style="margin-bottom: 6px;"><?=dx_icon('mountain', 'text-neon-green', 22)?></div>
+        <div style="font-weight: 750; font-size: 0.88rem; color: #fff;">Lucidità</div>
+        <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 2px;">Sobrietà e consapevolezza</div>
+      </div>
     </div>
-    <div class="rainbow-pillar-card pillar-indigo">
-      <span class="pillar-icon"><?=dx_icon('feather', 'text-neon-indigo', 32)?></span>
-      <div class="pillar-title text-neon-indigo">Costruisci</div>
-      <div class="pillar-sub">Strutturare · Creare · Costruire</div>
+    <div class="col-6 col-md-4 col-lg">
+      <div class="p-3 h-100" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+        <div style="margin-bottom: 6px;"><?=dx_icon('heart-handshake', 'text-neon-cyan', 22)?></div>
+        <div style="font-weight: 750; font-size: 0.88rem; color: #fff;">Relazione</div>
+        <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 2px;">Famiglia e pari accoglienti</div>
+      </div>
     </div>
-    <div class="rainbow-pillar-card pillar-violet">
-      <span class="pillar-icon"><?=dx_icon('crown', 'text-neon-violet', 32)?></span>
-      <div class="pillar-title text-neon-violet">Sii</div>
-      <div class="pillar-sub">Integrare · Trascendere · Diventare</div>
+    <div class="col-6 col-md-4 col-lg">
+      <div class="p-3 h-100" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+        <div style="margin-bottom: 6px;"><?=dx_icon('feather', 'text-neon-gold', 22)?></div>
+        <div style="font-weight: 750; font-size: 0.88rem; color: #fff;">Dignità</div>
+        <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 2px;">Ricostruire credibilità</div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 col-lg">
+      <div class="p-3 h-100" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+        <div style="margin-bottom: 6px;"><?=dx_icon('crown', 'text-neon-purple', 22)?></div>
+        <div style="font-weight: 750; font-size: 0.88rem; color: #fff;">Comunità</div>
+        <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 2px;">Solidarietà e testimonianza</div>
+      </div>
     </div>
   </div>
 </section>
-
-<!-- ============================================================== -->
-<!-- PANORAMA ARCOBALENO DEI 7 PORTALI                              -->
-<!-- ============================================================== -->
-<div class="rainbow-panorama-banner my-4">
-  <img src="assets/img/rainbow-portals.webp" alt="I 7 Portali dell'Arcobaleno e Frequenze di Rinascita" loading="lazy">
-</div>
 
 <!-- ============================================================== -->
 <!-- 2. SECTION 2: TROVA LA TUA COMUNITÀ (RICERCA & MAPPA)          -->
@@ -373,7 +387,7 @@ $localClubs = $natMetrics['local_clubs'];
         </p>
         <a href="world-map.php" class="btn-rainbow-outline" style="border-color: var(--neon-cyan); color: #fff; width: 100%; display: inline-flex; justify-content: center; align-items: center;">
           <?=dx_icon('globe', 'text-neon-cyan', 16)?>
-          <span style="margin-left: 8px;">Apri Mappa Mondiale Club</span>
+          <span style="margin-left: 8px;">Mappa Mondiale</span>
         </a>
       </div>
     </div>
@@ -463,7 +477,7 @@ $localClubs = $natMetrics['local_clubs'];
       </div>
       <a href="domande-frequenti.php" class="btn-rainbow-outline" style="border-color: var(--neon-gold); color: #fff; font-size: 0.88rem;">
         <?=dx_icon('help-circle', 'text-neon-gold', 16)?>
-        <span style="margin-left: 6px;">Vedi tutte le 11 risposte &rarr;</span>
+        <span style="margin-left: 6px;">Tutte le risposte &rarr;</span>
       </a>
     </div>
 
@@ -520,17 +534,17 @@ $localClubs = $natMetrics['local_clubs'];
   <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
     <a href="parla-con-noi.php" class="btn-rainbow-neon" style="box-shadow: var(--glow-cyan);">
       <?=dx_icon('message-circle', '', 20)?>
-      <span style="margin-left: 8px;">Scrivi alla Segreteria di Accoglienza</span>
+      <span style="margin-left: 8px;">Scrivi alla Segreteria</span>
     </a>
 
     <a href="tel:800974250" class="btn-rainbow-neon" style="box-shadow: var(--glow-gold);">
       <?=dx_icon('phone', '', 18)?>
-      <span style="margin-left: 8px;">Numero Verde AICAT: 800 974250</span>
+      <span style="margin-left: 8px;">Numero Verde: 800 974250</span>
     </a>
 
     <a href="parla-con-noi.php" class="btn-rainbow-outline" style="border-color: var(--neon-cyan); color: #fff;">
       <?=dx_icon('send', 'text-neon-cyan', 18)?>
-      <span style="margin-left: 8px;">Invia un messaggio dal sito</span>
+      <span style="margin-left: 8px;">Invia Messaggio</span>
     </a>
   </div>
 </section>
@@ -554,7 +568,7 @@ $localClubs = $natMetrics['local_clubs'];
     </div>
     <div>
       <a href="events-public.php" class="btn-rainbow-outline small" style="border-color: var(--neon-cyan); color: #fff;">
-        <span>Tutti gli eventi nazionali</span>
+        <span>Tutti gli Eventi</span>
         <?=dx_icon('arrow-right', 'text-neon-cyan', 14)?>
       </a>
     </div>
@@ -582,10 +596,10 @@ $localClubs = $natMetrics['local_clubs'];
         <div style="display: flex; gap: 12px; flex-wrap: wrap;">
           <a href="evento-ottobre-taglio-di-po.php" class="btn-rainbow-neon small">
             <?=dx_icon('ticket', '', 16)?>
-            <span style="margin-left: 6px;">Scheda e Prenotazione Posto</span>
+            <span style="margin-left: 6px;">Prenota Posto</span>
           </a>
           <a href="events-public.php" class="btn-rainbow-outline small" style="border-color: var(--neon-cyan); color: #fff;">
-            <span>Dettagli Programma</span>
+            <span>Programma</span>
           </a>
         </div>
       </div>
@@ -629,6 +643,11 @@ $localClubs = $natMetrics['local_clubs'];
     <?php endif; ?>
   </div>
 </section>
+
+<!-- ============================================================== -->
+<!-- TICKER LIBRI & PUBBLICAZIONI AMAZON KDP (VELOCITÀ LETTURA)     -->
+<!-- ============================================================== -->
+<?php require __DIR__ . '/templates/_books_ticker.php'; ?>
 
 <!-- ============================================================== -->
 <!-- TICKER RECENSIONI & TESTIMONIANZE VERE DAI CLUB               -->
@@ -693,7 +712,7 @@ $localClubs = $natMetrics['local_clubs'];
   <div class="text-center mt-3">
     <a href="storie.php" class="btn-rainbow-outline">
       <?=dx_icon('book-open', 'text-neon-gold', 16)?>
-      <span style="margin-left: 8px;">Leggi tutte le storie di comunità</span>
+      <span style="margin-left: 8px;">Tutte le Storie</span>
     </a>
   </div>
 </section>
@@ -728,7 +747,7 @@ $localClubs = $natMetrics['local_clubs'];
         </p>
       </div>
       <a href="metodo.php#scopri" class="btn-rainbow-outline small" style="border-color: var(--neon-cyan); color: #fff;">
-        <span>Scopri le basi</span> &rarr;
+        <span>Scopri</span> &rarr;
       </a>
     </div>
 
@@ -744,7 +763,7 @@ $localClubs = $natMetrics['local_clubs'];
         </p>
       </div>
       <a href="metodo.php#hudolin" class="btn-rainbow-outline small" style="border-color: var(--neon-gold); color: #fff;">
-        <span>Approfondisci il Metodo</span> &rarr;
+        <span>Approfondisci</span> &rarr;
       </a>
     </div>
 
@@ -760,7 +779,7 @@ $localClubs = $natMetrics['local_clubs'];
         </p>
       </div>
       <a href="academy-public.php" class="btn-rainbow-outline small" style="border-color: var(--neon-violet); color: #fff;">
-        <span>Esplora l'Academy</span> &rarr;
+        <span>Academy</span> &rarr;
       </a>
     </div>
   </div>
@@ -799,11 +818,11 @@ $localClubs = $natMetrics['local_clubs'];
       <div style="display: flex; gap: 12px; flex-wrap: wrap;">
         <a href="world-club-explorer.php" class="btn-rainbow-neon small">
           <?=dx_icon('map-pin', '', 16)?>
-          <span style="margin-left: 6px;">Cerca nella Directory</span>
+          <span style="margin-left: 6px;">Cerca Directory</span>
         </a>
         <a href="world-map.php" class="btn-rainbow-outline small" style="border-color: var(--neon-cyan); color: #fff;">
           <?=dx_icon('globe', 'text-neon-cyan', 16)?>
-          <span style="margin-left: 6px;">Mappa dei Presidi</span>
+          <span style="margin-left: 6px;">Mappa Presidi</span>
         </a>
       </div>
     </div>
@@ -815,7 +834,7 @@ $localClubs = $natMetrics['local_clubs'];
         </p>
         <a href="parla-con-noi.php" class="btn-rainbow-neon" style="width: 100%; display: inline-flex; justify-content: center; align-items: center;">
           <?=dx_icon('message-circle', '', 16)?>
-          <span style="margin-left: 6px;">Contatta la Segreteria di Accoglienza</span>
+          <span style="margin-left: 6px;">Contatta Segreteria</span>
         </a>
       </div>
     </div>
@@ -897,11 +916,11 @@ $localClubs = $natMetrics['local_clubs'];
         <div class="d-flex flex-column gap-2">
           <a href="metodo.php#scienza" class="btn-rainbow-neon small w-100 justify-content-center">
             <?=dx_icon('book-open', '', 15)?>
-            <span style="margin-left: 6px;">Approfondisci il Metodo e le Fonti</span>
+            <span style="margin-left: 6px;">Metodo e Fonti</span>
           </a>
           <a href="mappa-club.php" class="btn-rainbow-outline small w-100 justify-content-center" style="border-color: var(--neon-cyan); color: #fff;">
             <?=dx_icon('map-pin', 'text-neon-cyan', 15)?>
-            <span style="margin-left: 6px;">Cerca tra i 1.770 Presidi</span>
+            <span style="margin-left: 6px;">Mappa Presidi</span>
           </a>
         </div>
       </div>
@@ -935,7 +954,7 @@ $localClubs = $natMetrics['local_clubs'];
           Cosa dire e cosa non dire, come affrontare le prime serate difficili e come trovare aiuto anche prima che la persona sia pronta.
         </p>
       </div>
-      <a href="guida-gratuita.php" class="btn-rainbow-outline small" style="border-color: var(--neon-green); color: #fff;">Scarica la Guida (PDF) &rarr;</a>
+      <a href="guida-gratuita.php" class="btn-rainbow-outline small" style="border-color: var(--neon-green); color: #fff;">Scarica Guida (PDF) &rarr;</a>
     </div>
 
     <div class="card card-neon-gold p-4" style="display: flex; flex-direction: column; justify-content: space-between;">
@@ -946,7 +965,7 @@ $localClubs = $natMetrics['local_clubs'];
           Diari dei primi 90 giorni, quaderni di dialogo familiare e manuali per Servitori-Insegnanti disponibili in formato digitale e cartaceo.
         </p>
       </div>
-      <a href="offers.php" class="btn-rainbow-outline small" style="border-color: var(--neon-gold); color: #fff;">Consulta la Collana &rarr;</a>
+      <a href="offers.php" class="btn-rainbow-outline small" style="border-color: var(--neon-gold); color: #fff;">Consulta Collana &rarr;</a>
     </div>
 
     <div class="card card-neon-cyan p-4" style="display: flex; flex-direction: column; justify-content: space-between;">
@@ -958,7 +977,7 @@ $localClubs = $natMetrics['local_clubs'];
           Percorsi residenziali e la <a href="crociera-benessere-masterclass.php" style="color: var(--neon-cyan); text-decoration: underline;">Crociera Benessere Masterclass</a> nel Mediterraneo per famiglie e conduttori in formula sobria.
         </p>
       </div>
-      <a href="viaggi-esperienziali.php" class="btn-rainbow-outline small" style="border-color: var(--neon-cyan); color: #fff;">Scheda Informativa &rarr;</a>
+      <a href="viaggi-esperienziali.php" class="btn-rainbow-outline small" style="border-color: var(--neon-cyan); color: #fff;">Scheda Viaggi &rarr;</a>
     </div>
   </div>
 </section>
@@ -988,11 +1007,11 @@ $localClubs = $natMetrics['local_clubs'];
   <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
     <a href="mappa-club.php" class="btn-rainbow-neon">
       <?=dx_icon('map-pin', '', 18)?>
-      <span style="margin-left: 8px;">Trova il tuo Club</span>
+      <span style="margin-left: 8px;">Trova un Club</span>
     </a>
     <a href="domande-frequenti.php" class="btn-rainbow-outline" style="border-color: var(--neon-gold); color: #fff;">
       <?=dx_icon('help-circle', 'text-neon-gold', 18)?>
-      <span style="margin-left: 8px;">Le risposte ai tuoi dubbi</span>
+      <span style="margin-left: 8px;">Domande Frequenti</span>
     </a>
     <a href="parla-con-noi.php" class="btn-rainbow-outline" style="border-color: var(--neon-cyan); color: #fff;">
       <?=dx_icon('message-circle', 'text-neon-cyan', 18)?>

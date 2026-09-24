@@ -104,24 +104,24 @@ require '_header.php';
          style="background: rgba(0, 240, 255, 0.15); border: 1px solid var(--neon-cyan); color: #00f0ff;"
          title="Scrivi direttamente dal sito">
         <?=dx_icon('send', '', 18)?>
-        <span>Modulo Riservato Online</span>
+        <span>Scrivi Online</span>
       </a>
       <a href="domande-frequenti.php" 
          class="btn-community-wa" 
          style="background: rgba(255, 215, 0, 0.15); border: 1px solid var(--neon-gold); color: #ffd700;"
          title="Leggi prima le risposte ai dubbi comuni">
         <?=dx_icon('help-circle', '', 18)?>
-        <span>Domande che forse ti vergogni a fare</span>
+        <span>Domande Frequenti</span>
       </a>
 
       <a href="tel:800974250" class="btn-rainbow-neon" style="box-shadow: var(--glow-gold);" title="Chiama il numero verde AICAT">
         <?=dx_icon('phone', '', 18)?>
-        <span style="margin-left: 8px;">Numero Verde AICAT: 800 974250</span>
+        <span style="margin-left: 8px;">Numero Verde: 800 974250</span>
       </a>
 
       <a href="mailto:info@dependex.support" class="btn-rainbow-outline" style="border-color: var(--neon-cyan); color: #fff;" title="Invia una email riservata">
         <?=dx_icon('mail', 'text-neon-cyan', 18)?>
-        <span style="margin-left: 8px;">info@dependex.support</span>
+        <span style="margin-left: 8px;">Email Riservata</span>
       </a>
     </div>
   </section>
@@ -224,7 +224,7 @@ require '_header.php';
 
         <button type="submit" class="btn-rainbow-neon" style="width: 100%; margin-top: 8px; justify-content: center;">
           <?=dx_icon('send', '', 18)?>
-          <span style="margin-left: 8px;">Invia la richiesta riservata</span>
+          <span style="margin-left: 8px;">Invia Richiesta</span>
         </button>
 
         <small style="display: block; font-size: 0.78rem; color: var(--dx-text-muted); text-align: center; margin-top: 6px;">

@@ -244,13 +244,13 @@ require '_header.php';
       </p>
 
       <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 36px;">
-        <a href="guida-gratuita.php?view=document" target="_blank" class="btn primary" style="padding: 14px 32px; font-size: 1.05rem; border-radius: 14px; text-decoration: none;">
+        <a href="guida-gratuita.php?view=document" target="_blank" class="btn primary" style="padding: 12px 24px; font-size: 1rem; border-radius: 14px; text-decoration: none;">
           <?=dx_icon('book-open', '', 18)?>
-          <span style="margin-left: 8px;">Leggi e Stampa la Guida in PDF</span>
+          <span style="margin-left: 8px;">Leggi Guida PDF</span>
         </a>
-        <a href="world-club-explorer.php" class="btn-rainbow-outline" style="padding: 14px 28px; font-size: 1.05rem; border-radius: 14px; text-decoration: none;">
+        <a href="world-club-explorer.php" class="btn-rainbow-outline" style="padding: 12px 20px; font-size: 1rem; border-radius: 14px; text-decoration: none;">
           <?=dx_icon('compass', '', 18)?>
-          <span style="margin-left: 8px;">Trova il Club più Vicino</span>
+          <span style="margin-left: 8px;">Trova un Club</span>
         </a>
       </div>
 
@@ -355,9 +355,9 @@ require '_header.php';
               </label>
             </div>
 
-            <button type="submit" class="btn primary" style="width: 100%; min-height: 50px; font-size: 1.05rem; font-weight: 800; border-radius: 12px;">
+            <button type="submit" class="btn primary" style="width: 100%; min-height: 46px; font-size: 1rem; font-weight: 800; border-radius: 12px;">
               <?=dx_icon('sparkles', '', 18)?>
-              <span style="margin-left: 8px;">Scarica la Guida Gratuita</span>
+              <span style="margin-left: 8px;">Scarica Guida (PDF)</span>
             </button>
           </form>
         </div>

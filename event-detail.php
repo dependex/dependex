@@ -568,22 +568,22 @@ require '_header.php';
         <div style="display: flex; flex-direction: column; gap: 8px;">
           <a href="#prenotazione" class="m-btn m-btn-primary">
             <?=dx_icon('check-circle', '', 18)?>
-            <span><?=!$isFull ? "COMPILA ISCRIZIONE ONLINE (10€)" : "ISCRIVITI IN LISTA D'ATTESA"?></span>
+            <span><?=!$isFull ? "Iscriviti Online (10 €)" : "Lista d'Attesa"?></span>
           </a>
 
           <a href="mailto:info@dependex.support?subject=Richiesta%20informazioni%20evento%20Taglio%20di%20Po" class="m-btn m-btn-outline" style="min-height: 48px;">
             <?=dx_icon('mail', 'text-neon-cyan', 18)?>
-            <span>Richiedi Informazioni (info@dependex.support)</span>
+            <span>Richiedi Informazioni</span>
           </a>
 
           <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="background: rgba(37, 211, 102, 0.15); border: 1px solid #25D366; color: #25D366; font-weight: 800; min-height: 48px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">
             <?=dx_icon('users', '', 18)?>
-            <span>Entra nel Gruppo WhatsApp Ufficiale</span>
+            <span>Gruppo WhatsApp</span>
           </a>
 
           <a href="event-ics.php?event=<?=urlencode($sic)?>" download class="m-btn m-btn-outline" style="min-height: 44px; font-size: 0.88rem;">
             <?=dx_icon('calendar', '', 16)?>
-            <span>Aggiungi al Calendario (.ics)</span>
+            <span>Salva nel Calendario</span>
           </a>
         </div>
 
@@ -711,7 +711,7 @@ require '_header.php';
 
           <button type="submit" id="mb_submit_btn" class="m-btn m-btn-primary" style="width: 100%; font-size: 0.95rem; min-height: 48px;">
             <?=dx_icon('check-circle', '', 18)?>
-            <span><?=!$isFull ? "ISCRIVITI & PROCEDI (10,00 €)" : "ISCRIVITI IN LISTA D'ATTESA"?></span>
+            <span><?=!$isFull ? "Iscriviti Ora (10 €)" : "Iscriviti in Lista"?></span>
           </button>
         </div>
 
@@ -1283,7 +1283,7 @@ async function submitUsdtTx() {
 
 
       html += '<a href="event-ics.php?event=<?=urlencode($sic)?>" download class="m-btn m-btn-outline" style="min-height: 42px; font-size: 0.84rem;">' +
-              '<?=dx_icon("calendar", "", 14)?> Salva Promemoria su Calendario (.ics)</a>';
+              '<?=dx_icon("calendar", "", 14)?> Salva nel Calendario</a>';
 
       usdtContainer.innerHTML = html;
       usdtContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });

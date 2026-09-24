@@ -315,7 +315,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           <span class="drawer-section-title">RISORSE & SERVIZI</span>
           <a href="profile.php" class="drawer-link <?=$curScript==='profile.php'?'active':''?>"><?=dx_icon('users','',18)?> Il mio Profilo</a>
           <a href="guida-gratuita.php" class="drawer-link <?=$curScript==='guida-gratuita.php'?'active':''?>"><?=dx_icon('sparkles','',18)?> Guida Gratuita Famiglia</a>
-          <a href="offers.php" class="drawer-link <?=$curScript==='offers.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Collana Didattica KDP</a>
+          <a href="pubblicazioni.php" class="drawer-link <?=$curScript==='pubblicazioni.php'||$curScript==='offers.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Collana Didattica KDP</a>
           <a href="cart.php" class="drawer-link <?=$curScript==='cart.php'?'active':''?>"><?=dx_icon('shopping-cart','',18)?> Carrello Acquisti</a>
           <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>"><?=dx_icon('shield','',18)?> Supporto Immediato</a>
           <a href="privacy.php" class="drawer-link <?=$curScript==='privacy.php'?'active':''?>"><?=dx_icon('lock','',18)?> Riservatezza & Anonimato</a>
@@ -364,7 +364,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         <nav class="drawer-nav-group">
           <span class="drawer-section-title text-amber">RISORSE & APPROFONDIMENTI</span>
           <a href="clip-motivazionali.php" class="drawer-link <?=$curScript==='clips.php'||$curScript==='clip-motivazionali.php'?'active':''?>"><?=dx_icon('play','text-neon-gold',18)?> Clip Motivazionali</a>
-          <a href="libri-kdp.php" class="drawer-link <?=$curScript==='offers.php'||$curScript==='libri-kdp.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Collana Libri KDP</a>
+          <a href="pubblicazioni.php" class="drawer-link <?=$curScript==='pubblicazioni.php'||$curScript==='offers.php'||$curScript==='libri-kdp.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Collana Libri KDP</a>
           <a href="viaggi-esperienziali.php" class="drawer-link <?=$curScript==='viaggi-esperienziali.php'||$curScript==='crociera-benessere-masterclass.php'?'active':''?>"><?=dx_icon('compass','',18)?> Viaggi Esperienziali BEWAY.LIFE</a>
         </nav>
 

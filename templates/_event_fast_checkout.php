@@ -96,13 +96,13 @@ $paypalClientId = (string)CommerceEnv::get('PAYPAL_CLIENT_ID', '');
 
       <div style="display: flex; gap: 10px; flex-wrap: wrap;">
         <a href="evento-ottobre-taglio-di-po.php" class="btn-rainbow-outline" style="font-size: 0.82rem; padding: 6px 14px; border-color: rgba(212,175,55,0.5);">
-          <?=dx_icon('info', '', 14)?> Dettagli Programma Completo
+          <?=dx_icon('info', '', 14)?> Programma
         </a>
         <a href="mailto:info@dependex.support?subject=Richiesta%20informazioni%20evento%20Taglio%20di%20Po" class="btn-rainbow-outline" style="border-color: #00d4ff; color: #00d4ff; font-size: 0.82rem; padding: 6px 14px;">
-          <?=dx_icon('mail', '', 14)?> Info Segreteria (Email)
+          <?=dx_icon('mail', '', 14)?> Contatta Segreteria
         </a>
         <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="btn-rainbow-outline" style="border-color: #25d366; color: #25d366; font-size: 0.82rem; padding: 6px 14px;">
-          <?=dx_icon('users', '', 14)?> Gruppo WhatsApp Evento
+          <?=dx_icon('users', '', 14)?> Gruppo WhatsApp
         </a>
       </div>
     </div>
@@ -181,7 +181,7 @@ $paypalClientId = (string)CommerceEnv::get('PAYPAL_CLIENT_ID', '');
 
           <button type="submit" id="homeFastSubmitBtn" class="btn-rainbow-neon" style="width: 100%; justify-content: center; font-size: 0.88rem; padding: 10px;">
             <?=dx_icon('check-circle', '', 16)?>
-            <span>ISCRIVITI & CONFERMA POSTO (10 €)</span>
+            <span>Iscriviti Ora (10 €)</span>
           </button>
         </form>
 

@@ -136,22 +136,22 @@ require '_header.php';
     <div style="display: flex; flex-direction: column; gap: 8px;">
       <a href="event-detail.php?event=<?=urlencode($sic)?>" class="m-btn m-btn-primary">
         <?=dx_icon('check-circle', '', 18)?>
-        <span>PAGINA EVENTO DEDICATA & PRENOTA</span>
+        <span>Prenota Posto (10 €)</span>
       </a>
 
       <a href="mailto:info@dependex.support?subject=Richiesta%20informazioni%20evento%20Taglio%20di%20Po" class="m-btn m-btn-outline" style="min-height: 48px;">
         <?=dx_icon('mail', 'text-neon-cyan', 18)?>
-        <span>Richiedi Informazioni (info@dependex.support)</span>
+        <span>Richiedi Informazioni</span>
       </a>
 
       <a href="https://chat.whatsapp.com/Bx6mGOuLBTmC2rxTPp4Gel" target="_blank" rel="noopener" class="m-btn" style="background: rgba(37, 211, 102, 0.18); border: 1px solid #25D366; color: #25D366; font-weight: 800; min-height: 48px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">
         <?=dx_icon('users', '', 18)?>
-        <span>Entra nel Gruppo WhatsApp Ufficiale</span>
+        <span>Gruppo WhatsApp</span>
       </a>
 
       <a href="event-ics.php?event=<?=urlencode($sic)?>" download class="m-btn m-btn-outline" style="min-height: 44px; font-size: 0.88rem;">
         <?=dx_icon('calendar', '', 16)?>
-        <span>Salva sul Calendario dello Smartphone (.ics)</span>
+        <span>Salva nel Calendario</span>
       </a>
     </div>
 
@@ -334,7 +334,7 @@ require '_header.php';
     </p>
     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
       <a href="https://mircopregnolato.it/ciurma.html" target="_blank" rel="noopener" class="m-btn m-btn-primary" style="flex: 1; min-height: 42px; font-size: 0.84rem; text-decoration: none; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
-        <?=dx_icon('external-link', '', 14)?> Info su mircopregnolato.it
+        <?=dx_icon('external-link', '', 14)?> Info Dettagliate
       </a>
       <a href="crociera-benessere-masterclass.php" class="m-btn" style="flex: 1; min-height: 42px; font-size: 0.84rem; border: 1px solid rgba(255,255,255,0.2); color: #fff; text-decoration: none; text-align: center; display: inline-flex; align-items: center; justify-content: center;">
         Scheda Advisor

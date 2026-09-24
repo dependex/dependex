@@ -239,17 +239,24 @@
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 212, 255, 0.2);
   margin-bottom: 3rem;
 }
-  border-radius: var(--dx-radius-lg);
-  padding: clamp(1.5rem, 3vw, 2.5rem);
-  box-shadow: var(--dx-shadow-soft);
-  margin-bottom: 3rem;
-}
 
 .community-search-form {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
   margin-top: 1.2rem;
+}
+
+@media (max-width: 600px) {
+  .community-search-form {
+    flex-direction: column;
+  }
+  .community-search-input,
+  .community-search-form button,
+  .community-search-form a {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
 }
 
 .community-search-input {

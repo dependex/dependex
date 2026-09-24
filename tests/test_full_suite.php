@@ -11,6 +11,7 @@
 $forbidden = ['magico', 'magic', 'm.a.g.i.c.', 'giorgian putanu'];
 $pages = [
     'index.php',
+    'pubblicazioni.php',
     'guida-gratuita.php',
     'metodo.php',
     'offers.php',

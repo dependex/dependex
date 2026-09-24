@@ -15,7 +15,7 @@ $breadcrumbs = [
     'Collana Libri KDP' => 'offers.php'
 ];
 
-// Catalogo Completo dei 6 Libri di Mirco Pregnolato con i 3 Tier di Prezzo
+// Catalogo Completo dei Libri di Mirco Pregnolato con Copertine Reali e i 3 Tier di Prezzo
 $booksCatalog = [
     [
         'id' => 'prd_book_famiglia',
@@ -25,6 +25,7 @@ $booksCatalog = [
         'subtitle' => 'Strumento di lavoro, riflessione e dialogo nel percorso di cambiamento e sobrietà',
         'description' => 'Un manuale empatico e operativo pensato per il nucleo familiare che affronta il cammino della sobrietà. Contiene schede guidate di dialogo settimanale, gestione dei conflitti, superamento del senso di colpa e ricostruzione del patto di fiducia domestico.',
         'pages' => '172 pagine · Formato 6x9" · Carta Crema',
+        'cover_img' => 'assets/img/books/quaderno_famiglia_cover.webp',
         'color_theme' => 'card-neon-cyan',
         'badge_color' => 'var(--neon-cyan)',
         'amazon_url' => 'https://www.amazon.it/s?k=mirco+pregnolato+quaderno+della+famiglia',
@@ -42,7 +43,7 @@ $booksCatalog = [
                 'tier' => 2,
                 'offer_id' => 'off_bk_famiglia_kdp',
                 'name' => 'Cartaceo KDP',
-                'price' => '24,90 €',
+                'price' => '19,90 €',
                 'details' => 'Volume cartaceo con copertina satinata di pregio. Spedizione rapida e reso garantito Amazon Prime.',
                 'cta_type' => 'amazon',
                 'cta_label' => 'Acquista su Amazon KDP'
@@ -66,9 +67,10 @@ $booksCatalog = [
         'subtitle' => 'Guida pratica quotidiana, riflessioni del cerchio e tracciamento della sobrietà',
         'description' => 'Il compagno insostituibile per i membri dei Club Alcologici Territoriali e per chiunque desideri consolidare i primi 90 giorni di sobrietà. Include schede giornaliere di auto-osservazione, frasi del Prof. Hudolin e sezioni strutturate per gli incontri settimanali di Club.',
         'pages' => '223 pagine · Formato 6x9" · Rilegatura Brossura',
+        'cover_img' => 'assets/img/books/diario_club_cover.webp',
         'color_theme' => 'card-neon-gold',
         'badge_color' => 'var(--neon-gold)',
-        'amazon_url' => 'https://www.amazon.it/s?k=mirco+pregnolato+diario+del+club',
+        'amazon_url' => 'https://www.amazon.it/dp/B0HJ475K5G',
         'tiers' => [
             [
                 'tier' => 1,
@@ -83,7 +85,7 @@ $booksCatalog = [
                 'tier' => 2,
                 'offer_id' => 'off_bk_club_kdp',
                 'name' => 'Cartaceo KDP',
-                'price' => '24,90 €',
+                'price' => '19,90 €',
                 'details' => '223 pagine stampate su carta crema anti-affaticamento. Disponibile su Amazon KDP con Prime.',
                 'cta_type' => 'amazon',
                 'cta_label' => 'Acquista su Amazon KDP'
@@ -107,6 +109,7 @@ $booksCatalog = [
         'subtitle' => 'La guida pratica e operativa per il facilitatore di Club e conduttore del cerchio',
         'description' => 'Tutto ciò che serve al servitore-insegnante: deontologia, gestione del silenzio, accoglienza di nuove famiglie, superamento delle resistenze, collaborazione con i Ser.D e coordinamento con le Scuole Alcologiche Territoriali.',
         'pages' => '112 pagine · Formato 6x9" · Tascabile Operativo',
+        'cover_img' => 'assets/img/books/diario_servitore_cover.webp',
         'color_theme' => 'card-neon-green',
         'badge_color' => 'var(--neon-green)',
         'amazon_url' => 'https://www.amazon.it/s?k=mirco+pregnolato+diario+servitore+insegnante',
@@ -124,7 +127,7 @@ $booksCatalog = [
                 'tier' => 2,
                 'offer_id' => 'off_bk_serv_kdp',
                 'name' => 'Cartaceo KDP',
-                'price' => '19,90 €',
+                'price' => '14,90 €',
                 'details' => 'Manuale cartaceo tascabile KDP da portare sempre con sé ad ogni incontro di Club.',
                 'cta_type' => 'amazon',
                 'cta_label' => 'Acquista su Amazon KDP'
@@ -148,6 +151,7 @@ $booksCatalog = [
         'subtitle' => '365 Giorni di potenziamento personale, abitudini sobrie e trasformazione profonda',
         'description' => 'L\'opera monumentale di Mirco Pregnolato dedicata a chi non si accontenta della sola astinenza, ma vuole trasformare la propria vita in un capolavoro di chiarezza, disciplina e successo umano. 365 schede di lavoro quotidiano per forgiare una mente sovrana.',
         'pages' => '386 pagine · Formato 6x9" · Carta Crema Deluxe',
+        'cover_img' => 'assets/img/books/diario_crescita_cover.webp',
         'color_theme' => 'card-neon-orange',
         'badge_color' => 'var(--neon-orange)',
         'amazon_url' => 'https://www.amazon.it/s?k=mirco+pregnolato+diario+crescita+esponenziale',
@@ -165,7 +169,7 @@ $booksCatalog = [
                 'tier' => 2,
                 'offer_id' => 'off_bk_crescita_kdp',
                 'name' => 'Cartaceo KDP',
-                'price' => '29,90 €',
+                'price' => '24,90 €',
                 'details' => 'Elegante volume rilegato KDP di 386 pagine. Il tuo compagno per un intero anno.',
                 'cta_type' => 'amazon',
                 'cta_label' => 'Acquista su Amazon KDP'
@@ -189,9 +193,10 @@ $booksCatalog = [
         'subtitle' => 'I tre tomi ufficiali: SAT I (8 Incontri), SAT II (Consolidamento), SAT III (Leadership)',
         'description' => 'La suite formativa completa per corsisti, famiglie e operatori sociosanitari delle Scuole Territoriali. Copre tutti i passaggi: dall\'introduzione al metodo ecologico-sociale, al consolidamento delle abitudini sobrie, fino all\'impegno nella comunità.',
         'pages' => '3 Volumi Completi · Oltre 260 pagine complessive',
+        'cover_img' => 'assets/img/books/sat_1_cover.webp',
         'color_theme' => 'card-neon-violet',
         'badge_color' => 'var(--neon-violet)',
-        'amazon_url' => 'https://www.amazon.it/s?k=mirco+pregnolato+scuola+alcologica+territoriale',
+        'amazon_url' => 'https://www.amazon.it/dp/B0HJ23231N',
         'tiers' => [
             [
                 'tier' => 1,
@@ -206,8 +211,8 @@ $booksCatalog = [
                 'tier' => 2,
                 'offer_id' => 'off_bk_sat_kdp',
                 'name' => 'Cartaceo KDP',
-                'price' => '39,90 €',
-                'details' => 'Cofanetto di 3 volumi cartacei Amazon KDP per docenti e corsisti.',
+                'price' => '19,90 €',
+                'details' => 'Cofanetto di volumi cartacei Amazon KDP per docenti e corsisti.',
                 'cta_type' => 'amazon',
                 'cta_label' => 'Acquista su Amazon KDP'
             ],
@@ -230,9 +235,10 @@ $booksCatalog = [
         'subtitle' => 'Percorso annuale guidato di rinascita, salute olistica e tracciamento continuo',
         'description' => 'Un anno intero suddiviso in 52 blocchi settimanali tematici: biochimica del corpo sobrio, riprogrammazione del sonno, gestione dello stress, cerchio delle amicizie e sviluppo di una nuova identità libera.',
         'pages' => '237 pagine · Formato 6x9" · Layout Settimanale',
+        'cover_img' => 'assets/img/books/52_settimane_cover.webp',
         'color_theme' => 'card-neon-red',
         'badge_color' => 'var(--neon-red)',
-        'amazon_url' => 'https://www.amazon.it/s?k=mirco+pregnolato+52+settimane+di+cambiamento',
+        'amazon_url' => 'https://www.amazon.it/dp/B0HHZC3PZ2',
         'tiers' => [
             [
                 'tier' => 1,
@@ -247,7 +253,7 @@ $booksCatalog = [
                 'tier' => 2,
                 'offer_id' => 'off_bk_52w_kdp',
                 'name' => 'Cartaceo KDP',
-                'price' => '24,90 €',
+                'price' => '19,90 €',
                 'details' => '237 pagine rilegate Amazon KDP su carta crema per un anno di tracciamento.',
                 'cta_type' => 'amazon',
                 'cta_label' => 'Acquista su Amazon KDP'
@@ -264,6 +270,7 @@ $booksCatalog = [
         ]
     ]
 ];
+
 
 $schemaItems = [];
 $pos = 1;
@@ -326,6 +333,22 @@ require '_header.php';
       La produzione editoriale completa di <strong>Mirco Pregnolato</strong> a supporto delle famiglie, dei partecipanti e dei facilitatori dei <strong>Club Territoriali (Metodo Hudolin)</strong>. Scegli per ciascun libro il formato più adatto: <strong>Digitale ad alta risoluzione</strong>, <strong>Edizione Cartacea Amazon Prime</strong> o <strong>Bundle Formativo con Masterclass Audio/Video</strong>.
     </p>
 
+    <!-- BANNER VETRINA MONOGRAFICA PUBBLICAZIONI KDP -->
+    <div class="lux-metallic-card p-4 my-4" style="border: 1.5px solid var(--neon-gold); background: linear-gradient(135deg, rgba(255,215,0,0.12), rgba(0,240,255,0.08)); border-radius: 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 0 25px rgba(255,215,0,0.15);">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <div style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 14px; background: rgba(255, 215, 0, 0.2); border: 1.5px solid var(--neon-gold);">
+          <?=dx_icon('book-open', 'text-neon-gold', 24)?>
+        </div>
+        <div>
+          <b style="color: #FFFFFF; font-size: 1.1rem;">Vetrina Monografica Ufficiale: <span class="text-rainbow">Tutti i Volumi Hudolin & SAT</span></b>
+          <p style="margin: 0; color: #cbd5e1; font-size: 0.9rem;">Visualizza le schede complete con copertine 3D ad alta definizione, descrizioni magnetiche estese, SAT I, SAT II, SAT III e acquisto diretto Amazon Prime.</p>
+        </div>
+      </div>
+      <a href="pubblicazioni.php" class="btn primary" style="text-decoration: none; border-radius: 12px; white-space: nowrap; font-weight: 850; padding: 10px 18px;">
+        <?=dx_icon('arrow-right', '', 16)?> <span>Vetrina Libri</span>
+      </a>
+    </div>
+
     <!-- BANNER PARTNERSHIP BEWAY.LIFE -->
     <div class="lux-metallic-card p-3 my-4" style="border: 1px solid rgba(0, 212, 255, 0.35); background: rgba(12, 16, 28, 0.92); border-radius: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
       <div style="display: flex; align-items: center; gap: 14px;">
@@ -337,8 +360,8 @@ require '_header.php';
           <p style="margin: 0; color: #94a3b8; font-size: 0.88rem;">Vivi i principi dei libri in mare aperto: scopri la Grande Crociera della Rinascita & Sobrietà con Workshop e Masterclass esclusive.</p>
         </div>
       </div>
-      <a href="viaggi-esperienziali.php" class="btn primary small" style="text-decoration: none; border-radius: 12px; white-space: nowrap;">
-        <?=dx_icon('compass', '', 15)?> Esplora i Viaggi & Crociere
+      <a href="viaggi-esperienziali.php" class="btn primary small" style="text-decoration: none; border-radius: 12px; white-space: nowrap; padding: 8px 16px;">
+        <?=dx_icon('compass', '', 15)?> <span>Viaggi Esperienziali</span>
       </a>
     </div>
   </section>
@@ -353,7 +376,7 @@ require '_header.php';
           
           <div>
             <!-- Header Card -->
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; gap: 8px;">
               <span class="dx-ticker-badge" style="color: <?=$b['badge_color']?>; border-color: <?=$b['badge_color']?>; font-size: 0.76rem;">
                 <?=$b['code']?> · <?=$b['category']?>
               </span>
@@ -362,24 +385,43 @@ require '_header.php';
               </span>
             </div>
 
-            <!-- Titolo e Sottotitolo -->
-            <h2 style="color: #FFFFFF; font-family: var(--font-serif); font-size: 1.45rem; font-weight: 800; margin: 0.5rem 0 0.4rem; line-height: 1.3;">
-              <?=h($b['title'])?>
-            </h2>
-            <p style="color: <?=$b['badge_color']?>; font-size: 0.88rem; font-weight: 700; margin-bottom: 14px; line-height: 1.45;">
-              <?=h($b['subtitle'])?>
-            </p>
+            <!-- ANTEPRIMA COPERTINA & TITOLO -->
+            <?php if (!empty($b['cover_img'])): ?>
+              <div style="display: flex; gap: 16px; margin-bottom: 16px; align-items: flex-start;">
+                <div style="width: 95px; flex-shrink: 0; border-radius: 8px; overflow: hidden; box-shadow: -4px 6px 14px rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.12);">
+                  <img src="<?=h($b['cover_img'])?>" alt="Copertina <?=h($b['title'])?>" style="width: 100%; height: auto; display: block; aspect-ratio: 6/9; object-fit: cover;">
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                  <h2 style="color: #FFFFFF; font-family: var(--font-serif); font-size: 1.3rem; font-weight: 800; margin: 0 0 0.3rem; line-height: 1.25;">
+                    <?=h($b['title'])?>
+                  </h2>
+                  <p style="color: <?=$b['badge_color']?>; font-size: 0.84rem; font-weight: 700; margin-bottom: 6px; line-height: 1.4;">
+                    <?=h($b['subtitle'])?>
+                  </p>
+                  <div style="font-size: 0.78rem; color: #94a3b8; display: flex; align-items: center; gap: 6px;">
+                    <?=dx_icon('book-open', '', 13)?>
+                    <span><?=h($b['pages'])?></span>
+                  </div>
+                </div>
+              </div>
+            <?php else: ?>
+              <!-- Titolo e Sottotitolo standard -->
+              <h2 style="color: #FFFFFF; font-family: var(--font-serif); font-size: 1.45rem; font-weight: 800; margin: 0.5rem 0 0.4rem; line-height: 1.3;">
+                <?=h($b['title'])?>
+              </h2>
+              <p style="color: <?=$b['badge_color']?>; font-size: 0.88rem; font-weight: 700; margin-bottom: 14px; line-height: 1.45;">
+                <?=h($b['subtitle'])?>
+              </p>
+              <div style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 18px; display: flex; align-items: center; gap: 8px;">
+                <?=dx_icon('book-open', '', 14)?>
+                <span><?=h($b['pages'])?></span>
+              </div>
+            <?php endif; ?>
 
             <!-- Sinossi -->
             <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin-bottom: 16px;">
               <?=h($b['description'])?>
             </p>
-
-            <!-- Specifiche Tecniche -->
-            <div style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 18px; display: flex; align-items: center; gap: 8px;">
-              <?=dx_icon('book-open', '', 14)?>
-              <span><?=h($b['pages'])?></span>
-            </div>
 
             <!-- BOX DEI 3 TIER DI PRODOTTO -->
             <div style="background: rgba(8, 12, 22, 0.9); border-radius: 16px; padding: 14px; margin-bottom: 18px; border: 1px solid rgba(255,255,255,0.08);">

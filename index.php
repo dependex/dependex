@@ -21,7 +21,7 @@ $pageSchemaJson = [
 require '_header.php';
 
 // Notizie dalla rete per il ticker e metriche verificate da Single Source of Truth
-$newsCards = AcatNewsService::getLatestCards(8);
+$newsCards = AcatNewsService::getLatestCards(44);
 $natMetrics = \Dependex\Clubs\ClubMetricsService::getNationalSummary();
 $globMetrics = \Dependex\Clubs\ClubMetricsService::getGlobalSummary();
 $totalNodes = $globMetrics['total_nodes'];

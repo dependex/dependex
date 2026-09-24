@@ -3,20 +3,20 @@
   $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
 ?>
   <nav class="bottom-nav" aria-label="Navigazione principale">
-    <a href="app.php" <?=$curScript==='app.php'?'class="active" aria-current="page"':''?>>
-      <?=dx_icon('home', '', 20)?><span><?=h(tr('nav.home','Home'))?></span>
+    <a href="app.php" <?=$curScript==='app.php'?'class="active" aria-current="page"':''?> aria-label="Home" title="Home">
+      <?=dx_icon('home', '', 22)?>
     </a>
-    <a href="checkin.php" <?=$curScript==='checkin.php'?'class="active" aria-current="page"':''?>>
-      <?=dx_icon('edit', '', 20)?><span>Check-in</span>
+    <a href="checkin.php" <?=$curScript==='checkin.php'?'class="active" aria-current="page"':''?> aria-label="Check-in" title="Check-in">
+      <?=dx_icon('edit', '', 22)?>
     </a>
-    <a class="nav-plus" href="journal.php" title="Diario del giorno" <?=$curScript==='journal.php'?'class="active" aria-current="page"':''?>>
-      <?=dx_icon('book-open', '', 22)?><span>Diario</span>
+    <a class="nav-plus" href="journal.php" title="Diario" aria-label="Diario" <?=$curScript==='journal.php'?'class="active" aria-current="page"':''?>>
+      <?=dx_icon('book-open', '', 22)?>
     </a>
-    <a href="club.php" <?=$curScript==='club.php'?'class="active" aria-current="page"':''?>>
-      <?=dx_icon('users', '', 20)?><span>Club</span>
+    <a href="club.php" <?=$curScript==='club.php'?'class="active" aria-current="page"':''?> aria-label="Club" title="Club">
+      <?=dx_icon('users', '', 22)?>
     </a>
-    <a href="profile.php" <?=$curScript==='profile.php'?'class="active" aria-current="page"':''?>>
-      <?=dx_icon('crown', '', 20)?><span>Io</span>
+    <a href="profile.php" <?=$curScript==='profile.php'?'class="active" aria-current="page"':''?> aria-label="Profilo" title="Io">
+      <?=dx_icon('crown', '', 22)?>
     </a>
   </nav>
 <?php endif;?>
@@ -323,31 +323,24 @@
      ========================================================================== -->
 <?php $currentFile = basename($_SERVER['SCRIPT_NAME'] ?? ''); ?>
 <nav class="dx-mobile-bottom-bar" aria-label="Navigazione Mobile Sovrana">
-  <a href="index.php" class="dx-bottom-nav-item <?=$currentFile==='index.php'?'active':''?>">
-    <?=dx_icon('home', '', 20)?>
-    <span>Home</span>
+  <a href="index.php" class="dx-bottom-nav-item <?=$currentFile==='index.php'?'active':''?>" aria-label="Home" title="Home">
+    <?=dx_icon('home', '', 24)?>
   </a>
-  <a href="world-club-explorer.php" class="dx-bottom-nav-item <?=in_array($currentFile, ['world-club-explorer.php','mappa-club.php'], true)?'active':''?>">
-    <?=dx_icon('map-pin', '', 20)?>
-    <span>Trova Club</span>
+  <a href="events-public.php" class="dx-bottom-nav-item <?=in_array($currentFile, ['events-public.php','evento-ottobre-taglio-di-po.php','evento-ottobre-porto-tolle.php'], true)?'active':''?>" aria-label="Eventi" title="Eventi">
+    <?=dx_icon('calendar', '', 24)?>
   </a>
-  <a href="playground.php" class="dx-bottom-nav-item <?=$currentFile==='playground.php'?'active':''?>" style="color: #00d4ff;">
-    <?=dx_icon('sparkles', 'text-neon-cyan', 20)?>
-    <span>Playground</span>
+  <a href="world-club-explorer.php" class="dx-bottom-nav-item <?=in_array($currentFile, ['world-club-explorer.php','mappa-club.php','trova-club.php'], true)?'active':''?>" aria-label="Trova un Club" title="Trova Club">
+    <?=dx_icon('map-pin', '', 24)?>
   </a>
-  <a href="dashboard.php" class="dx-bottom-nav-item <?=$currentFile==='dashboard.php'?'active':''?>" style="display:none;" aria-hidden="true">
-    <span>Dashboard</span>
+  <a href="parla-con-noi.php" class="dx-bottom-nav-item <?=$currentFile==='parla-con-noi.php'?'active':''?>" aria-label="Parla con Noi" title="Parla">
+    <?=dx_icon('message-circle', '', 24)?>
   </a>
-  <a href="parla-con-noi.php" class="dx-bottom-nav-item <?=$currentFile==='parla-con-noi.php'?'active':''?>">
-    <?=dx_icon('message-circle', '', 20)?>
-    <span>Parla</span>
-  </a>
-  <a href="javascript:void(0)" class="dx-bottom-nav-item sos-badge" onclick="dxToggleSosModal(true)" aria-label="Apri SOS Calma e respirazione">
+  <a href="javascript:void(0)" class="dx-bottom-nav-item sos-badge" onclick="dxToggleSosModal(true)" aria-label="SOS Calma" title="SOS Calma">
     <div class="sos-pulse">
-      <?=dx_icon('shield', '', 18)?>
+      <?=dx_icon('shield', '', 22)?>
     </div>
-    <span style="color:#ff6677;">SOS Calma</span>
   </a>
+  <a href="dashboard.php" style="display:none;" aria-hidden="true" title="Dashboard"></a>
 </nav>
 
 <!-- PULSANTE FLOTTANTE DESKTOP (Nascosto su Mobile) -->
@@ -399,7 +392,7 @@
         Vuoi semplicemente dire a voce cosa provi adesso? (100% privato nel tuo telefono)
       </div>
       <button type="button" id="dxVoiceSosBtn" onclick="if(window.startVoiceSos) window.startVoiceSos();" style="background: rgba(0, 240, 255, 0.15); border: 1px solid #00f0ff; color: #00f0ff; border-radius: 999px; padding: 8px 18px; font-weight: 800; font-size: 0.88rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
-        <span style="font-size: 1.1rem;">🎙️</span>
+        <?=dx_icon('mic', 'text-neon-cyan', 18)?>
         <span id="dxVoiceStatusTxt">Parla liberamente a voce</span>
       </button>
       <div id="dxVoiceTranscriptBox" style="display: none; margin-top: 10px; font-size: 0.84rem; text-align: left; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 10px; color: #e2e8f0; line-height: 1.4;">

@@ -222,42 +222,30 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
 
   <a href="#mainContent" class="skip-link">Salta al contenuto principale</a>
   <header class="topbar">
-    <a class="brand" href="<?=$u ? 'app.php' : 'index.php'?>">
-      <span class="brand-mark brand-mark-rainbow"><img src="assets/img/dependex-badge-icon.webp" alt="Logo DEPENDEX" width="44" height="44"></span>
-      <span><b><?=h($brand['name'])?></b><small><?=h(APP_PAYOFF)?></small></span>
+    <a class="brand" href="<?=$u ? 'app.php' : 'index.php'?>" aria-label="Home Dependex">
+      <span class="brand-mark brand-mark-rainbow brand-mark-round"><img src="assets/img/dependex-badge-icon.webp" alt="Logo DEPENDEX" width="44" height="44"></span>
+      <span class="brand-text"><b><?=h($brand['name'])?></b><small><?=h(APP_PAYOFF)?></small></span>
     </a>
 
-
-
-    <!-- TOPBAR METRICS (VISITATORI TOTALI & UTENTI LIVE CON PULSE GLOW) -->
+    <!-- TOPBAR METRICS (Nascosti per header pulito minimale: solo logo a sx e burger a dx) -->
     <?php $dxTelemetry = site_live_telemetry(); ?>
-    <div class="topbar-live-counters" aria-label="Statistiche del portale in tempo reale">
-      <div class="counter-badge counter-badge-visits" title="Visitatori complessivi della piattaforma">
-        <span class="counter-icon"><?=dx_icon('eye', 'text-neon-cyan', 15)?></span>
-        <div class="counter-text">
-          <span class="counter-val text-neon-cyan" id="dxTotalVisits"><?=$dxTelemetry['formatted_visits']?></span>
-          <span class="counter-lbl">visite</span>
-        </div>
+    <div class="topbar-live-counters" style="display:none;" aria-hidden="true">
+      <div class="counter-badge counter-badge-visits">
+        <span class="counter-val text-neon-cyan" id="dxTotalVisits"><?=$dxTelemetry['formatted_visits']?></span>
+        <span class="counter-lbl">visite</span>
+        <span>>395</span>
       </div>
-      <div class="counter-badge counter-badge-live" title="Utenti connessi in questo istante">
+      <div class="counter-badge counter-badge-live">
         <span class="live-pulse-dot"></span>
-        <div class="counter-text">
-          <span class="counter-val text-neon-green" id="dxLiveUsers"><?=$dxTelemetry['formatted_live']?></span>
-          <span class="counter-lbl">online</span>
-        </div>
+        <span class="counter-val text-neon-green" id="dxLiveUsers"><?=$dxTelemetry['formatted_live']?></span>
+        <span class="counter-lbl">online</span>
       </div>
     </div>
 
     <div class="header-actions">
-      <!-- PULSANTE USCITA RAPIDA / PANIC EXIT -->
-      <a href="https://www.meteo.it" onclick="window.dxPanicExit(event);" class="panic-exit-btn" id="panicExitBtn" title="Uscita Rapida: chiudi subito e proteggi la tua privacy [ESC]" aria-label="Uscita Rapida">
-        <span class="panic-icon">🛡️</span>
-        <span class="panic-label">Esci</span>
-      </a>
-      <a href="cart.php" class="topbar-cart-btn" title="Carrello Acquisti" aria-label="Carrello">
-        <?=dx_icon('shopping-cart', 'text-neon-gold', 18)?>
-      </a>
-      <button type="button" class="theme-toggle" aria-label="Cambia tema" title="Cambia tema"><?=dx_icon('sun', '', 18)?></button>
+      <!-- PULSANTI DI SISTEMA (Nascosti per header minimale pulito) -->
+      <a href="https://www.meteo.it" onclick="window.dxPanicExit(event);" class="panic-exit-btn" id="panicExitBtn" style="display:none;" aria-hidden="true" title="Uscita Rapida [ESC]"></a>
+      <a href="cart.php" class="topbar-cart-btn" style="display:none;" aria-hidden="true" title="Carrello"></a>
       <!-- BURGER MENU BUTTON PER MENU COMPLETO MOBILE E DRAWER -->
       <button type="button" class="burger-btn" id="burgerBtn" aria-label="Menu di Navigazione" aria-expanded="false" aria-controls="drawerNav" title="Apri menu completo">
         <span></span><span></span><span></span>
@@ -270,7 +258,7 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
   <aside class="drawer" id="drawerNav" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu navigazione completo">
     <div class="drawer-header">
       <div class="brand">
-        <span class="brand-mark brand-mark-rainbow"><img src="assets/img/dependex-rainbow-badge.jpg" alt="DEPENDEX"></span>
+        <span class="brand-mark brand-mark-rainbow brand-mark-round"><img src="assets/img/dependex-badge-icon.webp" alt="Logo DEPENDEX" width="44" height="44"></span>
         <span><b>DEPENDEX</b><small>AL CLUB. COL CLUB.</small></span>
       </div>
       <button type="button" class="drawer-close" id="drawerCloseBtn" aria-label="Chiudi menu">&times;</button>
@@ -286,45 +274,39 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
           </div>
         </div>
         <nav class="drawer-nav-group">
-          <span class="drawer-section-title">QUOTIDIANO & PERCORSO</span>
+          <span class="drawer-section-title text-amber">RETE & EVENTI</span>
+          <a href="app.php" class="drawer-link <?=$curScript==='app.php'?'active':''?>"><?=dx_icon('home','',18)?> <b>Home</b></a>
+          <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'||$curScript==='eventi.php'?'active':''?>"><?=dx_icon('calendar','text-neon-gold',18)?> <b>Eventi</b></a>
+          <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'||$curScript==='club-public.php'?'active':''?>"><?=dx_icon('map-pin','text-neon-green',18)?> <b>Trova un Club</b></a>
+          <a href="mappa-club.php" class="drawer-link <?=$curScript==='mappa-club.php'||$curScript==='italy-map.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa Nazionale Club</b></a>
+          <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>"><?=dx_icon('globe','text-neon-purple',18)?> <b>Mappa Mondiale Club</b></a>
+          <a href="parla-con-noi.php" class="drawer-link highlight-gold <?=$curScript==='parla-con-noi.php'||$curScript==='contatti.php'?'active':''?>"><?=dx_icon('message-circle','text-neon-gold',18)?> <b>Parla con Noi</b></a>
+        </nav>
+        <nav class="drawer-nav-group">
+          <span class="drawer-section-title text-green">STRUMENTI & QUOTIDIANO</span>
           <a href="dashboard.php" class="drawer-link <?=$curScript==='dashboard.php'?'active':''?>"><?=dx_icon('activity','text-neon-cyan',18)?> <b>Dashboard & Sobrietà</b></a>
           <a href="playground.php" class="drawer-link <?=$curScript==='playground.php'?'active':''?>"><?=dx_icon('sparkles','text-neon-cyan',18)?> <b>Life Playground 6.0</b></a>
-          <a href="orientamento.php" class="drawer-link <?=$curScript==='orientamento.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa del Benessere 4.0</b></a>
-          <a href="ruota-della-vita.php" class="drawer-link <?=$curScript==='ruota-della-vita.php'?'active':''?>"><?=dx_icon('compass','text-neon-gold',18)?> Ruota della Vita 2D/3D</a>
-          <a href="piramide-maslow.php" class="drawer-link <?=$curScript==='piramide-maslow.php'?'active':''?>"><?=dx_icon('layers','text-neon-purple',18)?> Piramide Maslow 2D/3D</a>
-          <a href="app.php" class="drawer-link <?=$curScript==='app.php'?'active':''?>"><?=dx_icon('home','',18)?> Home Utente</a>
+          <a href="orientamento.php" class="drawer-link <?=$curScript==='orientamento.php'?'active':''?>"><?=dx_icon('compass','text-neon-gold',18)?> Mappa del Benessere 4.0</a>
           <a href="checkin.php" class="drawer-link <?=$curScript==='checkin.php'?'active':''?>"><?=dx_icon('edit','',18)?> Daily Check-in (+5 DRX)</a>
           <a href="journal.php" class="drawer-link <?=$curScript==='journal.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Diario & Gratitudine</a>
           <a href="sobriety.php" class="drawer-link <?=$curScript==='sobriety.php'?'active':''?>"><?=dx_icon('activity','',18)?> Sobrietà & Traguardi</a>
-        </nav>
-        <nav class="drawer-nav-group">
-          <span class="drawer-section-title">I PILASTRI DELLA COMUNITÀ</span>
-          <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'||$curScript==='club-public.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> Trova un Club Territoriale</a>
-          <a href="mappa-club.php" class="drawer-link <?=$curScript==='mappa-club.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa 2D Italia (1.770 Club)</b></a>
-          <a href="crm-clubs.php" class="drawer-link <?=$curScript==='crm-clubs.php'?'active':''?>"><?=dx_icon('database','text-neon-green',18)?> <b>Console CRM Club Italia</b></a>
-          <a href="recensioni.php" class="drawer-link <?=$curScript==='recensioni.php'?'active':''?>"><?=dx_icon('star','text-neon-gold',18)?> <b>Recensioni & Testimonianze</b></a>
-          <a href="parla-con-noi.php" class="drawer-link <?=$curScript==='parla-con-noi.php'?'active':''?>"><?=dx_icon('message-circle','text-neon-cyan',18)?> <b>Parla con Noi (Ascolto Riservato)</b></a>
-          <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Vivi la Comunità & Eventi</a>
-          <a href="storie.php" class="drawer-link <?=$curScript==='storie.php'?'active':''?>"><?=dx_icon('users','',18)?> Storie di Comunità</a>
-          <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>"><?=dx_icon('compass','',18)?> Mappa Mondiale 2D/3D</a>
-          <a href="metodo.php" class="drawer-link <?=$curScript==='metodo.php'?'active':''?>"><?=dx_icon('feather','',18)?> Il Metodo Hudolin</a>
-          <a href="academy.php" class="drawer-link <?=$curScript==='academy.php'?'active':''?>"><?=dx_icon('academic','',18)?> Formazione Servitori</a>
           <a href="club.php" class="drawer-link <?=$curScript==='club.php'?'active':''?>"><?=dx_icon('users','',18)?> Il mio Club</a>
         </nav>
         <nav class="drawer-nav-group">
-          <span class="drawer-section-title">RISORSE & SERVIZI</span>
-          <a href="profile.php" class="drawer-link <?=$curScript==='profile.php'?'active':''?>"><?=dx_icon('users','',18)?> Il mio Profilo</a>
+          <span class="drawer-section-title text-cyan">RISORSE & SERVIZI</span>
           <a href="guida-gratuita.php" class="drawer-link <?=$curScript==='guida-gratuita.php'?'active':''?>"><?=dx_icon('sparkles','',18)?> Guida Gratuita Famiglia</a>
-          <a href="pubblicazioni.php" class="drawer-link <?=$curScript==='pubblicazioni.php'||$curScript==='offers.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Collana Didattica KDP</a>
+          <a href="pubblicazioni.php" class="drawer-link <?=$curScript==='pubblicazioni.php'||$curScript==='offers.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Collana Libri KDP</a>
+          <a href="crm-clubs.php" class="drawer-link <?=$curScript==='crm-clubs.php'?'active':''?>"><?=dx_icon('database','text-neon-green',18)?> Console CRM Club Italia</a>
+          <a href="profile.php" class="drawer-link <?=$curScript==='profile.php'?'active':''?>"><?=dx_icon('users','',18)?> Il mio Profilo</a>
           <a href="cart.php" class="drawer-link <?=$curScript==='cart.php'?'active':''?>"><?=dx_icon('shopping-cart','',18)?> Carrello Acquisti</a>
           <a href="help.php" class="drawer-link <?=$curScript==='help.php'?'active':''?>"><?=dx_icon('shield','',18)?> Supporto Immediato</a>
-          <a href="privacy.php" class="drawer-link <?=$curScript==='privacy.php'?'active':''?>"><?=dx_icon('lock','',18)?> Riservatezza & Anonimato</a>
+          <a href="privacy.php" class="drawer-link <?=$curScript==='privacy.php'?'active':''?>"><?=dx_icon('lock','',18)?> Riservatezza & Trasparenza</a>
           <a href="logout.php" class="drawer-link drawer-logout"><?=dx_icon('log-out','',18)?> Esci dall'App</a>
         </nav>
       <?php else:?>
-        <div class="drawer-auth-card" style="padding:16px;border-radius:18px;background:rgba(12,16,26,0.9);border:1px solid rgba(224,169,109,0.35);box-shadow:0 0 20px rgba(224,169,109,0.15);margin-bottom:14px;">
-          <div class="badge-human mb-2" style="font-size:0.72rem;"><span class="dot"></span> RETE GRATUITA DEI CLUB</div>
-          <p style="font-size:0.84rem;color:#cbd5e1;line-height:1.45;margin:0 0 12px;">Oltre 1.770 Club territoriali, metodo Hudolin e supporto continuativo senza giudizio.</p>
+        <div class="drawer-auth-card" style="padding:14px;border-radius:16px;background:rgba(12,16,26,0.92);border:1px solid rgba(224,169,109,0.35);margin-bottom:12px;">
+          <div class="badge-human mb-2" style="font-size:0.72rem;"><span class="dot"></span> RETE DEI CLUB ITALIA (395 Club Attivi)</div>
+          <p style="font-size:0.82rem;color:#cbd5e1;line-height:1.4;margin:0 0 10px;">1.761 Club territoriali, metodo Hudolin e accoglienza gratuita senza giudizio.</p>
           <div style="display:flex;gap:8px;">
             <a class="btn primary small" href="login.php" style="flex:1;text-align:center;">Accedi</a>
             <a class="btn small" href="register.php" style="flex:1;border:1px solid rgba(224,169,109,0.4);color:#ffffff;border-radius:12px;text-align:center;">Registrati</a>
@@ -332,51 +314,39 @@ $curScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
         </div>
 
         <nav class="drawer-nav-group">
-          <span class="drawer-section-title text-amber">RETE & TERRITORIO</span>
-          <a href="/" class="drawer-link <?=$curScript==='index.php'?'active':''?>"><?=dx_icon('home','',18)?> Pagina Principale</a>
-          <a href="trova-club.php" class="drawer-link <?=$curScript==='world-club-explorer.php'||$curScript==='trova-club.php'||$curScript==='club-public.php'?'active':''?>"><?=dx_icon('map-pin','',18)?> <b>Trova un Club Territoriale</b></a>
-          <a href="italy-map.php" class="drawer-link <?=$curScript==='mappa-club.php'||$curScript==='italy-map.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa 2D Italia (1.768 Club)</b></a>
-          <a href="organigramma.php" class="drawer-link highlight-gold <?=$curScript==='organigramma.php'?'active':''?>"><?=dx_icon('layers','text-neon-gold',18)?> <b>Organigramma della Rete</b></a>
-          <a href="domande.php" class="drawer-link <?=$curScript==='domande-frequenti.php'||$curScript==='domande.php'?'active':''?>"><?=dx_icon('help-circle','',18)?> Domande che vuoi fare</a>
-          <a href="testimonianze.php" class="drawer-link <?=$curScript==='recensioni.php'||$curScript==='testimonianze.php'?'active':''?>"><?=dx_icon('star','text-neon-gold',18)?> Recensioni & Testimonianze</a>
-          <a href="contatti.php" class="drawer-link highlight-gold <?=$curScript==='parla-con-noi.php'||$curScript==='contatti.php'?'active':''?>"><?=dx_icon('message-circle','text-neon-gold',18)?> <b>Parla con Noi</b></a>
-          <a href="eventi.php" class="drawer-link <?=$curScript==='events-public.php'||$curScript==='eventi.php'?'active':''?>"><?=dx_icon('calendar','',18)?> Vivi la Comunità</a>
-          <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>"><?=dx_icon('compass','',18)?> Mappa Mondiale 2D/3D</a>
+          <span class="drawer-section-title text-amber">RETE & EVENTI</span>
+          <a href="/" class="drawer-link <?=$curScript==='index.php'?'active':''?>"><?=dx_icon('home','',18)?> <b>Home</b></a>
+          <a href="events-public.php" class="drawer-link <?=$curScript==='events-public.php'||$curScript==='eventi.php'?'active':''?>"><?=dx_icon('calendar','text-neon-gold',18)?> <b>Eventi</b></a>
+          <a href="world-club-explorer.php" class="drawer-link <?=$curScript==='world-club-explorer.php'||$curScript==='trova-club.php'||$curScript==='club-public.php'?'active':''?>"><?=dx_icon('map-pin','text-neon-green',18)?> <b>Trova un Club</b></a>
+          <a href="mappa-club.php" class="drawer-link <?=$curScript==='mappa-club.php'||$curScript==='italy-map.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa Nazionale Club</b></a>
+          <a href="world-map.php" class="drawer-link <?=$curScript==='world-map.php'?'active':''?>"><?=dx_icon('globe','text-neon-purple',18)?> <b>Mappa Mondiale Club</b></a>
+          <a href="parla-con-noi.php" class="drawer-link highlight-gold <?=$curScript==='parla-con-noi.php'||$curScript==='contatti.php'?'active':''?>"><?=dx_icon('message-circle','text-neon-gold',18)?> <b>Parla con Noi</b></a>
         </nav>
 
         <nav class="drawer-nav-group">
-          <span class="drawer-section-title text-green">METODO & COMUNITÀ</span>
-          <a href="life-playground.php" class="drawer-link <?=$curScript==='playground.php'||$curScript==='life-playground.php'?'active':''?>"><?=dx_icon('sparkles','text-neon-cyan',18)?> <b>Life Playground 6.0</b></a>
-          <a href="mappa-benessere.php" class="drawer-link <?=$curScript==='orientamento.php'||$curScript==='mappa-benessere.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> <b>Mappa del Benessere 4.0</b></a>
-          <a href="dashboard.php" class="drawer-link <?=$curScript==='dashboard.php'?'active':''?>"><?=dx_icon('activity','text-neon-green',18)?> <b>Dashboard & Sobrietà</b></a>
-          <a href="ruota-vita.php" class="drawer-link <?=$curScript==='ruota-della-vita.php'||$curScript==='ruota-vita.php'?'active':''?>"><?=dx_icon('compass','text-neon-gold',18)?> Ruota della Vita 2D/3D</a>
-          <a href="maslow.php" class="drawer-link <?=$curScript==='piramide-maslow.php'||$curScript==='maslow.php'?'active':''?>"><?=dx_icon('layers','text-neon-purple',18)?> Piramide di Maslow 2D/3D</a>
+          <span class="drawer-section-title text-green">METODO & PERCORSO</span>
           <a href="metodo.php" class="drawer-link <?=$curScript==='metodo.php'?'active':''?>"><?=dx_icon('feather','',18)?> Il Metodo Hudolin</a>
-          <a href="storie.php" class="drawer-link <?=$curScript==='storie.php'?'active':''?>"><?=dx_icon('users','',18)?> Storie di Comunità</a>
+          <a href="playground.php" class="drawer-link <?=$curScript==='playground.php'||$curScript==='life-playground.php'?'active':''?>"><?=dx_icon('sparkles','text-neon-cyan',18)?> Life Playground 6.0</a>
+          <a href="orientamento.php" class="drawer-link <?=$curScript==='orientamento.php'||$curScript==='mappa-benessere.php'?'active':''?>"><?=dx_icon('compass','text-neon-cyan',18)?> Mappa del Benessere 4.0</a>
+          <a href="storie.php" class="drawer-link <?=$curScript==='storie.php'||$curScript==='recensioni.php'||$curScript==='testimonianze.php'?'active':''?>"><?=dx_icon('users','',18)?> Storie & Testimonianze</a>
         </nav>
 
         <nav class="drawer-nav-group">
-          <span class="drawer-section-title text-cyan">SOVEREIGN ACADEMY</span>
-          <a href="guida-famiglia.php" class="drawer-link <?=$curScript==='guida-gratuita.php'||$curScript==='guida-famiglia.php'?'active':''?>"><?=dx_icon('sparkles','text-neon-gold',18)?> <b>Guida Gratuita Famiglia</b></a>
-          <a href="corso-taglio-po.php" class="drawer-link <?=$curScript==='evento-ottobre-taglio-di-po.php'||$curScript==='corso-taglio-po.php'||$curScript==='event-detail.php'?'active':''?>"><?=dx_icon('award','',18)?> Corso Esperienziale Taglio di Po</a>
-          <a href="evento-ottobre-porto-tolle.php" class="drawer-link <?=$curScript==='evento-ottobre-porto-tolle.php'?'active':''?>"><?=dx_icon('calendar','text-neon-cyan',18)?> SAT 2° Modulo Porto Tolle</a>
-        </nav>
-
-        <nav class="drawer-nav-group">
-          <span class="drawer-section-title text-amber">RISORSE & APPROFONDIMENTI</span>
-          <a href="clip-motivazionali.php" class="drawer-link <?=$curScript==='clips.php'||$curScript==='clip-motivazionali.php'?'active':''?>"><?=dx_icon('play','text-neon-gold',18)?> Clip Motivazionali</a>
+          <span class="drawer-section-title text-cyan">RISORSE & ACADEMY</span>
+          <a href="guida-gratuita.php" class="drawer-link <?=$curScript==='guida-gratuita.php'||$curScript==='guida-famiglia.php'?'active':''?>"><?=dx_icon('sparkles','text-neon-gold',18)?> <b>Guida Gratuita Famiglia (PDF)</b></a>
           <a href="pubblicazioni.php" class="drawer-link <?=$curScript==='pubblicazioni.php'||$curScript==='offers.php'||$curScript==='libri-kdp.php'?'active':''?>"><?=dx_icon('book-open','',18)?> Collana Libri KDP</a>
-          <a href="viaggi-esperienziali.php" class="drawer-link <?=$curScript==='viaggi-esperienziali.php'||$curScript==='crociera-benessere-masterclass.php'?'active':''?>"><?=dx_icon('compass','',18)?> Viaggi Esperienziali BEWAY.LIFE</a>
+          <a href="organigramma.php" class="drawer-link <?=$curScript==='organigramma.php'?'active':''?>"><?=dx_icon('layers','',18)?> Organigramma della Rete</a>
+          <a href="domande-frequenti.php" class="drawer-link <?=$curScript==='domande-frequenti.php'||$curScript==='domande.php'?'active':''?>"><?=dx_icon('help-circle','',18)?> Domande Frequenti (FAQ)</a>
+          <a href="academy-public.php" style="display:none;" aria-hidden="true" title="Academy"></a>
+          <a href="cortex.php" style="display:none;" aria-hidden="true" title="Cortex"></a>
+          <a href="viaggi-esperienziali.php" style="display:none;" aria-hidden="true" title="Viaggi"></a>
         </nav>
 
         <nav class="drawer-nav-group">
-          <span class="drawer-section-title text-violet">GOVERNANCE & PRIVACY</span>
-          <a href="privacy.php" class="drawer-link <?=$curScript==='privacy.php'?'active':''?>"><?=dx_icon('lock','',18)?> Privacy Policy (GDPR)</a>
-          <a href="cookie.php" class="drawer-link <?=$curScript==='privacy-center.php'||$curScript==='cookie.php'?'active':''?>"><?=dx_icon('shield','',18)?> Gestione Consensi & Cookie</a>
-          <a href="pwa.php" class="drawer-link <?=$curScript==='pwa.php'?'active':''?>"><?=dx_icon('bell','text-neon-cyan',18)?> Promemoria Privati (PWA)</a>
-          <a href="termini.php" class="drawer-link <?=$curScript==='terms.php'||$curScript==='termini.php'?'active':''?>"><?=dx_icon('file-text','',18)?> Termini & Trasparenza ACAT</a>
-          <a href="telemetria.php" class="drawer-link <?=$curScript==='telemetria.php'?'active':''?>"><?=dx_icon('activity','text-neon-cyan',18)?> Console Telemetria & Watchdog</a>
-          <a href="emergenze.php" class="drawer-link <?=$curScript==='help.php'||$curScript==='emergenze.php'?'active':''?>"><?=dx_icon('shield','text-danger',18)?> Aiuto & Emergenze (112)</a>
+          <span class="drawer-section-title text-violet">SUPPORTO & TRASPARENZA</span>
+          <a href="help.php" class="drawer-link <?=$curScript==='help.php'||$curScript==='emergenze.php'?'active':''?>"><?=dx_icon('shield','text-danger',18)?> <b>Aiuto & Emergenze (112)</b></a>
+          <a href="emergenze.php" style="display:none;" aria-hidden="true" title="Emergenze"></a>
+          <a href="privacy.php" class="drawer-link <?=$curScript==='privacy.php'||$curScript==='terms.php'||$curScript==='termini.php'||$curScript==='privacy-center.php'?'active':''?>"><?=dx_icon('lock','',18)?> Riservatezza & Trasparenza</a>
         </nav>
 
         <script>

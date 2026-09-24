@@ -10,6 +10,23 @@ declare(strict_types=1);
 require_once __DIR__ . '/bootstrap.php';
 require_once __DIR__ . '/email-engine.php';
 
+// DOWNLOAD DIRETTO DEL FILE PDF REALE
+if (isset($_GET['download']) && $_GET['download'] === 'pdf') {
+    $pdfPath = __DIR__ . '/assets/docs/Guida_Primi_7_Giorni_Famiglia_DEPENDEX.pdf';
+    if (!file_exists($pdfPath)) {
+        @shell_exec('python ' . escapeshellarg(__DIR__ . '/scratch/generate_guida_pdf.py'));
+    }
+    if (file_exists($pdfPath)) {
+        header('Content-Type: application/pdf');
+        header('Content-Disposition: attachment; filename="Guida_Primi_7_Giorni_Famiglia_DEPENDEX.pdf"');
+        header('Content-Length: ' . (string)filesize($pdfPath));
+        header('Cache-Control: private, max-age=0, must-revalidate');
+        header('Pragma: public');
+        readfile($pdfPath);
+        exit;
+    }
+}
+
 $viewDocument = isset($_GET['view']) && $_GET['view'] === 'document';
 $submitted = false;
 $userEmail = '';
@@ -26,8 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $userName = $nome ?: 'Amico/a';
         $submitted = true;
 
+        // 1. RICERCA CLUB VICINI NEL DB UNICO
+        $pdo = db();
         if ($city) {
-            $pdo = db();
             $stmt = $pdo->prepare("
                 SELECT sic_id, entity_name, region, province, address, meeting_day, meeting_time 
                 FROM network_entities 
@@ -39,6 +57,78 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $resultClubs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
+        // 2. SALVATAGGIO NEL DATABASE UNICO DI DEPENDEX.SOCIAL (FORM_SUBMISSIONS)
+        try {
+            $subSic = sic_id();
+            $stmtSub = $pdo->prepare("
+                INSERT INTO form_submissions (sic_id, form_sic_id, payload_json, document_sic_id, created_at)
+                VALUES (?, 'FORM-GUIDA-7-GIORNI', ?, 'DOC-GUIDA-7-GIORNI-PDF', CURRENT_TIMESTAMP)
+            ");
+            $stmtSub->execute([
+                $subSic,
+                json_encode([
+                    'nome' => $nome,
+                    'email' => $email,
+                    'citta' => $city,
+                    'privacy_accepted' => true,
+                    'ip_address' => $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1',
+                    'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? 'Web Browser'
+                ], JSON_UNESCAPED_UNICODE)
+            ]);
+        } catch (Throwable $e) {
+            error_log('[GUIDA_GRATUITA] Errore form_submissions: ' . $e->getMessage());
+        }
+
+        // 3. REGISTRAZIONE NEL CRM COMUNITARIO (CRM_CLUB_INQUIRIES)
+        try {
+            $inqSic = sic_id();
+            $ipHash = hash('sha256', $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1');
+            $stmtInq = $pdo->prepare("
+                INSERT INTO crm_club_inquiries (sic_id, entity_name, contact_name, contact_email, contact_method, message, status, ip_hash, created_at, updated_at)
+                VALUES (?, 'GUIDA_GRATUITA_7_GIORNI', ?, ?, 'EMAIL', ?, 'NEW', ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+            ");
+            $stmtInq->execute([
+                $inqSic,
+                $nome ?: 'Amico/a',
+                $email,
+                'Download Guida Primi 7 Giorni (Città: ' . ($city ?: 'Non specificata') . ')',
+                $ipHash
+            ]);
+        } catch (Throwable $e) {
+            error_log('[GUIDA_GRATUITA] Errore crm_club_inquiries: ' . $e->getMessage());
+        }
+
+        // 4. REGISTRO CONSENSI PRIVACY GDPR (CONSENT_LOG)
+        try {
+            $consentSic = sic_id();
+            $stmtCons = $pdo->prepare("
+                INSERT INTO consent_log (sic_id, user_sic_id, consent_code, value, version, created_at)
+                VALUES (?, ?, 'PRIVACY_LEAD_GUIDA', 1, '1.0', CURRENT_TIMESTAMP)
+            ");
+            $stmtCons->execute([$consentSic, $email]);
+        } catch (Throwable $e) {
+            error_log('[GUIDA_GRATUITA] Errore consent_log: ' . $e->getMessage());
+        }
+
+        // 5. EVENTO DI FUNNEL MARKETING (FUNNEL_EVENTS)
+        try {
+            $stmtFun = $pdo->prepare("
+                INSERT INTO funnel_events (session_token, page, funnel_stage, action, event_data, ip_hash, user_agent_short, created_at, created_iso)
+                VALUES (?, 'guida-gratuita.php', 'LEAD_CAPTURED', 'DOWNLOAD_PDF', ?, ?, ?, ?, ?)
+            ");
+            $stmtFun->execute([
+                session_id() ?: 'sess_' . bin2hex(random_bytes(8)),
+                json_encode(['nome' => $nome, 'email' => $email, 'citta' => $city], JSON_UNESCAPED_UNICODE),
+                $ipHash ?? hash('sha256', '127.0.0.1'),
+                substr($_SERVER['HTTP_USER_AGENT'] ?? 'Web', 0, 50),
+                time(),
+                date('c')
+            ]);
+        } catch (Throwable $e) {
+            error_log('[GUIDA_GRATUITA] Errore funnel_events: ' . $e->getMessage());
+        }
+
+        // 6. TRACCIAMENTO ED ARRUOLAMENTO EMAIL MARKETING REVENUE OS
         email_os_track_event('lead_created', $email, [
             'nome' => $nome,
             'citta' => $city,
@@ -83,9 +173,18 @@ if ($viewDocument):
   </style>
 </head>
 <body>
-  <div class="no-print" style="max-width: 780px; margin: 0 auto 16px; display: flex; justify-content: space-between; align-items: center;">
+  <div class="no-print" style="max-width: 780px; margin: 0 auto 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
     <a href="guida-gratuita.php" style="color: #475569; text-decoration: none; font-size: 14px; font-weight: 600;">← Torna al Portale</a>
-    <button class="btn-print" onclick="window.print()">Stampa o Salva in PDF</button>
+    <div style="display: flex; gap: 8px;">
+      <a href="guida-gratuita.php?download=pdf" class="btn-print" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+        <?=dx_icon('download', '', 16)?>
+        <span>Scarica File PDF</span>
+      </a>
+      <button class="btn-print" style="background: #e2e8f0; color: #0f172a;" onclick="window.print()">
+        <?=dx_icon('printer', '', 16)?>
+        <span>Stampa</span>
+      </button>
+    </div>
   </div>
 
   <div class="doc-container">
@@ -243,14 +342,18 @@ require '_header.php';
         Abbiamo registrato la tua richiesta per <strong><?=h($userEmail)?></strong>. Puoi iniziare a leggerla o stamparla immediatamente cliccando qui sotto:
       </p>
 
-      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 36px;">
-        <a href="guida-gratuita.php?view=document" target="_blank" class="btn primary" style="padding: 12px 24px; font-size: 1rem; border-radius: 14px; text-decoration: none;">
-          <?=dx_icon('book-open', '', 18)?>
-          <span style="margin-left: 8px;">Leggi Guida PDF</span>
+      <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 36px;">
+        <a href="guida-gratuita.php?download=pdf" class="btn primary" style="padding: 12px 24px; font-size: 1rem; border-radius: 14px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+          <?=dx_icon('download', '', 18)?>
+          <span>Scarica PDF Diretto</span>
         </a>
-        <a href="world-club-explorer.php" class="btn-rainbow-outline" style="padding: 12px 20px; font-size: 1rem; border-radius: 14px; text-decoration: none;">
+        <a href="guida-gratuita.php?view=document" target="_blank" class="btn-rainbow-outline" style="padding: 12px 20px; font-size: 1rem; border-radius: 14px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+          <?=dx_icon('book-open', '', 18)?>
+          <span>Leggi Online</span>
+        </a>
+        <a href="world-club-explorer.php" class="btn-rainbow-outline" style="padding: 12px 20px; font-size: 1rem; border-radius: 14px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
           <?=dx_icon('compass', '', 18)?>
-          <span style="margin-left: 8px;">Trova un Club</span>
+          <span>Trova un Club</span>
         </a>
       </div>
 
